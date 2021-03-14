@@ -1,5 +1,7 @@
 -- todo: reload init.lua??
 -- nnoremap <silent><leader>t :silent !tmux send-keys -t 2 c-p Enter<cr>
+-- " select visualy selected text for search
+-- xnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 local map = vim.api.nvim_set_keymap
 
 options = { noremap = true }
@@ -44,4 +46,11 @@ map('n', 'gd', 'msgd', options)
 map('n', '*', 'ms*', options)
 map('n', '#', 'ms#', options)
 map('n', 'V', 'Vg_', {})
+
+-- buffer ops
+map('n', '<leader>w', ':write<cr>', options)
+map('n', '<tab>', ':bnext<cr>', options)
+map('n', '<s-tab>', ':bprevious<cr>', options)
+map('n', 'Y', 'y$', options)
+map('v', 'y', 'mxy`x', options)
 

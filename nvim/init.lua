@@ -11,6 +11,9 @@ require("utils")
 
 -- cmd "colorscheme base16-onedark"
 cmd "syntax enable"
+-- set synmaxcol=0
+cmd "syntax sync minlines=256"
+cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
 g.mapleader = " "
