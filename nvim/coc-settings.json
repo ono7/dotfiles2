@@ -1,0 +1,30 @@
+{
+  "diagnostic.displayByAle": true,
+  "python.jediEnabled": true,
+  "python.venvFolders": ["venv", ".virtualenvs"],
+  "python.jediPath": "~/.virtualenvs/prod3/lib/python3.7/site-packages",
+  "python.analysis.diagnosticEnabled": false,
+  "python.linting.pylintPath": "~/.virtualenvs/prod3/bin/pylint",
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.virtualenvs/prod3/bin/black",
+  "python.formatting.blackArgs": [],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "json",
+    "javascript",
+    "yaml",
+    "markdown",
+    "typescript",
+    "lua",
+    "css"
+  ],
+  "python.linting.enabled": true,
+  "python.linting.maxNumberOfProblems": 100,
+  "python.linting.ignorePatterns": [".vscode/*.py", "**/site-packages/**/*.py"],
+  "javascript.suggestionActions.enabled": false,
+  "tsserver.npm": "~/.npm-packages/bin/npm",
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": true,
+  "omnisharp.useDotnet": true
+}

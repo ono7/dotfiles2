@@ -1,0 +1,40 @@
+# Sensible asm plz
+set disassembly-flavor intel
+
+# Lie about screen size to prevent paging stops
+set height 0
+
+# Invoke register and disassembly windows
+layout asm
+layout reg
+
+# Set the keyboard focus back to the command window.
+# This allows the up key to access command history.
+focus cmd
+
+# Size the command window to display more of the disassembly view
+winheight cmd 5
+
+# Size the register window save space 
+# (windows of 114 cols will show all registers in two columns)
+winheight reg 14
+
+# Define a command to show the stack in a useful way
+define stackdump
+	set $offset=32
+	while $offset > -1
+		x/gx $esp+$offset
+		set $offset=$offset-8
+	end
+end
+
+# Dump the top of the stack at each break
+define hook-stop
+	stackdump
+end
+
+# Set up relevant breakpoints
+break main
+
+# Start the target 
+run

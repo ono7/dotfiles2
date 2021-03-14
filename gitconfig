@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+  name = lima
+  email = lima@mbp
+[core]
+	editor = vim
+[push]
+	default = simple
+[http]
+	sslVerify = false
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+[credential]
+	helper = osxkeychain

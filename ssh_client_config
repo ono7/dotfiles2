@@ -1,0 +1,53 @@
+# this might help tmux over ssh sessions....
+# ~/.ssh/config
+# Compression yes
+                # *netrw-p14*
+# P14. I would like to speed up writes using Nwrite and scp/ssh       {{{2
+# style connections.  How?  (Thomer M. Gil)
+
+# Try using ssh's ControlMaster and ControlPath (see the ssh_config
+# man page) to share multiple ssh connections over a single network
+# connection. That cuts out the cryptographic handshake on each
+# file write, sometimes speeding it up by an order of magnitude.
+# (see  http://thomer.com/howtos/netrw_ssh.html)
+# (included by permission)
+
+# Add the following to your ~/.ssh/config: >
+
+# # you change "*" to the hostname you care about
+# Host *
+# ControlMaster auto
+# ControlPath /tmp/%r@%h:%p
+
+# <      Then create an ssh connection to the host and leave it running: >
+
+# ssh -N host.domain.com
+
+# <      Now remotely open a file with Vim's Netrw and enjoy the
+# zippiness: >
+# vim scp://host.domain.com//home/user/.bashrc
+
+Host *
+  SendEnv LANG LC_*
+  # ConnectTimeout 7
+  Compression yes
+  ServerAliveInterval 120
+  ServerAliveCountMax 2
+  StrictHostKeyChecking no
+  # KexAlgorithms +diffie-hellman-group1-sha1,ssh-dss
+  KexAlgorithms +diffie-hellman-group1-sha1
+  # allow older algos for cisco crap gear...
+  Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+
+# xclip board support, needs export DISPLAY=:0.0
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
+  # ControlMaster auto
+  # ControlPath /tmp/%r@%h:%p
+
+  # bpcopy -> need to also setup pbcopy.plist
+  # RemoteForward 2224 127.0.0.1:2224
+
+# ProxyCommand          nc -X connect -x localhost:8080 %h %p
+# ServerAliveInterval   10
