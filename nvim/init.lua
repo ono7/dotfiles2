@@ -24,10 +24,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
 end
 
-vim.cmd 'packadd paq-nvim'         -- Load package
-local paq = require'paq-nvim'.paq  -- Import module and bind `paq` function
-paq{'savq/paq-nvim', opt=true}     -- Let Paq manage itself
+vim.cmd 'packadd paq-nvim'         
+local paq = require'paq-nvim'.paq 
 
+-- plugins
+paq {'savq/paq-nvim', opt=true}   
 paq 'ervandew/supertab'
 paq 'christoomey/vim-tmux-navigator'
 paq 'tpope/vim-commentary'
