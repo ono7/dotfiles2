@@ -4,20 +4,15 @@
 
 local map = vim.api.nvim_set_keymap
 
-options = {
-  noremap = true
-}
-silent = {
-  noremap = true,
-  silent = true
-}
+options = {noremap = true}
+silent = {noremap = true, silent = true}
 
 -- leader
 map("n", "<Space>", "", {})
 vim.g.mapleader = " " -- 'vim.g' sets global variables
 
 -- pure sauce
-map("i", "jk", "<esc><cmd>noh<cr><c-g>", options)
+map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
 
 -- disable c-z (bg)
 map("n", "<c-z>", "<nop>", options)
