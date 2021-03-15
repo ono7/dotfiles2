@@ -15,7 +15,7 @@ gs(
 )
 gs("tmux_navigator_disable_when_zoomed", 1)
 
--- -- " use all the beautiful things jedi-vim offers, but leave completion to coc
+-- " use all the beautiful things jedi-vim offers, but leave completion to coc
 gs("jedi#completions_enabled", 0)
 gs("jedi#goto_assignments_command", "")
 
@@ -120,16 +120,16 @@ gs("fzf_nvim_statusline", 1)
 
 local fzf_colors_tbl = {}
 
-fzf_window_tbl.fg = {"fg", "Comment"}
-fzf_window_tbl.hl = {"fg", "RedBold"}
-fzf_window_tbl["fg+"] = {"fg", "GreenBold"}
-fzf_window_tbl["bg+"] = {"bg", "fzf_bg_plus"}
-fzf_window_tbl["hl+"] = {"fg", "PurpleBold"}
-fzf_window_tbl.info = {"fg", "fzf_info"}
-fzf_window_tbl.prompt = {"fg", "BlueBold"}
-fzf_window_tbl.pointer = {"fg", "RedBold"}
-fzf_window_tbl.gutter = {"fg", "fzf_bg"}
-fzf_window_tbl.spinner = {"fg", "fzf_spinner"}
+fzf_colors_tbl.fg = {"fg", "Comment"}
+fzf_colors_tbl.hl = {"fg", "RedBold"}
+fzf_colors_tbl["fg+"] = {"fg", "GreenBold"}
+fzf_colors_tbl["bg+"] = {"bg", "fzf_bg_plus"}
+fzf_colors_tbl["hl+"] = {"fg", "PurpleBold"}
+fzf_colors_tbl.info = {"fg", "fzf_info"}
+fzf_colors_tbl.prompt = {"fg", "BlueBold"}
+fzf_colors_tbl.pointer = {"fg", "RedBold"}
+fzf_colors_tbl.gutter = {"fg", "fzf_bg"}
+fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 
 gs("fzf_colors", fzf_colors_tbl)
 
@@ -168,7 +168,7 @@ g.miniyank_maxitems = 10
 
 --[[
 
-  API
+  vim API
   Global variables (g:):
     vim.api.nvim_set_var()
     vim.api.nvim_get_var()
