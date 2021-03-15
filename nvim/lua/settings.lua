@@ -52,7 +52,6 @@ wo.foldenable = false
 wo.list = true
 
 -- buffer-local options
-bo.expandtab = true
 bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0
