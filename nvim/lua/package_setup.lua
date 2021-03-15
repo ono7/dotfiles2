@@ -1,9 +1,5 @@
 -- init lua plugins
 
-require "nvim-autopairs".setup {}
-
-require "nvim-web-devicons".setup {}
-
 require "nvim-treesitter.configs".setup {
   ensure_installed = "maintained",
   highlight = {
@@ -47,8 +43,7 @@ require "format".setup {
   lua = {
     {
       cmd = {
-        function(
-          file)
+        function(file)
           return string.format(
             "luafmt -i 2 -l %s -w replace %s",
             vim.bo.textwidth,

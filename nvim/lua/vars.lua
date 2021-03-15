@@ -92,6 +92,42 @@ gs("UltiSnipsSnippetDirectories", {"~/.config/nvim/UltiSnips", "UltiSnips"})
 gs("UltiSnipsEditSplit", "horizontal")
 gs("UltiSnipsUsePythonVersion", 3)
 
+-- Plug 'junegunn/fzf.vim'
+-- width: float range [0 ~ 1]
+-- height: float range [0 ~ 1]
+-- Optional
+-- yoffset: float default 0.5 range [0 ~ 1]
+-- xoffset: float default 0.5 range [0 ~ 1]
+-- highlight: [string]: Highlight group for border
+-- border: [string default rounded]: Border style
+-- Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
+
+local fzf_window_tbl = {
+  window = {width = 1, height = 1, highlight = "Comment", border = "bottom"}
+}
+gs("fzf_layout", fzf_window_tbl)
+gs("fzf_history_dir", "~/.tmp/fzf-history")
+gs("fzf_buffers_jump", 1)
+gs(
+  "fzf_commits_log_options",
+  '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+)
+gs("fzf_nvim_statusline", 1)
+
+local fzf_colors_tbl = {}
+fzf_window_tbl.fg = {"fg", "Comment"}
+fzf_window_tbl.hl = {"fg", "RedBold"}
+fzf_window_tbl["fg+"] = {"fg", "GreenBold"}
+fzf_window_tbl["bg+"] = {"bg", "fzf_bg_plus"}
+fzf_window_tbl["hl+"] = {"fg", "PurpleBold"}
+fzf_window_tbl.info = {"fg", "fzf_info"}
+fzf_window_tbl.prompt = {"fg", "BlueBold"}
+fzf_window_tbl.pointer = {"fg", "RedBold"}
+fzf_window_tbl.gutter = {"fg", "fzf_bg"}
+fzf_window_tbl.spinner = {"fg", "fzf_spinner"}
+
+gs("fzf_colors", fzf_colors_tbl)
+
 --- API
 -- [[ --
 -- Global variables (g:):
