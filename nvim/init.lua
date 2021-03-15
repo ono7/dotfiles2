@@ -62,6 +62,8 @@ paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
 paq "bfredl/nvim-miniyank"
+paq "junegunn/fzf"
+paq "junegunn/fzf.vim"
 -- paq "Glench/Vim-Jinja2-Syntax"
 
 -- after plugins

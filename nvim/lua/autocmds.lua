@@ -20,6 +20,32 @@ function nvim_create_augroups(definitions)
 end
 
 local autocmds = {
+  -- vim.api.nvim_command([[
+  -- augroup init
+  --   autocmd!
+  --   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
+  --   autocmd
+  --   autocmd VimEnter *
+  -- augroup END
+  -- ]])
+
+  _init = {
+    {
+      "BufWinEnter",
+      "*",
+      [[if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif ]]
+    },
+    {
+      "VimEnter",
+      "*",
+      [[command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)]]
+    },
+    {
+      "VimEnter",
+      "*",
+      [[command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)]]
+    }
+  },
   _resize = {
     {"VimResized", "*", [[:wincmd =]]}
   },
@@ -38,17 +64,8 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _write = {
-    {"BufWritePost", "*", [[FormatWrite]] }
+    {"BufWritePost", "*", [[FormatWrite]]}
   }
 }
-
--- vim.api.nvim_command([[
--- augroup init
---   autocmd!
---   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
---   autocmd VimEnter * command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
---   autocmd VimEnter * command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)
--- augroup END
--- ]])
 
 nvim_create_augroups(autocmds)
