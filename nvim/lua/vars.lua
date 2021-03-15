@@ -1,25 +1,3 @@
--- [[ --
--- Global variables (g:):
---   vim.api.nvim_set_var()
---   vim.api.nvim_get_var()
---   vim.api.nvim_del_var()
--- Buffer variables (b:):
---   vim.api.nvim_buf_set_var()
---   vim.api.nvim_buf_get_var()
---   vim.api.nvim_buf_del_var()
--- Window variables (w:):
---   vim.api.nvim_win_set_var()
---   vim.api.nvim_win_get_var()
---   vim.api.nvim_win_del_var()
--- Tabpage variables (t:):
---   vim.api.nvim_tabpage_set_var()
---   vim.api.nvim_tabpage_get_var()
---   vim.api.nvim_tabpage_del_var()
--- Predefined Vim variables (v:):
---   vim.api.nvim_set_vvar()
---   vim.api.nvim_get_vvar()
--- -- ]]
-
 local gs = vim.api.nvim_set_var
 
 gs(
@@ -83,3 +61,55 @@ gs("ale_fixers", {})
 gs("ale_fix_on_save", 0)
 gs("ale_linters", {})
 gs("ale_linters_explicit", 1)
+
+gs("asmsyntax", "nasm")
+
+gs(
+  "markdown_fenced_languages",
+  {
+    "html",
+    "python",
+    "bash,sh",
+    "nasm",
+    "vim",
+    "php",
+    "javascript",
+    "lua",
+    "sql"
+  }
+)
+gs("markdown_syntax_conceal", 0)
+
+gs("buftabline_show", 0)
+gs("SuperTabDefaultCompletionType", "<C-n>")
+gs("SuperTabClosePreviewOnPopupClose", 1)
+
+gs("UltiSnipsExpandTrigger", "<tab>")
+gs("UltiSnipsJumpForwardTrigger", "<tab>")
+gs("UltiSnipsJumpBackwardTrigger", "<s-tab>")
+gs("UltiSnipsSnippetDirectories", {"~/.config/nvim/UltiSnips", "UltiSnips"})
+gs("UltiSnipsEditSplit", "horizontal")
+gs("UltiSnipsUsePythonVersion", 3)
+
+--- API
+-- [[ --
+-- Global variables (g:):
+--   vim.api.nvim_set_var()
+--   vim.api.nvim_get_var()
+--   vim.api.nvim_del_var()
+-- Buffer variables (b:):
+--   vim.api.nvim_buf_set_var()
+--   vim.api.nvim_buf_get_var()
+--   vim.api.nvim_buf_del_var()
+-- Window variables (w:):
+--   vim.api.nvim_win_set_var()
+--   vim.api.nvim_win_get_var()
+--   vim.api.nvim_win_del_var()
+-- Tabpage variables (t:):
+--   vim.api.nvim_tabpage_set_var()
+--   vim.api.nvim_tabpage_get_var()
+--   vim.api.nvim_tabpage_del_var()
+-- Predefined Vim variables (v:):
+--   vim.api.nvim_set_vvar()
+--   vim.api.nvim_get_vvar()
+-- -- ]]
