@@ -39,9 +39,6 @@ local autocmds = {
   },
   _write = {
     {"BufWritePost", "*", [[FormatWrite]]}
-  },
-  _format_opts = {
-    {"FileType", "*", [[set formatoptions=qlj]]}
   }
 }
 
