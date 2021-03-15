@@ -140,6 +140,28 @@ gs("indentLine_conceallevel", 2)
 gs("indentLine_fileTypeExclude", {"text", "markdown"})
 gs("indentLine_enabled", 0)
 
+local clip_copy, clip_paste = "pbcopy", "pbpaste"
+
+if vim.api.nvim_eval('has("macunix")') ~= 1 then
+  clip_copy = "xclip -sel clip -i"
+  clip_paste = "xclip -out -selection clipboard"
+end
+
+local clipboard_tbl = {}
+clipboard_tbl.name = "limaClipboard"
+clipboard_tbl.cache_enabled = 1
+clipboard_tbl.copy = {}
+clipboard_tbl.copy["*"] = "tmux load-buffer -"
+clipboard_tbl.copy["+"] = clip_copy
+clipboard_tbl.paste = {}
+clipboard_tbl.paste["*"] = "tmux save-buffer -"
+clipboard_tbl.paste["+"] = clip_paste
+
+gs("clipboard", clipboard_tbl)
+
+vim.o.clipboard = "unnamedplus"
+-- vim.o.clipboard = vim.o.clipboard .. "unnamedplus"
+
 --[[
 
   API
@@ -164,3 +186,4 @@ gs("indentLine_enabled", 0)
     vim.api.nvim_get_vvar()
 
 --]]
+--

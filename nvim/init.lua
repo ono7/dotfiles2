@@ -67,6 +67,8 @@ paq {
 -- after plugins
 require "package_setup"
 
+cmd "filetype plugin indent on"
+
 -- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 -- Plug 'junegunn/fzf.vim'
 -- Plug 'scrooloose/nerdtree',{ 'on': ['NERDTreeToggle', 'NERDTree', 'NERDTreeFind', 'NERDTreeClose'] }
