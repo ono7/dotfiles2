@@ -4,8 +4,13 @@
 
 local map = vim.api.nvim_set_keymap
 
-options = {noremap = true}
-silent = {noremap = true, silent = true}
+options = {
+  noremap = true
+}
+silent = {
+  noremap = true,
+  silent = true
+}
 
 -- leader
 map("n", "<Space>", "", {})
@@ -58,8 +63,22 @@ map("v", "y", "mxy`x", options)
 map("t", "jk", [[<c-\><c-n>]], options)
 
 -- ale
-map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
-map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+map(
+  "n",
+  "[n",
+  "<Plug>(ale_next_wrap)",
+  {
+    silent = true
+  }
+)
+map(
+  "n",
+  "]n",
+  "<Plug>(ale_previous_wrap)",
+  {
+    silent = true
+  }
+)
 
 -- coc
 map("i", "<expr> <C-c>", "coc#refresh()", silent)
@@ -76,3 +95,7 @@ map("x", "s", "<Plug>Vsurround", {})
 
 -- visual select search
 map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+
+-- miniyank
+map("n", "p", [[<Plug>(miniyank-autoput)]], {})
+map("n", "P", [[<Plug>(miniyank-autoPut)]], {})

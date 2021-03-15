@@ -163,6 +163,9 @@ gs("clipboard", clipboard_tbl)
 
 vim.o.clipboard = "unnamed,unnamedplus"
 
+-- miniyank
+g.miniyank_maxitems = 10
+
 --[[
 
   API

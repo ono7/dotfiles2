@@ -59,6 +59,7 @@ paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
+paq "bfredl/nvim-miniyank"
 paq {"neoclide/coc.nvim", branch = "release"}
 
 -- paq "Glench/Vim-Jinja2-Syntax"
