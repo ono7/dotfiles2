@@ -5,6 +5,8 @@ local cmd, fn, g = vim.cmd, vim.fn, vim.g
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
 
+g.surround_no_mappings = 1
+
 -- providers
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0
