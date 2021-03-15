@@ -7,15 +7,15 @@ local indent = 2
 
 -- providers
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
-g.loaded_python_provider =0
-g.loaded_perl_provider =0
-g.loaded_ruby_provider =0
+g.loaded_python_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
 
 -- load custom setup
 require("keymaps")
 require("settings")
 require("utils")
--- require("autocmds")
+require("autocmds")
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
@@ -34,40 +34,40 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- setup paq
-vim.cmd 'packadd paq-nvim'         
-local paq = require'paq-nvim'.paq 
+vim.cmd "packadd paq-nvim"
+local paq = require "paq-nvim".paq
 
 -- plugins
-paq {'savq/paq-nvim', opt=true}   
-paq 'ervandew/supertab'
-paq 'christoomey/vim-tmux-navigator'
-paq 'tpope/vim-commentary'
-paq 'tpope/vim-eunuch'
-paq 'tpope/vim-markdown'
-paq 'kyazdani42/nvim-web-devicons'
-paq 'windwp/nvim-autopairs' -- testing for speed...
--- paq 'jiangmiao/auto-pairs'
-paq 'akinsho/nvim-bufferline.lua'
-paq 'nvim-treesitter/nvim-treesitter'
-paq 'lukas-reineke/format.nvim'
+paq {"savq/paq-nvim", opt = true}
+paq "ervandew/supertab"
+paq "christoomey/vim-tmux-navigator"
+paq "tpope/vim-commentary"
+paq "tpope/vim-eunuch"
+paq "tpope/vim-markdown"
+paq "kyazdani42/nvim-web-devicons"
+-- paq "windwp/nvim-autopairs" -- testing for speed...
+paq "jiangmiao/auto-pairs"
+paq "akinsho/nvim-bufferline.lua"
+paq "nvim-treesitter/nvim-treesitter"
+paq "lukas-reineke/format.nvim"
 
 -- init lua plugins
-require'nvim-autopairs'.setup{}
-require'nvim-web-devicons'.setup{}
+require "nvim-autopairs".setup {}
+require "nvim-web-devicons".setup {}
 -- require'bufferline'.setup{}
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+require "nvim-treesitter.configs".setup {
+  ensure_installed = "maintained",
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "rust" },  -- list of language that will be disabled
+    enable = true,
+    disable = {"rust"}
   },
   playground = {
     enable = true,
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false -- Whether the query persists across vim sessions
-  },
+  }
 }
 
 require "format".setup {
@@ -79,18 +79,24 @@ require "format".setup {
   -- pip install black, pylint, epdb, ipython
   -- autocmd BufWritePost * FormatWrite
 
+  ["*"] = {
+    -- remove trailing whitespace
+    {cmd = {"sed -i 's/[ \t]*$//'"}}
+  },
   vim = {
     {
-      cmd = {"luafmt -i 2 -w replace"},
-      -- start_pattern = "^lua << EOF$",
-      -- end_pattern = "^EOF$"
+      cmd = {"luafmt -i 2 -w replace"}
     }
   },
   lua = {
     {
       cmd = {
         function(file)
-          return string.format("luafmt -i 2 -l %s -w replace %s", vim.bo.textwidth, file)
+          return string.format(
+            "luafmt -i 2 -l %s -w replace %s",
+            vim.bo.textwidth,
+            file
+          )
         end
       }
     }
@@ -159,5 +165,3 @@ require "format".setup {
 -- Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 -- Plug 'scrooloose/nerdtree',{ 'on': ['NERDTreeToggle', 'NERDTree', 'NERDTreeFind', 'NERDTreeClose'] }
 -- Plug 'vimwiki/vimwiki'
-
-

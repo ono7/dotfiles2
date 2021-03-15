@@ -50,6 +50,7 @@ wo.number = false
 wo.wrap = false
 wo.numberwidth=2
 wo.signcolumn='yes'
+wo.foldenable=false
 
 -- buffer-local options
 bo.expandtab = true
@@ -63,7 +64,6 @@ bo.tabstop=2
 bo.textwidth=80 
 bo.expandtab=true
 bo.spelllang='en_us'
-bo.foldenable=false
 
 -- set complete+=kspell complete-=i complete-=t
 -- set fillchars+=vert:│
