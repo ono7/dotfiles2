@@ -14,7 +14,7 @@ g.loaded_python_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
--- load custom setup
+-- hold my beer
 require("keymaps")
 require("settings")
 require("autocmds")
@@ -30,14 +30,14 @@ cmd "syntax on"
 g.mapleader = " "
 g.vimsyn_embed = "l"
 
+-- highlight yanked text for 250ms
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
+
 -- auto install paq if not exists
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
 end
-
--- highlight yanked text for 250ms
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
 
 -- setup paq
 cmd "packadd paq-nvim"
@@ -58,6 +58,7 @@ paq "akinsho/nvim-bufferline.lua"
 paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
+paq "dense-analysis/ale"
 
 -- after plugins
 require("package_setup")
