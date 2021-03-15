@@ -73,3 +73,6 @@ map("n", "ys", "<Plug>Yssurround", {})
 map("n", "ds", "<Plug>Dsurround", {})
 map("n", "cs", "<Plug>Csurround", {})
 map("x", "s", "<Plug>Vsurround", {})
+
+-- visual select search
+map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
