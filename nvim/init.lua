@@ -1,9 +1,6 @@
 -- Follow the white rabbit...
 
-local cmd = vim.cmd
-local fn = vim.fn
-local g = vim.g
-local indent = 2
+local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
@@ -15,10 +12,10 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
 -- hold my beer
-require("keymaps")
-require("settings")
-require("autocmds")
-require("vars")
+require "keymaps"
+require "settings"
+require "autocmds"
+require "vars"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
@@ -59,12 +56,10 @@ paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
 
 -- after plugins
-require("package_setup")
+require "package_setup"
 
 -- Plug 'Glench/Vim-Jinja2-Syntax', { 'for' : 'jinja' }
 -- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 -- Plug 'junegunn/fzf.vim'
--- Plug 'tpope/vim-repeat'
--- Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 -- Plug 'scrooloose/nerdtree',{ 'on': ['NERDTreeToggle', 'NERDTree', 'NERDTreeFind', 'NERDTreeClose'] }
 -- Plug 'vimwiki/vimwiki'
