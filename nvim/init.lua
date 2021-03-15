@@ -5,8 +5,6 @@ local cmd, fn, g = vim.cmd, vim.fn, vim.g
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
 
-g.surround_no_mappings = 1
-
 -- providers
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0
@@ -43,7 +41,10 @@ cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
-paq {"savq/paq-nvim", opt = true}
+paq {
+  "savq/paq-nvim",
+  opt = true
+}
 paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-commentary"
@@ -56,7 +57,10 @@ paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
-paq {"neoclide/coc.nvim", branch = "release"}
+paq {
+  "neoclide/coc.nvim",
+  branch = "release"
+}
 
 -- paq "Glench/Vim-Jinja2-Syntax"
 

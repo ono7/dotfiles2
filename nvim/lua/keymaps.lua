@@ -63,3 +63,13 @@ map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- coc
 map("i", "<expr> <C-c>", "coc#refresh()", silent)
+
+-- surround
+vim.g.surround_no_mappings = 1
+map("n", "S", "<Plug>YSurround", {})
+map("n", "s", "<Plug>Ysurround", {})
+map("n", "sw", "<Plug>YsurroundiW", {})
+map("n", "ys", "<Plug>Yssurround", {})
+map("n", "ds", "<Plug>Dsurround", {})
+map("n", "cs", "<Plug>Csurround", {})
+map("x", "s", "<Plug>Vsurround", {})
