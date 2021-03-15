@@ -1,0 +1,9 @@
+# use longest match first in regex patterns
+
+priority 99
+
+snippet "(fun|func)" "init class" rb
+function $1 () {
+  $0
+}
+endsnippet

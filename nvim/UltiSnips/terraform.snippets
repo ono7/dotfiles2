@@ -1,0 +1,29 @@
+# use longest match first in regex patterns
+
+# probably a good one to come back to
+
+snippet "(variable|var|vari)" "variable" br
+variable "$1`!p
+if t[1]:
+	if t[1].startswith(t[1][0].upper()):
+			t[1] = t[1].upper().replace(" ","_")
+	else:
+			t[1] = t[1].replace(" ","_")
+`" {$0}
+endsnippet
+
+snippet "(resource|res|reso)" "resource" br
+resource "$1" "${2:resource_name}" {$0}
+endsnippet
+
+snippet "(provider|pro|prov)" "provider" br
+provider "$1" {$0}
+endsnippet
+
+snippet "(provisioner|provision|provis)" "provisioner" br
+provisioner "$1" {$0}
+endsnippet
+
+snippet "(defa|def)" "default" br
+default
+endsnippet

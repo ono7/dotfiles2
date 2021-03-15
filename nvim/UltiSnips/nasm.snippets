@@ -1,0 +1,51 @@
+# use longest match first in regex patterns
+
+snippet headlinux "header"
+; `!p snip.rv = snip.fn`
+
+[BITS 32]
+
+global _start
+
+section .text
+
+_start:
+
+jmp short GetCommand
+
+CommandReturn:
+
+	; xor eax, eax
+	; pop ebx
+
+	$0
+
+GetCommand:
+	call CommandReturn
+	shellc: db 0xaa, 0xbb
+
+endsnippet
+
+
+snippet headwin "header"
+; `!p snip.rv = snip.fn`
+
+[BITS 32]
+[SECTION .text] 
+
+global _start
+
+_start:
+
+jmp short GetCommand
+
+CommandReturn:
+	pop ebx
+	xor eax, eax
+
+GetCommand:
+	call CommandReturn
+	shellc: db 0xaa, 0xbb
+
+	$0
+endsnippet

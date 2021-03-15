@@ -1,0 +1,1 @@
+silent! syn clear snipLeadingSpaces

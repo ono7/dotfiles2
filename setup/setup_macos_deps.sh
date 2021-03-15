@@ -44,3 +44,6 @@ brew install p7zip
 # if [ $? -eq 0 ]; then
 #   echo 'fish shell is good to go..'
 # fi
+
+# fonts smoothing disabled..
+defaults -currentHost write -g AppleFontSmoothing -int 0

@@ -1,0 +1,103 @@
+# use longest match first in regex patterns
+
+snippet head
+---
+################################################################################
+#                                  Jose.Lima                                   #
+#                     Network Optimization and Automation                      #
+################################################################################
+
+- name: "${1:lets go!}"
+	hosts: ${2:group1}
+	gather_facts: no
+
+	tasks:
+
+		- name: "$0"
+
+		# - debug: var=result
+endsnippet
+
+snippet jin "Jinja snip for ansible"
+"{{ ${1} }}" $0
+endsnippet
+
+snippet play "header snippet for ansible"
+---
+- name: "${1}"
+	hosts: ${2}
+	gather_facts: no
+
+
+	tasks:
+
+	- name: "${3}"
+			$0
+
+endsnippet
+
+snippet task "creates a tasks"
+
+- name: "${1}"
+	${2:nxos_command}:
+		${3:commands}: ${4}
+
+endsnippet
+
+snippet jira "description"
+---
+# state: open, in progress, close
+
+jira_number:
+state: open
+assignee: jose.lima
+priority: Low
+
+summary: $1
+
+description: |
+	$2
+
+comment: |
+
+	$3
+	{code}
+	{code}
+
+tasks:
+	- name:
+		status:
+
+component: Network Consultation
+# component: Fabric Migrations
+# component: Network Automation
+
+label: jose.lima
+
+endsnippet
+
+
+
+snippet patt "description"
+
+$1_patterns:
+  policy_name: "${1}_patterns"
+  check_for:
+		- $0
+  extra:
+		- '^$'
+
+endsnippet
+
+snippet "backup(s)?" "adhock backups" rb
+
+    - name: "${1}"
+      nxos_command:
+        commands: show running-config | sec $1
+      register: full_backups
+
+    - name: "copy backup config to folder"
+      copy:
+        content: "{{ full_backups.stdout[0] }}"
+        dest: "adhoc_backups/$1_{{ inventory_hostname }}"
+endsnippet

@@ -1,0 +1,41 @@
+# use longest match first in regex patterns
+
+# set higher priority to override shipped snippets
+priority 1
+
+snippet for "Jinja for loop"
+{% for ${1} in $0 %}
+{% endfor %}
+endsnippet
+
+snippet if "if" b
+{% if $0 %}
+{% endif %}
+endsnippet
+
+snippet block "if" b
+{% block %}
+{% endblock %}
+endsnippet
+
+snippet raw "raw" b
+{% raw %}
+$0
+{% endraw %}
+endsnippet
+
+snippet b "basic block"
+{% $0 %}
+endsnippet
+
+snippet "comb" "jinja comment block" r
+{#
+
+$0${VISUAL}
+
+#}
+endsnippet
+
+snippet "com" "jinja inline comment" r
+{# $0${VISUAL} #}
+endsnippet

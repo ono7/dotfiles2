@@ -83,8 +83,10 @@ echo 'setting up directories and symlinks..done!'
 
 # setup omzsh
 
+defaults -currentHost write -g AppleFontSmoothing -int 0
+
 cd ~/.dotfiles/setup
 
 . ./setup_omzsh.sh
 
-~/.fzf/install
+# ~/.fzf/install

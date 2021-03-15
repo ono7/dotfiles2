@@ -1,0 +1,101 @@
+# use longest match first in regex patterns
+
+snippet log "log stuff"
+# LOG: `!v strftime("%m-%d-%Y %I:%M %p %Z")`, ${1:desc}
+endsnippet
+
+snippet report "osce report template" b
+# $0
+
+<br>
+
+| Author      | Date             |
+|-------------|------------|
+| *Jose Lima* |  `!v strftime("%-m/%-d/%Y")` |
+
+<br>
+
+## Systems Affected
+
+<br>
+
+## Overview
+
+<br>
+
+## Technical details
+
+<br>
+
+## Proof of Concept
+
+<br>
+
+## Exploitation
+
+<br>
+
+## Solution
+
+<br>
+<br>
+endsnippet
+
+snippet ima "insert image" b
+<p align="center">
+    <img src="img/${1:}.png" width="500">
+</p>
+$0
+endsnippet
+
+snippet head "Markdown header" b
+
+`!v expand('%:t:r')`
+
+`!v strftime("%a %b %-d %-I:%M:%S %p %Y")`
+
+# $0
+
+endsnippet
+
+snippet formal "MarkDown header" b
+
+![](logo.png)
+
+&nbsp;
+
+# $1
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+Document revision:
+
+Date | Version | Author
+---- | :-----: | ------
+`!v strftime(" %-m/%-d/%Y")`| v1 | *Jose Lima*
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+# $0
+
+endsnippet
+
+snippet xxxxxxx "place holder for cool functions"
+    # add file name and strip extension
+        `!v expand('%:t:r')`
+    # add date to file
+        `!v strftime("%a %b %-d %-I:%M:%S %p %Y")`
+endsnippet
+
+snippet "(code|cod|c)" "code block" br
+
+`!v repeat(nr2char(96),3)`$1
+${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+`!v repeat(nr2char(96),3)`
+
+$0
+endsnippet

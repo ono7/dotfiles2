@@ -1,0 +1,22 @@
+# use longest match first in regex patterns
+
+snippet "^(head(er)?)" "define all group with defaults" br
+localhost ansible_connection=local
+
+[all:vars]
+
+ansible_connection = network_cli
+ansible_network_os = nxos
+ansible_user= "jose.lima"
+
+# ansible_become = yes
+# ansible_become_method = enable
+# ansible_ssh_pass = ""
+
+timeout = 5
+
+[${1:group1}]
+$0
+
+[$1:vars]
+endsnippet

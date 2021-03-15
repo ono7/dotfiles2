@@ -1,0 +1,308 @@
+priority 1
+# use longest match first in regex patterns
+
+snippet "(init|_)" "init class" br
+def __${1:init}__(self$0):
+endsnippet
+
+snippet logg "logging"
+import logging
+
+LOG_FORMAT = "%(levelname)s %(asctime)s -> %(message)s"
+logging.basicConfig(filename="${1:data.log}", level=logging.DEBUG, format=LOG_FORMAT)
+log = logging.getLogger()
+
+$0
+endsnippet
+
+# snippet dis "pylint disable"
+# # pylint: disable=$0
+# endsnippet
+
+
+# snippet "(skip(f)?|sk)" "pylint disable file" br
+# # pylint: skip-file
+# endsnippet
+
+snippet "(ma|mk|m)" "pytest mark" br
+@mark.$0
+endsnippet
+
+# demo https://youtu.be/JJQYwt6Diro
+# snippet '(?<!\S\s)(test .*)' "setup test function" r
+snippet '(test .*)' "setup test function" br
+def `!p snip.rv=match.group(1).replace(' ', '_')`(${1}):
+    $0
+endsnippet
+
+snippet '\bdef ([^()]+)' "setup function" br
+def `!p snip.rv=match.group(1).replace(' ', '_')`($0):
+endsnippet
+
+snippet package "setup.py for packaging" b
+""" package setup """
+
+from setuptools import setup, find_packages
+
+setup(
+    name='${1}',
+    version='0.1.0',
+    license='unlicensed',
+    description='${2}',
+    author='Jose Lima',
+    author_email='thejoselima@gmail.com',
+    url='',
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
+    install_requires=['${3}'],
+    extras_require={'mongo': 'pymongo'},
+    entry_points={
+        'console_scripts': [
+        '$1 = tasks.cli:tasks_cli',
+        ]
+},
+)
+endsnippet
+
+snippet "doc(s)?" "Standard docstring" br
+""" $0${VISUAL/([\n\s]+$|^[\n\s]+)//g} """
+endsnippet
+
+# __import__('pdb').set_trace() $0
+snippet rt
+__import__("epdb").serve(port=4444)
+endsnippet
+
+snippet rpdb
+__import__("rpdb").set_trace()  # port 4444
+endsnippet
+
+snippet epdb
+__import__("epdb").st()
+endsnippet
+
+snippet st
+__import__("pdb").set_trace() $0
+endsnippet
+
+snippet dead "try block epdb"
+try:
+    $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+except:
+    __import__("epdb").serve()
+    $0
+endsnippet
+
+# snippet _ "init" b
+# def __${1:init}__($0):
+# endsnippet
+
+# snippet from "from import" b
+# from ${1:package} import ${0:module}$0
+# endsnippet
+
+snippet head "python header" b
+#!/usr/bin/env python
+""" $0
+
+    $2
+    `!v strftime("%a %b %-d %-I:%M:%S %p %Y")` CST
+
+    __author__ = 'Jose Lima'
+
+"""
+
+endsnippet
+
+snippet headr "python header for requests"
+#!/usr/bin/env python
+"""
+    `!v strftime("%a %b %-d %-I:%M:%S %p %Y")` CST
+
+    __author__ = 'Jose Lima'
+
+"""
+import requests
+import urllib3
+
+urllib3.disable_warnings()
+
+# proxy = "127.0.0.1:8080"
+# proxies = {"http": f"http://{proxy}", "https": f"https://{proxy}"}
+# r = requests.get("https://me:8443", verify=False, proxies=proxies)
+
+r = requests.get("https://$0", verify=False)
+endsnippet
+
+snippet "tr(y)?" "try block" r
+try:
+    ${VISUAL}
+except $0:
+endsnippet
+
+
+snippet "main(f)?" "insert main function" br
+def $1():
+    """ entry point """
+    $0
+
+if __name__ == '__main__':
+    sys.exit(${1:main}())
+endsnippet
+
+snippet pt "xml snippet for pano" b
+<${1:entry name="${VISUAL}$2"}>
+    $3
+</${1/(\w+).*/$1/}>
+$0
+endsnippet
+
+snippet pti "pano member tag" b
+<${1:member}>${VISUAL}$2</$1>
+$0
+endsnippet
+
+# snippet fun
+# def ${1}($2):
+#       ${VISUAL}$0
+# endsnippet
+
+snippet with
+    with ${1:expr} as ${2:var}:
+        ${0:${VISUAL}}
+endsnippet
+
+snippet "pr|pri" "print" r
+print(${VISUAL}$0)
+endsnippet
+
+# console.log(${VISUAL:/;//}$0);
+
+
+# snippet docm "Methods docstring"
+# """${1:summary}
+
+# ${2:extended description}
+
+#       Args:
+#           ${3:arg1} (${4:type}): $5
+
+#       Returns:
+#           ${6:type}: $7
+# """
+# endsnippet
+
+# snippet docc "Class docstring"
+# """${1:summary}
+
+# ${2:extended description}
+
+#       Attributes:
+#           ${3:arg1} (${4:type}): $5
+# """
+# endsnippet
+
+# snippet docv "Variable docstring"
+# """${1:type}: ${2:desc}"""
+# endsnippet
+
+# snippet cpro "cprofile quickie"
+
+# import cProfile as profile; profile.run('main()', sort='tottime')
+# endsnippet
+
+# snippet logg "my logging quickie"
+# def logme(this):
+#     with open("my.log", "a") as myfile:
+#         myfile.write(str(this))
+#         myfile.write("\n--new--\n")
+# endsnippet
+
+
+#snippet shellnet
+##!/usr/bin/env python3
+#"""
+
+
+#* ADD to go DOWN on STACK
+#* SUB to go UP on STACK
+
+#!mona config -set workingfolder c:\logs\%p
+#!mona findmsp
+
+#Awesome jump with restricted characters <<<
+
+
+#   nseh += b"\x4C"     # DEC ESP
+#   nseh += b"\x4C"     # DEC ESP
+#   nseh += b"\x77\x21" # JA SHORT, will be true after dec dec
+#   jna\na, jno, jo are also good options for short jmps
+
+#"""
+#import socket, sys, time
+#from limatools import check
+
+## bad chars
+#bc = "00,0a,0d,cc"
+
+#target = ("host", 443)
+
+#egghunter = b""
+#shellcode = b""
+#buffer = b""
+
+#$0
+
+
+#def use_lucille():
+#    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#    print(f"[+] Sending -> {target}, size: {len(buffer)}")
+#    check.bad_chars(bc, buffer, "buffer")
+#    s.connect(target)
+#    # first stage
+#    s.send(buffer)
+#    # give ws_32.recv time to setup
+#    # time.sleep(5)
+#    # final stage
+#    # s.send(shellcode)
+#           s.close()
+
+#use_lucille()
+#endsnippet
+
+
+#snippet shellold "basic shellc snip" b
+##!/usr/bin/env python3
+## write in b"" bytes
+## hexnum = 0xffffabcd
+## >>> hexnum.to_bytes(4, 'little')
+## b'\xcd\xab\xff\xff'
+#import sys
+#from limatools import check
+
+## bad chars = check.bad_chars(bc, variable, 'name')
+#bc = "00,0a,0d"
+
+
+## eip = 0xFFFFABCD
+## eip = esp.to_bytes(4, 'little')
+
+#eip = b"B" * 4
+
+#shellcode = b""
+
+#payload = b""
+#payload += b"A" * 25000
+#payload += b"A" * 1117
+#payload += eip
+#payload += b"A" * (30000 - len(payload))
+
+#print("*** len ***")
+#if shellcode:
+#    print("shellcode: ", len(shellcode))
+#print("payload: ", len(payload))
+
+#with open(sys.argv[1], "wb") as f:
+#    f.write(payload)
+#$0
+#endsnippet

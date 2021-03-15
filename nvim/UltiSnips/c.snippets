@@ -1,0 +1,52 @@
+# use longest match first in regex patterns
+
+snippet shellclinux "shell-c skel"
+/* 
+gcc -fno-stack-protector -z execstack `!p snip.rv = snip.fn` -o `!p snip.rv = snip.basename`
+*/
+#include<stdio.h>
+#include<string.h>
+
+
+unsigned char code[] = \
+"OPCODEHERE";
+
+main()
+{
+
+	printf("Shell-c Length:  %d\n", strlen(code));
+
+	int (*ret)() = (int(*)())code;
+
+	ret();
+
+}
+
+/* 
+
+gcc -fno-stack-protector -z execstack `!p snip.rv = snip.fn` -o `!p snip.rv = snip.basename`
+
+*/
+endsnippet
+
+
+snippet shellc "shell-c skel"
+/* 
+shellcode tester, allows us to compile and run test shellcode!
+
+linux:
+gcc -fno-stack-protector -z execstack `!p snip.rv = snip.fn` -o `!p snip.rv = snip.basename`
+
+*/
+
+char code[] = \
+"bytecode goes here";
+
+int main(int argc, char **argv)
+{
+  int (*func)();
+  func = (int (*)()) code;
+  (int)(*func)();
+}
+
+endsnippet

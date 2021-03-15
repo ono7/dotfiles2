@@ -1,12 +1,9 @@
-ZSH_DISABLE_COMPFIX="true"
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+# uncomment next line to start profiling
+# zmodload zsh/zprof
 
-# autoload -Uz compinit
-# if [ "$(whoami)" = "jose.lima" ]; then
-#   compinit -i # Ignore insecure directories
-# else
-#   compinit
-# fi
+ZSH_DISABLE_COMPFIX="true"
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # If you come from bash you might have to change your $PATH.
 export PATH=/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$PATH
@@ -18,9 +15,9 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="steeef"
+
 ZSH_THEME="avit"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -62,7 +59,7 @@ ZSH_THEME="avit"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -96,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='nvim'
+#   export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -115,18 +112,16 @@ if [[ $OSTYPE == "linux-gnu"* ]]; then
   export DISPLAY=:0.0
 fi
 
-# if ! command -v nvim &> /dev/null; then
-if command -v nvim &> /dev/null; then
-  alias vim=nvim
-  alias vi=nvim
-elif [[ -f ~/nvim-osx64/bin/nvim ]]; then
-  alias vim='~/nvim-osx64/bin/nvim'
-  alias vi='~/nvim-osx64/bin/nvim'
-  alias v='~/nvim-osx64/bin/nvim'
-  alias vimdiff='~/nvim-osx64/bin/nvim -d'
-elif [[ -f ~/local/nvim.appimage ]]; then
-  alias vim='~/local/nvim.appimage'
-  alias vi='~/local/nvim.appimage'
+if [[ -f ~/nvim/bin/nvim ]]; then
+  alias vim='~/nvim/bin/nvim'
+  alias vi=vim
+  alias v=vim
+  alias vimdiff='vim -d'
+else
+  alias vim='nvim'
+  alias vi=vim
+  alias v=vim
+  alias vimdiff='nvim -d'
 fi
 
 if [[ -f ~/local/bin/tmux ]]; then
@@ -135,47 +130,21 @@ else
   echo 'need tmux in ~/loca/bin/tmux'
 fi
 
-if ! command -v rename &> /dev/null
-then
-  echo 'need rename command installed!'
-fi
-
-if [ -f ~/local/bin/sed ]; then
-  alias sed='~/local/bin/sed'
-else
-  echo 'need gnu-sed in ~/loca/bin/sed'
-fi
-
 alias gd='git diff'
 alias gs='git status'
 
-alias cdr='cd $(git rev-parse --show-toplevel) 2>/dev/null'
-# alias c='cd $(git rev-parse --show-toplevel)'
+alias cdr='cd "$(git rev-parse --show-toplevel)"  2>/dev/null'
 alias c='clear'
+
+if [[ -f /opt/homebrew/opt/fzf/bin/fzf ]]; then
+ alias fzf='/opt/homebrew/opt/fzf/bin/fzf'
+else
+  alias fzf='~/.fzf/bin/fzf'
+fi
+
 alias tf='terraform'
 alias ssh='ssh -X'
 alias rdp='xfreerdp +clipboard'
-
-# create a node project folder, useful to resolve 'require' and other
-# dependencies, requires yarn to be installed!
-function np () {
-  yarn add @yarnpkg/pnpify
-  cp ~/.dotfiles/eslintrc.json .eslintrc.json
-}
-
-
-# create python module directory
-function pyd () {
-  mkdir -p  $1
-  touch $1/__init__.py
-}
-
-# create python project template
-function py () {
-  if [ ! -d "$1" ]; then
-    cp -r ~/.dotfiles/proj_template $1
-  fi
-}
 
 # init new repo
 function ginit () {
@@ -183,10 +152,6 @@ function ginit () {
   cp ~/.dotfiles/gitignore .gitignore
   git add .
   git commit -am 'initial commit'
-}
-
-function gp () {
-  git pull
 }
 
 function gitl () {
@@ -264,39 +229,14 @@ function vc () {
   fi
 }
 
-# ctags!
-function tag () {
-  ctags -R -f ./.tags .
-}
-
 function vs () {
-  vim $(fzf)
+  vim "$(fzf)"
 }
 
-function p () {
-  which python
-}
-
-function dnsclear (){
-   dscacheutil -flushcache
-}
-
-function sp () {
-  if test -z "$1"; then
-    i="bc01f7tcdc.cdc.schwab.com";
-    export http_proxy="http://$i:8080"
-    export https_proxy="http://$i:8080"
-    export all_proxy="http://$i:8080"
-    export no_proxy="localhost,10.*,127.*,100.*"
-  else
-    i="$1";
-    export http_proxy="$i"
-    export https_proxy="$i"
-    export all_proxy="$i"
-    export no_proxy="localhost,10.*,127.*,100.*"
-  fi
-  echo "cli proxy setup done..."
-}
+# load other functions
+if [ -f ~/.zshf ]; then
+  source ~/.zshf
+fi
 
 function dp() {
   unset http_proxy
@@ -306,20 +246,20 @@ function dp() {
   echo "cli proxy destroy done..."
 }
 
-function zz () {
-  # if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-  # tar c /path/to/data | gzip --best > file.tar.gz
-  if [ ! -z "$1" ]; then
-      if ! command -v 7z &> /dev/null; then
-        tar vc "$1" | gzip --best > `echo $1 | tr ' ' '_'`.tar.gz
-      else
-        7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on `echo $1 | tr ' ' '_'`.7z "$1"
-      fi
-    else
-      echo "zz fileordir"
-      echo "output -> fileordir.7z or tgz"
-  fi
-}
+# function zz () {
+#   # if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+#   # tar c /path/to/data | gzip --best > file.tar.gz
+#   if [ ! -z "$1" ]; then
+#       if ! command -v 7z &> /dev/null; then
+#         tar vc "$1" | gzip --best > `echo $1 | tr ' ' '_'`.tar.gz
+#       else
+#         7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on `echo $1 | tr ' ' '_'`.7z "$1"
+#       fi
+#     else
+#       echo "zz fileordir"
+#       echo "output -> fileordir.7z or tgz"
+#   fi
+# }
 
 
 # default virtual env if exists
@@ -333,7 +273,18 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # autocompletion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-autoload -Uz compinit && compinit -i
+
+
+# only need this if oh-my-zsh is not running (compinit helps with completion)
+# we can test this by profiling using zprof
+# running this here just makes compinit run twice due to its inclusion in oh-my-zsh
+# autoload -Uz compinit && compinit -i
+# autoload -Uz compinit
+# if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
+#   compinit -d $ZSH_COMPDUMP;
+# else
+#   compinit -C;
+# fi
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
@@ -344,3 +295,7 @@ export LS_COLORS=':ow=01;33'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+HISTSIZE=5000
+# zprof ends profiling
+# zprof

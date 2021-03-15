@@ -1,0 +1,12 @@
+# use longest match first in regex patterns
+
+snippet pt "xml snippet for pano" b
+<${1:entry name="${VISUAL}$2"}>
+	$3
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet pti "pano member tag" b
+<${1:member}>${VISUAL}$2</$1>
+endsnippet
+	

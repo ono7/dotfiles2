@@ -5,6 +5,9 @@ local fn = vim.fn
 local g = vim.g
 local indent = 2
 
+-- disable ale before plugins are loaded
+g.ale_disable_lsp = 1
+
 -- providers
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0

@@ -1,0 +1,40 @@
+---
+################################################################################
+#                                  Jose.Lima                                   #
+#                     Network Optimization and Automation                      #
+################################################################################
+
+- name: 'install pip packages'
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: 'upgrade pip'
+      pip:
+        name:
+          - pip
+        state: latest
+
+    - name: 'deploy modules'
+      pip:
+        name:
+          - pip
+          - ansible==2.9.13
+          - pytest
+          - ansible-lint==4.3.7
+
+    # Install specified python requirements in indicated (virtualenv).
+    # - pip:
+    #   requirements: /my_app/requirements.txt
+    #   virtualenv: /my_app/venv
+
+    # ways
+    # - pip:
+    #     requirements: /website/requirements.txt
+    #     virtualenv: /opt/website-venv
+    #     virtualenv_command: /usr/bin/python3.6 -m venv
+
+    # - pip:
+    #     requirements: /opt/project/requirements_prod.txt
+    #     virtualenv: /opt/.virtualenv/project_env
+    #     virtualenv_python: python3

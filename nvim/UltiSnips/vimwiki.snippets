@@ -1,0 +1,62 @@
+global !p
+
+def fmt_desc(s1):
+    if '/' in s1:
+        s1 = s1.split('/')[1]
+    return s1.strip()
+
+def fmt_link(s1):
+    if '/' in s1:
+        l, r = s1.strip().split('/')
+        l = l.strip().replace(' ', '_')
+        r = r.strip().replace(' ', '_')
+        return l + '/' + r
+    else:
+        return fmt_desc(s1).replace(' ', '_')
+
+def clean_headers(s):
+    return re.sub(r'#|=', '',s).strip()
+
+endglobal
+
+# whats under the hood..
+# snippet showdirs "" b
+# `!p snip.rv=dir(locals()['vim'])`
+# endsnippet
+
+snippet h1 "header1" b
+= ${1:`!p snip.rv=clean_headers(snip.v.text)`} =
+endsnippet
+
+snippet h2 "header2" b
+== ${1:`!p snip.rv=clean_headers(snip.v.text)`} ==
+endsnippet
+
+snippet h3 "header3" b
+=== ${1:`!p snip.rv=clean_headers(snip.v.text)`} ===
+endsnippet
+
+snippet h4 "header4" b
+==== ${1:`!p snip.rv=clean_headers(snip.v.text)`} ====
+endsnippet
+
+snippet h5 "header5" b
+===== ${1:`!p snip.rv=clean_headers(snip.v.text)`} =====
+endsnippet
+
+snippet h6 "header6" b
+-===== ${1:`!p snip.rv=clean_headers(snip.v.text)`} =====-
+endsnippet
+
+snippet "^l (.*)" "link" br
+* [[`!p snip.rv=fmt_link(match.group(1))`|`!p
+snip.rv=fmt_desc(match.group(1)).strip()`$0]]
+endsnippet
+
+snippet "code" "codeblock" br
+{{{$1
+
+$0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+
+}}}
+endsnippet

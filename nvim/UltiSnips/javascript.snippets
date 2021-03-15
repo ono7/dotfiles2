@@ -1,0 +1,117 @@
+# use longest match first in regex patterns
+
+global !p
+
+ALWAYS = 'always'
+NEVER = 'never'
+
+def get_option(snip, option, default=None):
+    return snip.opt('g:ultisnips_javascript["{}"]'.format(option), default)
+
+def semi(snip):
+    option = get_option(snip, 'semi', ALWAYS)
+
+    if option == NEVER:
+        ret = ''
+    elif option == ALWAYS:
+        ret = ';'
+    else:
+        ret = ';'
+    return ret
+
+def space_before_function_paren(snip):
+    option = get_option(snip, 'space-before-function-paren', NEVER)
+
+    if option == NEVER:
+        ret = ''
+    elif option == ALWAYS:
+        ret = ' '
+    else:
+        ret = ''
+    return ret
+
+def keyword_spacing(snip):
+    option = get_option(snip, 'keyword-spacing', ALWAYS)
+
+    if option == NEVER:
+        ret = ''
+    elif option == ALWAYS:
+        ret = ' '
+    else:
+        ret = ''
+    return ret
+
+endglobal
+
+snippet strict "use strict" b
+'use strict';
+endsnippet
+
+snippet cap "capitalize function"
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+endsnippet
+
+snippet :, "Object Value JS"
+${1:value_name}: ${0:value},
+endsnippet
+
+snippet : "Object key key: 'value'"
+${1:key}: ${2:"${3:value}"}${4:, }
+endsnippet
+
+snippet "(function|func|fun)" "function (named)" r
+function${1}`!p snip.rv = space_before_function_paren(snip)`(${2}) {
+    $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+}
+endsnippet
+
+snippet "(e|else)" "else" rb
+else {
+    $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+}
+endsnippet
+
+snippet "tr(y)?" "try block" rb
+try {
+    ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$1
+}
+catch ($0) {
+}
+endsnippet
+
+snippet get "Get Elements"
+getElement${1/(T)|(C)|.*/(?1:s)(?2:s)/}By${1:T}${1/(T)|(I)|(C).*/(?1:agName)(?2:d)(?3:lassName)/}('$2')
+endsnippet
+
+snippet us
+'use strict'`!p snip.rv = semi(snip)`
+endsnippet
+
+snippet con "console.log"
+console.log(${VISUAL:/;//}$0);
+endsnippet
+
+snippet ret "Return statement"
+return ${VISUAL}$0`!p snip.rv = semi(snip)`
+endsnippet
+
+snippet "if" "if statement" r
+if ($0) {
+    ${VISUAL}
+}
+endsnippet
+
+snippet for "for loop" b
+for (let i = $1; i < $0; i++) {
+}
+endsnippet
+
+snippet "c(onst)?" "constant" rb
+const $1 = ${VISUAL}$0;
+endsnippet
+
+snippet "l(et)?" "let" rb
+let $1 = ${VISUAL}$0;
+endsnippet
