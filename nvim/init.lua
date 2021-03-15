@@ -1,5 +1,7 @@
 -- Follow the white rabbit...
 
+-- TODO: 03-15-2021 | figure out how to add and remove options clipboard = unamed, unmamedplus
+
 local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
 -- disable ale before plugins are loaded
