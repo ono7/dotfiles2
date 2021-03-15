@@ -1,23 +1,14 @@
 -- utils.lua
 local M = {}
-local cmd = vim.cmd
 
-function nvim_create_augroups(definitions)
-  for group_name, definition in pairs(definitions) do
-    vim.api.nvim_command("augroup " .. group_name)
-    vim.api.nvim_command("autocmd!")
-    for _, def in ipairs(definition) do
-      local command =
-        table.concat(
-        vim.tbl_flatten {
-          "autocmd",
-          def
-        },
-        " "
-      )
-      vim.api.nvim_command(command)
-    end
-    vim.api.nvim_command("augroup END")
+M.home = os.getenv("HOME")
+
+function M.create_dir(dst_dir)
+  -- ensure dst_dir exists
+  assert(type(dst_dir) == "string")
+  local data_dir = M.home .. dst_dir
+  if not exists(data_dir) then
+    os.execute("mkdir" .. data_dir)
   end
 end
 
