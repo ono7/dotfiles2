@@ -92,19 +92,23 @@ gs("UltiSnipsSnippetDirectories", {"~/.config/nvim/UltiSnips", "UltiSnips"})
 gs("UltiSnipsEditSplit", "horizontal")
 gs("UltiSnipsUsePythonVersion", 3)
 
--- Plug 'junegunn/fzf.vim'
--- width: float range [0 ~ 1]
--- height: float range [0 ~ 1]
--- Optional
--- yoffset: float default 0.5 range [0 ~ 1]
--- xoffset: float default 0.5 range [0 ~ 1]
--- highlight: [string]: Highlight group for border
--- border: [string default rounded]: Border style
--- Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
+--[[
 
+  Plug 'junegunn/fzf.vim'
+  width: float range [0 ~ 1]
+  height: float range [0 ~ 1]
+  Optional
+  yoffset: float default 0.5 range [0 ~ 1]
+  xoffset: float default 0.5 range [0 ~ 1]
+  highlight: [string]: Highlight group for border
+  border: [string default rounded]: Border style
+  Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
+
+--]]
 local fzf_window_tbl = {
   window = {width = 1, height = 1, highlight = "Comment", border = "bottom"}
 }
+
 gs("fzf_layout", fzf_window_tbl)
 gs("fzf_history_dir", "~/.tmp/fzf-history")
 gs("fzf_buffers_jump", 1)
@@ -115,6 +119,7 @@ gs(
 gs("fzf_nvim_statusline", 1)
 
 local fzf_colors_tbl = {}
+
 fzf_window_tbl.fg = {"fg", "Comment"}
 fzf_window_tbl.hl = {"fg", "RedBold"}
 fzf_window_tbl["fg+"] = {"fg", "GreenBold"}
@@ -128,25 +133,34 @@ fzf_window_tbl.spinner = {"fg", "fzf_spinner"}
 
 gs("fzf_colors", fzf_colors_tbl)
 
---- API
--- [[ --
--- Global variables (g:):
---   vim.api.nvim_set_var()
---   vim.api.nvim_get_var()
---   vim.api.nvim_del_var()
--- Buffer variables (b:):
---   vim.api.nvim_buf_set_var()
---   vim.api.nvim_buf_get_var()
---   vim.api.nvim_buf_del_var()
--- Window variables (w:):
---   vim.api.nvim_win_set_var()
---   vim.api.nvim_win_get_var()
---   vim.api.nvim_win_del_var()
--- Tabpage variables (t:):
---   vim.api.nvim_tabpage_set_var()
---   vim.api.nvim_tabpage_get_var()
---   vim.api.nvim_tabpage_del_var()
--- Predefined Vim variables (v:):
---   vim.api.nvim_set_vvar()
---   vim.api.nvim_get_vvar()
--- -- ]]
+gs("indentLine_char", "‧")
+gs("indentLine_color_term", 8)
+gs("indentLine_concealcursor", "inc")
+gs("indentLine_conceallevel", 2)
+gs("indentLine_fileTypeExclude", {"text", "markdown"})
+gs("indentLine_enabled", 0)
+
+--[[
+
+  API
+  Global variables (g:):
+    vim.api.nvim_set_var()
+    vim.api.nvim_get_var()
+    vim.api.nvim_del_var()
+  Buffer variables (b:):
+    vim.api.nvim_buf_set_var()
+    vim.api.nvim_buf_get_var()
+    vim.api.nvim_buf_del_var()
+  Window variables (w:):
+    vim.api.nvim_win_set_var()
+    vim.api.nvim_win_get_var()
+    vim.api.nvim_win_del_var()
+  Tabpage variables (t:):
+    vim.api.nvim_tabpage_set_var()
+    vim.api.nvim_tabpage_get_var()
+    vim.api.nvim_tabpage_del_var()
+  Predefined Vim variables (v:):
+    vim.api.nvim_set_vvar()
+    vim.api.nvim_get_vvar()
+
+--]]
