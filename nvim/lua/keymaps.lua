@@ -54,3 +54,6 @@ map('n', '<s-tab>', ':bprevious<cr>', options)
 map('n', 'Y', 'y$', options)
 map('v', 'y', 'mxy`x', options)
 
+-- terminal
+map('t', 'jk', [[<c-\><c-n>]], options)
+

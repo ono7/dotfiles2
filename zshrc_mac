@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -115,16 +115,16 @@ if [[ $OSTYPE == "linux-gnu"* ]]; then
   export DISPLAY=:0.0
 fi
 
-if [[ -f ~/nvim-osx64/bin/nvim ]]; then
+# if ! command -v nvim &> /dev/null; then
+if command -v nvim &> /dev/null; then
+  alias vim=nvim
+  alias vi=nvim
+elif [[ -f ~/nvim-osx64/bin/nvim ]]; then
   alias vim='~/nvim-osx64/bin/nvim'
   alias vi='~/nvim-osx64/bin/nvim'
   alias v='~/nvim-osx64/bin/nvim'
   alias vimdiff='~/nvim-osx64/bin/nvim -d'
-else
-  echo 'Need to install neovim in ~/nvim-osx64/'
-fi
-
-if [[ -f ~/local/nvim.appimage ]]; then
+elif [[ -f ~/local/nvim.appimage ]]; then
   alias vim='~/local/nvim.appimage'
   alias vi='~/local/nvim.appimage'
 fi
