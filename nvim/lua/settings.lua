@@ -42,6 +42,8 @@ o.fillchars = [[vert:│]]
 o.listchars = [[tab:→\ ,trail:·,nbsp:•]]
 o.nrformats = "bin,hex,alpha"
 o.shortmess = "atIoOsT"
+o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
+o.pastetoggle = [[<F2>]]
 
 -- window-local options
 wo.number = false
@@ -64,6 +66,3 @@ bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
-
--- set pastetoggle=<F2>
--- set wildignore+=*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
