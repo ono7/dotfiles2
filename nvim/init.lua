@@ -1,11 +1,15 @@
 -- Follow the white rabbit...
 
 -- TODO: 03-15-2021 | fix coc auto complete
+-- TODO: 03-15-2021 | finish ftplugins (configure the rest)
 
 local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
+
+g.mapleader = " "
+g.vimsyn_embed = "l"
 
 -- providers
 g.python_host_skip_check = 1
@@ -29,9 +33,6 @@ cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
-g.mapleader = " "
-g.vimsyn_embed = "l"
-
 -- highlight yanked text for 250ms
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
 
@@ -46,10 +47,8 @@ cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
-paq {
-  "savq/paq-nvim",
-  opt = true
-}
+paq {"savq/paq-nvim", opt = true}
+paq {"neoclide/coc.nvim", branch = "release"}
 paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-commentary"
@@ -63,8 +62,6 @@ paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
 paq "bfredl/nvim-miniyank"
-paq {"neoclide/coc.nvim", branch = "release"}
-
 -- paq "Glench/Vim-Jinja2-Syntax"
 
 -- after plugins
