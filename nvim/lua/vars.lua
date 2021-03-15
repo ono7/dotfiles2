@@ -142,6 +142,8 @@ gs("indentLine_enabled", 0)
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
 
+-- TODO: 03-15-2021 | this does not work
+
 if vim.api.nvim_eval('has("macunix")') ~= 1 then
   clip_copy = "xclip -sel clip -i"
   clip_paste = "xclip -out -selection clipboard"
@@ -160,7 +162,6 @@ clipboard_tbl.paste["+"] = clip_paste
 gs("clipboard", clipboard_tbl)
 
 vim.o.clipboard = "unnamedplus"
--- vim.o.clipboard = vim.o.clipboard .. "unnamedplus"
 
 --[[
 
