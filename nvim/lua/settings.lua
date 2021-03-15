@@ -9,10 +9,6 @@ local bo = vim.bo
 -- vim.o.formatoptions = string.gsub(vim.o.formatoptions, 'n', '')
 --
 -- global options
-o.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
-o.loaded_python_provider =0
-o.loaded_perl_provider =0
-o.loaded_ruby_provider =0
 o.termguicolors = true
 o.cmdheight = 2
 o.swapfile = true

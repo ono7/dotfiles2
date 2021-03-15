@@ -5,8 +5,13 @@ local fn = vim.fn
 local g = vim.g
 local indent = 2
 
-require("settings")
+vim.g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
+vim.g.loaded_python_provider =0
+vim.g.loaded_perl_provider =0
+vim.g.loaded_ruby_provider =0
+
 require("keymaps")
+require("settings")
 require("utils")
 
 cmd "colorscheme onehalfdark"
@@ -33,6 +38,7 @@ paq 'ervandew/supertab'
 paq 'christoomey/vim-tmux-navigator'
 paq 'tpope/vim-commentary'
 paq 'tpope/vim-eunuch'
+paq 'tpope/vim-markdown'
 
 -- Plug 'jiangmiao/auto-pairs'
 -- Plug 'Glench/Vim-Jinja2-Syntax', { 'for' : 'jinja' }
