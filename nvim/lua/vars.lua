@@ -161,7 +161,7 @@ clipboard_tbl.paste["+"] = clip_paste
 
 gs("clipboard", clipboard_tbl)
 
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = "unnamed,unnamedplus"
 
 --[[
 

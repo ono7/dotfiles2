@@ -1,5 +1,6 @@
 local o = vim.o
 local wo = vim.wo
+
 local bo = vim.bo
 
 -- set formatoptions+=n
@@ -22,7 +23,6 @@ o.completeopt = string.gsub(o.completeopt, "preview", "")
 o.diffopt = "filler"
 o.hidden = true
 o.magic = true
-o.list = true
 o.joinspaces = false
 o.showcmd = false
 o.writebackup = false
@@ -44,6 +44,11 @@ o.lazyredraw = true
 o.timeout = true
 o.timeoutlen = 500
 o.updatetime = 250
+o.fillchars = "vert:│"
+o.listchars = [[tab:→\ ,trail:·,nbsp:•]]
+o.list = true
+o.nrformats = "bin,hex,alpha"
+o.shortmess = "atIoOsT"
 
 -- window-local options
 wo.number = false
@@ -64,10 +69,8 @@ bo.tabstop = 2
 bo.textwidth = 80
 bo.expandtab = true
 bo.spelllang = "en_us"
+bo.complete = ".,w,b,u,kspell"
 
--- set complete+=kspell complete-=i complete-=t
--- set fillchars+=vert:│
--- set listchars=tab:→\ ,trail:·,nbsp:•
 -- set nrformats-=octal nrformats+=alpha
 -- set pastetoggle=<F2>
 -- set shortmess+=c
