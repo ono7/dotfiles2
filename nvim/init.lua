@@ -36,8 +36,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
 end
 
+-- highlight yanked text for 250ms
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
+
 -- setup paq
-vim.cmd "packadd paq-nvim"
+cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
@@ -47,6 +50,7 @@ paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-commentary"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
+paq "tpope/vim-repeat"
 paq "kyazdani42/nvim-web-devicons"
 -- paq "windwp/nvim-autopairs" -- testing for speed...
 paq "jiangmiao/auto-pairs"
