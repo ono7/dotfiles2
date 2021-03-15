@@ -2,14 +2,23 @@
 local M = {}
 local cmd = vim.cmd
 
-function M.create_augroup(autocmds, name)
-  -- https://icyphox.sh/blog/nvim-lua/
-  cmd("augroup " .. name)
-  cmd("autocmd!")
-  for _, autocmd in ipairs(autocmds) do
-    cmd("autocmd " .. table.concat(autocmd, " "))
+function nvim_create_augroups(definitions)
+  for group_name, definition in pairs(definitions) do
+    vim.api.nvim_command("augroup " .. group_name)
+    vim.api.nvim_command("autocmd!")
+    for _, def in ipairs(definition) do
+      local command =
+        table.concat(
+        vim.tbl_flatten {
+          "autocmd",
+          def
+        },
+        " "
+      )
+      vim.api.nvim_command(command)
+    end
+    vim.api.nvim_command("augroup END")
   end
-  cmd("augroup END")
 end
 
 return M
