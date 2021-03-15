@@ -1,6 +1,6 @@
 -- Follow the white rabbit...
 
--- TODO: 03-15-2021 | figure out how to add and remove options clipboard = unamed, unmamedplus
+-- TODO: 03-15-2021 | fix coc auto complete
 
 local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
@@ -8,6 +8,9 @@ local cmd, fn, g = vim.cmd, vim.fn, vim.g
 g.ale_disable_lsp = 1
 
 -- providers
+g.python_host_skip_check = 1
+g.python2_host_skip_check = 1
+g.python3_host_skip_check = 1
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0
 g.loaded_perl_provider = 0

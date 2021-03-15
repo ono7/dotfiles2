@@ -29,7 +29,8 @@ local autocmds = {
       "*",
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
-    {"BufEnter", "*", [[silent! lcd %:p:h]]}
+    {"BufEnter", "*", [[silent! lcd %:p:h]]},
+    {"BufEnter", "*", [[set formatoptions=qlj]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
@@ -40,7 +41,7 @@ local autocmds = {
     {"BufWritePost", "*", [[FormatWrite]]}
   },
   _format_opts = {
-    {"FileType", "*", [[set formatoptions-=cro fo+=j]]}
+    {"FileType", "*", [[set formatoptions=qlj]]}
   }
 }
 

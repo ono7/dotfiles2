@@ -3,12 +3,6 @@ local wo = vim.wo
 
 local bo = vim.bo
 
--- set formatoptions+=n
--- vim.o.formatoptions = vim.o.formatoptions .. 'n'
---
--- set formatoptions-=n
--- vim.o.formatoptions = string.gsub(vim.o.formatoptions, 'n', '')
-
 --- global options
 o.termguicolors = true
 o.cmdheight = 2
@@ -70,9 +64,7 @@ bo.textwidth = 80
 bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
+bo.formatoptions = "qlj" -- this is what we need
 
--- set nrformats-=octal nrformats+=alpha
 -- set pastetoggle=<F2>
--- set shortmess+=c
--- set shortmess=atIoOsT
 -- set wildignore+=*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
