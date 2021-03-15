@@ -63,11 +63,9 @@ bo.tabstop=2
 bo.textwidth=80 
 bo.expandtab=true
 bo.spelllang='en_us'
+bo.foldenable=false
 
 -- set complete+=kspell complete-=i complete-=t
--- set display+=lastline
--- set encoding=utf-8 nobomb
--- set fileencoding=utf-8
 -- set fillchars+=vert:│
 -- set listchars=tab:→\ ,trail:·,nbsp:•
 -- set nrformats-=octal nrformats+=alpha
@@ -75,10 +73,4 @@ bo.spelllang='en_us'
 -- set shortmess+=c
 -- set shortmess=atIoOsT
 -- set wildignore+=*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
-
-
--- if has('nvim')
---   " pmenu/transparency/max items
---   tnoremap jk <C-\><C-n>
--- endif
 
