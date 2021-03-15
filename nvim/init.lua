@@ -17,8 +17,9 @@ g.loaded_ruby_provider = 0
 -- load custom setup
 require("keymaps")
 require("settings")
-require("utils")
 require("autocmds")
+require("vars")
+-- require("utils")
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
