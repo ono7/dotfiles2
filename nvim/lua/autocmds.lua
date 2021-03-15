@@ -30,6 +30,9 @@ local autocmds = {
   },
   _write = {
     {"BufWritePost", "*", [[FormatWrite]]}
+  },
+  _format_opts = {
+    {"FileType", "*", [[set formatoptions-=cro fo+=j]]}
   }
 }
 
@@ -42,19 +45,4 @@ local autocmds = {
 -- augroup END
 -- ]])
 
--- -- vim.api.nvim_command([[
--- -- augroup _write
--- --   autocmd!
--- --   autocmd BufWritePre * silent! :call <SID>StripTrailingWhitespaces() | retab
--- --   " Plug 'lukas-reineke/format.nvim'
--- --   autocmd BufWritePost * FormatWrite
--- -- augroup END
--- -- ]])
-
--- vim.api.nvim_command([[
--- augroup _format_opts
---   autocmd!
---   autocmd FileType * set formatoptions-=cro fo+=j
--- augroup END
--- ]])
 nvim_create_augroups(autocmds)
