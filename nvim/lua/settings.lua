@@ -40,7 +40,6 @@ o.timeoutlen = 500
 o.updatetime = 250
 o.fillchars = [[vert:│]]
 o.listchars = [[tab:→\ ,trail:·,nbsp:•]]
-o.list = true
 o.nrformats = "bin,hex,alpha"
 o.shortmess = "atIoOsT"
 
@@ -50,6 +49,7 @@ wo.wrap = false
 wo.numberwidth = 2
 wo.signcolumn = "yes"
 wo.foldenable = false
+wo.list = true
 
 -- buffer-local options
 bo.expandtab = true
