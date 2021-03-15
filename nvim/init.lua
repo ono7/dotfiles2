@@ -54,11 +54,13 @@ paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
+paq {"neoclide/coc.nvim", branch = "release"}
+
+-- paq "Glench/Vim-Jinja2-Syntax"
 
 -- after plugins
 require "package_setup"
 
--- Plug 'Glench/Vim-Jinja2-Syntax', { 'for' : 'jinja' }
 -- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 -- Plug 'junegunn/fzf.vim'
 -- Plug 'scrooloose/nerdtree',{ 'on': ['NERDTreeToggle', 'NERDTree', 'NERDTreeFind', 'NERDTreeClose'] }

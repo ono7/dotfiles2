@@ -56,3 +56,10 @@ map("v", "y", "mxy`x", options)
 
 -- terminal
 map("t", "jk", [[<c-\><c-n>]], options)
+
+-- ale
+map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
+map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+
+-- coc
+map("i", "<expr> <C-c>", "coc#refresh()", silent)
