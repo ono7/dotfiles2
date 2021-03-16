@@ -2,7 +2,6 @@ local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 
-
 --- global options
 o.termguicolors = true
 o.cmdheight = 2
@@ -49,7 +48,7 @@ o.pastetoggle = [[<F2>]]
 wo.number = false
 wo.wrap = false
 wo.numberwidth = 2
-wo.signcolumn = "yes"
+wo.signcolumn = "yes:1"
 wo.foldenable = false
 wo.list = true
 
