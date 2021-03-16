@@ -20,15 +20,6 @@ function nvim_create_augroups(definitions)
 end
 
 local autocmds = {
-  -- vim.api.nvim_command([[
-  -- augroup init
-  --   autocmd!
-  --   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
-  --   autocmd
-  --   autocmd VimEnter *
-  -- augroup END
-  -- ]])
-
   _init = {
     {
       "BufWinEnter",
