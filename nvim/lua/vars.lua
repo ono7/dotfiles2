@@ -70,7 +70,7 @@ gs(
   {
     "html",
     "python",
-    "bash,sh",
+    "sh",
     "nasm",
     "vim",
     "php",
