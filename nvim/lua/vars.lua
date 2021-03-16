@@ -179,6 +179,10 @@ g.nvim_tree_hide_dotfiles = 1
 
 -- gs("nvim_tree_show_icons", {git = 1, folders = 0, files = 0})
 
+-- git-blame
+
+g.gitblame_enabled = 0
+
 --[[
 
   vim API
