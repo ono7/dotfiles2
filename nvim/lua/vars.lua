@@ -175,6 +175,8 @@ g.nvim_tree_quit_on_open = 1
 g.nvim_tree_follow = 1
 g.nvim_tree_width_allow_resize = 1
 g.nvim_tree_git_hl = 1
+g.nvim_tree_hide_dotfiles = 1
+
 -- gs("nvim_tree_show_icons", {git = 1, folders = 0, files = 0})
 
 --[[
