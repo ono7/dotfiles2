@@ -1,7 +1,5 @@
 -- Follow the white rabbit...
 
--- TODO: 03-15-2021 | finish ftplugins (configure the rest)
-
 local cmd, g = vim.cmd, vim.g
 
 -- disable ale before plugins are loaded
