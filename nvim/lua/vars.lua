@@ -181,7 +181,7 @@ g.nvim_tree_hide_dotfiles = 1
 
 -- git-blame
 g.gitblame_enabled = 0
-g.gitblame_date_format = [[%d/%m/%Y]]
+g.gitblame_date_format = [[%m/%d/%Y]]
 g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
 
 --[[
