@@ -319,3 +319,4 @@ hi!  fzf_spinner  ctermfg=6
 
 hi!  TermCursorNC  guibg=Purple  guifg=white  ctermbg=1  ctermfg=15
 hi!  trans         guibg=Purple  guifg=white  ctermbg=1  ctermfg=15
+
