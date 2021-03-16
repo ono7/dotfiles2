@@ -37,8 +37,7 @@ paq "junegunn/fzf"
 paq "junegunn/fzf.vim"
 paq "kyazdani42/nvim-web-devicons"
 paq "kyazdani42/nvim-tree.lua"
-
--- paq "Glench/Vim-Jinja2-Syntax"
+paq "Glench/Vim-Jinja2-Syntax"
 
 -- after plugins
 require "pkg_config"
