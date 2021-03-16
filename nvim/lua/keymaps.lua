@@ -63,25 +63,12 @@ map("v", "y", "mxy`x", options)
 map("t", "jk", [[<c-\><c-n>]], options)
 
 -- ale
-map(
-  "n",
-  "[n",
-  "<Plug>(ale_next_wrap)",
-  {
-    silent = true
-  }
-)
-map(
-  "n",
-  "]n",
-  "<Plug>(ale_previous_wrap)",
-  {
-    silent = true
-  }
-)
+map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
+map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- coc
 map("i", "<expr> <C-c>", "coc#refresh()", silent)
+map("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 
 -- surround
 vim.g.surround_no_mappings = 1
