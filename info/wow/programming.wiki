@@ -1,7 +1,0 @@
-= programming =
-
-
-== strings ==
-
-* strings.format() is not the standard lua implementation, need to do more
-  research on how to properly use the blizzard implemenation
