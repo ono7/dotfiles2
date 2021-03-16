@@ -6,7 +6,7 @@ local cmd, g = vim.cmd, vim.g
 g.ale_disable_lsp = 1
 
 g.mapleader = " "
-g.vimsyn_embed = "l"
+-- g.vimsyn_embed = "l"
 
 local utils = require "utils"
 
