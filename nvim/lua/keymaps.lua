@@ -99,3 +99,6 @@ map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 -- miniyank
 map("n", "p", [[<Plug>(miniyank-autoput)]], {})
 map("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+
+-- nvimtree
+map("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
