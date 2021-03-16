@@ -1,7 +1,3 @@
--- nnoremap <silent><leader>t :silent !tmux send-keys -t 2 c-p Enter<cr>
--- " select visualy selected text for search
--- xnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
-
 local map = vim.api.nvim_set_keymap
 
 options = {
@@ -18,6 +14,12 @@ vim.g.mapleader = " " -- 'vim.g' sets global variables
 
 -- pure sauce
 map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
+
+-- tmux
+map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+
+-- select visualy selected text for search
+map("x", "<ender>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 -- disable c-z (bg)
 map("n", "<c-z>", "<nop>", options)
@@ -65,6 +67,11 @@ map("t", "jk", [[<c-\><c-n>]], options)
 -- ale
 map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
 map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+
+-- fzf
+map("n", "<c-p>", ":GFiles<cr>", silent)
+map("n", "<leader>f", ":Files<cr>", silent)
+map("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
 map("i", "<expr> <C-c>", "coc#refresh()", silent)
