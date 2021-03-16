@@ -23,7 +23,7 @@ g.loaded_ruby_provider = 0
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
 
 -- hold my beer
-require "packages"
+require "pkg"
 require "keymaps"
 require "settings"
 require "autocmds"

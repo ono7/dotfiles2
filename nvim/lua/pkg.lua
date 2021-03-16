@@ -41,7 +41,7 @@ paq "kyazdani42/nvim-tree.lua"
 -- paq "Glench/Vim-Jinja2-Syntax"
 
 -- after plugins
-require "package_setup"
+require "pkg_config"
 
 cmd "filetype plugin indent on"
 
