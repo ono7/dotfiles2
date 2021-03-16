@@ -20,26 +20,22 @@ require "nvim-treesitter.configs".setup {
 }
 
 require "format".setup {
-  -- lukas-reineke/format.nvim
-  -- https://github.com/lukas-reineke/format.nvim
-  -- :h format.txt
+  --[[
 
-  -- npm install lua-fmt prettier -g
-  -- pip install black, pylint, epdb, ipython
-  -- autocmd BufWritePost * FormatWrite
+    lukas-reineke/format.nvim
+    https://github.com/lukas-reineke/format.nvim
+    :h format.txt
 
+    npm install lua-fmt prettier -g
+    pip install black pylint epdb ipython
+    autocmd BufWritePost * FormatWrite
+
+  --]]
   ["*"] = {
     -- remove trailing whitespace
     {
       cmd = {
         "sed -i 's/[ \t]*$//'"
-      }
-    }
-  },
-  vim = {
-    {
-      cmd = {
-        "luafmt -i 2 -w replace"
       }
     }
   },
