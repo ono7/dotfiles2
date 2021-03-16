@@ -24,7 +24,7 @@ cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{ timeout = 75 }]]
 
 -- hold my beer
 require "pkg"
-require "keymaps"
+require "maps"
 require "settings"
 require "autocmds"
 require "vars"
