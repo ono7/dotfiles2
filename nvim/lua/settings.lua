@@ -32,6 +32,7 @@ o.inccommand = "nosplit"
 o.winaltkeys = "no"
 o.pumheight = 10
 o.pumblend = 0
+o.emoji = false
 o.redrawtime = 10000
 o.lazyredraw = true
 o.timeout = true
