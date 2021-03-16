@@ -24,7 +24,7 @@ paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-commentary"
 paq "tpope/vim-eunuch"
-paq "tpope/vim-markdown"
+-- paq "tpope/vim-markdown"
 paq "tpope/vim-repeat"
 paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"
@@ -45,5 +45,4 @@ require "package_setup"
 
 cmd "filetype plugin indent on"
 
--- Plug 'scrooloose/nerdtree',{ 'on': ['NERDTreeToggle', 'NERDTree', 'NERDTreeFind', 'NERDTreeClose'] }
 -- Plug 'vimwiki/vimwiki'
