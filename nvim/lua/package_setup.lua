@@ -1,5 +1,7 @@
 -- init lua plugins
-require "nvim-web-devicons".setup {}
+require "nvim-web-devicons".setup {
+  default = true
+}
 
 require "nvim-treesitter.configs".setup {
   ensure_installed = "maintained",
