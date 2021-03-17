@@ -288,6 +288,20 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
+
+if command -v fd &> /dev/null; then
+  _fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+  }
+
+  # Use fd to generate the list for directory completion
+  _fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+  }
+else
+  echo 'download fd from: https://github.com/sharkdp/fd/releases'
+fi
+
 # pretty colors
 export CLICOLOR=1
 export LS_COLORS=':ow=01;33'
