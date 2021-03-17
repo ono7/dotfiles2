@@ -24,9 +24,9 @@ cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", t
 -- hold my beer
 require "pkg"
 require "maps"
+require "vars"
 require "settings"
 require "autocmds"
-require "vars"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
