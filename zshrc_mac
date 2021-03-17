@@ -298,6 +298,9 @@ if command -v fd &> /dev/null; then
   _fzf_compgen_dir() {
     fd --type d --hidden --follow --exclude ".git" . "$1"
   }
+  export FZF_ALT_C_COMMAND='fd --type d --exclude .git --follow --hidden'
+  export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --follow --hidden'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
 fi
