@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -117,7 +117,7 @@ if [[ -f ~/nvim/bin/nvim ]]; then
   alias vi=vim
   alias v=vim
   alias vimdiff='vim -d'
-else
+elif command -v nvim &>/dev/null; then
   alias vim='nvim'
   alias vi=vim
   alias v=vim
@@ -126,6 +126,8 @@ fi
 
 if [[ -f ~/local/bin/tmux ]]; then
   alias tmux='~/local/bin/tmux'
+elif command -v tmux &>/dev/null; then
+  alias tmux=tmux
 else
   echo 'need tmux in ~/loca/bin/tmux'
 fi
@@ -133,7 +135,7 @@ fi
 alias gd='git diff'
 alias gs='git status'
 
-alias cdr='cd "$(git rev-parse --show-toplevel)"  2>/dev/null'
+alias cdr='cd "$(git rev-parse --show-toplevel)"  &>/dev/null'
 alias c='clear'
 
 if [[ -f /opt/homebrew/opt/fzf/bin/fzf ]]; then
@@ -205,29 +207,29 @@ function vd () {
   source $HOME/.virtualenvs/prod3/bin/activate
 }
 
-function vc () {
-  deactivate 2> /dev/null
-  if [ ! -z "$1" ]; then
-    venv_dir=$1
-    python3 --version
-    python3 -m venv $venv_dir
-    source $venv_dir/bin/activate
-    which python
-  elif
-    venv_dir=$(git rev-parse --show-toplevel)/venv 2> /dev/null
-    if [ "$?" -eq 0 ]; then
-      python3 --version
-      python3 -m venv $venv_dir
-      source $venv_dir/bin/activate
-      which python
-    else
-      venv_dir="venv"
-      python3 --version
-      python3 -m venv $venv_dir
-      source $venv_dir/bin/activate
-      which python
-  fi
-}
+# function vc () {
+#   deactivate 2> /dev/null
+#   if [ ! -z "$1" ]; then
+#     venv_dir=$1
+#     python3 --version
+#     python3 -m venv $venv_dir
+#     source $venv_dir/bin/activate
+#     which python
+#   elif
+#     venv_dir=$(git rev-parse --show-toplevel)/venv 2> /dev/null
+#     if [ "$?" -eq 0 ]; then
+#       python3 --version
+#       python3 -m venv $venv_dir
+#       source $venv_dir/bin/activate
+#       which python
+#     else
+#       venv_dir="venv"
+#       python3 --version
+#       python3 -m venv $venv_dir
+#       source $venv_dir/bin/activate
+#       which python
+#   fi
+# }
 
 function vs () {
   vim "$(fzf --height 40%)"
@@ -261,7 +263,6 @@ function dp() {
 #   fi
 # }
 
-
 # default virtual env if exists
 if [[ -f ~/.virtualenvs/prod3/bin/activate ]]; then
   source ~/.virtualenvs/prod3/bin/activate
@@ -273,7 +274,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # autocompletion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-
 
 # only need this if oh-my-zsh is not running (compinit helps with completion)
 # we can test this by profiling using zprof
@@ -287,7 +287,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # fi
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
-
 
 if command -v fd &> /dev/null; then
   _fzf_compgen_path() {
