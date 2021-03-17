@@ -50,7 +50,7 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
 -- highlight yanked text for 250ms
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout = 150 }]]
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout = 100 }]]
 
 -- hold my beer
 require "pkg"
