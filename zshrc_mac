@@ -1,6 +1,8 @@
 # uncomment next line to start profiling
 # zmodload zsh/zprof
 
+[[ ! -d ~/.tmp ]] || mkdir -p ~/.tmp
+
 ZSH_DISABLE_COMPFIX="true"
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
