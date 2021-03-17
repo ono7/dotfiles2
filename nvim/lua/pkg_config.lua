@@ -51,11 +51,7 @@ require "format".setup {
     {
       cmd = {
         function(file)
-          return string.format(
-            "luafmt -i 2 -l %s -w replace %s",
-            vim.bo.textwidth,
-            file
-          )
+          return string.format("luafmt -i 2 -w replace %s", file)
         end
       }
     }
