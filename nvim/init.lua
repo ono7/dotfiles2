@@ -16,7 +16,8 @@ silent = {
 
 -- leader
 m("n", "<Space>", "", {})
-vim.g.mapleader = " "
+
+g.mapleader = " "
 
 -- secret sauce
 m("n", ";", ":", options)
@@ -39,19 +40,17 @@ m("n", "cp", "yap<S-}>p", options)
 
 g.ale_disable_lsp = 1
 
-local utils = require "utils"
-
 -- providers
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1
-g.python3_host_prog = utils.home .. "/.virtualenvs/prod3/bin/python3"
+g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
 -- highlight yanked text for 250ms
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout = 100 }]]
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
 
 -- hold my beer
 require "pkg"
