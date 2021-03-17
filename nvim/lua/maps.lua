@@ -11,6 +11,10 @@ vim.g.mapleader = " " -- 'vim.g' sets global variables
 map("n", "gj", "j", options)
 map("n", "gk", "k", options)
 
+-- this is back..
+map("n", ";", ":", options)
+map("v", ";", ":", options)
+
 -- pure sauce
 map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
 map("x", "<c-j>", "<esc>", {})
