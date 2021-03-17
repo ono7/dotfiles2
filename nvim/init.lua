@@ -43,7 +43,7 @@ end
 
 -- local _G = vim.api.nvim_set_vvar
 
-local _G.better_indent = function()
+local better_indent = function()
   local col = vim.fn.col(".") - 1
   if col == 0 then
     return t'cc0'
