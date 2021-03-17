@@ -45,6 +45,8 @@ o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
 o.pastetoggle = [[<F2>]]
 o.showmatch = true
 o.matchtime = 3
+o.ttimeout = false
+o.ttimeoutlen = 10
 
 -- window-local options
 wo.number = false
