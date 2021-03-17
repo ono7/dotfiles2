@@ -7,7 +7,7 @@ g.ale_disable_lsp = 1
 
 g.mapleader = " "
 
-require "utils"
+local utils = require "utils"
 
 -- providers
 g.python_host_skip_check = 1
