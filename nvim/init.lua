@@ -36,22 +36,18 @@ m("n", "<c-z>", "<nop>", options)
 m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
 
--- escape expressions to vim
--- local function t(str)
---   return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
+function _G.better_insert()
+  -- _G global lua obj exposed via v:lua in vim
+  -- indents if there is a blank line when going into insert mode
+  local col = vim.fn.col(".") - 1
+  if col == 0 then
+    return "ddO"
+  else
+    return "i"
+  end
+end
 
--- local better_indent = function()
---   local col = vim.fn.col(".") - 1
---   if col == 0 then
---     return "cc0"
---   else
---     return "i"
---   end
--- end
-
--- vim.api.nvim_set_vvar(better_indent, better_indent)
--- m("n", "i", "v:better_indent()", {expr = true, noremap = true})
+m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
@@ -60,12 +56,12 @@ g.ale_disable_lsp = 1
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1
-g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 g.loaded_python_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
+g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
--- highlight yanked text for 250ms
+-- highlight yanked text
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
 
 -- hold my beer

@@ -12,4 +12,10 @@ function M.create_dir(dst_dir)
   end
 end
 
+-- escape expressions to vim e.g. <C-t>
+-- useful for creating maps that require expr
+function M.t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 return M

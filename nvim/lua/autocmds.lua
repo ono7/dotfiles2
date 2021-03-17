@@ -63,7 +63,6 @@ local autocmds = {
 nvim_create_augroups(autocmds)
 
 -- this works too
-
 -- vim.api.nvim_exec(
 --   [[
 
