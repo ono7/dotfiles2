@@ -106,7 +106,12 @@ gs("UltiSnipsUsePythonVersion", 3)
 
 --]]
 local fzf_window_tbl = {
-  window = {width = 1, height = 1, highlight = "Comment", border = "bottom"}
+  window = {
+    width = 1,
+    height = 1,
+    highlight = "Comment",
+    border = "bottom"
+  }
 }
 
 gs("fzf_layout", fzf_window_tbl)
@@ -137,7 +142,13 @@ gs("indentLine_char", "‧")
 gs("indentLine_color_term", 8)
 gs("indentLine_concealcursor", "inc")
 gs("indentLine_conceallevel", 2)
-gs("indentLine_fileTypeExclude", {"text", "markdown"})
+gs(
+  "indentLine_fileTypeExclude",
+  {
+    "text",
+    "markdown"
+  }
+)
 gs("indentLine_enabled", 0)
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
@@ -168,16 +179,19 @@ g.miniyank_maxitems = 10
 
 -- nvimtree
 g.nvim_tree_width = 25
-g.nvim_tree_auto_open = 1
+g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 1
-gs("nvim_tree_ignore", {".git", "node_modules", ".cache"})
+-- gs("nvim_tree_ignore", {".git", "node_modules", ".cache"})
+g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_quit_on_open = 1
 g.nvim_tree_follow = 1
 g.nvim_tree_width_allow_resize = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_hide_dotfiles = 1
-
--- gs("nvim_tree_show_icons", {git = 1, folders = 0, files = 0})
+g.nvim_tree_tab_open = 0
+g.nvim_tree_disable_netrw = 0
+g.nvim_tree_hijack_netrw = 0
+g.nvim_tree_add_trailing = 1
 
 -- git-blame
 g.gitblame_enabled = 0
