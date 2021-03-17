@@ -230,7 +230,7 @@ function vc () {
 }
 
 function vs () {
-  vim "$(fzf)"
+  vim "$(fzf --height 40%)"
 }
 
 # load other functions
