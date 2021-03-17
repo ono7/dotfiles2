@@ -2,7 +2,36 @@
 
 -- TODO: 03-17-2021 | look at LSPkind for lua
 
-local cmd, g = vim.cmd, vim.g
+local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
+
+-- binding opts
+options = {
+  noremap = true
+}
+silent = {
+  noremap = true,
+  silent = true
+}
+
+-- secret sauce
+m("n", "<Space>", "", {})
+m("n", ";", ":", options)
+m("v", ";", ":", options)
+m("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
+m("x", "<c-j>", "<esc>", {})
+m("n", "gj", "j", options)
+m("n", "gk", "k", options)
+m("n", "Q", "@q", options)
+m("n", "<leader>w", ":update<cr>", options)
+m("n", "<tab>", ":bnext<cr>", silent)
+m("n", "<s-tab>", ":bprevious<cr>", silent)
+m("n", "Y", "y$", options)
+m("v", "y", "mxy`x", options)
+m("n", "<c-z>", "<nop>", options)
+m("c", "<c-z>", "<nop>", options)
+m("n", "cp", "yap<S-}>p", options)
+
+vim.g.mapleader = " "
 
 -- disable ale before plugins are loaded
 

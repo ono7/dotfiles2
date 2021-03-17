@@ -3,36 +3,11 @@ local map = vim.api.nvim_set_keymap
 options = {noremap = true}
 silent = {noremap = true, silent = true}
 
--- leader
-map("n", "<Space>", "", {})
-vim.g.mapleader = " " -- 'vim.g' sets global variables
-
--- navigation
-map("n", "gj", "j", options)
-map("n", "gk", "k", options)
-
--- this is back..
-map("n", ";", ":", options)
-map("v", ";", ":", options)
-
--- pure sauce
-map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
-map("x", "<c-j>", "<esc>", {})
-
 -- tmux
 map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 -- select visualy selected text for search
 map("x", "<ender>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
-
--- disable c-z (bg)
-map("n", "<c-z>", "<nop>", options)
-map("c", "<c-z>", "<nop>", options)
-
-map("n", "cp", "yap<S-}>p", options)
-
--- macros
-map("n", "Q", "@q", options)
 
 map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
@@ -58,13 +33,6 @@ map("n", "gd", "msgd", options)
 map("n", "*", "ms*", options)
 map("n", "#", "ms#", options)
 map("n", "V", "Vg_", {})
-
--- buffer ops
-map("n", "<leader>w", ":update<cr>", options)
-map("n", "<tab>", ":bnext<cr>", silent)
-map("n", "<s-tab>", ":bprevious<cr>", silent)
-map("n", "Y", "y$", options)
-map("v", "y", "mxy`x", options)
 
 -- terminal
 map("t", "jk", [[<c-\><c-n>]], options)
@@ -92,9 +60,6 @@ map("n", "ys", "<Plug>Yssurround", {})
 map("n", "ds", "<Plug>Dsurround", {})
 map("n", "cs", "<Plug>Csurround", {})
 map("x", "s", "<Plug>Vsurround", {})
-
--- visual select search
-map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 -- miniyank
 map("n", "p", [[<Plug>(miniyank-autoput)]], {})
