@@ -8,15 +8,12 @@ map("n", "<Space>", "", {})
 vim.g.mapleader = " " -- 'vim.g' sets global variables
 
 -- navigation
-map("n", "j", "gj", options)
 map("n", "gj", "j", options)
-
--- nnoremap j gj
--- nnoremap gj j
+map("n", "gk", "k", options)
 
 -- pure sauce
 map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
-map("x", "jk", "<esc>", silent)
+map("x", "<c-j>", "<esc>", {})
 
 -- tmux
 map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
