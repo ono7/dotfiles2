@@ -6,6 +6,13 @@
     show_buffer_close_icons = false
   }
 } ]]
+require("kommentary.config").configure_language(
+  "jinja",
+  {
+    single_line_comment_string = "//",
+    multi_line_comment_strings = {"{% comment %}", "{% endcomment %}"}
+  }
+)
 
 require "nvim-web-devicons".setup {
   default = true
