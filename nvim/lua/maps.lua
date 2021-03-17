@@ -11,7 +11,6 @@ map("x", "<ender>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
--- map("i", "<c-l>", "g_", {})
 map("n", "H", "^", options)
 map("n", "L", "g_", options)
 map("v", "H", "^", options)
@@ -20,6 +19,10 @@ map("n", "U", "<c-r>", options)
 map("c", "%s", [[%s/\v]], options)
 map("c", "%g", [[%g/\v]], options)
 map("c", "%v", [[%v/\v]], options)
+
+-- indent and retain visual selection
+map("v", ">", [[>gv]], options)
+map("v", "<", [[<gv]], options)
 
 -- marks/jumps
 map("n", "'", "`", options)
