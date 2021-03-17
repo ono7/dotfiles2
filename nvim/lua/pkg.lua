@@ -1,35 +1,15 @@
 -- auto install paq if not exists
 
-local cmd,
-  fn,
-  g =
-  vim.cmd,
-  vim.fn,
-  vim.g
+local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
-local install_path =
-  fn.stdpath(
-  "data"
-) ..
-  "/site/pack/paqs/opt/paq-nvim"
-if
-  fn.empty(
-    fn.glob(
-      install_path
-    )
-  ) >
-    0
- then
-  cmd(
-    "!git clone https://github.com/savq/paq-nvim.git " ..
-      install_path
-  )
+local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
 end
 
 -- setup paq
 cmd "packadd paq-nvim"
-local paq =
-  require "paq-nvim".paq
+local paq = require "paq-nvim".paq
 
 -- plugins
 paq {
@@ -42,7 +22,7 @@ paq {
 }
 paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
-paq "tpope/vim-commentary"
+-- paq "tpope/vim-commentary"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-repeat"
@@ -60,6 +40,7 @@ paq "kyazdani42/nvim-web-devicons"
 paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
+paq "b3nj5m1n/kommentary"
 
 -- after plugins
 require "pkg_config"
