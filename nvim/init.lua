@@ -1,6 +1,7 @@
 -- Follow the white rabbit...
 
 -- TODO: 03-17-2021 | look at LSPkind for lua
+-- TODO: 03-17-2021 | use wWbB more....
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
