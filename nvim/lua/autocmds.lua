@@ -55,8 +55,8 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _write = {
-    {"BufWritePre", "*", [[silent! retab]]},
-    {"BufWritePost", "*", [[FormatWrite]]}
+    -- {"BufWritePre", "*", [[silent! retab]]},
+    {"BufWritePost", "*", [[retab | FormatWrite]]}
   }
 }
 

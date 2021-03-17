@@ -13,8 +13,11 @@ silent = {
   silent = true
 }
 
--- secret sauce
+-- leader
 m("n", "<Space>", "", {})
+vim.g.mapleader = " "
+
+-- secret sauce
 m("n", ";", ":", options)
 m("v", ";", ":", options)
 m("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
@@ -31,13 +34,9 @@ m("n", "<c-z>", "<nop>", options)
 m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
 
-vim.g.mapleader = " "
-
 -- disable ale before plugins are loaded
 
 g.ale_disable_lsp = 1
-
-g.mapleader = " "
 
 local utils = require "utils"
 
