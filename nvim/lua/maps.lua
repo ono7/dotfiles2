@@ -7,8 +7,13 @@ silent = {noremap = true, silent = true}
 map("n", "<Space>", "", {})
 vim.g.mapleader = " " -- 'vim.g' sets global variables
 
+-- navigation
+map("n", "j", "gj", {})
+map("n", "k", "gk", {})
+
 -- pure sauce
 map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
+map("x", "jk", "<esc>", silent)
 
 -- tmux
 map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
@@ -27,6 +32,7 @@ map("n", "Q", "@q", options)
 
 map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
+-- map("i", "<c-l>", "g_", {})
 map("n", "H", "^", options)
 map("n", "L", "g_", options)
 map("v", "H", "^", options)
