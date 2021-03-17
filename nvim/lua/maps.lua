@@ -7,7 +7,8 @@ silent = {noremap = true, silent = true}
 map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 -- select visualy selected text for search
-map("x", "<ender>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+map("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
