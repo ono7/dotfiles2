@@ -39,9 +39,10 @@ m("n", "cp", "yap<S-}>p", options)
 function _G.better_insert()
   -- _G global lua obj exposed via v:lua in vim
   -- indents if there is a blank line when going into insert mode
+  -- "_ddO -> "_ preserves the register
   local col = vim.fn.col(".") - 1
   if col == 0 then
-    return "ddO"
+    return '"_ddO'
   else
     return "i"
   end
