@@ -3,6 +3,7 @@
 local cmd, g = vim.cmd, vim.g
 
 -- disable ale before plugins are loaded
+
 g.ale_disable_lsp = 1
 
 g.mapleader = " "

@@ -60,7 +60,7 @@ map("n", "#", "ms#", options)
 map("n", "V", "Vg_", {})
 
 -- buffer ops
-map("n", "<leader>w", ":write<cr>", options)
+map("n", "<leader>w", ":update<cr>", options)
 map("n", "<tab>", ":bnext<cr>", silent)
 map("n", "<s-tab>", ":bprevious<cr>", silent)
 map("n", "Y", "y$", options)
