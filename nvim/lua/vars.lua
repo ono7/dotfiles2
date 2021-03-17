@@ -151,7 +151,6 @@ gs("indentLine_enabled", 0)
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
 
 -- TODO: 03-15-2021 | this does not work
-
 if vim.api.nvim_eval('has("macunix")') ~= 1 then
   clip_copy = "xclip -sel clip -i"
   clip_paste = "xclip -out -selection clipboard"
@@ -176,7 +175,7 @@ g.miniyank_maxitems = 10
 
 -- nvimtree
 g.nvim_tree_width = 25
-g.nvim_tree_auto_open = 0
+g.nvim_tree_auto_open = 1
 g.nvim_tree_auto_close = 1
 -- gs("nvim_tree_ignore", {".git", "node_modules", ".cache"})
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
@@ -187,7 +186,7 @@ g.nvim_tree_git_hl = 1
 g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_tab_open = 0
 g.nvim_tree_disable_netrw = 0
-g.nvim_tree_hijack_netrw = 0
+g.nvim_tree_hijack_netrw = 1
 g.nvim_tree_add_trailing = 1
 
 -- git-blame
