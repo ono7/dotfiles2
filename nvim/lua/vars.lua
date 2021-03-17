@@ -117,10 +117,7 @@ local fzf_window_tbl = {
 gs("fzf_layout", fzf_window_tbl)
 gs("fzf_history_dir", "~/.tmp/fzf-history")
 gs("fzf_buffers_jump", 1)
-gs(
-  "fzf_commits_log_options",
-  '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-)
+gs("fzf_commits_log_options", '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"')
 gs("fzf_nvim_statusline", 1)
 
 local fzf_colors_tbl = {}
