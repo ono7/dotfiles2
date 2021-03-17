@@ -8,8 +8,11 @@ map("n", "<Space>", "", {})
 vim.g.mapleader = " " -- 'vim.g' sets global variables
 
 -- navigation
-map("n", "j", "gj", {})
-map("n", "k", "gk", {})
+map("n", "j", "gj", options)
+map("n", "gj", "j", options)
+
+-- nnoremap j gj
+-- nnoremap gj j
 
 -- pure sauce
 map("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)

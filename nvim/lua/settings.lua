@@ -43,8 +43,8 @@ o.nrformats = "bin,hex,alpha"
 o.shortmess = "atIoOsT"
 o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
 o.pastetoggle = [[<F2>]]
-g.showmatch = true
-g.matchtime = 3
+o.showmatch = true
+o.matchtime = 3
 
 -- window-local options
 wo.number = false
