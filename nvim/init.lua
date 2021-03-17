@@ -36,8 +36,25 @@ m("n", "<c-z>", "<nop>", options)
 m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
 
--- disable ale before plugins are loaded
+-- escape expressions to vim
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
+-- local _G = vim.api.nvim_set_vvar
+
+local _G.better_indent = function()
+  local col = vim.fn.col(".") - 1
+  if col == 0 then
+    return t'cc0'
+  else
+    return t'i'
+  end
+end
+
+-- m("n", "i", 'v:lua.better_indent()', {expr = true, noremap = true})
+
+-- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
 
 -- providers
