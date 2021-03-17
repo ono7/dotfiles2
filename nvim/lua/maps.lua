@@ -30,7 +30,7 @@ map("n", "cp", "yap<S-}>p", options)
 -- macros
 map("n", "Q", "@q", options)
 
-map("n", "<leader>ve", ":e $MYVIMRC<cr>", options)
+map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
 map("n", "H", "^", options)
 map("n", "L", "g_", options)
@@ -65,8 +65,22 @@ map("v", "y", "mxy`x", options)
 map("t", "jk", [[<c-\><c-n>]], options)
 
 -- ale
-map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
-map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+map(
+  "n",
+  "[n",
+  "<Plug>(ale_next_wrap)",
+  {
+    silent = true
+  }
+)
+map(
+  "n",
+  "]n",
+  "<Plug>(ale_previous_wrap)",
+  {
+    silent = true
+  }
+)
 
 -- fzf
 map("n", "<c-p>", ":GFiles<cr>", silent)
@@ -75,8 +89,22 @@ map("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
 map("i", "<expr> <C-c>", "coc#refresh()", silent)
-map("n", "gr", [[<Plug>(coc-references)]], {silent = true})
-map("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
+map(
+  "n",
+  "gr",
+  [[<Plug>(coc-references)]],
+  {
+    silent = true
+  }
+)
+map(
+  "n",
+  "<leader>g",
+  [[<Plug>(coc-definition)]],
+  {
+    silent = true
+  }
+)
 
 -- surround
 vim.g.surround_no_mappings = 1
