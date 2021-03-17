@@ -1,5 +1,7 @@
 -- Follow the white rabbit...
 
+-- TODO: 03-17-2021 | look at LSPkind for lua
+
 local cmd, g = vim.cmd, vim.g
 
 -- disable ale before plugins are loaded
