@@ -6,9 +6,8 @@ local cmd, g = vim.cmd, vim.g
 g.ale_disable_lsp = 1
 
 g.mapleader = " "
--- g.vimsyn_embed = "l"
 
-local utils = require "utils"
+require "utils"
 
 -- providers
 g.python_host_skip_check = 1
