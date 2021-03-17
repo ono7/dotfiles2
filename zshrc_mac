@@ -175,12 +175,19 @@ function dotp () {
     my_dir=$PWD
     cd ~/.dotfiles
     git pull
+    cd ~/.info
+    git pull
     cd $my_dir
 }
 
 function dotc () {
     my_dir=$PWD
     cd ~/.dotfiles
+    git pull
+    git add .
+    git commit '-m' 'updates'
+    git push
+    cd ~/.info
     git pull
     git add .
     git commit '-m' 'updates'
