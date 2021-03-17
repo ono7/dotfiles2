@@ -23,7 +23,6 @@ o.history = 999
 o.ruler = true
 o.scrolloff = 2
 o.sidescrolloff = 1
-o.matchtime = 50
 o.splitbelow = true
 o.smartcase = true
 o.smarttab = true
@@ -44,6 +43,8 @@ o.nrformats = "bin,hex,alpha"
 o.shortmess = "atIoOsT"
 o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
 o.pastetoggle = [[<F2>]]
+g.showmatch = true
+g.matchtime = 3
 
 -- window-local options
 wo.number = false
