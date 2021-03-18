@@ -1,6 +1,7 @@
 {
   "diagnostic.displayByAle": true,
   "diagnostic.messageDelay": 150,
+  "coc.preferences.snippets.enable": false,
   "python.jediEnabled": true,
   "python.venvFolders": ["venv", ".virtualenvs"],
   "python.pythonPath": "~/.virtualenvs/prod3/bin/python",
