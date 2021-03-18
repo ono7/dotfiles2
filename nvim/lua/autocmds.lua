@@ -55,7 +55,7 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _write = {
-    {"BufWritePost", "*", [[FormatWrite]]}
+    {"BufWritePost", "*", [[call v:lua.resetTab() | FormatWrite]]}
   }
 }
 

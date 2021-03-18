@@ -47,14 +47,14 @@ require "format".setup {
     autocmd BufWritePost * FormatWrite
 
   --]]
-  ["*"] = {
-    -- remove trailing whitespace
-    {
-      cmd = {
-        "sed -i 's/[ \t]*$//'"
-      }
-    }
-  },
+  -- ["*"] = {
+  --   -- remove trailing whitespace
+  --   {
+  --     cmd = {
+  --       "sed -i 's/[ \t]*$//'"
+  --     }
+  --   }
+  -- },
   lua = {
     {
       cmd = {
