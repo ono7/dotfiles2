@@ -16,14 +16,9 @@ map("n", "H", "^", options)
 map("n", "L", "g_", options)
 map("v", "H", "^", options)
 map("v", "L", "g_", options)
-map("n", "U", "<c-r>", options)
 map("c", "%s", [[%s/\v]], options)
 map("c", "%g", [[%g/\v]], options)
 map("c", "%v", [[%v/\v]], options)
-
--- indent and retain visual selection
--- map("v", ">", [[>gv]], options)
--- map("v", "<", [[<gv]], options)
 
 -- marks/jumps
 map("n", "'", "`", options)
@@ -51,7 +46,7 @@ map("n", "<leader>f", ":Files<cr>", silent)
 map("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
-map("i", "<expr> <C-c>", "coc#refresh()", silent)
+map("i", "<expr> <c-l>", "coc#refresh()", silent)
 map("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 map("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 
@@ -63,7 +58,7 @@ map("n", "sw", "<Plug>YsurroundiW", {})
 map("n", "ys", "<Plug>Yssurround", {})
 map("n", "ds", "<Plug>Dsurround", {})
 map("n", "cs", "<Plug>Csurround", {})
-map("x", "s", "<Plug>Vsurround", {})
+map("x", "S", "<Plug>VSurround", {})
 
 -- miniyank
 map("n", "p", [[<Plug>(miniyank-autoput)]], {})

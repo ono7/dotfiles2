@@ -5,7 +5,6 @@
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
--- binding opts
 options = {
   noremap = true
 }
@@ -14,18 +13,18 @@ silent = {
   silent = true
 }
 
--- leader
+-- map leader
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
--- secret sauce
+-- gravy
 m("n", ";", ":", options)
 m("v", ";", ":", options)
-m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent)
-m("v", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent)
+m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "gj", "j", options)
 m("n", "gk", "k", options)
 m("n", "Q", "@q", options)
+m("v", "Q", ":'<,'>norm @q<cr>", options)
 m("n", "<leader>d", ":bd!<cr>", options)
 m("n", "<leader>q", ":qall!<cr>", options)
 m("n", "<leader>w", ":update<cr>", silent)
@@ -36,6 +35,7 @@ m("v", "y", "mxy`x", options)
 m("n", "<c-z>", "<nop>", options)
 m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
+m("n", "U", "<c-r>", options)
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
