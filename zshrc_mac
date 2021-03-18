@@ -241,7 +241,7 @@ function vd () {
 # }
 
 function vs () {
-  vim "$(fzf --height 40%)"
+  vim $(fzf || '' 2>/dev/null) 
 }
 
 # load other functions
