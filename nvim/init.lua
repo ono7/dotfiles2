@@ -69,6 +69,7 @@ require "maps"
 require "vars"
 require "settings"
 require "autocmds"
+require "minions"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
