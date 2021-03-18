@@ -23,6 +23,7 @@ g.mapleader = " "
 m("n", ";", ":", options)
 m("v", ";", ":", options)
 m("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
+m("i", "jj", "<esc><cmd>noh<cr><c-g>", silent)
 m("i", "<c-j>", "<esc><cmd>noh<cr><c-g>", silent)
 m("x", "<c-j>", "<esc>", {})
 m("n", "gj", "j", options)
