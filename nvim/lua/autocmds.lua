@@ -24,7 +24,7 @@ local autocmds = {
     {
       "BufWinEnter",
       "*",
-      [[if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif ]]
+      [[if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal nowrap | let b:coc_enable = 0 | setlocal eventignore=all | endif ]]
     },
     {
       "VimEnter",

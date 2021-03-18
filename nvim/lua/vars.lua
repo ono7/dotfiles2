@@ -1,6 +1,9 @@
 local gs = vim.api.nvim_set_var
 local g = vim.g
 
+-- coc
+g.coc_start_at_startup = 0 -- :CocStart
+
 gs(
   "coc_global_extensions",
   {
