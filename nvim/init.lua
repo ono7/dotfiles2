@@ -28,8 +28,8 @@ m("n", "gj", "j", options)
 m("n", "gk", "k", options)
 m("n", "Q", "@q", options)
 m("n", "<leader>d", ":bd!<cr>", options)
-m("n", "<leader>q", ":q!<cr>", options)
-m("n", "<leader>w", ":update<cr>", options)
+m("n", "<leader>q", ":qall!<cr>", options)
+m("n", "<leader>w", ":update<cr>", silent)
 m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
 m("n", "Y", "y$", options)
@@ -40,10 +40,10 @@ m("n", "cp", "yap<S-}>p", options)
 
 function _G.better_insert()
   -- _G global lua obj exposed via v:lua in vim
-  -- indents if there is a blank line when going into insert mode
   -- "_ddO -> "_ preserves the register
-  local col = vim.fn.col(".") - 1
-  if col == 0 then
+  -- local col = vim.fn.col(".") - 1
+  local line = vim.api.nvim_get_current_line()
+  if #line == 0 then
     return '"_ddO'
   else
     return "i"
