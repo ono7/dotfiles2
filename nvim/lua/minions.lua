@@ -1,6 +1,6 @@
 -- utilities
 
-function _G.resetTab()
+function _G.pre_format()
   -- retab file, :lua v:retab()
   local pos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
