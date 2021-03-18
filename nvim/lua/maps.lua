@@ -22,8 +22,8 @@ map("c", "%g", [[%g/\v]], options)
 map("c", "%v", [[%v/\v]], options)
 
 -- indent and retain visual selection
-map("v", ">", [[>gv]], options)
-map("v", "<", [[<gv]], options)
+-- map("v", ">", [[>gv]], options)
+-- map("v", "<", [[<gv]], options)
 
 -- marks/jumps
 map("n", "'", "`", options)
