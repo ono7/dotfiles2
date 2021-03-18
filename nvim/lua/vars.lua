@@ -51,6 +51,8 @@ gs("ale_echo_msg_error_str", "E")
 gs("ale_echo_msg_format", "(%code%): %s")
 gs("ale_echo_msg_warning_str", "W")
 gs("ale_lint_on_enter", 0)
+gs("ale_lint_on_leave", 0)
+gs("ale_lint_on_insert_leave", 0)
 gs("ale_lint_on_save", 1)
 gs("ale_lint_on_text_changed", "never")
 
