@@ -41,10 +41,9 @@ paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
+-- paq "vimwiki/vimwiki"
 
 -- after plugins
 require "pkg_config"
 
 cmd "filetype plugin indent on"
-
--- Plug 'vimwiki/vimwiki'
