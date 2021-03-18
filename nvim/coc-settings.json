@@ -1,4 +1,6 @@
 {
+  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.refreshAfterSave": true,
   "diagnostic.displayByAle": true,
   "diagnostic.messageDelay": 150,
   "coc.preferences.snippets.enable": false,
