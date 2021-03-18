@@ -50,12 +50,13 @@ echo '========== macos keyboard repeat settings =========='
 
 # set keyrate for faster keyboard repeat
 
-# normal minimum is 15 (225 ms)
-# defaults write -g InitialKeyRepeat -int 10
-defaults write -g InitialKeyRepeat -int 10
-
 # normal is 2
 defaults write -g KeyRepeat -int 1
+
+# defaults write -g InitialKeyRepeat -int 10
+# normal minimum is 15 (225 ms)
+defaults write -g InitialKeyRepeat -int 12
+
 
 echo 'macos userland settings set!'
 
