@@ -16,16 +16,13 @@ silent = {
 
 -- leader
 m("n", "<Space>", "", {})
-
 g.mapleader = " "
 
 -- secret sauce
 m("n", ";", ":", options)
 m("v", ";", ":", options)
--- m("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
--- m("i", "jj", "<esc><cmd>noh<cr><c-g>", silent)
--- m("i", "<c-j>", "<esc><cmd>noh<cr><c-g>", silent)
--- m("x", "<c-j>", "<esc>", {})
+m("i", "jk", "<esc><cmd>noh<cr><c-g>", silent)
+m("i", "jj", "<esc><cmd>noh<cr><c-g>", silent)
 m("n", "gj", "j", options)
 m("n", "gk", "k", options)
 m("n", "Q", "@q", options)
