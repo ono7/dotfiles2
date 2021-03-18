@@ -65,7 +65,13 @@ gs("ale_warn_about_trailing_whitespace", 0)
 gs("ale_lint_on_filetype_changed", 0)
 gs("ale_fixers", vim.empty_dict())
 gs("ale_fix_on_save", 0)
-gs("ale_linters", vim.empty_dict())
+gs(
+  "ale_linters",
+  {
+    python = {"pylint"},
+    yaml = {"yamllint"}
+  }
+)
 gs("ale_linters_explicit", 1)
 
 gs("asmsyntax", "nasm")
