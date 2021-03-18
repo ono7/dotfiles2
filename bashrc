@@ -155,3 +155,4 @@ if [ -d "/opt/venvs/ansible_prod" ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source "$HOME/.cargo/env"
