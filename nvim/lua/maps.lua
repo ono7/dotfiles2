@@ -46,7 +46,7 @@ map("n", "<leader>f", ":Files<cr>", silent)
 map("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
-map("i", "<expr> <c-l>", "coc#refresh()", silent)
+map("i", "<c-c>", [[coc#refresh()]], {silent = true, expr = true, noremap = true})
 map("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 map("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 
