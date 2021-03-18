@@ -64,6 +64,9 @@ gs("ale_warn_about_trailing_blank_lines", 0)
 gs("ale_warn_about_trailing_whitespace", 0)
 gs("ale_lint_on_filetype_changed", 0)
 gs("ale_fixers", vim.empty_dict())
+g.ale_lint_delay = 50
+g.ale_max_signs = 50
+g.ale_maximun_file_size = 800000
 gs("ale_fix_on_save", 0)
 gs(
   "ale_linters",
