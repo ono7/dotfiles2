@@ -67,6 +67,7 @@ gs("ale_fixers", vim.empty_dict())
 g.ale_lint_delay = 50
 g.ale_max_signs = 50
 g.ale_maximun_file_size = 800000
+g.ale_python_pylint_options = "-j 8"
 gs("ale_fix_on_save", 0)
 gs(
   "ale_linters",
