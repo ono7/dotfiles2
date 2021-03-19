@@ -37,6 +37,18 @@ m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
+function _G.pre_format()
+  -- :lua pre_format()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  vim.bo.expandtab = true
+  vim.cmd([[%retab!]])
+  vim.cmd([[%s/\s\+$//e]])
+  if vim.g.loaded_format == 1 then
+    vim.cmd([[Format]])
+  end
+  vim.api.nvim_win_set_cursor(0, pos)
+end
+
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
   if #line == 0 then
@@ -64,12 +76,11 @@ g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
 
 -- hold my beer
+require "autocmds"
 require "pkg"
 require "maps"
 require "vars"
 require "settings"
-require "autocmds"
-require "minions"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"
