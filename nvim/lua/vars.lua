@@ -1,111 +1,107 @@
+-- TODO: 03-18-2021 | fix clipboard so its supported in linux..
+
 local gs = vim.api.nvim_set_var
 local g = vim.g
 
 -- coc
-g.coc_start_at_startup = 1 -- :CocStart
+g.coc_start_at_startup = 1
 
-gs(
-  "coc_global_extensions",
-  {
-    "coc-python",
-    "coc-json",
-    "coc-tsserver",
-    "coc-prettier",
-    "coc-omnisharp",
-    "coc-lua",
-    "coc-yaml"
-  }
-)
-gs("tmux_navigator_disable_when_zoomed", 1)
+g.coc_global_extensions = {
+  "coc-python",
+  "coc-json",
+  "coc-tsserver",
+  "coc-prettier",
+  "coc-omnisharp",
+  "coc-lua",
+  "coc-yaml"
+}
+g.tmux_navigator_disable_when_zoomed = 1
 
 -- " use all the beautiful things jedi-vim offers, but leave completion to coc
 gs("jedi#completions_enabled", 0)
 gs("jedi#goto_assignments_command", "")
 
-gs("AutoPairsUseInsertedCount", 0)
-gs("AutoPairsFlyMode", 0)
-gs("AutoPairsShortcutFastWrap", "<C-e>")
-gs("AutoPairsShortcutBackInsert", "<C-b>")
+-- autopairs
+g.AutoPairsUseInsertedCount = 0
+g.AutoPairsFlyMode = 0
+g.AutoPairsShortcutFastWrap = "<C-e>"
+g.AutoPairsShortcutBackInsert = "<C-b>"
 
-gs("vimwiki_global_ext", 0)
-gs("vimwiki_table_mappings", 0)
-gs(
-  "wiki",
-  {
-    path = "wiki",
-    nested_syntaxes = {
-      python = "python",
-      cpp = "cpp",
-      javascript = "javascript",
-      bash = "sh",
-      php = "php",
-      lua = "lua"
-    }
+-- vimwiki
+g.vimwiki_global_ext = 0
+g.vimwiki_table_mappings = 0
+
+g.wiki = {
+  path = "wiki",
+  nested_syntaxes = {
+    python = "python",
+    cpp = "cpp",
+    javascript = "javascript",
+    bash = "sh",
+    php = "php",
+    lua = "lua"
   }
-)
+}
+g.vimwiki_listsyms = "✗○◐●✓"
+g.vim_markdown_folding_disabled = 1
 
-gs("vimwiki_listsyms", "✗○◐●✓")
-gs("vim_markdown_folding_disabled", 1)
-
-gs("ale_echo_msg_error_str", "E")
-gs("ale_echo_msg_format", "(%code%): %s")
-gs("ale_echo_msg_warning_str", "W")
-gs("ale_lint_on_enter", 0)
-gs("ale_lint_on_leave", 0)
-gs("ale_lint_on_insert_leave", 0)
-gs("ale_lint_on_save", 1)
-gs("ale_lint_on_text_changed", "never")
-
-gs("ale_sign_error", "•")
-gs("ale_sign_warning", "•")
-gs("ale_sign_offset", 1000000)
-gs("ale_virtualtext_cursor", 0)
-gs("ale_warn_about_trailing_blank_lines", 0)
-gs("ale_warn_about_trailing_whitespace", 0)
-gs("ale_lint_on_filetype_changed", 0)
-gs("ale_fixers", vim.empty_dict())
+-- ale
+g.ale_echo_msg_error_str = "E"
+g.ale_echo_msg_format = [[(%code%): %s]]
+g.ale_echo_msg_warning_str = "W"
+g.ale_lint_on_enter = 0
+g.ale_lint_on_leave = 0
+g.ale_lint_on_insert_leave = 0
+g.ale_lint_on_save = 1
+g.ale_lint_on_text_changed = "never"
+g.ale_sign_error = "•"
+g.ale_sign_warning = "•"
+g.ale_sign_offset = 1000000
+g.ale_virtualtext_cursor = 0
+g.ale_warn_about_trailing_blank_lines = 0
+g.ale_warn_about_trailing_whitespace = 0
+g.ale_lint_on_filetype_changed = 0
+g.ale_fixers = vim.empty_dict()
 g.ale_lint_delay = 50
 g.ale_max_signs = 50
 g.ale_maximun_file_size = 800000
 g.ale_python_pylint_options = "-j 8"
-gs("ale_fix_on_save", 0)
-gs(
-  "ale_linters",
-  {
-    python = {"pylint"},
-    yaml = {"yamllint"}
-  }
-)
-gs("ale_linters_explicit", 1)
+g.ale_fix_on_save = 0
+g.ale_linters = {
+  python = {"pylint"},
+  yaml = {"yamllint"}
+}
+g.ale_linters_explicit = 1
 
-gs("asmsyntax", "nasm")
+g.asmsyntax = "nasm"
 
-gs(
-  "markdown_fenced_languages",
-  {
-    "html",
-    "python",
-    "sh",
-    "nasm",
-    "vim",
-    "php",
-    "javascript",
-    "lua",
-    "sql"
-  }
-)
-gs("markdown_syntax_conceal", 0)
+-- markdown
+g.markdown_fenced_languages = {
+  "html",
+  "python",
+  "sh",
+  "nasm",
+  "vim",
+  "php",
+  "javascript",
+  "lua",
+  "sql"
+}
+g.markdown_syntax_conceal = 0
 
-gs("buftabline_show", 0)
-gs("SuperTabDefaultCompletionType", "<C-n>")
-gs("SuperTabClosePreviewOnPopupClose", 1)
+g.buftabline_show = 0
 
-gs("UltiSnipsExpandTrigger", "<tab>")
-gs("UltiSnipsJumpForwardTrigger", "<tab>")
-gs("UltiSnipsJumpBackwardTrigger", "<s-tab>")
-gs("UltiSnipsSnippetDirectories", {"~/.config/nvim/UltiSnips", "UltiSnips"})
-gs("UltiSnipsEditSplit", "horizontal")
-gs("UltiSnipsUsePythonVersion", 3)
+-- supertab
+g.SuperTabDefaultCompletionType = "<C-n>"
+g.SuperTabClosePreviewOnPopupClose = 1
+
+-- ultisnips
+g.UltiSnipsExpandTrigger = "<tab>"
+g.UltiSnipsJumpForwardTrigger = "<tab>"
+g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
+g.UltiSnipsEditSplit = "horizontal"
+g.UltiSnipsUsePythonVersion = 3
 
 --[[
 
@@ -128,15 +124,13 @@ local fzf_window_tbl = {
     border = "bottom"
   }
 }
-
 -- gs("fzf_layout", fzf_window_tbl)
-gs("fzf_history_dir", "~/.tmp/fzf-history")
-gs("fzf_buffers_jump", 1)
-gs("fzf_commits_log_options", '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"')
-gs("fzf_nvim_statusline", 1)
+g.fzf_history_dir = "~/.tmp/fzf-history"
+g.fzf_buffers_jump = 1
+g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"]]
+g.fzf_nvim_statusline = 1
 
 local fzf_colors_tbl = {}
-
 fzf_colors_tbl.fg = {"fg", "Comment"}
 fzf_colors_tbl.hl = {"fg", "RedBold"}
 fzf_colors_tbl["fg+"] = {"fg", "GreenBold"}
@@ -147,21 +141,18 @@ fzf_colors_tbl.prompt = {"fg", "BlueBold"}
 fzf_colors_tbl.pointer = {"fg", "RedBold"}
 fzf_colors_tbl.gutter = {"fg", "fzf_bg"}
 fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
+g.fzf_colors = fzf_colors_tbl
 
-gs("fzf_colors", fzf_colors_tbl)
-
-gs("indentLine_char", "‧")
-gs("indentLine_color_term", 8)
-gs("indentLine_concealcursor", "inc")
-gs("indentLine_conceallevel", 2)
-gs(
-  "indentLine_fileTypeExclude",
-  {
-    "text",
-    "markdown"
-  }
-)
-gs("indentLine_enabled", 0)
+-- indentline
+-- g.indentLine_char = "‧"
+-- g.indentLine_color_term = 8
+-- g.indentLine_concealcursor = "inc"
+-- g.indentLine_conceallevel = 2
+-- g.indentLine_fileTypeExclude = {
+--   "text",
+--   "markdown"
+-- }
+-- g.indentLine_enabled = 0
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
 
@@ -181,7 +172,7 @@ clipboard_tbl.paste = {}
 clipboard_tbl.paste["*"] = "tmux save-buffer -"
 clipboard_tbl.paste["+"] = clip_paste
 
-gs("clipboard", clipboard_tbl)
+g.clipboard = clipboard_tbl
 
 vim.o.clipboard = "unnamed,unnamedplus"
 
@@ -207,29 +198,3 @@ g.nvim_tree_add_trailing = 1
 g.gitblame_enabled = 0
 g.gitblame_date_format = [[%m/%d/%Y]]
 g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
-
---[[
-
-  vim API
-  Global variables (g:):
-    vim.api.nvim_set_var()
-    vim.api.nvim_get_var()
-    vim.api.nvim_del_var()
-  Buffer variables (b:):
-    vim.api.nvim_buf_set_var()
-    vim.api.nvim_buf_get_var()
-    vim.api.nvim_buf_del_var()
-  Window variables (w:):
-    vim.api.nvim_win_set_var()
-    vim.api.nvim_win_get_var()
-    vim.api.nvim_win_del_var()
-  Tabpage variables (t:):
-    vim.api.nvim_tabpage_set_var()
-    vim.api.nvim_tabpage_get_var()
-    vim.api.nvim_tabpage_del_var()
-  Predefined Vim variables (v:):
-    vim.api.nvim_set_vvar()
-    vim.api.nvim_get_vvar()
-
---]]
---

@@ -1,69 +1,69 @@
-local map = vim.api.nvim_set_keymap
+local m = vim.api.nvim_set_keymap
 
 options = {noremap = true}
 silent = {noremap = true, silent = true}
 
 -- tmux
-map("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 -- select visualy selected text for search
-map("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
-map("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+m("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+m("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
-map("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
+m("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
-map("n", "H", "^", options)
-map("n", "L", "g_", options)
-map("v", "H", "^", options)
-map("v", "L", "g_", options)
-map("c", "%s", [[%s/\v]], options)
-map("c", "%g", [[%g/\v]], options)
-map("c", "%v", [[%v/\v]], options)
+m("n", "H", "^", options)
+m("n", "L", "g_", options)
+m("v", "H", "^", options)
+m("v", "L", "g_", options)
+m("c", "%s", [[%s/\v]], options)
+m("c", "%g", [[%g/\v]], options)
+m("c", "%v", [[%v/\v]], options)
 
 -- marks/jumps
-map("n", "'", "`", options)
-map("n", "/", [[ms/\v]], options)
-map("x", "/", [[ms/\v]], options)
-map("n", "?", [[ms?\v]], options)
-map("x", "?", [[ms?\v]], options)
-map("n", "gg", "msgg<c-g>", options)
-map("n", "G", "msG<c-g>", options)
-map("n", "gd", "msgd", options)
-map("n", "*", "ms*", options)
-map("n", "#", "ms#", options)
-map("n", "V", "Vg_", {})
+m("n", "'", "`", options)
+m("n", "/", [[ms/\v]], options)
+m("x", "/", [[ms/\v]], options)
+m("n", "?", [[ms?\v]], options)
+m("x", "?", [[ms?\v]], options)
+m("n", "gg", "msgg<c-g>", options)
+m("n", "G", "msG<c-g>", options)
+m("n", "gd", "msgd", options)
+m("n", "*", "ms*", options)
+m("n", "#", "ms#", options)
+m("n", "V", "Vg_", {})
 
 -- terminal
-map("t", "jk", [[<c-\><c-n>]], options)
+m("t", "jk", [[<c-\><c-n>]], options)
 
 -- ale
-map("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
-map("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+m("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
+m("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- fzf
-map("n", "<c-p>", ":GFiles<cr>", silent)
-map("n", "<leader>f", ":Files<cr>", silent)
-map("n", "<leader>b", ":Buffers<cr>", silent)
+m("n", "<c-p>", ":GFiles<cr>", silent)
+m("n", "<leader>f", ":Files<cr>", silent)
+m("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
-map("i", "<c-c>", "<nop>", {})
-map("i", "<c-c>", [[coc#refresh()]], {silent = true, expr = true, noremap = true})
-map("n", "gr", [[<Plug>(coc-references)]], {silent = true})
-map("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
+m("i", "<c-c>", "<nop>", {})
+m("i", "<c-c>", [[coc#refresh()]], {silent = true, expr = true, noremap = true})
+m("n", "gr", [[<Plug>(coc-references)]], {silent = true})
+m("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 
 -- surround
 vim.g.surround_no_mappings = 1
-map("n", "S", "<Plug>YSurround", {})
-map("n", "s", "<Plug>Ysurround", {})
-map("n", "sw", "<Plug>YsurroundiW", {})
-map("n", "ys", "<Plug>Yssurround", {})
-map("n", "ds", "<Plug>Dsurround", {})
-map("n", "cs", "<Plug>Csurround", {})
-map("x", "S", "<Plug>VSurround", {})
+m("n", "S", "<Plug>YSurround", {})
+m("n", "s", "<Plug>Ysurround", {})
+m("n", "sw", "<Plug>YsurroundiW", {})
+m("n", "ys", "<Plug>Yssurround", {})
+m("n", "ds", "<Plug>Dsurround", {})
+m("n", "cs", "<Plug>Csurround", {})
+m("x", "S", "<Plug>VSurround", {})
 
 -- miniyank
-map("n", "p", [[<Plug>(miniyank-autoput)]], {})
-map("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+m("n", "p", [[<Plug>(miniyank-autoput)]], {})
+m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 -- nvimtree
-map("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
+m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
