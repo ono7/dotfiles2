@@ -309,6 +309,7 @@ silent!  syn  clear  Normal
 silent!  syn  clear  Comment
 
 hi!  Normal       ctermbg=0    guibg=none     guifg=none
+hi!  snipLeadingSpaces ctermbg=0    guibg=none     guifg=none
 hi!  Comment      ctermfg=8    guifg=#5c6370
 hi!  link         SpecialKey   Orange
 hi!  link         NonText      Orange
