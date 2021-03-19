@@ -67,3 +67,35 @@ m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 -- nvimtree
 m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
+
+-- spell
+-- m("n", "<leader>s", "]s1z=", silent )
+
+-- vimwiki
+m("n", [[\wa]], [[<Plug>Vimwiki2HTMLBrowse]], {})
+m("n", [[\wb]], [[<Plug>VimwikiRenameFile]], {})
+m("n", [[\wc]], [[<Plug>VimwikiDiaryIndex]], {})
+m("n", [[\wd]], [[<Plug>VimwikiDeleteFile]], {})
+m("n", [[\we]], [[<Plug>VimwikiTabIndex]], {})
+m("n", [[\wf]], [[<Plug>VimwikiUISelect]], {})
+m("n", [[\wg]], [[<Plug>VimwikiIndex]], {})
+m("n", [[\wh]], [[<Plug>Vimwiki2HTML]], {})
+m("n", [[\wj]], [[<Plug>VimwikiMakeYesterdayDiaryNote]], {})
+m("n", [[\wk]], [[<Plug>VimwikiMakeTomorrowDiaryNote]], {})
+m("n", [[\wl]], [[<Plug>VimwikiDiaryGenerateLinks]], {})
+m("n", [[\wm]], [[<Plug>VimwikiTabMakeDiaryNote]], {})
+m("n", [[\wn]], [[<Plug>VimwikiMakeDiaryNote]], {})
+
+-- shellcode
+m(
+  "x",
+  "<space>h",
+  [[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
+  silent
+)
+
+-- " remove any spaces and un-hexify (visual select)
+-- xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
+
+-- " remove any spaces/shellcode
+-- xnoremap <silent><leader>s ^ :s/\v\s+//ge<cr><bar> :noh<cr>
