@@ -94,6 +94,10 @@ m(
   silent
 )
 
+m("n", "<leader>s", [[]s1z=]], options)
+
+-- nnoremap <leader>s ]s1z=
+
 -- " remove any spaces and un-hexify (visual select)
 -- xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
 
