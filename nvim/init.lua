@@ -5,10 +5,11 @@
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
-options = {
+local options = {
   noremap = true
 }
-silent = {
+
+local silent = {
   noremap = true,
   silent = true
 }
@@ -38,13 +39,12 @@ m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
 function _G.pre_format()
-  -- :lua pre_format()
   local pos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
-  vim.cmd([[%retab!]])
-  vim.cmd([[%s/\s\+$//e]])
+  cmd([[%retab!]])
+  cmd([[%s/\s\+$//e]])
   if vim.g.loaded_format == 1 then
-    vim.cmd([[Format]])
+    cmd([[Format]])
   end
   vim.api.nvim_win_set_cursor(0, pos)
 end
@@ -72,9 +72,6 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
--- highlight yanked text
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
-
 -- hold my beer
 require "autocmds"
 require "pkg"
@@ -88,3 +85,6 @@ cmd "syntax enable"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
+
+-- highlight yanked text
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
