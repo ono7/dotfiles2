@@ -45,16 +45,7 @@ require "format".setup {
     npm install lua-fmt prettier -g
     pip install black pylint epdb ipython
     autocmd BufWritePost * FormatWrite
-
   --]]
-  -- ["*"] = {
-  --   -- remove trailing whitespace
-  --   {
-  --     cmd = {
-  --       "sed -i 's/[ \t]*$//'"
-  --     }
-  --   }
-  -- },
   lua = {
     {
       cmd = {
@@ -140,6 +131,14 @@ require "format".setup {
       end_pattern = "^```$",
       target = "current"
       -- current only format where cursor is
+    },
+    {
+      cmd = {
+        "black"
+      },
+      start_pattern = "^```python$",
+      end_pattern = "^```$",
+      target = "current"
     }
   }
 }
