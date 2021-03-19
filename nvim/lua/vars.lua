@@ -1,11 +1,9 @@
 -- TODO: 03-18-2021 | fix clipboard so its supported in linux..
 
-local gs = vim.api.nvim_set_var
-local g = vim.g
+local gs, g = vim.api.nvim_set_var, vim.g
 
 -- coc
 g.coc_start_at_startup = 1
-
 g.coc_global_extensions = {
   "coc-python",
   "coc-json",

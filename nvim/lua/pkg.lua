@@ -35,12 +35,12 @@ paq "dense-analysis/ale"
 paq "bfredl/nvim-miniyank"
 paq "junegunn/fzf"
 paq "junegunn/fzf.vim"
--- paq "akinsho/nvim-bufferline.lua"
 paq "kyazdani42/nvim-web-devicons"
 paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
+-- paq "akinsho/nvim-bufferline.lua"
 -- paq "vimwiki/vimwiki"
 
 -- after plugins
