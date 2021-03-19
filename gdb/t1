@@ -15,26 +15,26 @@ focus cmd
 # Size the command window to display more of the disassembly view
 winheight cmd 5
 
-# Size the register window save space 
+# Size the register window save space
 # (windows of 114 cols will show all registers in two columns)
 winheight reg 14
 
 # Define a command to show the stack in a useful way
 define stackdump
-	set $offset=32
-	while $offset > -1
-		x/gx $esp+$offset
-		set $offset=$offset-8
-	end
+  set $offset=32
+  while $offset > -1
+    x/gx $esp+$offset
+    set $offset=$offset-8
+  end
 end
 
 # Dump the top of the stack at each break
 define hook-stop
-	stackdump
+  stackdump
 end
 
 # Set up relevant breakpoints
 break main
 
-# Start the target 
+# Start the target
 run
