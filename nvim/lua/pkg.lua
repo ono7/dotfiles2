@@ -3,6 +3,7 @@
 local cmd, fn, g = vim.cmd, vim.fn, vim.g
 
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
   vim.api.nvim_exec([[autocmd VimEnter * PaqInstall]], false)
