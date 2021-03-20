@@ -86,6 +86,10 @@ m("n", [[\wl]], [[<Plug>VimwikiDiaryGenerateLinks]], {})
 m("n", [[\wm]], [[<Plug>VimwikiTabMakeDiaryNote]], {})
 m("n", [[\wn]], [[<Plug>VimwikiMakeDiaryNote]], {})
 
+-- n  <Tab>        @<Plug>VimwikiNextLink
+-- v  <CR>         @<Plug>VimwikiNormalizeLinkVisualCR
+-- n  <CR>         @<Plug>VimwikiFollowLink
+
 -- shellcode
 m(
   "x",
