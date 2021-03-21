@@ -68,6 +68,9 @@ m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 -- nvimtree
 m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
 
+-- spell
+m("n", "<leader>s", [[]s1z=]], options)
+
 -- shellcode
 m(
   "x",
@@ -75,11 +78,6 @@ m(
   [[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
   silent
 )
-
--- spell
-m("n", "<leader>s", [[]s1z=]], options)
-
--- nnoremap <leader>s ]s1z=
 
 -- " remove any spaces and un-hexify (visual select)
 -- xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
