@@ -78,6 +78,7 @@ require "pkg"
 require "maps"
 require "vars"
 require "settings"
+require "minions"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"

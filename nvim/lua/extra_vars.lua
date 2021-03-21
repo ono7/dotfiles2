@@ -1,4 +1,6 @@
-classic_cfg =
+M = {}
+
+M.classic_cfg =
   [[
 
   " classic vim settings
@@ -87,7 +89,4 @@ classic_cfg =
 
 ]]
 
--- paste classic vim config
-function _G.classic()
-  vim.api.nvim_paste(classic_cfg, "", -1)
-end
+return M
