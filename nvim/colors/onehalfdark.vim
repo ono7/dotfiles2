@@ -298,10 +298,12 @@ hi!  link  TSKeywordOperator      RedItalic
 " hi!  link  TSFuncBuiltin          NormalItalic
 hi!  link  TSParameter            Normal
 hi!  link  Function               Normal
+hi!  link  TSFunction               Normal
 hi!  link  TSConstructor          Orange
 hi!  link  TSType                 Orange
 hi!  TSFuncBuiltin ctermfg=223 guifg=#d4be98
 hi!  TSVariableBuiltin  gui=italic  ctermfg=245  guifg=#d4be98
+hi! link TSField Purple
 
 hi!  VertSplit ctermbg=NONE guibg=NONE
 
