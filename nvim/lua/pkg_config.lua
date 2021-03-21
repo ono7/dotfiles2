@@ -87,14 +87,6 @@ if vim.g.loaded_paq then
     vimwiki = {
       {
         cmd = {
-          "prettier -w --parser babel"
-        },
-        start_pattern = "^{{{javascript$",
-        end_pattern = "^}}}$",
-        target = "current"
-      },
-      {
-        cmd = {
           "luafmt -i 2 -w replace"
         },
         start_pattern = "^{{{lua$",
@@ -132,6 +124,14 @@ if vim.g.loaded_paq then
         end_pattern = "^```$",
         target = "current"
         -- current only format where cursor is
+      },
+      {
+        cmd = {
+          "prettier -w --parser babel --single-quote"
+        },
+        start_pattern = "^```javascript$",
+        end_pattern = "^```$",
+        target = "current"
       },
       {
         cmd = {
