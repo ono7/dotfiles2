@@ -1,12 +1,6 @@
 -- init lua plugins
 
 if vim.g.loaded_paq then
-  --[[ require "bufferline".setup {
-  options = {
-    always_show_bufferline = false,
-    show_buffer_close_icons = false
-  }
-} ]]
   require("kommentary.config").configure_language(
     "default",
     {
@@ -105,8 +99,8 @@ if vim.g.loaded_paq then
     javascript = {
       {
         cmd = {
-          "prettier -w --single-quote",
-          "eslint --fix"
+          "prettier -w"
+          -- "eslint --fix"
         }
       }
     },
