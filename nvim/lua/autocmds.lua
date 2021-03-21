@@ -55,7 +55,7 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _write = {
-    {"BufWritePre", "*", [[:call v:lua.pre_format()]]}
+    {"BufWritePre", "*", [[:call v:lua.pre_write()]]}
   }
 }
 

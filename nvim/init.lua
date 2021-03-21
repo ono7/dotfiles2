@@ -38,7 +38,7 @@ m("c", "<c-z>", "<nop>", options)
 m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
-function _G.pre_format()
+function _G.pre_write()
   local pos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
   cmd([[%retab!]])
