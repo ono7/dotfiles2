@@ -9,8 +9,8 @@ snippet report "osce report template" b
 
 <br>
 
-| Author      | Date             |
-|-------------|------------|
+| Author|Date|
+|-|-|
 | *Jose Lima* |  `!v strftime("%-m/%-d/%Y")` |
 
 <br>
@@ -41,7 +41,7 @@ snippet report "osce report template" b
 <br>
 endsnippet
 
-snippet ima "insert image" b
+snippet img "insert image" b
 <p align="center">
     <img src="img/${1:}.png" width="500">
 </p>
@@ -84,13 +84,6 @@ Date | Version | Author
 
 endsnippet
 
-snippet xxxxxxx "place holder for cool functions"
-    # add file name and strip extension
-        `!v expand('%:t:r')`
-    # add date to file
-        `!v strftime("%a %b %-d %-I:%M:%S %p %Y")`
-endsnippet
-
 snippet "(code|cod|c)" "code block" br
 
 `!v repeat(nr2char(96),3)`$1
@@ -98,4 +91,46 @@ ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
 `!v repeat(nr2char(96),3)`
 
 $0
+endsnippet
+
+snippet * "italics"
+*${1:${VISUAL}}*$0
+endsnippet
+
+snippet ** "bold"
+**${1:${VISUAL}}**$0
+endsnippet
+
+snippet *** "bold italics"
+***${1:${VISUAL}}***$0
+endsnippet
+
+snippet /* "Comment"
+<!-- ${1:${VISUAL}} -->$0
+endsnippet
+
+snippet "(ln|link)" "Link to something" r
+[${1:${VISUAL:Text}}](${3:https://${2:www.url.com}})$0
+endsnippet
+
+snippet imgg "Image"
+![${1:pic alt}](${2:path}${3/.+/ "/}${3:opt title}${3/.+/"/})$0
+endsnippet
+
+snippet refl "Reference Link"
+[${1:${VISUAL:Text}}][${2:id}]$0
+
+[$2]:${4:https://${3:www.url.com}} "${5:$4}"
+endsnippet
+
+snippet fnt "Footnote"
+[^${1:${VISUAL:Footnote}}]$0
+
+[^$1]:${2:Text}
+endsnippet
+
+snippet detail "Disclosure"
+<details${3: open=""}>
+  ${1:<summary>${2}</summary>}$0
+</details>
 endsnippet
