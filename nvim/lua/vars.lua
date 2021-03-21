@@ -8,7 +8,7 @@ g.coc_global_extensions = {
   "coc-python",
   "coc-json",
   "coc-tsserver",
-  "coc-prettier",
+  -- "coc-prettier",
   "coc-omnisharp",
   "coc-lua",
   "coc-yaml"

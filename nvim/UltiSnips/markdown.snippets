@@ -43,7 +43,7 @@ endsnippet
 
 snippet img "insert image" b
 <p align="center">
-    <img src="img/${1:}.png" width="500">
+    <img src="img/${1:}" width="500">
 </p>
 $0
 endsnippet
@@ -133,4 +133,28 @@ snippet detail "Disclosure"
 <details${3: open=""}>
   ${1:<summary>${2}</summary>}$0
 </details>
+endsnippet
+
+snippet h1 "header" b
+# $0
+endsnippet
+
+snippet h2 "section" b
+## $0
+endsnippet
+
+snippet h3 "section" b
+### $0
+endsnippet
+
+snippet h4 "section" b
+#### $0
+endsnippet
+
+snippet h5 "section" b
+##### $0
+endsnippet
+
+snippet h6 "section" b
+###### $0
 endsnippet
