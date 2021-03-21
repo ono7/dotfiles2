@@ -68,6 +68,41 @@ m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 -- nvimtree
 m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
 
+-- spell
+-- m("n", "<leader>s", "]s1z=", silent )
+
+-- vimwiki
+vim.g.vimwiki_key_mappings = {
+  all_maps = 1,
+  global = 0,
+  headers = 1,
+  text_objs = 0,
+  table_format = 1,
+  table_mappings = 1,
+  lists = 1,
+  links = 1,
+  html = 0,
+  mouse = 0
+}
+
+-- m("n", [[\wa]], [[<Plug>Vimwiki2HTMLBrowse]], {})
+-- m("n", [[\wb]], [[<Plug>VimwikiRenameFile]], {})
+-- m("n", [[\wc]], [[<Plug>VimwikiDiaryIndex]], {})
+-- m("n", [[\wd]], [[<Plug>VimwikiDeleteFile]], {})
+-- m("n", [[\we]], [[<Plug>VimwikiTabIndex]], {})
+-- m("n", [[\wf]], [[<Plug>VimwikiUISelect]], {})
+-- m("n", [[\wg]], [[<Plug>VimwikiIndex]], {})
+-- m("n", [[\wh]], [[<Plug>Vimwiki2HTML]], {})
+-- m("n", [[\wj]], [[<Plug>VimwikiMakeYesterdayDiaryNote]], {})
+-- m("n", [[\wk]], [[<Plug>VimwikiMakeTomorrowDiaryNote]], {})
+-- m("n", [[\wl]], [[<Plug>VimwikiDiaryGenerateLinks]], {})
+-- m("n", [[\wm]], [[<Plug>VimwikiTabMakeDiaryNote]], {})
+-- m("n", [[\wn]], [[<Plug>VimwikiMakeDiaryNote]], {})
+
+-- n  <Tab>        @<Plug>VimwikiNextLink
+-- v  <CR>         @<Plug>VimwikiNormalizeLinkVisualCR
+-- n  <CR>         @<Plug>VimwikiFollowLink
+
 -- shellcode
 m(
   "x",
@@ -76,7 +111,6 @@ m(
   silent
 )
 
--- spell
 m("n", "<leader>s", [[]s1z=]], options)
 
 -- nnoremap <leader>s ]s1z=
