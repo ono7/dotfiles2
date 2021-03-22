@@ -39,16 +39,10 @@ m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
 function _G.pre_write()
-
-
-
   local pos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
   cmd([[%retab!]])
   cmd([[%s/\s\+$//e]])
-  if vim.g.loaded_format == 1 then
-    cmd([[Format]])
-  end
   vim.api.nvim_win_set_cursor(0, pos)
 end
 
@@ -76,8 +70,8 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
-require "autocmds"
 require "pkg"
+require "autocmds"
 require "maps"
 require "vars"
 require "settings"
@@ -94,5 +88,10 @@ cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", time
 
 -- get vim classic config for old versions of vim  :lua classic()
 function _G.classic()
+
+
+
+
+
   vim.api.nvim_paste(require("extra_vars").classic_cfg, "", -1)
 end
