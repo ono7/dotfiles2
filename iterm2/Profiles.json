@@ -310,11 +310,11 @@
   },
   "Default Bookmark" : "No",
   "Cursor Color" : {
-    "Red Component" : 0.8784313725490196,
+    "Red Component" : 0.59607843137254901,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.45882352941176469,
+    "Blue Component" : 0.47450980392156861,
     "Alpha Component" : 1,
-    "Green Component" : 0.42352941176470588
+    "Green Component" : 0.76470588235294112
   },
   "Ansi 1 Color" : {
     "Red Component" : 0.8784313725490196,
