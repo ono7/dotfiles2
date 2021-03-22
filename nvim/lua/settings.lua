@@ -71,3 +71,4 @@ bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
 bo.cindent = true
 bo.smartindent = true
+bo.cursorline = false
