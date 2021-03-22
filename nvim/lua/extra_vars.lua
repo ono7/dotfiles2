@@ -1,6 +1,6 @@
 M = {}
 
-M.classic_cfg =
+M.legacy_cfg =
   [[
 
   " classic vim settings

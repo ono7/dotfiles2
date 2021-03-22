@@ -86,7 +86,7 @@ cmd "syntax on"
 -- highlight yanked text
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
 
--- get vim classic config for old versions of vim  :lua classic()
-function _G.classic()
-  vim.api.nvim_paste(require("extra_vars").classic_cfg, "", -1)
+-- get vim legacy config for old versions of vim  :lua legacy()
+function _G.legacy()
+  vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
