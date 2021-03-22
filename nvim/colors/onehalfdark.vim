@@ -302,6 +302,7 @@ hi!  link  TSFunction               Normal
 hi!  link  TSConstructor          Orange
 hi!  link  TSType                 Orange
 hi!  TSFuncBuiltin ctermfg=223 guifg=#d4be98
+hi!  TSTypeBuiltin ctermfg=223 guifg=#d4be98
 hi!  TSVariableBuiltin  gui=italic  ctermfg=245  guifg=#d4be98
 hi! link TSMethod RedItalic
 hi! link TSField Purple
