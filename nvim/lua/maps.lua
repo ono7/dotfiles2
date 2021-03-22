@@ -69,7 +69,7 @@ m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
 
 -- spell
-m("n", "<leader>s", [[]s1z=]], options)
+m("n", "<leader>s", [[]s1z=]], silent)
 
 -- shellcode
 m(
