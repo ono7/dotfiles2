@@ -21,6 +21,8 @@ g.mapleader = " "
 -- gravy
 m("n", ";", ":", options)
 m("v", ";", ":", options)
+m("n", ":", ";", options)
+m("v", ":", ";", options)
 m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "gj", "j", options)
 m("n", "gk", "k", options)
