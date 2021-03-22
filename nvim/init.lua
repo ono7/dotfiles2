@@ -48,6 +48,7 @@ end
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
+
   if #line == 0 then
     return '"_ddO'
   else
@@ -88,10 +89,5 @@ cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", time
 
 -- get vim classic config for old versions of vim  :lua classic()
 function _G.classic()
-
-
-
-
-
   vim.api.nvim_paste(require("extra_vars").classic_cfg, "", -1)
 end
