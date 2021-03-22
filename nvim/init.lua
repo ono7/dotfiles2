@@ -48,7 +48,6 @@ end
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
-
   if #line == 0 then
     return '"_ddO'
   else
