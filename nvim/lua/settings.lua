@@ -55,6 +55,7 @@ wo.numberwidth = 2
 wo.signcolumn = "yes:1"
 wo.foldenable = false
 wo.list = true
+wo.cursorline = false
 
 -- buffer-local options
 bo.autoindent = true
@@ -71,4 +72,3 @@ bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
 bo.cindent = true
 bo.smartindent = true
-bo.cursorline = false
