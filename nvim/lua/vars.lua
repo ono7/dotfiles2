@@ -1,5 +1,3 @@
--- TODO: 03-18-2021 | fix clipboard so its supported in linux..
-
 local gs, g = vim.api.nvim_set_var, vim.g
 
 -- coc
@@ -154,8 +152,7 @@ g.fzf_colors = fzf_colors_tbl
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
 
--- TODO: 03-15-2021 | this does not work
-if vim.api.nvim_eval('has("macunix")') ~= 1 then
+if vim.fn.has("macunix") ~= 1 then
   clip_copy = "xclip -sel clip -i"
   clip_paste = "xclip -out -selection clipboard"
 end
