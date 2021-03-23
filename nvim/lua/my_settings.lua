@@ -3,6 +3,7 @@ local wo = vim.wo
 local bo = vim.bo
 
 --- global options
+o.folding = "manual"
 o.termguicolors = true
 o.cmdheight = 2
 o.directory = "~/.tmp"
