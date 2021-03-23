@@ -25,7 +25,7 @@ paq {
 paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
-paq "tpope/vim-markdown"
+-- paq "tpope/vim-markdown"
 paq "tpope/vim-repeat"
 paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"

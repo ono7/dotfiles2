@@ -23,33 +23,6 @@ g.AutoPairsFlyMode = 0
 g.AutoPairsShortcutFastWrap = "<C-e>"
 g.AutoPairsShortcutBackInsert = "<C-b>"
 
--- vimwiki
-g.vimwiki_global_ext = 0
-g.wiki = {
-  path = "wiki",
-  nested_syntaxes = {
-    python = "python",
-    cpp = "cpp",
-    javascript = "javascript",
-    bash = "sh",
-    php = "php",
-    lua = "lua"
-  }
-}
-g.vimwiki_listsyms = "✗○◐●✓"
-g.vimwiki_key_mappings = {
-  all_maps = 1,
-  global = 0,
-  headers = 0,
-  text_objs = 0,
-  table_format = 0,
-  table_mappings = 0,
-  lists = 0,
-  links = 1,
-  html = 0,
-  mouse = 0
-}
-
 -- ale
 g.ale_echo_msg_error_str = "E"
 g.ale_echo_msg_format = [[(%code%): %s]]
@@ -95,6 +68,33 @@ g.markdown_fenced_languages = {
 }
 g.markdown_syntax_conceal = 0
 g.vim_markdown_folding_disabled = 1
+
+-- vimwiki
+g.vimwiki_global_ext = 0
+g.wiki = {
+  path = "wiki",
+  nested_syntaxes = {
+    python = "python",
+    cpp = "cpp",
+    javascript = "javascript",
+    bash = "sh",
+    php = "php",
+    lua = "lua"
+  }
+}
+g.vimwiki_listsyms = "✗○◐●✓"
+g.vimwiki_key_mappings = {
+  all_maps = 1,
+  global = 0,
+  headers = 0,
+  text_objs = 1,
+  table_format = 0,
+  table_mappings = 0,
+  lists = 0,
+  links = 1,
+  html = 0,
+  mouse = 0
+}
 
 g.buftabline_show = 0
 
