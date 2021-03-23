@@ -7,8 +7,8 @@ silent = {noremap = true, silent = true}
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 -- select visualy selected text for search
-m("x", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
-m("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+-- m("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
@@ -78,6 +78,22 @@ m(
   [[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
   silent
 )
+
+-- vimwiki throw away bindings
+m("n", [[\xa]], [[<Plug>VimwikiIndex]], options)
+m("n", [[\xb]], [[<Plug>VimwikiTabIndex]], options)
+m("n", [[\xc]], [[<Plug>VimwikiUISelect]], options)
+m("n", [[\xd]], [[<Plug>VimwikiDiaryIndex]], options)
+m("n", [[\xe]], [[<Plug>VimwikiRenameFile]], options)
+m("n", [[\xf]], [[<Plug>VimwikiDeleteFile]], options)
+m("n", [[\xg]], [[<Plug>VimwikiGoto]], options)
+m("n", [[\xh]], [[<Plug>Vimwiki2HTMLBrowse]], options)
+m("n", [[\xi]], [[<Plug>Vimwiki2HTML]], options)
+m("n", [[\xj]], [[<Plug>VimwikiMakeTomorrowDiaryNote]], options)
+m("n", [[\xk]], [[<Plug>VimwikiMakeYesterdayDiaryNote]], options)
+m("n", [[\xl]], [[<Plug>VimwikiTabMakeDiaryNote]], options)
+m("n", [[\xm]], [[<Plug>VimwikiMakeDiaryNote]], options)
+m("n", [[\xn]], [[<Plug>VimwikiDiaryGenerateLinks]], options)
 
 -- " remove any spaces and un-hexify (visual select)
 -- xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
