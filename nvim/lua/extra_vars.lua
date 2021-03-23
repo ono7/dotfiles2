@@ -11,8 +11,23 @@ syntax sync minlines=256
 syntax sync maxlines=300
 syntax on
 filetype plugin indent on
+nnoremap ' `
+nnoremap / ms/
+xnoremap / ms/
+nnoremap ? ms?
+xnoremap ? ms?
+nnoremap ma mA
+nnoremap mb mB
+nnoremap mc mC
+nnoremap mm mM
+nnoremap 'a 'A
+nnoremap 'b 'B
+nnoremap 'c 'C
+nnoremap 'm 'M
 nnoremap ; :
 vnoremap ; :
+nnoremap : ;
+vnoremap : ;
 inoremap <silent>jk <c-c>`^<cmd>noh<cr><c-g>
 nnoremap gj j
 nnoremap gk k
