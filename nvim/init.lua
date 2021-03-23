@@ -1,7 +1,6 @@
 -- Follow the white rabbit...
 
 -- TODO: 03-17-2021 | look at LSPkind for lua
--- TODO: 03-17-2021 | use wWbB  and oO to insert code ..more....
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
@@ -49,11 +48,11 @@ m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
 function _G.pre_write()
-  local pos = vim.api.nvim_win_get_cursor(0)
+  local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
   cmd([[%retab!]])
   cmd([[%s/\s\+$//e]])
-  vim.api.nvim_win_set_cursor(0, pos)
+  vim.api.nvim_win_set_cursor(0, cpos)
 end
 
 function _G.better_insert()
@@ -92,7 +91,6 @@ cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
--- highlight yanked text
 cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
 
 -- get vim legacy config :lua legacy()
