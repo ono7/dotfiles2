@@ -14,18 +14,13 @@ cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
-paq {
-  "savq/paq-nvim",
-  opt = true
-}
-paq {
-  "neoclide/coc.nvim",
-  branch = "release"
-}
+paq {"savq/paq-nvim", opt = true}
+paq "vimwiki/vimwiki"
+paq {"neoclide/coc.nvim", branch = "release"}
 paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
--- paq "tpope/vim-markdown"
+paq "tpope/vim-markdown"
 paq "tpope/vim-repeat"
 paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"
@@ -42,7 +37,6 @@ paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
-paq "vimwiki/vimwiki"
 
 -- after plugins
 require "pkg_config"

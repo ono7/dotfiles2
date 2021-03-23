@@ -80,11 +80,11 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
-require "settings"
-require "autocmds"
-require "pkg"
-require "maps"
-require "vars"
+require "my_pkg"
+-- require "my_vars"
+require "my_settings"
+require "my_cmds"
+require "my_maps"
 
 -- color and syntax related
 cmd "colorscheme onehalfdark"

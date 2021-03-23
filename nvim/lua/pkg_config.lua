@@ -40,6 +40,7 @@ if vim.g.loaded_paq then
     npm install lua-fmt prettier -g
     pip install black pylint epdb ipython
     autocmd BufWritePost * FormatWrite
+
   --]]
     lua = {
       {

@@ -1,5 +1,33 @@
 local gs, g = vim.api.nvim_set_var, vim.g
 
+-- vimwiki
+g.vimwiki_global_ext = 1
+g.vimwiki_table_mappings = 0
+g.wiki = {
+  path = "wiki",
+  nested_syntaxes = {
+    python = "python",
+    cpp = "cpp",
+    javascript = "javascript",
+    bash = "sh",
+    php = "php",
+    lua = "lua"
+  }
+}
+g.vimwiki_listsyms = "✗○◐●✓"
+g.vimwiki_key_mappings = {
+  all_maps = 1,
+  links = 1,
+  global = 0,
+  headers = 0,
+  text_objs = 0,
+  table_format = 0,
+  table_mappings = 0,
+  lists = 0,
+  html = 0,
+  mouse = 0
+}
+
 -- coc
 g.coc_start_at_startup = 1
 g.coc_global_extensions = {
@@ -69,33 +97,6 @@ g.markdown_fenced_languages = {
 g.markdown_syntax_conceal = 0
 g.vim_markdown_folding_disabled = 1
 
--- vimwiki
-g.vimwiki_global_ext = 0
-g.wiki = {
-  path = "wiki",
-  nested_syntaxes = {
-    python = "python",
-    cpp = "cpp",
-    javascript = "javascript",
-    bash = "sh",
-    php = "php",
-    lua = "lua"
-  }
-}
-g.vimwiki_listsyms = "✗○◐●✓"
-g.vimwiki_key_mappings = {
-  all_maps = 1,
-  global = 0,
-  headers = 0,
-  text_objs = 1,
-  table_format = 0,
-  table_mappings = 0,
-  lists = 0,
-  links = 1,
-  html = 0,
-  mouse = 0
-}
-
 g.buftabline_show = 0
 
 -- supertab
@@ -123,14 +124,14 @@ g.UltiSnipsUsePythonVersion = 3
   Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
 
 --]]
-local fzf_window_tbl = {
-  window = {
-    width = 1,
-    height = 1,
-    highlight = "Comment",
-    border = "bottom"
-  }
-}
+-- local fzf_window_tbl = {
+--   window = {
+--     width = 1,
+--     height = 1,
+--     highlight = "Comment",
+--     border = "bottom"
+--   }
+-- }
 -- gs("fzf_layout", fzf_window_tbl)
 g.fzf_history_dir = "~/.tmp/fzf-history"
 g.fzf_buffers_jump = 1
@@ -177,9 +178,7 @@ clipboard_tbl.copy["+"] = clip_copy
 clipboard_tbl.paste = {}
 clipboard_tbl.paste["*"] = "tmux save-buffer -"
 clipboard_tbl.paste["+"] = clip_paste
-
 g.clipboard = clipboard_tbl
-
 vim.o.clipboard = "unnamed,unnamedplus"
 
 -- miniyank
