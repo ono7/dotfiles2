@@ -18,7 +18,7 @@ local silent = {
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
--- gravy
+-- secret sauce
 m("n", ";", ":", options)
 m("v", ";", ":", options)
 m("n", ":", ";", options)
@@ -70,7 +70,7 @@ m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 -- disable ale before plugins are loaded
 g.ale_disable_lsp = 1
 
--- providers
+-- nvim providers
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1
@@ -81,12 +81,11 @@ g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
 require "my_pkg"
--- require "my_vars"
+require "my_vars"
 require "my_settings"
 require "my_cmds"
 require "my_maps"
 
--- color and syntax related
 cmd "colorscheme onehalfdark"
 cmd "syntax enable"
 cmd "syntax sync minlines=256"
