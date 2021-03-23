@@ -46,7 +46,7 @@ m("n", "<c-z>", "", options) -- nop
 m("c", "<c-z>", "", options) -- nop
 m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
--- vim.o.path = o.path .. "**"
+vim.o.path = vim.o.path .. "**"
 
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)

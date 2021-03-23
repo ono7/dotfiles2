@@ -45,6 +45,7 @@ cnoremap <c-z> <nop>
 nnoremap cp yap<S-}>p
 nnoremap U <c-r>
 set autoindent
+set path+='**'
 set autoread
 set backspace=indent,eol,start
 set cmdheight=2
