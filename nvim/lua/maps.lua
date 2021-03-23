@@ -46,7 +46,7 @@ m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
-m("i", "<c-c>", "<nop>", {})
+m("i", "<c-c>", "", {}) -- nop
 m("i", "<c-c>", [[coc#refresh()]], {silent = true, expr = true, noremap = true})
 m("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 m("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})

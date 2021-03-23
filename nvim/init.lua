@@ -43,8 +43,8 @@ m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
 m("n", "Y", "y$", options)
 m("v", "y", "mxy`x", options)
-m("n", "<c-z>", "<nop>", options)
-m("c", "<c-z>", "<nop>", options)
+m("n", "<c-z>", "", options) -- nop
+m("c", "<c-z>", "", options) -- nop
 m("n", "cp", "yap<S-}>p", options)
 m("n", "U", "<c-r>", options)
 
