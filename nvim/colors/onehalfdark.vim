@@ -256,8 +256,8 @@ hi!  PmenuSel       ctermbg=239  ctermfg=7      guibg=#313640 guifg=#9297a1  gui
 hi!  CommentNormal  ctermfg=8    guifg=#95c637
 " hi!  Visual         ctermfg=234  ctermbg=5      guifg=NONE     guibg=#3e4451
 " hi!  Pmenu          ctermbg=235  ctermfg=8      guibg=#313640  guifg=#9297a1
-" hi!  IncSearch         ctermfg=234  ctermbg=5      guifg=NONE     guibg=#3e4451
-" hi!  Search      ctermfg=234  ctermbg=5      guifg=NONE     guibg=#3a5286
+hi!  incsearch         ctermfg=234  ctermbg=5      guifg=none     guibg=#3e4451
+hi!  search      ctermfg=234  ctermbg=5      guifg=none     guibg=#3a5286
 
 " gutter
 hi!  SignColumn  ctermfg=223   ctermbg=NONE   guifg=#d4be98  guibg=NONE
