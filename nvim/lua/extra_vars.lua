@@ -11,6 +11,9 @@ syntax sync minlines=256
 syntax sync maxlines=300
 syntax on
 filetype plugin indent on
+
+nnoremap <silent>[q :cnext<cr>
+nnoremap <silent>]q :cprevious<cr>
 nnoremap ' `
 nnoremap / ms/
 xnoremap / ms/
