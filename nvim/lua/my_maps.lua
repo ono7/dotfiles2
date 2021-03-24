@@ -20,6 +20,12 @@ m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", en)
 -- m("i", "<c-l>", [[<Plug>(coc-snippets-expand-jump)]], {}) -- expand
 -- m("v", "<c-j>", [[<Plug>(coc-snippets-select)]], {}) -- visual select
 
+-- resize window
+m("n", "<M-j>", [[:resize -2<cr>]], silent)
+m("n", "<M-k>", [[:resize +2<cr>]], silent)
+m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
+m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
+
 -- tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
