@@ -106,6 +106,7 @@ g.buftabline_show = 0
 -- g.SuperTabClosePreviewOnPopupClose = 1
 
 -- ultisnips
+-- https://github.com/neoclide/coc-snippets
 g.UltiSnipsExpandTrigger = "<C-l>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
