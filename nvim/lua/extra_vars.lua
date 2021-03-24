@@ -2,8 +2,8 @@ M = {}
 
 M.legacy_cfg =
   [[
+" Follow the white rabbit...
 
-" classic vim settings
 let mapleader = " "
 set nocompatible
 syntax enable
@@ -117,6 +117,8 @@ if has('nvim')
   set pumheight=10 pumblend=0
   tnoremap jk <C-\><C-n>
 endif
+
+" Lima's vimrc, use at your own risk :D
 
 ]]
 
