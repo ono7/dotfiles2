@@ -16,6 +16,10 @@ end
 m("i", "<Tab>", [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : coc#refresh() ]], ens)
 m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", en)
 
+-- quickfix
+m("n", "[q", [[:cnext<cr>]], silent)
+m("n", "]q", [[:cprevious<cr>]], silent)
+
 -- snippets
 -- m("i", "<c-l>", [[<Plug>(coc-snippets-expand-jump)]], {}) -- expand
 -- m("v", "<c-j>", [[<Plug>(coc-snippets-select)]], {}) -- visual select
