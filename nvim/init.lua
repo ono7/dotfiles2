@@ -2,6 +2,11 @@
 
 -- TODO: 03-17-2021 | look at LSPkind for lua
 
+-- c-i, c-o switch between previously open files
+-- c^ switch to last file edited
+-- move with /
+-- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
+
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
 local options = {

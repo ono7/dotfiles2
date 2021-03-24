@@ -48,6 +48,7 @@ o.showmatch = true
 o.matchtime = 3
 o.ttimeout = false
 o.ttimeoutlen = 10
+o.wrapscan = true
 
 -- window-local options
 wo.number = false
