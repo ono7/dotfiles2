@@ -49,6 +49,8 @@ o.matchtime = 3
 o.ttimeout = false
 o.ttimeoutlen = 10
 o.wrapscan = true
+o.grepformat = [[grepformat=%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
+o.grepprg = [[rg --vimgrep]]
 
 -- window-local options
 wo.number = false
