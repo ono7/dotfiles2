@@ -17,15 +17,15 @@ local paq = require "paq-nvim".paq
 paq {"savq/paq-nvim", opt = true}
 paq "vimwiki/vimwiki"
 paq {"neoclide/coc.nvim", branch = "release"}
-paq "ervandew/supertab"
+-- paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
-paq "tpope/vim-repeat"
+-- paq "tpope/vim-repeat"
 paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"
 paq "nvim-treesitter/nvim-treesitter"
-paq "nvim-treesitter/playground"
+-- paq "nvim-treesitter/playground"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"

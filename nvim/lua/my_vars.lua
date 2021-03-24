@@ -39,6 +39,14 @@ g.coc_global_extensions = {
   "coc-lua",
   "coc-yaml"
 }
+
+-- if exists('*CocActionAsync')
+--   augroup coc_settings
+--     autocmd!
+--     autocmd CursorHold * silent call CocActionAsync('highlight')
+--   augroup END
+-- endif
+
 g.tmux_navigator_disable_when_zoomed = 1
 
 -- " use all the beautiful things jedi-vim offers, but leave completion to coc
@@ -100,13 +108,14 @@ g.vim_markdown_folding_disabled = 1
 g.buftabline_show = 0
 
 -- supertab
-g.SuperTabDefaultCompletionType = "<C-n>"
-g.SuperTabClosePreviewOnPopupClose = 1
+-- g.SuperTabDefaultCompletionType = "<C-n>"
+-- g.SuperTabClosePreviewOnPopupClose = 1
 
 -- ultisnips
-g.UltiSnipsExpandTrigger = "<tab>"
-g.UltiSnipsJumpForwardTrigger = "<tab>"
-g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+-- g.UltiSnipsExpandTrigger = "<tab>"
+g.UltiSnipsExpandTrigger = "<nop>"
+-- g.UltiSnipsJumpForwardTrigger = "<tab>"
+-- g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3

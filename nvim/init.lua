@@ -98,3 +98,28 @@ cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", time
 function _G.legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
+
+-- local function t(str)
+--   -- Adjust boolean arguments as needed
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+
+-- function _G.smart_tab()
+--   return vim.fn.pumvisible() == 1 and t [[<C-n>]] or t [[<Tab>]]
+-- end
+
+-- completion, bye supertab :(, hello lua :D
+function _G.check_back_space()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+end
+
+m(
+  "i",
+  "<Tab>",
+  [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : coc#refresh() ]],
+  {expr = true, noremap = true, silent = true}
+)
+
+m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", {noremap = true, expr = true})
+m("i", "<c-l>", [[<Plug>(coc-snippets-expand)]], {})

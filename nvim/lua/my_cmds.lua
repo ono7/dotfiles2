@@ -53,8 +53,11 @@ local autocmds = {
   }
 }
 
--- if vim.g.loaded_format == 1 then
---   table.insert(autocmds._write, {"BufWritePost", "*", "FormatWrite"})
--- end
+-- if exists('*CocActionAsync')
+--   augroup coc_settings
+--     autocmd!
+--     autocmd CursorHold * silent call CocActionAsync('highlight')
+--   augroup END
+-- endif
 
 nvim_create_augroups(autocmds)
