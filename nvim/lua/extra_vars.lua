@@ -58,6 +58,8 @@ nnoremap H ^
 nnoremap L g_
 vnoremap H ^
 vnoremap L g_
+vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
+
 set autoindent
 set path+=**
 set autoread
@@ -161,6 +163,7 @@ hi!  Comment    ctermfg=8  guifg=#5c6370
 hi!  Statement  ctermfg=1
 hi!  String     ctermfg=2
 hi!  Include    ctermfg=4
+hi!  MatchParen ctermfg=7 ctermbg=8
 hi!  Search     ctermfg=7  ctermbg=8
 
 " Lima's vimrc, use at your own risk :D
