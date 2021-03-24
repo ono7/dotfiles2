@@ -47,6 +47,10 @@ nnoremap <c-z> <nop>
 cnoremap <c-z> <nop>
 nnoremap cp yap<S-}>p
 nnoremap U <c-r>
+nnoremap H ^
+nnoremap L g_
+vnoremap H ^
+vnoremap L g_
 set autoindent
 set path+='**'
 set autoread
