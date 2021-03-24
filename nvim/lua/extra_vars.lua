@@ -157,6 +157,10 @@ augroup _resize
   autocmd VimResized * :wincmd =
 augroup END
 
+hi! Comment      ctermfg=8    guifg=#5c6370
+hi! Statement    ctermfg=2
+hi! String       ctermfg=3
+
 " Lima's vimrc, use at your own risk :D
 
 ]]
