@@ -25,6 +25,7 @@ o.ruler = true
 o.scrolloff = 2
 o.sidescrolloff = 1
 o.splitbelow = true
+o.splitright = true
 o.smartcase = true
 o.smarttab = true
 o.shiftround = true

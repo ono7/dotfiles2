@@ -11,7 +11,14 @@ syntax sync minlines=256
 syntax sync maxlines=300
 syntax on
 filetype plugin indent on
-
+nnoremap <silent><M-j> :resize -2<cr>
+nnoremap <silent><M-k> :resize +2<cr>
+nnoremap <silent><M-h> :vertical resize -2<cr>
+nnoremap <silent><M-l> :vertical resize +2<cr>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 nnoremap <silent>[q :cnext<cr>
 nnoremap <silent>]q :cprevious<cr>
 nnoremap ' `
