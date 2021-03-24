@@ -38,7 +38,7 @@ nnoremap ; :
 vnoremap ; :
 nnoremap : ;
 vnoremap : ;
-inoremap <silent>jk <c-c>`^<cmd>noh<cr><c-g>
+inoremap <silent>jk <c-c>`^:noh<cr><c-g>
 nnoremap gj j
 nnoremap gk k
 nnoremap Q @q
@@ -165,6 +165,7 @@ hi!  String     ctermfg=2
 hi!  Include    ctermfg=4
 hi!  MatchParen ctermfg=7 ctermbg=8
 hi!  Search     ctermfg=7  ctermbg=8
+hi!  Error ctermfg=1 ctermbg=NONE
 
 " Lima's vimrc, use at your own risk :D
 
