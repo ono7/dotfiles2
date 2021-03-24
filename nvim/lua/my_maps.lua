@@ -62,8 +62,8 @@ m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
-m("i", "<c-c>", "", {}) -- nop
-m("i", "<c-c>", [[coc#refresh()]], ens)
+m("i", "<c-j>", "", {}) -- nop
+m("i", "<c-j>", [[coc#refresh()]], ens)
 m("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 m("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 

@@ -82,6 +82,11 @@ if vim.g.loaded_paq then
     vimwiki = {
       {
         cmd = {
+          "prettier -w"
+        }
+      },
+      {
+        cmd = {
           "luafmt -i 2 -w replace"
         },
         start_pattern = "^{{{lua$",
