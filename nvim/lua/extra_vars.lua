@@ -68,7 +68,7 @@ set completeopt-=preview
 set diffopt=filler
 set directory=~/.tmp
 set display+=lastline
-set encoding=utf-8 nobomb
+set encoding=utf-8
 set fileencoding=utf-8
 set fillchars+=vert:│
 set hidden
