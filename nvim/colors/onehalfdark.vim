@@ -307,6 +307,7 @@ hi!  TSBoolean ctermfg=223 guifg=#d4be98
 hi!  TSVariableBuiltin  gui=italic  ctermfg=245  guifg=#d4be98
 hi! link TSMethod RedItalic
 hi! link TSField Purple
+hi! QuickFixLine guibg=#2d344a guifg=NONE
 
 hi!  VertSplit ctermbg=NONE guibg=NONE
 
