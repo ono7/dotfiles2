@@ -118,6 +118,34 @@ if has('nvim')
   tnoremap jk <C-\><C-n>
 endif
 
+function! <SID>RemoveWhiteSpace()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfunction
+
+command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
+
+augroup _read
+  autocmd!
+  " restore last known position
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd BufEnter * silent! lcd %:p:h
+  autocmd BufEnter * silent! set formatoptions=qlj
+augroup END
+
+augroup _write
+  autocmd!
+  autocmd BufWritePre * silent! :call <SID>RemoveWhiteSpace() | retab
+augroup END
+
+augroup _resize
+  autocmd!
+  " resize splits when terminal size changes
+  autocmd VimResized * :wincmd =
+augroup END
+
 " Lima's vimrc, use at your own risk :D
 
 ]]
