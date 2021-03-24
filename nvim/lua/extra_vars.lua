@@ -109,6 +109,7 @@ set nocursorcolumn
 set redrawtime=10000
 set ttyfast
 set clipboard=unnamed
+set foldmethod=manual
 set fileformats=unix,dos
 if has('nvim')
   set inccommand=nosplit
