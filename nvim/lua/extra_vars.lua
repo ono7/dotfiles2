@@ -59,7 +59,7 @@ nnoremap L g_
 vnoremap H ^
 vnoremap L g_
 set autoindent
-set path+='**'
+set path+=**
 set autoread
 set backspace=indent,eol,start
 set cmdheight=2
