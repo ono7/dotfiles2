@@ -1,14 +1,27 @@
+-- my_maps
+
 local m = vim.api.nvim_set_keymap
 
-options = {noremap = true}
-silent = {noremap = true, silent = true}
+local options = {noremap = true}
+local silent = {noremap = true, silent = true}
+local ens = {expr = true, noremap = true, silent = true}
+local en = {noremap = true, expr = true}
+
+-- completion
+function _G.check_back_space()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+end
+
+m("i", "<Tab>", [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : coc#refresh() ]], ens)
+m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", en)
+m("i", "<c-l>", [[<Plug>(coc-snippets-expand)]], {})
 
 -- tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 -- select visualy selected text for search
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
--- m("n", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", options)
 
@@ -47,7 +60,7 @@ m("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
 m("i", "<c-c>", "", {}) -- nop
-m("i", "<c-c>", [[coc#refresh()]], {silent = true, expr = true, noremap = true})
+m("i", "<c-c>", [[coc#refresh()]], ens)
 m("n", "gr", [[<Plug>(coc-references)]], {silent = true})
 m("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 

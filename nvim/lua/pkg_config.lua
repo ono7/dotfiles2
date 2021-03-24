@@ -1,4 +1,4 @@
--- init lua plugins
+-- configure plugins
 
 if vim.g.loaded_paq then
   require("kommentary.config").configure_language(

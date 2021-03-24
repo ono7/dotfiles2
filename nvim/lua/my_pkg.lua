@@ -5,11 +5,12 @@ local cmd, fn, g = vim.cmd, vim.fn, vim.g
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
+  -- download and install if missing
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
   vim.api.nvim_exec([[autocmd VimEnter * PaqInstall]], false)
 end
 
--- setup paq
+-- let paq-nvim manage it self
 cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
@@ -17,15 +18,12 @@ local paq = require "paq-nvim".paq
 paq {"savq/paq-nvim", opt = true}
 paq "vimwiki/vimwiki"
 paq {"neoclide/coc.nvim", branch = "release"}
--- paq "ervandew/supertab"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
--- paq "tpope/vim-repeat"
 paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"
 paq "nvim-treesitter/nvim-treesitter"
--- paq "nvim-treesitter/playground"
 paq "lukas-reineke/format.nvim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
@@ -37,8 +35,11 @@ paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
+-- paq "ervandew/supertab"
+-- paq "tpope/vim-repeat"
+-- paq "nvim-treesitter/playground"
 
--- after plugins
+-- after plugins, run their setup
 require "pkg_config"
 
 cmd "filetype plugin indent on"

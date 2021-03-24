@@ -1,3 +1,4 @@
+-- setup locals
 local gs, g = vim.api.nvim_set_var, vim.g
 
 -- vimwiki
@@ -42,9 +43,9 @@ g.coc_global_extensions = {
 
 g.tmux_navigator_disable_when_zoomed = 1
 
--- " use all the beautiful things jedi-vim offers, but leave completion to coc
-gs("jedi#completions_enabled", 0)
-gs("jedi#goto_assignments_command", "")
+-- use jedi for goto definition
+-- gs("jedi#completions_enabled", 0)
+-- gs("jedi#goto_assignments_command", "")
 
 -- autopairs
 g.AutoPairsUseInsertedCount = 0
@@ -105,12 +106,12 @@ g.buftabline_show = 0
 -- g.SuperTabClosePreviewOnPopupClose = 1
 
 -- ultisnips
-g.UltiSnipsExpandTrigger = "<nop>"
--- g.UltiSnipsJumpForwardTrigger = "<tab>"
--- g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+g.UltiSnipsExpandTrigger = "<nop>" -- coc-snippets <c-l>
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
+-- g.UltiSnipsJumpForwardTrigger = "<tab>"
+-- g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 --[[
 
@@ -124,16 +125,17 @@ g.UltiSnipsUsePythonVersion = 3
   border: [string default rounded]: Border style
   Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
 
+  local fzf_window_tbl = {
+    window = {
+      width = 1,
+      height = 1,
+      highlight = "Comment",
+      border = "bottom"
+    }
+  }
+  gs("fzf_layout", fzf_window_tbl)
+
 --]]
--- local fzf_window_tbl = {
---   window = {
---     width = 1,
---     height = 1,
---     highlight = "Comment",
---     border = "bottom"
---   }
--- }
--- gs("fzf_layout", fzf_window_tbl)
 g.fzf_history_dir = "~/.tmp/fzf-history"
 g.fzf_buffers_jump = 1
 g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"]]
