@@ -35,7 +35,7 @@ g.coc_global_extensions = {
   "coc-python",
   "coc-json",
   "coc-tsserver",
-  "coc-snippets",
+  -- "coc-snippets",
   "coc-omnisharp",
   "coc-lua",
   "coc-yaml"
@@ -106,10 +106,12 @@ g.buftabline_show = 0
 -- g.SuperTabClosePreviewOnPopupClose = 1
 
 -- ultisnips
-g.UltiSnipsExpandTrigger = "<nop>" -- coc-snippets <c-l>
+g.UltiSnipsExpandTrigger = "<C-l>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
+g.UltiSnipsJumpForwardTrigger = "<C-l>"
+g.UltiSnipsJumpBackwardTrigger = "<C-j>"
 -- g.UltiSnipsJumpForwardTrigger = "<tab>"
 -- g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
 

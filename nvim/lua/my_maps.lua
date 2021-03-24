@@ -15,7 +15,10 @@ end
 
 m("i", "<Tab>", [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : coc#refresh() ]], ens)
 m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", en)
-m("i", "<c-l>", [[<Plug>(coc-snippets-expand)]], {})
+
+-- snippets
+-- m("i", "<c-l>", [[<Plug>(coc-snippets-expand-jump)]], {}) -- expand
+-- m("v", "<c-j>", [[<Plug>(coc-snippets-select)]], {}) -- visual select
 
 -- tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
