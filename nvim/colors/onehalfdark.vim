@@ -308,6 +308,7 @@ hi!  TSVariableBuiltin  gui=italic  ctermfg=245  guifg=#d4be98
 hi! link TSMethod RedItalic
 hi! link TSField Purple
 hi! QuickFixLine guibg=#2d344a guifg=NONE
+hi! link qfFileName YellowBold
 
 hi!  VertSplit ctermbg=NONE guibg=NONE
 
