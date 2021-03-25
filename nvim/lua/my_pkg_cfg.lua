@@ -1,91 +1,146 @@
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
+-- configure plugins
 
---- global options
-o.foldmethod = "manual"
-o.termguicolors = true
-o.cmdheight = 2
-o.directory = "~/.tmp"
-o.swapfile = false
-o.smartcase = true
-o.laststatus = 0
-o.hlsearch = true
-o.incsearch = true
-o.ignorecase = true
-o.completeopt = string.gsub(o.completeopt, "preview", "")
-o.diffopt = "filler"
-o.hidden = true
-o.magic = true
-o.joinspaces = false
-o.showcmd = false
-o.writebackup = false
-o.history = 999
-o.ruler = true
-o.scrolloff = 2
-o.sidescrolloff = 1
-o.splitbelow = true
-o.splitright = true
-o.smartcase = true
-o.smarttab = true
-o.shiftround = true
-o.inccommand = "nosplit"
-o.winaltkeys = "no"
-o.pumheight = 10
-o.pumblend = 0
-o.emoji = false
-o.redrawtime = 10000
-o.lazyredraw = true
-o.timeout = true
-o.timeoutlen = 500
-o.updatetime = 250
-o.fillchars = [[vert:│]]
-o.listchars = [[tab:→\ ,trail:·,nbsp:•]]
-o.nrformats = "bin,hex,alpha"
-o.shortmess = "actIoOsT"
-o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
-o.pastetoggle = [[<F2>]]
-o.showmatch = true
-o.matchtime = 3
-o.ttimeout = false
-o.ttimeoutlen = 10
-o.wrapscan = true
+if vim.g.loaded_paq then
+  require("kommentary.config").configure_language(
+    "default",
+    {
+      prefer_single_line_comments = true,
+      use_consistent_indentation = true,
+      ignore_whitespace = true
+    }
+  )
 
-vim.g.myrg = 0
+  require "nvim-web-devicons".setup {
+    default = true
+  }
 
-function _G.rg()
-  if vim.g.myrg == 0 then
-    o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
-    o.grepprg = [[rg --vimgrep]]
-    vim.g.myrg = 1
-  else
-    o.grepprg = [[grep -n $* /dev/null]]
-    o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
-    vim.g.myrg = 0
-  end
+  require "nvim-treesitter.configs".setup {
+    ensure_installed = "maintained",
+    highlight = {
+      enable = true,
+      disable = {
+        "rust"
+      }
+    },
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false -- Whether the query persists across vim sessions
+    }
+  }
+
+  require "format".setup {
+    --[[
+
+    lukas-reineke/format.nvim
+    https://github.com/lukas-reineke/format.nvim
+    :h format.txt
+
+    npm install lua-fmt prettier -g
+    pip install black pylint epdb ipython
+    autocmd BufWritePost * FormatWrite
+
+  --]]
+    lua = {
+      {
+        cmd = {
+          function(file)
+            return string.format("luafmt -i 2 -w replace %s", file)
+          end
+        }
+      }
+    },
+    python = {
+      {
+        cmd = {
+          "black"
+        }
+      }
+    },
+    json = {
+      {
+        cmd = {
+          "prettier -w --parser json"
+        }
+      }
+    },
+    typescript = {
+      {
+        cmd = {
+          "prettier -w --parser typescript --single-quote"
+        }
+      }
+    },
+    yaml = {
+      {
+        cmd = {
+          "prettier -w --parser yaml --single-quote --quote-props preserve"
+        }
+      }
+    },
+    vimwiki = {
+      {
+        cmd = {
+          "prettier -w"
+        }
+      },
+      {
+        cmd = {
+          "luafmt -i 2 -w replace"
+        },
+        start_pattern = "^{{{lua$",
+        end_pattern = "^}}}$",
+        target = "current"
+      },
+      {
+        cmd = {
+          "black"
+        },
+        start_pattern = "^{{{python$",
+        end_pattern = "^}}}$",
+        target = "current"
+      }
+    },
+    javascript = {
+      {
+        cmd = {
+          "prettier -w"
+          -- "eslint --fix"
+        }
+      }
+    },
+    markdown = {
+      {
+        cmd = {
+          "prettier -w"
+        }
+      },
+      {
+        cmd = {
+          "luafmt -i 2 -w replace"
+        },
+        start_pattern = "^```lua$",
+        end_pattern = "^```$",
+        target = "current"
+        -- current only format where cursor is
+      },
+      {
+        cmd = {
+          "prettier -w --parser babel --single-quote"
+        },
+        start_pattern = "^```javascript$",
+        end_pattern = "^```$",
+        target = "current"
+      },
+      {
+        cmd = {
+          "black"
+        },
+        start_pattern = "^```python$",
+        end_pattern = "^```$",
+        target = "current"
+      }
+    }
+  }
 end
-
--- window-local options
-wo.number = false
-wo.wrap = false
-wo.numberwidth = 2
-wo.signcolumn = "yes:1"
-wo.foldenable = false
-wo.list = true
-wo.cursorline = false
-
--- buffer-local options
-bo.autoindent = true
-bo.autoread = true
-bo.synmaxcol = 0
-bo.swapfile = false
-bo.shiftwidth = 2
-bo.softtabstop = 2
-bo.tabstop = 2
-bo.textwidth = 80
-bo.expandtab = true
-bo.spelllang = "en_us"
-bo.complete = ".,w,b,u,kspell"
-bo.formatoptions = "qlj" -- this is what we need
-bo.cindent = true
-bo.smartindent = true

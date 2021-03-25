@@ -40,6 +40,6 @@ paq "b3nj5m1n/kommentary"
 -- paq "nvim-treesitter/playground"
 
 -- after plugins, run their setup
-require "pkg_config"
+require "my_pkg_cfg"
 
 cmd "filetype plugin indent on"

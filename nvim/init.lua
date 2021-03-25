@@ -97,8 +97,8 @@ end
 require "my_cmds"
 require "my_vars"
 require "my_maps"
+require "my_settings"
 require "my_pkg"
-require "my_pkg_cfg"
 
 cmd "colorscheme onehalfdark"
 cmd "syntax enable"
