@@ -102,6 +102,7 @@ require "my_pkg"
 
 cmd "colorscheme onehalfdark"
 cmd "syntax enable"
+cmd "set synmaxcol=256"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
