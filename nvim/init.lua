@@ -66,22 +66,8 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
-require "my_maps"
-require "my_pkg"
-require "my_vars"
-require "my_settings"
-require "my_cmds"
-
-cmd "colorscheme onehalfdark"
-cmd "syntax enable"
-cmd "syntax sync minlines=256"
-cmd "syntax sync maxlines=300"
-cmd "syntax on"
-
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
-
--- get vim legacy config :lua legacy()
 function _G.legacy()
+  -- get vim legacy config :lua legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
 
@@ -102,8 +88,22 @@ function _G.pre_write()
   cmd([[%retab!]])
   cmd([[%s/\s\+$//e]])
   if g.loaded_format == 1 then
-    local val, err = cmd([[FormatWrite!]])
+    cmd([[FormatWrite!]])
   end
   local val, err = vim.api.nvim_win_set_cursor(0, cpos)
   cmd([[update]])
 end
+
+require "my_cmds"
+require "my_vars"
+require "my_maps"
+require "my_pkg"
+require "my_pkg_cfg"
+
+cmd "colorscheme onehalfdark"
+cmd "syntax enable"
+cmd "syntax sync minlines=256"
+cmd "syntax sync maxlines=300"
+cmd "syntax on"
+
+cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]
