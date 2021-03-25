@@ -42,7 +42,7 @@ m("n", "Q", "@q", options)
 m("v", "Q", ":'<,'>norm @q<cr>", options)
 m("n", "<leader>d", ":bd!<cr><c-g>", options)
 m("n", "<leader>q", ":qall!<cr>", options)
-m("n", "<leader>w", [[:call v:lua.pre_write() <bar> :write<cr>]], silent)
+m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
 m("n", "Y", "y$", options)
@@ -58,6 +58,9 @@ function _G.pre_write()
   vim.bo.expandtab = true
   cmd([[%retab!]])
   cmd([[%s/\s\+$//e]])
+  if g.loaded_format == 1 then
+    cmd([[FormatWrite!]])
+  end
   vim.api.nvim_win_set_cursor(0, cpos)
 end
 

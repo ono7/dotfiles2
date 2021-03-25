@@ -46,10 +46,6 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
-  },
-  _write = {
-    -- {"BufWritePre", "*", [[:call v:lua.pre_write()]]},
-    {"BufWritePost", "*", [[FormatWrite]]}
   }
 }
 
