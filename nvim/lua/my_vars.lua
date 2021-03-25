@@ -3,6 +3,14 @@ local gs, g = vim.api.nvim_set_var, vim.g
 
 -- vimwiki
 g.vimwiki_global_ext = 1
+-- g.mywiki = {}
+-- g.mywiki.path = "~/wiki/"
+-- g.mywiki.syntax = "markdown"
+-- g.mywiki.ext = ".md"
+-- local temp1 = {}
+-- temp1[".md"] = "markdown"
+-- gs("vimwiki_ext2syntax", temp1)
+-- g.vimwiki_list = g.mywiki
 g.vimwiki_table_mappings = 0
 g.wiki = {
   path = "wiki",
