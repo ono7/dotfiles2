@@ -85,6 +85,23 @@ function _G.legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
 
+function _G.pre_write()
+  local cpos = vim.api.nvim_win_get_cursor(0)
+  vim.bo.expandtab = true
+  cmd([[%retab!]])
+  cmd([[%s/\s\+$//e]])
+  if g.loaded_format == 1 then
+    cmd([[FormatWrite!]])
+  end
+  cmd([[update]])
+  ccount = vim.api.nvim_buf_line_count(0)
+  if pcall(vim.api.nvim_win_set_cursor(0, cpos)) then
+    print("success")
+  else
+    vim.api.nvim_win_set_cursor(0, {ccount, 0})
+  end
+end
+
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
   if #line == 0 then
@@ -95,15 +112,3 @@ function _G.better_insert()
 end
 
 m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
-
-function _G.pre_write()
-  local cpos = vim.api.nvim_win_get_cursor(0)
-  vim.bo.expandtab = true
-  cmd([[%retab!]])
-  cmd([[%s/\s\+$//e]])
-  if g.loaded_format == 1 then
-    local val, err = cmd([[FormatWrite!]])
-  end
-  local val, err = vim.api.nvim_win_set_cursor(0, cpos)
-  cmd([[update]])
-end

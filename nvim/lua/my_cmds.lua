@@ -47,6 +47,9 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
     {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   }
+  -- _vimwiki = {
+  --   {"BufWritePost", "*.wiki", "VimwikiTOC"}
+  -- }
 }
 
 -- if exists('*CocActionAsync')

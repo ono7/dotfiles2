@@ -63,7 +63,7 @@ snippet "^l (.*)" "link" br
 snip.rv=fmt_desc(match.group(1)).strip()`$0]]
 endsnippet
 
-snippet "code" "codeblock" br
+snippet "(code|co|c)" "codeblock" br
 {{{$1
 
 $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
