@@ -40,7 +40,7 @@ local autocmds = {
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
     {"BufEnter", "*", [[silent! lcd %:p:h]]},
-    {"BufEnter", "*", [[set formatoptions=qlj synmaxcol=256]]}
+    {"BufEnter", "*", [[set formatoptions=qlj]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},

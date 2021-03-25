@@ -75,7 +75,6 @@ wo.list = true
 wo.cursorline = false
 
 -- buffer-local options
-bo.synmaxcol = 512
 bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0
