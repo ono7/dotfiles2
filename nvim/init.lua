@@ -61,6 +61,7 @@ function _G.pre_write()
   if g.loaded_format == 1 then
     cmd([[FormatWrite!]])
   end
+  cmd([[update]])
   vim.api.nvim_win_set_cursor(0, cpos)
 end
 
