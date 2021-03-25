@@ -19,8 +19,7 @@ if vim.g.loaded_paq then
     highlight = {
       enable = true,
       disable = {
-        "rust",
-        "json"
+        "rust"
       }
     },
     playground = {
