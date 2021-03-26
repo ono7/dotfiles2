@@ -102,8 +102,8 @@ m("n", "V", "Vg_", {})
 m("t", "jk", [[<c-\><c-n>]], opt)
 
 -- ale
-m("n", "[n", "<Plug>(ale_next_wrap)", {silent = true})
-m("n", "]n", "<Plug>(ale_previous_wrap)", {silent = true})
+m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
+m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- fzf
 -- m("n", "<c-p>", ":GFiles<cr>", silent)
