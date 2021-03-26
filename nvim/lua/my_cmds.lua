@@ -46,6 +46,9 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]}
     -- {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
+  },
+  _yank_hl = {
+    {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}
   }
 }
 

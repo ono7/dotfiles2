@@ -86,7 +86,7 @@ function _G.pre_write()
   if g.loaded_format == 1 then
     cmd([[FormatWrite!]])
   end
-  local val, err = vim.api.nvim_win_set_cursor(0, cpos)
+  local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
   cmd([[update]])
 end
 
@@ -100,6 +100,7 @@ require "my_vars"
 require "my_maps"
 require "my_settings"
 require "my_pkg"
+require "my_lsp"
 
 cmd "colorscheme onehalfdark"
 cmd "syntax enable"
@@ -107,5 +108,3 @@ cmd "set synmaxcol=512"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
-
-cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Cursor", timeout = 100 }]]

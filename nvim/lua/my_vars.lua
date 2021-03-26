@@ -116,14 +116,15 @@ g.buftabline_show = 0
 
 -- ultisnips
 -- https://github.com/neoclide/coc-snippets
-g.UltiSnipsExpandTrigger = "<C-l>"
+-- g.UltiSnipsExpandTrigger = "<C-l>"
+g.UltiSnipsExpandTrigger = ""
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
-g.UltiSnipsJumpForwardTrigger = "<C-l>"
-g.UltiSnipsJumpBackwardTrigger = "<C-j>"
--- g.UltiSnipsJumpForwardTrigger = "<tab>"
--- g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+-- g.UltiSnipsJumpForwardTrigger = "<C-l>"
+-- g.UltiSnipsJumpBackwardTrigger = "<C-j>"
+g.UltiSnipsJumpForwardTrigger = "<tab>"
+g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 --[[
 

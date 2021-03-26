@@ -3,6 +3,7 @@ local wo = vim.wo
 local bo = vim.bo
 
 --- global options
+o.completeopt = "menuone,noselect"
 o.foldmethod = "manual"
 o.termguicolors = true
 o.cmdheight = 2
@@ -13,7 +14,7 @@ o.laststatus = 0
 o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
-o.completeopt = string.gsub(o.completeopt, "preview", "")
+-- o.completeopt = string.gsub(o.completeopt, "preview", "")
 o.diffopt = "filler"
 o.hidden = true
 o.magic = true

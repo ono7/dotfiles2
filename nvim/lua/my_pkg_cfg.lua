@@ -1,5 +1,6 @@
 -- configure plugins
 
+-- comments
 if vim.g.loaded_paq then
   require("kommentary.config").configure_language(
     "default",

@@ -17,7 +17,6 @@ local paq = require "paq-nvim".paq
 -- plugins
 paq {"savq/paq-nvim", opt = true}
 paq "vimwiki/vimwiki"
-paq {"neoclide/coc.nvim", branch = "release"}
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
@@ -25,8 +24,6 @@ paq "tpope/vim-surround"
 paq "jiangmiao/auto-pairs"
 paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
-paq "SirVer/ultisnips"
-paq "dense-analysis/ale"
 paq "bfredl/nvim-miniyank"
 paq "junegunn/fzf"
 paq "junegunn/fzf.vim"
@@ -35,6 +32,15 @@ paq "kyazdani42/nvim-tree.lua"
 paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
+paq "neovim/nvim-lspconfig"
+paq "hrsh7th/nvim-compe"
+paq "hrsh7th/vim-vsnip"
+paq "hrsh7th/vim-vsnip-integ"
+paq "kabouzeid/nvim-lspinstall"
+
+-- paq {"neoclide/coc.nvim", branch = "release"}
+-- paq "SirVer/ultisnips"
+-- paq "dense-analysis/ale"
 -- paq "ervandew/supertab"
 -- paq "tpope/vim-repeat"
 -- paq "nvim-treesitter/playground"
