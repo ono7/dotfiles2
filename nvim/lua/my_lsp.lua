@@ -1,13 +1,9 @@
 -- lsp
 
--- snippet support
 if vim.g.loaded_paq then
+  -- snippet support
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  -- require "lspconfig".pyright.setup {
-  --   capabilities = capabilities
-  -- }
 
   require "compe".setup {
     enabled = true,
@@ -33,7 +29,6 @@ if vim.g.loaded_paq then
   }
 
   -- lsp package manager
-
   local on_attach = function(client, bufnr)
     _ = client
     local function buf_set_keymap(...)
@@ -45,7 +40,7 @@ if vim.g.loaded_paq then
     -- end
     --   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
+    -- set local buffer mappings
     local opts = {noremap = true, silent = true}
     buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "<leader>g", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -64,7 +59,7 @@ if vim.g.loaded_paq then
     -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   end
 
-  -- -- config that activates keymaps and enables snippet support
+  -- config that activates keymaps and enables snippet support
   local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true

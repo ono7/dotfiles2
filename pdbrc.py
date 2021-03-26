@@ -11,7 +11,7 @@ requires:
 symlink:
     ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
 """
-import pdb
+# import pdb
 
 
 # class Config(pdb.DefaultConfig):
