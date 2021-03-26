@@ -9,7 +9,7 @@
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
-local options = {
+local opt = {
   noremap = true
 }
 
@@ -23,10 +23,10 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 -- secret sauce
-m("n", ";", ":", options)
-m("v", ";", ":", options)
-m("n", ":", ";", options)
-m("v", ":", ";", options)
+m("n", ";", ":", opt)
+m("v", ";", ":", opt)
+m("n", ":", ";", opt)
+m("v", ":", ";", opt)
 m("n", "ma", "mA", {})
 m("n", "mb", "mB", {})
 m("n", "mc", "mC", {})
@@ -36,21 +36,21 @@ m("n", "'b", "'B", {})
 m("n", "'c", "'C", {})
 m("n", "'m", "'M", {})
 m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
-m("n", "gj", "j", options)
-m("n", "gk", "k", options)
-m("n", "Q", "@q", options)
-m("v", "Q", ":'<,'>norm @q<cr>", options)
-m("n", "<leader>d", ":bd!<cr><c-g>", options)
-m("n", "<leader>q", ":qall!<cr>", options)
+m("n", "gj", "j", opt)
+m("n", "gk", "k", opt)
+m("n", "Q", "@q", opt)
+m("v", "Q", ":'<,'>norm @q<cr>", opt)
+m("n", "<leader>d", ":bd!<cr><c-g>", opt)
+m("n", "<leader>q", ":qall!<cr>", opt)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
-m("n", "Y", "y$", options)
-m("v", "y", "mxy`x", options)
-m("n", "<c-z>", "", options) -- nop
-m("c", "<c-z>", "", options) -- nop
-m("n", "cp", "yap<S-}>p", options)
-m("n", "U", "<c-r>", options)
+m("n", "Y", "y$", opt)
+m("v", "y", "mxy`x", opt)
+m("n", "<c-z>", "", opt) -- nop
+m("c", "<c-z>", "", opt) -- nop
+m("n", "cp", "yap<S-}>p", opt)
+m("n", "U", "<c-r>", opt)
 vim.o.path = vim.o.path .. "**"
 
 -- disable ale before plugins are loaded
