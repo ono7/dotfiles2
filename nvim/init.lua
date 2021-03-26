@@ -24,6 +24,7 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 -- secret sauce
+m("i", "<c-l>", "<esc>A", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
 m("n", ":", ";", opt)
