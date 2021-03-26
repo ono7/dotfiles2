@@ -19,8 +19,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <silent>[q :cnext<cr>
-nnoremap <silent>]q :cprevious<cr>
+nnoremap <silent><c-n> :cnext<cr>
+nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ' `
 nnoremap / ms/
 xnoremap / ms/
