@@ -66,7 +66,6 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
-
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
   if #line == 0 then
