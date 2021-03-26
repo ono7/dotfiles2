@@ -37,10 +37,11 @@ paq "hrsh7th/nvim-compe"
 paq "hrsh7th/vim-vsnip"
 paq "hrsh7th/vim-vsnip-integ"
 paq "kabouzeid/nvim-lspinstall"
+paq "dense-analysis/ale"
+paq "nathunsmitty/nvim-ale-diagnostic"
 
 -- paq {"neoclide/coc.nvim", branch = "release"}
 -- paq "SirVer/ultisnips"
--- paq "dense-analysis/ale"
 -- paq "ervandew/supertab"
 -- paq "tpope/vim-repeat"
 -- paq "nvim-treesitter/playground"
