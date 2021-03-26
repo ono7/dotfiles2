@@ -1,6 +1,7 @@
 -- Follow the white rabbit...
 
 -- TODO: 03-17-2021 | look at LSPkind for lua
+-- TODO: PaqInstall, LspInstall python, yaml
 
 -- c-i, c-o switch between previously open files
 -- c^ switch to last file edited
