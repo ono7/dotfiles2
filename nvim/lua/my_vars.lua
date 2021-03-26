@@ -38,6 +38,7 @@ g.vimwiki_key_mappings = {
 }
 
 -- coc
+g.coc_git_status = 0
 g.coc_start_at_startup = 1
 g.coc_global_extensions = {
   "coc-python",

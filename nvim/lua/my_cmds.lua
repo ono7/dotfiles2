@@ -44,8 +44,8 @@ local autocmds = {
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
-    {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
-    {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
+    {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]}
+    -- {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   }
 }
 

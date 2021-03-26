@@ -66,10 +66,6 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
-function _G.legacy()
-  -- get vim legacy config :lua legacy()
-  vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
-end
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
@@ -92,6 +88,11 @@ function _G.pre_write()
   end
   local val, err = vim.api.nvim_win_set_cursor(0, cpos)
   cmd([[update]])
+end
+
+function _G.legacy()
+  -- get vim legacy config :lua legacy()
+  vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
 
 require "my_cmds"
