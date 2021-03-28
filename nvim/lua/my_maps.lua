@@ -2,58 +2,62 @@
 
 local m = vim.api.nvim_set_keymap
 
+-- local t = function(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local ens = {expr = true, noremap = true, silent = true}
 
--- completion (currently handled by compe, see tab completion)
+-- tab completion
+-- local check_back_space = function()
+--   local col = vim.fn.col(".") - 1
+--   if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+--     return true
+--   else
+--     return false
+--   end
+-- end
+
+-- _G.tab_complete = function()
+--   if vim.fn.pumvisible() == 1 then
+--     -- elseif vim.fn.call("vsnip#available", {1}) == 1 then
+--     --   return t "<Plug>(vsnip-expand-or-jump)"
+--     return t "<C-n>"
+--   elseif check_back_space() then
+--     return t "<Tab>"
+--   -- else
+--   --   return vim.fn["compe#complete"]()
+--   end
+-- end
+
+-- _G.s_tab_complete = function()
+--   if vim.fn.pumvisible() == 1 then
+--     -- elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+--     --   return t "<Plug>(vsnip-jump-prev)"
+--     return t "<C-p>"
+--   else
+--     return t "<S-Tab>"
+--   end
+-- end
+
+-- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- completion currently handled above, this block is for reference
 -- function _G.check_back_space()
 --   local col = vim.api.nvim_win_get_cursor(0)[2]
 --   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
 -- end
--- m("i", "<Tab>", [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : coc#refresh() ]], ens)
--- m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", en)
+-- m("i", "<Tab>", [[pumvisible() ? '<c-n>' : v:lua.check_back_space() ? '<tab>' : <Plug>(completion_trigger)]], {})
 
--- tab completion
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+-- m("i", "<S-Tab>", "pumvisible() ? '<C-p>' : '<S-Tab>'", ens)
 
-local check_back_space = function()
-  local col = vim.fn.col(".") - 1
-  if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-    return true
-  else
-    return false
-  end
-end
-
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn["compe#complete"]()
-  end
-end
-
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+m("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], ens)
+m("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], ens)
 
 -- quickfix
 m("n", "<c-n>", [[:cnext<cr>]], silent)
@@ -112,7 +116,7 @@ m("n", "<leader>b", ":Buffers<cr>", silent)
 
 -- coc
 m("i", "<c-j>", "", {}) -- nop
-m("i", "<c-j>", [[compe#complete()]], ens)
+-- m("i", "<c-j>", [[compe#complete()]], ens)
 -- m("n", "<leader>g", [[<Plug>(coc-definition)]], {silent = true})
 -- m("i", "<c-j>", [[coc#refresh()]], ens)
 -- m("n", "gr", [[<Plug>(coc-references)]], {silent = true})

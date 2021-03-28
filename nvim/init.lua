@@ -1,5 +1,8 @@
 -- Follow the white rabbit...
 
+-- :LspInstall lua
+-- :LspInstall tssserver
+-- :LspInstall pyright
 -- TODO: 03-17-2021 | look at LSPkind for lua
 -- TODO: PaqInstall, LspInstall python, yaml
 
@@ -9,6 +12,13 @@
 -- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
+
+if vim.fn.exists("+termguicolors") then
+  cmd [[
+    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  ]]
+end
 
 local opt = {
   noremap = true
@@ -96,9 +106,9 @@ function _G.legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
 
-require "my_cmds"
-require "my_vars"
 require "my_maps"
+require "my_vars"
+require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp"
