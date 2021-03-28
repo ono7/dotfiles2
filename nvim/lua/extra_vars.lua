@@ -152,7 +152,7 @@ augroup END
 
 augroup _write
   autocmd!
-  autocmd BufWritePre * silent! :call <SID>RemoveWhiteSpace() | retab
+  autocmd BufWritePre * silent! :call <SID>RemoveWhiteSpace() | retab!
 augroup END
 
 augroup _resize
@@ -161,14 +161,14 @@ augroup _resize
   autocmd VimResized * :wincmd =
 augroup END
 
-hi!  Comment    ctermfg=8  guifg=#5c6370
-hi!  Statement  ctermfg=1
-hi!  String     ctermfg=2
-hi!  Include    ctermfg=4
-hi!  MatchParen ctermfg=7 ctermbg=8
-hi!  Search     ctermfg=7  ctermbg=8
-hi!  Error ctermfg=1 ctermbg=NONE
-hi!  qfFileName ctermfg=3
+hi!  Comment     ctermfg=8  guifg=#5c6370
+hi!  Statement   ctermfg=1
+hi!  String      ctermfg=2
+hi!  Include     ctermfg=4
+hi!  MatchParen  ctermfg=7  ctermbg=8
+hi!  Search      ctermfg=7  ctermbg=8
+hi!  Error       ctermfg=1  ctermbg=NONE
+hi!  qfFileName  ctermfg=3
 
 " Lima's vimrc, use at your own risk :D
 

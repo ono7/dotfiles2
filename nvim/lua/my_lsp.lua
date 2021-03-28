@@ -7,29 +7,6 @@ if vim.g.loaded_paq then
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  -- require "compe".setup {
-  --   enabled = true,
-  --   autocomplete = true,
-  --   debug = false,
-  --   min_length = 1,
-  --   preselect = "enable",
-  --   throttle_time = 80,
-  --   source_timeout = 200,
-  --   incomplete_delay = 400,
-  --   max_abbr_width = 100,
-  --   max_kind_width = 100,
-  --   max_menu_width = 100,
-  --   documentation = true,
-  --   source = {
-  --     path = true,
-  --     buffer = true,
-  --     calc = true,
-  --     nvim_lsp = true,
-  --     nvim_lua = true
-  --     -- vsnip = true
-  --   }
-  -- }
-
   -- lsp package manager
   local on_attach = function(client, bufnr)
     _ = client
@@ -77,16 +54,16 @@ if vim.g.loaded_paq then
   local lua_server_settings = {
     Lua = {
       runtime = {
-        -- LuaJIT in the case of Neovim
+        -- LuaJIT -> Neovim
         version = "LuaJIT",
         path = vim.split(package.path, ";")
       },
       diagnostics = {
-        -- Get the language server to recognize the `vim` global
+        -- `vim` global
         globals = {"vim"}
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
+        -- Neovim runtime files
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
@@ -95,17 +72,16 @@ if vim.g.loaded_paq then
     }
   }
 
-  -- lsp-install
+  -- lsp install
+
   local function setup_servers()
     require "lspinstall".setup()
 
-    -- get all installed servers
     local servers = require "lspinstall".installed_servers()
 
     for _, server in pairs(servers) do
       local config = make_config()
 
-      -- language specific config
       if server == "lua" then
         config.settings = lua_server_settings
       end

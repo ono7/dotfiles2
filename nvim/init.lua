@@ -30,10 +30,12 @@ local silent = {
 }
 
 -- map leader
+
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
 -- secret sauce
+
 m("i", "<c-l>", "<esc>A", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
@@ -63,12 +65,15 @@ m("n", "<c-z>", "", opt) -- nop
 m("c", "<c-z>", "", opt) -- nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
+
 vim.o.path = vim.o.path .. "**"
 
 -- disable ale before plugins are loaded
+
 g.ale_disable_lsp = 1
 
 -- nvim providers
+
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1
@@ -78,6 +83,7 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
+
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
   if #line == 0 then

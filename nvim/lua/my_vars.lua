@@ -1,7 +1,9 @@
 -- setup locals
+
 local gs, g = vim.api.nvim_set_var, vim.g
 
 -- vimwiki
+
 g.vimwiki_global_ext = 1
 -- g.mywiki = {}
 -- g.mywiki.path = "~/wiki/"
@@ -37,32 +39,17 @@ g.vimwiki_key_mappings = {
   mouse = 0
 }
 
--- coc
-g.coc_git_status = 0
-g.coc_start_at_startup = 1
-g.coc_global_extensions = {
-  "coc-python",
-  "coc-json",
-  "coc-tsserver",
-  -- "coc-snippets",
-  "coc-omnisharp",
-  "coc-lua",
-  "coc-yaml"
-}
-
 g.tmux_navigator_disable_when_zoomed = 1
 
--- use jedi for goto definition
--- gs("jedi#completions_enabled", 0)
--- gs("jedi#goto_assignments_command", "")
-
 -- autopairs
+
 g.AutoPairsUseInsertedCount = 0
 g.AutoPairsFlyMode = 0
 g.AutoPairsShortcutFastWrap = "<C-e>"
 g.AutoPairsShortcutBackInsert = "<C-b>"
 
 -- ale
+
 g.ale_echo_msg_error_str = "E"
 g.ale_echo_msg_format = [[(%code%): %s]]
 g.ale_echo_msg_warning_str = "W"
@@ -93,6 +80,7 @@ g.ale_linters_explicit = 1
 g.asmsyntax = "nasm"
 
 -- markdown
+
 g.markdown_fenced_languages = {
   "html",
   "python",
@@ -110,21 +98,17 @@ g.vim_markdown_folding_disabled = 1
 
 g.buftabline_show = 0
 
--- supertab, no longer used :(
--- g.SuperTabDefaultCompletionType = "<C-n>"
--- g.SuperTabClosePreviewOnPopupClose = 1
-
 -- ultisnips
--- https://github.com/neoclide/coc-snippets
--- g.UltiSnipsExpandTrigger = "<C-l>"
+
 g.UltiSnipsExpandTrigger = ""
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
--- g.UltiSnipsJumpForwardTrigger = "<C-l>"
--- g.UltiSnipsJumpBackwardTrigger = "<C-j>"
 g.UltiSnipsJumpForwardTrigger = "<tab>"
 g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+-- g.UltiSnipsJumpForwardTrigger = "<C-l>"
+-- g.UltiSnipsExpandTrigger = "<C-l>"
+-- g.UltiSnipsJumpBackwardTrigger = "<C-j>"
 
 --[[
 
@@ -137,16 +121,6 @@ g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
   highlight: [string]: Highlight group for border
   border: [string default rounded]: Border style
   Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
-
-  local fzf_window_tbl = {
-    window = {
-      width = 1,
-      height = 1,
-      highlight = "Comment",
-      border = "bottom"
-    }
-  }
-  gs("fzf_layout", fzf_window_tbl)
 
 --]]
 g.fzf_history_dir = "~/.tmp/fzf-history"
@@ -166,17 +140,6 @@ fzf_colors_tbl.pointer = {"fg", "RedBold"}
 fzf_colors_tbl.gutter = {"fg", "fzf_bg"}
 fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 g.fzf_colors = fzf_colors_tbl
-
--- indentline
--- g.indentLine_char = "‧"
--- g.indentLine_color_term = 8
--- g.indentLine_concealcursor = "inc"
--- g.indentLine_conceallevel = 2
--- g.indentLine_fileTypeExclude = {
---   "text",
---   "markdown"
--- }
--- g.indentLine_enabled = 0
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
 
@@ -198,9 +161,11 @@ g.clipboard = clipboard_tbl
 vim.o.clipboard = "unnamed,unnamedplus"
 
 -- miniyank
+
 g.miniyank_maxitems = 10
 
 -- nvimtree
+
 g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 1
@@ -216,6 +181,7 @@ g.nvim_tree_hijack_netrw = 1
 g.nvim_tree_add_trailing = 1
 
 -- git-blame
+
 g.gitblame_enabled = 0
 g.gitblame_date_format = [[%m/%d/%Y]]
 g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]

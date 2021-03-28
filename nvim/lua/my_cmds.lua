@@ -45,19 +45,12 @@ local autocmds = {
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
-    {"BufEnter" , "*", [[lua require'completion'.on_attach()]]}
+    {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
     -- {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _yank_hl = {
     {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}
   }
 }
-
--- if exists('*CocActionAsync')
---   augroup coc_settings
---     autocmd!
---     autocmd CursorHold * silent call CocActionAsync('highlight')
---   augroup END
--- endif
 
 nvim_create_augroups(autocmds)

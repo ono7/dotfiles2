@@ -11,10 +11,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- let paq-nvim manage it self
+
 cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
+
 paq {"savq/paq-nvim", opt = true}
 paq "vimwiki/vimwiki"
 paq "christoomey/vim-tmux-navigator"
@@ -33,21 +35,19 @@ paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
--- paq "hrsh7th/nvim-compe"
 paq "hrsh7th/vim-vsnip"
 paq "hrsh7th/vim-vsnip-integ"
 paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
 paq "nvim-lua/completion-nvim"
-
+paq "tpope/vim-repeat"
 -- paq {"neoclide/coc.nvim", branch = "release"}
 -- paq "SirVer/ultisnips"
--- paq "ervandew/supertab"
--- paq "tpope/vim-repeat"
 -- paq "nvim-treesitter/playground"
 
 -- after plugins, run their setup
+
 require "my_pkg_cfg"
 
 cmd "filetype plugin indent on"

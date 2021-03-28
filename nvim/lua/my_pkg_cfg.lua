@@ -1,6 +1,7 @@
 -- configure plugins
 
 -- comments
+
 if vim.g.loaded_paq then
   -- route nvim lsp diagnostics to ale
   require("nvim-ale-diagnostic")

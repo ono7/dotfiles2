@@ -2,7 +2,8 @@ local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 
---- global options
+-- global options
+
 o.completeopt = "menuone,noinsert,noselect"
 o.foldmethod = "manual"
 o.termguicolors = true
@@ -14,7 +15,6 @@ o.laststatus = 0
 o.hlsearch = true
 o.incsearch = true
 o.ignorecase = true
--- o.completeopt = string.gsub(o.completeopt, "preview", "")
 o.diffopt = "filler"
 o.hidden = true
 o.magic = true
@@ -67,6 +67,7 @@ function _G.rg()
 end
 
 -- window-local options
+
 wo.number = false
 wo.wrap = false
 wo.numberwidth = 2
@@ -76,6 +77,7 @@ wo.list = true
 wo.cursorline = false
 
 -- buffer-local options
+
 bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0
