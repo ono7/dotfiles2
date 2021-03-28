@@ -2,6 +2,10 @@
 
 local gs, g = vim.api.nvim_set_var, vim.g
 
+-- completion
+
+g.completion_trigger_keyword_length = 3 -- default = 1
+
 -- vimwiki
 
 g.vimwiki_global_ext = 1
