@@ -41,11 +41,11 @@ local autocmds = {
     },
     {"BufEnter", "*", [[silent! lcd %:p:h]]},
     {"BufEnter", "*", [[set formatoptions=qlj]]}
+    -- {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]}
-    -- {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
     -- {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _yank_hl = {
