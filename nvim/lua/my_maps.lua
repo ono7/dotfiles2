@@ -10,6 +10,8 @@ local ens = {expr = true, noremap = true, silent = true}
 
 m("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], ens)
 m("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], ens)
+m("i", "<c-j>", "", {}) -- nop
+m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
 
 -- quickfix
 
@@ -68,11 +70,6 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 -- m("n", "<c-p>", ":GFiles<cr>", silent)
 m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
-
--- coc
-
-m("i", "<c-j>", "", {}) -- nop
--- m("i", "<c-j>", [[compe#complete()]], ens)
 
 -- surround
 
