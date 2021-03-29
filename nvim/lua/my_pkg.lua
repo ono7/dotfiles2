@@ -37,7 +37,7 @@ paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
-paq "nathunsmitty/nvim-ale-diagnostic"
+paq {"nathunsmitty/nvim-ale-diagnostic", opt = true}
 paq "nvim-lua/completion-nvim"
 paq "tpope/vim-repeat"
 -- paq "SirVer/ultisnips"

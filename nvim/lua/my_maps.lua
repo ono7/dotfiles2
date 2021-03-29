@@ -2,6 +2,10 @@
 
 local m = vim.api.nvim_set_keymap
 
+local function b(...)
+  vim.api.nvim_buf_set_keymap(bufnr, ...)
+end
+
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local ens = {expr = true, noremap = true, silent = true}
@@ -20,11 +24,6 @@ m("i", "<Tab>", "v:lua.smart_tab()", ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 m("i", "<c-j>", "", {}) -- nop
 m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
-
--- quickfix
-
-m("n", "<c-n>", [[:cnext<cr>]], silent)
-m("n", "<c-p>", [[:cprevious<cr>]], silent)
 
 -- resize window
 
@@ -75,6 +74,10 @@ if vim.g.loaded_ale == 1 then
   m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
   m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 end
+
+-- quickfix
+-- m("n", "<c-n>", [[:cnext<cr>]], silent)
+-- m("n", "<c-p>", [[:cprevious<cr>]], silent)
 
 -- fzf
 
