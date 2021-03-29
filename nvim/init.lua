@@ -95,18 +95,24 @@ m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
-  cmd([[%retab!]])
-  cmd([[%s/\s\+$//e]])
+  cmd [[%retab!]]
+  cmd [[%s/\s\+$//e]]
   if g.loaded_format == 1 then
-    cmd([[FormatWrite!]])
+    cmd [[FormatWrite!]]
   end
   local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
-  cmd([[update]])
+  cmd [[update]]
 end
 
 function _G.legacy()
   -- get vim legacy config :lua legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
+end
+
+function _G.perflog()
+  cmd [[profile start profile.log]]
+  cmd [[profile func *]]
+  cmd [[profile file *]]
 end
 
 require "my_maps"
