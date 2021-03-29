@@ -17,3 +17,4 @@ priv/
 vault.key
 my_creds.py
 # ~formatting_*
+profile.log

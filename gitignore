@@ -16,3 +16,4 @@ build/
 priv/
 vault.key
 my_creds.py
+profile.log
