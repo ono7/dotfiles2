@@ -1,10 +1,7 @@
 -- Follow the white rabbit...
 
--- :LspInstall lua
--- :LspInstall tssserver
--- :LspInstall pyright
+-- :LspInstall lua, tssserver, pyright, bash, yaml
 -- TODO: 03-17-2021 | look at LSPkind for lua
--- TODO: PaqInstall, LspInstall python, yaml
 
 -- c-i, c-o switch between previously open files
 -- c^ switch to last file edited
