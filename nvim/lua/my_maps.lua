@@ -8,21 +8,15 @@ local ens = {expr = true, noremap = true, silent = true}
 
 -- tab completion
 
--- local function t(str)
---   return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
--- function _G.smart_tab()
---   return vim.fn.pumvisible() == 1 and t "<C-n>" or t "<Tab>"
--- end
+function _G.smart_tab()
+  return vim.fn.pumvisible() == 1 and t "<C-n>" or t "<Tab>"
+end
 
--- m("i", "<Tab>", "v:lua.smart_tab()", ens)
--- imap <tab> <Plug>(completion_smart_tab)
--- imap <s-tab> <Plug>(completion_smart_s_tab)
-
--- m("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], ens)
--- m("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], ens)
-m("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], ens)
+m("i", "<Tab>", "v:lua.smart_tab()", ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 m("i", "<c-j>", "", {}) -- nop
 m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
@@ -33,6 +27,7 @@ m("n", "<c-n>", [[:cnext<cr>]], silent)
 m("n", "<c-p>", [[:cprevious<cr>]], silent)
 
 -- resize window
+
 m("n", "<M-j>", [[:resize -2<cr>]], silent)
 m("n", "<M-k>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
