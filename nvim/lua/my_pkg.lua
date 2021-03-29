@@ -35,17 +35,13 @@ paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
--- paq "hrsh7th/vim-vsnip"
--- paq "hrsh7th/vim-vsnip-integ"
 paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
 paq "nvim-lua/completion-nvim"
 paq "tpope/vim-repeat"
--- paq {"neoclide/coc.nvim", branch = "release"}
 -- paq "SirVer/ultisnips"
 -- paq "nvim-treesitter/playground"
--- paq "windwp/nvim-autopairs"
 
 -- after plugins, run their setup
 
