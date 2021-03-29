@@ -4,7 +4,7 @@
 
 if vim.g.loaded_paq then
   -- route nvim lsp diagnostics to ale
-  --[[ require("nvim-ale-diagnostic")
+  require("nvim-ale-diagnostic")
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(
@@ -15,7 +15,7 @@ if vim.g.loaded_paq then
       signs = true,
       update_in_insert = false
     }
-  ) ]]
+  )
   require("kommentary.config").configure_language(
     "default",
     {
