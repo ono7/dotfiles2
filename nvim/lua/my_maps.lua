@@ -17,8 +17,13 @@ local ens = {expr = true, noremap = true, silent = true}
 -- end
 
 -- m("i", "<Tab>", "v:lua.smart_tab()", ens)
-m("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], ens)
-m("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], ens)
+-- imap <tab> <Plug>(completion_smart_tab)
+-- imap <s-tab> <Plug>(completion_smart_s_tab)
+
+-- m("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], ens)
+-- m("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], ens)
+m("i", "<Tab>", [[pumvisible() ? "<C-n>" : "<Tab>"]], ens)
+m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 m("i", "<c-j>", "", {}) -- nop
 m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
 

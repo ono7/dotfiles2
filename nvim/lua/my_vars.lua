@@ -2,9 +2,10 @@
 
 local gs, g = vim.api.nvim_set_var, vim.g
 
--- completion
+-- nvim-completion
 
 g.completion_trigger_keyword_length = 1 -- default = 1
+g.completion_sorting = "length"
 
 -- vimwiki
 
