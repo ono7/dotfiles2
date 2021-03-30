@@ -3,12 +3,12 @@
   name = lima
   email = lima@mbp
 [core]
-	editor = vim
+  editor = vim
 [push]
-	default = simple
+  default = simple
 [http]
-	sslVerify = false
+  sslVerify = false
 [url "https://github.com/"]
-	insteadOf = git://github.com/
+  insteadOf = git://github.com/
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
