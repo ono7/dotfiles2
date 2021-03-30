@@ -70,7 +70,6 @@ vim.o.path = vim.o.path .. "**"
 g.ale_disable_lsp = 1
 
 -- nvim providers
-
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1

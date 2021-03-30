@@ -16,13 +16,13 @@ cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
 -- plugins
-
 paq {"savq/paq-nvim", opt = true}
 paq "vimwiki/vimwiki"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
+paq "tpope/vim-repeat"
 paq "jiangmiao/auto-pairs"
 paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
@@ -36,10 +36,10 @@ paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
-paq {"dense-analysis/ale", opt = true}
-paq {"nathunsmitty/nvim-ale-diagnostic", opt = true}
+paq "dense-analysis/ale"
+paq "nathunsmitty/nvim-ale-diagnostic"
 paq "nvim-lua/completion-nvim"
-paq "tpope/vim-repeat"
+
 -- paq "SirVer/ultisnips"
 -- paq "nvim-treesitter/playground"
 
