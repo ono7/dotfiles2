@@ -7,6 +7,10 @@ local gs, g = vim.api.nvim_set_var, vim.g
 g.completion_trigger_keyword_length = 1 -- default = 1
 g.completion_sorting = "length"
 
+-- lsp
+
+g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
+
 -- vimwiki
 
 g.vimwiki_global_ext = 1
