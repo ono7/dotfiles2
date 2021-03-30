@@ -36,7 +36,7 @@ paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
-paq "dense-analysis/ale"
+paq {"dense-analysis/ale", opt = true}
 paq {"nathunsmitty/nvim-ale-diagnostic", opt = true}
 paq "nvim-lua/completion-nvim"
 paq "tpope/vim-repeat"
