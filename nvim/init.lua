@@ -110,7 +110,7 @@ function _G.legacy()
 end
 
 function _G.perflog()
-  cmd [[profile start profile.log]]
+  cmd [[profile start ~/profile.log]]
   cmd [[profile func *]]
   cmd [[profile file *]]
 end
