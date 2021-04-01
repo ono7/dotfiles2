@@ -32,8 +32,8 @@ until ${1:"bool exp"}
 endsnippet
 
 snippet "(for)" "for with counter" br
-for $0 do
-  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+for $1 do
+  $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
 end
 endsnippet
 
