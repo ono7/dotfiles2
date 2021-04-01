@@ -215,7 +215,7 @@ M.setup = function()
   -- M.highlight("TSType", {})
   M.highlight("TSTypeBuiltin", {fg = M.colors.yellow, gui = "bold"})
   -- M.highlight("TSStructure", {})
-  -- M.highlight("TSInclude", {})
+  M.highlight("TSInclude", {fg = M.colors.blue, gui = "bold,italic"})
 
   -- -- Variable
   -- M.highlight("TSVariable", {})
