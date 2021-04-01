@@ -59,13 +59,13 @@ if vim.g.loaded_paq then
     -- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
     buf_set_keymap(
-      "n",
+      "i",
       "<tab>",
       [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? '\<Tab>' : compe#complete()]],
       ens
     )
-    buf_set_keymap("n", "c-f", "compe#scroll({ 'delta': +4 })", ens)
-    buf_set_keymap("n", "c-d", "compe#scroll({ 'delta': -4 })", ens)
+    buf_set_keymap("i", "c-f", "compe#scroll({ 'delta': +4 })", ens)
+    buf_set_keymap("i", "c-d", "compe#scroll({ 'delta': -4 })", ens)
 
     --- disabled
     -- buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
