@@ -5,7 +5,7 @@ M.legacy_cfg =
 " Follow the white rabbit...
 
 let mapleader = " "
-set synmaxcol = 512
+set synmaxcol=512
 set nocompatible
 syntax enable
 syntax sync minlines=256
