@@ -121,11 +121,15 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 
-cmd "colorscheme onehalfdark"
 cmd "syntax enable"
 cmd "set synmaxcol=512"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
+-- cmd "colorscheme onehalfdark"
 
 require "my_lsp"
+
+-- colorscheme last!
+
+require "onedark".setup {}
