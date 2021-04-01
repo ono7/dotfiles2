@@ -51,7 +51,7 @@ g.vimwiki_key_mappings = {
 g.tmux_navigator_disable_when_zoomed = 1
 
 -- autopairs
-
+g.AutoPairsMapCR = 0
 g.AutoPairsUseInsertedCount = 0
 g.AutoPairsMultilineClose = 1
 g.AutoPairsFlyMode = 0
@@ -110,7 +110,7 @@ g.buftabline_show = 0
 
 -- ultisnips
 
-g.UltiSnipsExpandTrigger = ""
+g.UltiSnipsExpandTrigger = "<tab>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3

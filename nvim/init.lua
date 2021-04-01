@@ -120,14 +120,13 @@ require "my_vars"
 require "my_cmds"
 require "my_settings"
 require "my_pkg"
+-- require "my_lsp"
 
 cmd "syntax enable"
 cmd "set synmaxcol=512"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
-
-require "my_lsp"
 
 -- lua colorscheme last!
 

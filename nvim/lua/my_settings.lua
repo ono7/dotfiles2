@@ -4,7 +4,8 @@ local bo = vim.bo
 
 -- global options
 
-o.completeopt = "menuone,noinsert,noselect"
+-- o.completeopt = "menuone,noinsert,noselect"
+o.completeopt = "menuone,noselect"
 o.foldmethod = "manual"
 o.termguicolors = true
 o.cmdheight = 2

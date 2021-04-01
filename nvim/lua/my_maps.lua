@@ -22,8 +22,8 @@ end
 
 m("i", "<Tab>", "v:lua.smart_tab()", ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
-m("i", "<c-j>", "", {}) -- nop
-m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
+-- m("i", "<c-j>", "", {}) -- nop
+-- m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
 
 -- resize window
 

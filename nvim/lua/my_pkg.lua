@@ -38,9 +38,9 @@ paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
-paq "nvim-lua/completion-nvim"
+-- paq "nvim-lua/completion-nvim"
 
--- paq "SirVer/ultisnips"
+paq "SirVer/ultisnips"
 paq "nvim-treesitter/playground"
 
 -- after plugins, run their setup

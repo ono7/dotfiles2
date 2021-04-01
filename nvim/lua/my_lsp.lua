@@ -3,9 +3,9 @@
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
 if vim.g.loaded_paq then
-  -- snippet support
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  --- snippet support
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = false
 
   -- lsp package manager
   local on_attach = function(client, bufnr)
@@ -14,10 +14,11 @@ if vim.g.loaded_paq then
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    -- local function buf_set_option(...)
-    --   vim.api.nvim_buf_set_option(bufnr, ...)
-    -- end
-    --   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    local function buf_set_option(...)
+      vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- set local buffer mappings
     local opts = {noremap = true, silent = true}
@@ -41,7 +42,7 @@ if vim.g.loaded_paq then
   -- config that activates keymaps and enables snippet support
   local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
     return {
       -- enable snippet support
       capabilities = capabilities,
