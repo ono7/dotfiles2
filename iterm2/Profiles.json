@@ -1,13 +1,7 @@
 {
 "Profiles": [
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.77647058823529413,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.8666666666666667,
-    "Alpha Component" : 1,
-    "Green Component" : 0.47058823529411764
-  },
+  "Thin Strokes" : 1,
   "Working Directory" : "\/Users\/jlima",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -43,6 +37,7 @@
     "Green Component" : 0.85113525390625
   },
   "Mouse Reporting" : true,
+  "Cursor Boost" : 0,
   "Ansi 4 Color" : {
     "Red Component" : 0.38039215686274508,
     "Color Space" : "sRGB",
@@ -326,14 +321,6 @@
   "Name" : "dotfiles.dark",
   "Blinking Cursor" : false,
   "Guid" : "6A8E176F-9834-437B-92F5-AA3409415E51",
-  "Idle Code" : 0,
-  "Ansi 10 Color" : {
-    "Red Component" : 0.59607843137254901,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.47450980392156861,
-    "Alpha Component" : 1,
-    "Green Component" : 0.76470588235294112
-  },
   "Ansi 8 Color" : {
     "Red Component" : 0.36078431372549019,
     "Color Space" : "sRGB",
@@ -341,6 +328,14 @@
     "Alpha Component" : 1,
     "Green Component" : 0.38823529411764707
   },
+  "Ansi 10 Color" : {
+    "Red Component" : 0.59607843137254901,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.47450980392156861,
+    "Alpha Component" : 1,
+    "Green Component" : 0.76470588235294112
+  },
+  "Idle Code" : 0,
   "Badge Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",
@@ -358,7 +353,7 @@
     "Green Component" : 0.17254901960784313
   },
   "Blur" : false,
-  "Normal Font" : "OperatorMonoSSm-Medium 18",
+  "Normal Font" : "InputMono-Regular 22",
   "Vertical Spacing" : 1,
   "Use Underline Color" : false,
   "Ansi 7 Color" : {
@@ -392,18 +387,18 @@
   },
   "Transparency" : 0,
   "Background Color" : {
-    "Red Component" : 0.15405381125615178,
+    "Red Component" : 0.14007568666447517,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.21417236328125,
+    "Blue Component" : 0.182098388671875,
     "Alpha Component" : 1,
-    "Green Component" : 0.17284085153338241
+    "Green Component" : 0.15408325400027514
   },
   "Screen" : -1,
   "Initial Use Transparency" : false,
   "Bound Hosts" : [
 
   ],
-  "Non Ascii Font" : "MesloLGS-NF-Regular 18",
+  "Non Ascii Font" : "MesloLGS-NF-Regular 22",
   "Ansi 13 Color" : {
     "Red Component" : 0.87230261718347057,
     "Color Space" : "sRGB",
@@ -415,8 +410,14 @@
   "Unicode Normalization" : 0,
   "Visual Bell" : true,
   "Custom Directory" : "No",
-  "Thin Strokes" : 1,
-  "ASCII Ligatures" : false
+  "ASCII Ligatures" : false,
+  "Ansi 5 Color" : {
+    "Red Component" : 0.77647058823529413,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.8666666666666667,
+    "Alpha Component" : 1,
+    "Green Component" : 0.47058823529411764
+  }
 }
 ]
 }
