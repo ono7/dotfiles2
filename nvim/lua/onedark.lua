@@ -12,8 +12,8 @@ M.link = function(groupa, groupb)
   vim.cmd(string.format("highlight! link %s %s", groupa, groupb))
 end
 
-M.clear = function(groupa)
-  vim.cmd(string.format("silent! syn clear  %s", groupa))
+M.clear = function(grp)
+  vim.cmd(string.format("silent! syn clear  %s", grp))
 end
 
 M.colors = {
@@ -47,10 +47,7 @@ M.setup = function()
   vim.cmd [[highlight clear]]
   vim.cmd [[syntax reset]]
 
-  -- M.clear("Comment")
-
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic,bold"})
-  -- M.highlight("Comment", {fg = M.colors.comment_grey})
   M.highlight("Constant", {fg = M.colors.cyan})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
@@ -121,7 +118,6 @@ M.setup = function()
   M.highlight("ESearchMatch", {fg = M.colors.black, bg = M.colors.comment_grey})
   M.highlight("QuickFixLine", {bg = M.colors.special_grey, gui = "bold"})
   M.highlight("qfFileName", {fg = M.colors.yellow, gui = "bold"})
-  -- M.highlight("SpecialKey", {fg = M.colors.special_grey})
   M.highlight("SpecialKey", {fg = M.colors.orange})
   M.highlight("SpellBad", {gui = "underline"})
   M.highlight("SpellCap", {gui = "underline"})
