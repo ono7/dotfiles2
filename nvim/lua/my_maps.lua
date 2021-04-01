@@ -66,7 +66,7 @@ m("n", "V", "Vg_", {})
 
 -- terminal
 
-m("t", "jk", [[<c-\><c-n>]], opt)
+m("t", "jk", [[<c-\><c-n>]], silent)
 
 -- ale
 

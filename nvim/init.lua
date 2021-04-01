@@ -34,7 +34,6 @@ g.mapleader = " "
 -- secret sauce
 
 m("n", "<cr>", "<cmd>noh<cr><cr>", silent)
-m("i", "<c-l>", "<esc>A", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
 m("n", ":", ";", opt)

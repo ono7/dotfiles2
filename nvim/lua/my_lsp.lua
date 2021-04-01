@@ -2,11 +2,16 @@
 
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
+function _G.check_back_space()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+end
+
 -- completion
 
 require "compe".setup {
   enabled = true,
-  autocomplete = true,
+  autocomplete = false,
   debug = false,
   min_length = 1,
   preselect = "enable",
@@ -22,8 +27,8 @@ require "compe".setup {
     buffer = true,
     calc = true,
     nvim_lsp = true,
-    nvim_lua = true,
-    vsnip = true
+    nvim_lua = true
+    -- vsnip = true
   }
 }
 
@@ -39,21 +44,26 @@ if vim.g.loaded_paq then
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    -- local function buf_set_option(...)
+    --   vim.api.nvim_buf_set_option(bufnr, ...)
+    -- end
 
     -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- set local buffer mappings
-    local opts = {noremap = true, silent = true}
+    -- local opts = {noremap = true, silent = true}
     local ens = {expr = true, noremap = true, silent = true}
 
     -- compe unmapped:
     -- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
     -- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
-    buf_set_keymap("n", "<leader>j", "compe#complete()", ens)
+    buf_set_keymap(
+      "n",
+      "<tab>",
+      [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? '\<Tab>' : compe#complete()]],
+      ens
+    )
     buf_set_keymap("n", "c-f", "compe#scroll({ 'delta': +4 })", ens)
     buf_set_keymap("n", "c-d", "compe#scroll({ 'delta': -4 })", ens)
 
