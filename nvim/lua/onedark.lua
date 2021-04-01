@@ -48,7 +48,7 @@ M.setup = function()
   vim.cmd [[syntax reset]]
 
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic,bold"})
-  M.highlight("Constant", {fg = M.colors.cyan})
+  M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
   M.highlight("Number", {fg = M.colors.dark_yellow})
