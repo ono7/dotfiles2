@@ -87,7 +87,6 @@ M.setup = function()
   M.highlight("Todo", {fg = M.colors.purple})
   M.highlight("ColorColumn", {bg = M.colors.dark_black})
   M.highlight("Conceal", {})
-  M.highlight("Cursor", {fg = M.colors.black, bg = M.colors.blue})
   M.highlight("CursorIM", {})
   M.highlight("CursorColumn", {bg = M.colors.dark_black})
   M.highlight("CursorLine", {bg = M.colors.dark_black})
@@ -220,7 +219,7 @@ M.setup = function()
 
   -- -- Variable
   -- M.highlight("TSVariable", {})
-  M.highlight("TSVariableBuiltin", {fg = M.colors.cyan, gui = "italic"})
+  M.highlight("TSVariableBuiltin", {fg = M.colors.cyan})
 
   -- -- Text
   -- M.highlight("TSText", {})
