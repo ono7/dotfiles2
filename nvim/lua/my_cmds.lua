@@ -38,10 +38,9 @@ local autocmds = {
       "BufReadPost",
       "*",
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
-    },
+    }, -- restore cursor position on enter
     {"BufEnter", "*", [[silent! lcd %:p:h]]},
     {"BufEnter", "*", [[set formatoptions=qlj]]}
-    -- {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},

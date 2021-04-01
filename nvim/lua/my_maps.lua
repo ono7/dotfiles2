@@ -1,35 +1,19 @@
--- my_maps
+--- my_maps
 
 local m = vim.api.nvim_set_keymap
-
--- local function b(...)
---   vim.api.nvim_buf_set_keymap(bufnr, ...)
--- end
-
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local ens = {expr = true, noremap = true, silent = true}
 
 -- tab completion
 
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-function _G.smart_tab()
-  return vim.fn.pumvisible() == 1 and t "<C-n>" or t "<Tab>"
-end
-
 function _G.check_back_space()
   local col = vim.api.nvim_win_get_cursor(0)[2]
   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
 end
 
-m("i", "<tab>", [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? '\<Tab>' : '\<c-n>']], ens)
+m("i", "<tab>", [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<Tab>" : "<c-n>"]], ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
--- m("i", "<Tab>", "v:lua.smart_tab()", ens)
--- m("i", "<c-j>", "", {}) -- nop
--- m("i", "<c-j>", [[<Plug>(completion_trigger)]], {})
 
 -- resize window
 
@@ -139,8 +123,12 @@ m("n", [[\xl]], [[<Plug>VimwikiTabMakeDiaryNote]], opt)
 m("n", [[\xm]], [[<Plug>VimwikiMakeDiaryNote]], opt)
 m("n", [[\xn]], [[<Plug>VimwikiDiaryGenerateLinks]], opt)
 
--- " remove any spaces and un-hexify (visual select)
--- xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
+--[[
 
--- " remove any spaces/shellcode
--- xnoremap <silent><leader>s ^ :s/\v\s+//ge<cr><bar> :noh<cr>
+  " remove any spaces and un-hexify (visual select)
+  xnoremap <silent>\h :s/\v\s+//ge<cr><bar> :s/\v\\x//ge<cr> :noh<cr>
+
+  " remove any spaces/shellcode
+  xnoremap <silent><leader>s ^ :s/\v\s+//ge<cr><bar> :noh<cr>
+
+--]]
