@@ -126,7 +126,6 @@ cmd "set synmaxcol=512"
 cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
--- cmd "colorscheme onehalfdark"
 
 require "my_lsp"
 
