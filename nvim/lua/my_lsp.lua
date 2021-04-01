@@ -2,6 +2,31 @@
 
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
+-- completion
+
+require "compe".setup {
+  enabled = true,
+  autocomplete = true,
+  debug = false,
+  min_length = 1,
+  preselect = "enable",
+  throttle_time = 80,
+  source_timeout = 200,
+  incomplete_delay = 400,
+  max_abbr_width = 100,
+  max_kind_width = 100,
+  max_menu_width = 100,
+  documentation = true,
+  source = {
+    path = true,
+    buffer = true,
+    calc = true,
+    nvim_lsp = true,
+    nvim_lua = true,
+    vsnip = true
+  }
+}
+
 if vim.g.loaded_paq then
   --- snippet support
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -18,17 +43,30 @@ if vim.g.loaded_paq then
       vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- set local buffer mappings
     local opts = {noremap = true, silent = true}
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "<leader>g", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "<space>l", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    local ens = {expr = true, noremap = true, silent = true}
+
+    -- compe unmapped:
+    -- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+    -- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+
+    buf_set_keymap("n", "<leader>j", "compe#complete()", ens)
+    buf_set_keymap("n", "c-f", "compe#scroll({ 'delta': +4 })", ens)
+    buf_set_keymap("n", "c-d", "compe#scroll({ 'delta': -4 })", ens)
+
+    --- disabled
+    -- buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    -- buf_set_keymap("n", "<leader>g", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    -- buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    -- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+    -- buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    -- buf_set_keymap("n", "<space>l", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+    -- buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+
+    --- not really used
     -- buf_set_keymap("n", "<c-p>", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts) -- ale routed
     -- buf_set_keymap("n", "<c-n>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts) -- ale routed
     -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
@@ -42,7 +80,7 @@ if vim.g.loaded_paq then
   -- config that activates keymaps and enables snippet support
   local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = false
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = false
     return {
       -- enable snippet support
       capabilities = capabilities,
@@ -51,7 +89,7 @@ if vim.g.loaded_paq then
     }
   end
 
-  -- configure lua for vim development
+  -- configure lua for nvim development
   local lua_server_settings = {
     Lua = {
       runtime = {

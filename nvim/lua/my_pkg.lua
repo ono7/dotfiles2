@@ -38,6 +38,7 @@ paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
+paq "hrsh7th/nvim-compe"
 -- paq "nvim-lua/completion-nvim"
 
 paq "SirVer/ultisnips"

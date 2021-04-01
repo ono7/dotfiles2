@@ -212,7 +212,7 @@ M.setup = function()
   -- M.highlight("TSKeywordOperator", {})
   -- M.highlight("TSOperator", {})
   -- M.highlight("TSException", {})
-  -- M.highlight("TSType", {})
+  M.highlight("TSType", {fg = M.colors.orange})
   M.highlight("TSTypeBuiltin", {fg = M.colors.yellow, gui = "bold"})
   -- M.highlight("TSStructure", {})
   M.highlight("TSInclude", {fg = M.colors.blue, gui = "bold,italic"})
@@ -312,6 +312,10 @@ M.setup = function()
 
   M.highlight("TSDefinitionUsage", {gui = "bold"})
   M.highlight("TSDefinition", {gui = "bold"})
+
+  --- snippets
+  M.clear("snipLeadingSpaces")
+  M.highlight("snipLeadingSpaces", {})
 end
 
 return M
