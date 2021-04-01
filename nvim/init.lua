@@ -130,6 +130,6 @@ cmd "syntax on"
 
 require "my_lsp"
 
--- colorscheme last!
+-- lua colorscheme last!
 
 require "onedark".setup {}

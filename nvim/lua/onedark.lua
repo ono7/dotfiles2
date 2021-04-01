@@ -26,6 +26,7 @@ M.colors = {
   diff_yellow = "#e5c07b",
   dark_yellow = "#e5c07b",
   blue = "#61AFEF",
+  orange = "#e78a4e",
   purple = "#C678DD",
   cyan = "#56B6C2",
   white = "#dcdfe4",
@@ -87,7 +88,6 @@ M.setup = function()
   M.highlight("Ignore", {})
   M.highlight("Error", {fg = M.colors.dark_red})
   M.highlight("Todo", {fg = M.colors.purple})
-
   M.highlight("ColorColumn", {bg = M.colors.dark_black})
   M.highlight("Conceal", {})
   M.highlight("Cursor", {fg = M.colors.black, bg = M.colors.blue})
@@ -100,7 +100,7 @@ M.setup = function()
   M.highlight("DiffDelete", {bg = M.colors.diff_red, fg = M.colors.black})
   M.highlight("DiffText", {bg = M.colors.diff_yellow})
   M.highlight("ErrorMsg", {fg = M.colors.red})
-  M.highlight("VertSplit", {fg = M.colors.dark_black, bg = M.colors.dark_black})
+  M.highlight("VertSplit", {})
   M.highlight("Folded", {fg = M.colors.comment_grey, bg = M.colors.dimm_black})
   M.highlight("FoldColumn", {})
   M.highlight("SignColumn", {})
@@ -112,15 +112,17 @@ M.setup = function()
   M.highlight("MoreMsg", {})
   M.highlight("NonText", {fg = M.colors.special_grey})
   M.highlight("Normal", {fg = M.colors.white})
-  M.highlight("Pmenu", {bg = M.colors.dark_black})
-  M.highlight("PmenuSel", {fg = M.colors.black, bg = M.colors.green})
+  M.highlight("Pmenu", {bg = M.colors.visual_grey})
+  M.highlight("PmenuSel", {bg = M.colors.special_grey, gui = "reverse"})
   M.highlight("PmenuSbar", {bg = M.colors.special_grey})
   M.highlight("PmenuThumb", {bg = M.colors.white})
   M.highlight("Question", {fg = M.colors.purple})
   M.highlight("Search", {fg = M.colors.black, bg = M.colors.comment_grey})
   M.highlight("ESearchMatch", {fg = M.colors.black, bg = M.colors.comment_grey})
-  M.highlight("QuickFixLine", {gui = "bold"})
-  M.highlight("SpecialKey", {fg = M.colors.special_grey})
+  M.highlight("QuickFixLine", {bg = M.colors.special_grey, gui = "bold"})
+  M.highlight("qfFileName", {fg = M.colors.yellow, gui = "bold"})
+  -- M.highlight("SpecialKey", {fg = M.colors.special_grey})
+  M.highlight("SpecialKey", {fg = M.colors.orange})
   M.highlight("SpellBad", {gui = "underline"})
   M.highlight("SpellCap", {gui = "underline"})
   M.highlight("SpellLocal", {gui = "underline"})
@@ -175,7 +177,7 @@ M.setup = function()
   -- Misc
   M.highlight("TSError", {fg = M.colors.red})
   M.highlight("TSPunctDelimiter", {fg = M.colors.white})
-  M.highlight("TSPunctBracket", {fg = M.colors.yellow})
+  M.highlight("TSPunctBracket", {fg = M.colors.blue})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
   -- -- Constants
@@ -203,7 +205,7 @@ M.setup = function()
   -- M.highlight("TSMethod", {})
   -- M.highlight("TSField", {})
   -- M.highlight("TSProperty", {})
-  M.highlight("TSConstructor", {fg = M.colors.red, gui = "bold"})
+  M.highlight("TSConstructor", {fg = M.colors.orange})
 
   -- -- Keywords
   -- M.highlight("TSConditional", {})
@@ -285,7 +287,7 @@ M.setup = function()
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
 
-  M.highlight("Whitespace", {fg = M.colors.cursor_grey})
+  M.highlight("Whitespace", {fg = M.colors.orange})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
   M.link("gitcommitUntracked", "gitcommitComment")

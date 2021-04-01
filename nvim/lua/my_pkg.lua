@@ -41,7 +41,7 @@ paq "nathunsmitty/nvim-ale-diagnostic"
 paq "nvim-lua/completion-nvim"
 
 -- paq "SirVer/ultisnips"
--- paq "nvim-treesitter/playground"
+paq "nvim-treesitter/playground"
 
 -- after plugins, run their setup
 
