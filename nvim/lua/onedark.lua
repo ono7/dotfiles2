@@ -220,7 +220,7 @@ M.setup = function()
 
   -- -- Variable
   -- M.highlight("TSVariable", {})
-  M.highlight("TSVariableBuiltin", {fg = M.colors.yellow, gui = "bold"})
+  M.highlight("TSVariableBuiltin", {fg = M.colors.yellow, gui = "italic"})
 
   -- -- Text
   -- M.highlight("TSText", {})
