@@ -22,12 +22,11 @@ m("n", "<M-k>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
 m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 
--- tmux
-
-m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+-- terminal
+-- m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 
 -- select visualy selected text for search
-
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", opt)

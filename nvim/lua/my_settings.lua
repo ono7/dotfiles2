@@ -4,7 +4,6 @@ local bo = vim.bo
 
 -- global options
 
--- o.completeopt = "menuone,noinsert,noselect"
 o.completeopt = "menuone,noselect"
 o.foldmethod = "manual"
 o.termguicolors = true
@@ -27,7 +26,6 @@ o.ruler = true
 o.scrolloff = 1
 o.sidescrolloff = 1
 o.splitbelow = true
-o.splitright = true
 o.smartcase = true
 o.smarttab = true
 o.shiftround = true
