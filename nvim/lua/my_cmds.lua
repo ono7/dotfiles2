@@ -49,6 +49,10 @@ local autocmds = {
   },
   _yank_hl = {
     {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}
+  },
+  _terminal = {
+    {"TermEnter", "*", [[setlocal scrolloff=0]]},
+    {"TermLeave", "*", [[setlocal scrolloff=1]]}
   }
 }
 

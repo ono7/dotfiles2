@@ -1,6 +1,6 @@
 -- auto install paq if not exists
 
-local cmd, fn, g = vim.cmd, vim.fn, vim.g
+local cmd, fn = vim.cmd, vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
@@ -15,8 +15,10 @@ end
 cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
--- plugins
 paq {"savq/paq-nvim", opt = true}
+
+-- plugins
+
 paq "vimwiki/vimwiki"
 paq "christoomey/vim-tmux-navigator"
 paq "tpope/vim-eunuch"
@@ -39,8 +41,6 @@ paq "kabouzeid/nvim-lspinstall"
 paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
 paq "hrsh7th/nvim-compe"
--- paq "nvim-lua/completion-nvim"
-
 paq "SirVer/ultisnips"
 paq "nvim-treesitter/playground"
 
