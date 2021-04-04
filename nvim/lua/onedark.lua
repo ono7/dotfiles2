@@ -204,7 +204,7 @@ M.setup = function()
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
   -- -- Keywords
-  -- M.highlight("TSConditional", {})
+  M.highlight("TSConditional", {fg = M.colors.cyan, gui = "italic"})
   M.highlight("TSRepeat", {fg = M.colors.purple, gui = "italic"})
   -- M.highlight("TSLabel", {})
   -- M.highlight("TSKeyword", {})
