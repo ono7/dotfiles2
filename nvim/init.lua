@@ -94,6 +94,7 @@ m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
+  cmd [[let old = @/]]
   cmd "%retab!"
   cmd [[%s/\s\+$//e]]
   if g.loaded_format == 1 then
@@ -101,6 +102,7 @@ function _G.pre_write()
   end
   local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
   cmd "update"
+  cmd [[let @/ = old]]
   cmd "noh"
 end
 
