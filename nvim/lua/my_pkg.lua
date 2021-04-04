@@ -17,34 +17,33 @@ local paq = require "paq-nvim".paq
 
 paq {"savq/paq-nvim", opt = true}
 
--- plugins
-
+-- vimscript
 paq "vimwiki/vimwiki"
-paq "numToStr/Navigator.nvim"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
 paq "tpope/vim-repeat"
 paq "jiangmiao/auto-pairs"
+paq "junegunn/fzf"
+paq "junegunn/fzf.vim"
+paq "SirVer/ultisnips"
+paq "dense-analysis/ale"
+paq "Glench/Vim-Jinja2-Syntax"
+
+-- native lua
+paq "numToStr/Navigator.nvim"
 paq "nvim-treesitter/nvim-treesitter"
 paq "lukas-reineke/format.nvim"
 paq "bfredl/nvim-miniyank"
-paq "junegunn/fzf"
-paq "junegunn/fzf.vim"
 paq "kyazdani42/nvim-web-devicons"
 paq "kyazdani42/nvim-tree.lua"
-paq "Glench/Vim-Jinja2-Syntax"
 paq "f-person/git-blame.nvim"
 paq "b3nj5m1n/kommentary"
 paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
-paq "dense-analysis/ale"
 paq "nathunsmitty/nvim-ale-diagnostic"
 paq "hrsh7th/nvim-compe"
-paq "SirVer/ultisnips"
 paq "nvim-treesitter/playground"
-
--- paq "christoomey/vim-tmux-navigator"
 
 -- after plugins, run their setup
 
