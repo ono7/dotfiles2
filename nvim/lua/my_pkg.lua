@@ -20,7 +20,7 @@ paq {"savq/paq-nvim", opt = true}
 -- plugins
 
 paq "vimwiki/vimwiki"
-paq "christoomey/vim-tmux-navigator"
+paq "numToStr/Navigator.nvim"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
@@ -43,6 +43,8 @@ paq "nathunsmitty/nvim-ale-diagnostic"
 paq "hrsh7th/nvim-compe"
 paq "SirVer/ultisnips"
 paq "nvim-treesitter/playground"
+
+-- paq "christoomey/vim-tmux-navigator"
 
 -- after plugins, run their setup
 

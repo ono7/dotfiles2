@@ -1,8 +1,19 @@
--- configure plugins
+-- locals
 
--- comments
+local m = vim.api.nvim_set_keymap
+local opt = {noremap = true}
 
--- if vim.g.loaded_paq then
+-- tmux navigator, in lua
+require("Navigator").setup(
+  {
+    disable_on_zoom = true
+  }
+)
+m("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opt)
+m("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opt)
+m("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opt)
+m("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opt)
+
 -- route nvim lsp diagnostics to ale
 require("nvim-ale-diagnostic")
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -15,6 +26,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     update_in_insert = false
   }
 )
+
+-- comments
 require("kommentary.config").configure_language(
   "default",
   {
@@ -24,10 +37,12 @@ require("kommentary.config").configure_language(
   }
 )
 
+-- sweet sweet icons for ntree
 require "nvim-web-devicons".setup {
   default = true
 }
 
+-- better highlighting
 require "nvim-treesitter.configs".setup {
   ensure_installed = "maintained",
   highlight = {
@@ -45,6 +60,7 @@ require "nvim-treesitter.configs".setup {
   }
 }
 
+-- delicious formatting sauce
 require "format".setup {
   --[[
 
@@ -158,4 +174,3 @@ require "format".setup {
     }
   }
 }
--- end
