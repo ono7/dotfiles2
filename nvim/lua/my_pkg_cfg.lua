@@ -1,7 +1,7 @@
 -- locals
 
 local m = vim.api.nvim_set_keymap
-local opt = {noremap = true}
+local opt = {noremap = true, silent = true}
 
 -- tmux navigator, in lua
 require("Navigator").setup(
