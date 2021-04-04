@@ -82,6 +82,7 @@ echo 'setting up directories and symlinks..done!'
 # setup omzsh
 
 defaults -currentHost write -g AppleFontSmoothing -int 0
+defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1
 
 cd ~/.dotfiles/setup
 

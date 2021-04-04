@@ -241,7 +241,7 @@ function vd () {
 # }
 
 function vs () {
-  vim $(fzf || '' 2>/dev/null) 
+  vim $(fzf || '' 2>/dev/null)
 }
 
 # load other functions
@@ -324,3 +324,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 HISTSIZE=5000
 # zprof ends profiling
 # zprof
+
+defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1
