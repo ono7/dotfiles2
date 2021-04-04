@@ -94,13 +94,14 @@ m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
-  cmd [[%retab!]]
+  cmd "%retab!"
   cmd [[%s/\s\+$//e]]
   if g.loaded_format == 1 then
-    cmd [[FormatWrite!]]
+    cmd "FormatWrite!"
   end
   local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
-  cmd [[update]]
+  cmd "update"
+  cmd "noh"
 end
 
 function _G.legacy()
