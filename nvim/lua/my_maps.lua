@@ -55,7 +55,8 @@ m("n", "V", "Vg_", {})
 
 -- terminal
 
-m("t", "jk", [[<c-\><c-n>]], silent)
+-- m("t", "jk", [[<c-\><c-n>]], silent)
+m("t", "<c-[>", [[<c-\><c-n>]], silent)
 
 -- ale
 
