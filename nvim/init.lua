@@ -49,7 +49,8 @@ m("n", "'a", "'A", {})
 m("n", "'b", "'B", {})
 m("n", "'c", "'C", {})
 m("n", "'m", "'M", {})
-m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+-- m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+m("i", "<c-[>", "<c-[>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "gj", "j", opt)
 m("n", "gk", "k", opt)
 m("n", "Q", "@q", opt)
