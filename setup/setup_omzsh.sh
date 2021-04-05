@@ -4,7 +4,7 @@ if [ -d ~/.oh-my-zsh ]; then
   rm -rf ~/.oh-my-zsh
 fi
 
-echo 'closing oh-my-zsh'
+echo 'cloning oh-my-zsh'
 echo ''
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
