@@ -22,9 +22,11 @@ m("n", "<M-j>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
 m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 
--- terminal
+-- send to tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
--- m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
+
+-- terminal
+m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 
 -- select visualy selected text for search
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
@@ -69,7 +71,7 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- fzf
 
-m("n", "<leader>t", ":GFiles<cr>", silent)
+-- m("n", "<leader>t", ":GFiles<cr>", silent)
 m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 
