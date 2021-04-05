@@ -3,7 +3,7 @@ env:
 
 window:
   dimensions:
-    columns:
+    columns: 80
     lines: 28
   dynamic_title: false
 
@@ -21,19 +21,19 @@ scrolling:
 
 font:
   normal:
-    family: Operator Mono SSm
-    style: Book
+    family: Input Mono
+    style: Regular
 
   bold:
-    family: Operator Mono SSm
+    family: Input Mono
     style: Bold
 
   italic:
-    family: Operator Mono SSm
-    style: Book Italic
+    family: Input Mono
+    style: Italic
 
   bold_italic:
-    family: Operator Mono SSm
+    family: Input Mono
     style: Bold Italic
 
   size: 18.0
@@ -48,7 +48,7 @@ font:
 
   use_thin_strokes: true
 
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 schemes:
   onehalf: &onehalf
@@ -57,7 +57,7 @@ schemes:
       cursor: '0x405e9e'
 
     primary:
-      background: '0x282c34'
+      background: '0x23272e'
       foreground: '0xabb1bf'
 
     normal:

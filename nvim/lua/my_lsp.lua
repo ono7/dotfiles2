@@ -11,7 +11,7 @@ end
 
 require "compe".setup {
   enabled = true,
-  autocomplete = false,
+  autocomplete = true,
   debug = false,
   min_length = 1,
   preselect = "enable",
