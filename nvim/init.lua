@@ -1,11 +1,12 @@
 -- Follow the white rabbit...
 
 -- :LspInstall lua, tssserver, pyright, bash, yaml
--- TODO: 03-17-2021 | look at LSPkind for lua
 
 -- c-i, c-o switch between previously open files
 -- c^ switch to last file edited
 -- move with /
+-- gi -> last insert text position
+-- gv -> reselect highligh
 -- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap

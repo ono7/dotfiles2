@@ -4,10 +4,15 @@ local cmd, fn = vim.cmd, vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
+local lsp_servers = {"lua", "tssserver", "pyright", "bash", "yaml"}
+
 if fn.empty(fn.glob(install_path)) > 0 then
   -- download and install if missing
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
   vim.api.nvim_exec([[autocmd VimEnter * PaqInstall]], false)
+  for i, v in ipairs(lsp_servers) do
+    cmd string.format(":LspInstall %s", v)
+  end
 end
 
 -- let paq-nvim manage it self
