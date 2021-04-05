@@ -40,7 +40,6 @@ nnoremap ; :
 vnoremap ; :
 nnoremap : ;
 vnoremap : ;
-inoremap <silent>jk <c-c>`^:noh<cr><c-g>
 nnoremap gj j
 nnoremap gk k
 nnoremap Q @q
@@ -134,7 +133,7 @@ if has('nvim')
   set inccommand=nosplit
   " pmenu/transparency/max items
   set pumheight=10 pumblend=0
-  tnoremap jk <C-\><C-n>
+  tnoremap <c-[> <C-\><C-n>
 endif
 
 function! <SID>RemoveWhiteSpace()
