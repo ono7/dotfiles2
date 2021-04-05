@@ -100,7 +100,7 @@ function _G.pre_write()
   cmd "%retab!"
   cmd [[%s/\s\+$//e]]
   if g.loaded_format == 1 then
-    cmd "FormatWrite!"
+    _ = cmd "FormatWrite!"
   end
   local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
   cmd "update"
