@@ -55,7 +55,7 @@ g.AutoPairsMapCR = 0
 g.AutoPairsUseInsertedCount = 0
 g.AutoPairsMultilineClose = 1
 g.AutoPairsFlyMode = 0
-g.AutoPairsShortcutFastWrap = "<C-e>"
+g.AutoPairsShortcutFastWrap = "<C-g>"
 g.AutoPairsShortcutBackInsert = "<C-b>"
 
 -- ale
