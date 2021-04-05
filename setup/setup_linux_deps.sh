@@ -21,13 +21,11 @@ if [[ $EUID -eq 0 ]]; then
   sudo apt install -y curl
   sudo apt install -y tree
   sudo apt install -y build-essential
-  sudo apt install -y neovim
-  sudo apt install -y fish
+  sudo apt install -y zsh
   sudo apt install -y python3
   sudo apt install -y python3-pip
   sudo apt install -y silversearcher-ag
   sudo python3 -m pip install --upgrade pip
-  sudo python3 -m pip install virtualenv
 fi
 
 if [[ $EUID -ne 0 ]]; then
@@ -43,12 +41,10 @@ if [[ $EUID -ne 0 ]]; then
   sudo apt install -y curl
   sudo apt install -y tree
   sudo apt install -y build-essential
-  sudo apt install -y fish
   sudo apt install -y python3
   sudo apt install -y python3-pip
   sudo apt install -y silversearcher-ag
   sudo python3 -m pip install --upgrade pip
-  sudo python3 -m pip install virtualenv
 fi
 
 echo 'done installing linux depenencies'
