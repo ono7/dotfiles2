@@ -84,7 +84,7 @@ g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
-  if #line == 0 and (line == nil or line == "") then
+  if #line == 0 then
     return '"_ddO'
   else
     return "i"
@@ -96,14 +96,16 @@ m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
-  cmd [[let old = @/]]
-  cmd "%retab!"
-  cmd [[%s/\s\+$//e]]
-  cmd [[let @/ = old]]
-  if g.loaded_format == 1 then
-    _ = cmd "FormatWrite!"
+  do
+    cmd [[let old = @/]]
+    cmd "%retab!"
+    cmd [[%s/\s\+$//e]]
+    cmd [[let @/ = old]]
   end
-  local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
+  if g.loaded_format == 1 then
+    cmd "FormatWrite!"
+  end
+  vim.api.nvim_win_set_cursor(0, cpos)
   cmd "update"
   cmd "noh"
 end
