@@ -38,6 +38,11 @@ if [ $(which nvim) ]; then
   $nvim_cmd +TSInstall lua +qall
   $nvim_cmd +TSInstall json +qall
   $nvim_cmd +TSInstall javascript +qall
+  $nvim_cmd +LspInstall python +qall
+  $nvim_cmd +LspInstall json +qall
+  $nvim_cmd +LspInstall typescript +qall
+  $nvim_cmd +LspInstall yaml +qall
+  $nvim_cmd +LspInstall vim +qall
 else
   echo "$0"
   echo 'no neovim instance found...running vanilla vim?'
