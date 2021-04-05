@@ -178,7 +178,7 @@ M.setup = function()
 
   -- -- Constants
   -- -- M.highlight("TSConstant", {})
-  M.highlight("TSConstBuiltin", {fg = M.colors.yellow, gui = "bold"})
+  M.highlight("TSConstBuiltin", {fg = M.colors.yellow})
   -- -- Not sure about this guy
   -- M.highlight("TSConstMacro", {})
   M.highlight("TSString", {})
@@ -213,7 +213,7 @@ M.setup = function()
   M.highlight("TSOperator", {fg = M.colors.purple})
   -- M.highlight("TSException", {})
   M.highlight("TSType", {fg = M.colors.orange})
-  M.highlight("TSTypeBuiltin", {fg = M.colors.yellow, gui = "bold"})
+  M.highlight("TSTypeBuiltin", {fg = M.colors.yellow})
   -- M.highlight("TSStructure", {})
   M.highlight("TSInclude", {fg = M.colors.blue, gui = "bold,italic"})
 

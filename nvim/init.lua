@@ -33,7 +33,7 @@ g.mapleader = " "
 
 -- secret sauce
 
-m("n", "<cr>", "<cmd>noh<cr><cr>", silent)
+m("n", "<cr>", "<cmd>noh<cr>", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
 m("n", ":", ";", opt)
@@ -41,6 +41,7 @@ m("v", ":", ";", opt)
 m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
 m("i", "<c-[>", "<c-[>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "ma", "mA", {})
 m("n", "mb", "mB", {})
 m("n", "mc", "mC", {})
