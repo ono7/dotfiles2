@@ -57,7 +57,6 @@ m("n", "V", "Vg_", {})
 
 -- terminal
 
--- m("t", "jk", [[<c-\><c-n>]], silent)
 m("t", "<c-[>", [[<c-\><c-n>]], silent)
 
 -- ale
@@ -71,7 +70,6 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 -- fzf
 
--- m("n", "<leader>t", ":GFiles<cr>", silent)
 m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 

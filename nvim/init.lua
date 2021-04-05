@@ -1,12 +1,9 @@
 -- Follow the white rabbit...
 
--- ** removed jk mapping, in favor of using c-[ **
-
 -- :LspInstall lua, tssserver, pyright, bash, yaml
 
 -- c-i, c-o switch between previously open files
 -- c^ switch to last file edited
--- move with /
 -- gi -> last insert text position
 -- gv -> reselect highligh
 -- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
@@ -52,7 +49,6 @@ m("n", "'a", "'A", {})
 m("n", "'b", "'B", {})
 m("n", "'c", "'C", {})
 m("n", "'m", "'M", {})
--- m("i", "jk", "<c-c>`^<cmd>noh<cr><c-g>", silent)
 m("n", "gj", "j", opt)
 m("n", "gk", "k", opt)
 m("n", "Q", "@q", opt)
@@ -136,7 +132,7 @@ cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
--- color things, ty for the lua onedark theme!
+-- color things, ty for the lua onedark theme
 require "onedark".setup {}
 
-cmd "hi!  snipLeadingSpaces ctermbg=0    guibg=none     guifg=none"
+cmd "hi! snipLeadingSpaces ctermbg=0 guibg=none guifg=none"
