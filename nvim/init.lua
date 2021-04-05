@@ -84,7 +84,7 @@ g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 function _G.better_insert()
   local line = vim.api.nvim_get_current_line()
-  if #line == 0 then
+  if #line == 0 and (line == nil or line == "") then
     return '"_ddO'
   else
     return "i"
