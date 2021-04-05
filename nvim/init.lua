@@ -1,6 +1,6 @@
 -- Follow the white rabbit...
 
--- :LspInstall lua, tssserver, pyright, bash, yaml
+-- :LspInstall lua, tssserver, python, bash, yaml
 
 -- insert c-o (undo), c-[ (exit insert)
 -- c^ switch to last file edited
