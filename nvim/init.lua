@@ -2,10 +2,9 @@
 
 -- :LspInstall lua, tssserver, pyright, bash, yaml
 
--- c-i, c-o switch between previously open files
+-- insert c-o (undo), c-[ (exit insert)
 -- c^ switch to last file edited
 -- gi -> last insert text position
--- gv -> reselect highligh
 -- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
@@ -100,12 +99,12 @@ function _G.pre_write()
   cmd [[let old = @/]]
   cmd "%retab!"
   cmd [[%s/\s\+$//e]]
+  cmd [[let @/ = old]]
   if g.loaded_format == 1 then
     _ = cmd "FormatWrite!"
   end
   local _, _ = vim.api.nvim_win_set_cursor(0, cpos)
   cmd "update"
-  cmd [[let @/ = old]]
   cmd "noh"
 end
 
