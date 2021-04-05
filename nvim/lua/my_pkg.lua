@@ -4,26 +4,20 @@ local cmd, fn = vim.cmd, vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
-local lsp_servers = {"lua", "tssserver", "pyright", "bash", "yaml"}
-
 if fn.empty(fn.glob(install_path)) > 0 then
   -- download and install if missing
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
   vim.api.nvim_exec([[autocmd VimEnter * PaqInstall]], false)
-  for i, v in ipairs(lsp_servers) do
-    cmd string.format(":LspInstall %s", v)
-  end
 end
-
--- let paq-nvim manage it self
 
 cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
+-- let paq-nvim manage it self
 paq {"savq/paq-nvim", opt = true}
 
 -- vimscript
-paq "vimwiki/vimwiki"
+paq {"vimwiki/vimwiki", opt = true}
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
@@ -55,3 +49,5 @@ paq "nvim-treesitter/playground"
 require "my_pkg_cfg"
 
 cmd "filetype plugin indent on"
+
+-- install lsp servers in to :echo stdpath("data")

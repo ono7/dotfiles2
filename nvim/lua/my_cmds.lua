@@ -15,9 +15,10 @@ end
 local autocmds = {
   _init = {
     {
+      -- keep nvim running smoothly on large files
       "BufWinEnter",
       "*",
-      [[if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | let b:coc_enable = 0 | setlocal eventignore=all | endif ]]
+      [[if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif ]]
     },
     {
       "VimEnter",
@@ -35,16 +36,19 @@ local autocmds = {
   },
   _read = {
     {
+      -- restore cursor position on enter
       "BufReadPost",
       "*",
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
-    }, -- restore cursor position on enter
+    },
     {"BufEnter", "*", [[silent! lcd %:p:h]]},
     {"BufEnter", "*", [[set formatoptions=qlj]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
-    {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]}
+    {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
+    {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
+
     -- {"BufNewFile,BufRead,BufEnter", "*.ejs", [[setfiletype html]]}
   },
   _yank_hl = {
