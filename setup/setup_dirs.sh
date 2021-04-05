@@ -27,9 +27,7 @@ echo ###########################################################################
 
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
-# ln -sf ~/.dotfiles/vim ~/.vim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
-# ln -sf ~/.dotfiles/vim/init.vim ~/.vimrc
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/ssh_client_config ~/.ssh/config
 ln -sf ~/.dotfiles/alacritty.yml ~/.config/alacritty/
@@ -60,15 +58,6 @@ ln -sf ~/.dotfiles/vim/py_vim_filters/fromopcodes.py ~/bin/fromopcodes
 ln -sf ~/.dotfiles/setup/keys_macos_regkb.sh ~/bin/kint
 ln -sf ~/.dotfiles/setup/keys_macos_extkb.sh ~/bin/kext
 ln -sf ~/.dotfiles/setup/keys_default.sh ~/bin/kdef
-
-# ln -sfn ~/.dotfiles/fish ~/.config/
-
-# on home macbook only
-# curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-# fisher add rafaelrinaldi/pure
-
-# ln -sf ~/.dotfiles/vim/py_vim_filters/network.py ~/bin/network
-# ln -sf ~/.dotfiles/vim/py_vim_filters/pattern.py ~/bin/pattern
 
 cd ~
 echo 'setting up terminfo (italics support!)'

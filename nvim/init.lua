@@ -32,7 +32,7 @@ g.mapleader = " "
 
 -- secret sauce
 
-m("n", "<cr>", "<cmd>noh<cr>", silent)
+-- m("n", "<cr>", "<cmd>noh<cr>", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
 m("n", ":", ";", opt)

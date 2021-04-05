@@ -32,29 +32,17 @@ touch ~/.tmp/miniyank-shared-ring
 echo 'setting up neovim plugins...'
 # setup vim plugins
 if [ $(which nvim) ]; then
-  nvim_cmd=`which nvim`
-  # setup vim pluging manager
-  # if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
-  echo 'setting up neovim plugin manager...'
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  #   if [ $? -ne 0 ]; then
-  #     echo "$0"
-  #     echo 'problem setting up neovim plugin manager... check internet connection'
-  #     exit 1
-  #   fi
-  # fi
-  $nvim_cmd +PlugUpdate +qall
-  $nvim_cmd +PlugInstall +qall
-  $nvim_cmd +PlugUpgrade +qall
+  $nvim_cmd +PaqInstall +qall
   $nvim_cmd +UpdateRemotePlugins +qall
-  $nvim_cmd +CocInstall coc-python +qall
-  $nvim_cmd +CocInstall coc-javascript +qall
-  $nvim_cmd +CocInstall coc-json +qall
+  $nvim_cmd +TSinstall python +qall
+  $nvim_cmd +TSinstall lua +qall
+  $nvim_cmd +TSinstall json +qall
 else
   echo "$0"
   echo 'no neovim instance found...running vanilla vim?'
   exit 0
 fi
 
-echo 'vim/neovim setup done..'
+echo 'vim/neovim setup done.., dont for get to :LspInstall language servers!'
+
+
