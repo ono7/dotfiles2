@@ -34,10 +34,7 @@ echo 'setting up neovim plugins...'
 if [ $(which nvim) ]; then
   $nvim_cmd +PaqInstall +qall
   $nvim_cmd +UpdateRemotePlugins +qall
-  $nvim_cmd +TSInstall python +qall
-  $nvim_cmd +TSInstall lua +qall
-  $nvim_cmd +TSInstall json +qall
-  $nvim_cmd +TSInstall javascript +qall
+  $nvim_cmd +TSInstall all +qall
   $nvim_cmd +LspInstall python +qall
   $nvim_cmd +LspInstall json +qall
   $nvim_cmd +LspInstall typescript +qall
