@@ -2,7 +2,6 @@ wheel
 ipython
 pylint
 pytest
-coverage
 black
 requests
 jedi
@@ -17,3 +16,4 @@ netcalc
 yamllint
 ansible-lint
 epdb
+rpdb

@@ -38,12 +38,6 @@ brew install p7zip
 # setup omzsh
 . ./setup_chsh_zsh.sh
 
-# setup fish shell as default
-# . ./setup_chsh_fish.sh
-
-# if [ $? -eq 0 ]; then
-#   echo 'fish shell is good to go..'
-# fi
-
 # fonts smoothing disabled..
 defaults -currentHost write -g AppleFontSmoothing -int 0
+defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1

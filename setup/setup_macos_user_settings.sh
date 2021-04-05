@@ -21,26 +21,6 @@ fi
 
 tic -x ~/.dotfiles/xterm-256color-italic.terminfo
 
-echo '========== macos font settings =========='
-
-# Light font smoothing | best so far, iterm2 no lightstrokes on antialiased font!
-
-# defaults -currentHost write -globalDomain AppleFontSmoothing -int 1
-
-# Medium font smoothing
-
-# defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
-
-# Strong font smoothing
-
-# defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
-
-# Remove custom font smoothing settings
-
-# defaults -currentHost delete -globalDomain AppleFontSmoothing
-
-# enable better font smoothing for mojave
-# defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 
 ################################################################################
 #                              keyboard settings                               #
@@ -67,3 +47,4 @@ echo 'command+j -> move focus to menu bar'
 echo 'commad+k -> move focus to dock'
 
 echo 'full keyboard access keyboard/shortcuts/all controls'
+echo 'install magnet'
