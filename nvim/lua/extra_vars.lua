@@ -168,7 +168,7 @@ hi!  Comment     ctermfg=8  guifg=#5c6370
 hi!  Statement   ctermfg=1
 hi!  String      ctermfg=2
 hi!  Include     ctermfg=4
-hi!  MatchParen  ctermfg=7  ctermbg=8
+hi!  MatchParen  term=NONE  ctermbg=8 ctermfg=7 cterm=bold,underline gui=bold,underline guifg=#dcdfe4 guibg=#3E4452
 hi!  Search      ctermfg=7  ctermbg=8
 hi!  Error       ctermfg=1  ctermbg=NONE
 hi!  qfFileName  ctermfg=3
