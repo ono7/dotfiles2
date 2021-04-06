@@ -7,13 +7,13 @@ local ens = {expr = true, noremap = true, silent = true}
 
 -- tab completion
 
-function _G.check_back_space()
-  local col = vim.api.nvim_win_get_cursor(0)[2]
-  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
-end
+-- function _G.check_back_space()
+--   local col = vim.api.nvim_win_get_cursor(0)[2]
+--   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+-- end
 
-m("i", "<tab>", [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<Tab>" : "<c-n>"]], ens)
-m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
+-- m("i", "<tab>", [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<Tab>" : "<c-n>"]], ens)
+-- m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 
 -- resize window
 
@@ -34,7 +34,7 @@ m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 -- select visualy selected text for search
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
-m("n", "<leader>ve", ":Files ~/.dotfiles/nvim/<cr>", opt)
+m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 
 m("n", "H", "^", opt)
 m("n", "L", "g_", opt)

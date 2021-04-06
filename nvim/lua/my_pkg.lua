@@ -23,6 +23,8 @@ paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
 paq "tpope/vim-repeat"
 -- paq "jiangmiao/auto-pairs"
+paq "windwp/nvim-autopairs"
+require("nvim-autopairs").setup()
 paq "junegunn/fzf"
 paq "junegunn/fzf.vim"
 paq "SirVer/ultisnips"

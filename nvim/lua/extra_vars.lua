@@ -119,15 +119,15 @@ set clipboard=unnamed
 set foldmethod=manual
 set fileformats=unix,dos
 
-function! BetterIndent()
-    if len(getline('.')) == 0
-        return "\"_ddO"
-    else
-        return "i"
-    endif
-endfunction
-
-nnoremap <expr> i BetterIndent()
+" function! BetterIndent()
+"     if len(getline('.')) == 0
+"         return "\"_ddO"
+"     else
+"         return "i"
+"     endif
+" endfunction
+"
+" nnoremap <expr> i BetterIndent()
 
 if has('nvim')
   set inccommand=nosplit

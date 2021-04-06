@@ -39,7 +39,8 @@ m("n", ":", ";", opt)
 m("v", ":", ";", opt)
 m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
-m("i", "<c-[>", "<esc>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+-- m("i", "<c-[>", "<esc>`^<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+m("i", "<c-[>", "<esc><cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
 m("n", "ma", "mA", {})
 m("n", "mb", "mB", {})
@@ -82,16 +83,16 @@ g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 -- hold my beer
 
-function _G.better_insert()
-  local line = vim.api.nvim_get_current_line()
-  if #line == 0 then
-    return '"_ddO'
-  else
-    return "i"
-  end
-end
+-- function _G.better_insert()
+--   local line = vim.api.nvim_get_current_line()
+--   if #line == 0 then
+--     return '"_ddO'
+--   else
+--     return "i"
+--   end
+-- end
 
-m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
+-- m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
