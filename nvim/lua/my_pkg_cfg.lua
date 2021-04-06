@@ -3,6 +3,9 @@
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
 
+-- autopairs
+require("nvim-autopairs").setup()
+
 -- tmux navigator, in lua
 require("Navigator").setup(
   {
@@ -61,7 +64,6 @@ require "nvim-treesitter.configs".setup {
   }
 }
 
--- delicious formatting sauce
 require "format".setup {
   --[[
 
