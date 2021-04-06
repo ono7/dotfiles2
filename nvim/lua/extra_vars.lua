@@ -12,7 +12,8 @@ syntax sync minlines=256
 syntax sync maxlines=300
 syntax on
 filetype plugin indent on
-nnoremap <silent><cr> :noh<cr><cr>
+
+nnoremap <silent><cr> :noh<cr><c-g>
 nnoremap <silent><M-j> :resize -2<cr>
 nnoremap <silent><M-k> :resize +2<cr>
 nnoremap <silent><M-h> :vertical resize -2<cr>
@@ -172,6 +173,8 @@ hi!  MatchParen  term=NONE  ctermbg=8 ctermfg=7 cterm=bold,underline gui=bold,un
 hi!  Search      ctermfg=7  ctermbg=8
 hi!  Error       ctermfg=1  ctermbg=NONE
 hi!  qfFileName  ctermfg=3
+hi!  Whitespace  term=NONE ctermbg=NONE ctermfg=7 guifg=#e78a4e guibg=NONE
+hi!  Visual      ctermbg=242 guibg=#3E4452 ctermfg=NONE cterm=NONE
 
 " Lima's vimrc, use at your own risk :D
 

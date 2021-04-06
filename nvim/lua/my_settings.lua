@@ -51,7 +51,6 @@ o.matchtime = 1
 o.ttimeout = false
 o.ttimeoutlen = 10
 o.wrapscan = true
-
 vim.g.myrg = 0
 
 function _G.rg()
@@ -90,5 +89,4 @@ bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
--- bo.cindent = true
--- bo.smartindent = true
+bo.smartindent = true
