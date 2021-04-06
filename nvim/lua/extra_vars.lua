@@ -80,7 +80,7 @@ set cmdheight=2
 set complete+=kspell complete-=i complete-=t
 set completeopt-=preview
 set diffopt=filler
-set directory=~/.tmp
+set directory=/tmp
 set display+=lastline
 set encoding=utf-8
 set fileencoding=utf-8
