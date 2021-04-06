@@ -2,6 +2,10 @@
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
+local opt = {noremap = true}
+
+local silent = {noremap = true, silent = true}
+
 if vim.fn.exists("+termguicolors") then
   cmd [[
     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
@@ -9,25 +13,12 @@ if vim.fn.exists("+termguicolors") then
   ]]
 end
 
-local opt = {
-  noremap = true
-}
-
-local silent = {
-  noremap = true,
-  silent = true
-}
-
 -- map leader
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
 -- hold my beer
 m("n", "<cr>", "<cmd>noh<cr><c-g>", silent)
-m("n", ";", ":", opt)
-m("v", ";", ":", opt)
-m("n", ":", ";", opt)
-m("v", ":", ";", opt)
 m("n", "cw", "ciw", silent)
 m("n", "dw", "diw", silent)
 m("n", "yw", "yiw", silent)
@@ -35,15 +26,6 @@ m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
 m("i", "<m-b>", "<c-o>B", silent)
 m("i", "<m-f>", "<c-o>W", silent)
-m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
-m("n", "ma", "mA", {})
-m("n", "mb", "mB", {})
-m("n", "mc", "mC", {})
-m("n", "mm", "mM", {})
-m("n", "'a", "'A", {})
-m("n", "'b", "'B", {})
-m("n", "'c", "'C", {})
-m("n", "'m", "'M", {})
 m("n", "gj", "j", opt)
 m("n", "gk", "k", opt)
 m("n", "Q", "@q", opt)
@@ -53,12 +35,25 @@ m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
+m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
+m("n", "ma", "mA", {})
+m("n", "mb", "mB", {})
+m("n", "mc", "mC", {})
+m("n", "mm", "mM", {})
+m("n", "'a", "'A", {})
+m("n", "'b", "'B", {})
+m("n", "'c", "'C", {})
+m("n", "'m", "'M", {})
 m("n", "Y", "y$", opt)
 m("v", "y", "mxy`x", opt)
 m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
+m("n", ";", ":", opt)
+m("v", ";", ":", opt)
+m("n", ":", ";", opt)
+m("v", ":", ";", opt)
 
 vim.o.path = vim.o.path .. "**"
 

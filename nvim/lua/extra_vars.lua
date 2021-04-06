@@ -13,6 +13,7 @@ syntax sync maxlines=300
 syntax on
 filetype plugin indent on
 
+" hold my beer
 nnoremap <silent><cr> :noh<cr><c-g>
 nnoremap <silent><M-j> :resize -2<cr>
 nnoremap <silent><M-k> :resize +2<cr>
@@ -62,9 +63,10 @@ vnoremap H ^
 vnoremap L g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-" sweet sauce
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>0
+inoremap <m-b> <C-o>B
+inoremap <m-f> <C-o>W
 nnoremap cw ciw
 nnoremap dw diw
 nnoremap yw yiw
@@ -168,18 +170,18 @@ augroup _resize
   autocmd VimResized * :wincmd =
 augroup END
 
-hi!  Comment     ctermfg=8  guifg=#5c6370
 hi!  Statement   ctermfg=1
 hi!  String      ctermfg=2
 hi!  Include     ctermfg=4
-hi!  MatchParen  term=NONE  ctermbg=8 ctermfg=7 cterm=bold,underline gui=bold,underline guifg=#dcdfe4 guibg=#3E4452
+hi!  qfFileName  ctermfg=3
+hi!  Comment     ctermfg=8  guifg=#5c6370
 hi!  Search      ctermfg=7  ctermbg=8
 hi!  Error       ctermfg=1  ctermbg=NONE
-hi!  qfFileName  ctermfg=3
-hi!  Whitespace  term=NONE ctermbg=NONE ctermfg=7 guifg=#e78a4e guibg=NONE
-hi!  Visual      ctermbg=242 guibg=#3E4452 ctermfg=NONE cterm=NONE
+hi!  Whitespace  term=NONE  ctermbg=NONE   ctermfg=7      guifg=#e78a4e         guibg=NONE
+hi!  MatchParen  term=NONE  ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
+hi!  Visual      term=NONE  ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
 
-" Lima's vimrc, use at your own risk :D
+" Lima's vimrc, use at your own risk :)
 
 ]]
 
