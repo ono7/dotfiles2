@@ -1,9 +1,9 @@
 
-snippet "\b(function|func|fun)" "function" r
-function $1($2)
-  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0
-end
-endsnippet
+# snippet "\b(function|func|fun)" "function" r
+# function $1($2)
+#   ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0
+# end
+# endsnippet
 
 snippet "\b(print|pr|p)" "print" br
 print(${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0)
@@ -13,29 +13,33 @@ snippet "(error|e)" "print" br
 error(${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0)
 endsnippet
 
-snippet if "if" b
-if $0 then
-  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
-end
-endsnippet
+# snippet if "if" b
+# if $0 then
+#   ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+# end
+# endsnippet
 
 snippet while "while" b
 while $0 do
-  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
 end
 endsnippet
 
 snippet "(repeat|rep)" "repeat" br
 repeat
-  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0
 until ${1:"bool exp"}
 endsnippet
 
-snippet "(for)" "for with counter" br
-for $1 do
-  $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
-end
-endsnippet
+# snippet "(repeat|rep)" "repeat" br
+# repeat
+#   ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0
+# until ${1:"bool exp"}
+# endsnippet
+
+# snippet "(for)" "for with counter" br
+# for $1 do
+#   $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+# end
+# endsnippet
 
 # removes extra new lines and spaces
 snippet "(docs|doc|comment|com)" "docstring" br

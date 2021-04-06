@@ -27,8 +27,8 @@ require "compe".setup {
     buffer = true,
     calc = true,
     nvim_lsp = true,
-    nvim_lua = true,
-    ultisnips = true
+    nvim_lua = true
+    -- ultisnips = true
   }
 }
 
@@ -49,12 +49,14 @@ if vim.g.loaded_paq then
       inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 
     --]]
-    buf_set_keymap(
-      "i",
-      "<tab>",
-      [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? '<Tab>' : compe#complete()]],
-      ens
-    )
+
+    -- buf_set_keymap(
+    --   "i",
+    --   "<tab>",
+    --   [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? '<Tab>' : compe#complete()]],
+    --   ens
+    -- )
+
     -- buf_set_keymap("i", "c-f", "compe#scroll({ 'delta': +4 })", ens)
     -- buf_set_keymap("i", "c-d", "compe#scroll({ 'delta': -4 })", ens)
   end
