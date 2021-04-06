@@ -65,6 +65,7 @@ vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 " sweet sauce
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>0
+nnoremap cw ciw
 
 set autoindent
 set path+=**

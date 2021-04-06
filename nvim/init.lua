@@ -1,12 +1,5 @@
 -- Follow the white rabbit...
 
--- :LspInstall lua, tssserver, python, bash, yaml
-
--- insert c-o (undo), c-[ (exit insert)
--- c^ switch to last file edited
--- gi -> last insert text position
--- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
-
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
 if vim.fn.exists("+termguicolors") then
@@ -26,21 +19,19 @@ local silent = {
 }
 
 -- map leader
-
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
--- secret sauce
-
+-- hold my beer
 m("n", "<cr>", "<cmd>noh<cr><c-g>", silent)
 m("n", ";", ":", opt)
 m("v", ";", ":", opt)
 m("n", ":", ";", opt)
 m("v", ":", ";", opt)
+m("n", "cw", "ciw", silent)
 m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
--- m("i", "<c-[>", "<esc><cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
-m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent) -- `^ returns cursor to correct position
+m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
 m("n", "ma", "mA", {})
 m("n", "mb", "mB", {})
 m("n", "mc", "mC", {})
@@ -61,17 +52,16 @@ m("n", "<s-tab>", ":bprevious<cr>", silent)
 m("n", "Y", "y$", opt)
 m("v", "y", "mxy`x", opt)
 m("n", "<c-z>", "", opt)
-m("c", "<c-z>", "", opt) -- nop
+m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
 
 vim.o.path = vim.o.path .. "**"
 
 -- disable ale before plugins are loaded
-
 g.ale_disable_lsp = 1
 
--- nvim providers
+-- providers
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1
@@ -79,19 +69,6 @@ g.loaded_python_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
-
--- hold my beer
-
--- function _G.better_insert()
---   local line = vim.api.nvim_get_current_line()
---   if #line == 0 then
---     return '"_ddO'
---   else
---     return "i"
---   end
--- end
-
--- m("n", "i", "v:lua.better_insert()", {expr = true, noremap = true})
 
 function _G.pre_write()
   local cpos = vim.api.nvim_win_get_cursor(0)
@@ -111,7 +88,7 @@ function _G.pre_write()
 end
 
 function _G.legacy()
-  -- get vim legacy config :lua legacy()
+  -- :lua legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
 end
 
@@ -134,7 +111,13 @@ cmd "syntax sync minlines=256"
 cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
--- color things, ty for the lua onedark theme
 require "onedark".setup {}
 
 cmd "hi! snipLeadingSpaces ctermbg=0 guibg=none guifg=none"
+
+-- :LspInstall lua, tssserver, python, bash, yaml
+
+-- insert c-o (undo), c-[ (exit insert)
+-- c^ switch to last file edited
+-- gi -> last insert text position
+-- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
