@@ -177,6 +177,7 @@ hi!  Error       ctermfg=1  ctermbg=NONE
 hi!  Whitespace  term=NONE  ctermbg=NONE   ctermfg=7      guifg=#e78a4e         guibg=NONE
 hi!  MatchParen  term=NONE  ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
 hi!  Visual      term=NONE  ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
+hi!  VertSplit   term=NONE  ctermbg=NONE gui=NONE guibg=NONE cterm=NONE
 
 " Lima's vimrc, use at your own risk :)
 
