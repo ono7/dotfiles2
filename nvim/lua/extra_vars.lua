@@ -14,7 +14,25 @@ syntax on
 filetype plugin indent on
 
 " hold my beer
+
 nnoremap <silent><cr> :noh<cr><c-g>
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>0
+inoremap <m-b> <C-o>B
+inoremap <m-f> <C-o>W
+nnoremap cw ciw
+nnoremap dw diw
+nnoremap yw yiw
+nnoremap <silent><c-n> :cnext<cr>
+nnoremap <silent><c-p> :cprevious<cr>
+nnoremap ; :
+vnoremap ; :
+nnoremap : ;
+vnoremap : ;
+nnoremap <leader>d :bd!<cr><c-g>
+nnoremap <leader>q :qall!<cr>
+nnoremap <leader>w :write<cr>
+
 nnoremap <silent><M-j> :resize -2<cr>
 nnoremap <silent><M-k> :resize +2<cr>
 nnoremap <silent><M-h> :vertical resize -2<cr>
@@ -23,8 +41,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <silent><c-n> :cnext<cr>
-nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ' `
 nnoremap / ms/
 xnoremap / ms/
@@ -38,17 +54,10 @@ nnoremap 'a 'A
 nnoremap 'b 'B
 nnoremap 'c 'C
 nnoremap 'm 'M
-nnoremap ; :
-vnoremap ; :
-nnoremap : ;
-vnoremap : ;
 nnoremap gj j
 nnoremap gk k
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
-nnoremap <leader>d :bd!<cr><c-g>
-nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :write<cr>
 nnoremap <silent><tab> :bnext<cr>
 nnoremap <silent><s-tab> :bprevious<cr>
 nnoremap Y y$
@@ -62,14 +71,6 @@ nnoremap L g_
 vnoremap H ^
 vnoremap L g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
-
-inoremap <C-e> <C-o>$
-inoremap <C-a> <C-o>0
-inoremap <m-b> <C-o>B
-inoremap <m-f> <C-o>W
-nnoremap cw ciw
-nnoremap dw diw
-nnoremap yw yiw
 
 set autoindent
 set path+=**
