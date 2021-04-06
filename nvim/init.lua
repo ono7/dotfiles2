@@ -26,8 +26,8 @@ m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
 m("i", "<m-b>", "<c-o>B", silent)
 m("i", "<m-f>", "<c-o>W", silent)
-m("n", "gj", "j", opt)
-m("n", "gk", "k", opt)
+m("n", "j", "gj", opt)
+m("n", "k", "gk", opt)
 m("n", "Q", "@q", opt)
 m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("n", "<leader>d", ":bd!<cr><c-g>", silent)
@@ -50,10 +50,6 @@ m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
--- m("n", ";", ":", opt)
--- m("v", ";", ":", opt)
--- m("n", ":", ";", opt)
--- m("v", ":", ";", opt)
 
 vim.o.path = vim.o.path .. "**"
 

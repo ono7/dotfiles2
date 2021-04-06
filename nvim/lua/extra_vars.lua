@@ -23,6 +23,8 @@ inoremap <m-f> <C-o>W
 nnoremap cw ciw
 nnoremap dw diw
 nnoremap yw yiw
+nnoremap k gk
+nnoremap j gj
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr><c-g>
@@ -50,8 +52,6 @@ nnoremap 'a 'A
 nnoremap 'b 'B
 nnoremap 'c 'C
 nnoremap 'm 'M
-nnoremap gj j
-nnoremap gk k
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
 nnoremap <silent><tab> :bnext<cr>
