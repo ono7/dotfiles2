@@ -116,9 +116,6 @@ g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
 g.UltiSnipsJumpForwardTrigger = "<tab>"
 g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
--- g.UltiSnipsJumpForwardTrigger = "<C-l>"
--- g.UltiSnipsExpandTrigger = "<C-l>"
--- g.UltiSnipsJumpBackwardTrigger = "<C-j>"
 
 --[[
 

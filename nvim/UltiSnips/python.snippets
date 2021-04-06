@@ -103,7 +103,7 @@ endsnippet
 
 snippet head "python header" b
 #!/usr/bin/env python
-""" $0
+"""
 
     $2
     `!v strftime("%a %b %-d %-I:%M:%S %p %Y")` CST
@@ -111,7 +111,7 @@ snippet head "python header" b
     __author__ = 'Jose Lima'
 
 """
-
+$0
 endsnippet
 
 snippet headr "python header for requests"
@@ -162,10 +162,10 @@ snippet pti "pano member tag" b
 $0
 endsnippet
 
-# snippet fun
-# def ${1}($2):
-#       ${VISUAL}$0
-# endsnippet
+snippet "(function|fun)" "function" rb
+def ${1}($2):
+  ${VISUAL}$0
+endsnippet
 
 snippet with
     with ${1:expr} as ${2:var}:

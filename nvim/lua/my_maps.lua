@@ -22,6 +22,9 @@ m("n", "<M-j>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
 m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 
+-- m("n", "}", [[:<C-u>call search('^.\+')<CR>]], silent)
+-- m("n", "{", [[:<C-u>call search('^.\+', 'b')<CR>]], silent)
+
 -- send to tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
