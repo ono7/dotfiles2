@@ -50,10 +50,10 @@ m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
-m("n", ";", ":", opt)
-m("v", ";", ":", opt)
-m("n", ":", ";", opt)
-m("v", ":", ";", opt)
+-- m("n", ";", ":", opt)
+-- m("v", ";", ":", opt)
+-- m("n", ":", ";", opt)
+-- m("v", ":", ";", opt)
 
 vim.o.path = vim.o.path .. "**"
 

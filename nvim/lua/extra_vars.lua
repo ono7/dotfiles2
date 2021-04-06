@@ -25,10 +25,6 @@ nnoremap dw diw
 nnoremap yw yiw
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
-nnoremap ; :
-vnoremap ; :
-nnoremap : ;
-vnoremap : ;
 nnoremap <leader>d :bd!<cr><c-g>
 nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :write<cr>
