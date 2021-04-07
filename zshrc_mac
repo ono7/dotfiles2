@@ -326,3 +326,4 @@ HISTSIZE=5000
 # zprof
 
 defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1
+
