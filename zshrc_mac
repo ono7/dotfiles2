@@ -1,7 +1,7 @@
 # uncomment next line to start profiling
 # zmodload zsh/zprof
 
-[[ ! -d ~/.tmp ]] || mkdir -p ~/.tmp
+[[ -d ~/.tmp ]] || mkdir -p ~/.tmp
 
 ZSH_DISABLE_COMPFIX="true"
 
