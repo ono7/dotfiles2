@@ -20,13 +20,13 @@ endsnippet
 # endsnippet
 
 snippet while "while" b
-while $0 do
+while ${0:cond}  do
 end
 endsnippet
 
 snippet "(repeat|rep)" "repeat" br
 repeat
-until ${1:"bool exp"}
+until ${1:cond}
 endsnippet
 
 # snippet "(repeat|rep)" "repeat" br
