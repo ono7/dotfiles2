@@ -116,7 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 export TERM=xterm-256color
 export CLICOLOR=1
 alias tree="tree -C -I '*.pyc|__pycache__'"
@@ -139,15 +138,15 @@ elif [ -d "/opt/venvs/ansible_prod" ]; then
   source /opt/venvs/ansible_prod/bin/activate
 fi
 
-fi
-
-
 alias gd='git diff'
 alias gs='git status'
 
 alias cdr='cd "$(git rev-parse --show-toplevel)"  &>/dev/null'
 alias c='clear'
 
+function vs () {
+  vim $(fzf || '' 2>/dev/null)
+}
 
 function ginit () {
   git init
