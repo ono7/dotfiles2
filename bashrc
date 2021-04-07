@@ -1,8 +1,8 @@
 # NOA bashrc / git support
 
 # term type
-# export TERM=xterm-256color
-export TREM=xterm-256color-italic
+export TERM=xterm-256color
+# export TERM=xterm-256color-italic
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2
 export CLICOLOR=1
