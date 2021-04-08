@@ -35,9 +35,9 @@ def `!p snip.rv=match.group(1).replace(' ', '_')`(${1}):
     $0
 endsnippet
 
-snippet '\bdef ([^()]+)' "setup function" br
-def `!p snip.rv=match.group(1).replace(' ', '_')`($0):
-endsnippet
+# snippet '\bdef ([^()]+)' "setup function" br
+# def `!p snip.rv=match.group(1).replace(' ', '_')`($0):
+# endsnippet
 
 snippet package "setup.py for packaging" b
 """ package setup """
@@ -162,7 +162,7 @@ snippet pti "pano member tag" b
 $0
 endsnippet
 
-snippet "(function|fun)" "function" rb
+snippet "(function|fun)" "function" brw
 def ${1}($2):
   ${VISUAL}$0
 endsnippet

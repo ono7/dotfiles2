@@ -7,17 +7,18 @@ local ens = {expr = true, noremap = true, silent = true}
 
 -- tab completion
 
--- function _G.check_back_space()
---   local col = vim.api.nvim_win_get_cursor(0)[2]
---   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
--- end
+function _G.check_back_space()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+end
+
 local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-m("i", "<c-j>", [[<plug>(completion_trigger)]], {silent = true})
--- m("i", "<tab>", [[pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<Tab>" : "<c-n>"]], ens)
--- m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
+-- m("i", "<c-j>", [[<plug>(completion_trigger)]], {silent = true})
+m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<c-n>" : "<c-n>"]], ens)
+m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 
 -- resize window
 
