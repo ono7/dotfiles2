@@ -17,19 +17,6 @@ m("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opt)
 m("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opt)
 m("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opt)
 
--- route nvim lsp diagnostics to ale
-require("nvim-ale-diagnostic")
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false
-  }
-)
-
 -- comments
 require("kommentary.config").configure_language(
   "default",
