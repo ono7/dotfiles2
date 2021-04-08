@@ -17,7 +17,7 @@ local function t(str)
 end
 
 -- m("i", "<c-j>", [[<plug>(completion_trigger)]], {silent = true})
-m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<c-n>" : "<c-n>"]], ens)
+m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<tab>" : "<c-n>"]], ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 
 -- resize window
