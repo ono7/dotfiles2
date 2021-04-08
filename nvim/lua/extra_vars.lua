@@ -69,6 +69,10 @@ vnoremap H ^
 vnoremap L g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+set completeopt=menuone
+
 set autoindent
 set path+=**
 set autoread
