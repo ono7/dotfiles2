@@ -32,15 +32,18 @@ paq "Glench/Vim-Jinja2-Syntax"
 paq "b3nj5m1n/kommentary"
 paq "bfredl/nvim-miniyank"
 paq "f-person/git-blame.nvim"
-paq "kabouzeid/nvim-lspinstall"
 paq "kyazdani42/nvim-tree.lua"
 paq "kyazdani42/nvim-web-devicons"
 paq "lukas-reineke/format.nvim"
-paq "neovim/nvim-lspconfig"
 paq "numToStr/Navigator.nvim"
 paq "nvim-treesitter/nvim-treesitter"
 paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
+
+-- lsp/completion
+paq "nvim-lua/completion-nvim"
+paq "kabouzeid/nvim-lspinstall"
+paq "neovim/nvim-lspconfig"
 
 -- after plugins, run their setup
 require "my_pkg_cfg"

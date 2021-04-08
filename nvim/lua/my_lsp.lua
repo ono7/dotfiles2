@@ -1,87 +1,63 @@
 -- lsp
 
+vim.g.completion_enable_snippet = "UltiSnips"
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
-function _G.check_back_space()
-  local col = vim.api.nvim_win_get_cursor(0)[2]
-  return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
+-- diable nvim lsp diagnostics globaly
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function()
 end
 
--- diable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    update_in_insert = false
-  }
-)
-
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = function()
--- end
-
--- require("lspconfig").python.setup {
---   handlers = {
---     ["textDocument/publishDiagnostics"] = vim.lsp.with(
---       vim.lsp.diagnostic.on_publish_diagnostics,
---       {
---         -- Disable virtual_text
---         virtual_text = false,
---         update_in_insert = false
---       }
---     )
---   }
--- }
-
-if vim.g.loaded_paq then
-  local lua_server_settings = {
-    Lua = {
-      runtime = {
-        -- LuaJIT -> Neovim
-        version = "LuaJIT",
-        path = vim.split(package.path, ";")
-      },
-      diagnostics = {
-        globals = {"vim"} -- `vim` global
-      },
-      workspace = {
-        -- Neovim runtime files
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-        }
+local lua_server_settings = {
+  Lua = {
+    runtime = {
+      -- LuaJIT -> Neovim
+      version = "LuaJIT",
+      path = vim.split(package.path, ";")
+    },
+    diagnostics = {
+      globals = {"vim"} -- `vim` global
+    },
+    workspace = {
+      -- Neovim runtime files
+      library = {
+        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
       }
     }
   }
+}
 
--- lsp install
+local nvim_lsp = require("lspconfig")
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
+  end
 
--- local function setup_servers()
---   require "lspinstall".setup()
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
---   local servers = require "lspinstall".installed_servers()
-
---   for _, server in pairs(servers) do
---     local config = make_config()
-
---     if server == "lua" then
---       config.settings = lua_server_settings
---     end
-
---     -- if server == "clangd" then
---     --   config.filetypes = {"c", "cpp"}
---     -- end
-
---     require "lspconfig"[server].setup(config)
---   end
--- end
-
--- setup_servers()
-
--- local nvim_lsp = require "nvim_lsp"
-
--- Disable Diagnostcs globally
--- local nvim_lsp = require "nvim_lsp"
--- -- Disable Diagnostcs globally
--- vim.lsp.callbacks["textDocument/publishDiagnostics"] = function()
--- end
+  -- Mappings.
+  local opts = {noremap = true, silent = true}
+  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap("n", "<c-space>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  -- buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  -- buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  -- buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  -- buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  -- buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  -- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  -- buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  -- buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  -- buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+end
+-- sumneko-lua
+local servers = {"pyright"}
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {on_attach = on_attach}
 end

@@ -110,7 +110,7 @@ g.buftabline_show = 0
 
 -- ultisnips
 
-g.UltiSnipsExpandTrigger = "<tab>"
+g.UltiSnipsExpandTrigger = ""
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
