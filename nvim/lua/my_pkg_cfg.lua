@@ -3,56 +3,57 @@
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
 
--- autopairs
-require("nvim-autopairs").setup()
+if vim.g.loaded_paq then
+  -- autopairs
+  require("nvim-autopairs").setup()
 
--- tmux navigator, in lua
-require("Navigator").setup(
-  {
-    disable_on_zoom = true
-  }
-)
-m("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opt)
-m("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opt)
-m("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opt)
-m("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opt)
-
--- comments
-require("kommentary.config").configure_language(
-  "default",
-  {
-    prefer_single_line_comments = true,
-    use_consistent_indentation = true,
-    ignore_whitespace = true
-  }
-)
-
--- sweet sweet icons for ntree
-require "nvim-web-devicons".setup {
-  default = true
-}
-
--- better highlighting
-require "nvim-treesitter.configs".setup {
-  ensure_installed = "maintained",
-  highlight = {
-    enable = true,
-    disable = {
-      "rust",
-      "json",
-      "yaml"
+  -- tmux navigator, in lua
+  require("Navigator").setup(
+    {
+      disable_on_zoom = true
     }
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
-  }
-}
+  )
+  m("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opt)
+  m("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opt)
+  m("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opt)
+  m("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opt)
 
-require "format".setup {
-  --[[
+  -- comments
+  require("kommentary.config").configure_language(
+    "default",
+    {
+      prefer_single_line_comments = true,
+      use_consistent_indentation = true,
+      ignore_whitespace = true
+    }
+  )
+
+  -- sweet sweet icons for ntree
+  require "nvim-web-devicons".setup {
+    default = true
+  }
+
+  -- better highlighting
+  require "nvim-treesitter.configs".setup {
+    ensure_installed = "maintained",
+    highlight = {
+      enable = true,
+      disable = {
+        "rust",
+        "json",
+        "yaml"
+      }
+    },
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false -- Whether the query persists across vim sessions
+    }
+  }
+
+  require "format".setup {
+    --[[
 
     lukas-reineke/format.nvim
     https://github.com/lukas-reineke/format.nvim
@@ -63,104 +64,105 @@ require "format".setup {
     autocmd BufWritePost * FormatWrite
 
   --]]
-  lua = {
-    {
-      cmd = {
-        function(file)
-          return string.format("luafmt -i 2 -w replace %s", file)
-        end
-      }
-    }
-  },
-  python = {
-    {
-      cmd = {
-        "black"
-      }
-    }
-  },
-  json = {
-    {
-      cmd = {
-        "prettier -w --parser json"
-      }
-    }
-  },
-  typescript = {
-    {
-      cmd = {
-        "prettier -w --parser typescript --single-quote"
-      }
-    }
-  },
-  yaml = {
-    {
-      cmd = {
-        "prettier -w --parser yaml --single-quote --quote-props preserve"
-      }
-    }
-  },
-  vimwiki = {
-    {
-      cmd = {
-        "prettier -w"
+    lua = {
+      {
+        cmd = {
+          function(file)
+            return string.format("luafmt -i 2 -w replace %s", file)
+          end
+        }
       }
     },
-    {
-      cmd = {
-        "luafmt -i 2 -w replace"
-      },
-      start_pattern = "^{{{lua$",
-      end_pattern = "^}}}$",
-      target = "current"
-    },
-    {
-      cmd = {
-        "black"
-      },
-      start_pattern = "^{{{python$",
-      end_pattern = "^}}}$",
-      target = "current"
-    }
-  },
-  javascript = {
-    {
-      cmd = {
-        "prettier -w"
-        -- "eslint --fix"
-      }
-    }
-  },
-  markdown = {
-    {
-      cmd = {
-        "prettier -w"
+    python = {
+      {
+        cmd = {
+          "black"
+        }
       }
     },
-    {
-      cmd = {
-        "luafmt -i 2 -w replace"
-      },
-      start_pattern = "^```lua$",
-      end_pattern = "^```$",
-      target = "current"
-      -- current only format where cursor is
+    json = {
+      {
+        cmd = {
+          "prettier -w --parser json"
+        }
+      }
     },
-    {
-      cmd = {
-        "prettier -w --parser babel --single-quote"
-      },
-      start_pattern = "^```javascript$",
-      end_pattern = "^```$",
-      target = "current"
+    typescript = {
+      {
+        cmd = {
+          "prettier -w --parser typescript --single-quote"
+        }
+      }
     },
-    {
-      cmd = {
-        "black"
+    yaml = {
+      {
+        cmd = {
+          "prettier -w --parser yaml --single-quote --quote-props preserve"
+        }
+      }
+    },
+    vimwiki = {
+      {
+        cmd = {
+          "prettier -w"
+        }
       },
-      start_pattern = "^```python$",
-      end_pattern = "^```$",
-      target = "current"
+      {
+        cmd = {
+          "luafmt -i 2 -w replace"
+        },
+        start_pattern = "^{{{lua$",
+        end_pattern = "^}}}$",
+        target = "current"
+      },
+      {
+        cmd = {
+          "black"
+        },
+        start_pattern = "^{{{python$",
+        end_pattern = "^}}}$",
+        target = "current"
+      }
+    },
+    javascript = {
+      {
+        cmd = {
+          "prettier -w"
+          -- "eslint --fix"
+        }
+      }
+    },
+    markdown = {
+      {
+        cmd = {
+          "prettier -w"
+        }
+      },
+      {
+        cmd = {
+          "luafmt -i 2 -w replace"
+        },
+        start_pattern = "^```lua$",
+        end_pattern = "^```$",
+        target = "current"
+        -- current only format where cursor is
+      },
+      {
+        cmd = {
+          "prettier -w --parser babel --single-quote"
+        },
+        start_pattern = "^```javascript$",
+        end_pattern = "^```$",
+        target = "current"
+      },
+      {
+        cmd = {
+          "black"
+        },
+        start_pattern = "^```python$",
+        end_pattern = "^```$",
+        target = "current"
+      }
     }
   }
-}
+end
