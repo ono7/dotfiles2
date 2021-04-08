@@ -14,7 +14,6 @@ syntax on
 filetype plugin indent on
 
 " hold my beer
-
 nnoremap <silent><c-]> :noh<cr><c-g>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>0
@@ -127,16 +126,6 @@ set clipboard=unnamed
 set foldmethod=manual
 set fileformats=unix,dos
 
-" function! BetterIndent()
-"     if len(getline('.')) == 0
-"         return "\"_ddO"
-"     else
-"         return "i"
-"     endif
-" endfunction
-"
-" nnoremap <expr> i BetterIndent()
-
 if has('nvim')
   set inccommand=nosplit
   " pmenu/transparency/max items
@@ -168,7 +157,6 @@ augroup END
 
 augroup _resize
   autocmd!
-  " resize splits when terminal size changes
   autocmd VimResized * :wincmd =
 augroup END
 
@@ -176,13 +164,14 @@ hi!  Statement   ctermfg=1
 hi!  String      ctermfg=2
 hi!  Include     ctermfg=4
 hi!  qfFileName  ctermfg=3
-hi!  Comment     ctermfg=8  guifg=#5c6370
-hi!  Search      ctermfg=7  ctermbg=8
-hi!  Error       ctermfg=1  ctermbg=NONE
-hi!  Whitespace  term=NONE  ctermbg=NONE   ctermfg=7      guifg=#e78a4e         guibg=NONE
-hi!  MatchParen  term=NONE  ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
-hi!  Visual      term=NONE  ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
-hi!  VertSplit   term=NONE  ctermbg=NONE gui=NONE guibg=NONE cterm=NONE
+hi!  Comment     ctermfg=8      guifg=#5c6370
+hi!  Search      ctermfg=7      ctermbg=8
+hi!  Error       ctermfg=1      ctermbg=NONE
+hi!  Whitespace  term=NONE      ctermbg=NONE   ctermfg=7      guifg=#e78a4e         guibg=NONE
+hi!  MatchParen  term=NONE      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
+hi!  Visual      term=NONE      ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
+hi!  VertSplit   term=NONE      ctermbg=NONE   gui=NONE       guibg=NONE            cterm=NONE
+hi!  Pmenu       ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
 
 " Lima's vimrc, use at your own risk :)
 
