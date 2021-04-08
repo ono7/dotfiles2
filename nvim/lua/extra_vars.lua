@@ -31,6 +31,7 @@ nnoremap <leader>d :bd!<cr><c-g>
 nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :write<cr>
 
+nnoremap <silent>gp `[v`]
 nnoremap <silent><M-j> :resize -2<cr>
 nnoremap <silent><M-k> :resize +2<cr>
 nnoremap <silent><M-h> :vertical resize -2<cr>
