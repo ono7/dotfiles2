@@ -110,8 +110,6 @@ require "my_settings"
 require "my_pkg"
 require "my_lsp"
 
--- :LspInstall lua, tssserver, python, bash, yaml
-
 -- insert c-o (undo), c-[ (exit insert)
 -- c^ switch to last file edited
 -- gi -> last insert text position

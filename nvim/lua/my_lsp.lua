@@ -1,4 +1,4 @@
--- lsp
+-- :LspInstall lua, tssserver, python, bash, yaml
 
 vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
@@ -7,10 +7,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function()
 end
 
 if vim.g.loaded_paq then
-  -- snippet support
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-
   -- lsp package manager
   local on_attach = function(client, bufnr)
     _ = client
@@ -45,11 +41,9 @@ if vim.g.loaded_paq then
   -- config that activates keymaps and enables snippet support
   local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- capabilities.textDocument.completion.completionItem.snippetSupport = true
     return {
-      -- enable snippet support
       capabilities = capabilities,
-      -- map buffer local keybindings when the language server attaches
       on_attach = on_attach
     }
   end
@@ -61,16 +55,13 @@ if vim.g.loaded_paq then
         keywordSnippet = "Disable"
       },
       runtime = {
-        -- LuaJIT -> Neovim
         version = "LuaJIT",
         path = vim.split(package.path, ";")
       },
       diagnostics = {
-        -- `vim` global
         globals = {"vim"}
       },
       workspace = {
-        -- Neovim runtime files
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
@@ -78,8 +69,6 @@ if vim.g.loaded_paq then
       }
     }
   }
-
-  -- lsp install
 
   local function setup_servers()
     require "lspinstall".setup()
