@@ -57,6 +57,9 @@ if vim.g.loaded_paq then
   -- configure lua for vim development
   local lua_server_settings = {
     Lua = {
+      completion = {
+        keywordSnippet = "Disable"
+      },
       runtime = {
         -- LuaJIT -> Neovim
         version = "LuaJIT",
