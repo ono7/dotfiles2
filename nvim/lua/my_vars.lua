@@ -102,12 +102,12 @@ g.vim_markdown_folding_disabled = 1
 g.buftabline_show = 0
 
 -- ultisnips
-g.UltiSnipsExpandTrigger = "<tab>"
+g.UltiSnipsExpandTrigger = "<c-l>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
 g.UltiSnipsUsePythonVersion = 3
-g.UltiSnipsJumpForwardTrigger = "<tab>"
-g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+g.UltiSnipsJumpForwardTrigger = "<c-l>"
+g.UltiSnipsJumpBackwardTrigger = ""
 
 --[[
 
