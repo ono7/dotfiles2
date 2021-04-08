@@ -33,22 +33,26 @@ if vim.g.loaded_paq then
     default = true
   }
 
-  -- better highlighting
+  -- treesitter setup
   require "nvim-treesitter.configs".setup {
-    ensure_installed = "maintained",
     highlight = {
+      enable = false
+      -- disable = { 'c', 'rust' },
+    },
+    incremental_selection = {
       enable = true,
-      disable = {
-        "rust",
-        "json",
-        "yaml"
+      -- disable = { 'cpp', 'lua' },
+      keymaps = {
+        node_incremental = "grn",
+        scope_incremental = "grc"
       }
     },
+    ensure_installed = {"c", "cpp", "lua", "python", "javascript"},
     playground = {
       enable = true,
       disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-      persist_queries = false -- Whether the query persists across vim sessions
+      updatetime = 25,
+      persist_queries = false
     }
   }
 
