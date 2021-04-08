@@ -16,7 +16,6 @@ local paq = require "paq-nvim".paq
 -- let paq-nvim manage it self
 paq {"savq/paq-nvim", opt = true}
 
--- vimscript
 paq "vimwiki/vimwiki"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
@@ -27,8 +26,6 @@ paq "junegunn/fzf.vim"
 paq "SirVer/ultisnips"
 paq "dense-analysis/ale"
 paq "Glench/Vim-Jinja2-Syntax"
-
--- native lua
 paq "b3nj5m1n/kommentary"
 paq "bfredl/nvim-miniyank"
 paq "f-person/git-blame.nvim"
@@ -40,10 +37,12 @@ paq "nvim-treesitter/nvim-treesitter"
 paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
 
--- lsp/completion
+-- completion
 paq "nvim-lua/completion-nvim"
-paq "kabouzeid/nvim-lspinstall"
+
+-- lsp
 paq "neovim/nvim-lspconfig"
+paq "kabouzeid/nvim-lspinstall"
 
 -- after plugins, run their setup
 require "my_pkg_cfg"

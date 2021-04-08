@@ -7,8 +7,11 @@ vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function()
 end
 
-local lua_server_settings = {
+lua_settings = {
   Lua = {
+    completion = {
+      keywordSnippet = "Disable"
+    },
     runtime = {
       -- LuaJIT -> Neovim
       version = "LuaJIT",

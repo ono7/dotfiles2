@@ -36,7 +36,7 @@ if vim.g.loaded_paq then
   -- treesitter setup
   require "nvim-treesitter.configs".setup {
     highlight = {
-      enable = false
+      enable = true
       -- disable = { 'c', 'rust' },
     },
     incremental_selection = {

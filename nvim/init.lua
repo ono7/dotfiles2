@@ -94,13 +94,6 @@ function _G.perflog()
   cmd [[profile file *]]
 end
 
-require "my_maps"
-require "my_vars"
-require "my_cmds"
-require "my_settings"
-require "my_pkg"
-require "my_lsp"
-
 cmd "syntax enable"
 cmd "set synmaxcol=512"
 cmd "syntax sync minlines=256"
@@ -108,8 +101,14 @@ cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
 require "onedark".setup {}
-
 cmd "hi! snipLeadingSpaces ctermbg=0 guibg=none guifg=none"
+
+require "my_maps"
+require "my_vars"
+require "my_cmds"
+require "my_settings"
+require "my_pkg"
+require "my_lsp"
 
 -- :LspInstall lua, tssserver, python, bash, yaml
 
