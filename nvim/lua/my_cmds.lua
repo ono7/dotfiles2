@@ -47,8 +47,8 @@ local autocmds = {
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.wiki", [[setfiletype vimwiki]]},
-    {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]},
-    {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
+    {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
+    -- {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
   },
   _yank_hl = {
     {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}
