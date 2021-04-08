@@ -15,7 +15,7 @@ filetype plugin indent on
 
 " hold my beer
 
-nnoremap <silent><cr> :noh<cr><c-g>
+nnoremap <silent><c-]> :noh<cr><c-g>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>0
 inoremap <m-b> <C-o>B

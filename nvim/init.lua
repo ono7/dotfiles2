@@ -18,7 +18,7 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 -- hold my beer
--- m("n", "<cr>", "<cmd>noh<cr><c-g>", silent)
+m("n", "<c-]>", "<cmd>noh<cr><c-g>", silent)
 m("n", "cw", "ciw", silent)
 m("n", "dw", "diw", silent)
 m("n", "yw", "yiw", silent)
