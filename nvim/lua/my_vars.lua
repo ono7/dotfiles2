@@ -1,18 +1,13 @@
 -- setup locals
-
 local gs, g = vim.api.nvim_set_var, vim.g
 
 -- nvim-completion
-
-g.completion_trigger_keyword_length = 1 -- default = 1
 g.completion_sorting = "length"
 
 -- lsp
-
 g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
 -- vimwiki
-
 g.vimwiki_global_ext = 1
 -- g.mywiki = {}
 -- g.mywiki.path = "~/wiki/"
@@ -59,7 +54,6 @@ g.AutoPairsShortcutFastWrap = "<C-g>"
 g.AutoPairsShortcutBackInsert = "<C-b>"
 
 -- ale
-
 g.ale_echo_msg_error_str = "E"
 g.ale_echo_msg_format = [[(%code%): %s]]
 g.ale_echo_msg_warning_str = "W"
@@ -90,7 +84,6 @@ g.ale_linters_explicit = 1
 g.asmsyntax = "nasm"
 
 -- markdown
-
 g.markdown_fenced_languages = {
   "html",
   "python",
@@ -109,7 +102,6 @@ g.vim_markdown_folding_disabled = 1
 g.buftabline_show = 0
 
 -- ultisnips
-
 g.UltiSnipsExpandTrigger = "<tab>"
 g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
 g.UltiSnipsEditSplit = "horizontal"
@@ -168,11 +160,9 @@ g.clipboard = clipboard_tbl
 vim.o.clipboard = "unnamed,unnamedplus"
 
 -- miniyank
-
 g.miniyank_maxitems = 10
 
 -- nvimtree
-
 g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 1
@@ -188,7 +178,6 @@ g.nvim_tree_hijack_netrw = 1
 g.nvim_tree_add_trailing = 1
 
 -- git-blame
-
 g.gitblame_enabled = 0
 g.gitblame_date_format = [[%m/%d/%Y]]
 g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
