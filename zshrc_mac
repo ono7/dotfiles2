@@ -117,12 +117,12 @@ fi
 if [[ -f ~/nvim/bin/nvim ]]; then
   alias vim='~/nvim/bin/nvim'
   alias vi=vim
-  alias v=vim
+  alias v='/usr/bin/vim'
   alias vimdiff='vim -d'
 elif command -v nvim &>/dev/null; then
   alias vim='nvim'
   alias vi=vim
-  alias v=vim
+  alias v='/usr/bin/vim'
   alias vimdiff='nvim -d'
 fi
 
