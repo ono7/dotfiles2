@@ -68,8 +68,17 @@ vnoremap <c-a> ^
 vnoremap <c-e> g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-n>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-n>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-n>"
+" inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 set completeopt=menuone
 
 set autoindent
@@ -102,7 +111,6 @@ set nrformats-=octal nrformats+=alpha
 set nonumber numberwidth=2
 set pastetoggle=<F2>
 set ruler
-" set scrolloff=2
 set shiftround shiftwidth=2
 set shortmess+=c
 set shortmess=atIoOsT
