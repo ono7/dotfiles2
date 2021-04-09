@@ -1,24 +1,20 @@
---- my_maps
-
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local ens = {expr = true, noremap = true, silent = true}
 
 -- tab completion
-
 function _G.check_back_space()
   local col = vim.api.nvim_win_get_cursor(0)[2]
   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
 end
 
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
--- m("i", "<c-j>", [[<plug>(completion_trigger)]], {silent = true})
 m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<tab>" : "<c-n>"]], ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
+
+-- local function t(str)
+--   return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
 
 -- resize window
 m("n", "<M-k>", [[:resize -2<cr>]], silent)
@@ -26,14 +22,8 @@ m("n", "<M-j>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
 m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 
--- m("n", "}", [[:<C-u>call search('^.\+')<CR>]], silent)
--- m("n", "{", [[:<C-u>call search('^.\+', 'b')<CR>]], silent)
-
 -- send to tmux
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
-
--- terminal
-m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 
 -- select visualy selected text for search
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
@@ -49,7 +39,6 @@ m("c", "%g", [[%g/\v]], opt)
 m("c", "%v", [[%v/\v]], opt)
 
 -- marks/jumps
-
 m("n", "'", "`", opt)
 m("n", "/", [[ms/]], opt)
 m("x", "/", [[ms/]], opt)
@@ -63,7 +52,7 @@ m("n", "#", "ms#", opt)
 m("n", "V", "Vg_", {})
 
 -- terminal
-
+m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 m("t", "<c-[>", [[<c-\><c-n>]], silent)
 
 -- ale
@@ -75,11 +64,8 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 -- m("n", "<c-p>", [[:cprevious<cr>]], silent)
 
 -- fzf
-
 m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
-
--- surround
 
 vim.g.surround_no_mappings = 1
 m("n", "S", "<Plug>YSurround", {})
@@ -91,20 +77,16 @@ m("n", "cs", "<Plug>Csurround", {})
 m("x", "S", "<Plug>VSurround", {})
 
 -- miniyank
-
 m("n", "p", [[<Plug>(miniyank-autoput)]], {})
 m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 -- nvimtree
-
 m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
 
 -- spell
-
 m("n", "<leader>e", [[]s1z=]], silent)
 
 -- shellcode
-
 m(
   "x",
   "<space>h",
@@ -113,7 +95,6 @@ m(
 )
 
 -- vimwiki throw away bindings
-
 m("n", [[\xa]], [[<Plug>VimwikiIndex]], opt)
 m("n", [[\xb]], [[<Plug>VimwikiTabIndex]], opt)
 m("n", [[\xc]], [[<Plug>VimwikiUISelect]], opt)
