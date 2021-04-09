@@ -54,7 +54,7 @@ m("n", "U", "<c-r>", opt)
 
 vim.o.path = vim.o.path .. "**"
 
--- disable ale before plugins are loaded
+-- disable ale lsp before plugins are loaded
 g.ale_disable_lsp = 1
 
 -- providers
