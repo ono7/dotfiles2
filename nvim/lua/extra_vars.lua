@@ -182,8 +182,8 @@ hi!  Whitespace  term=NONE      ctermbg=NONE   ctermfg=7      guifg=#e78a4e     
 hi!  MatchParen  term=NONE      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
 hi!  Visual      term=NONE      ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
 hi!  VertSplit   term=NONE      ctermbg=NONE   gui=NONE       guibg=NONE            cterm=NONE
-hi!  Pmenu       ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
-
+hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
+hi!  Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
 " Lima's vimrc, use at your own risk :)
 
 ]]
