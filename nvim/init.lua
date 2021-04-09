@@ -1,5 +1,10 @@
 -- Follow the white rabbit...
 
+-- TODO:  use jump list.. c-o, c-i
+-- c^ switch to last file edited
+-- gi -> last insert text position
+-- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
+
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 
 local opt = {noremap = true}
@@ -109,8 +114,3 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp"
-
--- insert c-o (undo), c-[ (exit insert)
--- c^ switch to last file edited
--- gi -> last insert text position
--- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
