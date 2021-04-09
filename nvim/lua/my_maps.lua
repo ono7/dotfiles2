@@ -30,10 +30,12 @@ m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 
-m("n", "H", "^", opt)
-m("n", "L", "g_", opt)
-m("v", "H", "^", opt)
-m("v", "L", "g_", opt)
+-- in favor of faster window navigation, these are now disabled..
+-- m("n", "H", "^", opt)
+-- m("n", "L", "g_", opt)
+-- m("v", "H", "^", opt)
+-- m("v", "L", "g_", opt)
+
 m("c", "%s", [[%s/\v]], opt)
 m("c", "%g", [[%g/\v]], opt)
 m("c", "%v", [[%v/\v]], opt)
