@@ -31,10 +31,10 @@ m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 
 -- in favor of faster window navigation, these are now disabled..
--- m("n", "H", "^", opt)
--- m("n", "L", "g_", opt)
--- m("v", "H", "^", opt)
--- m("v", "L", "g_", opt)
+m("n", "<c-a>", "^", opt)
+m("n", "<c-e>", "g_", opt)
+m("v", "<c-a>", "^", opt)
+m("v", "<c-e>", "g_", opt)
 
 m("c", "%s", [[%s/\v]], opt)
 m("c", "%g", [[%g/\v]], opt)
@@ -54,7 +54,7 @@ m("n", "#", "ms#", opt)
 m("n", "V", "Vg_", {})
 
 -- terminal
-m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
+-- m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 m("t", "<c-[>", [[<c-\><c-n>]], silent)
 
 -- ale
@@ -83,7 +83,7 @@ m("n", "p", [[<Plug>(miniyank-autoput)]], {})
 m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 -- nvimtree
-m("n", "<c-e>", [[:NvimTreeToggle<cr>]], silent)
+m("n", "<c-t>", [[:NvimTreeToggle<cr>]], silent)
 
 -- spell
 m("n", "<leader>e", [[]s1z=]], silent)

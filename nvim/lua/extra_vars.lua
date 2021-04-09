@@ -62,11 +62,10 @@ nnoremap <c-z> <nop>
 cnoremap <c-z> <nop>
 nnoremap cp yap<S-}>p
 nnoremap U <c-r>
-" disabled in favor of faster window nav
-" nnoremap H ^
-" nnoremap L g_
-" vnoremap H ^
-" vnoremap L g_
+nnoremap <c-a> ^
+nnoremap <c-e> g_
+vnoremap <c-a> ^
+vnoremap <c-e> g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-n>"
