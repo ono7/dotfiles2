@@ -103,7 +103,7 @@ set nrformats-=octal nrformats+=alpha
 set nonumber numberwidth=2
 set pastetoggle=<F2>
 set ruler
-set scrolloff=2
+" set scrolloff=2
 set shiftround shiftwidth=2
 set shortmess+=c
 set shortmess=atIoOsT
