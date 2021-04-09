@@ -95,6 +95,7 @@ set hidden
 set history=999
 set ignorecase
 set incsearch
+set nohlsearch
 set laststatus=0
 set magic
 set nobackup nowritebackup noswapfile
