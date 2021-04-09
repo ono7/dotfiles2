@@ -142,12 +142,17 @@ endfunction
 
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
+augroup _init
+  autocmd!
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
+  autocmd BufEnter * silent! lcd %:p:h
+  autocmd BufEnter * silent! set formatoptions=qlj
+augroup END
+
 augroup _read
   autocmd!
   " restore last known position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd BufEnter * silent! lcd %:p:h
-  autocmd BufEnter * silent! set formatoptions=qlj
 augroup END
 
 augroup _write
