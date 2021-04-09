@@ -4,6 +4,7 @@ M.legacy_cfg =
   [[
 " Follow the white rabbit...
 
+
 let mapleader = " "
 set synmaxcol=512
 set nocompatible
@@ -184,6 +185,10 @@ hi!  Visual      term=NONE      ctermbg=242    guibg=#3E4452  ctermfg=NONE      
 hi!  VertSplit   term=NONE      ctermbg=NONE   gui=NONE       guibg=NONE            cterm=NONE
 hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
 hi!  Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
+hi!  link LineNr Comment
+hi!  link CursorLineNr String
+
+
 " Lima's vimrc, use at your own risk :)
 
 ]]
