@@ -76,9 +76,6 @@ endfunction
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-n>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-n>"
-" inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 set completeopt=menuone
 
 set autoindent
