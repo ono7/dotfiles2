@@ -6,9 +6,7 @@
 -- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
-
 local opt = {noremap = true}
-
 local silent = {noremap = true, silent = true}
 
 if vim.fn.exists("+termguicolors") then
@@ -24,6 +22,7 @@ g.mapleader = " "
 
 -- hold my beer
 m("n", "<c-]>", "<cmd>noh<cr><c-g>", silent)
+m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
 m("n", "cw", "ciw", silent)
 m("n", "dw", "diw", silent)
 m("n", "yw", "yiw", silent)
@@ -41,7 +40,6 @@ m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "<tab>", ":bnext<cr>", silent)
 m("n", "<s-tab>", ":bprevious<cr>", silent)
-m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
 m("n", "Y", "y$", opt)
 m("v", "y", "mxy`x", opt)
 m("n", "<c-z>", "", opt)

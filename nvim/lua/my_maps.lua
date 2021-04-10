@@ -1,3 +1,4 @@
+-- locals
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
@@ -11,10 +12,6 @@ end
 
 m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<tab>" : "<c-n>"]], ens)
 m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
-
--- local function t(str)
---   return vim.api.nvim_replace_termcodes(str, true, true, true)
--- end
 
 -- resize window
 m("n", "<M-k>", [[:resize -2<cr>]], silent)
@@ -36,12 +33,23 @@ m("n", "<c-e>", "g_", opt)
 m("v", "<c-a>", "^", opt)
 m("v", "<c-e>", "g_", opt)
 
-m("c", "%s", [[%s/\v]], opt)
-m("c", "%g", [[%g/\v]], opt)
-m("c", "%v", [[%v/\v]], opt)
+-- m("c", "%s", [[%s/\v]], opt)
+-- m("c", "%g", [[%g/\v]], opt)
+-- m("c", "%v", [[%v/\v]], opt)
 
 -- marks/jumps
 m("n", "'", "`", opt)
+m("n", "ma", "mA", opt)
+m("n", "mb", "mB", opt)
+m("n", "mc", "mC", opt)
+m("n", "mm", "mM", opt)
+m("n", "ms", "mS", opt)
+m("n", "'a", "'A", opt)
+m("n", "'b", "'B", opt)
+m("n", "'c", "'C", opt)
+m("n", "'m", "'M", opt)
+m("n", "'s", "'S", opt)
+
 m("n", "gg", "gg<c-g>", opt)
 m("n", "G", "G<c-g>", opt)
 m("n", "V", "Vg_", {})
