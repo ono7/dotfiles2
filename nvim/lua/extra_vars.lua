@@ -41,10 +41,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap ' `
-nnoremap / ms/
-xnoremap / ms/
-nnoremap ? ms?
-xnoremap ? ms?
 nnoremap ma mA
 nnoremap mb mB
 nnoremap mc mC

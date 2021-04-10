@@ -42,15 +42,8 @@ m("c", "%v", [[%v/\v]], opt)
 
 -- marks/jumps
 m("n", "'", "`", opt)
-m("n", "/", [[ms/]], opt)
-m("x", "/", [[ms/]], opt)
-m("n", "?", [[ms?]], opt)
-m("x", "?", [[ms?]], opt)
-m("n", "gg", "msgg<c-g>", opt)
-m("n", "G", "msG<c-g>", opt)
-m("n", "gd", "msgd", opt)
-m("n", "*", "ms*", opt)
-m("n", "#", "ms#", opt)
+m("n", "gg", "gg<c-g>", opt)
+m("n", "G", "G<c-g>", opt)
 m("n", "V", "Vg_", {})
 
 -- terminal
