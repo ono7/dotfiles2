@@ -1,29 +1,5 @@
 --- Follow the white rabbit ---
 
---[[
-
-  NOTES:
-
-  use jump list.. c-o, c-i
-  c^ switch to last file edited
-  gi -> last insert text position
-  vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
-  prefix any fzf with single quote for exact match!!  Rg> '<c-n>
-  > finds only lines containing <c-n>
-
-  negative lookahead
-
-  \v---(.* ---)@!
-
-  finds all occurances of --- that do not end with ---
-
-  positive look ahead
-
-  \v---(.*bit ---)@=
-
-  finds all occurances of --- that end with "bit ----"
-
---]]
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
@@ -68,7 +44,7 @@ m("n", "U", "<c-r>", opt)
 
 vim.o.path = vim.o.path .. "**"
 
--- disable ale lsp before plugins are loaded
+-- disable ale lsp
 g.ale_disable_lsp = 1
 
 --- providers settings ---
@@ -92,7 +68,6 @@ function _G.pre_write()
   if g.loaded_format == 1 then
     cmd "FormatWrite!"
   end
-  vim.api.nvim_win_set_cursor(0, cpos)
   cmd "update"
   cmd "noh"
 end
@@ -123,3 +98,28 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp"
+
+--[[
+
+  NOTES:
+
+  use jump list.. c-o, c-i
+  c^ switch to last file edited
+  gi -> last insert text position
+  vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
+  prefix any fzf with single quote for exact match!!  Rg> '<c-n>
+  > finds only lines containing <c-n>
+
+  negative lookahead
+
+  \v---(.* ---)@!
+
+  finds all occurances of --- that do not end with ---
+
+  positive look ahead
+
+  \v---(.*bit ---)@=
+
+  finds all occurances of --- that end with "bit ----"
+
+--]]
