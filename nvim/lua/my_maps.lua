@@ -69,6 +69,8 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 -- fzf
 m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
+m("n", "<leader>s", ":Rg<cr>", silent)
+-- m("n", "<leader>c", ":Commits<cr>", silent) -- requires fugitive
 
 vim.g.surround_no_mappings = 1
 m("n", "S", "<Plug>YSurround", {})
