@@ -2,7 +2,7 @@ M = {}
 
 M.legacy_cfg =
   [[
-""" Follow the white rabbit """
+" Follow the white rabbit
 
 
 let mapleader = " "
