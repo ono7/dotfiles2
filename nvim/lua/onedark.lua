@@ -136,7 +136,7 @@ M.setup = function()
   M.highlight("WinNormalNC", {bg = M.colors.dark_black})
   M.highlight("HighlightedyankRegion", {bg = M.colors.comment_grey})
 
-  --- Languages
+  --- Languages ---
 
   -- Markdown
   M.highlight("markdownCode", {fg = M.colors.yellow})
@@ -169,14 +169,14 @@ M.setup = function()
   M.highlight("markdownLinkDelimiter", {fg = M.colors.white})
   M.highlight("markdownUrl", {fg = M.colors.purple})
 
-  --- Treesitter
+  --- Treesitter ---
   -- Misc
   M.highlight("TSError", {fg = M.colors.red})
   M.highlight("TSPunctDelimiter", {fg = M.colors.white})
   M.highlight("TSPunctBracket", {fg = M.colors.purple})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
-  -- -- Constants
+  --- Constants ---
   -- -- M.highlight("TSConstant", {})
   M.highlight("TSConstBuiltin", {fg = M.colors.yellow})
   -- -- Not sure about this guy
@@ -192,7 +192,7 @@ M.setup = function()
   -- M.highlight("TSAttribute", {})
   -- M.highlight("TSNamespace", {})
 
-  -- -- Functions
+  --- Functions ---
   M.highlight("TSFuncBuiltin", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSFunction", {fg = M.colors.white, gui = "italic"})
   -- M.highlight("TSFuncMacro", {})
@@ -203,7 +203,7 @@ M.setup = function()
   M.highlight("TSProperty", {fg = M.colors.white})
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
-  -- -- Keywords
+  --- Keywords ---
   M.highlight("TSConditional", {fg = M.colors.red, gui = "italic"})
   M.highlight("TSRepeat", {fg = M.colors.purple, gui = "italic"})
   -- M.highlight("TSLabel", {})
@@ -217,7 +217,7 @@ M.setup = function()
   -- M.highlight("TSStructure", {})
   M.highlight("TSInclude", {fg = M.colors.blue, gui = "bold,italic"})
 
-  -- -- Variable
+  -- Variable
   M.highlight("TSVariable", {fg = M.colors.white})
   M.highlight("TSVariableBuiltin", {fg = M.colors.cyan, gui = "italic"})
 
@@ -234,7 +234,7 @@ M.setup = function()
   -- M.highlight("TSTag", {})
   -- M.highlight("TSTagDelimiter", {})
 
-  --- Plugins
+  --- Plugins ---
   M.highlight("illuminatedWord", {gui = "bold"})
 
   M.highlight("diffAdded", {fg = M.colors.green})
@@ -282,7 +282,6 @@ M.setup = function()
   M.highlight("VimwikiHeader6", {fg = M.colors.cyan, gui = "bold"})
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
-
   M.highlight("Whitespace", {fg = M.colors.orange})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
@@ -292,7 +291,6 @@ M.setup = function()
   M.link("gitcommitDiscardedArrow", "gitcommitDiscardedFile")
   M.link("gitcommitSelectedArrow", "gitcommitSelectedFile")
   M.link("gitcommitUnmergedArrow", "gitcommitUnmergedFile")
-
   M.link("gitmessengerPopupNormal", "WinNormalNC")
 
   M.highlight("GitGutterAdd", {fg = M.colors.green})
@@ -309,11 +307,10 @@ M.setup = function()
   M.highlight("LspDiagnosticsUnderlineWarning", {fg = M.colors.purple, gui = "underline"})
   M.highlight("LspDiagnosticsUnderlineInformation", {fg = M.colors.cyan, gui = "underline"})
   M.highlight("LspDiagnosticsUnderlineHint", {fg = M.colors.comment_grey, gui = "underline"})
-
   M.highlight("TSDefinitionUsage", {gui = "bold"})
   M.highlight("TSDefinition", {gui = "bold"})
 
-  --- snippets
+  --- snippets ---
   M.clear("snipLeadingSpaces")
   M.highlight("snipLeadingSpaces", {})
 end
