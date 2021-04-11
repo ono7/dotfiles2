@@ -1,7 +1,5 @@
--- auto install paq if not exists
-
+--- locals
 local cmd, fn = vim.cmd, vim.fn
-
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -13,7 +11,7 @@ end
 cmd "packadd paq-nvim"
 local paq = require "paq-nvim".paq
 
--- let paq-nvim manage it self
+--- my dependencies ---
 paq {"savq/paq-nvim", opt = true}
 
 paq "vimwiki/vimwiki"
@@ -37,14 +35,14 @@ paq "nvim-treesitter/nvim-treesitter"
 paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
 
--- completion
+--- completion ---
 paq "nvim-lua/completion-nvim"
 
--- lsp
+--- lsp ---
 paq "neovim/nvim-lspconfig"
 paq "kabouzeid/nvim-lspinstall"
 
--- after plugins, run their setup
+--- after plugins, run their setup ---
 require "my_pkg_cfg"
 
 cmd "filetype plugin indent on"

@@ -1,4 +1,4 @@
--- Follow the white rabbit...
+--- Follow the white rabbit... ---
 
 -- TODO:  use jump list.. c-o, c-i
 -- c^ switch to last file edited
@@ -16,11 +16,11 @@ if vim.fn.exists("+termguicolors") then
   ]]
 end
 
--- map leader
+--- map leader ---
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
--- hold my beer
+--- hold my beer ---
 m("n", "<c-]>", "<cmd>noh<cr><c-g>", silent)
 m("n", "<c-[>", "<cmd>noh<cr><c-g>", silent)
 m("n", "cw", "ciw", silent)
@@ -52,7 +52,7 @@ vim.o.path = vim.o.path .. "**"
 -- disable ale lsp before plugins are loaded
 g.ale_disable_lsp = 1
 
--- providers
+--- providers settings ---
 g.python_host_skip_check = 1
 g.python2_host_skip_check = 1
 g.python3_host_skip_check = 1

@@ -50,6 +50,10 @@ snippet "(docs|doc|comment|com)" "docstring" br
 --]]
 endsnippet
 
+snippet sec "section comment" b
+--- $0${VISUAL/([\n\s]+$|^[\n\s]+)//g} ---
+endsnippet
+
 snippet head "head" b
 -- HEAD --
 

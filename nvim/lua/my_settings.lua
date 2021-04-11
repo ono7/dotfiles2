@@ -1,9 +1,9 @@
+--- locals ---
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 
--- global options
-
+--- global options ---
 o.completeopt = "menuone,noinsert,noselect"
 o.foldmethod = "manual"
 o.termguicolors = true
@@ -65,8 +65,7 @@ function _G.rg()
   end
 end
 
--- window-local options
-
+--- window-local options ---
 wo.number = false
 wo.wrap = false
 wo.numberwidth = 2
@@ -75,8 +74,7 @@ wo.foldenable = false
 wo.list = true
 wo.cursorline = false
 
--- buffer-local options
-
+--- buffer-local options ---
 bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0

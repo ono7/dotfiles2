@@ -1,13 +1,12 @@
--- locals
-
+--- locals ---
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
 
 if vim.g.loaded_paq then
-  -- autopairs
+  --- autopairs ---
   require("nvim-autopairs").setup()
 
-  -- tmux navigator, in lua
+  --- tmux navigator, in lua ---
   require("Navigator").setup(
     {
       disable_on_zoom = true
@@ -18,7 +17,7 @@ if vim.g.loaded_paq then
   m("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opt)
   m("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opt)
 
-  -- comments
+  --- comments ---
   require("kommentary.config").configure_language(
     "default",
     {
@@ -28,12 +27,12 @@ if vim.g.loaded_paq then
     }
   )
 
-  -- sweet sweet icons for ntree
+  --- sweet sweet icons for ntree ---
   require "nvim-web-devicons".setup {
     default = true
   }
 
-  -- treesitter setup
+  --- treesitter setup ---
   require "nvim-treesitter.configs".setup {
     highlight = {
       enable = true
@@ -56,6 +55,7 @@ if vim.g.loaded_paq then
     }
   }
 
+  --- formatting ---
   require "format".setup {
     --[[
 
@@ -65,7 +65,6 @@ if vim.g.loaded_paq then
 
     npm install lua-fmt prettier -g
     pip install black pylint epdb ipython
-    autocmd BufWritePost * FormatWrite
 
   --]]
     lua = {
