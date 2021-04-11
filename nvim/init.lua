@@ -2,12 +2,26 @@
 
 --[[
 
-  TODO:  use jump list.. c-o, c-i
+  NOTES:
+
+  use jump list.. c-o, c-i
   c^ switch to last file edited
   gi -> last insert text position
   vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
   prefix any fzf with single quote for exact match!!  Rg> '<c-n>
   > finds only lines containing <c-n>
+
+  negative lookahead
+
+  \v---(.* ---)@!
+
+  finds all occurances of --- that do not end with ---
+
+  positive look ahead
+
+  \v---(.*bit ---)@=
+
+  finds all occurances of --- that end with "bit ----"
 
 --]]
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap

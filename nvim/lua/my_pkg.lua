@@ -1,4 +1,4 @@
---- locals
+--- locals ---
 local cmd, fn = vim.cmd, vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 
