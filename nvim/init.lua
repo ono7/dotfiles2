@@ -1,10 +1,15 @@
---- Follow the white rabbit... ---
+--- Follow the white rabbit ---
 
--- TODO:  use jump list.. c-o, c-i
--- c^ switch to last file edited
--- gi -> last insert text position
--- vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
+--[[
 
+  TODO:  use jump list.. c-o, c-i
+  c^ switch to last file edited
+  gi -> last insert text position
+  vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
+  prefix any fzf with single quote for exact match!!  Rg> '<c-n>
+  > finds only lines containing <c-n>
+
+--]]
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
