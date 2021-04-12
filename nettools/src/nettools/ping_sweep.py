@@ -20,7 +20,6 @@ def ping_sweep(network_block):
 
 
 def main():
-    """ entry point """
     ping_sweep(sys.argv[1])
 
 

@@ -21,19 +21,19 @@ scrolling:
 
 font:
   normal:
-    family: Input Mono
-    style: Regular
+    family: MonoLisa
+    style: Medium
 
   bold:
-    family: Input Mono
+    family: MonoLisa
     style: Bold
 
   italic:
-    family: Input Mono
+    family: MonoLisa
     style: Italic
 
   bold_italic:
-    family: Input Mono
+    family: MonoLisa
     style: Bold Italic
 
   size: 18.0
@@ -54,7 +54,7 @@ schemes:
   onehalf: &onehalf
     cursor:
       text: '0x282c34'
-      cursor: '0x405e9e'
+      cursor: '0xfeffff'
 
     primary:
       background: '0x23272e'
