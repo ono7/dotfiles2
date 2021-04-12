@@ -30,7 +30,7 @@ font:
 
   italic:
     family: MonoLisa
-    style: Italic
+    style: Medium Italic
 
   bold_italic:
     family: MonoLisa

@@ -194,7 +194,7 @@ M.setup = function()
 
   --- Functions ---
   M.highlight("TSFuncBuiltin", {fg = M.colors.yellow, gui = "italic"})
-  M.highlight("TSFunction", {fg = M.colors.white, gui = "italic"})
+  M.highlight("TSFunction", {fg = M.colors.white})
   -- M.highlight("TSFuncMacro", {})
   -- M.highlight("TSParameter", {})
   -- M.highlight("TSParameterReference", {})
