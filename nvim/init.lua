@@ -1,5 +1,7 @@
 --- Follow the white rabbit ---
 
+-- TODO: 04-12-2021 | add custom mappings to ntree to fix c-t map
+
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
