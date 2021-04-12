@@ -48,7 +48,7 @@ font:
 
   use_thin_strokes: true
 
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 schemes:
   onehalf: &onehalf
@@ -110,7 +110,8 @@ schemes:
     primary:
       # hard contrast:
       # background: '0x282828' default
-      background: '0x1d2021' # hard contrast
+      # hard contrast
+      background: '0x1d2021'
       # background: '0x32302f' # soft
       foreground: '0xebdbb2'
     normal:
@@ -177,7 +178,7 @@ mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
 
-  hide_when_typing: false
+  hide_when_typing: true
 
   url:
     modifiers: None
@@ -191,7 +192,7 @@ cursor:
 
   unfocused_hollow: true
 
-custom_cursor_colors: false
+custom_cursor_colors: true
 
 live_config_reload: true
 
