@@ -31,6 +31,7 @@ M.colors = {
   cyan = "#56B6C2",
   white = "#dcdfe4",
   black = "#282c34",
+  itermbg = "#23272e",
   dimm_black = "#1c1c1c",
   dark_black = "#1a1a1a",
   comment_grey = "#5C6370",
@@ -47,6 +48,7 @@ M.setup = function()
   vim.cmd [[highlight clear]]
   vim.cmd [[syntax reset]]
 
+  M.highlight("EndOfBuffer", {fg = M.colors.itermbg})
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
