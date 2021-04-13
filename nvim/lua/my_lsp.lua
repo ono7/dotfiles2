@@ -59,7 +59,7 @@ if vim.g.loaded_paq then
         path = vim.split(package.path, ";")
       },
       diagnostics = {
-        globals = {"vim"}
+        globals = {"vim", "love"}
       },
       workspace = {
         library = {
