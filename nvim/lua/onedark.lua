@@ -48,6 +48,7 @@ M.setup = function()
   vim.cmd [[highlight clear]]
   vim.cmd [[syntax reset]]
 
+  M.highlight("MsgArea", {fg = M.colors.comment_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.itermbg}) -- hide eob markers
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
