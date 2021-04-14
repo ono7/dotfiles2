@@ -15,6 +15,7 @@ echo ###########################################################################
 cd ~
 mkdir -p ~/.tmp
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/kitty
 mkdir -p ~/.tmux/plugins
 mkdir -p ~/.ssh
 mkdir -p ~/bin
@@ -38,6 +39,7 @@ ln -sf ~/.dotfiles/zshrc_mac ~/.zshrc
 ln -sf ~/.dotfiles/mysql/cn.cnf ~/.cn.cnf
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ctags ~/.ctags
+ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 
 ln -sf ~/.dotfiles/dircolors ~/.dircolors
 
