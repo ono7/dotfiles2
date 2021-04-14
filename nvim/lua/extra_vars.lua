@@ -185,8 +185,7 @@ hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
 hi!  Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
 hi!  link LineNr Comment
 hi!  link CursorLineNr String
-hi!  EndOfBuffer ctermbg=NONE ctermfg=NONE
-
+hi!  EndOfBuffer ctermbg=NONE guifg=#282c34 ctermfg=NONE
 
 " Lima's vimrc, use at your own risk :)
 
