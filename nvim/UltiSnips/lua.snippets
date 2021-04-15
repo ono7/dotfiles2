@@ -1,9 +1,9 @@
 
-# snippet "\b(function|func|fun)" "function" r
-# function $1($2)
-#   ${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0
-# end
-# endsnippet
+snippet "\b(function|func|fun)" "function" rwb
+function$1($0)
+  ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
+end
+endsnippet
 
 snippet "\b(print|pr|p)" "print" br
 print(${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0)
@@ -76,10 +76,10 @@ end
 
 endsnippet
 
-snippet fun "function" ws
-function($0)
-end
-endsnippet
+# snippet fun "function" ws
+# function$1($0)
+# end
+# endsnippet
 
 snippet for "for loop" b
 for $0 do
