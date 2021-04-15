@@ -136,7 +136,7 @@ fi
 
 alias gd='git diff'
 alias gs='git status'
-
+alias love="/Applications/love.app/Contents/MacOS/love"
 alias cdr='cd "$(git rev-parse --show-toplevel)"  &>/dev/null'
 alias c='clear'
 
@@ -279,6 +279,7 @@ fi
 
 # disable virtualenv prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export XCURSOR_SIZE=60
 
 # autocompletion
 zstyle ':completion:*' completer _complete
