@@ -27,12 +27,10 @@ endglobal
 # `!p snip.rv=dir(locals()['vim'])`
 # endsnippet
 
-snippet head "head" b
+snippet "(head|h)" "head" br
 *$1*
 
 _`!v strftime("%a %b %-d %-I:%M:%S %p %Y")` CST_
-
-= CONTENTS =
 
 = $0 =
 endsnippet

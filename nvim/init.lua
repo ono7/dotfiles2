@@ -59,7 +59,7 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 function _G.pre_write()
-  local cpos = vim.api.nvim_win_get_cursor(0)
+  -- local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
   do
     cmd [[let old = @/]]

@@ -313,6 +313,9 @@ M.setup = function()
   M.highlight("TSDefinitionUsage", {gui = "bold"})
   M.highlight("TSDefinition", {gui = "bold"})
 
+  --- ALE ---
+  M.highlight("ALEWarningSign", {fg = M.colors.orange})
+
   --- snippets ---
   M.clear("snipLeadingSpaces")
   M.highlight("snipLeadingSpaces", {})

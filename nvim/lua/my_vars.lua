@@ -74,13 +74,16 @@ g.ale_lint_delay = 50
 g.ale_max_signs = 50
 g.ale_maximun_file_size = 800000
 g.ale_python_pylint_options = "-j 8"
+g.ale_lua_luacheck_options = "--globals vim love"
 g.ale_fix_on_save = 0
 g.ale_linters = {
   python = {"pylint"},
-  yaml = {"yamllint"}
+  yaml = {"yamllint"},
+  lua = {"luacheck"}
 }
 g.ale_linters_explicit = 1
 
+--- handle assembly language syntax ---
 g.asmsyntax = "nasm"
 
 --- markdown ---
