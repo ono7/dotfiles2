@@ -31,7 +31,7 @@ paq "kyazdani42/nvim-tree.lua"
 paq "kyazdani42/nvim-web-devicons"
 paq "lukas-reineke/format.nvim"
 paq "numToStr/Navigator.nvim"
-paq "nvim-treesitter/nvim-treesitter"
+paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
 
