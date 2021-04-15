@@ -78,6 +78,7 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone
 
 set autoindent
+set notitle
 set path+=**
 set autoread
 set backspace=indent,eol,start

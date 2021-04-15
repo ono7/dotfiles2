@@ -49,7 +49,7 @@ M.setup = function()
   vim.cmd [[highlight clear]]
   vim.cmd [[syntax reset]]
 
-  M.highlight("MsgArea", {fg = M.colors.comment_grey, gui = "bold"})
+  M.highlight("MsgArea", {fg = M.colors.comment_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
@@ -107,7 +107,7 @@ M.setup = function()
   M.highlight("IncSearch", {fg = M.colors.comment_grey, bg = M.colors.green})
   M.highlight("LineNr", {fg = M.colors.gutter_fg_grey})
   M.highlight("CursorLineNr", {fg = M.colors.green})
-  M.highlight("MatchParen", {fg = M.colors.white, bg = M.colors.visual_grey, gui = "bold,underline"})
+  M.highlight("MatchParen", {fg = M.colors.white, bg = M.colors.visual_grey, gui = "bold"})
   M.highlight("ModeMsg", {})
   M.highlight("MoreMsg", {})
   M.highlight("NonText", {fg = M.colors.special_grey})
