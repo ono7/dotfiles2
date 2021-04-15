@@ -186,7 +186,7 @@ hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
 hi!  Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
 hi!  link LineNr Comment
 hi!  link CursorLineNr String
-hi!  EndOfBuffer ctermbg=NONE guifg=#282c34 ctermfg=236
+hi!  EndOfBuffer ctermbg=NONE guifg=#23272e ctermfg=236
 hi!  link MsgArea Comment
 hi!  clear ModeMsg
 
