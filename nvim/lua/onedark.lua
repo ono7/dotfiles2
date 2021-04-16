@@ -51,7 +51,7 @@ M.setup = function()
 
   M.highlight("MsgArea", {fg = M.colors.comment_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
-  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic,bold"})
+  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
@@ -197,7 +197,7 @@ M.setup = function()
   -- M.highlight("TSNamespace", {})
 
   --- Functions ---
-  M.highlight("TSFuncBuiltin", {fg = M.colors.yellow, gui = "italic"})
+  M.highlight("TSFuncBuiltin", {fg = M.colors.yellow})
   M.highlight("TSFunction", {fg = M.colors.blue, gui = "italic"})
   -- M.highlight("TSFuncMacro", {})
   -- M.highlight("TSParameter", {})
