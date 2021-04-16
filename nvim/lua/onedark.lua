@@ -51,7 +51,7 @@ M.setup = function()
 
   M.highlight("MsgArea", {fg = M.colors.comment_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
-  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
+  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic,bold"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
@@ -286,7 +286,7 @@ M.setup = function()
   M.highlight("VimwikiHeader6", {fg = M.colors.cyan, gui = "bold"})
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
-  M.highlight("Whitespace", {fg = M.colors.orange})
+  M.highlight("Whitespace", {fg = M.colors.cyan})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
   M.link("gitcommitUntracked", "gitcommitComment")
