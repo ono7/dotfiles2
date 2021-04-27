@@ -198,11 +198,11 @@ M.setup = function()
 
   --- Functions ---
   M.highlight("TSFuncBuiltin", {fg = M.colors.yellow})
-  M.highlight("TSFunction", {fg = M.colors.blue, gui = "italic"})
+  M.highlight("TSFunction", {fg = M.colors.blue})
   -- M.highlight("TSFuncMacro", {})
   -- M.highlight("TSParameter", {})
   -- M.highlight("TSParameterReference", {})
-  M.highlight("TSMethod", {fg = M.colors.red, gui = "italic"})
+  M.highlight("TSMethod", {fg = M.colors.red})
   M.highlight("TSField", {fg = M.colors.white, gui = "italic"})
   M.highlight("TSProperty", {fg = M.colors.white})
   M.highlight("TSConstructor", {fg = M.colors.orange})
