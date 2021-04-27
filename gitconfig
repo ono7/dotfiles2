@@ -4,6 +4,7 @@
   email = lima@mbp
 [core]
   editor = vim
+  mergeoptions = --no-edit
 [push]
   default = simple
 [http]
