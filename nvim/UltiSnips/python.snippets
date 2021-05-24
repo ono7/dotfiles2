@@ -176,6 +176,18 @@ snippet "pr|pri" "print" r
 print(${VISUAL}$0)
 endsnippet
 
+snippet filter "ansible filter" b
+
+class FilterModule:
+    """ ansible filter """
+
+    def filters(self):
+        return {"${1:filter_name}": self.$1}
+
+    def $1(self, $2):
+        """ $0 """
+endsnippet
+
 # console.log(${VISUAL:/;//}$0);
 
 
