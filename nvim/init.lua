@@ -94,10 +94,6 @@ cmd "syntax on"
 require "onedark".setup {}
 
 cmd "hi!  snipLeadingSpaces  ctermbg=0  guibg=none  guifg=none"
-cmd "hi!  DiffAdd            ctermfg=2  ctermbg=0   gui=NONE     guifg=Black  guibg=#98C379"
-cmd "hi!  DiffDelete         ctermfg=1  ctermbg=0   gui=NONE     guifg=Black  guibg=#E06C75"
-cmd "hi!  DiffChange         ctermfg=3  ctermbg=0   gui=NONE     guifg=Black  guibg=#61AFEF"
-cmd "hi!  DiffText           ctermfg=4  ctermbg=0   gui=NONE     guifg=Black  guibg=#e5c07b"
 
 require "my_maps"
 require "my_vars"
