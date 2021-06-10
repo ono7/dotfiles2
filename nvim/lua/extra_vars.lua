@@ -139,6 +139,10 @@ if has('nvim')
   tnoremap <c-[> <C-\><C-n>
 endif
 
+if &diff
+  set number
+endif
+
 function! <SID>RemoveWhiteSpace()
   let l = line(".")
   let c = col(".")
