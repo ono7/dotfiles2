@@ -92,7 +92,12 @@ cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
 require "onedark".setup {}
+
 cmd "hi! snipLeadingSpaces ctermbg=0 guibg=none guifg=none"
+cmd "hi! DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=Black guibg=#98C379"
+cmd "hi! DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=Black guibg=#E06C75"
+cmd "hi! DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=Black guibg=#61AFEF"
+cmd "hi! DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=Black guibg=#e5c07b"
 
 require "my_maps"
 require "my_vars"
