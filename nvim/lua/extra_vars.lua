@@ -189,10 +189,13 @@ hi!  link CursorLineNr String
 hi!  EndOfBuffer ctermbg=NONE guifg=#23272e ctermfg=236
 hi!  link MsgArea Comment
 hi!  clear ModeMsg
-hi! DiffAdd    ctermfg=2 ctermbg=0 gui=NONE guifg=Black guibg=#98C379
-hi! DiffDelete ctermfg=1 ctermbg=0 gui=NONE guifg=Black guibg=#E06C75
-hi! DiffChange ctermfg=3 ctermbg=0 gui=NONE guifg=Black guibg=#61AFEF
-hi! DiffText   ctermfg=4 ctermbg=0 gui=NONE guifg=Black guibg=#e5c07b
+hi! DiffAdd    ctermfg=0 ctermbg=2 gui=NONE guifg=Black guibg=#98C379
+hi! DiffDelete ctermfg=0 ctermbg=1 gui=NONE guifg=Black guibg=#E06C75
+hi! DiffChange ctermfg=0 ctermbg=4 gui=NONE guifg=Black guibg=#61AFEF
+hi! DiffText   ctermfg=0 ctermbg=3 gui=NONE guifg=Black guibg=#e5c07b
+hi! Folded ctermbg=238 guibg=#3E4452
+hi! FoldColumn ctermbg=NONE guibg=#3E4452
+hi! SignColumn ctermfg=7 ctermbg=NONE
 
 " Lima's vimrc, use at your own risk :)
 
