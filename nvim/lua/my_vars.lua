@@ -165,6 +165,9 @@ vim.o.clipboard = "unnamed,unnamedplus"
 --- miniyank ---
 g.miniyank_maxitems = 10
 
+-- diff --
+g.diff_translations = 0
+
 --- nvimtree ---
 g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0

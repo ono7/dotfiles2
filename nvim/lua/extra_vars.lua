@@ -6,6 +6,7 @@ M.legacy_cfg =
 
 
 let mapleader = " "
+let g:diff_translations = 0
 set synmaxcol=512
 set nocompatible
 syntax enable
