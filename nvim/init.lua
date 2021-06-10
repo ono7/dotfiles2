@@ -11,12 +11,6 @@ if vim.fn.exists("+termguicolors") then
   ]]
 end
 
-cmd [[ 
-if &diff 
-  set number 
-endif 
-]]
-
 --- map leader ---
 m("n", "<Space>", "", {})
 g.mapleader = " "
@@ -130,3 +124,9 @@ require "my_lsp"
   finds all occurances of --- that end with "bit ----"
 
 --]]
+
+if vim.api.nvim_eval("&diff") == 1 then
+  vim.wo.number = true
+  cmd [[ set number ]]
+end
+
