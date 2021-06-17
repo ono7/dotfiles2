@@ -124,13 +124,13 @@ require "my_lsp"
   finds all occurances of --- that end with "bit ----"
 
 --]]
-
 if vim.api.nvim_eval("&diff") == 1 then
   vim.wo.number = true
   cmd [[ set number ]]
 end
 
-
 -- hmm come back to this later...
-vim.bo.smartindent = true
-vim.bo.cindent = true
+vim.bo.smartindent = false
+vim.bo.cindent = false
+
+cmd "filetype plugin indent on"
