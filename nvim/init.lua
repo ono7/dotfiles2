@@ -129,7 +129,7 @@ if vim.api.nvim_eval("&diff") == 1 then
   cmd [[ set number ]]
 end
 
--- hmm come back to this later...
+-- broken indent on {[(<CR>)]} :(
 vim.bo.smartindent = false
 vim.bo.cindent = false
 
