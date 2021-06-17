@@ -76,7 +76,7 @@ wo.list = true
 wo.cursorline = false
 
 --- buffer-local options ---
-bo.autoindent = true
+-- bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0
 bo.swapfile = false
@@ -88,4 +88,4 @@ bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
-bo.smartindent = true
+-- bo.smartindent = true
