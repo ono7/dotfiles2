@@ -130,3 +130,7 @@ if vim.api.nvim_eval("&diff") == 1 then
   cmd [[ set number ]]
 end
 
+
+-- hmm come back to this later...
+vim.bo.smartindent = true
+vim.bo.cindent = true
