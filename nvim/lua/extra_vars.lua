@@ -13,7 +13,6 @@ syntax enable
 syntax sync minlines=256
 syntax sync maxlines=300
 syntax on
-filetype plugin indent on
 
 " hold my beer
 nnoremap <silent><cr> :noh<cr><c-g>
@@ -78,7 +77,7 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set completeopt=menuone
 
-set autoindent
+set noautoindent
 set notitle
 set path+=**
 set autoread
@@ -201,6 +200,8 @@ hi! DiffText   ctermfg=0 ctermbg=3 gui=NONE guifg=Black guibg=#e5c07b
 hi! Folded ctermbg=238 guibg=#3E4452
 hi! FoldColumn ctermbg=NONE guibg=#3E4452
 hi! SignColumn ctermfg=7 ctermbg=NONE
+
+filetype plugin indent on
 
 " Lima's vimrc, use at your own risk :)
 
