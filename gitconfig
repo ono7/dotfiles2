@@ -13,3 +13,5 @@
   insteadOf = git://github.com/
 [credential]
   helper = osxkeychain
+[init]
+	defaultBranch = main
