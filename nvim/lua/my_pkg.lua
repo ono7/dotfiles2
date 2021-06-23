@@ -35,9 +35,6 @@ paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
 
---- completion ---
--- paq "nvim-lua/completion-nvim"
-
 --- lsp ---
 paq "neovim/nvim-lspconfig"
 paq "hrsh7th/nvim-compe"
@@ -47,5 +44,3 @@ paq "kabouzeid/nvim-lspinstall"
 require "my_pkg_cfg"
 
 cmd "filetype plugin indent on"
-
--- install lsp servers in to :echo stdpath("data")

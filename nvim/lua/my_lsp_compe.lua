@@ -89,7 +89,9 @@ end
 
 --- servers
 
--- python ( npm -g install pyright), requires root director objcect (requirements.txt , .git, setup.py)
+-- install lsp servers manually in to :echo stdpath("data")
+
+-- python ( npm -g install pyright), requires root director object (requirements.txt , .git, setup.py)
 require "lspconfig".pyright.setup {}
 
 -- configure lua for vim development
