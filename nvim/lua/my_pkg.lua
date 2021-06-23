@@ -36,10 +36,11 @@ paq "nvim-treesitter/playground"
 paq "windwp/nvim-autopairs"
 
 --- completion ---
-paq "nvim-lua/completion-nvim"
+-- paq "nvim-lua/completion-nvim"
 
 --- lsp ---
 paq "neovim/nvim-lspconfig"
+paq "hrsh7th/nvim-compe"
 paq "kabouzeid/nvim-lspinstall"
 
 --- after plugins, run their setup ---

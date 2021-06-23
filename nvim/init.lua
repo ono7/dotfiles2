@@ -98,7 +98,8 @@ require "my_vars"
 require "my_cmds"
 require "my_settings"
 require "my_pkg"
-require "my_lsp"
+require "my_lsp_compe"
+-- require "my_lsp"
 
 --[[
 
