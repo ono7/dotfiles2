@@ -20,8 +20,3 @@ class Config(pdb.DefaultConfig):
     truncate_long_lines = False
     current_line_color = 154
     bg = "dark"
-    # def setup(self, pdb):
-    #     # make 'l' an alias to 'longlist'
-    #     # Pdb.do_l = Pdb.do_longlist
-    #     Pdb = pdb.__class__
-    #     Pdb.do_st = Pdb.do_sticky
