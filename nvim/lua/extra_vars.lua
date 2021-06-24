@@ -178,6 +178,7 @@ augroup END
 augroup _files
   autocmd!
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
 
