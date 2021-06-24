@@ -175,6 +175,12 @@ augroup _resize
   autocmd VimResized * :wincmd =
 augroup END
 
+augroup _files
+  autocmd!
+  autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap
+augroup END
+
+
 hi!  Statement   ctermfg=1
 hi!  String      ctermfg=2
 hi!  Include     ctermfg=4
