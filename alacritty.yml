@@ -21,19 +21,19 @@ scrolling:
 
 font:
   normal:
-    family: MonoLisa
-    style: Medium
+    family: JetBrains Mono
+    style: Regular
 
   bold:
-    family: MonoLisa
+    family: JetBrains Mono
     style: Bold
 
   italic:
-    family: MonoLisa
+    family: JetBrains Mono
     style: Medium Italic
 
   bold_italic:
-    family: MonoLisa
+    family: JetBrains Mono
     style: Bold Italic
 
   size: 18.0
