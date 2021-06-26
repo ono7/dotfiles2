@@ -50,8 +50,8 @@ m("n", "'c", "'C", opt)
 m("n", "'m", "'M", opt)
 m("n", "'s", "'S", opt)
 
-m("n", "gg", "gg<c-g>", opt)
-m("n", "G", "G<c-g>", opt)
+m("n", "gg", "gg1<c-g>", opt)
+m("n", "G", "G1<c-g>", opt)
 m("n", "V", "Vg_", {})
 
 --- terminal ---

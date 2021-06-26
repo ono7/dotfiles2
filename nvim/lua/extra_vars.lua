@@ -15,7 +15,7 @@ syntax sync maxlines=300
 syntax on
 
 " hold my beer
-nnoremap <silent><cr> :noh<cr><c-g>
+nnoremap <silent><cr> :noh<cr>1<c-g>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <m-b> <C-o>B
@@ -27,9 +27,9 @@ nnoremap k gk
 nnoremap j gj
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
-nnoremap <leader>d :bd!<cr><c-g>
+nnoremap <leader>d :bd!<cr>1<c-g>
 nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :write<cr>
+nnoremap <leader>w :write<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]
 nnoremap <silent><M-j> :resize -2<cr>
