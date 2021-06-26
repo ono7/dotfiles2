@@ -20,6 +20,8 @@ inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <m-b> <C-o>B
 inoremap <m-f> <C-o>W
+nnoremap gg gg1<c-g>
+nnoremap G G1<c-g>
 nnoremap cw ciw
 nnoremap dw diw
 nnoremap yw yiw
