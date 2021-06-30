@@ -59,8 +59,8 @@ nnoremap 'm 'M
 nnoremap 's 'S
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
-nnoremap <silent><tab> :bnext<cr>
-nnoremap <silent><s-tab> :bprevious<cr>
+" nnoremap <silent><tab> :bnext<cr>
+" nnoremap <silent><s-tab> :bprevious<cr>
 nnoremap Y y$
 vnoremap y mxy`x
 nnoremap <c-z> <nop>
