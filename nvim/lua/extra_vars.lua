@@ -5,7 +5,12 @@ M.legacy_cfg =
 " Follow the white rabbit
 
 let mapleader = " "
+
 let g:diff_translations = 0
+let g:pyindent_open_paren = '0'
+let g:pyindent_nested_paren = '&sw'
+let g:pyindent_continue = '&sw'
+
 set synmaxcol=512
 set nocompatible
 syntax enable
