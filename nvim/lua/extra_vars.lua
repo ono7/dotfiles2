@@ -80,7 +80,6 @@ nnoremap <leader>t :silent !tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 
 set completeopt=menuone
 
-set autoindent
 set notitle
 set path+=**
 set autoread
@@ -134,6 +133,7 @@ set ttyfast
 set clipboard=unnamed
 set foldmethod=manual
 set fileformats=unix,dos
+set autoindent
 
 if has('nvim')
   set inccommand=nosplit
