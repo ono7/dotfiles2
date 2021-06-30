@@ -148,23 +148,27 @@ if vim.g.loaded_paq then
         start_pattern = "^```lua$",
         end_pattern = "^```$",
         target = "current"
-        -- current only format where cursor is
       },
       {
         cmd = {
           "prettier -w --parser babel --single-quote"
         },
         start_pattern = "^```javascript$",
-        end_pattern = "^```$",
-        target = "current"
+        end_pattern = "^```$"
       },
       {
         cmd = {
           "black"
         },
         start_pattern = "^```python$",
-        end_pattern = "^```$",
-        target = "current"
+        end_pattern = "^```$"
+      },
+      {
+        cmd = {
+          "prettier -w --parser yaml --single-quote --quote-props preserve"
+        },
+        start_pattern = "^```yaml$",
+        end_pattern = "^```$"
       }
     }
   }
