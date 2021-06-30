@@ -67,7 +67,7 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 -- m("n", "<c-p>", [[:cprevious<cr>]], silent)
 
 --- fzf ---
-m("n", "<leader>f", ":Files<cr>", silent)
+m("n", "<leader>f", ":GFiles<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 m("n", "<leader>s", ":Rg<cr>", silent)
 -- m("n", "<leader>c", ":Commits<cr>", silent) -- requires fugitive
