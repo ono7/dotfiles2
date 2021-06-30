@@ -81,7 +81,7 @@ endfunction
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-n>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-nnoremap <leader>t :silent !tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
+nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 
 set completeopt=menuone
 
