@@ -5,7 +5,7 @@ local bo = vim.bo
 
 --- global options ---
 o.completeopt = "menuone,noinsert,noselect"
-o.foldmethod = "manual"
+o.foldmethod = "indent"
 o.title = false
 o.termguicolors = true
 o.cmdheight = 2
