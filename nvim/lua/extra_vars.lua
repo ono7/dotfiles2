@@ -141,6 +141,7 @@ set redrawtime=10000
 set ttyfast
 set clipboard=unnamed
 set foldmethod=indent
+set nofoldenable
 set fileformats=unix,dos
 set autoindent
 
@@ -200,25 +201,25 @@ hi!  Include     ctermfg=4
 hi!  qfFileName  ctermfg=3
 hi!  Comment     ctermfg=8      guifg=#5c6370
 hi!  Search      ctermfg=7      ctermbg=8
-hi!  Error       ctermfg=1      ctermbg=NONE
-hi!  Whitespace  term=NONE      ctermbg=NONE   ctermfg=7      guifg=#e78a4e         guibg=NONE
-hi!  MatchParen  term=NONE      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
-hi!  Visual      term=NONE      ctermbg=242    guibg=#3E4452  ctermfg=NONE          cterm=NONE
-hi!  VertSplit   term=NONE      ctermbg=NONE   gui=NONE       guibg=NONE            cterm=NONE
-hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=NONE guifg=NONE
+hi!  Error       ctermfg=1      ctermbg=none
+hi!  Whitespace  term=none      ctermbg=none   ctermfg=7      guifg=#e78a4e         guibg=none
+hi!  MatchParen  term=none      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
+hi!  Visual      term=none      ctermbg=242    guibg=#3E4452  ctermfg=none          cterm=none
+hi!  VertSplit   term=none      ctermbg=none   gui=none       guibg=none            cterm=none
+hi!  PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=none guifg=none
 hi!  Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
 hi!  link LineNr Comment
 hi!  link CursorLineNr String
-hi!  EndOfBuffer ctermbg=NONE guifg=#23272e ctermfg=236
+hi!  EndOfBuffer ctermbg=none guifg=#23272e ctermfg=236
 hi!  link MsgArea Comment
 hi!  clear ModeMsg
-hi! DiffAdd    ctermfg=0 ctermbg=2 gui=NONE guifg=Black guibg=#98C379
-hi! DiffDelete ctermfg=0 ctermbg=1 gui=NONE guifg=Black guibg=#E06C75
-hi! DiffChange ctermfg=0 ctermbg=4 gui=NONE guifg=Black guibg=#61AFEF
-hi! DiffText   ctermfg=0 ctermbg=3 gui=NONE guifg=Black guibg=#e5c07b
-hi! Folded ctermbg=238 guibg=#3E4452
-hi! FoldColumn ctermbg=NONE guibg=#3E4452
-hi! SignColumn ctermfg=7 ctermbg=NONE
+hi! DiffAdd    ctermfg=0 ctermbg=2 gui=none guifg=Black guibg=#98C379
+hi! DiffDelete ctermfg=0 ctermbg=1 gui=none guifg=Black guibg=#E06C75
+hi! DiffChange ctermfg=0 ctermbg=4 gui=none guifg=Black guibg=#61AFEF
+hi! DiffText   ctermfg=0 ctermbg=3 gui=none guifg=Black guibg=#e5c07b
+hi! Folded term=standout ctermfg=4 ctermbg=none guifg=DarkBlue guibg=none
+hi! FoldColumn ctermbg=none guibg=#3E4452
+hi! SignColumn ctermfg=7 ctermbg=none
 
 filetype plugin indent on
 
