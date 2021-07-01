@@ -19,10 +19,10 @@ syntax sync maxlines=300
 syntax on
 
 " hold my beer
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+inoremap (      ()<Esc>i
+inoremap {      {}<Esc>i
+inoremap [      []<Esc>i
+inoremap <      <><Esc>i
 nnoremap <silent><cr> :noh<cr>1<c-g>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
