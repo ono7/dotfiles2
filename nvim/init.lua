@@ -134,9 +134,5 @@ end
 vim.bo.smartindent = false
 vim.bo.cindent = false
 
-cmd "filetype plugin indent on"
 cmd [[ set autoindent ]]
-
-cmd "filetype on"
-cmd "filetype plugin on"
-cmd "filetype indent on"
+cmd "filetype plugin indent on"
