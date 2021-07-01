@@ -217,7 +217,7 @@ hi! DiffAdd    ctermfg=0 ctermbg=2 gui=none guifg=Black guibg=#98C379
 hi! DiffDelete ctermfg=0 ctermbg=1 gui=none guifg=Black guibg=#E06C75
 hi! DiffChange ctermfg=0 ctermbg=4 gui=none guifg=Black guibg=#61AFEF
 hi! DiffText   ctermfg=0 ctermbg=3 gui=none guifg=Black guibg=#e5c07b
-hi! Folded term=standout ctermfg=4 ctermbg=none guifg=DarkBlue guibg=none
+hi! Folded     ctermfg=8 guifg=#5c6370 ctermbg=none guibg=none gui=bold term=bold
 hi! FoldColumn ctermbg=none guibg=#3E4452
 hi! SignColumn ctermfg=7 ctermbg=none
 
