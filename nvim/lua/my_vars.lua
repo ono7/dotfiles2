@@ -70,7 +70,7 @@ g.ale_warn_about_trailing_blank_lines = 0
 g.ale_warn_about_trailing_whitespace = 0
 g.ale_lint_on_filetype_changed = 0
 g.ale_fixers = vim.empty_dict()
-g.ale_lint_delay = 50
+g.ale_lint_delay = 25
 g.ale_max_signs = 50
 g.ale_maximun_file_size = 800000
 g.ale_python_pylint_options = "-j 8"
@@ -97,7 +97,8 @@ g.markdown_fenced_languages = {
   "javascript",
   "typescript",
   "lua",
-  "sql"
+  "sql",
+  "yaml"
 }
 g.markdown_syntax_conceal = 0
 g.vim_markdown_folding_disabled = 1
