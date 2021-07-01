@@ -33,14 +33,14 @@ m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
 m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
--- m("n", "<tab>", ":bnext<cr>", silent)
--- m("n", "<s-tab>", ":bprevious<cr>", silent)
 m("n", "Y", "y$", opt)
 m("v", "y", "mxy`x", opt)
 m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
+-- m("n", "<tab>", ":bnext<cr>", silent)
+-- m("n", "<s-tab>", ":bprevious<cr>", silent)
 
 vim.o.path = vim.o.path .. "**"
 
@@ -99,7 +99,12 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
--- require "my_lsp"
+
+cmd [[
+  if &diff
+    set number
+  endif
+]]
 
 --[[
 
@@ -125,14 +130,3 @@ require "my_lsp_compe"
   finds all occurances of --- that end with "bit ----"
 
 --]]
-if vim.api.nvim_eval("&diff") == 1 then
-  vim.wo.number = true
-  cmd [[ set number ]]
-end
-
--- broken indent on {[(<CR>)]} :(
-vim.bo.smartindent = false
-vim.bo.cindent = false
-
-cmd [[ set autoindent ]]
-cmd "filetype plugin indent on"

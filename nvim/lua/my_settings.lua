@@ -29,7 +29,7 @@ o.sidescrolloff = 1
 o.splitbelow = true
 o.smartcase = true
 o.smarttab = true
-o.shiftround = true
+-- o.shiftround = true
 o.inccommand = "nosplit"
 o.winaltkeys = "no"
 o.pumheight = 5
@@ -38,15 +38,13 @@ o.emoji = false
 o.redrawtime = 10000
 o.lazyredraw = true
 o.timeout = true
-o.timeoutlen = 500
-o.updatetime = 250
+o.timeoutlen = 400
+o.updatetime = 50
 o.fillchars = [[vert:│]]
-o.listchars = [[tab:→\ ,trail:·,nbsp:•]]
+o.listchars = [[tab:»\ ,trail:·,nbsp:•]]
 o.nrformats = "bin,hex,alpha"
 o.shortmess = "actIoOsT"
 o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
-o.pastetoggle = [[<F2>]]
--- vim.g.loaded_matchparen = 0
 o.showmatch = false
 o.matchtime = 0
 o.ttimeout = false
@@ -57,8 +55,9 @@ vim.g.myrg = 0
 function _G.rg()
   if vim.g.myrg == 0 then
     o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
-    o.grepprg = [[rg --vimgrep]]
+    o.grepprg = [[rg --vimgrep --no-heading --smart-case]]
     vim.g.myrg = 1
+    print("rg set!")
   else
     o.grepprg = [[grep -n $* /dev/null]]
     o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
@@ -76,7 +75,6 @@ wo.list = true
 wo.cursorline = false
 
 --- buffer-local options ---
--- bo.autoindent = true
 bo.autoread = true
 bo.synmaxcol = 0
 bo.swapfile = false
@@ -89,3 +87,4 @@ bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- this is what we need
 -- bo.smartindent = true
+-- bo.autoindent = true

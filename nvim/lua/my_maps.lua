@@ -2,16 +2,6 @@
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
-local ens = {expr = true, noremap = true, silent = true}
-
---- tab completion ---
--- function _G.check_back_space()
---   local col = vim.api.nvim_win_get_cursor(0)[2]
---   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match("%s")) and true
--- end
-
--- m("i", "<tab>", [[pumvisible() ? "<C-n>" : v:lua.check_back_space() ? "<tab>" : "<c-n>"]], ens)
--- m("i", "<S-Tab>", [[pumvisible() ? "<C-p>" : "<c-h>"]], ens)
 
 --- resize window ---
 m("n", "<M-k>", [[:resize -2<cr>]], silent)
@@ -32,10 +22,6 @@ m("n", "<c-a>", "^", opt)
 m("n", "<c-e>", "g_", opt)
 m("v", "<c-a>", "^", opt)
 m("v", "<c-e>", "g_", opt)
-
--- m("c", "%s", [[%s/\v]], opt)
--- m("c", "%g", [[%g/\v]], opt)
--- m("c", "%v", [[%v/\v]], opt)
 
 --- marks/jumps ---
 m("n", "'", "`", opt)
@@ -62,15 +48,10 @@ m("t", "<c-[>", [[<c-\><c-n>]], silent)
 m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
 m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
---- quickfix overlaps with ale :( ---
--- m("n", "<c-n>", [[:cnext<cr>]], silent)
--- m("n", "<c-p>", [[:cprevious<cr>]], silent)
-
 --- fzf ---
 m("n", "<leader>f", ":GFiles<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 m("n", "<leader>s", ":Rg<cr>", silent)
--- m("n", "<leader>c", ":Commits<cr>", silent) -- requires fugitive
 
 vim.g.surround_no_mappings = 1
 m("n", "S", "<Plug>YSurround", {})
