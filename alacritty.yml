@@ -180,9 +180,6 @@ mouse:
 
   hide_when_typing: true
 
-  url:
-    modifiers: None
-
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
