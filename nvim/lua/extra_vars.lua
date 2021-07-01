@@ -140,7 +140,7 @@ set nocursorcolumn
 set redrawtime=10000
 set ttyfast
 set clipboard=unnamed
-set foldmethod=manual
+set foldmethod=indent
 set fileformats=unix,dos
 set autoindent
 
