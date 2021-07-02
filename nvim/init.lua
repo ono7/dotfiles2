@@ -4,13 +4,6 @@ local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 
-if vim.fn.exists("+termguicolors") then
-  cmd [[
-    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-  ]]
-end
-
 --- map leader ---
 m("n", "<Space>", "", {})
 g.mapleader = " "
@@ -26,8 +19,6 @@ m("i", "<c-a>", "<c-o>^", silent)
 m("i", "<m-b>", "<c-o>B", silent)
 m("i", "<m-f>", "<c-o>W", silent)
 m("n", "gp", "`[v`]", silent)
-m("n", "j", "gj", opt)
-m("n", "k", "gk", opt)
 m("n", "Q", "@q", opt)
 m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
@@ -39,9 +30,6 @@ m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
--- m("n", "<tab>", ":bnext<cr>", silent)
--- m("n", "<s-tab>", ":bprevious<cr>", silent)
-
 vim.o.path = vim.o.path .. "**"
 
 -- disable ale lsp
@@ -130,3 +118,17 @@ cmd [[
   finds all occurances of --- that end with "bit ----"
 
 --]]
+
+--- to be removed .....soon..
+
+-- m("n", "<tab>", ":bnext<cr>", silent)
+-- m("n", "<s-tab>", ":bprevious<cr>", silent)
+-- m("n", "j", "gj", opt)
+-- m("n", "k", "gk", opt)
+
+-- if vim.fn.exists("+termguicolors") then
+--   cmd [[
+--     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+--     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+--   ]]
+-- end

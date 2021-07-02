@@ -30,7 +30,7 @@ font:
 
   italic:
     family: JetBrains Mono
-    style: Medium Italic
+    style: Italic
 
   bold_italic:
     family: JetBrains Mono
@@ -39,8 +39,8 @@ font:
   size: 18.0
 
   offset:
-    x: 1
-    y: 1
+    x: 0
+    y: 0
 
   glyph_offset:
     x: 0

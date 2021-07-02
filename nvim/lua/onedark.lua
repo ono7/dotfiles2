@@ -176,7 +176,8 @@ M.setup = function()
   --- Treesitter ---
   -- Misc
   M.highlight("TSError", {fg = M.colors.cyan, gui = "bold"})
-  M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
+  -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
+  M.highlight("TSPunctDelimiter", {fg = M.colors.white})
   M.highlight("TSPunctBracket", {fg = M.colors.white})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 

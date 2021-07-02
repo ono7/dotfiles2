@@ -33,8 +33,8 @@ nnoremap G G1<c-g>
 nnoremap cw ciw
 nnoremap dw diw
 nnoremap yw yiw
-nnoremap k gk
-nnoremap j gj
+" nnoremap k gk
+" nnoremap j gj
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
