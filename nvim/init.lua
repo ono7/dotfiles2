@@ -88,12 +88,6 @@ require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
 
-cmd [[
-  if &diff
-    set number
-  endif
-]]
-
 --[[
 
   NOTES:
