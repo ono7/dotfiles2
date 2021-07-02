@@ -8,7 +8,7 @@ g.completion_sorting = "length"
 g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
 --- vimwiki ---
-g.vimwiki_global_ext = 1
+g.vimwiki_global_ext = 0
 -- g.mywiki = {}
 -- g.mywiki.path = "~/wiki/"
 -- g.mywiki.syntax = "markdown"

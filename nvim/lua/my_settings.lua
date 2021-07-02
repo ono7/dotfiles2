@@ -46,6 +46,7 @@ o.nrformats = "bin,hex,alpha"
 o.shortmess = "actIoOsT"
 o.wildignore = [[*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*]]
 o.showmatch = false
+o.showtabline = 0
 o.matchtime = 0
 o.ttimeout = false
 o.ttimeoutlen = 10
