@@ -102,7 +102,7 @@ g.markdown_fenced_languages = {
 }
 g.markdown_syntax_conceal = 0
 g.vim_markdown_folding_disabled = 1
-
+g.markdown_folding = 0
 g.buftabline_show = 0
 
 --- fix python indentation
