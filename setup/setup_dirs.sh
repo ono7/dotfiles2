@@ -28,6 +28,8 @@ echo ###########################################################################
 
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
+mkdir -p ~/.vim/indent
+ln -sf ~/.dotfiles/nvim/indent/python.vim ~/.vim/indent/python.vim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/ssh_client_config ~/.ssh/config
@@ -37,7 +39,6 @@ ln -sf ~/.dotfiles/gitignore ~/.gitignore
 ln -sf ~/.dotfiles/yamllint ~/.config/
 ln -sf ~/.dotfiles/zshrc_mac ~/.zshrc
 ln -sf ~/.dotfiles/mysql/cn.cnf ~/.cn.cnf
-ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ctags ~/.ctags
 ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 

@@ -41,7 +41,7 @@ local autocmds = {
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
     -- {"BufEnter", "*", [[silent! lcd %:p:h]]},
-    -- {"BufEnter", "*", [[set formatoptions=qnlj]]},
+    {"BufEnter", "*", [[set formatoptions=qnlj]]},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
   _set_type = {

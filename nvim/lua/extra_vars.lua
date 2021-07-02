@@ -139,17 +139,23 @@ set matchtime=0
 set nocursorcolumn
 set redrawtime=10000
 set ttyfast
-set clipboard=unnamed
 set foldmethod=indent
 set nofoldenable
 set fileformats=unix,dos
 set autoindent
+
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 if has('nvim')
   set inccommand=nosplit
   " pmenu/transparency/max items
   set pumheight=10 pumblend=0
   tnoremap <c-[> <C-\><C-n>
+  set clipboard+=unnamedplus
 endif
 
 if &diff
@@ -190,7 +196,7 @@ augroup END
 
 augroup _files
   autocmd!
-  autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap
+  autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
@@ -199,7 +205,7 @@ hi!  Statement   ctermfg=1
 hi!  String      ctermfg=2
 hi!  Include     ctermfg=4
 hi!  qfFileName  ctermfg=3
-hi!  Comment     ctermfg=8      guifg=#5c6370
+hi!  Comment     ctermfg=8      guifg=#5C6370
 hi!  Search      ctermfg=7      ctermbg=8
 hi!  Error       ctermfg=1      ctermbg=none
 hi!  Whitespace  term=none      ctermbg=none   ctermfg=7      guifg=#e78a4e         guibg=none
@@ -222,6 +228,8 @@ hi! FoldColumn ctermbg=none guibg=#3E4452
 hi! SignColumn ctermfg=7 ctermbg=none
 
 filetype plugin indent on
+
+" python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 
 " Lima's vimrc, use at your own risk :)
 
