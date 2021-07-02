@@ -131,5 +131,3 @@ cmd [[
 --     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 --   ]]
 -- end
-
-cmd [[ autocmd FileType python setlocal et shiftwidth=4 softtabstop=4 ts=2 ]]
