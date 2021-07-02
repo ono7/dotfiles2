@@ -112,16 +112,3 @@ require "my_lsp_compe"
   finds all occurances of --- that end with "bit ----"
 
 --]]
---- to be removed .....soon..
-
--- m("n", "<tab>", ":bnext<cr>", silent)
--- m("n", "<s-tab>", ":bprevious<cr>", silent)
--- m("n", "j", "gj", opt)
--- m("n", "k", "gk", opt)
-
--- if vim.fn.exists("+termguicolors") then
---   cmd [[
---     let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
---     let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
---   ]]
--- end
