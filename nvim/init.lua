@@ -93,6 +93,9 @@ require "my_lsp_compe"
   NOTES:
 
   use jump list.. c-o, c-i
+  :ls -> list buffer
+  :b ini -> opens init.vim, just need to type part of the buffer name
+  :find *dark.lua -> onedark.lua (recursively searches for files, use regex for fuzzy find)
   c^ switch to last file edited
   gi -> last insert text position
   vimgrep /regex/j **/*.lua -> search in all lua files, j = dont open (quickfix)
