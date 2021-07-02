@@ -16,6 +16,7 @@ set nocompatible
 syntax enable
 syntax sync minlines=256
 syntax sync maxlines=300
+filetype plugin indent on
 syntax on
 
 " hold my beer
@@ -33,8 +34,6 @@ nnoremap G G1<c-g>
 nnoremap cw ciw
 nnoremap dw diw
 nnoremap yw yiw
-" nnoremap k gk
-" nnoremap j gj
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
@@ -63,8 +62,6 @@ nnoremap 'm 'M
 nnoremap 's 'S
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
-" nnoremap <silent><tab> :bnext<cr>
-" nnoremap <silent><s-tab> :bprevious<cr>
 nnoremap Y y$
 vnoremap y mxy`x
 nnoremap <c-z> <nop>
@@ -131,7 +128,7 @@ set splitbelow
 set softtabstop=2 tabstop=2 textwidth=80 expandtab
 set timeout timeoutlen=500 ttimeout ttimeoutlen=50
 set undolevels=999
-set updatetime=250
+set updatetime=4000
 set wildignore+=*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
 set winaltkeys=no
 set lazyredraw
@@ -208,7 +205,7 @@ hi!  qfFileName  ctermfg=3
 hi!  Comment     ctermfg=8      guifg=#5C6370
 hi!  Search      ctermfg=7      ctermbg=8
 hi!  Error       ctermfg=1      ctermbg=none
-hi!  Whitespace  term=none      ctermbg=none   ctermfg=7      guifg=#e78a4e         guibg=none
+hi!  Whitespace  term=none      ctermbg=none   ctermfg=8      guifg=#e78a4e         guibg=none
 hi!  MatchParen  term=none      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
 hi!  Visual      term=none      ctermbg=242    guibg=#3E4452  ctermfg=none          cterm=none
 hi!  VertSplit   term=none      ctermbg=none   gui=none       guibg=none            cterm=none
@@ -227,7 +224,6 @@ hi! Folded     ctermfg=8 guifg=#5c6370 ctermbg=none guibg=none gui=bold term=bol
 hi! FoldColumn ctermbg=none guibg=#3E4452
 hi! SignColumn ctermfg=7 ctermbg=none
 
-filetype plugin indent on
 
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 
