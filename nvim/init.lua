@@ -9,7 +9,6 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 --- hold my beer ---
-m("n", "<c-]>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "cw", "ciw", silent)
 m("n", "dw", "diw", silent)
@@ -89,6 +88,9 @@ require "my_pkg"
 require "my_lsp_compe"
 
 --[[
+
+-- TODO (jlima) : 07-02-2021 | https://youtu.be/XA2WjJbmmoM
+-- TODO (jlima) : 07-02-2021 | ctags ~/.virtualenvs/prod3
 
   NOTES:
 

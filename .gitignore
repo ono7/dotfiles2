@@ -10,6 +10,7 @@ build/
 .vim
 .netrwhist
 
+tags
 *.pyc
 *.egg-info/
 *.cache

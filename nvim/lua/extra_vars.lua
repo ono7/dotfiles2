@@ -87,6 +87,7 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 set completeopt=menuone
 
 set notitle
+set tags+=.tags
 set path+=**
 set autoread
 set backspace=indent,eol,start
@@ -115,7 +116,6 @@ set novisualbell noerrorbells
 set nowrap
 set nrformats-=octal nrformats+=alpha
 set nonumber numberwidth=2
-set pastetoggle=<F2>
 set ruler
 set shiftround shiftwidth=2
 set shortmess+=c
