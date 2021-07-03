@@ -41,7 +41,6 @@ m("n", "G", "G1<c-g>", opt)
 m("n", "V", "Vg_", {})
 
 --- terminal ---
--- m("n", "<c-t>", [[:split | resize 10 | term<cr>]], silent)
 m("t", "<c-[>", [[<c-\><c-n>]], silent)
 
 --- ale ---
@@ -80,22 +79,6 @@ m(
   [[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
   silent
 )
-
---- vimwiki throw away bindings ---
-m("n", [[\xa]], [[<Plug>VimwikiIndex]], opt)
-m("n", [[\xb]], [[<Plug>VimwikiTabIndex]], opt)
-m("n", [[\xc]], [[<Plug>VimwikiUISelect]], opt)
-m("n", [[\xd]], [[<Plug>VimwikiDiaryIndex]], opt)
-m("n", [[\xe]], [[<Plug>VimwikiRenameFile]], opt)
-m("n", [[\xf]], [[<Plug>VimwikiDeleteFile]], opt)
-m("n", [[\xg]], [[<Plug>VimwikiGoto]], opt)
-m("n", [[\xh]], [[<Plug>Vimwiki2HTMLBrowse]], opt)
-m("n", [[\xi]], [[<Plug>Vimwiki2HTML]], opt)
-m("n", [[\xj]], [[<Plug>VimwikiMakeTomorrowDiaryNote]], opt)
-m("n", [[\xk]], [[<Plug>VimwikiMakeYesterdayDiaryNote]], opt)
-m("n", [[\xl]], [[<Plug>VimwikiTabMakeDiaryNote]], opt)
-m("n", [[\xm]], [[<Plug>VimwikiMakeDiaryNote]], opt)
-m("n", [[\xn]], [[<Plug>VimwikiDiaryGenerateLinks]], opt)
 
 --[[
 

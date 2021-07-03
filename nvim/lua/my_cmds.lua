@@ -41,7 +41,8 @@ local autocmds = {
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
     {"BufEnter", "*", [[set formatoptions=qnlj]]},
-    {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
+    {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]},
+    {"BufReadPost", "vimwiki", [[nnoremap <buffer> <CR> <CR>]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},

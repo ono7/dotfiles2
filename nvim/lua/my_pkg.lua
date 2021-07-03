@@ -14,7 +14,6 @@ local paq = require "paq-nvim".paq
 --- my dependencies ---
 paq {"savq/paq-nvim", opt = true}
 
-paq "vimwiki/vimwiki"
 paq "tpope/vim-eunuch"
 paq "tpope/vim-markdown"
 paq "tpope/vim-surround"
