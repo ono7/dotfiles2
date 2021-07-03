@@ -118,8 +118,8 @@ set nrformats-=octal nrformats+=alpha
 set nonumber numberwidth=2
 set ruler
 set shiftround shiftwidth=2
-set shortmess+=c
 set shortmess=atIoOsT
+set shortmess+=c
 set showmode
 set sidescrolloff=1
 set smartcase smarttab
@@ -207,6 +207,7 @@ hi!  qfFileName  ctermfg=3
 hi!  Comment     ctermfg=8      guifg=#5C6370
 hi!  Search      ctermfg=7      ctermbg=8
 hi!  Error       ctermfg=1      ctermbg=none
+hi!  link ErrorMsg Error
 hi!  Whitespace  term=none      ctermbg=none   ctermfg=8      guifg=#e78a4e         guibg=none
 hi!  MatchParen  term=none      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
 hi!  Visual      term=none      ctermbg=242    guibg=#3E4452  ctermfg=none          cterm=none
