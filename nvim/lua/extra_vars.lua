@@ -130,6 +130,7 @@ set timeout timeoutlen=500 ttimeout ttimeoutlen=50
 set undolevels=999
 set updatetime=4000
 set wildignore+=*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
+set wildmenu
 set winaltkeys=no
 set lazyredraw
 set matchtime=0
