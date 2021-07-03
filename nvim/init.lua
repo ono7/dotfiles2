@@ -9,7 +9,7 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 vim.o.path = vim.o.path .. "**"
-cmd [[command! MakeTags !ctags -R -f .tags .]]
+cmd [[command! MakeTags !ctags -R .]]
 
 --- hold my beer ---
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)

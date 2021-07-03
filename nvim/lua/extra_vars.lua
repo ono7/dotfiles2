@@ -204,7 +204,7 @@ augroup _files
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-command! MakeTags !ctags -R -f .tags .
+command! MakeTags !ctags -R .
 
 hi! Statement   ctermfg=1
 hi! String      ctermfg=2
