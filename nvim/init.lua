@@ -8,6 +8,9 @@ local silent = {noremap = true, silent = true}
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
+vim.o.path = vim.o.path .. "**"
+cmd [[command! MakeTags !ctags -R -f .tags .]]
+
 --- hold my beer ---
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "cw", "ciw", silent)
@@ -29,7 +32,6 @@ m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
-vim.o.path = vim.o.path .. "**"
 
 -- disable ale lsp
 g.ale_disable_lsp = 1
