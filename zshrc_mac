@@ -184,6 +184,10 @@ function dotp () {
     cd $my_dir
 }
 
+# function tg () {
+#   echo $VIRTUAL_ENV/lib/
+# }
+
 function dotc () {
     my_dir=$PWD
     cd ~/.dotfiles
