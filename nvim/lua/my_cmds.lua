@@ -40,7 +40,6 @@ local autocmds = {
       "*",
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
-    -- {"BufEnter", "*", [[silent! lcd %:p:h]]},
     {"BufEnter", "*", [[set formatoptions=qnlj]]},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
@@ -56,6 +55,10 @@ local autocmds = {
   _terminal = {
     {"TermEnter", "*", [[setlocal scrolloff=0]]},
     {"TermLeave", "*", [[setlocal scrolloff=1]]}
+  },
+  _def_space = {
+    {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent]]},
+    {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent]]}
   }
 }
 

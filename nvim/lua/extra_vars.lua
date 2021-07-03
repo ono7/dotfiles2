@@ -203,6 +203,7 @@ augroup END
 augroup _files
   autocmd!
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent
+  autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
