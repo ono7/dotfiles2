@@ -119,6 +119,7 @@ set nojoinspaces
 set list
 set listchars=tab:→\ ,trail:·,nbsp:•
 set noshowcmd
+set showtabline=0
 set novisualbell noerrorbells
 set nowrap
 set nrformats-=octal nrformats+=alpha
