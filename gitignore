@@ -11,6 +11,8 @@ tags
 .vim
 .netrwhist
 
+tags
+vtags
 *.pyc
 *.egg-info/
 *.cache
