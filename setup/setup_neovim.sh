@@ -1,6 +1,4 @@
-#/bin/bash
 
-echo "$0"
 
 cd ~
 
@@ -31,20 +29,20 @@ touch ~/.tmp/miniyank-shared-ring
 
 echo 'setting up neovim plugins...'
 # setup vim plugins
-if [ $(which nvim) ]; then
-  $nvim_cmd +PaqInstall +qall
-  $nvim_cmd +UpdateRemotePlugins +qall
-  $nvim_cmd +TSInstall all +qall
-  $nvim_cmd +LspInstall python +qall
-  $nvim_cmd +LspInstall json +qall
-  $nvim_cmd +LspInstall typescript +qall
-  $nvim_cmd +LspInstall yaml +qall
-  $nvim_cmd +LspInstall vim +qall
-else
-  echo "$0"
-  echo 'no neovim instance found...running vanilla vim?'
-  exit 0
-fi
+# if [ $(which nvim) ]; then
+#   $nvim_cmd +PaqInstall +qall
+#   $nvim_cmd +UpdateRemotePlugins +qall
+#   $nvim_cmd +TSInstall all +qall
+#   $nvim_cmd +LspInstall python +qall
+#   $nvim_cmd +LspInstall json +qall
+#   $nvim_cmd +LspInstall typescript +qall
+#   $nvim_cmd +LspInstall yaml +qall
+#   $nvim_cmd +LspInstall vim +qall
+# else
+#   echo "$0"
+#   echo 'no neovim instance found...running vanilla vim?'
+#   exit 0
+# fi
 
 echo 'vim/neovim setup done.., dont for get to :LspInstall language servers!'
 

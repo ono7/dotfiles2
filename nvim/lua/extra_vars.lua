@@ -11,6 +11,12 @@ let g:pyindent_open_paren = '0'
 let g:pyindent_nested_paren = '&sw'
 let g:pyindent_continue = '&sw'
 
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+
 set synmaxcol=512
 set nocompatible
 syntax enable
@@ -87,7 +93,7 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 set completeopt=menuone
 
 set notitle
-set tags+=.tags
+set tags+=.tags,.vtags,vtags
 set path+=**
 set autoread
 set backspace=indent,eol,start
@@ -118,8 +124,7 @@ set nrformats-=octal nrformats+=alpha
 set nonumber numberwidth=2
 set ruler
 set shiftround shiftwidth=2
-set shortmess=atIoOsT
-set shortmess+=c
+set shortmess=atcIoOsT
 set showmode
 set sidescrolloff=1
 set smartcase smarttab

@@ -11,6 +11,9 @@ build/
 .netrwhist
 
 tags
+vtags
+.vtags
+.tags
 *.pyc
 *.egg-info/
 *.cache
