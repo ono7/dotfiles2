@@ -125,6 +125,7 @@ set sidescrolloff=1
 set smartcase smarttab
 set spelllang=en_us
 set splitbelow
+set splitright
 set softtabstop=2 tabstop=2 textwidth=80 expandtab
 set timeout timeoutlen=500 ttimeout ttimeoutlen=50
 set undolevels=999
