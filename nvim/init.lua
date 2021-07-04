@@ -89,6 +89,10 @@ require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
 
+if vim.fn.has("&diff") ~= 1 then
+  cmd [[set number]]
+end
+
 --[[
 
 -- TODO (jlima) : 07-02-2021 | https://youtu.be/XA2WjJbmmoM
