@@ -184,9 +184,19 @@ function dotp () {
     cd $my_dir
 }
 
-# function tg () {
-#   echo $VIRTUAL_ENV/lib/
-# }
+function t () {
+  if [[ -d $(git rev-parse --show-toplevel) ]]; then
+    TAGD=$(git rev-parse --show-toplevel)
+    cd $TAGD
+    ctags -R .
+    clear
+    echo 'project updated :)'
+  else
+    ctags -R .
+    clear
+    echo 'done!'
+  fi
+}
 
 function dotc () {
     my_dir=$PWD
