@@ -11,6 +11,10 @@ g.mapleader = " "
 vim.o.path = vim.o.path .. "**"
 cmd [[command! MakeTags !ctags -R .]]
 
+-- nop
+m("n", "<c-z>", "", opt)
+m("c", "<c-z>", "", opt)
+
 --- hold my beer ---
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "cw", "ciw", silent)
@@ -28,8 +32,6 @@ m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("v", "y", "mxy`x", opt)
-m("n", "<c-z>", "", opt)
-m("c", "<c-z>", "", opt) -- "" = nop
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
 
@@ -46,7 +48,6 @@ g.loaded_ruby_provider = 0
 g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
 
 function _G.pre_write()
-  -- local cpos = vim.api.nvim_win_get_cursor(0)
   vim.bo.expandtab = true
   do
     cmd [[let old = @/]]
@@ -96,7 +97,6 @@ require "my_lsp_compe"
 
   NOTES:
 
-  use jump list.. c-o, c-i
   :ls -> list buffer
   :b ini -> opens init.vim, just need to type part of the buffer name
   :find *dark.lua -> onedark.lua (recursively searches for files, use regex for fuzzy find)
