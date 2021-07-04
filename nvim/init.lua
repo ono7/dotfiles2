@@ -90,7 +90,7 @@ require "my_pkg"
 require "my_lsp_compe"
 
 if vim.fn.has("&diff") ~= 1 then
-  cmd [[set number]]
+  vim.o.number = true
 end
 
 --[[
