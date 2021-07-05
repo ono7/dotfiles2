@@ -21,6 +21,7 @@ mkdir -p ~/.ssh
 mkdir -p ~/bin
 mkdir -p ~/.npm-packages
 mkdir -p ~/local
+mkdir -p ~/.ctags.d/
 
 echo ################################################################################
 echo #                              creating symlinks                               #
@@ -29,6 +30,8 @@ echo ###########################################################################
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
 mkdir -p ~/.vim/indent
+ln -sf ~/.dotfiles/ctagsrc ~/.ctags.d/default.ctags
+ln -sf ~/.dotfiles/ctagsrc ~/.ctags
 ln -sf ~/.dotfiles/nvim/indent/python.vim ~/.vim/indent/python.vim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
