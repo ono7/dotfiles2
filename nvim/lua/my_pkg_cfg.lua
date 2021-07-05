@@ -34,6 +34,7 @@ if vim.g.loaded_paq then
 
   --- treesitter setup ---
   require "nvim-treesitter.configs".setup {
+    autopairs = {enable = true},
     highlight = {
       enable = true
       -- disable = { 'c', 'rust' },

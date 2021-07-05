@@ -95,6 +95,7 @@ g.markdown_fenced_languages = {
   "vim",
   "php",
   "javascript",
+  "java",
   "typescript",
   "lua",
   "sql",

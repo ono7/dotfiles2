@@ -62,11 +62,11 @@ nnoremap mb mB
 nnoremap mc mC
 nnoremap mm mM
 nnoremap ms mS
-nnoremap 'a 'A
-nnoremap 'b 'B
-nnoremap 'c 'C
-nnoremap 'm 'M
-nnoremap 's 'S
+nnoremap 'a `A
+nnoremap 'b `B
+nnoremap 'c `C
+nnoremap 'm `M
+nnoremap 's `S
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
 nnoremap Y y$
