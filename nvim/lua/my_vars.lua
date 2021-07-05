@@ -100,7 +100,7 @@ g.markdown_fenced_languages = {
   "sql",
   "yaml"
 }
-g.markdown_syntax_conceal = 0
+g.markdown_syntax_conceal = 2
 g.vim_markdown_folding_disabled = 1
 g.markdown_folding = 0
 g.buftabline_show = 0
