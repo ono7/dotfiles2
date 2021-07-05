@@ -14,7 +14,7 @@ end
 local autocmds = {
   _init = {
     {
-      -- keep nvim running smoothly on large files
+      -- handle large files
       "BufWinEnter",
       "*",
       [[if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif ]]
@@ -46,7 +46,6 @@ local autocmds = {
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
     {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
-    -- {"BufEnter", "*", [[lua require'completion'.on_attach()]]}
   },
   _yank_hl = {
     {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}

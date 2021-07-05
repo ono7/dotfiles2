@@ -93,8 +93,8 @@ require "my_lsp_compe"
 
 --[[
 
--- TODO (jlima) : 07-02-2021 | https://youtu.be/XA2WjJbmmoM
--- TODO (jlima) : 07-02-2021 | ctags ~/.virtualenvs/prod3
+  -- TODO (jlima) : 07-02-2021 | https://youtu.be/XA2WjJbmmoM
+  -- TODO (jlima) : 07-02-2021 | ctags ~/.virtualenvs/prod3
 
   NOTES:
 
