@@ -4,8 +4,8 @@ local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 
 --- resize window ---
-m("n", "<M-k>", [[:resize -2<cr>]], silent)
-m("n", "<M-j>", [[:resize +2<cr>]], silent)
+m("n", "<M-j>", [[:resize -2<cr>]], silent)
+m("n", "<M-k>", [[:resize +2<cr>]], silent)
 m("n", "<M-h>", [[:vertical resize -2<cr>]], silent)
 m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 
