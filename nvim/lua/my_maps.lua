@@ -67,7 +67,7 @@ m("n", "p", [[<Plug>(miniyank-autoput)]], {})
 m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 --- nvimtree ---
-m("n", "<leader>t", [[:NvimTreeToggle<cr>]], silent)
+m("n", "<M-t>", [[:NvimTreeToggle<cr>]], silent)
 
 --- spell ---
 m("n", "<leader>e", [[]s1z=]], silent)
