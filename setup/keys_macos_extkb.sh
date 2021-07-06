@@ -7,10 +7,10 @@
 # set to execute on start up
 # sudo defaults write com.apple.loginwindow LoginHook /Users/jlima/bin/keybindings.sh
 
-# normal is 2
+# normal is 2, lower is faster
 defaults write -g KeyRepeat -int 1
 
-# normal minimum is 15 (225 ms)
+# normal minimum is 15 (225 ms) , higher is faster
 defaults write -g InitialKeyRepeat -int 13
 
 # Keyboard Left Alt 0xE2
