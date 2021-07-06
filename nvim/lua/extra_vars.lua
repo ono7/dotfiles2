@@ -32,6 +32,8 @@ inoremap {      {}<left>
 inoremap [      []<left>
 inoremap <      <><left>
 cnoremap <C-A> <Home>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 nnoremap <silent><cr> :noh<cr>1<c-g>
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
