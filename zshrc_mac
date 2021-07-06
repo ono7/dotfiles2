@@ -185,6 +185,11 @@ function dotp () {
 }
 
 function t () {
+  ctags --version | grep "Exuberant Ctags" > /dev/null
+  if [[ $? -ne 0 ]]; then
+    echo "Exuberant Ctags not installed...."
+  fi
+
   TAGD=$(git rev-parse --show-toplevel 2>/dev/null)
   if [[ $? -eq 0 ]]; then
     cd $TAGD
