@@ -91,6 +91,9 @@ kinit --keychain
 legacy: (works with my ctags file)
 https://sourceforge.net/projects/ctags/files/ctags/5.8/ctags-5.8.tar.gz
 
+vim general.h +60, remove `__attribute__((unused))` declaration
+and leave only the `# define __unused__ `
+
 ./configure
 make
 
