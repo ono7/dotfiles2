@@ -33,9 +33,9 @@ echo '========== macos keyboard repeat settings =========='
 # normal is 2
 defaults write -g KeyRepeat -int 1
 
-# defaults write -g InitialKeyRepeat -int 10
+# defaults write -g InitialKeyRepeat -int 9
 # normal minimum is 15 (225 ms)
-defaults write -g InitialKeyRepeat -int 13
+defaults write -g InitialKeyRepeat -int 9
 
 
 echo 'macos userland settings set!'
