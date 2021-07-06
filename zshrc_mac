@@ -141,7 +141,7 @@ fi
 alias gd='git diff'
 alias gs='git status'
 alias love="/Applications/love.app/Contents/MacOS/love"
-alias cdr='cd "$(git rev-parse --show-toplevel)"  &>/dev/null'
+alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
 alias c='clear'
 
 if [[ -f /opt/homebrew/opt/fzf/bin/fzf ]]; then
@@ -189,12 +189,11 @@ function t () {
   if [[ $? -ne 0 ]]; then
     echo "Exuberant Ctags not installed...."
   fi
-
   TAGD=$(git rev-parse --show-toplevel 2>/dev/null)
   if [[ $? -eq 0 ]]; then
     cd $TAGD
     ctags -f .tags -R .
-    echo 'project updated :)'
+    echo ':)'
   else
     echo 'not in project folder :('
   fi
@@ -225,7 +224,7 @@ function ta () {
 
 # activate virtual environment if there is one in this repo
 function va () {
-  if [[ -d $(git rev-parse --show-toplevel)/venv ]]; then
+  if [[ -d $(git rev-parse --show-toplevel 2>/dev/null)/venv ]]; then
     source $(git rev-parse --show-toplevel)/venv/bin/activate
   fi
 }
