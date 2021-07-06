@@ -11,7 +11,7 @@
 defaults write -g KeyRepeat -int 1
 
 # normal minimum is 15 (225 ms)
-defaults write -g InitialKeyRepeat -int 10
+defaults write -g InitialKeyRepeat -int 13
 
 # Keyboard Left Alt 0xE2
 # Keyboard Left GUI 0xE3
