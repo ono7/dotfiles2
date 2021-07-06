@@ -24,6 +24,7 @@
 --exclude=\*.dll
 --exclude=\*.pdb
 --exclude=tags
+--exclude=.tags
 --exclude=test
 --exclude=tests
 --exclude=.tmp

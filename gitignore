@@ -3,7 +3,6 @@
 __pycache__/
 venv/
 build/
-tags
 
 .pytest_cache/
 .DS_Store
