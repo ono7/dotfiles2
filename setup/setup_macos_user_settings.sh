@@ -35,7 +35,7 @@ defaults write -g KeyRepeat -int 1
 
 # defaults write -g InitialKeyRepeat -int 10
 # normal minimum is 15 (225 ms)
-defaults write -g InitialKeyRepeat -int 12
+defaults write -g InitialKeyRepeat -int 10
 
 
 echo 'macos userland settings set!'
