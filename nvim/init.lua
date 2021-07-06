@@ -14,6 +14,8 @@ cmd [[command! Mktags !ctags -R .]]
 -- nop
 m("n", "<c-z>", "", opt)
 m("c", "<c-z>", "", opt)
+m("n", "ZZ", "", opt)
+m("n", "ZQ", "", opt)
 
 --- hold my beer ---
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
