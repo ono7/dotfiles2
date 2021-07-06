@@ -1,4 +1,7 @@
 --recurse=yes
+
+--langmap=vim:+(vimrc)
+
 --exclude=.git
 --exclude=*.plist
 --exclude=*.conf
@@ -20,3 +23,9 @@
 --exclude=\*.cache
 --exclude=\*.dll
 --exclude=\*.pdb
+--exclude=tags
+--exclude=test
+--exclude=tests
+--exclude=.tmp
+
+--sort=no
