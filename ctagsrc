@@ -208,6 +208,9 @@
 --exclude=.sln
 --exclude=.swp
 --exclude=.tmp
+--exclude=log
+--exclude=tmp
+--exclude=.git
 --exclude=bower_components
 --exclude=coverage
 --exclude=cscope.*
