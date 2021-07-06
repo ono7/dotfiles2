@@ -215,14 +215,17 @@ key_bindings:
   - { key: C, mods: Command, action: Copy }
   - { key: Q, mods: Command, action: Quit }
   - { key: W, mods: Command, action: Quit }
-
   - { key: Paste, action: Paste }
   - { key: Copy, action: Copy }
+
+  # for vim!
   - { key: T, mods: Alt, chars: "\x1bt" }
   - { key: J, mods: Alt, chars: "\x1bj" }
   - { key: K, mods: Alt, chars: "\x1bk" }
   - { key: H, mods: Alt, chars: "\x1bh" }
   - { key: L, mods: Alt, chars: "\x1bl" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
+  - { key: F, mods: Alt, chars: "\x1bf" }
   # - { key: L, mods: Control, action: ClearLogNotice }
   # - { key: L, mods: Control, chars: "\x0c" }
   # - { key: Home, mods: Alt, chars: "\x1b[1;3H" }
