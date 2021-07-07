@@ -202,7 +202,7 @@ function t () {
   PRJCTAGD=$(git rev-parse --show-toplevel 2>/dev/null)
   if [[ $? -eq 0 ]]; then
     cd $PRJCTAGD
-    export PRJCTAG="$PRJCTAGD/.tag"
+    export PRJCTAG="$PRJCTAGD/.tags"
     ctags -f $PRJCTAG -R .
     cd $my_dir
     echo ':)'
