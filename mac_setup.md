@@ -101,3 +101,10 @@ cp ctags ~/loca/bin/
 
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 https://github.com/universal-ctags/ctags
+
+# keybindings issues
+
+figure out what its sent to the terminal
+
+`sed -n l` - then hit key sequence M-t -> ^[t
+(^[t -> <Esc>t in vim)
