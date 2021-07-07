@@ -22,7 +22,7 @@ scrolling:
 font:
   normal:
     family: JetBrains Mono
-    style: Regular
+    style: Light
 
   bold:
     family: JetBrains Mono
@@ -57,8 +57,8 @@ schemes:
       cursor: '0xfeffff'
 
     primary:
-      background: '0x23272e'
-      # foreground: '0xabb1bf'
+      # background: '0x23272e'
+      background: '0x262931'
       foreground: '0xc2c6cc'
     normal:
       black: '0x282c34'
