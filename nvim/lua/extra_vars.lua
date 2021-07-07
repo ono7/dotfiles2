@@ -213,36 +213,36 @@ augroup END
 
 command! Mktags !ctags -R .
 
-hi! Statement   ctermfg=1
-hi! String      ctermfg=2
-hi! Include     ctermfg=4
-hi! qfFileName  ctermfg=3
-hi! Comment     ctermfg=8      guifg=#5C6370
-hi! Search      ctermfg=7      ctermbg=8 guibg=none
-hi! Error       ctermfg=1      ctermbg=none
-hi! link ErrorMsg Error
-hi! Whitespace  term=none      ctermbg=none   ctermfg=8      guifg=#e78a4e         guibg=none
-hi! MatchParen  term=none      ctermbg=8      ctermfg=7      cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
-hi! Visual      term=none      ctermbg=242    guibg=#3E4452  ctermfg=none          cterm=none
-hi! VertSplit   term=none      ctermbg=none   gui=none       guibg=none            cterm=none
-hi! PmenuSel    ctermbg=238 guibg=#3E4452 ctermfg=none guifg=none
-hi! Pmenu       ctermfg=242 ctermbg=0 guibg=DarkGrey
-hi! link LineNr Comment
-hi! link CursorLineNr String
-hi! EndOfBuffer ctermbg=none guifg=#23272e ctermfg=236
-hi! link MsgArea Comment
-hi! clear ModeMsg
-hi! DiffAdd    ctermfg=0 ctermbg=2 gui=none guifg=Black guibg=#98C379
-hi! DiffDelete ctermfg=0 ctermbg=1 gui=none guifg=Black guibg=#E06C75
-hi! DiffChange ctermfg=0 ctermbg=4 gui=none guifg=Black guibg=#61AFEF
-hi! DiffText   ctermfg=0 ctermbg=3 gui=none guifg=Black guibg=#e5c07b
-hi! Folded     ctermfg=8 guifg=#5c6370 ctermbg=none guibg=none gui=bold term=bold
-hi! FoldColumn ctermbg=none guibg=#3E4452
-hi! SignColumn ctermfg=7 ctermbg=none
-hi! link CursorLine Search
-hi! link StatusLine Search
-hi! StatusLineNC ctermfg=0 ctermbg=7 guibg=none
-hi! link Todo Underlined
+hi!  MatchParen    term=none     ctermbg=8      ctermfg=7       cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
+hi!  Statement     ctermfg=1
+hi!  String        ctermfg=2
+hi!  Include       ctermfg=4
+hi!  qfFileName    ctermfg=3
+hi!  Comment       ctermfg=8     guifg=#5C6370
+hi!  Search        ctermfg=7     ctermbg=8      guibg=none
+hi!  Error         ctermfg=1     ctermbg=none
+hi!  link          ErrorMsg      Error
+hi!  Whitespace    term=none     ctermbg=none   ctermfg=8       guifg=#e78a4e         guibg=none
+hi!  Visual        term=none     ctermbg=242    guibg=#3E4452   ctermfg=none          cterm=none
+hi!  VertSplit     term=none     ctermbg=none   ctermfg=8       gui=none              guibg=none          guifg=#5C6370  cterm=none
+hi!  PmenuSel      ctermbg=238   guibg=#3E4452  ctermfg=none    guifg=none
+hi!  Pmenu         ctermfg=242   ctermbg=0      guibg=DarkGrey
+hi!  link          LineNr        Comment
+hi!  link          CursorLineNr  String
+hi!  EndOfBuffer   ctermbg=none  guifg=#23272e  ctermfg=236
+hi!  link          MsgArea       Comment
+hi!  clear         ModeMsg
+hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379
+hi!  DiffDelete    ctermfg=0     ctermbg=1      gui=none        guifg=Black           guibg=#E06C75
+hi!  DiffChange    ctermfg=0     ctermbg=4      gui=none        guifg=Black           guibg=#61AFEF
+hi!  DiffText      ctermfg=0     ctermbg=3      gui=none        guifg=Black           guibg=#e5c07b
+hi!  Folded        ctermfg=8     guifg=#5c6370  ctermbg=none    guibg=none            gui=bold            term=bold
+hi!  FoldColumn    ctermbg=none  guibg=#3E4452
+hi!  SignColumn    ctermfg=7     ctermbg=none
+hi!  link          CursorLine    Search
+hi!  link          StatusLine    Search
+hi!  StatusLineNC  ctermfg=0     ctermbg=7      guibg=none
+hi!  link          Todo          Underlined
 
 filetype plugin indent on
 
