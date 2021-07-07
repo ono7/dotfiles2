@@ -51,10 +51,11 @@ nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :write<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]
-nnoremap <silent><M-k> :resize -2<cr>
-nnoremap <silent><M-j> :resize +2<cr>
-nnoremap <silent><M-h> :vertical resize -2<cr>
-nnoremap <silent><M-l> :vertical resize +2<cr>
+nnoremap <silent><Esc>j :resize -2<cr>
+nnoremap <silent><Esc>k :resize +2<cr>
+nnoremap <silent><Esc>l :vertical resize -2<cr>
+nnoremap <silent><Esc>h :vertical resize +2<cr>
+nnoremap <silent><Esc>t :Vex<cr>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
