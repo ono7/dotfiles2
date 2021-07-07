@@ -4,6 +4,13 @@ local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local HOME = os.getenv("HOME")
+local PRJCTAG = os.getenv("PRJCTAG")
+
+if PRJCTAG ~= nil then
+  vim.o.tags = PRJCTAG .. [[,tags,vtags]]
+else
+  vim.o.tags = [[./tags,tags,.tags,vtags,.vtags]]
+end
 
 --- map leader ---
 m("n", "<Space>", "", {})
@@ -98,18 +105,9 @@ require "my_lsp_compe"
 
 cmd [[command! Mktags !ctags -R . ]]
 
-local PRJCTAG = os.getenv("PRJCTAG")
-
-if PRJCTAG ~= nil then
-  vim.o.tags = PRJCTAG .. [[,tags,vtags]]
-else
-  vim.o.tags = [[./tags,tags,.tags,vtags,.vtags]]
-end
-
 --[[
 
   -- TODO (jlima) : 07-02-2021 | https://youtu.be/XA2WjJbmmoM
-  -- TODO (jlima) : 07-02-2021 | ctags ~/.virtualenvs/prod3
 
   NOTES:
 
