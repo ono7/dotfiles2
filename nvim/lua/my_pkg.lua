@@ -41,3 +41,4 @@ paq "kabouzeid/nvim-lspinstall"
 
 --- after plugins, run their setup ---
 require "my_pkg_cfg"
+
