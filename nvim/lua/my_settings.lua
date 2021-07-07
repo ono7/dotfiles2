@@ -24,7 +24,6 @@ o.showcmd = false
 o.writebackup = false
 o.history = 999
 o.ruler = true
-o.tags = [[./tags,tags,.tags,vtags,.vtags]]
 o.scrolloff = 0
 o.sidescrolloff = 1
 o.splitbelow = true

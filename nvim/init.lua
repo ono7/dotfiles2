@@ -3,13 +3,13 @@
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
+local HOME = os.getenv("HOME")
 
 --- map leader ---
 m("n", "<Space>", "", {})
 g.mapleader = " "
 
 vim.o.path = vim.o.path .. "**"
-cmd [[command! Mktags !ctags -R . ]]
 
 -- nop
 m("n", "<c-z>", "", opt)
@@ -51,7 +51,7 @@ g.python3_host_skip_check = 1
 g.loaded_python_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
-g.python3_host_prog = os.getenv("HOME") .. "/.virtualenvs/prod3/bin/python3"
+g.python3_host_prog = HOME .. "/.virtualenvs/prod3/bin/python3"
 
 function _G.pre_write()
   vim.bo.expandtab = true
@@ -95,6 +95,16 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
+
+cmd [[command! Mktags !ctags -R . ]]
+
+local PRJCTAG = os.getenv("PRJCTAG")
+
+if PRJCTAG ~= nil then
+  vim.o.tags = PRJCTAG .. [[,tags,vtags]]
+else
+  vim.o.tags = [[./tags,tags,.tags,vtags,.vtags]]
+end
 
 --[[
 

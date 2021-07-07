@@ -185,6 +185,7 @@ function dotp () {
 }
 
 function t () {
+  my_dir=$PWD
   ctags --version | grep "Exuberant Ctags" > /dev/null
   if [[ $? -ne 0 ]]; then
     clear
@@ -198,10 +199,12 @@ function t () {
     echo ':)'
     return
   fi
-  TAGD=$(git rev-parse --show-toplevel 2>/dev/null)
+  PRJCTAGD=$(git rev-parse --show-toplevel 2>/dev/null)
   if [[ $? -eq 0 ]]; then
-    cd $TAGD
-    ctags -f .tags -R .
+    cd $PRJCTAGD
+    export PRJCTAG="$PRJCTAGD/.tag"
+    ctags -f $PRJCTAG -R .
+    cd $my_dir
     echo ':)'
   else
     echo 'not in project folder :('
