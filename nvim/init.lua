@@ -9,7 +9,7 @@ m("n", "<Space>", "", {})
 g.mapleader = " "
 
 vim.o.path = vim.o.path .. "**"
-cmd [[command! Mktags !ctags -R .]]
+cmd [[command! Mktags !ctags -R . ]]
 
 -- nop
 m("n", "<c-z>", "", opt)
