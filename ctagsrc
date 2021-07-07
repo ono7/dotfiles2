@@ -218,6 +218,7 @@
 --exclude=min
 --exclude=node_modules
 --exclude=tags
+--exclude=.tags
 --exclude=test
 --exclude=tests
 --exclude=vendor
