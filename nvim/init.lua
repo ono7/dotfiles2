@@ -1,7 +1,7 @@
 --- Follow the white rabbit ---
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
-local xpr = {noremap = true, silent = true, expr = true}
+local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
@@ -69,8 +69,8 @@ m("i", "(", "()<left>", opt)
 m("i", "{", "{}<left>", opt)
 m("i", "[", "[]<left>", opt)
 m("i", "<", "<><left>", opt)
-m("i", "{<cr>", "{<cr>}<esc>O", opt)
-m("i", "{;<cr>", "{<cr>};<esc>O", opt)
+m("i", "{ <cr>", "{<cr>}<esc>O", opt)
+-- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)

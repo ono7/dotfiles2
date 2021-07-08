@@ -31,7 +31,6 @@ require "paq" {
   "numToStr/Navigator.nvim",
   {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
   "nvim-treesitter/playground",
-  -- "windwp/nvim-autopairs",
   --- lsp ---;
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",
