@@ -15,8 +15,6 @@ g.loaded_zipPlugin = 1
 g.loaded_2html_plugin = 1
 g.loaded_shada_plugin = 1
 g.loaded_spellfile_plugin = 1
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
 g.loaded_tutor_mode_plugin = 1
 g.loaded_remote_plugins = 1
 
