@@ -51,6 +51,7 @@ inoremap <c-d> <cr><esc>O
 inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr> > strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ">"
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
@@ -64,8 +65,8 @@ inoremap <m-b> <C-o>B
 inoremap <m-f> <C-o>W
 nnoremap gg gg1<c-g>
 nnoremap G G1<c-g>
-nnoremap cw ciw
-nnoremap dw diw
+" nnoremap cw ciw
+" nnoremap dw diw
 nnoremap yw yiw
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
