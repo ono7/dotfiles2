@@ -231,3 +231,5 @@ export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 #   echo 'download fd from: https://github.com/sharkdp/fd/releases'
 # fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

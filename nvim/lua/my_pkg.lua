@@ -19,7 +19,7 @@ require "paq" {
   "tpope/vim-repeat",
   "junegunn/fzf",
   "junegunn/fzf.vim",
-  "SirVer/ultisnips",
+  -- "SirVer/ultisnips",
   "dense-analysis/ale",
   "Glench/Vim-Jinja2-Syntax",
   "b3nj5m1n/kommentary",
@@ -36,6 +36,6 @@ require "paq" {
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",
   "kabouzeid/nvim-lspinstall"
-  --- after plugins; run their setup ---
 }
+--- after plugins; run their setup ---
 require "my_pkg_cfg"

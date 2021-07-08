@@ -227,6 +227,8 @@ key_bindings:
   - { key: D, mods: Alt, chars: "\x1bd" }
   - { key: F, mods: Alt, chars: "\x1bf" }
   - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: A, mods: Alt, chars: "\x1ba" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
 
   # alacritty
   - { key: N, mods: Command, action: SpawnNewInstance }
