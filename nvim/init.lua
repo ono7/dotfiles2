@@ -70,7 +70,6 @@ m("i", "[", "[]<left>", opt)
 m("i", "<", "<><left>", opt)
 m("i", "{<cr>", "{<cr>}<esc>O", opt)
 m("i", "{;<cr>", "{<cr>};<esc>O", opt)
-
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], expr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], expr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], expr)
