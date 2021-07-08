@@ -122,11 +122,11 @@ endsnippet
 # snippet todo "Todo reminder" b
 # # TODO: ${VISUAL/(\n|\s+)/ /g}$0, `!v strftime("%m-%d-%Y %I:%M %p %Z")` <lima>
 # endsnippet
-snippet f "function(contents)"
+snippet func "function(contents)"
 $0(${VISUAL})
 endsnippet
 
-snippet d "Todo mark done" b
+snippet done "Todo mark done" b
 ${VISUAL/(TODO:)/✔ DONE:/g}$0
 endsnippet
 
@@ -166,31 +166,31 @@ snippet xml "xml def" b
 endsnippet
 
 # tag
-snippet t "xml tag" b
+snippet tag "xml tag" b
 <${1:name="${VISUAL}$2"}>
     $3
 </${1/(\w+).*/$1/}>
 endsnippet
 
 # inline tag
-snippet ti "xml inline tag" b
+snippet tagi "xml inline tag" b
 <${1:name="${VISUAL}$2"}>$3</${1/(\w+).*/$1/}>
 endsnippet
 
-snippet te "xml inline tag" b
+snippet tage "xml inline tag" b
 <${1:entry name="${VISUAL}$2"}/>
 endsnippet
 
-snippet pt "xml snippet for pano" b
-<${1:entry name="${VISUAL}$2"}>
-    $3
-</${1/(\w+).*/$1/}>
-endsnippet
+# snippet pt "xml snippet for pano" b
+# <${1:entry name="${VISUAL}$2"}>
+#     $3
+# </${1/(\w+).*/$1/}>
+# endsnippet
 
-snippet pti "pano member tag" b
-    <${1:member}>${VISUAL}$2</$1>
-endsnippet
+# snippet pti "pano member tag" b
+#     <${1:member}>${VISUAL}$2</$1>
+# endsnippet
 
-snippet fn "base file name" w
-`!p snip.rv = snip.basename`
-endsnippet
+# snippet fn "base file name" w
+# `!p snip.rv = snip.basename`
+# endsnippet

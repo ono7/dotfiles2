@@ -1,7 +1,7 @@
 priority 1
 # use longest match first in regex patterns
 
-snippet "(init|_)" "init class" br
+snippet _ "init class" b
 def __${1:init}__(self$0):
 endsnippet
 
@@ -24,7 +24,7 @@ endsnippet
 # # pylint: skip-file
 # endsnippet
 
-snippet "(ma|mk|m)" "pytest mark" br
+snippet mark "pytest mark" b
 @mark.$0
 endsnippet
 
@@ -64,7 +64,7 @@ setup(
 )
 endsnippet
 
-snippet "doc(s)?" "Standard docstring" br
+snippet docs "Standard docstring" b
 """ $0${VISUAL/([\n\s]+$|^[\n\s]+)//g} """
 endsnippet
 
@@ -134,14 +134,14 @@ urllib3.disable_warnings()
 r = requests.get("https://$0", verify=False)
 endsnippet
 
-snippet "tr(y)?" "try block" r
-try:
-    ${VISUAL}
-except $0:
-endsnippet
+# snippet "tr(y)?" "try block" r
+# try:
+#     ${VISUAL}
+# except $0:
+# endsnippet
 
 
-snippet "main(f)?" "insert main function" br
+snippet main "insert main function" b
 def $1():
     """ entry point """
     $0
@@ -150,19 +150,19 @@ if __name__ == '__main__':
     sys.exit(${1:main}())
 endsnippet
 
-snippet pt "xml snippet for pano" b
-<${1:entry name="${VISUAL}$2"}>
-    $3
-</${1/(\w+).*/$1/}>
-$0
-endsnippet
+# snippet pt "xml snippet for pano" b
+# <${1:entry name="${VISUAL}$2"}>
+#     $3
+# </${1/(\w+).*/$1/}>
+# $0
+# endsnippet
 
-snippet pti "pano member tag" b
-<${1:member}>${VISUAL}$2</$1>
-$0
-endsnippet
+# snippet pti "pano member tag" b
+# <${1:member}>${VISUAL}$2</$1>
+# $0
+# endsnippet
 
-snippet "(function|fun)" "function" brw
+snippet func "function" bw
 def ${1}($2):
   ${VISUAL}$0
 endsnippet
@@ -172,7 +172,7 @@ snippet with
         ${0:${VISUAL}}
 endsnippet
 
-snippet "pr|pri" "print" r
+snippet pri "print" b
 print(${VISUAL}$0)
 endsnippet
 
