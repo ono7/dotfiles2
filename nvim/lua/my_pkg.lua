@@ -9,36 +9,33 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 cmd "packadd paq-nvim"
-local paq = require "paq-nvim".paq
 
 --- my dependencies ---
-paq {"savq/paq-nvim", opt = true}
-
-paq "tpope/vim-eunuch"
-paq "tpope/vim-markdown"
-paq "tpope/vim-surround"
-paq "tpope/vim-repeat"
-paq "junegunn/fzf"
-paq "junegunn/fzf.vim"
-paq "SirVer/ultisnips"
-paq "dense-analysis/ale"
-paq "Glench/Vim-Jinja2-Syntax"
-paq "b3nj5m1n/kommentary"
-paq "bfredl/nvim-miniyank"
-paq "f-person/git-blame.nvim"
-paq "kyazdani42/nvim-tree.lua"
-paq "kyazdani42/nvim-web-devicons"
-paq "lukas-reineke/format.nvim"
-paq "numToStr/Navigator.nvim"
-paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-paq "nvim-treesitter/playground"
-paq "windwp/nvim-autopairs"
-
---- lsp ---
-paq "neovim/nvim-lspconfig"
-paq "hrsh7th/nvim-compe"
-paq "kabouzeid/nvim-lspinstall"
-
---- after plugins, run their setup ---
+require "paq" {
+  {"savq/paq-nvim", opt = true},
+  "tpope/vim-eunuch",
+  "tpope/vim-markdown",
+  "tpope/vim-surround",
+  "tpope/vim-repeat",
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
+  "SirVer/ultisnips",
+  "dense-analysis/ale",
+  "Glench/Vim-Jinja2-Syntax",
+  "b3nj5m1n/kommentary",
+  "bfredl/nvim-miniyank",
+  "f-person/git-blame.nvim",
+  "kyazdani42/nvim-tree.lua",
+  "kyazdani42/nvim-web-devicons",
+  "lukas-reineke/format.nvim",
+  "numToStr/Navigator.nvim",
+  {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
+  "nvim-treesitter/playground",
+  "windwp/nvim-autopairs",
+  --- lsp ---;
+  "neovim/nvim-lspconfig",
+  "hrsh7th/nvim-compe",
+  "kabouzeid/nvim-lspinstall"
+  --- after plugins; run their setup ---
+}
 require "my_pkg_cfg"
-
