@@ -44,7 +44,7 @@ inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
 inoremap < <><left>
-inoremap <c-o> <cr><esc>O
+inoremap <c-d> <cr><esc>O
 
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O

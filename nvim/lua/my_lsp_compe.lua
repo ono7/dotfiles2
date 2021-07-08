@@ -70,8 +70,8 @@ m("s", "<Tab>", [[v:lua.tab_complete()]], {expr = true, silent = true})
 m("i", "<S-Tab>", [[v:lua.s_tab_complete()]], {expr = true, silent = true})
 m("s", "<S-Tab>", [[v:lua.s_tab_complete()]], {expr = true, silent = true})
 m("i", "<C-Space>", "compe#complete()", {expr = true, silent = true})
-m("i", "<C-f>", [[compe#scroll({ 'delta': +4 })]], {expr = true, silent = true})
-m("i", "<C-d>", [[compe#scroll({ 'delta': -4 })]], {expr = true, silent = true})
+m("i", "<M-f>", [[compe#scroll({ 'delta': +4 })]], {expr = true, silent = true})
+m("i", "<M-d>", [[compe#scroll({ 'delta': -4 })]], {expr = true, silent = true})
 
 --- use built in lsp help :)
 local opts = {noremap = true, silent = true}
