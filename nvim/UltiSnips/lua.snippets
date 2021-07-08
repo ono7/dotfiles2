@@ -15,17 +15,17 @@ end
 
 endsnippet
 
-snippet "\b(function|func|fun)" "function" rwb
+snippet func "function" wb
 function$1($0)
   ${VISUAL/([\n\s]+$|^[\n\s]+)//g}
 end
 endsnippet
 
-snippet "\b(print|pr|p)" "print" br
+snippet pri "print" b
 print(${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0)
 endsnippet
 
-snippet "(error|e)" "print" br
+snippet err "print" b
 error(${VISUAL/([\n\s]+$|^[\n\s]+)//g}$0)
 endsnippet
 
@@ -40,7 +40,7 @@ while ${0:cond}  do
 end
 endsnippet
 
-snippet "(repeat|rep)" "repeat" br
+snippet rep "repeat" b
 repeat
 until ${1:cond}
 endsnippet
@@ -58,7 +58,7 @@ endsnippet
 # endsnippet
 
 # removes extra new lines and spaces
-snippet "(docs|doc|comment|com)" "docstring" br
+snippet "docs" "docstring" b
 --[[
 
   $0${VISUAL/([\n\s]+$|^[\n\s]+)//g}
