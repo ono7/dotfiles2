@@ -43,7 +43,6 @@ inoremap ` ``<left>
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
-inoremap < <><left>
 inoremap <c-d> <cr><esc>O
 
 " inoremap {<CR> {<CR>}<ESC>O
@@ -51,7 +50,6 @@ inoremap <c-d> <cr><esc>O
 inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-inoremap <expr> > strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ">"
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
