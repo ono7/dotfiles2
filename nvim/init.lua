@@ -1,6 +1,7 @@
 --- Follow the white rabbit ---
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
+local expr = {noremap = true, silent = true, expr = true}
 local opt = {noremap = true}
 local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
@@ -37,28 +38,44 @@ m("n", "ZZ", "", opt)
 m("n", "ZQ", "", opt)
 
 --- hold my beer ---
+
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "cw", "ciw", silent)
 m("n", "dw", "diw", silent)
 m("n", "yw", "yiw", silent)
-m("c", "<c-a>", "<Home>", {})
-m("c", "<c-h>", "<Left>", {})
-m("c", "<c-l>", "<Right>", {})
-m("i", "<c-e>", "<c-o>$", silent)
-m("i", "<c-a>", "<c-o>^", silent)
-m("i", "<m-b>", "<c-o>B", silent)
-m("i", "<m-f>", "<c-o>W", silent)
 m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
-m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
 m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("n", "D", "d$", opt)
-m("v", "y", "mxy`x", opt)
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
+
+m("c", "<c-a>", "<Home>", {})
+m("c", "<c-h>", "<Left>", {})
+m("c", "<c-l>", "<Right>", {})
+
+m("v", "y", "mxy`x", opt)
+m("v", "Q", ":'<,'>norm @q<cr>", silent)
+
+m("i", "<c-e>", "<c-o>$", silent)
+m("i", "<c-a>", "<c-o>^", silent)
+m("i", "<m-b>", "<c-o>B", silent)
+m("i", "<m-f>", "<c-o>W", silent)
+m("i", "(", "()<left>", opt)
+m("i", "{", "{}<left>", opt)
+m("i", "[", "[]<left>", opt)
+m("i", "<", "<><left>", opt)
+m("i", "{<cr>", "{<cr>}<esc>O", opt)
+m("i", "{;<cr>", "{<cr>};<esc>O", opt)
+
+m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], expr)
+m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], expr)
+m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], expr)
+m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], expr)
+m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], expr)
 
 -- disable ale lsp
 g.ale_disable_lsp = 1

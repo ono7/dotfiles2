@@ -19,7 +19,7 @@ require "paq" {
   "tpope/vim-repeat",
   "junegunn/fzf",
   "junegunn/fzf.vim",
-  -- "SirVer/ultisnips",
+  "SirVer/ultisnips",
   "dense-analysis/ale",
   "Glench/Vim-Jinja2-Syntax",
   "b3nj5m1n/kommentary",
@@ -31,7 +31,7 @@ require "paq" {
   "numToStr/Navigator.nvim",
   {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
   "nvim-treesitter/playground",
-  "windwp/nvim-autopairs",
+  -- "windwp/nvim-autopairs",
   --- lsp ---;
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",
