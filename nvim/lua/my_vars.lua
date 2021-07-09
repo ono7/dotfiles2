@@ -175,7 +175,7 @@ g.miniyank_maxitems = 10
 --- nvimtree ---
 g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0
-g.nvim_tree_auto_close = 1
+g.nvim_tree_auto_close = 0
 g.nvim_tree_ignore = {".git", "node_modules", ".cache", "__pycache__"}
 g.nvim_tree_quit_on_open = 1
 g.nvim_tree_follow = 1
@@ -183,7 +183,7 @@ g.nvim_tree_width_allow_resize = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_tab_open = 0
-g.nvim_tree_disable_netrw = 0
+g.nvim_tree_disable_netrw = 1
 g.nvim_tree_hijack_netrw = 1
 g.nvim_tree_add_trailing = 1
 g.nvim_tree_show_icons = {git = 1, folder = 1, files = 1, folder_arrows = 0}
