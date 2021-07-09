@@ -53,9 +53,9 @@ m("n", "D", "d$", opt)
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
 
-m("c", "<c-a>", "<Home>", {})
-m("c", "<c-h>", "<Left>", {})
-m("c", "<c-l>", "<Right>", {})
+m("c", "<c-a>", "<Home>", opt)
+m("c", "<c-h>", "<Left>", opt)
+m("c", "<c-l>", "<Right>", opt)
 
 m("v", "y", "mxy`x", opt)
 m("v", "Q", ":'<,'>norm @q<cr>", silent)

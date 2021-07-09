@@ -20,7 +20,7 @@ m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 -- in favor of faster window navigation, these are now disabled.. ---
 m("n", "<c-a>", "^", opt)
 m("n", "<c-e>", "g_", opt)
-m("v", "<c-a>", "^", opt)
+-- m("v", "<c-a>", "^", opt)
 m("v", "<c-e>", "g_", opt)
 
 --- marks/jumps ---
