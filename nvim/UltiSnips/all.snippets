@@ -119,13 +119,6 @@ snip += box[3]`
 $0
 endsnippet
 
-# snippet todo "Todo reminder" b
-# # TODO: ${VISUAL/(\n|\s+)/ /g}$0, `!v strftime("%m-%d-%Y %I:%M %p %Z")` <lima>
-# endsnippet
-snippet func "function(contents)"
-$0(${VISUAL})
-endsnippet
-
 snippet done "Todo mark done" b
 ${VISUAL/(TODO:)/✔ DONE:/g}$0
 endsnippet
@@ -144,10 +137,6 @@ endsnippet
 
 snippet datet "YYYY-MM-DD hh:mm" w
 `!v strftime("%m-%d-%Y %I:%M:%S %p")`
-endsnippet
-
-snippet ddate "Month DD, YYYY" w
-`!v strftime("%b %d, %Y")`
 endsnippet
 
 snippet diso "ISO format datetime" w

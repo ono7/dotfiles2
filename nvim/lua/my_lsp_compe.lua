@@ -3,7 +3,7 @@ require "compe".setup {
   enabled = true,
   autocomplete = true,
   debug = false,
-  min_length = 2,
+  min_length = 3,
   preselect = "enable",
   throttle_time = 80,
   source_timeout = 200,
