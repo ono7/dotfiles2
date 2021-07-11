@@ -1,4 +1,4 @@
---- Follow the white rabbit ---
+-- Follow the white rabbit...
 
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
@@ -132,7 +132,7 @@ require "my_lsp_compe"
 
 --[[
 
-  npm install lua-fmt prettier -g
+  npm install lua-fmt prettier pyright -g
   pip install black pylint yamllint
 
     -- Lima

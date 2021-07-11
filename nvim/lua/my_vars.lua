@@ -1,4 +1,3 @@
---- setup locals ---
 local gs, g = vim.api.nvim_set_var, vim.g
 
 --- nvim-completion ---
