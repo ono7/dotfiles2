@@ -47,7 +47,7 @@ local autocmds = {
     {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
   },
   _yank_hl = {
-    {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 40})]]}
+    {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 50})]]}
   },
   _terminal = {
     {"TermEnter", "*", [[setlocal scrolloff=0]]},
