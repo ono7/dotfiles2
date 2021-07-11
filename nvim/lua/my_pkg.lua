@@ -14,7 +14,7 @@ cmd "packadd paq-nvim"
 require "paq" {
   {"savq/paq-nvim", opt = true},
   "tpope/vim-eunuch",
-  "tpope/vim-markdown",
+  -- "tpope/vim-markdown",
   "tpope/vim-surround",
   "tpope/vim-repeat",
   "junegunn/fzf",
