@@ -8,7 +8,7 @@ g.completion_sorting = "length"
 g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
 --- vimwiki ---
-g.vimwiki_global_ext = 0
+-- g.vimwiki_global_ext = 0
 -- g.mywiki = {}
 -- g.mywiki.path = "~/wiki/"
 -- g.mywiki.syntax = "markdown"
@@ -17,31 +17,31 @@ g.vimwiki_global_ext = 0
 -- temp1[".md"] = "markdown"
 -- gs("vimwiki_ext2syntax", temp1)
 -- g.vimwiki_list = g.mywiki
-g.vimwiki_table_mappings = 0
-g.wiki = {
-  path = "wiki",
-  nested_syntaxes = {
-    python = "python",
-    cpp = "cpp",
-    javascript = "javascript",
-    bash = "sh",
-    php = "php",
-    lua = "lua"
-  }
-}
-g.vimwiki_listsyms = "✗○◐●✓"
-g.vimwiki_key_mappings = {
-  all_maps = 1,
-  links = 1,
-  global = 0,
-  headers = 0,
-  text_objs = 0,
-  table_format = 0,
-  table_mappings = 0,
-  lists = 0,
-  html = 0,
-  mouse = 0
-}
+-- g.vimwiki_table_mappings = 0
+-- g.wiki = {
+--   path = "wiki",
+--   nested_syntaxes = {
+--     python = "python",
+--     cpp = "cpp",
+--     javascript = "javascript",
+--     bash = "sh",
+--     php = "php",
+--     lua = "lua"
+--   }
+-- }
+-- g.vimwiki_listsyms = "✗○◐●✓"
+-- g.vimwiki_key_mappings = {
+--   all_maps = 1,
+--   links = 1,
+--   global = 0,
+--   headers = 0,
+--   text_objs = 0,
+--   table_format = 0,
+--   table_mappings = 0,
+--   lists = 0,
+--   html = 0,
+--   mouse = 0
+-- }
 
 g.tmux_navigator_disable_when_zoomed = 1
 

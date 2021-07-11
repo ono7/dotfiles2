@@ -28,7 +28,6 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-let g:netrw_list_hide=netrw_gitignore#Hide()
 
 set synmaxcol=512
 set nocompatible
@@ -38,15 +37,14 @@ syntax sync maxlines=300
 filetype plugin indent on
 syntax on
 
-" hold my beer
+""" hold my beer """
+
 inoremap ` ``<left>
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
 inoremap <c-d> <cr><esc>O
 
-" inoremap {<CR> {<CR>}<ESC>O
-" inoremap {;<CR> {<CR>};<ESC>O
 inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
@@ -63,13 +61,11 @@ inoremap <m-b> <C-o>B
 inoremap <m-f> <C-o>W
 nnoremap gg gg1<c-g>
 nnoremap G G1<c-g>
-" nnoremap cw ciw
-" nnoremap dw diw
 nnoremap yw yiw
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
-nnoremap <leader>q :qall!<cr>
+nnoremap <leader>q :%bd!<cr>
 nnoremap <leader>w :write<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]

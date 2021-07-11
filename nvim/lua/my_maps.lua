@@ -12,15 +12,13 @@ m("n", "<M-l>", [[:vertical resize +2<cr>]], silent)
 --- send to tmux ---
 m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
---- select visualy selected text for search ---
+--- visual selection search ---
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 
--- in favor of faster window navigation, these are now disabled.. ---
 m("n", "<c-a>", "^", opt)
 m("n", "<c-e>", "g_", opt)
--- m("v", "<c-a>", "^", opt)
 m("v", "<c-e>", "g_", opt)
 
 --- marks/jumps ---

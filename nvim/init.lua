@@ -40,13 +40,11 @@ m("n", "ZZ", "", opt)
 m("n", "ZQ", "", opt)
 
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
--- m("n", "cw", "ciw", silent)
--- m("n", "dw", "diw", silent)
 m("n", "yw", "yiw", silent)
 m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
-m("n", "<leader>q", ":qall!<cr>", silent)
+m("n", "<leader>q", ":%bd!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("n", "D", "d$", opt)
@@ -74,10 +72,9 @@ m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], 
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
--- m("i", "<", "<><left>", opt)
--- m("i", "{<CR>", "{<CR>}<esc>O", opt)
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
--- m("i", ">", [[strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ">"]], xpr)
+
+cmd [[command! Mktags !ctags -R . ]]
 
 g.ale_disable_lsp = 1
 
@@ -132,5 +129,3 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
-
-cmd [[command! Mktags !ctags -R . ]]

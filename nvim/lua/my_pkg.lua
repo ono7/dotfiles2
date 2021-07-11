@@ -5,7 +5,7 @@ local install_path = fn.stdpath("data") .. "/site/pack/paqs/opt/paq-nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   -- download and install if missing
   cmd("!git clone https://github.com/savq/paq-nvim.git " .. install_path)
-  vim.api.nvim_exec([[autocmd VimEnter * PaqInstall]], false)
+  vim.api.nvim_exec([[autocmd VimEnter * PaqSync]], false)
 end
 
 cmd "packadd paq-nvim"
@@ -25,7 +25,8 @@ require "paq" {
   "b3nj5m1n/kommentary",
   "bfredl/nvim-miniyank",
   "f-person/git-blame.nvim",
-  {"kyazdani42/nvim-tree.lua", pin = true}, -- broken 07-08-2021: git checkout fd7f60e2422
+  -- {"kyazdani42/nvim-tree.lua", pin = true}, -- broken 07-08-2021: git checkout fd7f60e2422
+  "kyazdani42/nvim-tree.lua",
   "kyazdani42/nvim-web-devicons",
   "lukas-reineke/format.nvim",
   "numToStr/Navigator.nvim",

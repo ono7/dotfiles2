@@ -86,4 +86,4 @@ bo.textwidth = 80
 bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
-bo.formatoptions = "qlj" -- this is what we need, overwritten in my_cmds.lua
+bo.formatoptions = "qlj" -- TODO: overwritten in my_cmds.lua
