@@ -25,7 +25,6 @@ require "paq" {
   "b3nj5m1n/kommentary",
   "bfredl/nvim-miniyank",
   "f-person/git-blame.nvim",
-  -- {"kyazdani42/nvim-tree.lua", pin = true}, -- broken 07-08-2021: git checkout fd7f60e2422
   "kyazdani42/nvim-tree.lua",
   "kyazdani42/nvim-web-devicons",
   "lukas-reineke/format.nvim",
