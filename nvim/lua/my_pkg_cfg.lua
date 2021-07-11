@@ -2,9 +2,6 @@
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
 
---- autopairs ---
--- require("nvim-autopairs").setup()
-
 --- tmux navigator, in lua ---
 require("Navigator").setup(
   {
@@ -26,14 +23,11 @@ require("kommentary.config").configure_language(
   }
 )
 
---- sweet sweet icons for ntree ---
 require "nvim-web-devicons".setup {
   default = true
 }
 
---- treesitter setup ---
 require "nvim-treesitter.configs".setup {
-  -- autopairs = {enable = true},
   highlight = {
     enable = true
     -- disable = { 'c', 'rust' },

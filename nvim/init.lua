@@ -129,3 +129,12 @@ require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_lsp_compe"
+
+--[[
+
+  npm install lua-fmt prettier -g
+  pip install black pylint yamllint
+
+    -- Lima
+
+--]]
