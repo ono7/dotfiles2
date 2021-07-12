@@ -4,7 +4,7 @@ M.legacy_cfg =
   [[
 " Follow the white rabbit
 
-let mapleader = " "
+let mapleader = ";"
 
 let g:loaded_matchit = 1
 let g:loaded_logiPat = 1

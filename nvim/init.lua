@@ -29,7 +29,7 @@ end
 
 --- map leader ---
 m("n", "<Space>", "", {})
-g.mapleader = " "
+g.mapleader = ";"
 
 vim.o.path = vim.o.path .. "**"
 
