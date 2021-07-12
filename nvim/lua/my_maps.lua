@@ -15,6 +15,7 @@ m("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
+m("n", "<leader>vr", ":source ~/.dotfiles/nvim/ini.lua<cr>", opt)
 
 m("n", "<c-a>", "^", opt)
 m("n", "<c-e>", "g_", opt)
@@ -45,8 +46,8 @@ m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
 m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 --- fzf ---
-m("n", "<leader>f", ":GFiles<cr>", silent)
-m("n", "<c-f>", ":Files<cr>", silent)
+m("n", "<c-f>", ":GFiles<cr>", silent)
+m("n", "<leader>f", ":Files<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 m("n", "<leader>s", ":Rg<cr>", silent)
 
