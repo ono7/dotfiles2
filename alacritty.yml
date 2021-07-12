@@ -22,7 +22,7 @@ scrolling:
 font:
   normal:
     family: JetBrains Mono
-    style: Light
+    style: Regular
 
   bold:
     family: JetBrains Mono
