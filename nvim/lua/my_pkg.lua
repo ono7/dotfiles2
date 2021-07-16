@@ -27,7 +27,6 @@ require "paq" {
   "numToStr/Navigator.nvim",
   {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
   -- "nvim-treesitter/playground",
-  --- lsp ---;
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",
   "kabouzeid/nvim-lspinstall"
