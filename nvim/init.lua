@@ -128,6 +128,7 @@ require "my_vars"
 require "my_cmds"
 require "my_settings"
 require "my_pkg"
+require "my_snips"
 require "my_lsp_compe"
 
 --[[

@@ -111,12 +111,12 @@ g.pyindent_open_paren = "0"
 g.pyindent_nested_paren = "&sw"
 
 --- ultisnips ---
-g.UltiSnipsExpandTrigger = "<c-l>"
-g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
-g.UltiSnipsEditSplit = "horizontal"
-g.UltiSnipsUsePythonVersion = 3
-g.UltiSnipsJumpForwardTrigger = "<c-l>"
-g.UltiSnipsJumpBackwardTrigger = ""
+-- g.UltiSnipsExpandTrigger = "<c-l>"
+-- g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
+-- g.UltiSnipsEditSplit = "horizontal"
+-- g.UltiSnipsUsePythonVersion = 3
+-- g.UltiSnipsJumpForwardTrigger = "<c-l>"
+-- g.UltiSnipsJumpBackwardTrigger = ""
 
 --[[
 
