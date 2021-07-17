@@ -38,5 +38,27 @@ require "snippets".snippets = {
 
   tasks:
     - name:]]
+  },
+  cfg = {
+    head = [[
+localhost ansible_connection=local
+
+[all:vars]
+
+ansible_connection = network_cli
+ansible_network_os = nxos
+ansible_user= "jose.lima"
+
+# ansible_become = yes
+# ansible_become_method = enable
+# ansible_ssh_pass = ""
+
+timeout = 5
+
+[group1]
+$0
+
+[group1:vars]
+]]
   }
 }
