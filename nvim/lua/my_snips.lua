@@ -31,20 +31,20 @@ require "snippets".snippets = {
 from setuptools import setup, find_packages
 
 setup(
-    name='${1}',
+    name='$0',
     version='0.1.0',
     license='unlicensed',
-    description='${2}',
+    description='',
     author='Jose Lima',
     author_email='',
     url='',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
-    install_requires=['${3}'],
+    install_requires=[],
     # extras_require={'mongo': 'pymongo'},
     entry_points={
         'console_scripts': [
-        # '$1 = tasks.cli:tasks_cli',
+        # "deps" = tasks.cli:tasks_cli',
         ]
 },
 )
