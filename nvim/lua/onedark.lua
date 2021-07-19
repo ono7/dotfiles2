@@ -4,8 +4,9 @@ M.highlight = function(group, options)
   local guifg = options.fg or "NONE"
   local guibg = options.bg or "NONE"
   local gui = options.gui or "NONE"
+  local guisp = options.guisp or "NONE"
 
-  vim.cmd(string.format("highlight! %s guifg=%s guibg=%s gui=%s", group, guifg, guibg, gui))
+  vim.cmd(string.format("highlight! %s guifg=%s guibg=%s gui=%s guisp=%s", group, guifg, guibg, gui, guisp))
 end
 
 M.link = function(groupa, groupb)
@@ -316,9 +317,10 @@ M.setup = function()
   M.highlight("TSDefinition", {gui = "bold"})
 
   --- ALE ---
-  M.highlight("ALEWarningSign", {fg = M.colors.orange})
-  M.link("ALEWarning", "SpellLocal")
-  M.link("ALEError", "SpellRare")
+  M.highlight("ALEWarningSign", {fg = M.colors.yellow})
+  M.highlight("ALEErrorSign", {fg = M.colors.red})
+  M.highlight("ALEWarning", {guisp = M.colors.yellow, gui = "underline,bold"})
+  M.highlight("ALEError", {guisp = M.colors.red, gui = "underline,bold"})
 
   --- snippets ---
   M.clear("snipLeadingSpaces")
