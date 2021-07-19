@@ -24,7 +24,31 @@ require "snippets".snippets = {
 
 """
 ]],
-    docs = [["""$0"""]]
+    docs = [["""$0"""]],
+    package = [[
+""" package setup """
+
+from setuptools import setup, find_packages
+
+setup(
+    name='${1}',
+    version='0.1.0',
+    license='unlicensed',
+    description='${2}',
+    author='Jose Lima',
+    author_email='',
+    url='',
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
+    install_requires=['${3}'],
+    # extras_require={'mongo': 'pymongo'},
+    entry_points={
+        'console_scripts': [
+        # '$1 = tasks.cli:tasks_cli',
+        ]
+},
+)
+]]
   },
   yaml = {
     h = [[
