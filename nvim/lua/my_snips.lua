@@ -3,6 +3,8 @@ local m = vim.api.nvim_set_keymap
 local opt = {noremap = true}
 -- local silent = {noremap = true, silent = true}
 
+require "snippets".set_ux(require "snippets.inserters.vim_input")
+
 m("i", "<c-l>", [[<cmd>lua return require'snippets'.expand_or_advance(1)<CR>]], opt)
 require "snippets".snippets = {
   _global = {
@@ -40,7 +42,7 @@ require "snippets".snippets = {
     - name:]]
   },
   cfg = {
-    head = [[
+    h = [[
 localhost ansible_connection=local
 
 [all:vars]
