@@ -123,8 +123,8 @@ M.setup = function()
   M.highlight("qfFileName", {fg = M.colors.yellow, gui = "bold"})
   M.highlight("qfLineNr", {fg = M.colors.blue})
   M.highlight("SpecialKey", {fg = M.colors.orange})
-  M.highlight("SpellBad", {gui = "underline"})
-  M.highlight("SpellCap", {gui = "underline"})
+  M.highlight("SpellBad", {guisp = M.colors.red, gui = "underline,bold"})
+  M.highlight("SpellCap", {guisp = M.colors.yellow, gui = "underline,bold"})
   M.highlight("SpellLocal", {gui = "underline"})
   M.highlight("SpellRare", {gui = "underline"})
   M.highlight("StatusLine", {fg = M.colors.white, bg = M.colors.visual_grey})
@@ -317,6 +317,8 @@ M.setup = function()
 
   --- ALE ---
   M.highlight("ALEWarningSign", {fg = M.colors.orange})
+  M.link("ALEWarning", "SpellLocal")
+  M.link("ALEError", "SpellRare")
 
   --- snippets ---
   M.clear("snipLeadingSpaces")
