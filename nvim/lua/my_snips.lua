@@ -25,6 +25,8 @@ require "snippets".snippets = {
 """
 ]],
     docs = [["""$0"""]],
+    st = [[__import__("pdb").set_trace()]],
+    rt = [[__import__("rpdb").set_trace()  # port 4444]],
     package = [[
 """ package setup """
 
