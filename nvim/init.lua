@@ -7,17 +7,24 @@ local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
-g.loaded_matchit = 1
-g.loaded_logiPat = 1
-g.loaded_rrhelper = 1
-g.loaded_tarPlugin = 1
-g.loaded_gzip = 1
-g.loaded_zipPlugin = 1
-g.loaded_2html_plugin = 1
-g.loaded_shada_plugin = 1
-g.loaded_spellfile_plugin = 1
-g.loaded_tutor_mode_plugin = 1
-g.loaded_remote_plugins = 1
+vim.g.loaded_gzip = 0
+vim.g.loaded_tar = 0
+vim.g.loaded_tarPlugin = 0
+vim.g.loaded_zipPlugin = 0
+vim.g.loaded_2html_plugin = 0
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
+vim.g.loaded_matchit = 0
+vim.g.loaded_spec = 0
+vim.g.loaded_tutor_mode_plugin = 0
+
+-- g.loaded_matchit = 1
+-- g.loaded_logiPat = 1
+-- g.loaded_rrhelper = 1
+-- g.loaded_tarPlugin = 1
+-- g.loaded_shada_plugin = 1
+-- g.loaded_spellfile_plugin = 1
+-- g.loaded_remote_plugins = 1
 
 --- hold my beer ---
 
@@ -130,6 +137,9 @@ require "my_settings"
 require "my_pkg"
 require "my_snips"
 require "my_lsp_compe"
+
+-- remove vim tilde
+vim.api.nvim_exec([[let &fcs='eob: ']], false)
 
 --[[
 

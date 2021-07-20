@@ -33,13 +33,10 @@ require "nvim-treesitter.configs".setup {
   },
   incremental_selection = {
     enable = true,
+    use_languagetree = true
     -- disable = { 'cpp', 'lua' },
-    keymaps = {
-      node_incremental = "grn",
-      scope_incremental = "grc"
-    }
   },
-  ensure_installed = {"c", "cpp", "lua", "python", "javascript"},
+  ensure_installed = {"c", "cpp", "lua", "python", "javascript", "toml", "json", "java", "bash"},
   playground = {
     enable = true,
     disable = {},
