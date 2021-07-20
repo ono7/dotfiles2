@@ -69,7 +69,7 @@ end
 --- window-local options ---
 wo.number = false
 wo.wrap = false
-wo.numberwidth = 1
+wo.numberwidth = 2
 wo.signcolumn = "number"
 wo.foldenable = false
 wo.list = true
