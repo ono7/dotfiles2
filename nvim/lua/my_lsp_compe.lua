@@ -14,7 +14,8 @@ require "compe".setup {
   documentation = true,
   source = {
     path = true,
-    buffer = true,
+    buffer = {kind = "﬘", true},
+    -- luasnip = {kind = "﬌", true},
     calc = false,
     nvim_lsp = true,
     nvim_lua = true,
