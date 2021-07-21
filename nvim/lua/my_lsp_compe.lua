@@ -13,11 +13,13 @@ require "compe".setup {
   max_menu_width = 100,
   documentation = true,
   source = {
-    path = true,
+    path = {kind = "", true},
+    tags = {kind = "", true},
     buffer = {kind = "﬘", true},
+    treesitter = false,
     -- luasnip = {kind = "﬌", true},
     calc = false,
-    nvim_lsp = true,
+    nvim_lsp = {kind = "", true},
     nvim_lua = true,
     vsnip = false,
     ultisnips = false
