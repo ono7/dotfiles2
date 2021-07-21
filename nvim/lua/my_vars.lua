@@ -98,7 +98,8 @@ g.markdown_fenced_languages = {
   "typescript",
   "lua",
   "sql",
-  "yaml"
+  "yaml",
+  "json"
 }
 g.markdown_syntax_conceal = 2
 g.vim_markdown_folding_disabled = 1
