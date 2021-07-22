@@ -8,10 +8,15 @@
 """
 
 import regex as re
+from json import dumps
 
 data = """auth radius-server /Common/system_auth_name1 {
     secret superdupersecret=
     server 10.1.1.1
+    test {
+         test1 inner1
+         test2 inner1
+   }
 }
 """
 
@@ -32,11 +37,9 @@ def getKeys(line):
 
 
 def ret_obj(data):
-    # __import__("pdb").set_trace()
     node = {}
-    __import__("pdb").set_trace()
     for index, line in enumerate(data):
-        if line == "}":
+        if line.strip() == "}":
             return node
         if "{" in line:
             level1, level2 = getKeys(line)
@@ -57,4 +60,4 @@ def ret_obj(data):
     return node
 
 
-ret_obj(data.splitlines())
+print(dumps(ret_obj(data.splitlines()), indent=2))
