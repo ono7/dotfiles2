@@ -54,7 +54,7 @@ local autocmds = {
     {"TermLeave", "*", [[setlocal scrolloff=1]]}
   },
   _def_space = {
-    {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent]]},
+    {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent indentexpr=]]},
     {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent]]}
   }
 }

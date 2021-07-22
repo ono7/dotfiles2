@@ -38,6 +38,7 @@ data = """ltm virtual export_me {
     vs-index 2
 }
 """
+# TODO: 07/22/2021 | fix part for ASM line
 data = """ltm virtual export_me {
     destination 10.1.30.30:https
     ip-protocol tcp
@@ -46,23 +47,7 @@ data = """ltm virtual export_me {
         linux-high { }
     }
     pool test-pool
-    profiles {
-    ASM_asm-policy-linux-high-security_policy { }
-        clientssl {
-        context clientside
-        }
-        http { }
-        serverssl {
-        context serverside
-        }
-        tcp-lan-optimized {
-        context serverside
-        }
-        tcp-wan-optimized {
-        context clientside
-        }
-        websecurity { }
-    }
+    profiles {}
     source 0.0.0.0/0
     source-address-translation {
         type automap
