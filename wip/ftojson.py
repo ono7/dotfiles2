@@ -38,6 +38,40 @@ data = """ltm virtual export_me {
     vs-index 2
 }
 """
+data = """ltm virtual export_me {
+    destination 10.1.30.30:https
+    ip-protocol tcp
+    mask 255.255.255.255
+    policies {
+        linux-high { }
+    }
+    pool test-pool
+    profiles {
+    ASM_asm-policy-linux-high-security_policy { }
+        clientssl {
+        context clientside
+        }
+        http { }
+        serverssl {
+        context serverside
+        }
+        tcp-lan-optimized {
+        context serverside
+        }
+        tcp-wan-optimized {
+        context clientside
+        }
+        websecurity { }
+    }
+    source 0.0.0.0/0
+    source-address-translation {
+        type automap
+    }
+    translate-address enabled
+    translate-port enabled
+    vs-index 2
+}
+"""
 
 
 def get_keys(line):
