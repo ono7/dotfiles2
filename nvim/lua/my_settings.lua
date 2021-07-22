@@ -87,3 +87,6 @@ bo.expandtab = true
 bo.spelllang = "en_us"
 bo.complete = ".,w,b,u,kspell"
 bo.formatoptions = "qlj" -- TODO: overwritten in my_cmds.lua
+bo.smartindent = true
+bo.cindent = false
+bo.autoindent = false
