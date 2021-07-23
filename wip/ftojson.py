@@ -69,7 +69,6 @@ def get_single_line_item(line):
     g1, g2 = re.search("(\S+).*?{([^{}]*)}", line).groups()
     return g1, g2.split()
 
-
 def ret_obj(data, s=None):
     """recursively do magical things"""
     node = {}
@@ -99,11 +98,10 @@ def ret_obj(data, s=None):
                 results = ret_obj(data[index + 1 :], stack)
                 node[level1].update(results)
                 return node
-
         else:
             k, v = re.findall("\S+", line)
             node.setdefault(k, v)
     return node
 
-
 print(dumps(ret_obj(data.splitlines()), indent=2))
+

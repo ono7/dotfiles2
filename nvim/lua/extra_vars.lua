@@ -225,8 +225,10 @@ augroup END
 
 augroup _files
   autocmd!
-  autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent
-  autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent
+  " setlocal indentexpr=GetPythonIndent(v:lnum)
+  autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
+  autocmd FileType python setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
+  autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent nolisp
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 

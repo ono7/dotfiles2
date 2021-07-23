@@ -31,6 +31,10 @@ require "nvim-treesitter.configs".setup {
     enable = true
     -- disable = { 'c', 'rust' },
   },
+  indent = {
+    enable = true,
+    disable = {"python"}
+  },
   incremental_selection = {
     enable = true,
     use_languagetree = true
