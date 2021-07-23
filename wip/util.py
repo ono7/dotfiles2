@@ -42,25 +42,36 @@ class Container:
         self.k1_container = None
         self.k2_container = None
         self.parent_line = line
+        self._is_parent = self._init_parent()
+        self.list = []
+        self.dict = {}
+        self.active_container = None
 
-    def is_parent(self):
-        """ checks if line is a parent object """
+    def _init_parent(self):
         if self._rex["is_parent"].search(self.parent_line):
             self._ret_keys()
             return True
         return False
+
+    def is_parent(self):
+        return self._is_parent
 
     def get_keys(self):
         return self.k1, self.k2
 
     def container(self):
         if self.k2:
-            pass
+            self.dict.setdefault(self.k1, {}).setdefault(self.k2, {})
+            return self.dict
+        self.dict.setdefault(self.k1, {})
+        return self.dict
 
     def _ret_keys(self):
         """returns keys to be used for dict nodes
         k1 is root key, k2 is to be used for nesting
-        { "k1" : { "k2": {}}}
+        {"k1" : {"k2": {}}}
+        when only k1 exists:
+            {"k1" : {}}
         """
         results = self._rex["ret_keys"].findall(self.parent_line)
         if results:

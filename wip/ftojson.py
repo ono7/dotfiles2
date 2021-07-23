@@ -114,7 +114,7 @@ def ret_obj(data, st=None):
     return node
 
 
-d1 = """test {
+d1 = """level1key level1node level2key {
 
     k v
 
