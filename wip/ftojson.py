@@ -10,6 +10,17 @@
 import regex as re
 from json import dumps
 
+
+class Parser:
+    re_keys = re.compile("[^{ ]+")
+    re_kv = re.compile("(\S+).*?{([^{}]*)}")
+
+    def __init__(self, line, nline):
+        """takes current line plus next for parsing
+        returns: appropiate object structure (type dict or list)
+        """
+
+
 data = """ltm virtual export_me {
     description "This is for export.  Export this description."
     destination 10.1.30.30:https
@@ -46,6 +57,7 @@ data = """ltm virtual export_me {
 }
 """
 
+
 def get_keys(line):
     """returns keys to be used for dict nodes
     level1 is root key, level2 is to be used for nesting
@@ -67,6 +79,7 @@ def get_single_line_item(line):
     """
     g1, g2 = re.search("(\S+).*?{([^{}]*)}", line).groups()
     return g1, g2.split()
+
 
 def ret_obj(data, s=None):
     """recursively do magical things"""
@@ -102,5 +115,5 @@ def ret_obj(data, s=None):
             node.setdefault(k, v)
     return node
 
-print(dumps(ret_obj(data.splitlines()), indent=2))
 
+print(dumps(ret_obj(data.splitlines()), indent=2))

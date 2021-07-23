@@ -52,11 +52,11 @@ local autocmds = {
   _terminal = {
     {"TermEnter", "*", [[setlocal scrolloff=0]]},
     {"TermLeave", "*", [[setlocal scrolloff=1]]}
-  },
-  _def_space = {
-    {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent]]},
-    {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent]]}
   }
+  -- _def_space = {
+  --   {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap]]}
+  --   -- {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap]]}
+  -- }
 }
 
 nvim_create_augroups(autocmds)
