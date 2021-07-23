@@ -39,13 +39,11 @@ class Container:
     def __init__(self, line):
         self.k1 = None
         self.k2 = None
-        self.k1_container = None
-        self.k2_container = None
         self.parent_line = line
         self._is_parent = self._init_parent()
-        self.list = []
-        self.dict = {}
         self.active_container = None
+        if self._is_parent:
+            self.active_container = self.set_dict()
 
     def _init_parent(self):
         if self._rex["is_parent"].search(self.parent_line):
@@ -59,12 +57,16 @@ class Container:
     def get_keys(self):
         return self.k1, self.k2
 
-    def container(self):
+    def set_dict(self):
+        d = {}
         if self.k2:
-            self.dict.setdefault(self.k1, {}).setdefault(self.k2, {})
-            return self.dict
-        self.dict.setdefault(self.k1, {})
-        return self.dict
+            d.setdefault(self.k1, {}).setdefault(self.k2, {})
+            return d
+        d.setdefault(self.k1, {})
+        return d
+
+    def container(self):
+        return self.active_container
 
     def _ret_keys(self):
         """returns keys to be used for dict nodes
@@ -81,6 +83,15 @@ class Container:
                 return self.k1, self.k2
             self.k1, self.k2 = results[0], None
         return self.k1, self.k2
+
+
+def get_single_data_item(data):
+    """if we find a single data with {}
+    we will extract key and values as a list
+    """
+    g1, g2 = re.search("(\S+).*?{([^{}]*)}", data).groups()
+
+    return {g1: g2.split()}
 
 
 def clean_data_chunk(chunk):

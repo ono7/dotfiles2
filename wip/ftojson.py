@@ -13,7 +13,7 @@
 
 import regex as re
 from json import dumps
-from util import Stack, Container, clean_data_chunk
+from util import Stack, Container, clean_data_chunk, get_single_data_item
 
 
 PARSERS = {"tlm": ""}
@@ -118,14 +118,24 @@ d1 = """level1key level1node level2key {
 
     k v
 
-
-
 }"""
+
+# d1 = """single level item {}"""
 
 
 def parse_policy(data, stack):
-    node = Container(data[0])
+    data_size = len(data)
+    if data_size == 1:
+        node = get_single_data_item(data[0])
+        return node
+
     __import__("pdb").set_trace()
+    node = Container(data[0])
+    for index, line in enumerate(data):
+        stack.update_state(line)
+        if stack.is_balanced():
+            return node.converts
+        print(line, index)
     return node
 
 
