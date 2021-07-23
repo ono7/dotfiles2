@@ -156,7 +156,7 @@ set smartcase smarttab
 set spelllang=en_us
 set splitbelow
 set splitright
-set softtabstop=2 tabstop=2 textwidth=80 expandtab
+set softtabstop=2 tabstop=2 textwidth=0 expandtab
 set timeout timeoutlen=500 ttimeout ttimeoutlen=50
 set undolevels=999
 set updatetime=1000
@@ -172,6 +172,7 @@ set foldmethod=indent
 set nofoldenable
 set fileformats=unix,dos
 set autoindent
+set nolisp
 
 if has('unnamedplus')
   set clipboard+=unnamedplus
@@ -203,7 +204,6 @@ command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 augroup _init
   autocmd!
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
-  " autocmd BufEnter * silent! lcd %:p:h
   autocmd BufEnter * silent! set formatoptions=qnlj
 augroup END
 
@@ -228,7 +228,7 @@ augroup _files
   " setlocal indentexpr=GetPythonIndent(v:lnum)
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
   autocmd FileType python setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
-  autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent nolisp
+  " autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent nolisp
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 

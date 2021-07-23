@@ -46,7 +46,6 @@ data = """ltm virtual export_me {
 }
 """
 
-
 def get_keys(line):
     """returns keys to be used for dict nodes
     level1 is root key, level2 is to be used for nesting
