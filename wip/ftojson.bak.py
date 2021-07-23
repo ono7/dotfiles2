@@ -5,22 +5,20 @@
 
     __author__ = 'Jose Lima'
 
-1. keep track of parent key
-2. make policies based on parent key if its "special"
-
-
 """
 
 import regex as re
 from json import dumps
-from util import Stack, Container, clean_data_chunk
 
 
-PARSERS = {"tlm": ""}
+class Parser:
+    re_keys = re.compile("[^{ ]+")
+    re_kv = re.compile("(\S+).*?{([^{}]*)}")
 
-
-def get_line_parser(k: str) -> dict:
-    return PARSERS.get(k, ParseDefault)
+    def __init__(self, line, nline):
+        """takes current line plus next for parsing
+        returns: appropiate object structure (type dict or list)
+        """
 
 
 data = """ltm virtual export_me {
@@ -42,7 +40,6 @@ data = """ltm virtual export_me {
         context serverside
         }
         tcp-lan-optimized {
-
         context serverside
         }
         tcp-wan-optimized {
@@ -66,7 +63,7 @@ def get_keys(line):
     level1 is root key, level2 is to be used for nesting
     { "level1" : { "level2": {}}}
     """
-    results = re.findall("[^{ ]", line)
+    results = re.findall("[^{ ]+(?=\{)", line)
     if results:
         if len(results) > 1:
             level2 = results.pop(-1)
@@ -84,19 +81,24 @@ def get_single_line_item(line):
     return g1, g2.split()
 
 
-def ret_obj(data, st=None):
+def ret_obj(data, s=None):
     """recursively do magical things"""
     node = {}
-    stack = Stack()
-    if st:
-        stack = st
+    stack = []
+    if s:
+        stack = s
     for index, line in enumerate(data):
-        if stack.update_state(line):
-            return node
+        if line.strip() == "}":
+            stack.pop()
+            if len(stack) == 0:
+                return node
+            else:
+                continue
         if len(re.findall("[{}]", line)) == 2:
             level1, results = get_single_line_item(line)
             node.setdefault(level1, results)
-        elif not stack.is_balanced():
+        elif "{" in line:
+            stack.append("{")
             level1, level2 = get_keys(line)
             if level2:
                 node.setdefault(level1, {}).setdefault(level2, {})
@@ -114,20 +116,4 @@ def ret_obj(data, st=None):
     return node
 
 
-d1 = """test {
-
-    k v
-
-
-
-}"""
-
-
-def parse_policy(data, stack):
-    node = Container(data[0])
-    __import__("pdb").set_trace()
-    return node
-
-
-parse_policy(clean_data_chunk(d1).splitlines(), stack=Stack())
-# print(dumps(parse_policy(data.splitlines(), stack=Stack()), indent=2))
+print(dumps(ret_obj(data.splitlines()), indent=2))
