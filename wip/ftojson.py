@@ -20,7 +20,6 @@ class Parser:
         returns: appropiate object structure (type dict or list)
         """
 
-
 data = """ltm virtual export_me {
     description "This is for export.  Export this description."
     destination 10.1.30.30:https
