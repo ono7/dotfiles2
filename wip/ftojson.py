@@ -10,18 +10,8 @@
 import regex as re
 from json import dumps
 
-# data = """auth radius-server /Common/system_auth_name1 {
-#     single_line2 { test2 test2 test2 test3 }
-#     single_line3 { }
-#     secret superdupersecret=
-#     server 10.1.1.1
-#     test {
-#          test1 inner1
-#          test2 inner1
-#    }
-# }
-# """
 data = """ltm virtual export_me {
+    description "This is for export.  Export this description."
     destination 10.1.30.30:https
     ip-protocol tcp
     mask 255.255.255.255
@@ -29,25 +19,23 @@ data = """ltm virtual export_me {
         linux-high { }
     }
     pool test-pool
-    source 0.0.0.0/0
-    source-address-translation {
-        type automap
+    profiles {
+    ASM_asm-policy-linux-high-security_policy { }
+        clientssl {
+        context clientside
+        }
+        http { }
+        serverssl {
+        context serverside
+        }
+        tcp-lan-optimized {
+        context serverside
+        }
+        tcp-wan-optimized {
+        context clientside
+        }
+        websecurity { }
     }
-    translate-address enabled
-    translate-port enabled
-    vs-index 2
-}
-"""
-# TODO: 07/22/2021 | fix part for ASM line
-data = """ltm virtual export_me {
-    destination 10.1.30.30:https
-    ip-protocol tcp
-    mask 255.255.255.255
-    policies {
-        linux-high { }
-    }
-    pool test-pool
-    profiles {}
     source 0.0.0.0/0
     source-address-translation {
         type automap

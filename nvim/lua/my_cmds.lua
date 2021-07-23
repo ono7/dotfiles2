@@ -39,13 +39,12 @@ local autocmds = {
       "*",
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
-    {"BufEnter", "*", [[set formatoptions=qnlj]]},
+    {"BufEnter", "*", [[setlocal formatoptions=qnlj indentexpr= nosmartindent autoindent]]},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
-    {"BufNewFile,BufRead,BufEnter", "python", [[setlocal indentkeys-=:]]},
-    {"BufNewFile,BufRead,BufEnter", "python", [[setlocal indentkeys-=<:>]]},
+    {"BufNewFile,BufRead,BufEnter", "python", [[setlocal indentexpr=]]},
     {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
   },
   _yank_hl = {

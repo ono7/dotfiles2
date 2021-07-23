@@ -17,14 +17,13 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_spec = 1
 vim.g.loaded_tutor_mode_plugin = 1
-
--- g.loaded_matchit = 1
--- g.loaded_logiPat = 1
--- g.loaded_rrhelper = 1
--- g.loaded_tarPlugin = 1
+g.loaded_logiPat = 1
+g.loaded_rrhelper = 1
+g.loaded_tarPlugin = 1
+g.loaded_spellfile_plugin = 1
+g.loaded_remote_plugins = 1
 -- g.loaded_shada_plugin = 1
--- g.loaded_spellfile_plugin = 1
--- g.loaded_remote_plugins = 1
+-- g.loaded_matchit = 1
 
 --- hold my beer ---
 
@@ -132,11 +131,11 @@ cmd "hi!  snipLeadingSpaces  ctermbg=0  guibg=none  guifg=none"
 
 require "my_maps"
 require "my_vars"
-require "my_cmds"
 require "my_settings"
 require "my_pkg"
 require "my_snips"
 require "my_lsp_compe"
+require "my_cmds"
 
 -- remove vim tilde
 vim.api.nvim_exec([[let &fcs='eob: ']], false)
