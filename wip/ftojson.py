@@ -13,14 +13,7 @@
 
 import regex as re
 from json import dumps
-from util import Stack, Container, clean_data_chunk, get_single_data_item
-
-
-PARSERS = {"tlm": ""}
-
-
-def get_line_parser(k: str) -> dict:
-    return PARSERS.get(k, ParseDefault)
+from util import Stack, clean_data_chunk, parse_kv, parse_singleton
 
 
 data = """ltm virtual export_me {
@@ -61,12 +54,17 @@ data = """ltm virtual export_me {
 """
 
 
+d1 = """level1key level1node level2key {
+
+    k1 v1
+    k2 v2
+    k3 v3
+
+}"""
+
+
 def get_keys(line):
-    """returns keys to be used for dict nodes
-    level1 is root key, level2 is to be used for nesting
-    { "level1" : { "level2": {}}}
-    """
-    results = re.findall("[^{ ]", line)
+    results = re.findall("[^{ ]+", line)
     if results:
         if len(results) > 1:
             level2 = results.pop(-1)
@@ -76,68 +74,37 @@ def get_keys(line):
     return level1, level2
 
 
-def get_single_line_item(line):
-    """if we find a single line with {}
-    we will extract key and values as a list
-    """
-    g1, g2 = re.search("(\S+).*?{([^{}]*)}", line).groups()
-    return g1, g2.split()
+def get_children(data, line, node, index, stack):
+    k1, k2 = get_keys(line)
+    if k2:
+        node.setdefault(k1, {}).setdefault(k2, {})
+        results = parse_policy(data[index + 1 :], stack)
+        node[k1][k2].update(results)
+        return node
+    else:
+        node.setdefault(k1, {})
+        results = parse_policy(data[index + 1 :], stack)
+        node[k1].update(results)
+        return node
 
 
-def ret_obj(data, st=None):
-    """recursively do magical things"""
-    node = {}
-    stack = Stack()
-    if st:
-        stack = st
+def parse_policy(data, stack):
+    if len(data) == 1 and len(data[0]) != 1:
+        node = parse_singleton(data[0])
+        return node
+    __import__("pdb").set_trace()
+    node = {}  # TODO: 07/24/2021 | something that returns list or dict
     for index, line in enumerate(data):
-        if stack.update_state(line):
+        stack.update_state(data, index)
+        if stack.is_balanced():
+            continue
+        if line.endswith("{"):
+            node = get_children(data, line, node, index, stack)
             return node
-        if len(re.findall("[{}]", line)) == 2:
-            level1, results = get_single_line_item(line)
-            node.setdefault(level1, results)
-        elif not stack.is_balanced():
-            level1, level2 = get_keys(line)
-            if level2:
-                node.setdefault(level1, {}).setdefault(level2, {})
-                results = ret_obj(data[index + 1 :], stack)
-                node[level1][level2].update(results)
-                return node
-            else:
-                node.setdefault(level1, {})
-                results = ret_obj(data[index + 1 :], stack)
-                node[level1].update(results)
-                return node
         else:
-            k, v = re.findall("\S+", line)
+            k, v = parse_kv(line)
             node.setdefault(k, v)
     return node
 
 
-d1 = """level1key level1node level2key {
-
-    k v
-
-}"""
-
-# d1 = """single level item {}"""
-
-
-def parse_policy(data, stack):
-    data_size = len(data)
-    if data_size == 1:
-        node = get_single_data_item(data[0])
-        return node
-
-    __import__("pdb").set_trace()
-    node = Container(data[0])
-    for index, line in enumerate(data):
-        stack.update_state(line)
-        if stack.is_balanced():
-            return node.converts
-        print(line, index)
-    return node
-
-
-parse_policy(clean_data_chunk(d1).splitlines(), stack=Stack())
-# print(dumps(parse_policy(data.splitlines(), stack=Stack()), indent=2))
+print(dumps(parse_policy(clean_data_chunk(d1).splitlines(), stack=Stack()), indent=2))
