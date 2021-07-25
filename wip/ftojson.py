@@ -13,10 +13,10 @@
 
 import regex as re
 from json import dumps
-from util import Stack, clean_data_chunk, parse_kv, parse_singleton, get_keys
+from util import Stack, clean_data_chunk, parse_kv, parse_singleton, is_parent
 
 
-data = """ltm virtual export_me {
+lines = """ltm virtual export_me {
     description "This is for export.  Export this description."
     destination 10.1.30.30:https
     ip-protocol tcp
@@ -54,37 +54,20 @@ data = """ltm virtual export_me {
 """
 
 
-data = """ltm virtual export_me {
-    description "This is for export.  Export this description."
-    destination 10.1.30.30:https
-    ip-protocol tcp
-    mask 255.255.255.255
+lines = """ltm virtual export_me {
     policies {
         linux-high { }
     }
     pool test-pool
-    source 0.0.0.0/0
-    source-address-translation {
-        type automap
-    }
-    translate-address enabled
-    translate-port enabled
-    vs-index 2
 }
 """
-d1 = """level1key level1node level2key {
-
-    k1 v1
-    k2 v2
-    k3 v3
-    k4 "asdfasdfasfsdfasdfasfasf \" asdfsafasfasdfasf'asdf adfa == {{}}'"
-
-}"""
 
 
-def get_children(data, line, node, index, stack):
-    k1, k2 = get_keys(line)
-    results = parse_policy(data[index + 1 :], stack)
+def get_children(lines, parent, node, index, stack=None):
+    k1, k2 = is_parent(parent)
+    if not stack:
+        stack = Stack()
+    results = parse_policy(lines, stack)
     if k2:
         node.setdefault(k1, {}).setdefault(k2, {})
         node[k1][k2].update(results)
@@ -94,31 +77,36 @@ def get_children(data, line, node, index, stack):
     return node
 
 
-def parse_policy(data, stack):
-    if len(data) == 1 and len(data[0]) != 1:
-        node = parse_singleton(data[0])
+def parse_policy(lines, stack=None):
+    if len(lines) == 1 and len(lines[0]) != 1:
+        node = parse_singleton(lines[0])
         return node
-    # __import__("pdb").set_trace()
-    node = {}  # TODO: 07/24/2021 | something that returns list or dict
-    for index, line in enumerate(data):
-        stack.update_state(line)
-        if stack.is_balanced():
-            continue
-        if line.endswith("{"):
-            node = get_children(data, line, node, index, stack)
-            return node
+    node = {}
+    if not stack:
+        stack = Stack()
+    for index, line in enumerate(lines):
+        __import__("pdb").set_trace()
+        if line.strip() == "}" or line.endswith("{"):
+            stack.update_state(line)
+            if not stack.is_balanced():
+                if line.endswith("{"):
+                    node = get_children(lines[index + 1 :], line, node, index)
+                else:
+                    node = get_children(lines[index + 1 :], line, node, index, stack)
         else:
             k, v = parse_kv(line, stack)
             node.setdefault(k, v)
+            if stack.is_balanced():
+                return node
     return node
 
 
-# print(dumps(parse_policy(clean_data_chunk(data).splitlines(), stack=Stack()), indent=2))
-try:
-    print(
-        dumps(
-            parse_policy(clean_data_chunk(data).splitlines(), stack=Stack()), indent=2
-        )
-    )
-except:
-    __import__("pdb").post_mortem()
+print(dumps(parse_policy(clean_data_chunk(lines).splitlines()), indent=2))
+# try:
+#     print(
+#         dumps(
+#             parse_policy(clean_lines_chunk(lines).splitlines(), stack=Stack()), indent=2
+#         )
+#     )
+# except:
+#     __import__("pdb").post_mortem()

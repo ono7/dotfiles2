@@ -23,7 +23,7 @@ def clean_data_chunk(chunk):
 class Stack:
     def __init__(self):
         self.stack = []
-        self.state = None
+        self.state = True
         self.last = None
         self.current = None
 
@@ -61,7 +61,7 @@ re_kv = re.compile(r"\S+")
 re_keys = re.compile(r"[^{ ]+")
 
 
-def get_keys(line):
+def is_parent(line):
     results = re_keys.findall(line)
     if results:
         if len(results) > 1:
