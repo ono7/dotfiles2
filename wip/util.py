@@ -23,21 +23,25 @@ def clean_data_chunk(chunk):
 class Stack:
     def __init__(self):
         self.stack = []
-        self.state = True
+        self.state = False
         self.last = None
         self.current = None
+        self.len = 0
+        self.by_who = None
 
     def update_state(self, line):
         self.last = self.current
         self.current = line
         if self.current.endswith("{"):
             self.stack.append("{")
+            self.len += 1
+            self.by_who = line
         elif self.current.strip() == "}":
             self.stack.pop()
-        if len(self.stack) == 0:
-            self.state = True
-        else:
-            self.state = False
+            self.len -= 1
+            if self.len == 0:
+                self.state = True
+                self.by_who = line
         return self.state
 
     def is_balanced(self):

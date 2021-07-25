@@ -49,7 +49,7 @@ lines = """ltm virtual export_me {
     }
     translate-address enabled
     translate-port enabled
-    vs-index 2
+    vs-cursor 2
 }
 """
 
@@ -63,10 +63,8 @@ lines = """ltm virtual export_me {
 """
 
 
-def get_children(lines, parent, node, index, stack=None):
+def get_children(lines, parent, node, stack=None):
     k1, k2 = is_parent(parent)
-    if not stack:
-        stack = Stack()
     results = parse_policy(lines, stack)
     if k2:
         node.setdefault(k1, {}).setdefault(k2, {})
@@ -77,31 +75,35 @@ def get_children(lines, parent, node, index, stack=None):
     return node
 
 
+cursor = 0
+
+
 def parse_policy(lines, stack=None):
+    global cursor
     if len(lines) == 1 and len(lines[0]) != 1:
         node = parse_singleton(lines[0])
         return node
     node = {}
-    if not stack:
-        stack = Stack()
-    for index, line in enumerate(lines):
-        __import__("pdb").set_trace()
-        if line.strip() == "}" or line.endswith("{"):
-            stack.update_state(line)
-            if not stack.is_balanced():
-                if line.endswith("{"):
-                    node = get_children(lines[index + 1 :], line, node, index)
-                else:
-                    node = get_children(lines[index + 1 :], line, node, index, stack)
-        else:
-            k, v = parse_kv(line, stack)
-            node.setdefault(k, v)
-            if stack.is_balanced():
-                return node
+    line = lines[cursor]
+    stack.update_state(line)
+    if stack.is_balanced():
+        return node
+    if line.endswith("{"):
+        newStack = Stack()
+        node = get_children(lines[cursor + 1 :], line, node, newStack)
+        if len(lines[cursor + 1 :]) > 0:
+            results = parse_policy(lines[cursor + 1 :], stack)
+            node.update(results)
+    else:
+        k, v = parse_kv(line, stack)
+        node.setdefault(k, v)
+        cursor += 1
     return node
 
 
-print(dumps(parse_policy(clean_data_chunk(lines).splitlines()), indent=2))
+print(
+    dumps(parse_policy(clean_data_chunk(lines).splitlines(), stack=Stack()), indent=2)
+)
 # try:
 #     print(
 #         dumps(
