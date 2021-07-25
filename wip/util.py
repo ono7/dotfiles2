@@ -76,7 +76,7 @@ def is_parent(line):
     return level1, level2
 
 
-def parse_kv(line, stack):
+def parse_kv(line):
     try:
         if line.endswith('"'):
             k, v = re_quotes.search(line).groups()
@@ -90,7 +90,7 @@ def parse_kv(line, stack):
                 v = v.splitlines()
             return k, v
         k, v = re_kv.findall(line)
-        return k, v
+        return {k: v}
     except Exception as e:
         print(f"error parsing {line}, the exeption was: {e}")
 
