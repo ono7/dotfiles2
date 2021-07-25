@@ -54,6 +54,24 @@ data = """ltm virtual export_me {
 """
 
 
+data = """ltm virtual export_me {
+    description "This is for export.  Export this description."
+    destination 10.1.30.30:https
+    ip-protocol tcp
+    mask 255.255.255.255
+    policies {
+        linux-high { }
+    }
+    pool test-pool
+    source 0.0.0.0/0
+    source-address-translation {
+        type automap
+    }
+    translate-address enabled
+    translate-port enabled
+    vs-index 2
+}
+"""
 d1 = """level1key level1node level2key {
 
     k1 v1
@@ -70,11 +88,10 @@ def get_children(data, line, node, index, stack):
     if k2:
         node.setdefault(k1, {}).setdefault(k2, {})
         node[k1][k2].update(results)
-        return node
     else:
         node.setdefault(k1, {})
         node[k1].update(results)
-        return node
+    return node
 
 
 def parse_policy(data, stack):
@@ -84,16 +101,24 @@ def parse_policy(data, stack):
     # __import__("pdb").set_trace()
     node = {}  # TODO: 07/24/2021 | something that returns list or dict
     for index, line in enumerate(data):
-        stack.update_state(data, index)
+        stack.update_state(line)
         if stack.is_balanced():
             continue
         if line.endswith("{"):
             node = get_children(data, line, node, index, stack)
             return node
         else:
-            k, v = parse_kv(line)
+            k, v = parse_kv(line, stack)
             node.setdefault(k, v)
     return node
 
 
-print(dumps(parse_policy(clean_data_chunk(d1).splitlines(), stack=Stack()), indent=2))
+# print(dumps(parse_policy(clean_data_chunk(data).splitlines(), stack=Stack()), indent=2))
+try:
+    print(
+        dumps(
+            parse_policy(clean_data_chunk(data).splitlines(), stack=Stack()), indent=2
+        )
+    )
+except:
+    __import__("pdb").post_mortem()

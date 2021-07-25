@@ -24,10 +24,12 @@ class Stack:
     def __init__(self):
         self.stack = []
         self.state = None
+        self.last = None
         self.current = None
 
-    def update_state(self, data, index):
-        self.current = data[index]
+    def update_state(self, line):
+        self.last = self.current
+        self.current = line
         if self.current.endswith("{"):
             self.stack.append("{")
         elif self.current.strip() == "}":
@@ -70,15 +72,23 @@ def get_keys(line):
     return level1, level2
 
 
-def parse_kv(line):
+def parse_kv(line, stack):
     try:
         if line.endswith('"'):
-            return re_quotes.search(line).groups()
-        else:
-            return re_kv.findall(line)
+            k, v = re_quotes.search(line).groups()
+            return k, v
+        if line.endswith("{ }"):
+            k, v = re.search("(\S+).*?{([^{}]*)}", line).groups()
+            return k, []
+        if re.findall(r"{.*}", line):
+            k, v = re.search("(\S+).*?{([^{}]*)}", line).groups()
+            if v:
+                v = v.splitlines()
+            return k, v
+        k, v = re_kv.findall(line)
+        return k, v
     except Exception as e:
         print(f"error parsing {line}, the exeption was: {e}")
-        raise
 
 
 def get_container_type(current_line, next_line):
