@@ -54,25 +54,31 @@ def parse_singleton(data):
     return {g1: g2.split()}
 
 
+re_quotes = re.compile(r'\b(\S+) "([^"]+)"$')
+re_kv = re.compile(r"\S+")
+re_keys = re.compile(r"[^{ ]+")
+
+
+def get_keys(line):
+    results = re_keys.findall(line)
+    if results:
+        if len(results) > 1:
+            level2 = results.pop(-1)
+            level1 = ":".join(results)
+            return level1, level2
+        level1, level2 = results[0], None
+    return level1, level2
+
+
 def parse_kv(line):
     try:
-        k, v = re.findall("\S+", line)
+        if line.endswith('"'):
+            return re_quotes.search(line).groups()
+        else:
+            return re_kv.findall(line)
     except Exception as e:
         print(f"error parsing {line}, the exeption was: {e}")
         raise
-    return k, v
-
-
-def parse_quotes(line):
-    parse = re.compile(r'\b(description) "([^"]+)"$')
-    return parse.search(line)
-
-
-def get_parser(current_line):
-    l1 = current_line.strip()
-    if re.search("^(description|caption)", l1):
-        return parse_quotes
-    return parse_kv
 
 
 def get_container_type(current_line, next_line):

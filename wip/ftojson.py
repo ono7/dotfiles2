@@ -13,7 +13,7 @@
 
 import regex as re
 from json import dumps
-from util import Stack, clean_data_chunk, parse_kv, parse_singleton
+from util import Stack, clean_data_chunk, parse_kv, parse_singleton, get_keys
 
 
 data = """ltm virtual export_me {
@@ -59,31 +59,20 @@ d1 = """level1key level1node level2key {
     k1 v1
     k2 v2
     k3 v3
+    k4 "asdfasdfasfsdfasdfasfasf \" asdfsafasfasdfasf'asdf adfa == {{}}'"
 
 }"""
 
 
-def get_keys(line):
-    results = re.findall("[^{ ]+", line)
-    if results:
-        if len(results) > 1:
-            level2 = results.pop(-1)
-            level1 = ":".join(results)
-            return level1, level2
-        level1, level2 = results[0], None
-    return level1, level2
-
-
 def get_children(data, line, node, index, stack):
     k1, k2 = get_keys(line)
+    results = parse_policy(data[index + 1 :], stack)
     if k2:
         node.setdefault(k1, {}).setdefault(k2, {})
-        results = parse_policy(data[index + 1 :], stack)
         node[k1][k2].update(results)
         return node
     else:
         node.setdefault(k1, {})
-        results = parse_policy(data[index + 1 :], stack)
         node[k1].update(results)
         return node
 
@@ -92,7 +81,7 @@ def parse_policy(data, stack):
     if len(data) == 1 and len(data[0]) != 1:
         node = parse_singleton(data[0])
         return node
-    __import__("pdb").set_trace()
+    # __import__("pdb").set_trace()
     node = {}  # TODO: 07/24/2021 | something that returns list or dict
     for index, line in enumerate(data):
         stack.update_state(data, index)
