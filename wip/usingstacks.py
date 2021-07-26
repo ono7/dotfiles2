@@ -57,36 +57,41 @@ storage_stack = []
 stack_of_stacks = []
 
 
-def create_new_stacks(line, stack=None, node=None):
-    node = Storage(*is_parent(line))
-    stack = Stack()
-    stack.update_state(line)
-    storage_stack.append(node)
-    stack_of_stacks.append(stack)
-    return stack, node
+def create_new_objects(line, stack=None, node=None):
+    new_node = Storage(*is_parent(line))
+    new_stack = Stack()
+    new_stack.update_state(line)
+    storage_stack.append(new_node)
+    stack_of_stacks.append(new_stack)
+    return new_stack, new_node
+
+
+def reconcile():
+    this = storage_stack.pop()
+    last = storage_stack.pop()
+    last.update(this.get_store())
+    storage_stack.append(last)
 
 
 # TODO: 07/26/2021 | implement updating parent object after object is closed
+level = 0
 for line in lines.splitlines():
     if line.strip() == "}" and stack.is_balanced():
-        # __import__("pdb").set_trace()
-        if last_node:
-            last_node.update(node.get_store())
+        level -= 1
         continue
     if line.strip() == "}":
+        reconcile()
+        node = storage_stack.pop()
         stack.update_state(line)
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
-            if last_node:
-                last_node.update(node.get_store())
             continue
     if line.endswith("{"):
+        level += 1
         try:
-            last_node = node
-            last_stack = stack
-            stack, node = create_new_stacks(line, stack, node)
+            stack, node = create_new_objects(line, stack, node)
         except NameError:
-            stack, node = create_new_stacks(line)
+            stack, node = create_new_objects(line)
         finally:
             continue
     node.update(parse_kv(line))
@@ -94,13 +99,12 @@ for line in lines.splitlines():
 
 print(stack_of_stacks)
 print(storage_stack)
-
-root = storage_stack[0]
+# root = storage_stack[0]
 # for i, s in enumerate(storage_stack):
 #     if i > 0:
 #         root.update(s.get_store())
 
-print(dumps(root.get_store(), indent=2))
+print(dumps(node.get_store(), indent=2))
 
 # while len(storage_stack) > i:
 #     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
