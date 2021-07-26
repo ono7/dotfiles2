@@ -23,11 +23,11 @@ lines = """ltm virtual export_me {
 
 lines = """ltm virtual export_me {
     pool test-pool
-    testl2 {
-        ktest vtest
+    block1 {
+        block1 block1
     }
-    test3 {
-        other test
+    block2 {
+        block2 block2
     }
 }
 """
@@ -59,13 +59,15 @@ stack_of_stacks = []
 
 
 def create_new_object(line, stack=None, node=None):
-    if node:
-        storage_stack.append(node)
-    if stack:
-        stack_of_stacks.append(stack)
+    # if node:
+    #     storage_stack.append(node)
+    # if stack:
+    #     stack_of_stacks.append(stack)
     node = StoreDict(*is_parent(line))
     stack = Stack()
     stack.update_state(line)
+    storage_stack.append(node)
+    stack_of_stacks.append(stack)
     return stack, node
 
 
@@ -74,12 +76,13 @@ for line in lines.splitlines():
         continue
     elif line.strip() == "}":
         stack.update_state(line)
-        if stack.is_balanced() and len(stack_of_stacks) > 0:
+        __import__("pdb").set_trace()
+        if stack.is_balanced() and len(stack_of_stacks) != 0:
+            stack = stack_of_stacks.pop()
             continue
-        stack = stack_of_stacks.pop()
-        if not stack.is_balanced():
-            continue
-        break
+        # # stack = stack_of_stacks.pop()
+        # if not stack.is_balanced():
+        #     continue
     if line.endswith("{"):
         try:
             last_node = node
