@@ -8,18 +8,24 @@
 
 import regex as re
 from json import dumps
-from util import Stack, clean_data_chunk, parse_kv, parse_singleton, is_parent
+from util import (
+    Stack,
+    Storage,
+    clean_data_chunk,
+    parse_kv,
+    is_parent,
+)
 
-lines = """ltm virtual export_me {
-    policies {
-        linux-high { }
-    }
-    pool test-pool
-    pool1 test-pool
-    pool2 test-pool
-    pool3 test-pool
-}
-"""
+# lines = """ltm virtual export_me {
+#     policies {
+#         linux-high { }
+#     }
+#     pool test-pool
+#     pool1 test-pool
+#     pool2 test-pool
+#     pool3 test-pool
+# }
+# """
 
 lines = """ltm virtual export_me {
     pool test-pool
@@ -35,38 +41,24 @@ lines = """ltm virtual export_me {
 }
 """
 
+lines = """ltm virtual export_me {
+    pool test-pool
+    block1 {
+        block1 block1
+    }
+    pool2 test-pool2
+}
+"""
+
 data = clean_data_chunk(lines)
-
-
-class StoreDict:
-    def __init__(self, k1, k2):
-        self.k1 = k1
-        self.k2 = k2
-        if k2:
-            self.storage = {k1: {k2: {}}}
-        else:
-            self.storage = {k1: {}}
-
-    def update(self, data):
-        if self.k2:
-            self.storage[self.k1][self.k2].update(data)
-        else:
-            self.storage[self.k1].update(data)
-
-    def get_store(self):
-        return self.storage
 
 
 storage_stack = []
 stack_of_stacks = []
 
 
-def create_new_object(line, stack=None, node=None):
-    # if node:
-    #     storage_stack.append(node)
-    # if stack:
-    #     stack_of_stacks.append(stack)
-    node = StoreDict(*is_parent(line))
+def create_new_stacks(line, stack=None, node=None):
+    node = Storage(*is_parent(line))
     stack = Stack()
     stack.update_state(line)
     storage_stack.append(node)
@@ -74,22 +66,27 @@ def create_new_object(line, stack=None, node=None):
     return stack, node
 
 
+# TODO: 07/26/2021 | implement updating parent object after object is closed
 for line in lines.splitlines():
     if line.strip() == "}" and stack.is_balanced():
+        # __import__("pdb").set_trace()
+        if last_node:
+            last_node.update(node.get_store())
         continue
     if line.strip() == "}":
         stack.update_state(line)
-        __import__("pdb").set_trace()
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
+            if last_node:
+                last_node.update(node.get_store())
             continue
     if line.endswith("{"):
         try:
             last_node = node
             last_stack = stack
-            stack, node = create_new_object(line, stack, node)
+            stack, node = create_new_stacks(line, stack, node)
         except NameError:
-            stack, node = create_new_object(line)
+            stack, node = create_new_stacks(line)
         finally:
             continue
     node.update(parse_kv(line))
@@ -99,9 +96,9 @@ print(stack_of_stacks)
 print(storage_stack)
 
 root = storage_stack[0]
-for i, s in enumerate(storage_stack):
-    if i > 0:
-        root.update(s.get_store())
+# for i, s in enumerate(storage_stack):
+#     if i > 0:
+#         root.update(s.get_store())
 
 print(dumps(root.get_store(), indent=2))
 

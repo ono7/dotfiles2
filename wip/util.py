@@ -20,6 +20,25 @@ def clean_data_chunk(chunk):
     return empty_lines.sub("\n", c)
 
 
+class Storage:
+    def __init__(self, k1, k2):
+        self.k1 = k1
+        self.k2 = k2
+        if k2:
+            self.storage = {k1: {k2: {}}}
+        else:
+            self.storage = {k1: {}}
+
+    def update(self, data):
+        if self.k2:
+            self.storage[self.k1][self.k2].update(data)
+        else:
+            self.storage[self.k1].update(data)
+
+    def get_store(self):
+        return self.storage
+
+
 class Stack:
     def __init__(self):
         self.stack = []
