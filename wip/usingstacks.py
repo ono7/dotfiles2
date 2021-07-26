@@ -28,6 +28,9 @@ lines = """ltm virtual export_me {
     }
     block2 {
         block2 block2
+        block3 {
+            block3 block3
+        }
     }
 }
 """
@@ -74,15 +77,12 @@ def create_new_object(line, stack=None, node=None):
 for line in lines.splitlines():
     if line.strip() == "}" and stack.is_balanced():
         continue
-    elif line.strip() == "}":
+    if line.strip() == "}":
         stack.update_state(line)
         __import__("pdb").set_trace()
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
             continue
-        # # stack = stack_of_stacks.pop()
-        # if not stack.is_balanced():
-        #     continue
     if line.endswith("{"):
         try:
             last_node = node
@@ -115,7 +115,10 @@ done 1. strip first line to create root object
 done 2. parse until we find another parent, push old parent to stack, update current object
 done -> using obj stack 4. keep track of objects and update sequences
     factory function?
-5. find end of current object, using Stack() and update final structure and pop from stack
-6. update parent object
+done 5. find end of current object, using Stack() and update final structure and pop from stack
+done 6. update parent object
 done 7. if line is not parent object, continue updating current opbject
+
+8. if nested object, should update last object
+
 """
