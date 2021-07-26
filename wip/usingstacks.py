@@ -57,6 +57,18 @@ class StoreDict:
 storage_stack = []
 stack_of_stacks = []
 
+
+def create_new_object(line, stack=None, node=None):
+    if node:
+        storage_stack.append(node)
+    if stack:
+        stack_of_stacks.append(stack)
+    node = StoreDict(*is_parent(line))
+    stack = Stack()
+    stack.update_state(line)
+    return stack, node
+
+
 for line in lines.splitlines():
     if line.strip() == "}":
         stack.update_state(line)
@@ -67,26 +79,18 @@ for line in lines.splitlines():
             break
     if line.endswith("{"):
         try:
-            if isinstance(node, StoreDict):
-                last_node = node
-                node = StoreDict(*is_parent(line))
-                storage_stack.append(node)
-                last_stack = stack
-                stack_of_stacks.append(stack)
-                stack = Stack()
-                stack.update_state(line)
-                continue
+            last_node = node
+            last_stack = stack
+            stack, node = create_new_object(line, stack, node)
         except NameError:
-            pass
-        node = StoreDict(*is_parent(line))
-        storage_stack.append(node)
-        stack = Stack()
-        stack_of_stacks.append(stack)
-        stack.update_state(line)
-        continue
+            stack, node = create_new_object(line)
+        finally:
+            continue
     node.update(parse_kv(line))
 
+
 i = 0
+print(stack_of_stacks, storage_stack)
 __import__("pdb").set_trace()
 # while len(storage_stack) > i:
 #     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
@@ -94,11 +98,11 @@ __import__("pdb").set_trace()
 
 
 """
-1. strip first line to create root object
-2. parse until we find another parent, push old parent to stack, update current object
-4. keep track of objects and update sequences
+done 1. strip first line to create root object
+done 2. parse until we find another parent, push old parent to stack, update current object
+done -> using obj stack 4. keep track of objects and update sequences
     factory function?
 5. find end of current object, using Stack() and update final structure and pop from stack
 6. update parent object
-7. if line is not parent object, continue updating current opbject
+done 7. if line is not parent object, continue updating current opbject
 """
