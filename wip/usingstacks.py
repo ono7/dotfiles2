@@ -23,14 +23,11 @@ lines = """ltm virtual export_me {
 
 lines = """ltm virtual export_me {
     pool test-pool
-    pool1 test-pool
-    pool2 test-pool
     testl2 {
         ktest vtest
-        ktest1 vtest
-        ktest2 vtest
-        ktest3 vtest
-        ktest4 vtest
+    }
+    test3 {
+        other test
     }
 }
 """
@@ -64,25 +61,36 @@ for line in lines.splitlines():
     if line.strip() == "}":
         stack.update_state(line)
         if stack.is_balanced():
+            if len(stack_of_stacks) > 0:
+                stack = stack_of_stacks.pop()
+                continue
             break
     if line.endswith("{"):
         try:
             if isinstance(node, StoreDict):
+                last_node = node
+                node = StoreDict(*is_parent(line))
                 storage_stack.append(node)
+                last_stack = stack
+                stack_of_stacks.append(stack)
+                stack = Stack()
+                stack.update_state(line)
+                continue
         except NameError:
             pass
         node = StoreDict(*is_parent(line))
+        storage_stack.append(node)
         stack = Stack()
+        stack_of_stacks.append(stack)
         stack.update_state(line)
         continue
     node.update(parse_kv(line))
 
+i = 0
 __import__("pdb").set_trace()
-node.get_store()
-root = storage_stack.pop()
-root.update(node.get_store())
-
-print(dumps(root.get_store(), indent=2))
+# while len(storage_stack) > i:
+#     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
+#     i += 1
 
 
 """
