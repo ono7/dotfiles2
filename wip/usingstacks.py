@@ -89,9 +89,15 @@ for line in lines.splitlines():
     node.update(parse_kv(line))
 
 
-i = 0
 print(stack_of_stacks, storage_stack)
-__import__("pdb").set_trace()
+
+root = storage_stack[0]
+for i, s in enumerate(storage_stack):
+    if i > 0:
+        root.update(s.get_store())
+
+print(dumps(root.get_store(), indent=2))
+
 # while len(storage_stack) > i:
 #     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
 #     i += 1
