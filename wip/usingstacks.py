@@ -70,13 +70,16 @@ def create_new_object(line, stack=None, node=None):
 
 
 for line in lines.splitlines():
-    if line.strip() == "}":
+    if line.strip() == "}" and stack.is_balanced():
+        continue
+    elif line.strip() == "}":
         stack.update_state(line)
-        if stack.is_balanced():
-            if len(stack_of_stacks) > 0:
-                stack = stack_of_stacks.pop()
-                continue
-            break
+        if stack.is_balanced() and len(stack_of_stacks) > 0:
+            continue
+        stack = stack_of_stacks.pop()
+        if not stack.is_balanced():
+            continue
+        break
     if line.endswith("{"):
         try:
             last_node = node
@@ -89,7 +92,8 @@ for line in lines.splitlines():
     node.update(parse_kv(line))
 
 
-print(stack_of_stacks, storage_stack)
+print(stack_of_stacks)
+print(storage_stack)
 
 root = storage_stack[0]
 for i, s in enumerate(storage_stack):
