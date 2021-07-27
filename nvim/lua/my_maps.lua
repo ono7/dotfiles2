@@ -24,6 +24,7 @@ m("v", "<c-e>", "g_", opt)
 --- marks/jumps ---
 m("n", "'", "`", opt)
 m("n", "ma", "mA", opt)
+m("n", "ss", "mS", opt)
 m("n", "mb", "mB", opt)
 m("n", "mc", "mC", opt)
 m("n", "mm", "mM", opt)

@@ -59,6 +59,18 @@ lines = """ltm virtual export_me {
     pool1 test-pool
     policies1 {
         linux-high { }
+        policies8 {
+            linux-high1 { }
+            linux-high2 { }
+            linux-high3 { }
+            linux-high4 { }
+            policies4 {
+                linux-high1 { }
+           }
+        }
+    }
+    policies_last {
+        linux-high { }
     }
 }
 """
@@ -77,14 +89,7 @@ def create_new_objects(line, node=None, level=None):
     """
     new_node = Storage(*is_parent(line))
     if len(storage_stack) > 0:
-        new_node.parent = storage_stack[len(storage_stack) - 1]
-    # if node:
-    #     # storage_stack.insert(level, new_node)
-    #     new_node.parent = node
-    #     if node.parent and len(storage_stack) != 1:
-    #         node.parent.update(node.get_store())
-    #         storage_stack.pop()
-
+        new_node.parent = storage_stack[-1]
     storage_stack.append(new_node)
     new_stack = Stack()
     new_stack.update_state(line)
@@ -92,33 +97,32 @@ def create_new_objects(line, node=None, level=None):
     return new_stack, new_node
 
 
-level = -1
 for line in lines.splitlines():
-    __import__("ipdb").set_trace(context=5)
+    # __import__("ipdb").set_trace(context=5)
     if line.strip() == "}" and stack.is_balanced():
-        level -= 1
-        if node.parent and len(storage_stack) != 1:
-            node.parent.update(node.get_store())
+        if storage_stack[-1].parent and len(storage_stack) != 1:
+            storage_stack[-1].parent.update(storage_stack[-1].get_store())
             storage_stack.pop()
+            stack = stack_of_stacks.pop()
+            node = storage_stack[-1]
         continue
     if line.strip() == "}":
         stack.update_state(line)
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
-            level -= 1
-            if node.parent and len(storage_stack) != 1:
-                node.parent.update(node.get_store())
+            if storage_stack[-1].parent and len(storage_stack) != 1:
+                storage_stack[-1].parent.update(storage_stack[-1].get_store())
                 storage_stack.pop()
+                node = storage_stack[-1]
             continue
     if line.endswith("{"):
-        level += 1
         try:
-            stack, node = create_new_objects(line, node, level)
+            stack, node = create_new_objects(line, node)
         except NameError:
             stack, node = create_new_objects(line)
         finally:
             continue
-    storage_stack[len(storage_stack) - 1].update(parse_kv(line))
+    storage_stack[-1].update(parse_kv(line))
 
 
 print(stack_of_stacks)
@@ -126,3 +130,4 @@ print(storage_stack)
 
 root = storage_stack.pop(0)
 print(dumps(root.get_store(), indent=2))
+print(lines)
