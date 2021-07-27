@@ -69,9 +69,11 @@ stack_of_stacks = []
 
 
 def create_new_objects(line, node=None, level=None):
-    """ if node is defined shift stack so that level and object are aligned """
+    """if node is defined shift stack so that level and object are aligned
+    if there is a previous node, we create a reference to it for updating
+    on the next cycle
+    """
     new_node = Storage(*is_parent(line))
-    # TODO: 07/26/2021 | merge parent here or after we are done?
     if node:
         storage_stack.insert(level, new_node)
         new_node.parent = node
