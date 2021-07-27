@@ -6,7 +6,6 @@
     __author__ = 'Jose Lima'
 """
 
-import regex as re
 from json import dumps
 from util import (
     Stack,
@@ -45,6 +44,11 @@ lines = """ltm virtual export_me {
     pool test-pool
     block1 {
         block1 block1
+        embedblock {
+            em1 em1
+            em2 em2
+            em3 em2
+        }
     }
     pool2 test-pool2
     pool3 test-pool3
@@ -64,12 +68,14 @@ stack_of_stacks = []
 def create_new_objects(line, node=None, level=None):
     """ if node is defined shift stack so that level and object are aligned """
     new_node = Storage(*is_parent(line))
-    new_stack = Stack()
-    new_stack.update_state(line)
+    # TODO: 07/26/2021 | merge parent here or after we are done?
     if node:
         storage_stack.insert(level, new_node)
+        new_node.parent = node
     else:
         storage_stack.append(new_node)
+    new_stack = Stack()
+    new_stack.update_state(line)
     stack_of_stacks.append(new_stack)
     return new_stack, new_node
 
@@ -81,10 +87,7 @@ def reconcile():
     storage_stack.append(last)
 
 
-# TODO: 07/26/2021 | implement updating parent object after object is closed
-# TODO: 07/26/2021 | implement way to track levels for udpates? use dict {"1" : <node id=1>, "2" : <node id=2>}
-# or use storage_stack.pop(level) where level is current level
-# or intead of poping use storage_stack[level].update(node.get_store()) ? this might be simpler and already implemented
+# TODO: 07/26/2021 | implement way for child objects to be updated, maybe check if level is not root <level0>? and do update
 level = -1
 for line in lines.splitlines():
     if line.strip() == "}" and stack.is_balanced():
@@ -99,6 +102,8 @@ for line in lines.splitlines():
     if line.endswith("{"):
         level += 1
         try:
+            if node.parent:
+                node.parent.update(node.get_store())
             stack, node = create_new_objects(line, node, level)
         except NameError:
             stack, node = create_new_objects(line)
@@ -111,18 +116,13 @@ print(stack_of_stacks)
 print(storage_stack)
 
 root = storage_stack.pop(0)
-while len(storage_stack) != 0:
-    n = storage_stack.pop(0)
-    root.update(n.get_store())
+# while len(storage_stack) != 0:
+#     n = storage_stack.pop(0)
+#     root.update(n.get_store())
 
 print(dumps(root.get_store(), indent=2))
 
-# while len(storage_stack) > i:
-#     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
-#     i += 1
-
-
-"""
+todos = """
 done 1. strip first line to create root object
 done 2. parse until we find another parent, push old parent to stack, update current object
 done -> using obj stack 4. keep track of objects and update sequences

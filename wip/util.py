@@ -24,6 +24,7 @@ class Storage:
     def __init__(self, k1, k2):
         self.k1 = k1
         self.k2 = k2
+        self.parent = None
         if k2:
             self.storage = {k1: {k2: {}}}
         else:
