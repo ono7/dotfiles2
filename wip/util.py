@@ -83,6 +83,7 @@ def parse_singleton(data):
 re_quotes = re.compile(r'\b(\S+) "([^"]+)"$')
 re_kv = re.compile(r"\S+")
 re_keys = re.compile(r"[^{ ]+")
+re_list = re.compile(r"(\S+) {(?:([^{}]*))}")
 
 
 def is_parent(line):
@@ -102,7 +103,7 @@ def parse_kv(line):
             k, v = re_quotes.search(line).groups()
             return {k: v}
         if re.findall(r"{.*}", line):
-            k, v = re.search("(\S+) {(?:([^{}]*))}", line).groups()
+            k, v = re_list.search(line).groups()
             if v != " ":
                 v = v.split()
             else:
@@ -111,7 +112,7 @@ def parse_kv(line):
         k, v = re_kv.findall(line)
         return {k: v}
     except Exception as e:
-        print(f"error parsing {line}, the exeption was: {e}")
+        print(f"well, this didnt workout.. {line}, the exeption was: {e}")
 
 
 def get_container_type(current_line, next_line):
