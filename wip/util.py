@@ -31,6 +31,22 @@ def clean_data_chunk(chunk):
     return empty_lines.sub("\n", c)
 
 
+def create_new_objects(line, storage_stack, obj_stack):
+    """creates new storage and this_stack objects
+    if the the storage this_stack contains a previous object
+    this current object's parent attribute is set
+    this allows a direct update once we encounter and end of a block }
+    """
+    new_node = Storage(*is_parent(line))
+    if len(storage_stack) > 0:
+        new_node.parent = storage_stack[-1]
+    storage_stack.append(new_node)
+    new_stack = Stack()
+    new_stack.update_state(line)
+    obj_stack.append(new_stack)
+    return new_stack
+
+
 class Storage:
     """ storage container for stanza configs """
 
