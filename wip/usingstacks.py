@@ -7,6 +7,7 @@
 """
 
 from json import dumps
+from base64 import b64encode
 from util import (
     Stack,
     Storage,
@@ -48,6 +49,12 @@ lines = """analitics gui-widget /Common/uidasf821312b {
     cent-report-destination-type self
     guie-pagecode _ov_test
     metrics { count drop_count total_count }
+    profiles {
+        asm-longprofileblahblahblah { }
+        test {
+            pr1 val1
+        }
+    }
     metrics2 { }
     module d1test
     order-on-page 2
@@ -101,7 +108,7 @@ def parse_policy(policy):
             this_stack = create_new_objects(line, storage_stack, obj_stack)
             continue
         storage_stack[-1].update(parse_kv(line))
-    storage_stack[0].update({"ori_cfg": policy})
+    storage_stack[0].update({"ori_cfg_b64": f"{b64encode(policy.encode())}"})
     return storage_stack[0].get_store()
 
 
