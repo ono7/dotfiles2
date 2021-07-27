@@ -79,14 +79,8 @@ lines = """ltm virtual export_me {
 }
 """
 
-data = clean_data_chunk(lines)
 
-
-storage_stack = []
-stack_of_stacks = []
-
-
-def create_new_objects(line):
+def create_new_objects(line, storage_stack, stack_of_stacks):
     """creates new storage and stack objects
     if the the storage stack contains a previous object
     this current object's parent attribute is set
@@ -102,31 +96,33 @@ def create_new_objects(line):
     return new_stack
 
 
-for line in lines.splitlines():
-    # __import__("ipdb").set_trace(context=5)
-    if line.strip() == "}" and stack.is_balanced():
-        if storage_stack[-1].parent and len(storage_stack) != 1:
-            storage_stack[-1].parent.update(storage_stack[-1].get_store())
-            storage_stack.pop()
-            stack = stack_of_stacks.pop()
-        continue
-    if line.strip() == "}":
-        stack.update_state(line)
-        if stack.is_balanced() and len(stack_of_stacks) != 0:
-            stack = stack_of_stacks.pop()
+# TODO: 07/27/2021 |  deal with special structures, e.g. asm
+def parse_policy(policy):
+    lines = clean_data_chunk(policy)
+    storage_stack = []
+    stack_of_stacks = []
+    for line in lines.splitlines():
+        # __import__("ipdb").set_trace(context=5)
+        if line.strip() == "}" and stack.is_balanced():
             if storage_stack[-1].parent and len(storage_stack) != 1:
                 storage_stack[-1].parent.update(storage_stack[-1].get_store())
                 storage_stack.pop()
+                stack = stack_of_stacks.pop()
             continue
-    if line.endswith("{"):
-        stack = create_new_objects(line)
-        continue
-    storage_stack[-1].update(parse_kv(line))
+        if line.strip() == "}":
+            stack.update_state(line)
+            if stack.is_balanced() and len(stack_of_stacks) != 0:
+                stack = stack_of_stacks.pop()
+                if storage_stack[-1].parent and len(storage_stack) != 1:
+                    storage_stack[-1].parent.update(storage_stack[-1].get_store())
+                    storage_stack.pop()
+                continue
+        if line.endswith("{"):
+            stack = create_new_objects(line, storage_stack, stack_of_stacks)
+            continue
+        storage_stack[-1].update(parse_kv(line))
+    return storage_stack[0].get_store()
 
 
-print(stack_of_stacks)
-print(storage_stack)
-
-root = storage_stack.pop(0)
-print(dumps(root.get_store(), indent=2))
+print(dumps(parse_policy(lines), indent=2))
 print(lines)
