@@ -47,6 +47,10 @@ lines = """ltm virtual export_me {
         block1 block1
     }
     pool2 test-pool2
+    pool3 test-pool3
+    block2 {
+        block2 block2
+    }
 }
 """
 
@@ -57,11 +61,14 @@ storage_stack = []
 stack_of_stacks = []
 
 
-def create_new_objects(line, stack=None, node=None):
+def create_new_objects(line, stack=None, node=None, level=None):
     new_node = Storage(*is_parent(line))
     new_stack = Stack()
     new_stack.update_state(line)
-    storage_stack.append(new_node)
+    if node:
+        storage_stack.insert(level, new_node)
+    else:
+        storage_stack.append(new_node)
     stack_of_stacks.append(new_stack)
     return new_stack, new_node
 
@@ -74,30 +81,34 @@ def reconcile():
 
 
 # TODO: 07/26/2021 | implement updating parent object after object is closed
-level = 0
+# TODO: 07/26/2021 | implement way to track levels for udpates? use dict {"1" : <node id=1>, "2" : <node id=2>}
+# or use storage_stack.pop(level) where level is current level
+# or intead of poping use storage_stack[level].update(node.get_store()) ? this might be simpler and already implemented
+level = -1
 for line in lines.splitlines():
     if line.strip() == "}" and stack.is_balanced():
         level -= 1
         continue
     if line.strip() == "}":
-        reconcile()
-        node = storage_stack.pop()
         stack.update_state(line)
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
+            level -= 1
             continue
     if line.endswith("{"):
         level += 1
         try:
-            stack, node = create_new_objects(line, stack, node)
+            stack, node = create_new_objects(line, stack, node, level)
         except NameError:
             stack, node = create_new_objects(line)
         finally:
             continue
-    node.update(parse_kv(line))
+    __import__("pdb").set_trace()
+    storage_stack[level].update(parse_kv(line))
 
 
 print(stack_of_stacks)
+__import__("ipdb").set_trace(context=10)
 print(storage_stack)
 # root = storage_stack[0]
 # for i, s in enumerate(storage_stack):
