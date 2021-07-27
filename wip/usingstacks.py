@@ -57,6 +57,9 @@ lines = """ltm virtual export_me {
     }
     pool test-pool
     pool1 test-pool
+    policies1 {
+        linux-high { }
+    }
 }
 """
 
@@ -73,13 +76,16 @@ def create_new_objects(line, node=None, level=None):
     on the next cycle
     """
     new_node = Storage(*is_parent(line))
-    if node:
-        if node.parent:
-            node.parent.update(node.get_store())
-        storage_stack.insert(level, new_node)
-        new_node.parent = node
-    else:
-        storage_stack.append(new_node)
+    if len(storage_stack) > 0:
+        new_node.parent = storage_stack[len(storage_stack) - 1]
+    # if node:
+    #     # storage_stack.insert(level, new_node)
+    #     new_node.parent = node
+    #     if node.parent and len(storage_stack) != 1:
+    #         node.parent.update(node.get_store())
+    #         storage_stack.pop()
+
+    storage_stack.append(new_node)
     new_stack = Stack()
     new_stack.update_state(line)
     stack_of_stacks.append(new_stack)
@@ -88,18 +94,21 @@ def create_new_objects(line, node=None, level=None):
 
 level = -1
 for line in lines.splitlines():
+    __import__("ipdb").set_trace(context=5)
     if line.strip() == "}" and stack.is_balanced():
         level -= 1
-        if node.parent:
+        if node.parent and len(storage_stack) != 1:
             node.parent.update(node.get_store())
+            storage_stack.pop()
         continue
     if line.strip() == "}":
         stack.update_state(line)
         if stack.is_balanced() and len(stack_of_stacks) != 0:
             stack = stack_of_stacks.pop()
             level -= 1
-            if node.parent:
+            if node.parent and len(storage_stack) != 1:
                 node.parent.update(node.get_store())
+                storage_stack.pop()
             continue
     if line.endswith("{"):
         level += 1
@@ -109,7 +118,7 @@ for line in lines.splitlines():
             stack, node = create_new_objects(line)
         finally:
             continue
-    storage_stack[level].update(parse_kv(line))
+    storage_stack[len(storage_stack) - 1].update(parse_kv(line))
 
 
 print(stack_of_stacks)
