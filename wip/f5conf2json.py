@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-""" converts things to JSON
+""" converts f5 stanza config blocks to JSON
 
     Thu Jul 22 00:09:24 2021
 
