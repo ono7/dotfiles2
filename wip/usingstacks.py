@@ -44,6 +44,20 @@ lines = """ltm virtual export_me {
 }
 """
 
+lines = """analitics gui-widget /Common/uidasf821312b {
+    cent-report-destination-type self
+    guie-pagecode _ov_test
+    metrics { count drop_count total_count }
+    metrics2 { }
+    module d1test
+    order-on-page 2
+    period 86400
+    username first
+    view-by d1_action
+    widget-type 2
+}
+"""
+
 
 def create_new_objects(line, storage_stack, obj_stack):
     """creates new storage and this_stack objects
@@ -87,7 +101,7 @@ def parse_policy(policy):
             this_stack = create_new_objects(line, storage_stack, obj_stack)
             continue
         storage_stack[-1].update(parse_kv(line))
-    storage_stack[0].update({"cfg_dump": policy})
+    storage_stack[0].update({"ori_cfg": policy})
     return storage_stack[0].get_store()
 
 

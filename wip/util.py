@@ -103,7 +103,9 @@ def parse_kv(line):
             return {k: v}
         if re.findall(r"{.*}", line):
             k, v = re.search("(\S+) {(?:([^{}]*))}", line).groups()
-            if v == " ":
+            if v != " ":
+                v = v.split()
+            else:
                 v = []
             return {k: v}
         k, v = re_kv.findall(line)
