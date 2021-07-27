@@ -100,15 +100,12 @@ def parse_kv(line):
     try:
         if line.endswith('"'):
             k, v = re_quotes.search(line).groups()
-            return k, v
-        if line.endswith("{ }"):
-            k, v = re.search("(\S+).*?{([^{}]*)}", line).groups()
-            return k, []
+            return {k: v}
         if re.findall(r"{.*}", line):
-            k, v = re.search("(\S+).*?{([^{}]*)}", line).groups()
-            if v:
-                v = v.splitlines()
-            return k, v
+            k, v = re.search("(\S+) {(?:([^{}]*))}", line).groups()
+            if v == " ":
+                v = []
+            return {k: v}
         k, v = re_kv.findall(line)
         return {k: v}
     except Exception as e:

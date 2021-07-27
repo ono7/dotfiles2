@@ -15,51 +15,49 @@ from util import (
     is_parent,
 )
 
+lines = """ltm virtual export_me {
+    policies {
+        linux-high { }
+    }
+    pool test-pool
+    pool1 test-pool
+}
+"""
+
 # lines = """ltm virtual export_me {
-#     policies {
-#         linux-high { }
-#     }
 #     pool test-pool
-#     pool1 test-pool
-#     pool2 test-pool
-#     pool3 test-pool
+#     block1 {
+#         block1 block1
+#     }
+#     block2 {
+#         block2 block2
+#         block3 {
+#             block3 block3
+#         }
+#     }
 # }
 # """
 
-lines = """ltm virtual export_me {
-    pool test-pool
-    block1 {
-        block1 block1
-    }
-    block2 {
-        block2 block2
-        block3 {
-            block3 block3
-        }
-    }
-}
-"""
-
-lines = """ltm virtual export_me {
-    pool test-pool
-    block1 {
-        block1 block1
-        embedblock {
-            em1 em1
-            em2 em2
-            em3 em2
-            embed2 {
-                test test
-            }
-        }
-    }
-    pool2 test-pool2
-    pool3 test-pool3
-    block2 {
-        block2 block2
-    }
-}
-"""
+# lines = """ltm virtual export_me {
+#     pool test-pool
+#     block1 {
+#         block1 block1
+#         embedblock {
+#             em1 em1
+#             em2 em2
+#             em3 em2
+#             embed2 {
+#                 test test
+#             }
+#         }
+#     }
+#     pool2 test-pool2
+#     pool3 test-pool3
+#     block2 {
+#         block2 block2
+#     }
+# }
+# """
 
 data = clean_data_chunk(lines)
 
@@ -85,16 +83,9 @@ def create_new_objects(line, node=None, level=None):
     return new_stack, new_node
 
 
-def reconcile():
-    this = storage_stack.pop()
-    last = storage_stack.pop()
-    last.update(this.get_store())
-    storage_stack.append(last)
-
-
-# TODO: 07/26/2021 | implement way for child objects to be updated, maybe check if level is not root <level0>? and do update
 level = -1
 for line in lines.splitlines():
+    __import__("ipdb").set_trace(context=5)
     if line.strip() == "}" and stack.is_balanced():
         level -= 1
         continue
