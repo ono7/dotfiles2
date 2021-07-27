@@ -45,9 +45,9 @@ lines = """ltm virtual export_me {
 """
 
 
-def create_new_objects(line, storage_stack, stack_of_stacks):
-    """creates new storage and stack objects
-    if the the storage stack contains a previous object
+def create_new_objects(line, storage_stack, obj_stack):
+    """creates new storage and this_stack objects
+    if the the storage this_stack contains a previous object
     this current object's parent attribute is set
     this allows a direct update once we encounter and end of a block }
     """
@@ -57,33 +57,34 @@ def create_new_objects(line, storage_stack, stack_of_stacks):
     storage_stack.append(new_node)
     new_stack = Stack()
     new_stack.update_state(line)
-    stack_of_stacks.append(new_stack)
+    obj_stack.append(new_stack)
     return new_stack
 
 
 # TODO: 07/27/2021 |  deal with special structures, e.g. asm
 def parse_policy(policy):
-    lines = clean_data_chunk(policy)
+    """ creates this_stack"""
+    lines = clean_data_chunk(policy).splitlines()
     storage_stack = []
-    stack_of_stacks = []
-    for index, line in enumerate(lines.splitlines()):
+    obj_stack = []
+    for index, line in enumerate(lines):
         # __import__("ipdb").set_trace(context=5)
-        if line.strip() == "}" and stack.is_balanced():
+        if line.strip() == "}" and this_stack.is_balanced():
             if storage_stack[-1].parent and len(storage_stack) != 1:
                 storage_stack[-1].parent.update(storage_stack[-1].get_store())
                 storage_stack.pop()
-                stack = stack_of_stacks.pop()
+                this_stack = obj_stack.pop()
             continue
         if line.strip() == "}":
-            stack.update_state(line)
-            if stack.is_balanced() and len(stack_of_stacks) != 0:
-                stack = stack_of_stacks.pop()
+            this_stack.update_state(line)
+            if this_stack.is_balanced() and len(obj_stack) != 0:
+                this_stack = obj_stack.pop()
                 if storage_stack[-1].parent and len(storage_stack) != 1:
                     storage_stack[-1].parent.update(storage_stack[-1].get_store())
                     storage_stack.pop()
                 continue
         if line.endswith("{"):  # TODO: 07/27/2021 | deal with special structures here
-            stack = create_new_objects(line, storage_stack, stack_of_stacks)
+            this_stack = create_new_objects(line, storage_stack, obj_stack)
             continue
         storage_stack[-1].update(parse_kv(line))
     return storage_stack[0].get_store()
