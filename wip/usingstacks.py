@@ -9,11 +9,8 @@
 from json import dumps
 from base64 import b64encode
 from util import (
-    Stack,
-    Storage,
     clean_data_chunk,
     parse_kv,
-    is_parent,
     create_new_objects,
 )
 
@@ -69,7 +66,7 @@ lines = """analitics gui-widget /Common/uidasf821312b {
 
 # TODO: 07/27/2021 |  deal with special structures, e.g. asm
 def parse_policy(policy):
-    """ creates this_stack"""
+    """ parse a stanza object from f5 and return python dict """
     lines = clean_data_chunk(policy).splitlines()
     storage_stack = []
     obj_stack = []
