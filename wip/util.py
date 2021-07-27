@@ -1,5 +1,16 @@
 #!/usr/bin/env python
-""" implements new stack
+""" Utilities for implementing stacks to track stanza config objects
+
+    e.g.
+
+    virtual-server /Common/best_vs {
+        attributes {
+            key1 value1
+            key2 value2
+        }
+        emtpy-definition { }
+    }
+
 
     Fri Jul 23 13:11:27 2021
 
@@ -21,7 +32,9 @@ def clean_data_chunk(chunk):
 
 
 class Storage:
-    def __init__(self, k1, k2):
+    """ storage container for stanza configs """
+
+    def __init__(self, k1, k2=None):
         self.k1 = k1
         self.k2 = k2
         self.parent = None
@@ -41,6 +54,8 @@ class Storage:
 
 
 class Stack:
+    """ returns a stack, keeps track of stanza config blocks x{ }"""
+
     def __init__(self):
         self.stack = []
         self.state = False
@@ -87,6 +102,15 @@ re_list = re.compile(r"(\S+) {(?:([^{}]*))}")
 
 
 def is_parent(line):
+    """if the line ends with  `word {`, this represents the start of a
+    new objectk if a line is multiple words:
+        `word1 word2 /Common/blah {}`
+    we pair the first 2 words to represent the parent key
+    and return a nested structure:
+        -> {"word1:word2" : {"/Common/blahs" : {}}
+    other wise if the line is `word1 {}`
+        -> {"word1" : {}}
+    """
     results = re_keys.findall(line)
     if results:
         if len(results) > 1:
@@ -98,6 +122,7 @@ def is_parent(line):
 
 
 def parse_kv(line):
+    """ parses the inner objects of a stanza block of config """
     try:
         if line.endswith('"'):
             k, v = re_quotes.search(line).groups()
@@ -116,6 +141,7 @@ def parse_kv(line):
 
 
 def get_container_type(current_line, next_line):
+    """ not implemented, hold for later use """
     l1 = current_line.strip()
     l2 = next_line.strip()
     if re.search("{(\s*?)?}$", l1) and re.search("^{", l2):
