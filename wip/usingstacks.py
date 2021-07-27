@@ -52,6 +52,7 @@ from util import (
 # """
 
 lines = """ltm virtual export_me {
+    description "THIS IS A DESC!!! {} }{{{}}}"
     policies {
         linux-high { }
     }
@@ -71,6 +72,9 @@ lines = """ltm virtual export_me {
     }
     policies_last {
         linux-high { }
+        policies4 {
+            linux-high1 { }
+       }
     }
 }
 """
@@ -82,10 +86,11 @@ storage_stack = []
 stack_of_stacks = []
 
 
-def create_new_objects(line, node=None, level=None):
-    """if node is defined shift stack so that level and object are aligned
-    if there is a previous node, we create a reference to it for updating
-    on the next cycle
+def create_new_objects(line):
+    """creates new storage and stack objects
+    if the the storage stack contains a previous object
+    this current object's parent attribute is set
+    this allows a direct update once we encounter and end of a block }
     """
     new_node = Storage(*is_parent(line))
     if len(storage_stack) > 0:
@@ -94,7 +99,7 @@ def create_new_objects(line, node=None, level=None):
     new_stack = Stack()
     new_stack.update_state(line)
     stack_of_stacks.append(new_stack)
-    return new_stack, new_node
+    return new_stack
 
 
 for line in lines.splitlines():
@@ -104,7 +109,6 @@ for line in lines.splitlines():
             storage_stack[-1].parent.update(storage_stack[-1].get_store())
             storage_stack.pop()
             stack = stack_of_stacks.pop()
-            node = storage_stack[-1]
         continue
     if line.strip() == "}":
         stack.update_state(line)
@@ -113,15 +117,10 @@ for line in lines.splitlines():
             if storage_stack[-1].parent and len(storage_stack) != 1:
                 storage_stack[-1].parent.update(storage_stack[-1].get_store())
                 storage_stack.pop()
-                node = storage_stack[-1]
             continue
     if line.endswith("{"):
-        try:
-            stack, node = create_new_objects(line, node)
-        except NameError:
-            stack, node = create_new_objects(line)
-        finally:
-            continue
+        stack = create_new_objects(line)
+        continue
     storage_stack[-1].update(parse_kv(line))
 
 
