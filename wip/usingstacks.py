@@ -16,50 +16,39 @@ from util import (
 
 
 lines = """ltm virtual export_me {
-    description "THIS IS A DESC!!! {} }{{{}}}"
+    description "This is for export.  Export this description."
+    destination 10.1.30.30:https
+    ip-protocol tcp
+    mask 255.255.255.255
     policies {
         linux-high { }
     }
     pool test-pool
-    pool1 test-pool
-    policies1 {
-        linux-high { }
-        policies8 {
-            linux-high1 { }
-            linux-high2 { }
-            linux-high3 { }
-            linux-high4 { }
-            policies4 {
-                linux-high1 { }
-           }
-        }
-    }
-    policies_last {
-        linux-high { }
-        policies4 {
-            linux-high1 { }
-       }
-    }
-}
-"""
-
-lines = """analitics gui-widget /Common/uidasf821312b {
-    cent-report-destination-type self
-    guie-pagecode _ov_test
-    metrics { count drop_count total_count }
     profiles {
-        asm-longprofileblahblahblah { }
-        test {
-            pr1 val1
+    ASM_asm-policy-linux-high-security_policy { }
+        clientssl {
+        context clientside
         }
+        http { }
+        serverssl {
+        context serverside
+        }
+        tcp-lan-optimized {
+
+        context serverside
+        }
+        tcp-wan-optimized {
+        context clientside
+        }
+        websecurity { }
     }
-    metrics2 { }
-    module d1test
-    order-on-page 2
-    period 86400
-    username first
-    view-by d1_action
-    widget-type 2
+    source 0.0.0.0/0
+    source-address-translation {
+        type automap
+    }
+    translate-address enabled
+    translate-port enabled
+    vs-cursor 2
 }
 """
 
