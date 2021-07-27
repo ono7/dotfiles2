@@ -16,41 +16,6 @@ from util import (
 )
 
 
-# lines = """ltm virtual export_me {
-#     pool test-pool
-#     block1 {
-#         block1 block1
-#     }
-#     block2 {
-#         block2 block2
-#         block3 {
-#             block3 block3
-#         }
-#     }
-# }
-# """
-
-# lines = """ltm virtual export_me {
-#     pool test-pool
-#     block1 {
-#         block1 block1
-#         embedblock {
-#             em1 em1
-#             em2 em2
-#             em3 em2
-#             embed2 {
-#                 test test
-#             }
-#         }
-#     }
-#     pool2 test-pool2
-#     pool3 test-pool3
-#     block2 {
-#         block2 block2
-#     }
-# }
-# """
-
 lines = """ltm virtual export_me {
     description "THIS IS A DESC!!! {} }{{{}}}"
     policies {
@@ -101,7 +66,7 @@ def parse_policy(policy):
     lines = clean_data_chunk(policy)
     storage_stack = []
     stack_of_stacks = []
-    for line in lines.splitlines():
+    for index, line in enumerate(lines.splitlines()):
         # __import__("ipdb").set_trace(context=5)
         if line.strip() == "}" and stack.is_balanced():
             if storage_stack[-1].parent and len(storage_stack) != 1:
@@ -117,7 +82,7 @@ def parse_policy(policy):
                     storage_stack[-1].parent.update(storage_stack[-1].get_store())
                     storage_stack.pop()
                 continue
-        if line.endswith("{"):
+        if line.endswith("{"):  # TODO: 07/27/2021 | deal with special structures here
             stack = create_new_objects(line, storage_stack, stack_of_stacks)
             continue
         storage_stack[-1].update(parse_kv(line))
