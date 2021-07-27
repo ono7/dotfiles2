@@ -48,6 +48,9 @@ lines = """ltm virtual export_me {
             em1 em1
             em2 em2
             em3 em2
+            embed2 {
+                test test
+            }
         }
     }
     pool2 test-pool2
