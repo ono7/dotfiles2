@@ -61,7 +61,8 @@ storage_stack = []
 stack_of_stacks = []
 
 
-def create_new_objects(line, stack=None, node=None, level=None):
+def create_new_objects(line, node=None, level=None):
+    """ if node is defined shift stack so that level and object are aligned """
     new_node = Storage(*is_parent(line))
     new_stack = Stack()
     new_stack.update_state(line)
@@ -98,24 +99,23 @@ for line in lines.splitlines():
     if line.endswith("{"):
         level += 1
         try:
-            stack, node = create_new_objects(line, stack, node, level)
+            stack, node = create_new_objects(line, node, level)
         except NameError:
             stack, node = create_new_objects(line)
         finally:
             continue
-    __import__("pdb").set_trace()
     storage_stack[level].update(parse_kv(line))
 
 
 print(stack_of_stacks)
-__import__("ipdb").set_trace(context=10)
 print(storage_stack)
-# root = storage_stack[0]
-# for i, s in enumerate(storage_stack):
-#     if i > 0:
-#         root.update(s.get_store())
 
-print(dumps(node.get_store(), indent=2))
+root = storage_stack.pop(0)
+while len(storage_stack) != 0:
+    n = storage_stack.pop(0)
+    root.update(n.get_store())
+
+print(dumps(root.get_store(), indent=2))
 
 # while len(storage_stack) > i:
 #     print(dumps(storage_stack[0].update(storage_stack[i + 1].get_store()), indent=2))
