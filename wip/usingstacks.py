@@ -87,6 +87,7 @@ def parse_policy(policy):
             this_stack = create_new_objects(line, storage_stack, obj_stack)
             continue
         storage_stack[-1].update(parse_kv(line))
+    storage_stack[0].update({"cfg_dump": policy})
     return storage_stack[0].get_store()
 
 
