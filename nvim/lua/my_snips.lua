@@ -56,7 +56,7 @@ setup(
 import logging
 
 logging.basicConfig(
-    format="%(asctime)s %(name)s %(levelname)s : %(message)s",
+    format="%(levelname)s %(asctime)s %(name)s : %(message)s",
     datefmt="%m/%d/%Y %I:%M:%S",
     filename="error.log",
     filemode="w",
