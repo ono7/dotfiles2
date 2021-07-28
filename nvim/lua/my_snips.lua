@@ -51,6 +51,19 @@ setup(
         ]
 },
 )
+]],
+    log = [[
+import logging
+
+logging.basicConfig(
+    format="%(asctime)s %(name)s %(levelname)s : %(message)s",
+    datefmt="%m/%d/%Y %I:%M:%S",
+    filename="error.log",
+    filemode="w",
+    level=logging.WARNING,
+)
+logger = logging.getLogger(__name__)
+# logger.error(e, exc_info=True)
 ]]
   },
   yaml = {

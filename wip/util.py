@@ -54,7 +54,7 @@ class Storage:
         self.k1 = k1
         self.k2 = k2
         self.parent = None
-        if k2:
+        if isinstance(k2, str):
             self.storage = {k1: {k2: {}}}
         else:
             self.storage = {k1: {}}
