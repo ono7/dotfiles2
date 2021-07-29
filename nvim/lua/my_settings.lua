@@ -4,7 +4,8 @@ local wo = vim.wo
 local bo = vim.bo
 
 --- global options ---
-o.completeopt = "menuone,noinsert,noselect"
+-- o.completeopt = "menuone,noinsert,noselect"
+o.completeopt = "longest,menuone"
 o.foldmethod = "indent"
 o.title = false
 o.termguicolors = true

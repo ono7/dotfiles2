@@ -290,7 +290,7 @@ M.setup = function()
   M.highlight("VimwikiHeader6", {fg = M.colors.cyan, gui = "bold"})
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
-  M.highlight("Whitespace", {fg = M.colors.cyan})
+  M.highlight("Whitespace", {fg = M.colors.light_grey})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
   M.link("gitcommitUntracked", "gitcommitComment")

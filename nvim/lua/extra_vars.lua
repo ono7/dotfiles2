@@ -5,7 +5,6 @@ M.legacy_cfg =
 " Follow the white rabbit
 
 let mapleader = ";"
-
 let g:loaded_matchit = 1
 let g:loaded_logiPat = 1
 let g:loaded_rrhelper = 1
@@ -28,6 +27,9 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
+
+" remove ~
+let &fcs='eob: '
 
 set synmaxcol=512
 set nocompatible
@@ -243,7 +245,7 @@ hi!  Comment       ctermfg=8     guifg=#5C6370
 hi!  Search        ctermfg=7     ctermbg=8      guibg=none
 hi!  Error         ctermfg=1     ctermbg=none
 hi!  link          ErrorMsg      Error
-hi!  Whitespace    term=none     ctermbg=none   ctermfg=8       guifg=#e78a4e         guibg=none
+hi!  Whitespace    term=none     ctermbg=none   ctermfg=15       guifg=#939eb3         guibg=none
 hi!  Visual        term=none     ctermbg=242    guibg=#3E4452   ctermfg=none          cterm=none
 hi!  VertSplit     term=none     ctermbg=none   ctermfg=8       gui=none              guibg=none          guifg=#5C6370  cterm=none
 hi!  PmenuSel      ctermbg=238   guibg=#3E4452  ctermfg=none    guifg=none
@@ -252,7 +254,9 @@ hi!  link          LineNr        Comment
 hi!  link          CursorLineNr  String
 hi!  EndOfBuffer   ctermbg=none  guifg=#23272e  ctermfg=236
 hi!  link          MsgArea       Comment
-hi!  clear         ModeMsg
+hi!  ModeMsg       term=italic   ctermfg=8      gui=italic     guifg=#939eb3
+hi!  MoreMsg       term=italic   ctermfg=7      gui=italic     guifg=#939eb3
+hi!  MsgArea       ctermfg=8     guifg=#939eb3
 hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379
 hi!  DiffDelete    ctermfg=0     ctermbg=1      gui=none        guifg=Black           guibg=#E06C75
 hi!  DiffChange    ctermfg=0     ctermbg=4      gui=none        guifg=Black           guibg=#61AFEF
