@@ -144,6 +144,7 @@ vim.api.nvim_exec([[let &fcs='eob: ']], false)
   pip install black pylint yamllint
 
   echo system('base64 -d', @")
+  :<c-f> (command search)
 
     -- Lima
 
