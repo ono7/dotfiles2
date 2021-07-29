@@ -22,8 +22,6 @@ g.loaded_rrhelper = 1
 g.loaded_tarPlugin = 1
 g.loaded_spellfile_plugin = 1
 g.loaded_remote_plugins = 1
--- g.loaded_shada_plugin = 1
--- g.loaded_matchit = 1
 
 --- provider settings ---
 g.python_host_skip_check = 1
@@ -144,6 +142,8 @@ vim.api.nvim_exec([[let &fcs='eob: ']], false)
 
   npm install lua-fmt prettier pyright -g
   pip install black pylint yamllint
+
+  echo system('base64 -d', @")
 
     -- Lima
 

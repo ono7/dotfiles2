@@ -37,6 +37,7 @@ M.colors = {
   dimm_black = "#1c1c1c",
   dark_black = "#1a1a1a",
   comment_grey = "#5C6370",
+  light_grey = "#939eb3",
   gutter_fg_grey = "#4B5263",
   cursor_grey = "#2C323C",
   visual_grey = "#3E4452",
@@ -50,7 +51,7 @@ M.setup = function()
   vim.cmd [[highlight clear]]
   vim.cmd [[syntax reset]]
 
-  M.highlight("MsgArea", {fg = M.colors.comment_grey})
+  M.highlight("MsgArea", {fg = M.colors.light_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
   M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
@@ -109,8 +110,8 @@ M.setup = function()
   M.highlight("LineNr", {fg = M.colors.gutter_fg_grey})
   M.highlight("CursorLineNr", {fg = M.colors.green})
   M.highlight("MatchParen", {fg = M.colors.white, bg = M.colors.visual_grey, gui = "bold,underline"})
-  M.highlight("ModeMsg", {})
-  M.highlight("MoreMsg", {fg = M.colors.white})
+  M.highlight("ModeMsg", {gui = "italic"})
+  M.highlight("MoreMsg", {fg = M.colors.white, gui = "italic"})
   M.highlight("NonText", {fg = M.colors.blue})
   -- M.highlight("NonText", {fg = M.colors.special_grey})
   M.highlight("Normal", {fg = M.colors.white})
@@ -118,7 +119,7 @@ M.setup = function()
   M.highlight("PmenuSel", {bg = M.colors.special_grey, gui = "reverse"})
   M.highlight("PmenuSbar", {bg = M.colors.special_grey})
   M.highlight("PmenuThumb", {bg = M.colors.white})
-  M.highlight("Question", {fg = M.colors.purple})
+  M.highlight("Question", {fg = M.colors.comment_grey, gui = "bold,italic"})
   M.highlight("Search", {fg = M.colors.visual_black, bg = M.colors.visual_grey})
   M.highlight("ESearchMatch", {fg = M.colors.black, bg = M.colors.comment_grey})
   M.highlight("QuickFixLine", {bg = M.colors.special_grey, gui = "bold"})
