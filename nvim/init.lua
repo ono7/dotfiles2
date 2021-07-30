@@ -144,7 +144,8 @@ if vim.opt.diff:get() then
   vim.wo.signcolumn = "no"
   vim.o.cmdheight = 1
   -- vim.o.diffopt = "filler,internal,algorithm:patience" -- no context, new algo
-  vim.o.diffopt = "filler,context:0,internal,algorithm:patience,indent-heuristic" -- internal xdiff lib
+  -- vim.o.diffopt = "filler,context:0,internal,algorithm:patience,indent-heuristic"
+  vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
   -- set diffopt+=iwhite -- ignore white space during diff
   m("n", "]", "]c", opt)
   m("n", "[", "[c", opt)
