@@ -106,6 +106,15 @@ vnoremap <c-a> ^
 vnoremap <c-e> g_
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
+" fix spelling at current word
+nnoremap <silent>zz msz=1<CR><CR>`s
+
+" visual block :)
+nnoremap v <C-V>
+nnoremap <C-V> v
+vnoremap v <C-V>
+vnoremap <C-V> v
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -167,7 +176,7 @@ set wildmenu
 set winaltkeys=no
 set lazyredraw
 set matchtime=0
-set matchpairs = (:),{:},[:],<:>
+set matchpairs=(:),{:},[:],<:>
 
 set nocursorcolumn
 set redrawtime=10000
@@ -264,7 +273,7 @@ hi!  ModeMsg       term=italic   ctermfg=8      gui=italic     guifg=#939eb3
 hi!  MoreMsg       term=italic   ctermfg=7      gui=italic     guifg=#939eb3
 hi!  MsgArea       ctermfg=8     guifg=#939eb3
 hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379
-hi!  DiffDelete    ctermfg=1     ctermbg=0      gui=none        guifg=Black           guibg=#E06C75
+hi!  DiffDelete    ctermfg=8     ctermbg=0      gui=none        guifg=Black           guibg=#E06C75
 hi!  DiffChange    ctermfg=none  ctermbg=none   gui=none        guifg=Black           guibg=#61AFEF
 hi!  DiffText      ctermfg=0     ctermbg=3      gui=none        guifg=Black           guibg=#e5c07b
 " hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379

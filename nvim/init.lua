@@ -64,6 +64,15 @@ m("n", "D", "d$", opt)
 m("n", "cp", "yap<S-}>p", opt)
 m("n", "U", "<c-r>", opt)
 
+-- correct spelling @word
+m("n", "zz", [[zz msz=1<CR><CR>`s]], silent)
+
+-- swap visual bindings
+m("n", "v", "<C-V>", opt)
+m("n", "<C-V>", "v", opt)
+m("v", "v", "<C-V>", opt)
+m("v", "<C-V>", "v", opt)
+
 m("c", "<c-a>", "<Home>", opt)
 m("c", "<c-h>", "<Left>", opt)
 m("c", "<c-l>", "<Right>", opt)
@@ -87,7 +96,7 @@ m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
 
-cmd [[command! Mktags !ctags -R . ]]
+cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 
 g.ale_disable_lsp = 1
 
@@ -160,6 +169,7 @@ end
   echo system('base64 -d', @")
   :<c-f> (command search)
 
+  <c-r> =   system('date'), or 2+2
     -- Lima
 
 --]]
