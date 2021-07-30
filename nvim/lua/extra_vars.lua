@@ -67,7 +67,7 @@ nnoremap yw yiw
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
-nnoremap <leader>q :%bd!<cr>
+nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :write<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]
