@@ -133,7 +133,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fillchars+=vert:│
 set hidden
-set history=999
+set history=50
 set ignorecase
 set incsearch
 set nohlsearch
@@ -167,6 +167,8 @@ set wildmenu
 set winaltkeys=no
 set lazyredraw
 set matchtime=0
+set matchpairs = (:),{:},[:],<:>
+
 set nocursorcolumn
 set redrawtime=10000
 set ttyfast

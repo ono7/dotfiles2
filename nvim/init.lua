@@ -57,7 +57,7 @@ m("n", "yw", "yiw", silent)
 m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
-m("n", "<leader>q", ":%bd!<cr>", silent)
+m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("n", "D", "d$", opt)
@@ -139,9 +139,10 @@ require "my_cmds"
 vim.api.nvim_exec([[let &fcs='eob: ']], false)
 
 if vim.opt.diff:get() then
-  vim.wo.number = true
-  vim.wo.numberwidth = 1
   vim.wo.signcolumn = "no"
+  vim.wo.foldcolumn = "0"
+  vim.wo.numberwidth = 1
+  vim.wo.number = true
   vim.o.cmdheight = 1
   -- vim.o.diffopt = "filler,internal,algorithm:patience" -- no context, new algo
   -- vim.o.diffopt = "filler,context:0,internal,algorithm:patience,indent-heuristic"

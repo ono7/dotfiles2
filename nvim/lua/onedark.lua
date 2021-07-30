@@ -20,11 +20,11 @@ end
 M.colors = {
   red = "#E06C75",
   dark_red = "#BE5046",
-  diff_red = "#2c1517",
   green = "#98C379",
-  diff_green = "#1e2718",
+  diff_green = "#7ca960",
+  diff_red = "#864046",
+  diff_yellow = "#3a3f4d",
   yellow = "#e5c07b",
-  diff_yellow = "#e5c07b",
   dark_yellow = "#e5c07b",
   blue = "#61AFEF",
   orange = "#e78a4e",
@@ -97,12 +97,12 @@ M.setup = function()
   M.highlight("CursorColumn", {bg = M.colors.dark_black})
   M.highlight("CursorLine", {bg = M.colors.dark_black})
   M.highlight("Directory", {fg = M.colors.cyan})
-  M.highlight("DiffAdd", {bg = M.colors.green, fg = M.colors.black})
+  M.highlight("DiffAdd", {bg = M.colors.diff_green, fg = M.colors.black})
+  M.highlight("DiffChange", {})
+  M.highlight("DiffDelete", {fg = M.colors.comment_grey})
+  M.highlight("DiffText", {bg = M.colors.diff_yellow})
   -- M.highlight("DiffChange", {bg = M.colors.blue, fg = M.colors.black})
   -- M.highlight("DiffDelete", {bg = M.colors.red, fg = M.colors.black})
-  M.highlight("DiffChange", {})
-  M.highlight("DiffDelete", {bg = M.colors.black, fg = M.colors.red})
-  M.highlight("DiffText", {bg = M.colors.yellow, fg = M.colors.black})
   M.highlight("ErrorMsg", {fg = M.colors.comment_grey, gui = "bold"})
   M.highlight("VertSplit", {fg = M.colors.comment_grey})
   M.highlight("Folded", {fg = M.colors.comment_grey, gui = "italic,bold"})

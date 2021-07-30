@@ -40,6 +40,7 @@ local autocmds = {
       [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
     },
     {"BufEnter", "*", [[setlocal formatoptions=qnlj]]},
+    {"Syntax", "*", "syntax sync minlines=2000"},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
   _set_type = {
