@@ -23,6 +23,8 @@ disable=
     old-raise-syntax,
     backtick,
     long-suffix,
+    broad-except,
+    bare-except,
     old-ne-operator,
     old-octal-literal,
     import-star-module-level,

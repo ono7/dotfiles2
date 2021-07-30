@@ -138,6 +138,18 @@ require "my_cmds"
 -- remove vim tilde
 vim.api.nvim_exec([[let &fcs='eob: ']], false)
 
+if vim.opt.diff:get() then
+  vim.wo.number = true
+  vim.wo.numberwidth = 1
+  vim.wo.signcolumn = "no"
+  vim.o.cmdheight = 1
+  -- vim.o.diffopt = "filler,internal,algorithm:patience" -- no context, new algo
+  vim.o.diffopt = "filler,context:0,internal,algorithm:patience,indent-heuristic" -- internal xdiff lib
+  -- set diffopt+=iwhite -- ignore white space during diff
+  m("n", "]", "]c", opt)
+  m("n", "[", "[c", opt)
+end
+
 --[[
 
   npm install lua-fmt prettier pyright -g
