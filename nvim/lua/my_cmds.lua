@@ -41,6 +41,7 @@ local autocmds = {
     },
     {"BufEnter", "*", [[setlocal formatoptions=qnlj]]},
     {"BufEnter", "*", [[:lua mySyntax()]]},
+    {"filetype", "*", [[:lua mySyntax()]]},
     {"Syntax", "*", "syntax sync minlines=2000"},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
