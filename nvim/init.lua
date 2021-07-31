@@ -175,7 +175,7 @@ end
   echo system('base64 -d', @")
   :<c-f> (command search)
 
-  <c-r> =   system('date'), or 2+2
+  insert mode, <c-r> =   system('date'), or 2+2
     -- Lima
 
 --]]

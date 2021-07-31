@@ -42,12 +42,12 @@ local autocmds = {
     {"BufEnter", "*", [[setlocal formatoptions=qnlj]]},
     {"BufEnter", "*", [[:lua mySyntax()]]},
     {"filetype", "*", [[:lua mySyntax()]]},
-    {"Syntax", "*", "syntax sync minlines=2000"},
+    -- {"Syntax", "*", "syntax sync minlines=2000"},
     {"BufReadPost", "quickfix", [[nnoremap <buffer> <CR> <CR>]]}
   },
   _set_type = {
-    {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm]]},
-    {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown]]}
+    {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm | setlocal et]]},
+    {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown | setlocal et]]}
   },
   _yank_hl = {
     {"TextYankPost", "*", [[silent! lua require'vim.highlight'.on_yank({higroup='Cursor', timeout = 50})]]}

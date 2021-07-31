@@ -1,7 +1,7 @@
 M = {}
 
 M.legacy_cfg =
-  [[
+  [===[
 " Follow the white rabbit
 
 let mapleader = ";"
@@ -218,10 +218,17 @@ endfunction
 
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
+function! <SID>mySyntax()
+  syntax match myParen /[=()!<>,.]/
+  syntax match myCurlys /[{}]/
+  syntax match myBrackets /[[]]/
+endfu
+
 augroup _init
   autocmd!
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 800000 | syntax clear | setlocal nowrap | setlocal eventignore=all | endif
   autocmd BufEnter * silent! set formatoptions=qnlj
+  autocmd BufEnter * :call <SID>mySyntax()
 augroup END
 
 augroup _read
@@ -242,11 +249,11 @@ augroup END
 
 augroup _files
   autocmd!
-  " setlocal indentexpr=GetPythonIndent(v:lnum)
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
   autocmd FileType python setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
   " autocmd FileType * setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap autoindent nolisp
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  autocmd filetype * :call <SID>mySyntax()
 augroup END
 
 command! Mktags !ctags -R .
@@ -255,6 +262,9 @@ hi!  MatchParen    term=none     ctermbg=8      ctermfg=7       cterm=bold,under
 hi!  Statement     ctermfg=1
 hi!  String        ctermfg=2
 hi!  Include       ctermfg=4
+hi!  myParen       ctermfg=4
+hi!  myCurlys      ctermfg=11
+hi!  myBrackets    ctermfg=7
 hi!  qfFileName    ctermfg=3
 hi!  Comment       ctermfg=8     guifg=#5C6370
 hi!  Search        ctermfg=7     ctermbg=8      guibg=none
@@ -294,6 +304,6 @@ filetype plugin indent on
 
 " Lima's vimrc, use at your own risk :)
 
-]]
+]===]
 
 return M
