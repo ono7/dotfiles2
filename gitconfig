@@ -3,7 +3,7 @@
   name = lima
   email = lima@mbp
 [core]
-  editor = vim
+  editor = nvim
   mergeoptions = --no-edit
 [push]
   default = simple
@@ -16,4 +16,19 @@
 [init]
   defaultBranch = main
 [pull]
-	rebase = true
+  rebase = true
+[diff]
+  cmd = "nvim -d -u ~/.dotfiles/nvim/init.lua \"$LOCAL\" \"$REMOTE\""
+[difftool]
+  prompt = false
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = true
+[mergetool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
+
+
+
