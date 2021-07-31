@@ -115,6 +115,12 @@ function _G.pre_write()
   cmd "noh"
 end
 
+function _G.mySyntax()
+  cmd [[syntax match myParen /[=()!<>,.]/]]
+  cmd [[syntax match myCurlys /[{}]/ ]]
+  cmd [==[syntax match myBrackets /[[]]/]==]
+end
+
 function _G.legacy()
   -- :lua legacy()
   vim.api.nvim_paste(require("extra_vars").legacy_cfg, "", -1)
