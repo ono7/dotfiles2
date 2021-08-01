@@ -71,6 +71,8 @@ nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :write<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]
+nnoremap <silent>gi gi<c-o>zz
+
 nnoremap <silent><Esc>j :resize -2<cr>
 nnoremap <silent><Esc>k :resize +2<cr>
 nnoremap <silent><Esc>l :vertical resize -2<cr>

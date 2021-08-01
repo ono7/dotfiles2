@@ -1,5 +1,6 @@
 -- Follow the white rabbit...
 
+-- command of the day gi
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}
@@ -54,6 +55,7 @@ m("n", "ZQ", "", opt)
 
 m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "yw", "yiw", silent)
+m("n", "gi", "gi<c-o>zz", silent)
 m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
