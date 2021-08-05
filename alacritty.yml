@@ -58,7 +58,8 @@ schemes:
 
     primary:
       # background: '0x23272e'
-      background: '0x262931'
+      # background: '0x262931'
+      background: '0x22272e'
       foreground: '0xc2c6cc'
     normal:
       black: '0x282c34'
