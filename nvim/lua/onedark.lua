@@ -182,8 +182,8 @@ M.setup = function()
   -- Misc
   M.highlight("TSError", {fg = M.colors.cyan})
   -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
-  M.highlight("TSPunctDelimiter", {fg = M.colors.white})
-  M.highlight("TSPunctBracket", {fg = M.colors.white})
+  M.highlight("TSPunctDelimiter", {fg = M.colors.cyan})
+  M.highlight("TSPunctBracket", {fg = M.colors.blue})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
   --- Constants ---
@@ -204,7 +204,7 @@ M.setup = function()
 
   --- Functions ---
   M.highlight("TSFuncBuiltin", {fg = M.colors.yellow})
-  M.highlight("TSFunction", {fg = M.colors.blue})
+  M.highlight("TSFunction", {fg = M.colors.white, gui = "italic"})
   -- M.highlight("TSFuncMacro", {})
   -- M.highlight("TSParameter", {})
   -- M.highlight("TSParameterReference", {})
