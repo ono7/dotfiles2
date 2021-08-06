@@ -323,6 +323,7 @@ M.setup = function()
   --- python ---
   M.highlight("pythonBuiltin", {fg = M.colors.yellow})
   M.highlight("myParen", {fg = M.colors.blue})
+  M.highlight("mySpecial", {fg = M.colors.red})
   M.highlight("myCurlys", {fg = M.colors.yellow})
   M.highlight("myBrackets", {fg = M.colors.white})
 

@@ -1,6 +1,6 @@
 -- Follow the white rabbit...
 
--- command of the day gi
+-- command of the day gi, zi (fold enable toggle)
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}
@@ -119,8 +119,9 @@ function _G.pre_write()
 end
 
 function _G.mySyntax()
-  cmd [[syntax match myParen /[=()!<>,.]/]]
+  cmd [[syntax match myParen /[=()!<>,.-]/]]
   cmd [[syntax match myCurlys /[{}]/ ]]
+  cmd [[syntax match mySpecial /[*]/ ]]
   cmd [==[syntax match myBrackets /[[]]/]==]
 end
 
