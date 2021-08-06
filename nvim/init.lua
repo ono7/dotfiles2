@@ -42,8 +42,9 @@ else
 end
 
 --- map leader ---
-m("n", "<Space>", "", {})
 g.mapleader = ";"
+
+m("n", "<Space>", "", {})
 
 vim.o.path = vim.o.path .. "**"
 
