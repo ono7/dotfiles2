@@ -324,8 +324,8 @@ M.setup = function()
   M.highlight("pythonBuiltin", {fg = M.colors.yellow})
   M.highlight("myRed", {fg = M.colors.red})
   M.highlight("myYellow", {fg = M.colors.yellow})
-  M.highlight("myCyan", {fg = M.colors.blue})
-  M.highlight("myBlue", {fg = M.colors.red})
+  M.highlight("myCyan", {fg = M.colors.cyan})
+  M.highlight("myBlue", {fg = M.colors.blue})
 
   --- ALE ---
   M.highlight("ALEWarningSign", {fg = M.colors.yellow})
