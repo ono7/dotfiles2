@@ -79,7 +79,7 @@ m("i", "<M-d>", [[compe#scroll({ 'delta': -4 })]], {expr = true, silent = true})
 local opts = {noremap = true, silent = true}
 m("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 m("n", "<leader>g", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-m("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+-- m("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 m("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 m("n", "<space>l", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 m("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)

@@ -221,9 +221,10 @@ endfunction
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
 function! <SID>mySyntax()
-  syntax match myRed /[=()!<>,.]/
-  syntax match myCyan /[{}]/
-  syntax match myBlue /[[]]/
+  syntax match myRed /[\[\]():,.]/
+  syntax match myCyan /[=<!>-]/
+  syntax match myYellow /[*]/
+  syntax match myBlue /[{}]/
 endfu
 
 augroup _init
@@ -264,10 +265,11 @@ hi!  MatchParen    term=NONE     ctermbg=8      ctermfg=7       cterm=bold,under
 hi!  Statement     ctermfg=1
 hi!  String        ctermfg=2
 hi!  Include       ctermfg=4
-hi!  myRed       ctermfg=1
-hi!  Number      ctermfg=3
-hi!  myCyan      ctermfg=6
-hi!  myBlue    ctermfg=4
+hi!  myRed         ctermfg=1
+hi!  Number        ctermfg=3
+hi!  myCyan        ctermfg=6
+hi!  myBlue        ctermfg=4
+hi!  myYellow      ctermfg=3
 hi!  qfFileName    ctermfg=3
 hi!  Comment       ctermfg=8     guifg=#5C6370
 hi!  Search        ctermfg=7     ctermbg=8      guibg=NONE

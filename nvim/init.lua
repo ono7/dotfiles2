@@ -119,7 +119,7 @@ function _G.pre_write()
 end
 
 function _G.mySyntax()
-  cmd [[syntax match myRed /[\[\](),.]/]]
+  cmd [[syntax match myRed /[\[\]():,.]/]]
   cmd [[syntax match myCyan /[=<!>-]/ ]]
   cmd [[syntax match myYellow /[*]/ ]]
   cmd [==[syntax match myBlue /[{}]/]==]
