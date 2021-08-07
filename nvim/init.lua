@@ -119,10 +119,10 @@ function _G.pre_write()
 end
 
 function _G.mySyntax()
-  cmd [[syntax match myParen /[=()!<>,.-]/]]
-  cmd [[syntax match myCurlys /[{}]/ ]]
-  cmd [[syntax match mySpecial /[*]/ ]]
-  cmd [==[syntax match myBrackets /[[]]/]==]
+  cmd [[syntax match myRed /[(),.]/]]
+  cmd [[syntax match myCyan /[{}=<!>-]/ ]]
+  cmd [[syntax match myYellow /[*]/ ]]
+  cmd [==[syntax match myBlue /[\[\]]/]==]
 end
 
 function _G.legacy()

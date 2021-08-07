@@ -1,3 +1,3 @@
-syntax match myParen /[=()!<>,.]/
-syntax match myCurlys /[{}]/
-syntax match myBrackets /[[]]/
+syntax match myRed /[=()!<>,.]/
+syntax match myCyan /[{}]/
+syntax match myBlue /[[]]/

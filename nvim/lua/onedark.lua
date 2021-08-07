@@ -182,8 +182,8 @@ M.setup = function()
   -- Misc
   M.highlight("TSError", {fg = M.colors.cyan})
   -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
-  M.highlight("TSPunctDelimiter", {fg = M.colors.cyan})
-  M.highlight("TSPunctBracket", {fg = M.colors.blue})
+  M.highlight("TSPunctDelimiter", {fg = M.colors.red})
+  M.highlight("TSPunctBracket", {fg = M.colors.red})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
   --- Constants ---
@@ -208,18 +208,18 @@ M.setup = function()
   -- M.highlight("TSFuncMacro", {})
   M.highlight("TSParameter", {fg = M.colors.white})
   -- M.highlight("TSParameterReference", {})
-  M.highlight("TSMethod", {fg = M.colors.red})
+  M.highlight("TSMethod", {fg = M.colors.blue})
   M.highlight("TSField", {fg = M.colors.white, gui = "italic"})
   M.highlight("TSProperty", {fg = M.colors.white})
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
   --- Keywords ---
   M.highlight("TSConditional", {fg = M.colors.purple, gui = "italic"})
-  M.highlight("TSRepeat", {fg = M.colors.purple, gui = "italic"})
+  M.highlight("TSRepeat", {fg = M.colors.yellow, gui = "italic"})
   -- M.highlight("TSLabel", {})
   M.highlight("TSKeyword", {fg = M.colors.purple, gui = "italic"})
   M.highlight("TSKeywordFunction", {fg = M.colors.red, gui = "italic"})
-  M.highlight("TSKeywordOperator", {fg = M.colors.purple, gui = "italic"})
+  M.highlight("TSKeywordOperator", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSOperator", {fg = M.colors.cyan, gui = "bold"})
   -- M.highlight("TSException", {})
   M.highlight("TSType", {fg = M.colors.orange})
@@ -322,10 +322,10 @@ M.setup = function()
 
   --- python ---
   M.highlight("pythonBuiltin", {fg = M.colors.yellow})
-  M.highlight("myParen", {fg = M.colors.blue})
-  M.highlight("mySpecial", {fg = M.colors.red})
-  M.highlight("myCurlys", {fg = M.colors.yellow})
-  M.highlight("myBrackets", {fg = M.colors.white})
+  M.highlight("myRed", {fg = M.colors.red})
+  M.highlight("myYellow", {fg = M.colors.yellow})
+  M.highlight("myCyan", {fg = M.colors.blue})
+  M.highlight("myBlue", {fg = M.colors.red})
 
   --- ALE ---
   M.highlight("ALEWarningSign", {fg = M.colors.yellow})

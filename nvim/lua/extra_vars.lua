@@ -221,9 +221,9 @@ endfunction
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
 function! <SID>mySyntax()
-  syntax match myParen /[=()!<>,.]/
-  syntax match myCurlys /[{}]/
-  syntax match myBrackets /[[]]/
+  syntax match myRed /[=()!<>,.]/
+  syntax match myCyan /[{}]/
+  syntax match myBlue /[[]]/
 endfu
 
 augroup _init
@@ -260,44 +260,45 @@ augroup END
 
 command! Mktags !ctags -R .
 
-hi!  MatchParen    term=none     ctermbg=8      ctermfg=7       cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
+hi!  MatchParen    term=NONE     ctermbg=8      ctermfg=7       cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
 hi!  Statement     ctermfg=1
 hi!  String        ctermfg=2
 hi!  Include       ctermfg=4
-hi!  myParen       ctermfg=4
-hi!  myCurlys      ctermfg=11
-hi!  myBrackets    ctermfg=7
+hi!  myRed       ctermfg=1
+hi!  Number      ctermfg=3
+hi!  myCyan      ctermfg=6
+hi!  myBlue    ctermfg=4
 hi!  qfFileName    ctermfg=3
 hi!  Comment       ctermfg=8     guifg=#5C6370
-hi!  Search        ctermfg=7     ctermbg=8      guibg=none
-hi!  Error         ctermfg=1     ctermbg=none
+hi!  Search        ctermfg=7     ctermbg=8      guibg=NONE
+hi!  Error         ctermfg=1     ctermbg=NONE
 hi!  link          ErrorMsg      Error
-hi!  Whitespace    term=none     ctermbg=none   ctermfg=15       guifg=#939eb3         guibg=none
-hi!  Visual        term=none     ctermbg=242    guibg=#3E4452   ctermfg=none          cterm=none
-hi!  VertSplit     term=none     ctermbg=none   ctermfg=8       gui=none              guibg=none          guifg=#5C6370  cterm=none
-hi!  PmenuSel      ctermbg=238   guibg=#3E4452  ctermfg=none    guifg=none
+hi!  Whitespace    term=NONE     ctermbg=NONE   ctermfg=15       guifg=#939eb3         guibg=NONE
+hi!  Visual        term=NONE     ctermbg=242    guibg=#3E4452   ctermfg=NONE          cterm=NONE
+hi!  VertSplit     term=NONE     ctermbg=NONE   ctermfg=8       gui=NONE              guibg=NONE          guifg=#5C6370  cterm=NONE
+hi!  PmenuSel      ctermbg=238   guibg=#3E4452  ctermfg=NONE    guifg=NONE
 hi!  Pmenu         ctermfg=242   ctermbg=0      guibg=DarkGrey
 hi!  link          LineNr        Comment
 hi!  link          CursorLineNr  String
-hi!  EndOfBuffer   ctermbg=none  guifg=#23272e  ctermfg=236
+hi!  EndOfBuffer   ctermbg=NONE  guifg=#23272e  ctermfg=236
 hi!  link          MsgArea       Comment
 hi!  ModeMsg       term=italic   ctermfg=8      gui=italic     guifg=#939eb3
 hi!  MoreMsg       term=italic   ctermfg=7      gui=italic     guifg=#939eb3
 hi!  MsgArea       ctermfg=8     guifg=#939eb3
-hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379
-hi!  DiffDelete    ctermfg=8     ctermbg=0      gui=none        guifg=Black           guibg=#E06C75
-hi!  DiffChange    ctermfg=none  ctermbg=none   gui=none        guifg=Black           guibg=#61AFEF
-hi!  DiffText      ctermfg=0     ctermbg=3      gui=none        guifg=Black           guibg=#e5c07b
-" hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=none        guifg=Black           guibg=#98C379
-" hi!  DiffDelete    ctermfg=0     ctermbg=1      gui=none        guifg=Black           guibg=#E06C75
-" hi!  DiffChange    ctermfg=0     ctermbg=4      gui=none        guifg=Black           guibg=#61AFEF
-" hi!  DiffText      ctermfg=0     ctermbg=3      gui=none        guifg=Black           guibg=#e5c07b
-hi!  Folded        ctermfg=8     guifg=#5c6370  ctermbg=none    guibg=none            gui=bold            term=bold
-hi!  FoldColumn    ctermbg=none  guibg=#3E4452
-hi!  SignColumn    ctermfg=7     ctermbg=none
+hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=NONE        guifg=Black           guibg=#98C379
+hi!  DiffDelete    ctermfg=8     ctermbg=0      gui=NONE        guifg=Black           guibg=#E06C75
+hi!  DiffChange    ctermfg=NONE  ctermbg=NONE   gui=NONE        guifg=Black           guibg=#61AFEF
+hi!  DiffText      ctermfg=0     ctermbg=3      gui=NONE        guifg=Black           guibg=#e5c07b
+" hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=NONE        guifg=Black           guibg=#98C379
+" hi!  DiffDelete    ctermfg=0     ctermbg=1      gui=NONE        guifg=Black           guibg=#E06C75
+" hi!  DiffChange    ctermfg=0     ctermbg=4      gui=NONE        guifg=Black           guibg=#61AFEF
+" hi!  DiffText      ctermfg=0     ctermbg=3      gui=NONE        guifg=Black           guibg=#e5c07b
+hi!  Folded        ctermfg=8     guifg=#5c6370  ctermbg=NONE    guibg=NONE            gui=bold            term=bold
+hi!  FoldColumn    ctermbg=NONE  guibg=#3E4452
+hi!  SignColumn    ctermfg=7     ctermbg=NONE
 hi!  link          CursorLine    Search
 hi!  link          StatusLine    Search
-hi!  StatusLineNC  ctermfg=0     ctermbg=7      guibg=none
+hi!  StatusLineNC  ctermfg=0     ctermbg=7      guibg=NONE
 hi!  link          Todo          Underlined
 
 filetype plugin indent on
