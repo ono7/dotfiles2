@@ -32,6 +32,7 @@ M.colors = {
   purple = "#C678DD",
   cyan = "#56B6C2",
   -- white = "#c2c6cc",
+  current_bg = "#383b40",
   white = "#d3d3d3",
   black = "#23272e",
   itermbg = "#282c34",
@@ -53,7 +54,8 @@ M.setup = function()
   vim.cmd [[syntax reset]]
 
   M.highlight("MsgArea", {fg = M.colors.light_grey})
-  M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
+  M.highlight("MsgSeparator", {})
+  M.highlight("EndOfBuffer", {fg = M.colors.current_bg}) -- hide eob markers
   M.highlight("Comment", {fg = M.colors.light_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
@@ -134,7 +136,7 @@ M.setup = function()
   M.highlight("SpellLocal", {gui = "underline"})
   M.highlight("SpellRare", {gui = "underline"})
   M.highlight("StatusLine", {fg = M.colors.white, bg = M.colors.visual_grey})
-  M.highlight("StatusLineNC", {fg = M.colors.comment_grey, bg = M.colors.dark_black})
+  M.highlight("StatusLineNC", {fg = M.colors.comment_grey, bg = M.colors.current_bg})
   M.highlight("TabLine", {fg = M.colors.comment_grey})
   M.highlight("TabLineFill", {})
   M.highlight("TabLineSel", {fg = M.colors.white})
