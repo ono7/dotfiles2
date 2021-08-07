@@ -73,7 +73,7 @@ wo.numberwidth = 1
 wo.signcolumn = "yes:1"
 wo.foldenable = false
 wo.foldnestmax = 3
-wo.foldlevel = 1
+wo.foldlevel = 0
 wo.list = true
 wo.cursorline = false
 
