@@ -20,7 +20,8 @@ end
 M.colors = {
   red = "#E06C75",
   dark_red = "#BE5046",
-  green = "#98C379",
+  -- green = "#98C379",
+  green = "#98c379",
   diff_green = "#7ca960",
   diff_red = "#864046",
   diff_yellow = "#3a3f4d",
@@ -30,8 +31,8 @@ M.colors = {
   orange = "#e78a4e",
   purple = "#C678DD",
   cyan = "#56B6C2",
-  -- white = "#dcdfe4",
-  white = "#c2c6cc",
+  -- white = "#c2c6cc",
+  white = "#d3d3d3",
   black = "#23272e",
   itermbg = "#282c34",
   dimm_black = "#1c1c1c",
@@ -53,7 +54,7 @@ M.setup = function()
 
   M.highlight("MsgArea", {fg = M.colors.light_grey})
   M.highlight("EndOfBuffer", {fg = M.colors.black}) -- hide eob markers
-  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
+  M.highlight("Comment", {fg = M.colors.light_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
@@ -82,14 +83,14 @@ M.setup = function()
   M.highlight("SpecialChar", {})
   M.highlight("Tag", {})
   M.highlight("Delimiter", {})
-  M.highlight("SpecialComment", {fg = M.colors.comment_grey, gui = "italic"})
+  M.highlight("SpecialComment", {fg = M.colors.light_grey, gui = "italic"})
   M.highlight("Debug", {})
   M.highlight("Underlined", {gui = "underline"})
   M.highlight("Bold", {gui = "bold"})
   M.highlight("CursorWord0", {gui = "bold"})
   M.highlight("CursorWord1", {gui = "bold"})
   M.highlight("Ignore", {})
-  M.highlight("Error", {fg = M.colors.comment_grey, gui = "bold"})
+  M.highlight("Error", {fg = M.colors.light_grey, gui = "bold"})
   M.highlight("Todo", {fg = M.colors.purple, gui = "italic,bold"})
   M.highlight("ColorColumn", {bg = M.colors.dark_black})
   M.highlight("Conceal", {})
@@ -99,16 +100,16 @@ M.setup = function()
   M.highlight("Directory", {fg = M.colors.cyan})
   M.highlight("DiffAdd", {bg = M.colors.diff_green, fg = M.colors.black})
   M.highlight("DiffChange", {})
-  M.highlight("DiffDelete", {fg = M.colors.comment_grey})
+  M.highlight("DiffDelete", {fg = M.colors.light_grey})
   M.highlight("DiffText", {bg = M.colors.diff_yellow})
   -- M.highlight("DiffChange", {bg = M.colors.blue, fg = M.colors.black})
   -- M.highlight("DiffDelete", {bg = M.colors.red, fg = M.colors.black})
-  M.highlight("ErrorMsg", {fg = M.colors.comment_grey, gui = "bold"})
+  M.highlight("ErrorMsg", {fg = M.colors.light_grey, gui = "bold"})
   M.highlight("VertSplit", {fg = M.colors.comment_grey})
-  M.highlight("Folded", {fg = M.colors.comment_grey, gui = "italic,bold"})
+  M.highlight("Folded", {fg = M.colors.light_grey, gui = "italic,bold"})
   M.highlight("FoldColumn", {})
   M.highlight("SignColumn", {})
-  M.highlight("IncSearch", {fg = M.colors.comment_grey, bg = M.colors.green})
+  M.highlight("IncSearch", {fg = M.colors.light_grey, bg = M.colors.green})
   M.highlight("LineNr", {fg = M.colors.gutter_fg_grey})
   M.highlight("CursorLineNr", {fg = M.colors.green})
   M.highlight("MatchParen", {fg = M.colors.white, bg = M.colors.visual_grey, gui = "bold,underline"})
@@ -121,9 +122,9 @@ M.setup = function()
   M.highlight("PmenuSel", {bg = M.colors.special_grey, gui = "reverse"})
   M.highlight("PmenuSbar", {bg = M.colors.special_grey})
   M.highlight("PmenuThumb", {bg = M.colors.white})
-  M.highlight("Question", {fg = M.colors.comment_grey, gui = "bold,italic"})
+  M.highlight("Question", {fg = M.colors.light_grey, gui = "bold,italic"})
   M.highlight("Search", {fg = M.colors.visual_black, bg = M.colors.visual_grey})
-  M.highlight("ESearchMatch", {fg = M.colors.black, bg = M.colors.comment_grey})
+  M.highlight("ESearchMatch", {fg = M.colors.black, bg = M.colors.light_grey})
   M.highlight("QuickFixLine", {bg = M.colors.special_grey, gui = "bold"})
   M.highlight("qfFileName", {fg = M.colors.yellow, gui = "bold"})
   M.highlight("qfLineNr", {fg = M.colors.blue})
@@ -143,7 +144,7 @@ M.setup = function()
   M.highlight("WarningMsg", {fg = M.colors.yellow})
   M.highlight("WildMenu", {fg = M.colors.black, bg = M.colors.blue})
   M.highlight("WinNormalNC", {bg = M.colors.dark_black})
-  M.highlight("HighlightedyankRegion", {bg = M.colors.comment_grey})
+  M.highlight("HighlightedyankRegion", {bg = M.colors.light_grey})
 
   --- Languages ---
 
