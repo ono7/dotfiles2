@@ -321,7 +321,7 @@ M.setup = function()
   M.highlight("TSDefinition", {gui = "bold"})
 
   --- python ---
-  M.highlight("pythonBuiltin", {fg = M.colors.yellow})
+  M.highlight("pythonBuiltin", {fg = M.colors.blue, gui = "italic"})
   M.highlight("myRed", {fg = M.colors.red})
   M.highlight("myYellow", {fg = M.colors.yellow})
   M.highlight("myCyan", {fg = M.colors.cyan})
