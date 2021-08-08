@@ -336,6 +336,12 @@ M.setup = function()
   M.highlight("ALEWarning", {guisp = M.colors.yellow, gui = "underline,bold"})
   M.highlight("ALEError", {guisp = M.colors.red, gui = "underline,bold"})
 
+  --- FZF ---
+  M.highlight("FZFgutter", {bg = M.colors.comment_grey})
+  M.highlight("FZFbgPlus", {bg = M.colors.comment_grey})
+  M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
+  M.highlight("FZFgutter", {})
+
   --- snippets ---
   M.clear("snipLeadingSpaces")
   M.highlight("snipLeadingSpaces", {})
