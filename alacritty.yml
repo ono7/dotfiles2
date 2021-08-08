@@ -166,7 +166,8 @@ schemes:
 
 # call color ancher
 colors:
-  *onehalf
+  # *onehalf
+  *nord
 
   # indexed_colors: []
 
