@@ -261,8 +261,8 @@ augroup END
 
 command! Mktags !ctags -R .
 
-hi!  MatchParen    term=NONE     ctermbg=8      ctermfg=7       cterm=bold,underline  gui=bold,underline  guifg=#dcdfe4  guibg=#3E4452
-hi!  Statement     ctermfg=1
+hi!  MatchParen    ctermbg=8     ctermfg=7     cterm=bold,underline
+hi!  Statement     ctermfg=13 cterm=italic
 hi!  String        ctermfg=2
 hi!  Include       ctermfg=4
 hi!  myRed         ctermfg=1
@@ -271,36 +271,32 @@ hi!  myCyan        ctermfg=6
 hi!  myBlue        ctermfg=4
 hi!  myYellow      ctermfg=3
 hi!  qfFileName    ctermfg=3
-hi!  Comment       ctermfg=8     guifg=#5C6370
-hi!  Search        ctermfg=7     ctermbg=8      guibg=NONE
+hi!  Comment       ctermfg=8 cterm=italic
+hi!  Search        ctermfg=7     ctermbg=8
 hi!  Error         ctermfg=1     ctermbg=NONE
 hi!  link          ErrorMsg      Error
-hi!  Whitespace    term=NONE     ctermbg=NONE   ctermfg=15       guifg=#939eb3         guibg=NONE
-hi!  Visual        term=NONE     ctermbg=242    guibg=#3E4452   ctermfg=NONE          cterm=NONE
-hi!  VertSplit     term=NONE     ctermbg=NONE   ctermfg=8       gui=NONE              guibg=NONE          guifg=#5C6370  cterm=NONE
-hi!  PmenuSel      ctermbg=238   guibg=#3E4452  ctermfg=NONE    guifg=NONE
-hi!  Pmenu         ctermfg=242   ctermbg=0      guibg=DarkGrey
+hi!  Whitespace    ctermbg=NONE  ctermfg=15
+hi!  Visual        ctermbg=2   ctermfg=0
+hi!  VertSplit     ctermbg=NONE  ctermfg=8     cterm=NONE
+hi!  PmenuSel      ctermbg=238   ctermfg=NONE
+hi!  Pmenu         ctermfg=242   ctermbg=0
 hi!  link          LineNr        Comment
 hi!  link          CursorLineNr  String
-hi!  EndOfBuffer   ctermbg=NONE  guifg=#23272e  ctermfg=236
+hi!  EndOfBuffer   ctermbg=NONE  ctermfg=236
 hi!  link          MsgArea       Comment
-hi!  ModeMsg       term=italic   ctermfg=8      gui=italic     guifg=#939eb3
-hi!  MoreMsg       term=italic   ctermfg=7      gui=italic     guifg=#939eb3
-hi!  MsgArea       ctermfg=8     guifg=#939eb3
-hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=NONE        guifg=Black           guibg=#98C379
-hi!  DiffDelete    ctermfg=8     ctermbg=0      gui=NONE        guifg=Black           guibg=#E06C75
-hi!  DiffChange    ctermfg=NONE  ctermbg=NONE   gui=NONE        guifg=Black           guibg=#61AFEF
-hi!  DiffText      ctermfg=0     ctermbg=3      gui=NONE        guifg=Black           guibg=#e5c07b
-" hi!  DiffAdd       ctermfg=0     ctermbg=2      gui=NONE        guifg=Black           guibg=#98C379
-" hi!  DiffDelete    ctermfg=0     ctermbg=1      gui=NONE        guifg=Black           guibg=#E06C75
-" hi!  DiffChange    ctermfg=0     ctermbg=4      gui=NONE        guifg=Black           guibg=#61AFEF
-" hi!  DiffText      ctermfg=0     ctermbg=3      gui=NONE        guifg=Black           guibg=#e5c07b
-hi!  Folded        ctermfg=8     guifg=#5c6370  ctermbg=NONE    guibg=NONE            gui=bold            term=bold
-hi!  FoldColumn    ctermbg=NONE  guibg=#3E4452
+hi!  ModeMsg       ctermfg=7 cterm=italic
+hi!  MoreMsg       ctermfg=7 cterm=italic
+hi!  MsgArea       ctermfg=8
+hi!  DiffAdd       ctermfg=0     ctermbg=2
+hi!  DiffDelete    ctermfg=8     ctermbg=0
+hi!  DiffChange    ctermfg=NONE  ctermbg=NONE
+hi!  DiffText      ctermfg=0     ctermbg=3
+hi!  Folded        ctermfg=8     ctermbg=NONE  cterm=bold,italic
+hi!  FoldColumn    ctermbg=NONE
 hi!  SignColumn    ctermfg=7     ctermbg=NONE
 hi!  link          CursorLine    Search
 hi!  link          StatusLine    Search
-hi!  StatusLineNC  ctermfg=0     ctermbg=7      guibg=NONE
+hi!  StatusLineNC  ctermfg=0     ctermbg=7
 hi!  link          Todo          Underlined
 
 filetype plugin indent on
