@@ -265,7 +265,7 @@ hi!  MatchParen    ctermbg=8     ctermfg=7     cterm=bold,underline
 hi!  Statement     ctermfg=13 cterm=italic
 hi!  Function      ctermfg=4  cterm=italic
 hi!  String        ctermfg=2
-hi!  Include       ctermfg=4
+hi!  Include       ctermfg=6  cterm=italic
 hi!  myRed         ctermfg=1
 hi!  Number        ctermfg=3
 hi!  myCyan        ctermfg=6
@@ -281,8 +281,8 @@ hi!  link          ErrorMsg      Error
 hi!  Whitespace    ctermbg=NONE  ctermfg=15
 hi!  Visual        ctermbg=2   ctermfg=0
 hi!  VertSplit     ctermbg=NONE  ctermfg=8     cterm=NONE
-hi!  PmenuSel      ctermbg=238   ctermfg=NONE
-hi!  Pmenu         ctermfg=242   ctermbg=0
+hi!  Pmenu         ctermfg=8   ctermbg=0
+hi!  PmenuSel      ctermfg=NONE   ctermbg=8
 hi!  link          LineNr        Comment
 hi!  link          CursorLineNr  String
 hi!  EndOfBuffer   ctermbg=NONE  ctermfg=236
