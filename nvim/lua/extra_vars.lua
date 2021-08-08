@@ -270,6 +270,8 @@ hi!  Number        ctermfg=3
 hi!  myCyan        ctermfg=6
 hi!  myBlue        ctermfg=4
 hi!  myYellow      ctermfg=3
+hi!  Repeat        ctermfg=3 cterm=italic
+hi!  Operator      ctermfg=3 cterm=italic
 hi!  qfFileName    ctermfg=3
 hi!  Comment       ctermfg=8 cterm=italic
 hi!  Search        ctermfg=7     ctermbg=8
