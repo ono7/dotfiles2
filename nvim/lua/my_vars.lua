@@ -139,7 +139,7 @@ g.fzf_nvim_statusline = 1
 
 local fzf_colors_tbl = {}
 fzf_colors_tbl.fg = {"fg", "Comment"}
-fzf_colors_tbl.hl = {"fg", "RedBold"}
+fzf_colors_tbl.hl = {"fg", "FZFhl"}
 fzf_colors_tbl["fg+"] = {"fg", "FZFfgPlus"}
 fzf_colors_tbl["bg+"] = {"bg", "FZFbgPlus"}
 fzf_colors_tbl["hl+"] = {"fg", "myRed"}

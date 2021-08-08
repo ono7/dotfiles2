@@ -217,11 +217,12 @@ M.setup = function()
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
   --- Keywords ---
-  M.highlight("TSConditional", {fg = M.colors.purple, gui = "italic"})
+  M.highlight("TSConditional", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSRepeat", {fg = M.colors.yellow, gui = "italic"})
   -- M.highlight("TSLabel", {})
   M.highlight("TSKeyword", {fg = M.colors.purple, gui = "italic"})
-  M.highlight("TSKeywordFunction", {fg = M.colors.red, gui = "italic"})
+  M.highlight("TSKeywordFunction", {fg = M.colors.purple, gui = "bold,italic"})
+  M.highlight("TSKeywordReturn", {fg = M.colors.purple, gui = "italic"})
   M.highlight("TSKeywordOperator", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSOperator", {fg = M.colors.cyan, gui = "bold"})
   -- M.highlight("TSException", {})
@@ -232,7 +233,7 @@ M.setup = function()
 
   -- Variable
   M.highlight("TSVariable", {fg = M.colors.white})
-  M.highlight("TSVariableBuiltin", {fg = M.colors.cyan, gui = "italic"})
+  M.highlight("TSVariableBuiltin", {fg = M.colors.white, gui = "italic"})
 
   -- -- Text
   -- M.highlight("TSText", {})
@@ -340,6 +341,7 @@ M.setup = function()
   M.highlight("FZFgutter", {bg = M.colors.comment_grey})
   M.highlight("FZFbgPlus", {bg = M.colors.dark_black})
   M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
+  M.highlight("FZFhl", {fg = M.colors.yellow})
   -- M.highlight("FZFgutter", {})
 
   --- snippets ---
