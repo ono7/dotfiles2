@@ -207,17 +207,17 @@ M.setup = function()
 
   --- Functions ---
   M.highlight("TSFuncBuiltin", {fg = M.colors.yellow})
-  M.highlight("TSFunction", {fg = M.colors.white, gui = "italic"})
+  M.highlight("TSFunction", {fg = M.colors.white})
   -- M.highlight("TSFuncMacro", {})
   M.highlight("TSParameter", {fg = M.colors.white})
   -- M.highlight("TSParameterReference", {})
-  M.highlight("TSMethod", {fg = M.colors.blue})
+  M.highlight("TSMethod", {fg = M.colors.white, gui = "italic"})
   M.highlight("TSField", {fg = M.colors.white, gui = "italic"})
   M.highlight("TSProperty", {fg = M.colors.white})
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
   --- Keywords ---
-  M.highlight("TSConditional", {fg = M.colors.yellow, gui = "italic"})
+  M.highlight("TSConditional", {fg = M.colors.purple, gui = "italic"})
   M.highlight("TSRepeat", {fg = M.colors.yellow, gui = "italic"})
   -- M.highlight("TSLabel", {})
   M.highlight("TSKeyword", {fg = M.colors.purple, gui = "italic"})
