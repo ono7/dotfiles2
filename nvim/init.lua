@@ -154,9 +154,6 @@ require "my_snips"
 require "my_lsp_compe"
 require "my_cmds"
 
--- remove vim tilde
-vim.api.nvim_exec([[let &fcs='eob: ']], false)
-
 if vim.opt.diff:get() then
   vim.wo.signcolumn = "no"
   vim.wo.foldcolumn = "0"
