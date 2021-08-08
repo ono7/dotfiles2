@@ -1,6 +1,6 @@
 require "compe".setup {
   enabled = true,
-  autocomplete = true,
+  autocomplete = false, -- manually trigger completion
   debug = false,
   min_length = 2,
   preselect = "enable",

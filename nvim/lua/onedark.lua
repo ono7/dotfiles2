@@ -225,7 +225,7 @@ M.setup = function()
   M.highlight("TSKeywordOperator", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSOperator", {fg = M.colors.cyan, gui = "bold"})
   -- M.highlight("TSException", {})
-  M.highlight("TSType", {fg = M.colors.orange})
+  M.highlight("TSType", {fg = M.colors.yellow})
   M.highlight("TSTypeBuiltin", {fg = M.colors.yellow})
   -- M.highlight("TSStructure", {})
   M.highlight("TSInclude", {fg = M.colors.blue, gui = "bold,italic"})
@@ -338,9 +338,9 @@ M.setup = function()
 
   --- FZF ---
   M.highlight("FZFgutter", {bg = M.colors.comment_grey})
-  M.highlight("FZFbgPlus", {bg = M.colors.comment_grey})
+  M.highlight("FZFbgPlus", {bg = M.colors.dark_black})
   M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
-  M.highlight("FZFgutter", {})
+  -- M.highlight("FZFgutter", {})
 
   --- snippets ---
   M.clear("snipLeadingSpaces")
