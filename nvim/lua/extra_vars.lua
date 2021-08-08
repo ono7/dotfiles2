@@ -221,10 +221,10 @@ endfunction
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
 function! <SID>mySyntax()
-  syntax match myRed /[\[\]():,.]/
+  syntax match myBlue /[\[\]():,.]/
   syntax match myCyan /[=<!>-]/
   syntax match myYellow /[*]/
-  syntax match myBlue /[{}]/
+  syntax match myRed /[{}]/
 endfu
 
 augroup _init

@@ -27,7 +27,8 @@ M.colors = {
   diff_yellow = "#3a3f4d",
   yellow = "#e5c07b",
   dark_yellow = "#e5c07b",
-  blue = "#61AFEF",
+  -- blue = "#61AFEF",
+  blue = "#499dd7",
   orange = "#e78a4e",
   purple = "#C678DD",
   cyan = "#56B6C2",
@@ -186,7 +187,7 @@ M.setup = function()
   M.highlight("TSError", {fg = M.colors.cyan})
   -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
   M.highlight("TSPunctDelimiter", {fg = M.colors.red})
-  M.highlight("TSPunctBracket", {fg = M.colors.red})
+  M.highlight("TSPunctBracket", {fg = M.colors.blue})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
   --- Constants ---
@@ -212,7 +213,7 @@ M.setup = function()
   M.highlight("TSParameter", {fg = M.colors.white})
   -- M.highlight("TSParameterReference", {})
   M.highlight("TSMethod", {fg = M.colors.white, gui = "italic"})
-  M.highlight("TSField", {fg = M.colors.white, gui = "italic"})
+  M.highlight("TSField", {fg = M.colors.white})
   M.highlight("TSProperty", {fg = M.colors.white})
   M.highlight("TSConstructor", {fg = M.colors.orange})
 
