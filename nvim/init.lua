@@ -118,6 +118,12 @@ function _G.pre_write()
   cmd "noh"
 end
 
+cmd "syntax enable"
+cmd "set synmaxcol=512"
+cmd "syntax sync minlines=256"
+cmd "syntax sync maxlines=300"
+cmd "syntax on"
+
 function _G.mySyntax()
   cmd [[syntax match myRed /[\[\]():,.]/]]
   cmd [[syntax match myCyan /[=<!>-]/ ]]
@@ -135,12 +141,6 @@ function _G.perflog()
   cmd [[profile func *]]
   cmd [[profile file *]]
 end
-
-cmd "syntax enable"
-cmd "set synmaxcol=512"
-cmd "syntax sync minlines=256"
-cmd "syntax sync maxlines=300"
-cmd "syntax on"
 
 require "onedark".setup {}
 

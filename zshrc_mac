@@ -84,7 +84,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(zsh-autosuggestions)
 
 # git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH/custom/plugins/zsh-vi-mode
-plugins+=(zsh-vi-mode)
+# plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
