@@ -263,7 +263,7 @@ command! Mktags !ctags -R .
 
 hi!  MatchParen    ctermbg=8     ctermfg=7     cterm=bold,underline
 hi!  Statement     ctermfg=13 cterm=italic
-hi!  Function      ctermfg=4  cterm=italic
+hi!  Function      ctermfg=7  cterm=italic
 hi!  String        ctermfg=2
 hi!  Include       ctermfg=6  cterm=italic
 hi!  myRed         ctermfg=1
