@@ -38,7 +38,7 @@ M.colors = {
   itermbg = "#282c34",
   dimm_black = "#1c1c1c",
   dark_black = "#1a1a1a",
-  comment_grey = "#5C6370",
+  comment_grey = "#5f6673",
   light_grey = "#939eb3",
   gutter_fg_grey = "#4B5263",
   cursor_grey = "#2C323C",
@@ -56,7 +56,7 @@ M.setup = function()
   M.highlight("MsgArea", {fg = M.colors.light_grey})
   M.highlight("MsgSeparator", {})
   M.highlight("EndOfBuffer", {fg = M.colors.current_bg}) -- hide eob markers
-  M.highlight("Comment", {fg = M.colors.light_grey, gui = "italic"})
+  M.highlight("Comment", {fg = M.colors.comment_grey, gui = "italic"})
   M.highlight("Constant", {fg = M.colors.cyan, gui = "bold"})
   M.highlight("String", {fg = M.colors.green})
   M.highlight("Character", {fg = M.colors.green})
@@ -221,7 +221,7 @@ M.setup = function()
   M.highlight("TSRepeat", {fg = M.colors.yellow, gui = "italic"})
   -- M.highlight("TSLabel", {})
   M.highlight("TSKeyword", {fg = M.colors.purple, gui = "italic"})
-  M.highlight("TSKeywordFunction", {fg = M.colors.purple, gui = "bold,italic"})
+  M.highlight("TSKeywordFunction", {fg = M.colors.purple, gui = "italic"})
   M.highlight("TSKeywordReturn", {fg = M.colors.purple, gui = "italic"})
   M.highlight("TSKeywordOperator", {fg = M.colors.yellow, gui = "italic"})
   M.highlight("TSOperator", {fg = M.colors.cyan, gui = "bold"})
