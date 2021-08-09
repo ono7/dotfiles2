@@ -184,7 +184,7 @@ M.setup = function()
   -- Misc
   M.highlight("TSError", {fg = M.colors.cyan})
   -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
-  M.highlight("TSPunctDelimiter", {fg = M.colors.red})
+  M.highlight("TSPunctDelimiter", {fg = M.colors.red, gui = "bold"})
   M.highlight("TSPunctBracket", {fg = M.colors.blue})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
@@ -325,7 +325,7 @@ M.setup = function()
 
   --- python ---
   M.highlight("pythonBuiltin", {fg = M.colors.blue, gui = "italic"})
-  M.highlight("myRed", {fg = M.colors.red})
+  M.highlight("myRed", {fg = M.colors.red, gui = "bold"})
   M.highlight("myYellow", {fg = M.colors.yellow})
   M.highlight("myCyan", {fg = M.colors.cyan})
   M.highlight("myBlue", {fg = M.colors.blue})
