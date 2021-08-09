@@ -32,14 +32,14 @@ require "nvim-treesitter.configs".setup {
   -- },
   highlight = {
     enable = true,
-    -- disable = {"python"} -- broken...
+    disable = {"python"} -- broken...
   },
   -- incremental_selection = {
   --   enable = true,
   --   use_languagetree = true
   --   -- disable = { 'cpp', 'lua' },
   -- },
-  ensure_installed = {"c","python", "cpp", "lua", "javascript", "toml", "json", "java", "bash"}
+  ensure_installed = {"c", "cpp", "lua", "javascript", "toml", "json", "java", "bash"}
   -- playground = {
   --   enable = true,
   --   disable = {},
