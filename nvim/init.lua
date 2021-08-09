@@ -143,7 +143,7 @@ function _G.perflog()
 end
 
 require "onedark".setup {}
-
+-- cmd [[colorscheme base16-onedark]]
 cmd "hi!  snipLeadingSpaces  ctermbg=0  guibg=none  guifg=none"
 
 require "my_maps"

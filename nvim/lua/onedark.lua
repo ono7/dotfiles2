@@ -205,7 +205,7 @@ M.setup = function()
   -- M.highlight("TSNamespace", {})
 
   --- Functions ---
-  M.highlight("TSFuncBuiltin", {fg = M.colors.yellow})
+  M.highlight("TSFuncBuiltin", {fg = M.colors.white})
   M.highlight("TSFunction", {fg = M.colors.white, gui = "italic"})
   -- M.highlight("TSFuncMacro", {})
   M.highlight("TSParameter", {fg = M.colors.white})
@@ -232,7 +232,7 @@ M.setup = function()
 
   -- Variable
   M.highlight("TSVariable", {fg = M.colors.white})
-  M.highlight("TSVariableBuiltin", {fg = M.colors.white, gui = "italic"})
+  M.highlight("TSVariableBuiltin", {fg = M.colors.white})
 
   -- -- Text
   -- M.highlight("TSText", {})

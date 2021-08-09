@@ -10,6 +10,7 @@ cmd "packadd paq-nvim"
 
 require "paq" {
   {"savq/paq-nvim", opt = true},
+  "rrethy/nvim-base16",
   "tpope/vim-eunuch",
   "tpope/vim-surround",
   "tpope/vim-repeat",
