@@ -18,7 +18,7 @@ M.clear = function(grp)
 end
 
 M.colors = {
-  red = "#E06C75",
+  red = "#ee737c",
   dark_red = "#BE5046",
   -- green = "#98C379",
   green = "#98c379",
@@ -27,7 +27,6 @@ M.colors = {
   diff_yellow = "#3a3f4d",
   yellow = "#e5c07b",
   dark_yellow = "#e5c07b",
-  -- blue = "#61AFEF",
   blue = "#499dd7",
   orange = "#e78a4e",
   purple = "#C678DD",
@@ -214,7 +213,7 @@ M.setup = function()
   M.highlight("TSMethod", {fg = M.colors.white})
   M.highlight("TSField", {fg = M.colors.white})
   M.highlight("TSProperty", {fg = M.colors.white})
-  M.highlight("TSConstructor", {fg = M.colors.orange})
+  M.highlight("TSConstructor", {fg = M.colors.red})
 
   --- Keywords ---
   M.highlight("TSConditional", {fg = M.colors.purple, gui = "italic"})
@@ -339,7 +338,7 @@ M.setup = function()
 
   --- FZF ---
   M.highlight("FZFgutter", {bg = M.colors.comment_grey})
-  M.highlight("FZFbgPlus", {bg = M.colors.dark_black})
+  M.highlight("FZFbgPlus", {bg = M.colors.comment_grey})
   M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
   M.highlight("FZFhl", {fg = M.colors.yellow})
   -- M.highlight("FZFgutter", {})
