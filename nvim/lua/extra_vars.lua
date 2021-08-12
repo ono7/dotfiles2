@@ -97,6 +97,8 @@ nnoremap 's `S
 nnoremap Q @q
 vnoremap Q :'<,'>norm @q<cr>
 nnoremap Y y$
+nnoremap y" yi"
+nnoremap y' yi'
 nnoremap D d$
 vnoremap y mxy`x
 nnoremap <c-z> <nop>
