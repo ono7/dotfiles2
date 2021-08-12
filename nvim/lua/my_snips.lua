@@ -88,9 +88,8 @@ localhost ansible_connection=local
 [all:vars]
 
 ansible_connection = network_cli
-ansible_network_os = nxos
-ansible_user= "jose.lima"
-
+# ansible_network_os = nxos
+# ansible_user= "jose.lima"
 # ansible_become = yes
 # ansible_become_method = enable
 # ansible_ssh_pass = ""

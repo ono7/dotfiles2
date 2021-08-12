@@ -1,6 +1,6 @@
 -- Follow the white rabbit...
 
--- command of the day gi, zi (fold enable toggle)
+-- command of the day gi, zi (fold enable toggle), X delete left
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}

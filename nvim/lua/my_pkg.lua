@@ -10,7 +10,6 @@ cmd "packadd paq-nvim"
 
 require "paq" {
   {"savq/paq-nvim", opt = true},
-  "rrethy/nvim-base16",
   "tpope/vim-eunuch",
   "tpope/vim-surround",
   "tpope/vim-repeat",
@@ -28,7 +27,7 @@ require "paq" {
   "lukas-reineke/format.nvim",
   "numToStr/Navigator.nvim",
   {"nvim-treesitter/nvim-treesitter", branch = "0.5-compat", run = ":TSUpdate"},
-  "nvim-treesitter/playground",
+  -- "nvim-treesitter/playground",
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",
   "kabouzeid/nvim-lspinstall"
