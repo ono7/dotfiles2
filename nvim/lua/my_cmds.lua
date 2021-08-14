@@ -23,11 +23,11 @@ local autocmds = {
       "*",
       [[command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)]]
     },
-    {
-      "VimEnter",
-      "*",
-      [[command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)]]
-    }
+    -- {
+    --   "VimEnter",
+    --   "*",
+    --   [[command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)]]
+    -- }
   },
   _resize = {
     {"VimResized", "*", [[:wincmd =]]}
@@ -55,11 +55,11 @@ local autocmds = {
   _terminal = {
     {"TermEnter", "*", [[setlocal scrolloff=0]]},
     {"TermLeave", "*", [[setlocal scrolloff=1]]}
+  },
+  _def_space = {
+    {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap]]}
+    -- {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap]]}
   }
-  -- _def_space = {
-  --   {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap]]}
-  --   -- {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap]]}
-  -- }
 }
 
 nvim_create_augroups(autocmds)
