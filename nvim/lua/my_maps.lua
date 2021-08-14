@@ -47,8 +47,8 @@ m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
 m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 --- fzf ---
-m("n", "<c-f>", ":GFiles<cr>", silent)
-m("n", "<leader>f", ":Files<cr>", silent)
+m("n", "<c-f>", ":Files<cr>", silent)
+m("n", "<leader>f", ":GFiles<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
 m("n", "<leader>s", ":Rg<cr>", silent)
 
