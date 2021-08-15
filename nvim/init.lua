@@ -118,6 +118,7 @@ function _G.pre_write()
   end
   cmd "update"
   cmd "noh"
+  cmd [[!git add %]]
 end
 
 cmd "syntax enable"
