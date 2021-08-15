@@ -47,7 +47,7 @@ local autocmds = {
   },
   _set_type = {
     {"BufNewFile,BufRead,BufEnter", "*.asm,*.nasm", [[setfiletype nasm | setlocal et]]},
-    {"BufNewFile,BufRead,BufEnter", "*.conf,*.cfg", [[setfiletype cfg | setlocal et]]},
+    {"BufNewFile,BufRead,BufEnter", "*.conf", [[setfiletype config | setlocal et]]},
     {"BufNewFile,BufRead,BufEnter", "*.md", [[setfiletype markdown | setlocal et]]}
   },
   _yank_hl = {
