@@ -17,10 +17,6 @@ m("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 m("n", "<leader>ve", ":Files ~/.dotfiles/<cr>", opt)
 m("n", "<leader>vr", ":source ~/.dotfiles/nvim/ini.lua<cr>", opt)
 
-m("n", "<c-a>", "^", opt)
-m("n", "<c-e>", "g_", opt)
-m("v", "<c-e>", "g_", opt)
-
 --- marks/jumps ---
 m("n", "'", "`", opt)
 m("n", "ma", "mA", opt)
