@@ -31,6 +31,8 @@ rm -rf ~/.vim
 rm -rf ~/.config/nvim
 mkdir -p ~/.vim/indent
 ln -sf ~/.dotfiles/ctagsrc ~/.ctags.d/default.ctags
+ln -sf ~/.dotfiles/mongorc.js ~/.mongorc.js
+ln -sf ~/.dotfiles/mongorc.js ~/.mongoshrc.js
 ln -sf ~/.dotfiles/ctagsrc ~/.ctags
 ln -sf ~/.dotfiles/nvim/indent/python.vim ~/.vim/indent/python.vim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
