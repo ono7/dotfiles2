@@ -303,7 +303,8 @@ hi!  FoldColumn    ctermbg=NONE
 hi!  SignColumn    ctermfg=7     ctermbg=NONE
 hi!  link          CursorLine    Search
 hi!  link          StatusLine    Search
-hi!  StatusLineNC  ctermfg=0     ctermbg=7
+hi!  StatusLineNC  ctermfg=8   ctermbg=NONE cterm=underline
+hi!  StatusLine    ctermfg=7   ctermbg=NONE cterm=underline
 hi!  link          Todo          Underlined
 
 filetype plugin indent on
