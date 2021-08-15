@@ -20,6 +20,7 @@ end
 M.colors = {
   red = "#ee737c",
   dark_red = "#BE5046",
+  visual = "#204062",
   -- green = "#98C379",
   green = "#98c379",
   diff_green = "#7ca960",
@@ -140,7 +141,7 @@ M.setup = function()
   M.highlight("TabLineFill", {})
   M.highlight("TabLineSel", {fg = M.colors.white})
   M.highlight("Title", {fg = M.colors.green})
-  M.highlight("Visual", {fg = M.colors.visual_black, bg = M.colors.visual_grey})
+  M.highlight("Visual", {fg = M.colors.visual_black, bg = M.colors.visual})
   M.highlight("VisualNOS", {bg = M.colors.visual_grey})
   M.highlight("WarningMsg", {fg = M.colors.yellow})
   M.highlight("WildMenu", {fg = M.colors.black, bg = M.colors.blue})

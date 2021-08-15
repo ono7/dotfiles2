@@ -278,11 +278,12 @@ hi!  Repeat        ctermfg=3 cterm=italic
 hi!  Operator      ctermfg=3 cterm=italic
 hi!  qfFileName    ctermfg=3
 hi!  Comment       ctermfg=8 cterm=italic
-hi!  Search        ctermfg=7     ctermbg=8
 hi!  Error         ctermfg=1     ctermbg=NONE
 hi!  link          ErrorMsg      Error
 hi!  Whitespace    ctermbg=NONE  ctermfg=15
-hi!  Visual        ctermbg=2   ctermfg=0
+hi!  Visual        ctermbg=12   ctermfg=NONE
+hi!  Search        ctermbg=12   ctermfg=NONE term=NONE guibg=NONE guifg=NONE
+hi!  link Search Visual
 hi!  VertSplit     ctermbg=NONE  ctermfg=8     cterm=NONE
 hi!  Pmenu         ctermfg=8   ctermbg=0
 hi!  PmenuSel      ctermfg=NONE   ctermbg=8
