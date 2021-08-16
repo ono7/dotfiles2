@@ -132,22 +132,33 @@ g.pyindent_nested_paren = "&sw"
   Avaliable Border Style -> rounded: / sharp / horizontal / vertical / top / bottom / left / right
 
 --]]
-g.fzf_history_dir = "~/.tmp/fzf-history"
+-- g.fzf_history_dir = "~/.tmp/fzf-history"
 g.fzf_buffers_jump = 1
 g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"]]
 g.fzf_nvim_statusline = 1
+g.fzf_preview = {
+  -- arguments to the FZF '--preview-window' option
+  "right:+{2}-/2" -- preview on the right and centered on entry
+}
+g.fzf_action = {
+  ["ctrl-x"] = "tabedit",
+  ["ctrl-v"] = "vsplit",
+  ["ctrl-t"] = "split"
+}
+g.fzf_modifier = ":~:." -- format FZF entries, see |filename-modifiers|
+g.fzf_trim = true -- trim FZF entries
 
 local fzf_colors_tbl = {}
-fzf_colors_tbl.fg = {"fg", "Visual"}
-fzf_colors_tbl.hl = {"fg", "FZFhl"}
+fzf_colors_tbl.fg = {"fg", "Comment"}
+fzf_colors_tbl.bg = {"bg", "Normal"}
+fzf_colors_tbl.hl = {"fg", "String"}
 fzf_colors_tbl["fg+"] = {"fg", "FZFfgPlus"}
-fzf_colors_tbl["bg+"] = {"bg", "FZFbgPlus"}
+fzf_colors_tbl["bg+"] = {"bg", "Visual"} -- gutter bg
 fzf_colors_tbl["hl+"] = {"fg", "myRed"}
 fzf_colors_tbl.info = {"fg", "fzf_info"}
 fzf_colors_tbl.prompt = {"fg", "myBlue"}
+fzf_colors_tbl.gutter = {"fg", "FZFgutter"}
 fzf_colors_tbl.pointer = {"fg", "myRed"}
-fzf_colors_tbl.gutter = {"fg", "#939eb3"}
-fzf_colors_tbl.gutter = {"fg", "Visual"}
 fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 g.fzf_colors = fzf_colors_tbl
 

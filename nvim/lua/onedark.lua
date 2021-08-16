@@ -33,7 +33,7 @@ M.colors = {
   purple = "#C678DD",
   -- cyan = "#56B6C2",
   -- white = "#c2c6cc",
-  current_bg = "#383b40",
+  current_bg = "#1e222a",
   black = "#23272e",
   itermbg = "#282c34",
   dimm_black = "#1c1c1c",
@@ -369,7 +369,7 @@ M.setup = function()
   M.highlight("ALEError", {guisp = M.colors.red, gui = "underline,bold"})
 
   --- FZF ---
-  M.highlight("FZFgutter", {bg = M.colors.comment_grey})
+  M.highlight("FZFgutter", {fg = M.colors.current_bg})
   M.highlight("FZFbgPlus", {bg = M.colors.comment_grey})
   M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
   M.highlight("FZFhl", {fg = M.colors.yellow})
