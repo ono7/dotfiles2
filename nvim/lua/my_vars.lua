@@ -159,7 +159,7 @@ fzf_colors_tbl.info = {"fg", "fzf_info"}
 fzf_colors_tbl.prompt = {"fg", "myBlue"}
 fzf_colors_tbl.gutter = {"fg", "FZFgutter"}
 fzf_colors_tbl.pointer = {"fg", "myRed"}
-fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
+-- fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 g.fzf_colors = fzf_colors_tbl
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"
