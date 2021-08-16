@@ -138,7 +138,7 @@ g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %
 g.fzf_nvim_statusline = 1
 
 local fzf_colors_tbl = {}
-fzf_colors_tbl.fg = {"fg", "Comment"}
+fzf_colors_tbl.fg = {"fg", "Visual"}
 fzf_colors_tbl.hl = {"fg", "FZFhl"}
 fzf_colors_tbl["fg+"] = {"fg", "FZFfgPlus"}
 fzf_colors_tbl["bg+"] = {"bg", "FZFbgPlus"}
@@ -147,6 +147,7 @@ fzf_colors_tbl.info = {"fg", "fzf_info"}
 fzf_colors_tbl.prompt = {"fg", "myBlue"}
 fzf_colors_tbl.pointer = {"fg", "myRed"}
 fzf_colors_tbl.gutter = {"fg", "#939eb3"}
+fzf_colors_tbl.gutter = {"fg", "Visual"}
 fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 g.fzf_colors = fzf_colors_tbl
 

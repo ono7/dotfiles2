@@ -373,7 +373,6 @@ M.setup = function()
   M.highlight("FZFbgPlus", {bg = M.colors.comment_grey})
   M.highlight("FZFfgPlus", {fg = M.colors.white, gui = "bold"})
   M.highlight("FZFhl", {fg = M.colors.yellow})
-  -- M.highlight("FZFgutter", {})
 
   --- snippets ---
   M.clear("snipLeadingSpaces")
