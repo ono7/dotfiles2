@@ -335,6 +335,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
+FD_CMD='fd -I --type f --exclude ".git" --exclude "__pycache__" --follow --hidden'
 if command -v fd &> /dev/null; then
   _fzf_compgen_path() {
     fd -I --hidden --follow --exclude ".git" . "$1"
@@ -344,8 +345,8 @@ if command -v fd &> /dev/null; then
   _fzf_compgen_dir() {
     fd -I --type d --hidden --follow --exclude ".git" . "$1"
   }
-  export FZF_ALT_C_COMMAND='fd -I --type d --exclude .git --follow --hidden'
-  export FZF_DEFAULT_COMMAND='fd -I --type f --exclude .git --follow --hidden'
+  export FZF_ALT_C_COMMAND=$FD_CMD
+  export FZF_DEFAULT_COMMAND=$FD_CMD
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'

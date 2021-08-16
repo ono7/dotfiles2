@@ -215,21 +215,20 @@ function vd () {
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
-# if command -v fd &> /dev/null; then
-#   _fzf_compgen_path() {
-#     fd --hidden --follow --exclude ".git" . "$1"
-#   }
-#
-#   # Use fd to generate the list for directory completion
-#   _fzf_compgen_dir() {
-#     fd --type d --hidden --follow --exclude ".git" . "$1"
-#   }
-#   export FZF_ALT_C_COMMAND='fd --type d --exclude .git --follow --hidden'
-#   export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --follow --hidden'
-#   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# else
-#   echo 'download fd from: https://github.com/sharkdp/fd/releases'
-# fi
+if command -v fd &> /dev/null; then
+  _fzf_compgen_path() {
+    fd -I --hidden --follow --exclude ".git" . "$1"
+  }
 
+  # Use fd to generate the list for directory completion
+  _fzf_compgen_dir() {
+    fd -I --type d --hidden --follow --exclude ".git" . "$1"
+  }
+  export FZF_ALT_C_COMMAND='fd -I --type d --exclude .git --follow --hidden'
+  export FZF_DEFAULT_COMMAND='fd -I --type f --exclude .git --follow --hidden'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+else
+  echo 'download fd from: https://github.com/sharkdp/fd/releases'
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
