@@ -217,7 +217,7 @@ endif
 function! <SID>RemoveWhiteSpace()
   let l = line(".")
   let c = col(".")
-  %s/\s\+$//e
+  keepmarks %s/\s\+$//e
   call cursor(l, c)
 endfunction
 

@@ -115,8 +115,8 @@ function _G.pre_write()
   vim.bo.expandtab = true
   do
     cmd [[let old = @/]]
-    cmd "%retab!"
-    cmd [[%s/\s\+$//e]]
+    cmd [[keepmarks %retab!]]
+    cmd [[keepmarks %s/\s\+$//e]]
     cmd [[let @/ = old]]
   end
   if g.loaded_format == 1 then
