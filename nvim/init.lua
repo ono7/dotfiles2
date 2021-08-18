@@ -1,6 +1,6 @@
 -- Follow the white rabbit...
 
--- command of the day gi, zi (fold enable toggle), X delete left
+-- command of the day <c-i/o> gi, zi (fold enable toggle), X delete left
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}
@@ -90,7 +90,7 @@ m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
 m("i", "<m-b>", "<c-o>B", silent)
-m("i", "<m-f>", "<c-o>W", silent)
+m("i", "<m-f>", "<c-o>E", silent)
 m("n", "<c-a>", "^", opt)
 m("n", "<c-e>", "g_", opt)
 m("v", "<c-e>", "g_", opt)
@@ -121,10 +121,6 @@ end
 function _G.pre_write()
   vim.bo.expandtab = true
   do
-    -- cmd [[let old = @/]]
-    -- cmd [[keepjumps %retab!]]
-    -- cmd [[keepjumps %s/\s\+$//e]]
-    -- cmd [[let @/ = old]]
     _G.remove_whitespace()
   end
   if g.loaded_format == 1 then
@@ -132,7 +128,7 @@ function _G.pre_write()
   end
   cmd "update"
   cmd "noh"
-  -- cmd [[:silent !git add %]]
+  cmd [[:silent !git add %]]
 end
 
 cmd "syntax enable"
