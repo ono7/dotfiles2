@@ -133,6 +133,7 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 set completeopt=menuone
 
 set notitle
+set jumpoptions+=stack
 set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set autoread
@@ -217,7 +218,7 @@ endif
 function! <SID>RemoveWhiteSpace()
   let l = line(".")
   let c = col(".")
-  keepmarks %s/\s\+$//e
+  keepjumps %s/\s\+$//e
   call cursor(l, c)
 endfunction
 
