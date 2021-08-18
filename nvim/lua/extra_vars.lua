@@ -174,7 +174,7 @@ set spelllang=en_us
 set splitbelow
 set splitright
 set softtabstop=2 tabstop=2 textwidth=0 expandtab
-set timeout timeoutlen=500 ttimeout ttimeoutlen=50
+set timeout timeoutlen=400 ttimeout ttimeoutlen=5
 set undolevels=999
 set updatetime=1000
 set wildignore+=.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*,*.class
