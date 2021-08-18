@@ -69,8 +69,7 @@ nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
 nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :update<cr>1<c-g>
-
+nnoremap <leader>w :RemoveWhiteSpace<cr>1<c-g>|update<cr>
 nnoremap <silent>gp `[v`]
 nnoremap <silent>gi gi<c-o>zz
 
@@ -219,8 +218,9 @@ endif
 function! <SID>RemoveWhiteSpace()
   let l = line(".")
   let c = col(".")
-  keepjumps %s/\s\+$//e
+  %s/\s\+$//e
   call cursor(l, c)
+  update
 endfunction
 
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
@@ -247,7 +247,7 @@ augroup END
 
 augroup _write
   autocmd!
-  autocmd BufWritePre * silent! :call <SID>RemoveWhiteSpace() | retab!
+  autocmd BufWritePre * silent! :retab!
 augroup END
 
 augroup _resize
