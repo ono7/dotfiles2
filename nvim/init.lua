@@ -12,8 +12,9 @@ local sf =  "/Volumes/ohmy/shada"
 local ok, _, _ = os.rename(sf, sf)
 if not ok then
   print('blah blah....')
-  os.execute('diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://2048`')
+  os.execute('diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://20480`')
 end
+
 vim.o.shadafile = sf
 vim.o.shada="'100,<50,s10,:15"
 
@@ -74,7 +75,7 @@ m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", ":update<cr>", silent)
 m("n", "<leader>r", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
-m("n", 'y"', 'yi"', opt) -- test
+m("n", 'y"', 'yi"', opt)
 m("n", "y'", "yi'", opt)
 m("n", "D", "d$", opt)
 m("n", "cp", "yap<S-}>p", opt)
