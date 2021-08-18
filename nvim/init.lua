@@ -16,7 +16,7 @@ if not ok then
 end
 
 vim.o.shadafile = sf
-vim.o.shada="'100,<50,s10,:15"
+vim.o.shada="'100,<50,s10,:30"
 
 g.loaded_gzip = 1
 g.loaded_tar = 1
@@ -65,7 +65,7 @@ m("n", "ZZ", "", opt)
 m("n", "ZQ", "", opt)
 
 -- m("n", "<c-[>", "<cmd>noh<cr>1<c-g>", silent)
-m("n", "<Esc>", "<cmd>noh<cr>1<c-g>", silent)
+-- m("n", "<Esc>", "<cmd>noh<cr>1<c-g>", silent)
 m("n", "yw", "yiw", silent)
 m("n", "gi", "gi<c-o>zz", silent)
 m("n", "gp", "`[v`]", silent)

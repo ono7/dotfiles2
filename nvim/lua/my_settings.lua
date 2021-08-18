@@ -51,7 +51,7 @@ o.showmatch = false
 o.showtabline = 0
 o.matchtime = 0
 o.ttimeout = false
-o.ttimeoutlen = 10
+o.ttimeoutlen = 5 
 o.wrapscan = true
 vim.g.myrg = 0
 
