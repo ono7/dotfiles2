@@ -8,6 +8,15 @@ local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
+local sf =  "/Volumes/ohmy/shada"
+local ok, _, _ = os.rename(sf, sf)
+if not ok then
+  print('blah blah....')
+  os.execute('diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://2048`')
+end
+vim.o.shadafile = sf
+vim.o.shada="'100,<50,s10,:15"
+
 g.loaded_gzip = 1
 g.loaded_tar = 1
 g.loaded_tarPlugin = 1
@@ -181,7 +190,7 @@ if vim.opt.diff:get() then
 end
 
 --[[
-
+ : diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://2048`
   npm install lua-fmt prettier pyright -g
   pip install black pylint yamllint
 

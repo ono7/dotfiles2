@@ -133,7 +133,6 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 set completeopt=menuone
 
 set notitle
-" set jumpoptions+=stack
 set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set autoread
@@ -142,7 +141,9 @@ set cmdheight=2
 set complete+=kspell complete-=i complete-=t
 set completeopt-=preview
 set diffopt=filler
-set directory=/tmp
+set directory=
+set viminfofile=/tmp/shada
+set viminfo='100,<50,s10,:15
 set display+=lastline
 set encoding=utf-8
 set fileencoding=utf-8
