@@ -72,7 +72,7 @@ m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
 m("n", "<leader>q", ":qall!<cr>", silent)
-m("n", "<leader>w", ":update<cr>", silent)
+m("n", "<leader>w", ":call v:lua.remove_whitespace()<cr>", silent)
 m("n", "<leader>r", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("n", 'y"', 'yi"', opt)
@@ -126,6 +126,7 @@ function _G.remove_whitespace()
     cmd [[keepjumps %retab!]]
     cmd [[keepjumps %s/\s\+$//e]]
     cmd [[let @/ = old]]
+    cmd "update"
 end
 
 function _G.pre_write()
