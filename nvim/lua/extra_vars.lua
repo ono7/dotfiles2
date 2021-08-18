@@ -69,7 +69,7 @@ nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
 nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :write<cr>1<c-g>
+nnoremap <leader>w :update<cr>1<c-g>
 
 nnoremap <silent>gp `[v`]
 nnoremap <silent>gi gi<c-o>zz

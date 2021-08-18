@@ -22,12 +22,12 @@ local autocmds = {
       "VimEnter",
       "*",
       [[command! -bang -nargs=? GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)]]
+    },
+    {
+      "VimEnter",
+      "*",
+      [[command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)]]
     }
-    -- {
-    --   "VimEnter",
-    --   "*",
-    --   [[command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)]]
-    -- }
   },
   _resize = {
     {"VimResized", "*", [[:wincmd =]]}

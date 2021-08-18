@@ -62,9 +62,10 @@ m("n", "gp", "`[v`]", silent)
 m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
 m("n", "<leader>q", ":qall!<cr>", silent)
-m("n", "<leader>w", [[:call v:lua.pre_write()<cr>]], silent)
+m("n", "<leader>w", ":update<cr>", silent)
+m("n", "<leader>r", [[:call v:lua.pre_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
-m("n", 'y"', 'yi"', opt)
+m("n", 'y"', 'yi"', opt) -- test
 m("n", "y'", "yi'", opt)
 m("n", "D", "d$", opt)
 m("n", "cp", "yap<S-}>p", opt)
@@ -119,9 +120,9 @@ function _G.pre_write()
     cmd [[let @/ = old]]
   end
   if g.loaded_format == 1 then
-    cmd "keepjumps FormatWrite!"
+    cmd "FormatWrite!"
   end
-  cmd "keepjumps update"
+  cmd "update"
   cmd "noh"
   -- cmd [[:silent !git add %]]
 end
