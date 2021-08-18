@@ -73,7 +73,7 @@ m("n", "Q", "@q", opt)
 m("n", "<leader>d", ":bd!<cr>1<c-g>", silent)
 m("n", "<leader>q", ":qall!<cr>", silent)
 m("n", "<leader>w", ":call v:lua.remove_whitespace()<cr>", silent)
-m("n", "<leader>r", [[:call v:lua.pre_write()<cr>]], silent)
+m("n", "<leader>r", [[:call v:lua.format_and_write()<cr>]], silent)
 m("n", "Y", "y$", opt)
 m("n", 'y"', 'yi"', opt)
 m("n", "y'", "yi'", opt)
@@ -129,7 +129,7 @@ function _G.remove_whitespace()
     cmd "update"
 end
 
-function _G.pre_write()
+function _G.format_and_write()
   vim.bo.expandtab = true
   do
      _G.remove_whitespace()
