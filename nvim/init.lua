@@ -121,7 +121,7 @@ end
 function _G.pre_write()
   vim.bo.expandtab = true
   do
-    _G.remove_whitespace()
+     _G.remove_whitespace()
   end
   if g.loaded_format == 1 then
     cmd "FormatWrite!"
