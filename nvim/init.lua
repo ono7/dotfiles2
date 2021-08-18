@@ -8,15 +8,15 @@ local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
-local sf =  "/Volumes/ohmy/shada"
+local sf = "/Volumes/ohmy/shada"
 local ok, _, _ = os.rename(sf, sf)
 if not ok then
-  print('blah blah....')
+  print("blah blah....")
   os.execute('diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://20480`')
 end
 
 vim.o.shadafile = sf
-vim.o.shada="'100,<50,s10,:30"
+vim.o.shada = "'100,<50,s10,:30"
 
 g.loaded_gzip = 1
 g.loaded_tar = 1
@@ -122,17 +122,17 @@ cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 g.ale_disable_lsp = 1
 
 function _G.remove_whitespace()
-    cmd [[let old = @/]]
-    cmd [[keepjumps %retab!]]
-    cmd [[keepjumps %s/\s\+$//e]]
-    cmd [[let @/ = old]]
-    cmd "update"
+  cmd [[let old = @/]]
+  cmd [[keepjumps %retab!]]
+  cmd [[keepjumps %s/\s\+$//e]]
+  cmd [[let @/ = old]]
+  cmd "update"
 end
 
 function _G.format_and_write()
   vim.bo.expandtab = true
   do
-     _G.remove_whitespace()
+    _G.remove_whitespace()
   end
   if g.loaded_format == 1 then
     cmd "FormatWrite!"
