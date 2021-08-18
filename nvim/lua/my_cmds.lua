@@ -60,6 +60,9 @@ local autocmds = {
   _def_space = {
     {"FileType", "*", [[setlocal sw=2 ts=2 et softtabstop=2 tw=0 nowrap]]}
     -- {"FileType", "python", [[setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap]]}
+  },
+  _write = {
+    {"BufWritePost", "*", ":lua remove_whitespace()"}
   }
 }
 

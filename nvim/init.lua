@@ -111,13 +111,21 @@ cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 
 g.ale_disable_lsp = 1
 
-function _G.pre_write()
-  vim.bo.expandtab = true
-  do
+function _G.remove_whitespace()
     cmd [[let old = @/]]
     cmd [[keepjumps %retab!]]
     cmd [[keepjumps %s/\s\+$//e]]
     cmd [[let @/ = old]]
+end
+
+function _G.pre_write()
+  vim.bo.expandtab = true
+  do
+    -- cmd [[let old = @/]]
+    -- cmd [[keepjumps %retab!]]
+    -- cmd [[keepjumps %s/\s\+$//e]]
+    -- cmd [[let @/ = old]]
+    _G.remove_whitespace()
   end
   if g.loaded_format == 1 then
     cmd "FormatWrite!"
