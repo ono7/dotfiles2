@@ -119,9 +119,9 @@ function _G.pre_write()
     cmd [[let @/ = old]]
   end
   if g.loaded_format == 1 then
-    cmd "FormatWrite!"
+    cmd "keepjumps FormatWrite!"
   end
-  cmd "update"
+  cmd "keepjumps update"
   cmd "noh"
   -- cmd [[:silent !git add %]]
 end
