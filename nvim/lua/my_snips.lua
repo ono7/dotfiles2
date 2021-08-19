@@ -1,15 +1,15 @@
 --- testing snips ---
 local m = vim.api.nvim_set_keymap
 local opt = {noremap = true}
--- local silent = {noremap = true, silent = true}
 
 require "snippets".set_ux(require "snippets.inserters.vim_input")
+local U = require'snippets.utils'
 
 m("i", "<c-l>", [[<cmd>lua return require'snippets'.expand_or_advance(1)<CR>]], opt)
 require "snippets".snippets = {
   _global = {
-    -- Insert a basic snippet, which is a string.
-    todo = "${=vim.bo.commentstring:gsub('%%s', '')}TODO: ${=os.date('%x')} | ",
+    -- todo = "${=vim.bo.commentstring:gsub('%%s', '')}TODO: ${=os.date('%x')} | ",
+    todo = U.force_comment("TODO: ${=os.date('%x')} | "),
     date = "${=os.date()}",
     time = "${=os.date('%X') .. ' CDT'} "
   },
