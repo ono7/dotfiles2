@@ -134,7 +134,7 @@ elif command -v nvim &>/dev/null; then
   alias vimdiff='nvim -d'
 fi
 
-alias lvim='vim -c "normal '\''0"'
+alias lv='vim -c "normal '\''0"'
 
 # editor
 export EDITOR='vim'
