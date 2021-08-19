@@ -133,6 +133,7 @@ g.pyindent_nested_paren = "&sw"
 
 --]]
 -- g.fzf_history_dir = "~/.tmp/fzf-history"
+g.fzf_layout = {window = {width = 0.7; height = 0.8, border = "sharp"}}
 g.fzf_buffers_jump = 1
 g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"]]
 g.fzf_nvim_statusline = 1
