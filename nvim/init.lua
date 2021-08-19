@@ -8,15 +8,7 @@ local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
-local sf = "/Volumes/ohmy/shada"
-vim.o.shadafile = sf
-
-local ok, _, _ = os.rename(sf, sf)
-
-if not ok then
-  vim.o.shadafile = "/tmp/.shada"
-end
-
+vim.o.shadafile = "/Volumes/ohmy/shada"
 vim.o.undodir = ""
 vim.o.shada = "'100,<50,s10,:30"
 
