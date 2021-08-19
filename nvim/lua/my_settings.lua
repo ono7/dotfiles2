@@ -11,6 +11,7 @@ o.termguicolors = true
 o.cmdheight = 2
 o.directory = "~/.tmp"
 o.swapfile = false
+o.undodir = ""
 o.smartcase = true
 o.laststatus = 0
 o.hlsearch = false
@@ -51,7 +52,7 @@ o.showmatch = false
 o.showtabline = 0
 o.matchtime = 0
 o.ttimeout = false
-o.ttimeoutlen = 5 
+o.ttimeoutlen = 5
 o.wrapscan = true
 vim.g.myrg = 0
 

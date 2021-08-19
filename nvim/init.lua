@@ -8,8 +8,7 @@ local silent = {noremap = true, silent = true}
 local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
-vim.o.shadafile = "/Volumes/ohmy/shada"
-vim.o.undodir = ""
+vim.o.shadafile = "/tmp/.shada"
 vim.o.shada = "'100,<50,s10,:30"
 
 g.loaded_gzip = 1
