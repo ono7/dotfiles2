@@ -9,7 +9,7 @@ local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
 vim.o.shadafile = "/tmp/.shada"
-vim.o.shada = "'100,<50,s10,:30"
+vim.o.shada = "'30,<50,s10,:30,/30"
 
 g.loaded_gzip = 1
 g.loaded_tar = 1
