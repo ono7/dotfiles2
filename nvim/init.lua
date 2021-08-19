@@ -1,6 +1,5 @@
 -- Follow the white rabbit...
 
--- command of the day <c-i/o> gi, zi (fold enable toggle), X delete left
 local cmd, g, m = vim.cmd, vim.g, vim.api.nvim_set_keymap
 local xpr = {noremap = true, expr = true}
 local opt = {noremap = true}
@@ -185,7 +184,10 @@ if vim.opt.diff:get() then
 end
 
 --[[
- : diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://2048`
+
+  git pull --merge
+  command of the day <c-i/o> gi, zi (fold enable toggle), X delete left
+
   npm install lua-fmt prettier pyright -g
   pip install black pylint yamllint
 
@@ -193,6 +195,7 @@ end
   :<c-f> (command search)
 
   insert mode, <c-r> =   system('date'), or 2+2
+
     -- Lima
 
 --]]
