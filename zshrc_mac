@@ -3,6 +3,8 @@
 
 [[ -d ~/.tmp ]] || mkdir -p ~/.tmp
 
+[[ -d /Volumes/ohmy ]] || diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://20480`
+
 ZSH_DISABLE_COMPFIX="true"
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

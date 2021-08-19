@@ -26,27 +26,27 @@ require "nvim-web-devicons".setup {
   default = true
 }
 
-require "nvim-treesitter.configs".setup {
-  -- indent = {
-  --   enable = false
-  -- },
-  highlight = {
-    enable = true,
-    disable = {"python"} -- broken...
-  },
-  -- incremental_selection = {
-  --   enable = true,
-  --   use_languagetree = true
-  --   -- disable = { 'cpp', 'lua' },
-  -- },
-  ensure_installed = {"c", "cpp", "lua", "javascript", "toml", "json", "java", "bash"}
-  -- playground = {
-  --   enable = true,
-  --   disable = {},
-  --   updatetime = 25,
-  --   persist_queries = false
-  -- }
-}
+-- require "nvim-treesitter.configs".setup {
+--   -- indent = {
+--   --   enable = false
+--   -- },
+--   highlight = {
+--     enable = true,
+--     disable = {"python"} -- broken...
+--   },
+--   -- incremental_selection = {
+--   --   enable = true,
+--   --   use_languagetree = true
+--   --   -- disable = { 'cpp', 'lua' },
+--   -- },
+--   ensure_installed = {"c", "cpp", "lua", "javascript", "toml", "json", "java", "bash"}
+--   -- playground = {
+--   --   enable = true,
+--   --   disable = {},
+--   --   updatetime = 25,
+--   --   persist_queries = false
+--   -- }
+-- }
 
 --- formatting ---
 require "format".setup {

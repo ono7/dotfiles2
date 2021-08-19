@@ -26,7 +26,7 @@ require "paq" {
   "kyazdani42/nvim-web-devicons",
   "lukas-reineke/format.nvim",
   "numToStr/Navigator.nvim",
-  {"nvim-treesitter/nvim-treesitter", branch = "0.5-compat", run = ":TSUpdate"},
+  -- {"nvim-treesitter/nvim-treesitter", branch = "0.5-compat", run = ":TSUpdate"},
   -- "nvim-treesitter/playground",
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-compe",

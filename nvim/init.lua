@@ -9,13 +9,15 @@ local MYHOME = os.getenv("HOME")
 local PRJCTAG = os.getenv("PRJCTAG")
 
 local sf = "/Volumes/ohmy/shada"
+vim.o.shadafile = sf
+
 local ok, _, _ = os.rename(sf, sf)
+
 if not ok then
-  print("blah blah....")
-  os.execute('diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://20480`')
+  vim.o.shadafile = "/tmp/.shada"
 end
 
-vim.o.shadafile = sf
+vim.o.undodir = ""
 vim.o.shada = "'100,<50,s10,:30"
 
 g.loaded_gzip = 1

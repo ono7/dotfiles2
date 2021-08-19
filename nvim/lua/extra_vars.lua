@@ -141,7 +141,7 @@ set complete+=kspell complete-=i complete-=t
 set completeopt-=preview
 set diffopt=filler
 set directory=
-set viminfofile=/tmp/shada
+set viminfofile=/tmp/.shada
 set viminfo='100,<50,s10,:30
 set display+=lastline
 set encoding=utf-8
