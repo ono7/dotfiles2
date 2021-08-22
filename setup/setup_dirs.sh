@@ -50,7 +50,7 @@ ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/.dotfiles/dircolors ~/.dircolors
 
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
-ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
+cp ~/.dotfiles/gitconfig_template ~/.gitconfig
 ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
 ln -sf ~/.dotfiles/tmux/tmux_yank.sh ~/bin/yank
