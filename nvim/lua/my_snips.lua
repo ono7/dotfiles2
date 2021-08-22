@@ -8,9 +8,11 @@ local U = require'snippets.utils'
 m("i", "<c-l>", [[<cmd>lua return require'snippets'.expand_or_advance(1)<CR>]], opt)
 require "snippets".snippets = {
   _global = {
-    -- todo = "${=vim.bo.commentstring:gsub('%%s', '')}TODO: ${=os.date('%x')} | ",
-    todo = U.force_comment("TODO: ${=os.date('%x')} | "),
-    date = "${=os.date()}",
+    -- fix = U.force_comment("FIXME: $0 | ${=os.date('%x')}"),
+    todo = U.force_comment("TODO: > $0 < | ${=os.date()}"),
+    fix = U.force_comment("FIXME: > $0 < | ${=os.date()}"),
+    datetime = "${=os.date()}",
+    date = "${=os.date('%x')}",
     time = "${=os.date('%X') .. ' CDT'} "
   },
   python = {
