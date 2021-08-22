@@ -70,7 +70,8 @@ M.colors = {
   -- purple = "#b4bbc8",
   dark_purple = "#c882e7",
   teal = "#519ABA",
-  orange = "#fca2aa",
+  -- orange = "#fca2aa",
+  orange = "#f76c33",
   cyan = "#a3b8ef",
   statusline_bg = "#22262e",
   lightbg = "#2d3139",
@@ -327,7 +328,7 @@ M.setup = function()
   M.highlight("VimwikiHeader6", {fg = M.colors.cyan, gui = "bold"})
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
-  M.highlight("Whitespace", {fg = M.colors.red, gui = "bold"})
+  M.highlight("Whitespace", {fg = M.colors.orange, gui = "bold"})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
   M.link("gitcommitUntracked", "gitcommitComment")
