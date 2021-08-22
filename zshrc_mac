@@ -138,9 +138,9 @@ alias lv='vim -c "normal '\''0"'
 
 function vq () {
   if test -z "$2"; then
-    vim -q <(rg --vimgrep -S -- "$1") +copen
+    vim -q <(rg --vimgrep -i -S -- "$1") +copen
   else
-    vim -q <(rg --vimgrep -S -- "$1" "$2") +copen
+    vim -q <(rg --vimgrep -i -S -- "$1" "$2") +copen
   fi
 }
 
