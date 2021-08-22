@@ -9,8 +9,8 @@ m("i", "<c-l>", [[<cmd>lua return require'snippets'.expand_or_advance(1)<CR>]], 
 require "snippets".snippets = {
   _global = {
     -- fix = U.force_comment("FIXME: $0 | ${=os.date('%x')}"),
-    todo = U.force_comment("TODO: > $0 < | ${=os.date()}"),
-    fix = U.force_comment("FIXME: > $0 < | ${=os.date()}"),
+    todo = U.force_comment("TODO: $0 @${=os.date('%H:%m %m-%d-%y')}"),
+    fix = U.force_comment("FIXME: $0 @${=os.date('%H:%m %m-%d-%y')}"),
     datetime = "${=os.date()}",
     date = "${=os.date('%x')}",
     time = "${=os.date('%X') .. ' CDT'} "
