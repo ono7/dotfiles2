@@ -137,12 +137,8 @@ fi
 alias lv='vim -c "normal '\''0"'
 
 function vq () {
+  # pass all args to rg via $@ .. muhahaha
   vim -q <(rg --vimgrep -i -S $@) +copen
-  # if test -z "$2"; then
-  #   vim -q <(rg --vimgrep -i -S -- $1) +copen
-  # else
-  #   vim -q <(rg --vimgrep -i -S -- $1 $ft) +copen
-  # fi
 }
 
 # editor
