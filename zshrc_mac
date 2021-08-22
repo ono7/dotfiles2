@@ -137,7 +137,7 @@ fi
 alias lv='vim -c "normal '\''0"'
 
 function vq () {
-  # pass all args to rg via $@ .. muhahaha
+  # pass all args to rg via $@ .. allows to append rg flags, muhahah
   vim -q <(rg --vimgrep -i -S $@) +copen
 }
 
