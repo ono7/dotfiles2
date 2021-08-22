@@ -136,6 +136,14 @@ fi
 
 alias lv='vim -c "normal '\''0"'
 
+function vq () {
+  if test -z "$2"; then
+    vim -q <(rg --vimgrep "$1") +copen
+  else
+    vim -q <(rg --vimgrep "$1" "$2") +copen
+  fi
+}
+
 # editor
 export EDITOR='vim'
 
