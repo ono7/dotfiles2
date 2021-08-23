@@ -138,7 +138,7 @@ alias vl='vim -c "normal '\''0"'
 
 function vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
-  vim -q <(rg --vimgrep -i -S $@) +"copen 6"
+  vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
 }
 
 # editor
