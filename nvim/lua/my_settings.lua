@@ -6,6 +6,7 @@ local bo = vim.bo
 --- global options ---
 o.completeopt = "menuone,noinsert,noselect"
 o.foldmethod = "indent"
+o.guicursor="n-v-c:block"
 o.title = false
 o.termguicolors = true
 o.cmdheight = 2

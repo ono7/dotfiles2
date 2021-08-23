@@ -132,6 +132,7 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 set completeopt=menuone
 
 set notitle
+set guicursor=n-v-c:block
 set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set autoread
