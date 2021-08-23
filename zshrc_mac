@@ -134,11 +134,11 @@ elif command -v nvim &>/dev/null; then
   alias vimdiff='nvim -d'
 fi
 
-alias lv='vim -c "normal '\''0"'
+alias vl='vim -c "normal '\''0"'
 
 function vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
-  vim -q <(rg --vimgrep -i -S $@) +copen
+  vim -q <(rg --vimgrep -i -S $@) +"copen 6"
 }
 
 # editor
