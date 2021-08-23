@@ -110,6 +110,7 @@ m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
 
 cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
+cmd [[ packadd cfilter ]] -- quicklist filter :cfitler[!] /expression/
 
 g.ale_disable_lsp = 1
 
