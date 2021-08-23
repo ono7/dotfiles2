@@ -201,6 +201,7 @@ else
 endif
 
 if has('nvim')
+  packadd cfilter
   set inccommand=nosplit
   " pmenu/transparency/max items
   set pumheight=10 pumblend=0
@@ -208,13 +209,16 @@ if has('nvim')
   set clipboard+=unnamedplus
 endif
 
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+  packadd cfilter
+end
+
 if &diff
   if has('nvim-0.3.2') || has("patch-8.1.0360")
       set diffopt=filler,internal,algorithm:histogram,indent-heuristic
   endif
   set number
 endif
-
 
 function! <SID>RemoveWhiteSpace()
   let l = line(".")
