@@ -141,7 +141,7 @@ cmd "syntax sync maxlines=300"
 cmd "syntax on"
 
 function _G.mySyntax()
-  cmd [[syntax match myRed /[:,.]/]]
+  cmd [[syntax match myRed /[.]/]]
   cmd [[syntax match myCyan /[=<!>-]/ ]]
   cmd [[syntax match myYellow /[*{}]/ ]]
   cmd [==[syntax match myBlue /[\[\]()]/]==]
