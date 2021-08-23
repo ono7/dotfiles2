@@ -358,6 +358,7 @@ M.setup = function()
 
   --- python ---
   M.highlight("pythonBuiltin", {fg = M.colors.blue, gui = "italic"})
+  M.highlight("myBold", {gui = "bold"})
   M.highlight("myRed", {fg = M.colors.red, gui = "bold"})
   M.highlight("myYellow", {fg = M.colors.yellow})
   M.highlight("myCyan", {fg = M.colors.cyan})
