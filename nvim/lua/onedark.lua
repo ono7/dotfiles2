@@ -71,7 +71,7 @@ M.colors = {
   dark_purple = "#c882e7",
   teal = "#519ABA",
   -- orange = "#fca2aa",
-  orange = "#c86b13",
+  orange = "#f08017",
   cyan = "#a3b8ef",
   statusline_bg = "#22262e",
   lightbg = "#2d3139",
@@ -217,7 +217,7 @@ M.setup = function()
   -- Misc
   M.highlight("TSError", {fg = M.colors.cyan})
   -- M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
-  M.highlight("TSPunctDelimiter", {fg = M.colors.red, gui = "bold"})
+  M.highlight("TSPunctDelimiter", {fg = M.colors.white, gui = "bold"})
   M.highlight("TSPunctBracket", {fg = M.colors.blue})
   M.highlight("TSPunctSpecial", {fg = M.colors.yellow})
 
@@ -328,7 +328,7 @@ M.setup = function()
   M.highlight("VimwikiHeader6", {fg = M.colors.cyan, gui = "bold"})
 
   M.highlight("IndentGuide", {fg = M.colors.cursor_grey})
-  M.highlight("Whitespace", {fg = M.colors.purple, gui = "bold"})
+  M.highlight("Whitespace", {fg = M.colors.orange, gui = "bold"})
 
   M.link("gwitcommitNoBranch", "gitcommitBranch")
   M.link("gitcommitUntracked", "gitcommitComment")
