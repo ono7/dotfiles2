@@ -79,7 +79,7 @@ g.ale_linters = {
   python = {"pylint"},
   yaml = {"yamllint"},
   lua = {"luacheck"},
-  json = {"eslint"}
+  json = {"jsonlint"}
 }
 g.ale_linters_explicit = 1
 
