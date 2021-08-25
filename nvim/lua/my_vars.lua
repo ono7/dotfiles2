@@ -78,7 +78,8 @@ g.ale_fix_on_save = 0
 g.ale_linters = {
   python = {"pylint"},
   yaml = {"yamllint"},
-  lua = {"luacheck"}
+  lua = {"luacheck"},
+  json = {"eslint"}
 }
 g.ale_linters_explicit = 1
 
