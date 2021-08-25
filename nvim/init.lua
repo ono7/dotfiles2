@@ -44,9 +44,8 @@ else
 end
 
 --- map leader ---
-g.mapleader = ";"
-
 m("n", "<Space>", "", {})
+g.mapleader = " "
 
 vim.o.path = vim.o.path .. "**"
 
@@ -107,6 +106,7 @@ m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], 
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
+
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
 
 cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
@@ -185,10 +185,24 @@ if vim.opt.diff:get() then
   m("n", "[", "[c", opt)
 end
 
+--- remove pairs with backspace or <c-h>
+vim.api.nvim_exec([[
+function! Remove_pair() abort
+  let pair = getline('.')[ col('.')-2 : col('.')-1 ]
+  return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
+endfunction
+
+inoremap <expr> <bs> Remove_pair()
+imap <c-h> <bs>
+]], true)
+
+
 --[[
 
   git pull --merge
-  command of the day <c-i/o> gi, zi (fold enable toggle), X delete left
+  <c-h> and g; (last edit)
+  command of the day < c-h delete back in insert mode
+  c-i/o> gi, zi (fold enable toggle), X delete left
 
   npm install lua-fmt prettier pyright jsonlint -g
   pip install black pylint yamllint
