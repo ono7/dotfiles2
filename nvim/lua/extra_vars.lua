@@ -242,7 +242,7 @@ endfunction
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
 
 function! <SID>mySyntax()
-  syntax match myBold /[,:]/
+  syntax match myBold /[,:"'`]/
   syntax match myBlue /[\[\]()]/
   syntax match myCyan /[=<!>-]/
   syntax match myYellow /[{}*]/
