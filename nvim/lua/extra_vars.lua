@@ -57,7 +57,6 @@ inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\
 inoremap <expr> <bs> <sid>remove_pair()
 imap <c-h> <bs>
 
-" remove backspaces
 function s:remove_pair() abort
   let pair = getline('.')[ col('.')-2 : col('.')-1 ]
   return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
