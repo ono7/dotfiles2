@@ -78,6 +78,9 @@ nnoremap <silent><c-p> :cprevious<cr>
 nnoremap <leader>d :bd!<cr>1<c-g>
 nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :RemoveWhiteSpace<cr>1<c-g>|update<cr>
+xnoremap <leader>d <c-[>:bd!<cr>1<c-g>
+xnoremap <leader>q <c-[>:qall!<cr>
+xnoremap <leader>w <c-[>:RemoveWhiteSpace<cr>1<c-g>|update<cr>
 nnoremap <silent>gp `[v`]
 nnoremap <silent>gi gi<c-o>zz
 
