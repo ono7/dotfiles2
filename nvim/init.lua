@@ -202,7 +202,7 @@ imap <c-h> <bs>
 --[[
 
   git pull --merge
-  <c-h> and g; (last edit)
+  <c-h> (delete back) and g; (last edit) or `. (last edit mark) and `` (last jump)
   command of the day < c-h delete back in insert mode
   c-i/o> gi, zi (fold enable toggle), X delete left
 
