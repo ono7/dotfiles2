@@ -190,7 +190,7 @@ end
   git pull --merge
   command of the day <c-i/o> gi, zi (fold enable toggle), X delete left
 
-  npm install lua-fmt prettier pyright -g
+  npm install lua-fmt prettier pyright jsonlint -g
   pip install black pylint yamllint
 
   echo system('base64 -d', @")
