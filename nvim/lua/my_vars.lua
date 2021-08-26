@@ -187,7 +187,7 @@ vim.o.clipboard = "unnamed,unnamedplus"
 g.miniyank_maxitems = 10
 
 --- nvimtree ---
-g.nvim_tree_width = 20
+g.nvim_tree_width = 25
 g.nvim_tree_auto_open = 0 -- open on vim start
 g.nvim_tree_auto_close = 0 -- close vim if ntree is last buffer
 g.nvim_tree_ignore = {".git", "node_modules", ".cache", "__pycache__"}
