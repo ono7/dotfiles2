@@ -49,14 +49,20 @@ m("n", "<leader>b", ":Buffers<cr>", silent)
 -- m("n", "<leader>s", ":Rg<cr>", silent)
 
 vim.g.surround_no_mappings = 1
--- m("n", "S", "<Plug>YSurround", {})
+m("n", "S", "<Plug>YSurround", {})
 m("n", "s", "<Plug>Ysurround", {})
 m("n", "sw", "<Plug>Ysurroundiw", {})
+-- m("n", "s'", "<Plug>Ysurroundiw'", {})
+-- m("n", 's"', '<Plug>Ysurroundiw"', {})
 m("n", "sW", "<Plug>YsurroundiW", {})
 m("n", "ys", "<Plug>Yssurround", {})
 m("n", "ds", "<Plug>Dsurround", {})
 m("n", "cs", "<Plug>Csurround", {})
 m("x", "S", "<Plug>VSurround", {})
+
+
+-- :vmap s" S"gvhol
+-- :noremap s" maysiw"`a
 
 --- miniyank ---
 m("n", "p", [[<Plug>(miniyank-autoput)]], {})

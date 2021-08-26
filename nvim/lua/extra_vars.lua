@@ -62,6 +62,10 @@ function s:remove_pair() abort
   return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
 endfunction
 
+" surround mappings
+nnoremap s" ciw"<c-r><c-p>""
+nnoremap s' ciw'<c-r><c-p>"'
+
 cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>

@@ -77,6 +77,10 @@ m("n", "U", "<c-r>", opt)
 -- correct spelling @word
 m("n", "zz", [[zz msz=1<CR><CR>`s]], silent)
 
+-- surround
+m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
+m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
+
 -- swap visual bindings
 m("n", "v", "<C-V>", opt)
 m("n", "<C-V>", "v", opt)
