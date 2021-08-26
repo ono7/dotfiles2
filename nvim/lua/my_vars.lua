@@ -134,7 +134,7 @@ g.pyindent_nested_paren = "&sw"
 
 --]]
 -- g.fzf_history_dir = "~/.tmp/fzf-history"
-g.fzf_layout = {window = {width = 0.9; height = 0.8, border = "sharp"}}
+g.fzf_layout = {window = {width = 0.9, height = 0.8, border = "sharp"}}
 g.fzf_buffers_jump = 1
 g.fzf_commits_log_options = [[--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"]]
 g.fzf_nvim_statusline = 1
@@ -188,7 +188,7 @@ g.miniyank_maxitems = 10
 
 --- nvimtree ---
 g.nvim_tree_width = 20
-g.nvim_tree_auto_open = 0
+g.nvim_tree_auto_open = 1
 g.nvim_tree_auto_close = 1
 g.nvim_tree_ignore = {".git", "node_modules", ".cache", "__pycache__"}
 g.nvim_tree_quit_on_open = 0
@@ -198,8 +198,8 @@ g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_tab_open = 0
-g.nvim_tree_disable_netrw = 1
 g.nvim_tree_hijack_netrw = 1
+g.nvim_tree_disable_netrw = 1
 g.nvim_tree_add_trailing = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_show_icons = {git = 1, folder = 1, files = 1, folder_arrows = 0}
@@ -230,6 +230,7 @@ g.nvim_tree_icons = {
     error = ""
   }
 }
+
 --- git-blame ---
 g.gitblame_enabled = 0
 g.gitblame_date_format = [[%m/%d/%Y]]

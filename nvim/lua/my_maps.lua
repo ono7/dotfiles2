@@ -46,7 +46,6 @@ m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 m("n", "<leader>s", ":Files<cr>", silent)
 m("n", "<leader>f", ":GFiles<cr>", silent)
 m("n", "<leader>b", ":Buffers<cr>", silent)
--- m("n", "<leader>s", ":Rg<cr>", silent)
 
 vim.g.surround_no_mappings = 1
 m("n", "S", "<Plug>YSurround", {})
@@ -59,7 +58,6 @@ m("n", "ys", "<Plug>Yssurround", {})
 m("n", "ds", "<Plug>Dsurround", {})
 m("n", "cs", "<Plug>Csurround", {})
 m("x", "S", "<Plug>VSurround", {})
-
 
 -- :vmap s" S"gvhol
 -- :noremap s" maysiw"`a
