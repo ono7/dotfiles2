@@ -43,9 +43,9 @@ m("n", "<c-n>", "<Plug>(ale_next_wrap)", {silent = true})
 m("n", "<c-p>", "<Plug>(ale_previous_wrap)", {silent = true})
 
 --- fzf ---
-m("n", "<leader>s", ":Files<cr>", silent)
-m("n", "<leader>f", ":GFiles<cr>", silent)
-m("n", "<leader>b", ":Buffers<cr>", silent)
+m("n", "<leader>s", "<c-[>:Files<cr>", silent)
+m("n", "<leader>f", "<c-[>:GFiles<cr>", silent)
+m("n", "<leader>b", "<c-[>:Buffers<cr>", silent)
 
 vim.g.surround_no_mappings = 1
 m("n", "S", "<Plug>YSurround", {})
