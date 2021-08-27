@@ -11,6 +11,7 @@ require "snippets".snippets = {
     -- fix = U.force_comment("FIXME: $0 | ${=os.date('%x')}"),
     todo = U.force_comment("TODO: $0 @${=os.date('%H:%m %m-%d-%y')}"),
     fix = U.force_comment("FIXME: $0 @${=os.date('%H:%m %m-%d-%y')}"),
+    note = U.force_comment("NOTE: $0 @${=os.date('%H:%m %m-%d-%y')}"),
     datetime = "${=os.date()}",
     date = "${=os.date('%x')}",
     time = "${=os.date('%X') .. ' CDT'} "
