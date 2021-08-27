@@ -56,7 +56,7 @@ require "format".setup {
     https://github.com/lukas-reineke/format.nvim
     :h format.txt
 
-    npm install lua-fmt prettier -g
+    npm install lua-fmt prettier jsonlint -g
     pip install black pylint epdb ipython
 
   --]]

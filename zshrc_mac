@@ -127,11 +127,15 @@ if [[ -f ~/nvim/bin/nvim ]]; then
   alias vi=vim
   alias v='/usr/bin/vim'
   alias vimdiff='vim -d'
+  export EDITOR='nvim'
 elif command -v nvim &>/dev/null; then
   alias vim='nvim'
   alias vi=vim
   alias v='/usr/bin/vim'
   alias vimdiff='nvim -d'
+  export EDITOR='nvim'
+else
+ export EDITOR='nvim'
 fi
 
 alias vl='vim -c "normal '\''0"'
@@ -142,7 +146,6 @@ function vq () {
 }
 
 # editor
-export EDITOR='vim'
 
 if [[ -f ~/local/bin/tmux ]]; then
   alias tmux='~/local/bin/tmux'

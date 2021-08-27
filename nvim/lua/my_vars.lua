@@ -6,51 +6,15 @@ g.completion_sorting = "length"
 --- lsp ---
 g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
 
---- vimwiki ---
--- g.vimwiki_global_ext = 0
--- g.mywiki = {}
--- g.mywiki.path = "~/wiki/"
--- g.mywiki.syntax = "markdown"
--- g.mywiki.ext = ".md"
--- local temp1 = {}
--- temp1[".md"] = "markdown"
--- gs("vimwiki_ext2syntax", temp1)
--- g.vimwiki_list = g.mywiki
--- g.vimwiki_table_mappings = 0
--- g.wiki = {
---   path = "wiki",
---   nested_syntaxes = {
---     python = "python",
---     cpp = "cpp",
---     javascript = "javascript",
---     bash = "sh",
---     php = "php",
---     lua = "lua"
---   }
--- }
--- g.vimwiki_listsyms = "✗○◐●✓"
--- g.vimwiki_key_mappings = {
---   all_maps = 1,
---   links = 1,
---   global = 0,
---   headers = 0,
---   text_objs = 0,
---   table_format = 0,
---   table_mappings = 0,
---   lists = 0,
---   html = 0,
---   mouse = 0
--- }
-
 g.tmux_navigator_disable_when_zoomed = 1
 
---- autopairs ---
-g.AutoPairsMapCR = 0
-g.AutoPairsUseInsertedCount = 0
-g.AutoPairsMultilineClose = 1
-g.AutoPairsFlyMode = 0
-g.AutoPairsShortcutFastWrap = "<C-g>"
-g.AutoPairsShortcutBackInsert = "<C-b>"
+-- --- autopairs ---
+-- g.AutoPairsMapCR = 0
+-- g.AutoPairsUseInsertedCount = 0
+-- g.AutoPairsMultilineClose = 1
+-- g.AutoPairsFlyMode = 0
+-- g.AutoPairsShortcutFastWrap = "<C-g>"
+-- g.AutoPairsShortcutBackInsert = "<C-b>"
 
 --- ale ---
 g.ale_echo_msg_error_str = "E"
@@ -161,7 +125,6 @@ fzf_colors_tbl.info = {"fg", "fzf_info"}
 fzf_colors_tbl.prompt = {"fg", "myBlue"}
 fzf_colors_tbl.gutter = {"fg", "FZFgutter"}
 fzf_colors_tbl.pointer = {"fg", "myRed"}
--- fzf_colors_tbl.spinner = {"fg", "fzf_spinner"}
 g.fzf_colors = fzf_colors_tbl
 
 local clip_copy, clip_paste = "pbcopy", "pbpaste"

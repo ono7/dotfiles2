@@ -55,6 +55,7 @@ m("c", "<c-z>", "", opt)
 m("n", "ZZ", "", opt)
 m("n", "ZQ", "", opt)
 
+-- text operations
 m("n", "yw", "yiw", silent)
 m("n", "gi", "gi<c-o>zz", silent)
 m("n", "gp", "`[v`]", silent) -- vs last past
@@ -77,22 +78,19 @@ m("n", "U", "<c-r>", opt)
 -- correct spelling @word
 m("n", "zz", [[zz msz=1<CR><CR>`s]], silent)
 
--- surround
 m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
 m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
 
--- swap visual bindings
 m("n", "v", "<C-V>", opt)
 m("n", "<C-V>", "v", opt)
 m("v", "v", "<C-V>", opt)
 m("v", "<C-V>", "v", opt)
+m("v", "y", "mxy`x", opt)
+m("v", "Q", ":'<,'>norm @q<cr>", silent)
 
 m("c", "<c-a>", "<Home>", opt)
 m("c", "<c-h>", "<Left>", opt)
 m("c", "<c-l>", "<Right>", opt)
-
-m("v", "y", "mxy`x", opt)
-m("v", "Q", ":'<,'>norm @q<cr>", silent)
 
 m("i", "<c-e>", "<c-o>$", silent)
 m("i", "<c-a>", "<c-o>^", silent)
@@ -112,8 +110,20 @@ m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], 
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
-
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
+
+vim.api.nvim_exec(
+  [[
+function! Remove_pair() abort
+  let pair = getline('.')[ col('.')-2 : col('.')-1 ]
+  return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
+endfunction
+
+inoremap <expr> <bs> Remove_pair()
+imap <c-h> <bs>
+]],
+  true
+)
 
 cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 cmd [[ packadd cfilter ]] -- quicklist filter :cfitler[!] /expression/
@@ -190,18 +200,6 @@ if vim.opt.diff:get() then
   m("n", "]", "]c", opt)
   m("n", "[", "[c", opt)
 end
-
---- remove pairs with backspace or <c-h>
-vim.api.nvim_exec([[
-function! Remove_pair() abort
-  let pair = getline('.')[ col('.')-2 : col('.')-1 ]
-  return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
-endfunction
-
-inoremap <expr> <bs> Remove_pair()
-imap <c-h> <bs>
-]], true)
-
 
 --[[
 
