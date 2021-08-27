@@ -1,1 +1,1 @@
-EDITOR="/usr/bin/vim"
+EDITOR="/opt/homebrew/bin/nvim"
