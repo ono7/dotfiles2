@@ -48,7 +48,7 @@ m("n", "<leader>f", "<c-[>:GFiles<cr>", silent)
 m("n", "<leader>b", "<c-[>:Buffers<cr>", silent)
 
 vim.g.surround_no_mappings = 1
-m("n", "S", "<Plug>YSurround", {})
+-- m("n", "S", "<Plug>YSurround", {})
 m("n", "s", "<Plug>Ysurround", {})
 m("n", "sw", "<Plug>Ysurroundiw", {})
 -- m("n", "s'", "<Plug>Ysurroundiw'", {})
