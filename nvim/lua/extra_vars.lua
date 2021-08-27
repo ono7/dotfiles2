@@ -113,6 +113,8 @@ vnoremap Q :'<,'>norm @q<cr>
 nnoremap Y y$
 nnoremap y" yi"
 nnoremap y' yi'
+nnoremap vw viw
+nnoremap vW viW
 nnoremap D d$
 vnoremap y mxy`x
 nnoremap <c-z> <nop>
