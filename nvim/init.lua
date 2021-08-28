@@ -128,15 +128,15 @@ local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local myp = {}
-myp["("] = ")"
-myp["["] = "]"
-myp["{"] = "}"
-myp["<"] = ">"
-myp["'"] = "'"
-myp['"'] = '"'
-myp["`"] = "`"
-
+local myp = {
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
+  ["<"] = ">",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`"
+}
 function _G.del_pairs()
   local line = vim.fn.getline(".")
   local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
