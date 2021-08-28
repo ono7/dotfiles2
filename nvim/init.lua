@@ -106,23 +106,13 @@ m("i", "`", "``<left>", opt)
 m("i", "(", "()<left>", opt)
 m("i", "{", "{}<left>", opt)
 m("i", "[", "[]<left>", opt)
-m("i", "<c-d>", "<cr><esc>O", opt)
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
+m("i", "<c-d>", "<cr><esc>O", opt)
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
-
-function _G.put(...)
-  local objects = {}
-  for i = 1, select("#", ...) do
-    local v = select(i, ...)
-    table.insert(objects, vim.inspect(v))
-  end
-  print(table.concat(objects, "\n"))
-  return ...
-end
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -148,19 +138,6 @@ end
 
 m("i", "<bs>", "v:lua.del_pairs()", xpr)
 m("i", "<c-h>", "<bs>", {})
-
--- vim.api.nvim_exec(
---   [[
--- function! Remove_pair() abort
---   let pair = getline('.')[ col('.')-2 : col('.')-1 ]
---   return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
--- endfunction
-
--- inoremap <expr> <bs> Remove_pair()
--- imap <c-h> <bs>
--- ]],
---   true
--- )
 
 cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 cmd [[ packadd cfilter ]] -- quicklist filter :cfitler[!] /expression/
@@ -254,5 +231,16 @@ end
   insert mode, <c-r> =   system('date'), or 2+2
 
     -- Lima
+
+-- useful for debugging lua in vim :lua put({1,2,3,4})
+function _G.put(...)
+  local objects = {}
+  for i = 1, select("#", ...) do
+    local v = select(i, ...)
+    table.insert(objects, vim.inspect(v))
+  end
+  print(table.concat(objects, "\n"))
+  return ...
+end
 
 --]]
