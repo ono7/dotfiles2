@@ -232,6 +232,8 @@ end
 
     -- Lima
 
+--]]
+
 -- useful for debugging lua in vim :lua put({1,2,3,4})
 function _G.put(...)
   local objects = {}
@@ -243,4 +245,3 @@ function _G.put(...)
   return ...
 end
 
---]]
