@@ -137,10 +137,12 @@ local myp = {
   ['"'] = '"',
   ["`"] = "`"
 }
+
 function _G.del_pairs()
+  -- compare ')' == ')'
+  -- -> delete both pairs <del><c-h> or single backspace if false
   local line = vim.fn.getline(".")
   local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
-  -- compare '(' == ')' -> delete both pairs <del><c-h> or single backspace if false
   return myp[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and t "<del><c-h>" or t "<bs>"
 end
 
