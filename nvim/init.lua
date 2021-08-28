@@ -135,6 +135,7 @@ myp["{}"] = true
 myp["<>"] = true
 myp["''"] = true
 myp['""'] = true
+myp['``'] = true
 
 function _G.del_pairs()
   local line = vim.fn.getline('.')
