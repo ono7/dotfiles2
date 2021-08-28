@@ -140,7 +140,7 @@ function _G.del_pairs()
   local line = vim.fn.getline('.')
   local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
   local pair = line:sub(prev_col, prev_col) .. line:sub(next_col, next_col)
-  return myp[pair] == true and t "<del>" .. t "<c-h>" or t "<bs>"
+  return myp[pair] == true and t "<del><c-h>" or t "<bs>"
   -- return myp[pair] == true and t "<del>" .. t "<c-h>" or t "test" -- works!, col not  returning characters
 end
 
