@@ -114,18 +114,51 @@ m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
 -- m("i", "{;<cr>", "{<cr>};<esc>O", opt)
 
-vim.api.nvim_exec(
-  [[
-function! Remove_pair() abort
-  let pair = getline('.')[ col('.')-2 : col('.')-1 ]
-  return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
-endfunction
+function _G.put(...)
+  local objects = {}
+  for i = 1, select("#", ...) do
+    local v = select(i, ...)
+    table.insert(objects, vim.inspect(v))
+  end
+  print(table.concat(objects, "\n"))
+  return ...
+end
 
-inoremap <expr> <bs> Remove_pair()
-imap <c-h> <bs>
-]],
-  true
-)
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local myp = {}
+myp["()"] = true
+myp["[]"] = true
+myp["{}"] = true
+myp["<>"] = true
+myp["''"] = true
+myp['""'] = true
+
+function _G.del_pairs()
+  local line = vim.fn.getline('.')
+  local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local pair = line:sub(prev_col, prev_col) .. line:sub(next_col, next_col)
+  return myp[pair] == true and t "<del>" .. t "<c-h>" or t "<bs>"
+  -- return myp[pair] == true and t "<del>" .. t "<c-h>" or t "test" -- works!, col not  returning characters
+end
+
+m("i", "<bs>", "v:lua.del_pairs()", xpr)
+m("i", "<c-h>", "<bs>", {})
+
+-- vim.api.nvim_exec(
+--   [[
+-- function! Remove_pair() abort
+--   let pair = getline('.')[ col('.')-2 : col('.')-1 ]
+--   return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
+-- endfunction
+
+-- inoremap <expr> <bs> Remove_pair()
+-- imap <c-h> <bs>
+-- ]],
+--   true
+-- )
 
 cmd [[ command! Ctags exec 'silent !ctags -R --exclude=.git .' ]]
 cmd [[ packadd cfilter ]] -- quicklist filter :cfitler[!] /expression/
