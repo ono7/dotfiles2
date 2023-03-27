@@ -262,7 +262,6 @@ other resources
 `provisioners` and `connection` - take extra actions after resource creation
 `locals` - variables that are local to the resource (possibly module??)
 
-
 # timeouts
 
 some resource types probied special timeouts nested block arguments for customization of how long
