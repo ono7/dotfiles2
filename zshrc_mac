@@ -323,9 +323,11 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 # only need this if oh-my-zsh is not running (compinit helps with completion)
 # we can test this by profiling using zprof
-# running this here just makes compinit run twice due to its inclusion in oh-my-zsh
+
+# autocomplete running this here just makes compinit run twice due to its inclusion in oh-my-zsh
 # autoload -Uz compinit && compinit -i
 # autoload -Uz compinit
+
 # if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
 #   compinit -d $ZSH_COMPDUMP;
 # else

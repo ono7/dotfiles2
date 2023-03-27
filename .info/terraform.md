@@ -130,3 +130,7 @@ variable "filename" {
   ]
 }
 ```
+
+## bash autocomplete
+
+`terraform -install-autocomplete
