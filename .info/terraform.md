@@ -62,6 +62,15 @@ this is only good if you are certain the state file is upto date.
 `terraform graph` - show visual representation of dependencies in a plan
 requires graphviz, run with `terraform graph | dot -Tsvg out.vsg`
 
+`terraform plan -out <plan_name>` - output plan to a file
+`terraform plan -destroy` - dry run of destroy to check to see what will be destroyed
+`terraform plan <plan_name>` - apply specific plan file
+
+**important**
+`terraform apply -target=<resource_name>` - apply changes only to a particular resource (save time)
+`terraform providers` - show list of providers used in the module
+
+
 ## lifecycle rules in resources
 
 used to prevent deleting immutable infrastructure during the apply stage.
@@ -131,6 +140,4 @@ variable "filename" {
 }
 ```
 
-## bash autocomplete
 
-`terraform -install-autocomplete
