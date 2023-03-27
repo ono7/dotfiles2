@@ -414,8 +414,7 @@ ls.add_snippets("markdown", { snip(
   fmt(
     [[
 ```{}
-{}
 ```]],
-    { i(1), i(0) }
+    { i(0) }
   )
 ) }, { key = "markdown snippets" })

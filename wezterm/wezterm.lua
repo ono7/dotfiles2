@@ -18,6 +18,12 @@ return {
 			action = wezterm.action.DisableDefaultAssignment,
 		},
 		{
+			-- turn off cmd+m to minimize window from the os
+			key = "i",
+			mods = "CTRL",
+			action = wezterm.action.DisableDefaultAssignment,
+		},
+		{
 			-- turn off cmd+h to hide window from the os
 			key = "h",
 			mods = "CMD",
@@ -34,12 +40,12 @@ return {
 			mods = "CMD",
 			action = wezterm.action.PasteFrom("Clipboard"),
 		},
-		{
-			-- remove word
-			key = "Backspace",
-			mods = "CTRL",
-			action = wezterm.action.SendString("\x17"),
-		},
+		-- {
+		-- 	-- remove word, to avoid confusion this binding is disabled for now
+		-- 	key = "Backspace",
+		-- 	mods = "CTRL",
+		-- 	action = wezterm.action.SendString("\x17"),
+		-- },
 		{
 			-- remove line
 			key = "Backspace",

@@ -42,8 +42,8 @@ opt.iskeyword:append("-")
 o.smartcase = true
 o.smarttab = true
 -- vim.opt.whichwrap:append "<>[]hl"
-opt.jumpoptions = "stack"
-opt.jumpoptions:append("view")
+-- opt.jumpoptions = "stack"
+-- opt.jumpoptions:append("view")
 o.inccommand = "nosplit"
 o.foldopen = "hor,mark,percent,quickfix,search,tag,undo" -- removed 'block'
 o.winaltkeys = "no"

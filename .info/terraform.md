@@ -9,7 +9,7 @@ considers implicit and explicit relationships between resources when
 determining an order of the operation.
 
 ```bash
-<block type> "<block label>" "<block label>" {
+<block type> "<block label>" "<block label>" { # some blocks do not require labels, other requiere one or more
   # block body
   <identifier> = <expression> #Argument
 }
@@ -172,3 +172,117 @@ variable "filename" {
 
 current working directory is considers your root module
 the root module may contain any number of sub-modules
+
+## override files
+
+main.tf and override.tf
+contents of override.tf are merged into one
+
+```terraform
+
+# main.tf
+resource "aws_instance" "web" {
+  instance_type = "t2.micro"
+  ami = "ami-12345"
+}
+
+# override.tf
+resource "aws_instance" "web" {
+  ami = "foo"
+}
+
+# results in
+resource "aws_instance" "web" {
+  instance_type = "t2.micro"
+  ami = "foo"
+}
+```
+
+## config syntax
+
+```terraform
+# arguments
+
+<argument> = <value>
+e.g. image_id = "terra123"
+
+# blocks
+
+resource "aws_instance" "example" { # example is a label
+  ami = "abc134"
+
+  network_interface { # some block types do not require any labels
+    # ...
+  }
+}
+```
+
+## comments
+
+```terraform
+# single line comment
+// single line comment
+/* <comment> */ comments that can span over multiple lines
+```
+
+## identifiers
+
+resources must be unique
+
+```terraform
+resource "aws_instance" "web" {
+  // ...
+}
+
+// the identifier is aws_instance.web
+```
+
+## resources
+
+- are the most important part of the configuration language
+- resource types are made up of `providers` `arguments` and `documentation`
+  providers - plugins for terraform that offer a collection of resource types
+  arguments - are specific to the selected resource type
+  documentation - describe its resource type and argument
+
+## meta-arguments ( are used within blocks )
+
+```terraform
+resource "aws_instance" "web" {
+  depends_on = ... // meta-argument
+}
+```
+
+`depends_on` = specify hidden dependecies or when a resource or agument relies on
+other resources
+`count` = create multiple resources instance according to a count
+`for_eaxh` = create multiple instances according to a map or a set of strings
+`provider` = select a non-default provider configuration
+`lifecycle` = set lifecycle customizations
+`provisioners` and `connection` - take extra actions after resource creation
+`locals` - variables that are local to the resource (possibly module??)
+
+
+# timeouts
+
+some resource types probied special timeouts nested block arguments for customization of how long
+certain operations should take before they timeout
+
+```terraform
+resource "aws_db_instance" "example" {
+  # ...
+
+  timeouts { // this are handled/provided by the resource type and may not be available everywhere
+    create = "60m"
+    delete =  "2h"
+  }
+}
+```
+
+## applying configuration
+
+- `create` - creates objects that do not exist in the infrastructur
+- `destroy` - destroy resources that exist in the state but no longers exisct in the configuration
+- `update-in-place` - update in-place resources whose arguments have changed
+- `destroy and re-create` - destroy and recreate resources whose arguments have
+  changed, but which cannot be updated in-place due to remoet api limitation

@@ -4,4 +4,5 @@ setlocal ai ts=2 sw=2 et fo-=r fo-=o
 " syn region markdownLinkText matchgroup=markdownLinkTextDelimiter start="!\=\[\%(\%(\_[^][]\|\[\_[^][]*\]\)*]\%( \=[[(]\)\)\@=" end="\]\%( \=[[(]\)\@=" nextgroup=markdownLink,markdownId skipwhite contains=@markdownInline,markdownLineStart concealends
 
 setlocal nofoldenable
+setlocal conceallevel=1
 setlocal suffixesadd+=.md
