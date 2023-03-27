@@ -1,5 +1,27 @@
 # terraform related resources
 
+terraforms language (HCL), its main purpose is to _declare resources_, all
+language features are there to make defining resources more flexible and
+convinient.
+
+```bash
+<block type> "<block label>" "<block label>" {
+  # block body
+  <identifier> = <expression> #Argument
+}
+
+# e.g.
+resource "aws_vpc" "main" {
+  cidr_block = var.base_cidr_block
+}
+```
+
+# HCL syntax
+
+`blocks` are containers for objects like resources
+`arguments` assign a value to a name
+`Expressions` represent a value
+
 ## useful resources
 
 debug and restricting access to recources with regex:
@@ -52,32 +74,30 @@ appabc/
 
 ## commands
 
-`terraform show` - show terraform state in json format
+`bash show` - show terraform state in json format
 `terrafrom output` - how terraform outputs vars to the screen
-`terraform -refresh=false` - run terraform without having to reconcile state on remote backend,
+`bash -refresh=false` - run terraform without having to reconcile state on remote backend,
 this is only good if you are certain the state file is upto date.
-`terraform validate` - validates configuration syntax
-`terraform fmt` - formats terraform files in a directory
-`terraform providers` - shows current providers as configured
-`terraform graph` - show visual representation of dependencies in a plan
-requires graphviz, run with `terraform graph | dot -Tsvg out.vsg`
+`bash validate` - validates configuration syntax
+`bash fmt` - formats terraform files in a directory
+`bash providers` - shows current providers as configured
+`bash graph` - show visual representation of dependencies in a plan
+requires graphviz, run with `bash graph | dot -Tsvg out.vsg`
 
-`terraform plan -out <plan_name>` - output plan to a file
-`terraform plan -destroy` - dry run of destroy to check to see what will be destroyed
-`terraform plan <plan_name>` - apply specific plan file
+`bash plan -out <plan_name>` - output plan to a file
+`bash plan -destroy` - dry run of destroy to check to see what will be destroyed
+`bash plan <plan_name>` - apply specific plan file
 
 **important**
-`terraform apply -target=<resource_name>` - apply changes only to a particular resource (save time)
-`terraform providers` - show list of providers used in the module
-
+`bash apply -target=<resource_name>` - apply changes only to a particular resource (save time)
+`bash providers` - show list of providers used in the module
 
 ## lifecycle rules in resources
 
 used to prevent deleting immutable infrastructure during the apply stage.
 they can be used to delete after the new resources have been created or not delet at all
 
-```terraform
-
+```bash
 resource "aws_ami" "test" {
   name = "test"
   description = "blah blah blah"
@@ -98,8 +118,7 @@ resource "aws_ami" "test" {
 
 ## data source block
 
-```terraform
-
+```bash
 resource "local_file" "pet" {
   filename = "pets.txt"
   content = data.local_file.mydata.content
@@ -120,9 +139,7 @@ data "local_file" "mydata" { # resource type is local_file but can be any valid 
 
 ## for_each | loop
 
-```terraform
-
-
+```bash
 resource "local_file" "test" {
   filename = each.value
   content = "test\n"
@@ -139,5 +156,3 @@ variable "filename" {
   ]
 }
 ```
-
-
