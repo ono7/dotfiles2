@@ -4,6 +4,10 @@ terraforms language (HCL), its main purpose is to _declare resources_, all
 language features are there to make defining resources more flexible and
 convinient.
 
+the order of the resources and files are generally not important, terraform
+considers implicit and explicit relationships between resources when
+determining an order of the operation.
+
 ```bash
 <block type> "<block label>" "<block label>" {
   # block body
@@ -15,6 +19,13 @@ resource "aws_vpc" "main" {
   cidr_block = var.base_cidr_block
 }
 ```
+
+## file extensions
+
+`.tf` - general code
+`.tf.json` the json version of the code (valid)
+
+_encoding must be utf-8_
 
 # HCL syntax
 
@@ -156,3 +167,8 @@ variable "filename" {
   ]
 }
 ```
+
+## modules
+
+current working directory is considers your root module
+the root module may contain any number of sub-modules
