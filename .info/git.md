@@ -1,3 +1,16 @@
+# cleaup  repository and destroy all history
+```sh
+# copy remote url from .git/config
+cd myrepo
+rm -rf .git
+
+git init
+git add .
+git commit -m 'revomiving history due to sensitive data'
+
+git remote add origing git@github.com:ono7/dotfiles2.git
+git push -u --force origin main
+```
 # DISCARD all local commits on this branch, keep remote
 
 https://sethrobertson.github.io/GitFixUm/fixup.html
