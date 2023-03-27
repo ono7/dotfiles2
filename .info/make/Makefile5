@@ -1,0 +1,18 @@
+# recursive variable assigments with =
+
+# The value you specify is installed verbatim; if it
+# contains references to other variables, these references
+# are expanded whenever this variable is substituted
+
+# example
+# CFLAGS = $(include_dirs) -O
+# include_dirs = -Ifoo -Ibar
+
+foo = $(bar)
+bar = $(ugh)
+ugh = Huh?
+
+all:
+	echo 'foo ->' $(foo)
+	echo 'bar ->' $(bar)
+	echo 'ugh ->' $(ugh)

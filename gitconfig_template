@@ -1,0 +1,36 @@
+# This is Git's per-user configuration file.
+[user]
+  name = lima
+  email = lima@mbp
+[core]
+  editor = nvim
+  mergeoptions = --no-edit
+[push]
+  default = simple
+[http]
+  sslVerify = false
+[url "https://github.com/"]
+  insteadOf = git://github.com/
+[credential]
+  helper = osxkeychain
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[diff]
+  tool = nvimdiff
+  prompt = false
+[difftool]
+  prompt = false
+#  tool = nvimdiff
+#[difftool "nvimdiff"]
+#  cmd = "nvim -d \"$REMOTE\" \"$LOCAL\" "
+[merge]
+#  tool = mvimdiff
+[mergetool]
+  prompt = true
+# [mergetool "mnvimdiff"]
+#   cmd = "nvim -d \"$REMOTE\" \"$MERGED\" \"$LOCAL\" -c 'wincmd w' -c 'wincmd J'"
+
+
+

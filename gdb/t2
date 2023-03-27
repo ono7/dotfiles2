@@ -1,0 +1,31 @@
+# template 1 - break 
+
+set disassembly-flavor intel
+layout asm
+
+focus cmd
+winheight cmd 20
+set height 0
+
+define stackdump
+set $offset=32
+	while $offset > -1
+		x/gx $esp+$offset
+		set $offset=$offset-8
+	end
+end
+
+# Dump the top of the stack and relevant registers at each break
+define hook-stop
+	stackdump
+	info registers eax
+	info registers ebp
+	info registers edi
+	info registers esi
+	info registers eflags
+end
+
+# breakpoints
+break main
+
+run

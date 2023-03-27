@@ -1,0 +1,471 @@
+# uncomment next line to start profiling
+# zmodload zsh/zprof
+
+# fix certain weird characters
+setopt COMBINING_CHARS
+
+# avoid nested sessions tmux
+
+# 10ms for key sequences
+KEYTIMEOUT=1
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+[[ -d ~/.tmp ]] || mkdir -p ~/.tmp
+
+# create ram drive
+# [[ -d /Volumes/ohmy ]] || diskutil erasevolume HFS+ "ohmy" `hdiutil attach -nomount ram://20480`
+
+ZSH_DISABLE_COMPFIX="true"
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/go/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
+# ZSH_THEME="avit"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+# add plugins before oh-my-zsh.sh is sourced
+plugins=(zsh-autosuggestions)
+
+# git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH/custom/plugins/zsh-vi-mode
+# plugins+=(zsh-vi-mode)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+if [[ $OSTYPE == "linux-gnu"* ]]; then
+  export DISPLAY=:0.0
+fi
+
+if [[ -f ~/nvim/bin/nvim ]]; then
+  alias vim='~/nvim/bin/nvim'
+  # legacy vim
+  alias vi=vim
+  alias vil='/usr/bin/vim'
+  alias vimdiff='~/nvim/bin/nvim -d'
+elif command -v nvim &>/dev/null; then
+  alias vim=$(which nvim)
+  alias vi=vim
+  # legacy vim
+  alias vil=vim
+  alias vil='/usr/bin/vim'
+  alias vimdiff='nvim -d'
+  # alias vll="vim  +\"'\"0"
+  alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
+fi
+export EDITOR=vim
+
+alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
+
+# set nvim as man pager
+if [[ "$(command -v nvim)" ]]; then
+    export EDITOR='nvim'
+    export MANPAGER='nvim +Man!'
+    export MANWIDTH=999
+fi
+
+function vq () {
+  # pass all args to rg via $@ .. allows to append rg flags, muhahah
+  vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
+}
+
+function timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+if [[ -f ~/local/bin/tmux ]]; then
+  alias tmux='~/local/bin/tmux'
+elif command -v tmux &>/dev/null; then
+  alias tmux=tmux
+else
+  echo 'need tmux in ~/loca/bin/tmux'
+fi
+
+
+alias gd='git diff'
+alias gs='git status'
+alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
+alias c='clear'
+
+if [[ -f /opt/homebrew/opt/fzf/bin/fzf ]]; then
+ alias fzf='/opt/homebrew/opt/fzf/bin/fzf'
+else
+  alias fzf='~/.fzf/bin/fzf'
+fi
+
+alias tf='terraform'
+alias rdp='xfreerdp +clipboard'
+alias ssh='TERM=xterm-256color ssh'
+
+# init new repo
+function ginit () {
+  git init
+  cp ~/.dotfiles/gitignore .gitignore
+  git add .
+  git commit -am 'initial commit'
+}
+
+function gitl () {
+    my_dir=$PWD
+    cdr
+    git add .
+    if test -z "$1"; then
+      git commit '-m updates'
+    else
+      git commit '-m' $1
+    fi
+    if [ ! -z "$(git remote -v)" ]; then
+      git push
+    fi
+    cd $my_dir
+}
+
+function dotp () {
+    my_dir=$PWD
+    cd ~/.dotfiles
+    git pull
+    cd ~/.info
+    git pull
+    cd $my_dir
+}
+
+function dotc () {
+    my_dir=$PWD
+    cd ~/.dotfiles
+    git pull
+    git add .
+    git commit '-m' 'updates'
+    git push
+    cd $my_dir
+}
+
+function ta () {
+  if [ ! -z "$1" ]; then
+    tmux new-session -s "$1" || tmux attach -t "$1"
+  else
+    tmux attach -t main || tmux new-session -s main
+  fi
+}
+
+# activate virtual environment if there is one in this repo
+function va () {
+  if [[ -d $(git rev-parse --show-toplevel 2>/dev/null)/venv ]]; then
+    source $(git rev-parse --show-toplevel)/venv/bin/activate
+  fi
+  echo $(which python3)
+}
+
+# deactivate virtual environment if there is one in this repo
+function vd () {
+  deactivate 2> /dev/null
+  source $HOME/.virtualenvs/prod3/bin/activate
+}
+
+function dev_env () {
+  python3 -m venv ~/.virtualenvs/prod3
+  source ~/.virtualenvs/bin/active
+  pip install -U pip
+  pip install debugpy black mdformat rpdb ipython ipdb dns yamllint
+}
+
+function vc () {
+  deactivate 2> /dev/null
+  venv_dir="venv"
+  my_dir=$PWD
+  if [[ -d $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
+    cd $(git rev-parse --show-toplevel)
+  fi
+  if [ ! -z "$1" ]; then
+    venv_dir=$1
+  fi
+  python3 --version
+  python3 -m venv $venv_dir
+  source $venv_dir/bin/activate
+  pip install pip wheel pyright black pytest yamllint -U
+  pip freeze > requirements.txt
+  echo ""
+  echo ""
+  echo ""
+  echo "*************** :) *******************"
+  which python
+  cd $my_dir
+}
+
+function vs () {
+  local fname
+  fname=$(fzf) || return
+  vim "$fname"
+}
+
+function dp() {
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  unset no_proxy
+  echo "cli proxy destroy done..."
+}
+
+# load other functions
+if [ -f ~/.zshf ]; then
+  source ~/.zshf
+fi
+
+# default virtual env if exists
+# if [[ -f ~/.virtualenvs/prod3/bin/activate ]]; then
+#   source ~/.virtualenvs/prod3/bin/activate
+# fi
+
+# disable virtualenv prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export XCURSOR_SIZE=60
+
+# autocompletion
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+
+# only need this if oh-my-zsh is not running (compinit helps with completion)
+# we can test this by profiling using zprof
+# running this here just makes compinit run twice due to its inclusion in oh-my-zsh
+# autoload -Uz compinit && compinit -i
+# autoload -Uz compinit
+# if [[ -n ${ZDOTDIR:-${HOME}}/$ZSH_COMPDUMP(#qN.mh+24) ]]; then
+#   compinit -d $ZSH_COMPDUMP;
+# else
+#   compinit -C;
+# fi
+
+export FZF_DEFAULT_OPTS='--height 40% --no-preview'
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --color=fg:#e5e9f0,hl:#81a1c1
+    --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
+    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
+    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+
+FD_CMD='fd -I --type f --exclude ".git" --exclude "__pycache__" --follow --hidden'
+if command -v fd &> /dev/null; then
+  _fzf_compgen_path() {
+    fd -I --hidden --follow --exclude ".git" . "$1"
+  }
+
+  # Use fd to generate the list for directory completion
+  _fzf_compgen_dir() {
+    fd -I --type d --hidden --follow --exclude ".git" . "$1"
+  }
+  export FZF_ALT_C_COMMAND=$FD_CMD
+  export FZF_DEFAULT_COMMAND=$FD_CMD
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+else
+  echo 'download fd from: https://github.com/sharkdp/fd/releases'
+fi
+
+# pretty colors
+export CLICOLOR=1
+# export LS_COLORS=':ow=01;33'
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1
+
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+
+eval "$(starship init zsh)"
+
+# defaults to vi-mode, and let us toggle back and forth
+bindkey -v
+function v () {
+  bindkey -v; clear
+}
+
+function e () {
+  bindkey -e; clear
+}
+
+# alias v='bindkey -v'
+# alias e='bindkey -e'
+
+bindkey "^E" end-of-line
+bindkey "^A" beginning-of-line
+bindkey "^N" down-line-or-history
+bindkey "^O" accept-line-and-down-history
+bindkey "^P" up-line-or-history
+bindkey "^R" fzf-history-widget
+bindkey "^T" fzf-file-widget
+
+function _vs () {
+  local fname
+  fname=$(fzf) || return
+  vim "$fname"
+}
+
+# _vs declear as widget for zsh
+zle -N _vs
+
+bindkey -s "^S" _vs^M
+
+# ci" in vi-mode
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
+
+# ci{, ci(, di{ etc.. in vi-mode
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
+done
+
+# sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+
+# change cursors for zsh vi-mode when insert and normal mode
+# function zle-keymap-select zle-line-init zle-line-finish
+# {
+#   case $KEYMAP in
+#       vicmd)      print -n '\033[1 q';; # block cursor
+#       viins|main) print -n '\033[5 q';; # line cursor
+#   esac
+# }
+#
+# zle -N zle-line-init
+# zle -N zle-line-finish
+# zle -N zle-keymap-select
+
+# if [[ $TERM != "tmux-256color" ]]; then
+# 	echo 'not in tmux'
+# fi
+
+# max font smoothing = 3
+# defaults -currentHost write -g AppleFontSmoothing -int 0
+
+if [[ $OSTYPE == "darwin"* ]]; then
+  defaults write -g AppleFontSmoothing -int 0
+fi
+
+# export HISTFILE=~/.history
+export HISTSIZE=10000   # the number of items for the internal history list
+export SAVEHIST=10000   # maximum number of items for the history file
+
+# The meaning of these options can be found in man page of `zshoptions`.
+setopt HIST_IGNORE_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST # remove dups firt
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+# setopt EXTENDED_HISTORY  # record command start time
+
+# unalias ls
+
+if [[ $OSTYPE == "linux"* ]];  then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+eval "$(zoxide init zsh)"

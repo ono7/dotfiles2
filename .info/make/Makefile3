@@ -1,0 +1,33 @@
+# https://www.youtube.com/watch?v=X1YW4GeROac
+
+# -> https://www.youtube.com/watch?v=FfG-QqRK4cY
+
+LIBS =lib/dir1 lib/dir2 lib/dir3 lib/dir5
+PIP :=venv/bin/pip
+SRCS := find . -name "*.gz"
+
+define create-venv
+python3 -m venv venv
+endef
+
+# runnning make without targets executes first target
+
+.PHONY: venv
+venv:
+	@$(create-venv)
+	@$(PIP) install black
+
+libraries:
+	for f in $(SRCS); do \
+		echo $$f; \
+		done
+
+test:
+	for dir in $(LIBS); do \
+		mkdir -p $$dir; \
+		done
+
+clean:
+	$(value (LIBS))
+	rm -rf lib;
+

@@ -1,0 +1,22 @@
+# basic gitignore
+
+__pycache__/
+venv/
+build/
+
+.pytest_cache/
+.DS_Store
+.virtualenvs
+.vim
+.netrwhist
+
+tags
+*.log
+vtags
+*.pyc
+*.egg-info/
+*.cache
+priv/
+vault.key
+my_creds.py
+profile.log

@@ -1,0 +1,98 @@
+# fonts
+
+# font_family      MesloLGL Nerd Font Mono Regular
+# bold_font        MesloLGL Nerd Font Mono bold
+# italic_font      MesloLGL Nerd Font Mono Italic
+# bold_italic_font MesloLGL Nerd Font Mono Bold Italic
+
+# font_family     FiraCode Nerd Font Mono
+# font_family      Fira Code Regular
+# bold_font        Fira Code bold
+# italic_font      Fira Code Medium
+# bold_italic_font Fira Code Bold
+
+# font_family      Hack Nerd Font Mono
+# bold_font        Hack Nerd Font Mono
+# italic_font      Hack Nerd Font Mono
+# bold_italic_font Hack Nerd Font Mono
+
+# font_family      Roboto Mono
+
+font_family      MonoLisa Liga
+# bold_font        MonoLisa Liga Bold
+# italic_font      MonoLisa Liga Italic
+# bold_italic_font MonoLisa Liga Bold Italic
+
+# disable_ligatures all always
+
+# see firacode github for alt codes :)
+
+# font_features FiraCode-Regular +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+# font_features FiraCode-Light +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+# font_features FiraCode-Retina +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+# font_features FiraCode-Medium +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+# font_features FiraCode-Bold +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+# font_features FiraCode-SemiBold +cv06 +cv01 +cv02 +ss01 +ss03 +ss08 +cv14
+
+font_size 18.0
+adjust_line_height 130%
+# adjust_column_width 115%
+
+# thicken font!
+macos_thicken_font 0.4
+
+cursor_shape block
+cursor_blink_interval 0.2
+cursor_stop_blinking_after 999.0
+
+window_border_width 0
+window_margin_width 0
+visual_bell_duration 0
+enable_audio_bell no
+
+hide_window_decorations titlebar-only
+# scrollback_pager_history_size 2
+scrollback_lines 1000
+copy_on_select yes
+repaint_delay 0
+input_delay 0
+sync_to_monitor no
+
+macos_option_as_alt yes
+macos_quit_when_last_window_closed yes
+
+map cmd+equal           change_font_size all +1.0
+map cmd+minus           change_font_size all -1.0
+map cmd+0               change_font_size all 0
+map command+t no_op
+map ctrl+1 no_op
+map command+m no_op
+
+# remove word
+map control+backspace send_text all \x17
+
+# remove line
+map alt+backspace send_text all \x15
+
+# mat c-1 to m-1 for tmux
+map control+1 send_text all \x1b1
+
+clipboard_control write-clipboard write-primary read-clipboard
+
+tab_title_template "term: {title.lower()}"
+
+# background_opacity 0.97
+background_opacity 1.00
+
+include ~/.dotfiles/schemes/kitty/kitty_nightfox2.conf
+
+include ~/.kitty
+# cursor #c0caf5
+
+confirm_os_window_close 0
+
+
+# BEGIN_KITTY_THEME
+# Blazer
+include current-theme.conf
+# END_KITTY_THEME

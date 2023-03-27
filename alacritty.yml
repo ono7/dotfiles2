@@ -1,0 +1,128 @@
+env:
+  TERM: xterm-256color
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+window:
+  opacity: 0.99
+  # opacity: 1.0
+  dimensions:
+    columns: 82
+    lines: 28
+  dynamic_title: false
+
+  padding:
+    x: 0
+    y: 0
+
+  dynamic_padding: false
+  decorations: buttonless
+  startup_mode: Windowed
+
+scrolling:
+  history: 3000
+  multiplier: 3
+
+font:
+  normal:
+    family: MesloLGL Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: MesloLGL Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: MesloLGL Nerd Font Mono
+    style: Regular
+
+  bold_italic:
+    family: MesloLGL Nerd Font Mono
+    style: Bold
+
+  size: 18.0
+  offset:
+    x: 0
+    y: 8
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+draw_bold_text_with_bright_colors: false
+
+# colors
+import:
+  # - ~/.dotfiles/schemes/alacritty/tokyonight.yml
+  - ~/.dotfiles/schemes/alacritty/tokyonight_moon.yml
+  # - ~/.dotfiles/schemes/alacritty/tundra.yml
+  # - ~/.dotfiles/schemes/alacritty/nigthfox.yml
+  # - ~/.dotfiles/schemes/alacritty/tokyodark.yml
+  # - ~/.dotfiles/schemes/alacritty/nightfly.yml
+  # - ~/.dotfiles/schemes/alacritty/catppuccin/mocha.yml
+  # - ~/.dotfiles/schemes/alacritty/catppuccin/macchiato.yml
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  hide_when_typing: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+  blink_interval: 200
+  blink_timeout: 0 # 0 is forever
+
+  unfocused_hollow: true
+
+custom_cursor_colors: true
+
+live_config_reload: true
+
+working_directory: None
+
+enable_experimental_conpty_backend: false
+
+alt_send_esc: false
+
+debug:
+  render_timer: false
+
+  persistent_logging: false
+
+  log_level: OFF
+
+  print_events: false
+
+  ref_test: false
+
+key_bindings:
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: Paste, action: Paste }
+  - { key: Copy, action: Copy }
+
+  #### for vim! ####
+  # make option+backspace work in terminal not just vim!! \x17
+  - { key: Back, mods: Control, chars: "\x17" }
+
+  # make command+backspace remove entire line, like native macos \x15
+  - { key: Back, mods: Alt, chars: "\x15" }
+
+  - { key: Q, mods: Control, chars: "\x11" }
+
+  # alacritty
+  - { key: F9, action: SpawnNewInstance }
+

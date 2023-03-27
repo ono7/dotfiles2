@@ -1,0 +1,354 @@
+--- Follow the white Rabbit...   🐇
+
+-- alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces shortmess=coTtaIsO mouse=n"'
+
+-- don't be a blind art dealer
+
+--- brew install universal-ctags
+
+-- :so (source this file)
+-- bro filt /this/ old
+-- s/\%Vaaa/bbb/g -- \%V replace only inside visual selection
+-- use ce or cE instead of cw or cW, easier to type
+-- USE gi, jump to last insert position
+-- use '' to go back to the cursor position before the last jump
+-- use csqb  (changes the nearest quotes.. q is aliased to `, ', " in surround.nvim)
+-- "0 - holds recent yanked text
+-- "1 - holds recent deleted text
+-- z + enter, moves buffer to top of screen
+-- count number of matches %s/test//gn (gn n=no op), will show the number of matches
+-- pratice ge, jump back do end of word
+-- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
+-- use fc command for editing last command in zsh
+
+vim.cmd([[set termguicolors]])
+
+-- vim.cmd([[
+-- if exists('+termguicolors')
+--   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+--   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+-- endif
+-- ]])
+
+P = function(x)
+	print(vim.inspect(x))
+	return x
+end
+
+vim.g.markdown_fold_style = "nested"
+
+require("my.disabled")
+
+--- hold my beer ---
+local cmd, g, m, k = vim.cmd, vim.g, vim.api.nvim_set_keymap, vim.keymap.set
+local xpr = { noremap = true, expr = true }
+local opt = { noremap = true }
+local silent = { noremap = true, silent = true }
+
+local MYHOME = os.getenv("HOME")
+
+vim.o.shada = "'20,<1000,s1000,:500,/100,h,r/tmp,n~/.shada"
+
+local function get_git_root()
+	local dot_git_path = vim.fn.finddir(".git", ".;")
+	print(vim.fn.fnamemodify(dot_git_path, ":h"))
+	return vim.fn.fnamemodify(dot_git_path, ":h")
+end
+
+vim.api.nvim_create_user_command("CdGitRoot", function()
+	vim.api.nvim_set_current_dir(get_git_root())
+end, {})
+
+vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
+
+--- map leader ---
+k({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+vim.cmd([[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k' ]])
+vim.cmd([[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j' ]])
+
+g.mapleader = " "
+
+vim.opt.path:append({ "**" })
+
+--- nop ---
+k({ "c", "x", "n" }, "<c-z>", "") -- use this for searching repos
+k("n", "<c-f>", "") -- use this for searching files
+k("n", "<c-b>", "") -- this conflicts with tmux...
+k("n", "ZZ", "")
+k("n", "ZQ", "")
+k("n", "M", "")
+k("n", "L", "")
+k("n", "H", "")
+k("n", "s", "") -- surround
+k("x", "s", "") -- surround
+
+k("n", "gp", "`[v`]", silent) -- vs last paste
+k("x", "y", [[ygv<Esc>]], silent)
+k({ "n", "x" }, ",q", ":qa!<cr>", silent)
+k("n", ",w", ":w<cr>", silent)
+k("n", ",r", vim.lsp.buf.format, silent)
+
+k("n", "<leader>cd", ":lcd %:h<CR>")
+
+-- dont use system clipboard by default
+k({ "n", "v" }, "<leader>d", '"_d')
+k("x", "<leader>p", '"_dP')
+
+-- move blocks of text with s-J s-K in visual mode
+-- k("v", "J", ":m '>+1<CR>gv=gv")
+-- k("v", "k", ":m '<-2<cr>gv=gv")
+
+k({ "n", "v" }, "J", "mzJ`z") -- when using J keep cursor to the right
+
+k({ "n", "x" }, "v", "<c-v>") -- sigh :)
+vim.cmd("vunmap v")
+
+--- crazy editing skillz ---
+k("n", "D", "d$", opt)
+k("n", "cp", "yap<S-}>p", opt)
+
+-- k("v", "y", "ygv<Esc>", opt) -- return to the cursor position after yank in v mode
+k("n", "U", "<c-r>", opt)
+k("i", "<m-bs>", "<c-w>", opt) -- handle this in alacritty with mod key in config
+
+--- show buffers ---
+-- k("n", "<leader>l", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
+
+--- basic surround without plugins
+m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
+m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
+
+-- make dot work in visual mode
+m("v", ".", ":norm .<cr>", opt)
+
+-- macros
+m("v", "Q", ":'<,'>norm @q<cr>", silent)
+m("n", "Q", "@q", opt)
+
+--- quickfix nav ---
+k("n", "[q", ":cprev<cr>", opt)
+k("n", "]q", ":cnext<cr>", opt)
+
+-- ex/command mode bindings
+k("c", "<c-a>", "<Home>", opt)
+k("c", "<c-h>", "<Left>", opt)
+k("c", "<c-l>", "<Right>", opt)
+k("c", "<c-b>", "<S-left>", opt)
+
+--- may not need this anymore 09/21/22
+k("i", "<c-e>", "<c-o>$", silent)
+k("i", "<c-a>", "<c-o>^", silent)
+
+-- nice to haves, that i dont really need, but will keep for future reference
+-- k("i", "(", "()<left>", opt)
+-- k("i", "{", "{}<left>", opt)
+-- k("i", "[", "[]<left>", opt)
+-- k("i", '"', [[""<left>]], opt)
+-- k("i", "'", [[''<left>]], opt)
+m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
+m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
+m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
+m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
+-- m is needed for doulbe and single quotes
+-- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
+-- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
+
+local pair_map = {
+	["("] = ")",
+	["["] = "]",
+	["{"] = "}",
+	["<"] = ">",
+	["'"] = "'",
+	['"'] = '"',
+	["`"] = "`",
+}
+
+k("i", "<BS>", function()
+	-- compare ')' == ')'
+	-- -> delete both pairs <del><c-h> or single backspace if false
+	local line = vim.fn.getline(".")
+	local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
+	return pair_map[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and "<del><c-h>" or "<bs>"
+end, xpr)
+
+local pair_map_2 = {
+	["("] = ")",
+	["["] = "]",
+	["{"] = "}",
+}
+
+-- k("i", "<enter>", function()
+-- 	-- use this one when we are autoclosing
+-- 	local line = vim.fn.getline(".")
+-- 	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+-- 	return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
+-- end, { expr = true })
+
+k("i", "<enter>", function()
+	-- use this one when we are not autoclosing
+	local line = vim.fn.getline(".")
+	local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
+	return pair_map_2[line:sub(prev_col, prev_col)]
+			and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
+		or "<Enter>"
+end, { expr = true })
+
+--- resize window ---
+k("n", "<M-j>", [[:resize -2<cr>]], silent)
+k("n", "<M-k>", [[:resize +2<cr>]], silent)
+k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
+k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
+
+--- tmux ---
+-- k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+
+--- visual selection search ---
+k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
+
+--- marks/jumps ---
+-- k("n", "'", "`", opt)
+k("n", "mm", "mM", opt)
+k("n", "ma", "mA", opt)
+k("n", "mB", "mB", opt)
+k("n", "'m", [[`M'\"]], opt)
+k("n", "'a", [[`A'\"]], opt)
+k("n", "'b", [[`B'\"]], opt)
+
+-- copy paste without losing item in paste register
+k("x", "<leader>p", '"_dP')
+
+k("i", "<C-c>", "<Esc>", opt)
+k("n", "Y", "y$", opt)
+
+-- keep cursor in the middle when using search
+k("n", "n", "nzzzv", opt)
+k("n", "N", "Nzzzv", opt)
+k("n", "<C-d>", "<C-d>zz", opt)
+k("n", "<C-u>", "<C-u>zz", opt)
+
+--- terminal ---
+k("t", "<Esc>", [[<c-\><c-n>]], silent)
+
+cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
+
+cmd("syntax enable")
+cmd("set synmaxcol=512")
+cmd("syntax sync minlines=256")
+cmd("syntax sync maxlines=300")
+cmd("syntax on")
+
+function _G.legacy()
+	-- :lua legacy()
+	vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, "", -1)
+end
+
+function _G.perflog()
+	cmd([[profile start ~/profile.log]])
+	cmd([[profile func *]])
+	cmd([[profile file *]])
+end
+
+--- :grep magic ---
+cmd([[cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep']])
+cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep']])
+
+--- miniyank ---
+m("n", "p", [[<Plug>(miniyank-autoput)]], {})
+m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+
+--- shellcode ---
+-- m(
+-- 	"x",
+-- 	"<space>h",
+-- 	[[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
+-- 	silent
+-- )
+
+local packages = {
+	"my.vars",
+	"my.cmds",
+	"my.settings",
+	"my.lazy",
+	"plugins.lsp.mason", -- mason first, or lsp breaks
+	"plugins.treesitter",
+	"plugins.telescope",
+	"plugins.navigator",
+	"plugins.neotree",
+	"plugins.surround",
+	-- "plugins.theme_ayu",
+	-- "plugins.theme_numetal", -- 1
+	"plugins.theme_catppuccin", -- 2
+	-- "plugins.theme_tokyonight",
+	"plugins.snippet",
+	"plugins.bufferline",
+	"plugins.floaterm",
+	"plugins.lsp.cmp",
+	"plugins.null_ls",
+	"plugins.gitsigns",
+	-- "plugins.harpoon",
+	-- "plugins.core_dap",
+	-- "plugins.dap_adapters",
+}
+
+-- vim.cmd [[ colorscheme catppuccin_frappe]]
+for _, mod in ipairs(packages) do
+	local ok, err = pcall(require, mod)
+	if not ok then
+		error("Module -> " .. mod .. " not loaded... ay.." .. err)
+	end
+end
+
+vim.cmd([[cabbrev q1 q!]])
+vim.cmd([[cabbrev qall1 qall!]])
+
+-- vim.cmd([[hi! clear FloatBorder]])
+
+vim.cmd([[
+function! Esc()
+python3 << EOF_
+import vim
+
+# reference from re module, py3.8, removed empty space :)
+# adding ' and " for python processing!
+c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\t\n\r\v\f\'\"'}
+
+def escape(pattern):
+    if isinstance(pattern, str):
+        return pattern.translate(c_map)
+    else:
+        pattern = str(pattern, 'latin1')
+        return pattern.translate(c_map).encode('latin1')
+
+vim.current.line = escape(vim.current.line)
+
+EOF_
+endfunction
+command! -nargs=? -range Esc call Esc()
+
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register Cm call CopyMatches(<q-reg>)
+]])
+
+if vim.opt.diff:get() then
+	vim.wo.signcolumn = "no"
+	vim.wo.foldcolumn = "0"
+	vim.wo.numberwidth = 1
+	vim.wo.number = true
+	vim.o.cmdheight = 2
+	vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
+	vim.o.laststatus = 3
+	m("n", "]", "]c", opt)
+	m("n", "[", "[c", opt)
+end
+
+-- vim.o.guicursor = "" -- uncomment for beam cursor
+vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
+vim.o.mouse = "n"
+vim.cmd([[hi! link FidgetTask Comment]])
+vim.cmd([[hi! link FidgetTitle Title]])

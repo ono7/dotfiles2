@@ -1,0 +1,89 @@
+
+--- things that are on the way out ---
+
+--- ultisnips ---
+-- g.UltiSnipsExpandTrigger = "<c-l>"
+-- g.UltiSnipsSnippetDirectories = {"~/.config/nvim/UltiSnips", "UltiSnips"}
+-- g.UltiSnipsEditSplit = "horizontal"
+-- g.UltiSnipsUsePythonVersion = 3
+-- g.UltiSnipsJumpForwardTrigger = "<c-l>"
+-- g.UltiSnipsJumpBackwardTrigger = ""
+
+-- local clip_copy, clip_paste = "pbcopy", "pbpaste"
+--
+-- if vim.fn.has("macunix") ~= 1 then
+--   clip_copy = "xclip -sel clip -i"
+--   clip_paste = "xclip -out -selection clipboard"
+-- end
+
+-- local clipboard_tbl = {}
+-- clipboard_tbl.name = "limaClipboard"
+-- clipboard_tbl.cache_enabled = 1
+-- clipboard_tbl.copy = {}
+-- -- clipboard_tbl.copy["*"] = "tmux load-buffer -"
+-- clipboard_tbl.copy["*"] = clip_copy
+-- clipboard_tbl.copy["+"] = clip_copy
+-- clipboard_tbl.paste = {}
+-- -- clipboard_tbl.paste["*"] = "tmux save-buffer -"
+-- clipboard_tbl.paste["*"] = clip_paste
+-- clipboard_tbl.paste["+"] = clip_paste
+-- g.clipboard = clipboard_tbl
+
+-- if vim.env.SSH_CONNECTION ~= nil then
+--     vim.g.clipboard = {
+--         name = 'osc52clip',
+--         copy = {
+--             ['+'] = 'osc52clip copy',
+--         },
+--         paste = {
+--             ['+'] = 'osc52clip paste',
+--         },
+--     }
+
+-- -- put in PATH as osc52clip
+-- #!/bin/bash
+--
+-- : ${TTY:=$((tty || tty </proc/$PPID/fd/0) 2>/dev/null | grep /dev/)}
+--
+-- case $1 in
+--     copy)
+--         buffer=$(base64)
+--         [[ -n "$TTY" ]] && printf $'\e]52;c;%s\a' "$buffer" > "$TTY"
+--     ;;
+--     paste)
+--         exit 1
+--     ;;
+-- esac
+-- end
+
+--- ale ---
+-- g.ale_disable_lsp = 1
+-- g.ale_echo_msg_error_str = "E"
+-- g.ale_echo_msg_format = [[(%code%): %s]]
+-- g.ale_echo_msg_warning_str = "W"
+-- g.ale_lint_on_enter = 1
+-- g.ale_lint_on_leave = 0
+-- g.ale_lint_on_insert_leave = 1
+-- g.ale_lint_on_save = 1
+-- g.ale_lint_on_text_changed = "never"
+-- g.ale_sign_error = "•"
+-- g.ale_sign_warning = "•"
+-- g.ale_sign_offset = 1000000
+-- g.ale_virtualtext_cursor = 0
+-- g.ale_warn_about_trailing_blank_lines = 0
+-- g.ale_warn_about_trailing_whitespace = 0
+-- g.ale_lint_on_filetype_changed = 0
+-- g.ale_fixers = vim.empty_dict()
+-- g.ale_lint_delay = 25
+-- g.ale_max_signs = 50
+-- g.ale_maximun_file_size = 800000
+-- g.ale_python_pylint_options = "-j 8"
+-- g.ale_lua_luacheck_options = "--globals vim love M use --allow-defined"
+-- g.ale_fix_on_save = 0
+-- g.ale_linters = {
+--   python = {"pylint"},
+--   yaml = {"yamllint"},
+--   lua = {"luacheck"},
+--   json = {"jsonlint"}
+-- }
+-- g.ale_linters_explicit = 1
