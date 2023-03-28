@@ -444,9 +444,9 @@ done
 
 # max font smoothing = 3
 # defaults -currentHost write -g AppleFontSmoothing -int 0
-
 if [[ $OSTYPE == "darwin"* ]]; then
   defaults write -g AppleFontSmoothing -int 0
+  defaults write -g ApplePressAndHoldEnabled -bool false
 fi
 
 # export HISTFILE=~/.history

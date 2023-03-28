@@ -1,6 +1,8 @@
 --- Follow the white Rabbit...   🐇
 
 -- alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces shortmess=coTtaIsO ttyfast mouse=n"'
+-- $_ (shell) - access last argument to previous command, !^ - access first argument
+-- e.g. mkdir testdir || cd $_ (cd to testdir)
 
 -- don't be a blind art dealer
 
