@@ -25,13 +25,6 @@
 
 vim.cmd([[set termguicolors]])
 
--- vim.cmd([[
--- if exists('+termguicolors')
---   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
---   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
--- endif
--- ]])
-
 P = function(x)
 	print(vim.inspect(x))
 	return x
@@ -94,8 +87,8 @@ k("n", ",r", vim.lsp.buf.format, silent)
 k("n", "<leader>cd", ":lcd %:h<CR>")
 
 -- dont use system clipboard by default
-k({ "n", "v" }, "<leader>d", '"_d')
-k("x", "<leader>p", '"_dP')
+-- k({ "n", "v" }, "<leader>d", '"_d')
+-- k("x", "<leader>p", '"_dP')
 
 -- move blocks of text with s-J s-K in visual mode
 -- k("v", "J", ":m '>+1<CR>gv=gv")
@@ -110,8 +103,8 @@ vim.cmd("vunmap v")
 k("n", "D", "d$", opt)
 k("n", "cp", "yap<S-}>p", opt)
 
--- k("v", "y", "ygv<Esc>", opt) -- return to the cursor position after yank in v mode
 k("n", "U", "<c-r>", opt)
+-- k("v", "y", "ygv<Esc>", opt) -- return to the cursor position after yank in v mode
 -- k("i", "<m-bs>", "<c-w>", opt) -- handle this in alacritty with mod key in config
 
 --- show buffers ---
@@ -152,6 +145,8 @@ m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], 
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
+m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
+m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
 -- m is needed for doulbe and single quotes
 -- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 -- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
@@ -298,7 +293,6 @@ local packages = {
 	-- "plugins.dap_adapters",
 }
 
--- vim.cmd [[ colorscheme catppuccin_frappe]]
 for _, mod in ipairs(packages) do
 	local ok, err = pcall(require, mod)
 	if not ok then

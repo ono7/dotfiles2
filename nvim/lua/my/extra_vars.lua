@@ -395,7 +395,7 @@ augroup END
 
 M.legacy_min = [===[
 set nocompatible
-set t_Co=16
+set t_Co=256
 let mapleader = " "
 set synmaxcol=512
 syntax enable
@@ -461,10 +461,6 @@ nnoremap <silent><S-Tab> :bprev<cr>
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 nnoremap <leader><leader> :ls<cr>:b<space>
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'
 cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'
 set completeopt=menu,menuone,longest
