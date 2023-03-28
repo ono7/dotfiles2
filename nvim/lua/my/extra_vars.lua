@@ -393,4 +393,130 @@ augroup END
 
 ]===]
 
+M.legacy_min = [===[
+set nocompatible
+set t_Co=16
+let mapleader = " "
+set synmaxcol=512
+syntax enable
+syntax sync minlines=256
+syntax sync maxlines=300
+filetype plugin indent on
+syntax on
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""
+inoremap <expr> ` strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"
+imap <c-h> <bs>
+augroup _quickfix
+  autocmd!
+  autocmd QuickFixCmdPost [^l]* copen 6 | nnoremap <buffer> <CR> <CR>
+  autocmd QuickFixCmdPost l* lwindow 6 | nnoremap <buffer> <CR> <CR>
+augroup END
+nnoremap s" ciw"<c-r><c-p>""
+nnoremap s' ciw'<c-r><c-p>"'
+nnoremap <c-j> <C-W><C-J>
+nnoremap <c-k> <C-W><C-K>
+nnoremap <c-l> <C-W><C-L>
+nnoremap <c-h> <C-W><C-H>
+noremap v <c-v>
+vunmap v
+cnoremap <C-A> <Home>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+nnoremap <silent><cr> :noh<cr>1<c-g>
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+nnoremap <silent><c-n> :cnext<cr>
+nnoremap <silent><c-p> :cprevious<cr>
+nnoremap ,d :bd!<cr>
+nnoremap ,q :qall!<cr>
+nnoremap <leader>w :w<cr>
+vnoremap y ygv<Esc>
+nnoremap ' `
+nnoremap ma mA
+nnoremap mb mB
+nnoremap mc mC
+nnoremap mm mM
+nnoremap 'a `A'"
+nnoremap 'b `B'"
+nnoremap 'c `C'"
+nnoremap 'm `M'"
+nnoremap Q @q
+vnoremap Q :'<,'>norm @q<cr>
+vnoremap . :norm.<CR>
+nnoremap Y y$
+nnoremap D d$
+nnoremap <c-z> <nop>
+cnoremap <c-z> <nop>
+nnoremap cp yap<S-}>p
+nnoremap U <c-r>
+nnoremap <c-e> g_
+nnoremap <silent><Tab> :bnext<cr>
+nnoremap <silent><S-Tab> :bprev<cr>
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
+nnoremap <leader><leader> :ls<cr>:b<space>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'
+set completeopt=menu,menuone,longest
+set pumheight=10
+set virtualedit=all
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set tags+=./tags,tags,.tags,./vtags,.vtags
+set path+=**
+set whichwrap+=<>[]hl
+set autoread
+set backspace=indent,eol,start
+set complete+=kspell complete-=i
+set diffopt=filler
+set directory=
+set viminfo='20,<1000,s1000,:1000,/1000,h,r/tmp
+set display+=lastline
+set encoding=utf-8
+set fileencoding=utf-8
+set fillchars+=vert:│,diff:╱
+set hidden
+set history=1000
+set ignorecase incsearch nohlsearch
+set mouse=n
+set laststatus=0
+set magic
+set nobackup nowritebackup noswapfile
+set nojoinspaces list
+set listchars=tab:\ \ ,conceal:\ ,trail:•,nbsp:·
+set showtabline=0
+set novisualbell noerrorbells
+set nowrap showmode noshowcmd
+set nrformats-=octal nrformats+=alpha
+set number relativenumber numberwidth=2 ruler shiftround shiftwidth=2
+set shortmess=atcIoOsT
+set smartcase smarttab
+set spelllang=en_us
+set splitbelow splitright
+set softtabstop=2 tabstop=2 textwidth=0 expandtab
+set timeout ttimeout
+set timeoutlen=500 ttimeoutlen=0
+set undodir=~/vim_undo
+set undofile wildmenu
+set updatetime=1000
+set wildignore+=.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*,*.class
+set winaltkeys=no
+set lazyredraw ttyfast
+set matchtime=0
+set matchpairs=(:),{:},[:],<:>
+set autoindent
+augroup _read
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+]===]
 return M

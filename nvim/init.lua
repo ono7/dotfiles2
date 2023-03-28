@@ -245,6 +245,11 @@ function _G.legacy()
 	vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, "", -1)
 end
 
+function _G.legacy_min()
+	-- :lua legacy()
+	vim.api.nvim_paste(require("my.extra_vars").legacy_min, "", -1)
+end
+
 function _G.perflog()
 	cmd([[profile start ~/profile.log]])
 	cmd([[profile func *]])
