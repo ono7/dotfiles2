@@ -27,7 +27,7 @@ resource "aws_vpc" "main" {
 
 _encoding must be utf-8_
 
-# HCL syntax
+## HCL syntax
 
 `blocks` are containers for objects like resources
 `arguments` assign a value to a name
@@ -178,7 +178,7 @@ the root module may contain any number of sub-modules
 main.tf and override.tf
 contents of override.tf are merged into one
 
-```terraform
+```bash
 
 # main.tf
 resource "aws_instance" "web" {
@@ -285,3 +285,54 @@ resource "aws_db_instance" "example" {
 - `update-in-place` - update in-place resources whose arguments have changed
 - `destroy and re-create` - destroy and recreate resources whose arguments have
   changed, but which cannot be updated in-place due to remoet api limitation
+
+## variables
+
+variables can only be accessed within the module in which it was declared
+
+can be called from command line with `var-file` directive
+
+`terraform apply -var-file=../myvars.tfvars`
+
+- names
+
+  the name of the variable can be anything except for meta-argument name e.g.
+  source, version, providers, count, for_each, lifecycle, depends_on, locals (these are not allowed as varilabe names)
+
+- variable declarations
+
+- `default` - default value set if none is provided, this makes the variable optional
+- `type`
+  - contraints:
+    string
+    number
+    bool
+  - contructs:
+    list(<type>)
+    set(<type>)
+    map(<type>)
+    object({<attribute = <type>, ...})
+    tuple([<type>, ...])
+- `description` - ... nuff said
+- `validation` -
+- `sensitive` - sensitive information should not show up in outputs
+
+```terraform
+variable "image_id" {
+  type = string
+  description = "the id of the machine image (AMI) used for the server"
+}
+```
+
+- variables allow arbitrary costum validation rules
+
+```bash
+variable = "image_id" {
+  type = string
+  description = "an image id for aws"
+  validation {
+    condition = length(var.image_id) > 4 && substr(var.image_id, 0, 4) == "ami-"
+    error_message = "the image id value must be a valid ami id and start with ... \"ami-\"."
+  }
+}
+```

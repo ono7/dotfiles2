@@ -44,7 +44,4 @@ require("catppuccin").setup({
 
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
-vim.api.nvim_set_hl(0, "markdownH1", { link = "CursorLineNr" })
-vim.api.nvim_set_hl(0, "markdownH2", { link = "Question" })
-vim.api.nvim_set_hl(0, "markdownH3", { link = "NvimTreeRootFolder" })
 vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })

@@ -97,7 +97,6 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/playground",
-    -- "plasticboy/vim-markdown",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
