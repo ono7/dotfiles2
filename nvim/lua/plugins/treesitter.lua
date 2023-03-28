@@ -29,6 +29,7 @@ configs.setup({
 		"javascript",
 		"typescript",
     "markdown",
+    "terraform",
 		"json",
 		"lua",
 		"make",

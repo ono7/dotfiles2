@@ -110,7 +110,7 @@ k("n", "cp", "yap<S-}>p", opt)
 
 -- k("v", "y", "ygv<Esc>", opt) -- return to the cursor position after yank in v mode
 k("n", "U", "<c-r>", opt)
-k("i", "<m-bs>", "<c-w>", opt) -- handle this in alacritty with mod key in config
+-- k("i", "<m-bs>", "<c-w>", opt) -- handle this in alacritty with mod key in config
 
 --- show buffers ---
 -- k("n", "<leader>l", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...

@@ -8,7 +8,7 @@ the order of the resources and files are generally not important, terraform
 considers implicit and explicit relationships between resources when
 determining an order of the operation.
 
-```bash
+```python
 <block type> "<block label>" "<block label>" { # some blocks do not require labels, other requiere one or more
   # block body
   <identifier> = <expression> #Argument
@@ -129,7 +129,7 @@ resource "aws_ami" "test" {
 
 ## data source block
 
-```bash
+```terraform
 resource "local_file" "pet" {
   filename = "pets.txt"
   content = data.local_file.mydata.content
@@ -150,7 +150,7 @@ data "local_file" "mydata" { # resource type is local_file but can be any valid 
 
 ## for_each | loop
 
-```bash
+```terraform
 resource "local_file" "test" {
   filename = each.value
   content = "test\n"
@@ -173,13 +173,14 @@ variable "filename" {
 current working directory is considers your root module
 the root module may contain any number of sub-modules
 
+modules are consider a container for multiple resources that are group together
+
 ## override files
 
 main.tf and override.tf
 contents of override.tf are merged into one
 
-```bash
-
+```terraform
 # main.tf
 resource "aws_instance" "web" {
   instance_type = "t2.micro"
@@ -256,7 +257,7 @@ resource "aws_instance" "web" {
 `depends_on` = specify hidden dependecies or when a resource or agument relies on
 other resources
 `count` = create multiple resources instance according to a count
-`for_eaxh` = create multiple instances according to a map or a set of strings
+`for_each` = create multiple instances according to a map or a set of strings
 `provider` = select a non-default provider configuration
 `lifecycle` = set lifecycle customizations
 `provisioners` and `connection` - take extra actions after resource creation
@@ -326,7 +327,7 @@ variable "image_id" {
 
 - variables allow arbitrary costum validation rules
 
-```bash
+```terraform
 variable = "image_id" {
   type = string
   description = "an image id for aws"
@@ -336,3 +337,58 @@ variable = "image_id" {
   }
 }
 ```
+
+## output varaibles - output.tf
+
+- output varaibles are used to export values out of a module
+
+## local variables
+
+```python
+locals {
+  image_id = "ami-1234"
+  user_id = "user_id_123"
+}
+
+# using the locals in a resource
+
+resource "aws_instance" "web" {
+  image_id = local.image_id
+  user = local.user_id
+}
+```
+
+## module sources
+
+there are 8 module types
+
+1. local paths
+
+```terraform
+module "consul" {
+  // must begin with ./ or ../
+  source = "./consul"
+}
+```
+
+2. terraform registry
+```terraform
+module "consul" {
+  // public registry
+  source = "hashicorp/consul/aws"
+  version = "0.1.0"
+}
+```
+3. github
+```terraform
+module "consul" {
+  // can use tags an
+  source = "github.com/hashicorp/example?ref=v1.0.0"
+  version = "0.1.0"
+}
+```
+4. bitbucket
+5. generic git, mercurial repositories
+6. http url
+7. s3 buckets (amazon)
+8. gcs buckets (google)

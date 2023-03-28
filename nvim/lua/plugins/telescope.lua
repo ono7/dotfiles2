@@ -42,8 +42,8 @@ configs.setup({
 			i = {
 				["<c-k>"] = actions.move_selection_previous,
 				["<c-j>"] = actions.move_selection_next,
-				-- ["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-				["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
+				["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				-- ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
         -- ['<C-u>'] = false,
         -- ['<C-d>'] = false,
 			},
