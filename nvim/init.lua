@@ -1,6 +1,6 @@
 --- Follow the white Rabbit...   🐇
 
--- alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces shortmess=coTtaIsO mouse=n"'
+-- alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces shortmess=coTtaIsO ttyfast mouse=n"'
 
 -- don't be a blind art dealer
 

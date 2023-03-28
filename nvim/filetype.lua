@@ -18,7 +18,7 @@ vim.filetype.add({
     tf = "terraform",
     tfvars = "terraform",
     tfstate = "json",
-    hcl = "hcl",
+    hcl = "terraform",
     asm = "nasm",
   },
 })

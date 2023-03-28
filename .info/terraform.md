@@ -141,7 +141,7 @@ data "local_file" "mydata" { # resource type is local_file but can be any valid 
 }
 ```
 
-# resources vs datablocks
+## resources vs datablocks
 
 | type     | desc                                                                |
 | -------- | ------------------------------------------------------------------- |
@@ -263,7 +263,7 @@ other resources
 `provisioners` and `connection` - take extra actions after resource creation
 `locals` - variables that are local to the resource (possibly module??)
 
-# timeouts
+## timeouts
 
 some resource types probied special timeouts nested block arguments for customization of how long
 certain operations should take before they timeout
@@ -372,6 +372,7 @@ module "consul" {
 ```
 
 2. terraform registry
+
 ```terraform
 module "consul" {
   // public registry
@@ -379,16 +380,177 @@ module "consul" {
   version = "0.1.0"
 }
 ```
+
 3. github
+
 ```terraform
 module "consul" {
   // can use tags an
   source = "github.com/hashicorp/example?ref=v1.0.0"
+  // over ssh
+  // source = "git@github.com:hashicorp/example.git"
   version = "0.1.0"
 }
 ```
+
 4. bitbucket
 5. generic git, mercurial repositories
 6. http url
+
+```terraform
+module "vpc" {
+  source = "https://example.com/vpc-module.zip"
+  // recognized extensions are: zip, (tar.bz2 or tbz2), (tar.gz or tgz), (tar.xz or txz)
+}
+```
+
 7. s3 buckets (amazon)
 8. gcs buckets (google)
+
+## HCL expressions and functions
+
+- expressions are used to reference/compute values withint a configuration
+- functions are used to transform or combine values within an expression
+
+### value types:
+
+- string
+- number
+- bool
+- list/tuples
+- map/object
+- null (nil)
+
+### types os nameb values:
+
+- resources
+- input variables
+- local values (local.<name>)
+- child module outputs (module.<module name>.<output name>)
+- data sources
+- filesystem and workspace info (path.module, path.root, path.cwd)
+- block-local values
+
+### conditional expressions/ternary operator:
+
+- usefull to replace default values
+
+`condition ? <true value> : <false value>`
+
+- both values must be of the same type, it they do not match, terraform will convert them automatically
+
+`condition ? 12 : "hello"` -> "12"
+
+when in doubt:
+
+`condition ? tostring(12) : "hello"`
+
+### function calls
+
+`<function name>(<argument 1>, <argument 2>, ...)
+
+e.g.
+
+```terraform
+// terraform console, allows you to test functions
+
+// min(55, 2453, 2) -> 2
+// max(55, 2453, 2) -> 2453
+```
+
+## terraform backends
+
+built in backends are the only backends available to configure
+
+backends used by terraform-cli:
+
+- local - useful for testing
+- remote - when working on teams where version control is necessary
+
+backends used by terraform cloud and enterprise use their own backend
+
+- backends determin two key behaviours
+
+1. where state is stored
+2. where operations are performed
+
+```terraform
+terraform {
+  backend "remote" {
+    organization = "corp_example"
+
+    workspaces {
+      name = "ex-app-prod"
+    }
+  }
+}
+```
+
+### backend limitations
+
+1. a configuration can only provide one backend block
+2. a backend cannot refer to named values
+
+- when backend changes you must perform a `terraform init`
+
+- when backend changes, terraform gives you the option to migrate your state
+
+- hashicorp recommends that you manually backup your state, simply copy the `terraform.tfstate` file
+
+### enhanced backend configurations
+
+- you can specify a backend hcl file
+
+```terraform
+// main.tf
+terraform {
+  required_version = "~> 0.12.0"
+
+  backend "remote" {} // empty means use backend.hcl
+}
+
+// backend.hcl
+workspaces { name = "workspace" }
+hostname     = "app.terraform.io"
+organization = "company"
+
+// run with `terraform init -backend-config=backend.hcl`
+```
+
+### standard backend configurations
+
+- aws S3 bucket
+  supports state locking and concistency checking with dynamodb (but must be enabled by setting a field)
+
+  ```terraform
+  terraform {
+    backend "s3" {
+      bucket = "mybucket"
+      key    = "path/to/my/key"
+      region = "us-east-1"
+    }
+  }
+  /* required permissions
+      s3: ListBucket
+      s3: GetObject
+      s3: PutObject
+    */
+  /* state locking requires
+      dynamodb:GetItem
+      dynamodb:PutItem
+      dynamodb:DeleteItem
+    */
+  ```
+
+- azurerm
+
+  ```terraform
+  terraform {
+    backend "azurerm" {
+      resource_group_name  = "StorageAccount-ResourceGroup"
+      storage_account_name = "abcd1234"
+      container_name       = "tfstate"
+      key                  = "prod.terraform.tfstate"
+    }
+  }
+  ```

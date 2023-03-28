@@ -45,3 +45,4 @@ require("catppuccin").setup({
 -- setup must be called before loading
 vim.cmd.colorscheme("catppuccin")
 vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
+vim.api.nvim_set_hl(0, "TreesitterContext", { link = "DiffText" })
