@@ -4,9 +4,7 @@ M.legacy_cfg = [===[
 
 set nocompatible
 
-set t_Co=16
-
-" c-v + esc
+set t_Co=256
 
 let mapleader = " "
 let g:loaded_matchit = 1
