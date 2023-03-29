@@ -217,7 +217,7 @@ cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? '
 set completeopt=menu,menuone,longest
 set pumheight=10
 set notitle
-set tags=tags;/
+set tags=./tags,tags;~
 set virtualedit=all
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set tags+=./tags,tags,.tags,./vtags,.vtags
@@ -468,7 +468,7 @@ set virtualedit=all
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
-set tags=tags;/
+set tags=./tags,tags;~
 set whichwrap+=<>[]hl
 set autoread
 set backspace=indent,eol,start
