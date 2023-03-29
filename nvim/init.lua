@@ -2,7 +2,7 @@
 
 --[[
 
-alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
+alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
 -- $_ (shell) - access last argument to previous command, !^ - access first argument
 -- e.g. mkdir testdir || cd $_ (cd to testdir)
