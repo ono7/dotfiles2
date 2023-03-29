@@ -62,9 +62,9 @@ syntax on
 """ hold my beer """
 
 " inoremap ` ``<left>
-" inoremap ( ()<left>
-" inoremap { {}<left>
-" inoremap [ []<left>
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap [ []<left>
 
 " j, k   Store relative line number jumps in the jumplist. c-o, c-i
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -361,9 +361,9 @@ augroup _files
   autocmd!
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
   autocmd FileType python setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
-  autocmd FileType python setlocal suffixadd+=.py
+  " autocmd FileType python setlocal suffixadd+=.py
   " help gf find files missing extentions
-  autocmd FileType go setlocal suffixadd+=.go
+  " autocmd FileType go setlocal suffixadd+=.go
   autocmd FileType yaml setlocal suffixadd+=.yml
   autocmd FileType make setlocal sw=4 ts=4 noet sts=4 tw=0 nowrap autoindent nolisp
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
@@ -386,9 +386,9 @@ augroup _init
 augroup END
 
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
+hi! clear Error
 
 " Lima's vimrc, use at your own risk :)
-
 ]===]
 
 M.legacy_min = [===[
@@ -512,5 +512,6 @@ augroup _read
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
+hi! clear Error
 ]===]
 return M

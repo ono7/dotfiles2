@@ -1,6 +1,9 @@
 --- Follow the white Rabbit...   🐇
 
--- alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
+--[[
+
+alias vim='vim "+:set path+=** nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
+
 -- $_ (shell) - access last argument to previous command, !^ - access first argument
 -- e.g. mkdir testdir || cd $_ (cd to testdir)
 
@@ -22,6 +25,8 @@
 -- pratice ge, jump back do end of word
 -- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
 -- use fc command for editing last command in zsh
+
+--]]
 
 vim.cmd([[set termguicolors]])
 
