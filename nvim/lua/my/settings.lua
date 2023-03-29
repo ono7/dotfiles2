@@ -4,6 +4,7 @@ local opt = vim.opt
 local wo = vim.wo
 local bo = vim.bo
 
+
 --- global options ---
 o.completeopt = "menu,menuone,noinsert"
 o.foldmethod = "indent"
