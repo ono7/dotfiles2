@@ -131,11 +131,9 @@ k("c", "<c-h>", "<Left>", opt)
 k("c", "<c-l>", "<Right>", opt)
 k("c", "<c-b>", "<S-left>", opt)
 
---- may not need this anymore 09/21/22
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
 
--- nice to haves, that i dont really need, but will keep for future reference
 -- k("i", "(", "()<left>", opt)
 -- k("i", "{", "{}<left>", opt)
 -- k("i", "[", "[]<left>", opt)
