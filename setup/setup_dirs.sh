@@ -31,6 +31,7 @@ echo ###########################################################################
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
 mkdir -p ~/.vim/indent
+ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
 ln -sf ~/.dotfiles/shortpath ~/local/bin/shortpath
 ln -sf ~/.dotfiles/starship.toml ~/.config/
 ln -sf ~/.dotfiles/ipython ~/.ipython
