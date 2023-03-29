@@ -60,6 +60,7 @@ o.listchars = [[tab:  ,trail:•,nbsp:·,conceal: ]]
 o.nrformats = "bin,hex"
 o.shortmess = "aoOTtIsc"
 o.wildignore = [[.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*,*.class]]
+o.tags = [[tags;/]]
 o.showmatch = false
 o.showmode = false
 o.showtabline = 0
