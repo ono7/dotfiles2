@@ -38,7 +38,9 @@ o.scrolloff = 8
 o.sidescrolloff = 8
 opt.splitright = true
 opt.splitbelow = true
-opt.winbar = "%=%m %f"
+-- opt.winbar = "%=%m %f"
+opt.winbar = "%=%M %-.45f"
+-- opt.winbar = "%=%m %-.16t"
 opt.iskeyword:append("-")
 o.smartcase = true
 o.smarttab = true

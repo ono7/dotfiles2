@@ -325,7 +325,8 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # only need this if oh-my-zsh is not running (compinit helps with completion)
 # we can test this by profiling using zprof
 
-# autocomplete running this here just makes compinit run twice due to its inclusion in oh-my-zsh
+# autocomplete running this here just makes compinit run twice due to its
+# inclusion in oh-my-zsh
 # autoload -Uz compinit && compinit -i
 # autoload -Uz compinit
 
@@ -451,21 +452,21 @@ if [[ $OSTYPE == "darwin"* ]]; then
 fi
 
 # export HISTFILE=~/.history
+# HISTSIZE should be > SAVEHIST or dups will show up
 export HISTSIZE=10000   # the number of items for the internal history list
 export SAVEHIST=9000   # maximum number of items for the history file
+export HISTTIMEFORMAT='[%F %T] '
+export HISTIGNORE='ls:ll:pwd'
 
 # The meaning of these options can be found in man page of `zshoptions`.
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST # remove dups first
+setopt INC_APPEND_HISTORY # record command immediatly instead of waiting until exit
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
 setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
 setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
-setopt INC_APPEND_HISTORY # record command immediatly instead of waiting until exit
-export HISTTIMEFORMAT="[%F %T] "
-
-# unalias ls
 
 if [[ $OSTYPE == "linux"* ]];  then
   export NVM_DIR="$HOME/.nvm"
