@@ -4,7 +4,7 @@ local act = wezterm.action
 
 return {
 	default_prog = { "/bin/zsh", "--login" },
-  audible_bell = "disable",
+	audible_bell = "Disabled",
 	keys = {
 		-- use xxd -psd to get hex char sequences
 		{
@@ -105,6 +105,7 @@ return {
 	-- color_scheme = "Tokyo Night Storm (Gogh)",
 	color_scheme = "tokyonight_storm",
 	font = wezterm.font({ family = "MonoLisa Liga" }),
+	-- freetype_load_target = "HorizontalLcd",
 	cursor_blink_rate = 350,
 	-- default_cursor_style = "BlinkingBlock",
 	-- freetype_load_target = 'Light',
@@ -125,7 +126,7 @@ return {
 	},
 	-- window_background_image = "/Users/jlima/Documents/1.jpg",
 	-- window_background_opacity = 0.90,
-	window_background_opacity = 0.85,
+	window_background_opacity = 0.90,
 	macos_window_background_blur = 20,
 	-- window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_NS_VISUAL_EFFECT_MATERIAL_BLUR", -- will blurr eventually
 	window_decorations = "RESIZE",
