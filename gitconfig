@@ -7,6 +7,7 @@
   mergeoptions = --no-edit
 [push]
   default = simple
+  autoSetupRemote = true
 [http]
   sslVerify = false
 [url "https://github.com/"]
