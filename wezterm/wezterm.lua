@@ -4,6 +4,7 @@ local act = wezterm.action
 
 return {
 	default_prog = { "/bin/zsh", "--login" },
+  audible_bell = "disable",
 	keys = {
 		-- use xxd -psd to get hex char sequences
 		{

@@ -47,7 +47,7 @@ function! ToggleNetrw()
     endif
 endfunction
 
-nnoremap <silent>,t :call ToggleNetrw()<CR>
+nnoremap <silent>\ :call ToggleNetrw()<CR>
 
 " remove ~
 let &fcs='eob: '
@@ -273,6 +273,7 @@ set wildmenu
 set winaltkeys=no
 set lazyredraw
 set matchtime=0
+set belloff=all
 set matchpairs=(:),{:},[:],<:>
 
 set nocursorcolumn
@@ -465,7 +466,6 @@ cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? '
 set completeopt=menu,menuone,longest
 set pumheight=10
 set virtualedit=all
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set tags=./tags,tags;~
@@ -478,7 +478,6 @@ set directory=
 set viminfo='20,<1000,s1000,:1000,/1000,h,r/tmp
 set display+=lastline
 set encoding=utf-8
-set fileencoding=utf-8
 set fillchars+=vert:│,diff:╱
 set hidden
 set history=1000
@@ -508,12 +507,15 @@ set wildignore+=.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*
 set winaltkeys=no
 set lazyredraw ttyfast
 set matchtime=0
+set belloff=all
 set matchpairs=(:),{:},[:],<:>
 set autoindent
 augroup _read
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
+inoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
+nnoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
 hi! clear Error
 ]===]
 return M
