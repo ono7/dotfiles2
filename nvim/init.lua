@@ -188,7 +188,7 @@ local pair_map_2 = {
 k("i", "<enter>", function()
 	-- use this one when we are not autoclosing
 	local line = vim.fn.getline(".")
-	local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
+	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
 	return pair_map_2[line:sub(prev_col, prev_col)]
 			and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
 		or "<Enter>"

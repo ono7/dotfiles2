@@ -95,14 +95,12 @@ working_directory: None
 
 enable_experimental_conpty_backend: false
 
-alt_send_esc: false
-
 debug:
   render_timer: false
 
   persistent_logging: false
 
-  log_level: OFF
+  log_level: Off
 
   print_events: false
 
@@ -116,10 +114,10 @@ key_bindings:
 
   #### for vim! ####
   # make option+backspace work in terminal not just vim!! \x17
-  - { key: Back, mods: Control, chars: "\x17" }
+  - { key: Back, mods: Command, chars: "\x17" }
 
   # make command+backspace remove entire line, like native macos \x15
-  - { key: Back, mods: Alt, chars: "\x15" }
+  - { key: Back, mods: Alt, chars: "\x17" }
 
   - { key: Q, mods: Control, chars: "\x11" }
 

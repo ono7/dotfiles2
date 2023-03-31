@@ -4,7 +4,7 @@ M.legacy_cfg = [===[
 
 set nocompatible
 
-set t_Co=256
+set t_Co=16
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -27,6 +27,7 @@ let g:pyindent_continue = '&sw'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
+let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
 let g:NetrwIsOpen=0
@@ -183,8 +184,6 @@ nnoremap <silent><S-Tab> :bprev<cr>
 " select last paste in visual mode
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap gt :e ~/notes.md<cr>
-
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 nnoremap <leader>b :ls<cr>:b<space>
@@ -197,14 +196,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-function! Osc52()
-  let buffer=system('base64 -w0', @0) " -w0 disable 76 char wrap
-  let buffer='\ePtmux;\e\e]52;c; '.buffer.'\x07\e\\'
-  silent exe "!echo -ne ".shellescape(buffer)." > ".shellescape(g:tty)
-endfunction
-
-nnoremap <leader>y :call Osc52()<CR>
 
 " inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-n>"
 " inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -220,7 +211,6 @@ set notitle
 set tags=./tags,tags;~
 set virtualedit=all
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set whichwrap+=<>[]hl
 set autoread
@@ -251,7 +241,7 @@ set showtabline=0
 set novisualbell noerrorbells
 set nowrap
 set nrformats-=octal nrformats+=alpha
-set nonumber numberwidth=2
+set number rnu numberwidth=2
 set ruler
 set shiftround shiftwidth=2
 set shortmess=atcIoOsT
@@ -275,7 +265,6 @@ set lazyredraw
 set matchtime=0
 set belloff=all
 set matchpairs=(:),{:},[:],<:>
-
 set nocursorcolumn
 set redrawtime=10000
 set ttyfast
@@ -389,19 +378,21 @@ augroup END
 
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 hi! clear Error
+hi! link LineNr Comment
 
 " Lima's vimrc, use at your own risk :)
 ]===]
 
 M.legacy_min = [===[
 set nocompatible
-set t_Co=256
+set t_Co=16
 let mapleader = " "
 set synmaxcol=512
 syntax enable
 syntax sync minlines=256
 syntax sync maxlines=300
 filetype plugin indent on
+let g:netrw_localcopydircmd = 'cp -r'
 syntax on
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
@@ -411,7 +402,6 @@ inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""
 inoremap <expr> ` strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"
-imap <c-h> <bs>
 augroup _quickfix
   autocmd!
   autocmd QuickFixCmdPost [^l]* copen 6 | nnoremap <buffer> <CR> <CR>
@@ -466,7 +456,6 @@ cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? '
 set completeopt=menu,menuone,longest
 set pumheight=10
 set virtualedit=all
-set tags+=./tags,tags,.tags,./vtags,.vtags
 set path+=**
 set tags=./tags,tags;~
 set whichwrap+=<>[]hl
