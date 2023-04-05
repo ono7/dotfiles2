@@ -474,14 +474,16 @@ if [[ $OSTYPE == "linux"* ]];  then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-KRATE=1
-INITKRATE=14
+if [[ $OSTYPE == "darwin"* ]];  then
+  KRATE=1
+  INITKRATE=14
 
-# normal is 2, lower is faster
-defaults write -g KeyRepeat -int $KRATE
-# normal minimum is 15 (225 ms) , higher is faster
-defaults write -g InitialKeyRepeat -int $INITKRATE
+  # normal is 2, lower is faster
+  defaults write -g KeyRepeat -int $KRATE
+  # normal minimum is 15 (225 ms) , higher is faster
+  defaults write -g InitialKeyRepeat -int $INITKRATE
 
-eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
+fi
 
 
