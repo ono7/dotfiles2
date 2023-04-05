@@ -63,37 +63,37 @@ return {
 			-- https://www.youtube.com/watch?v=BLp61-Lq0kQ
 			-- tmux next-window
 			key = "]",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x6e"),
 		},
 		{
 			-- tmux previous-window
 			key = "[",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x70"),
 		},
 		{
 			-- tmux rename window
 			key = "n",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x2c"),
 		},
 		{
 			-- tmux zoom pane
 			key = "m",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x7a"),
 		},
 		{
 			-- tmux create horizontal pane
 			key = "u",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x2d"),
 		},
 		{
 			-- tmux create vertical pane
 			key = "i",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x02\x7c"),
 		},
 	},
