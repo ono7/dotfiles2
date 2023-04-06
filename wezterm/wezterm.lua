@@ -48,15 +48,15 @@ return {
 		-- 	action = wezterm.action.SendString("\x17"),
 		-- },
 		{
-			-- remove line
+			-- delete word
 			key = "Backspace",
-			mods = "ALT",
+			mods = "CTRL",
 			action = wezterm.action.SendString("\x17"),
 		},
 		{
-			-- remove line
+			-- delete line
 			key = "Backspace",
-			mods = "CMD",
+			mods = "ALT",
 			action = wezterm.action.SendString("\x15"),
 		},
 		{
