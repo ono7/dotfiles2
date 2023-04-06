@@ -32,13 +32,13 @@ return {
             action = wezterm.action.PasteFrom("Clipboard"),
         },
         {
-            -- remove line
+            -- delete word
             key = "Backspace",
             mods = "CTRL",
             action = wezterm.action.SendString("\x17"),
         },
         {
-            -- remove line
+            -- delet line
             key = "Backspace",
             mods = "ALT",
             action = wezterm.action.SendString("\x15"),
