@@ -223,8 +223,6 @@ function dotp () {
     my_dir=$PWD
     cd ~/.dotfiles
     git pull
-    cd ~/.info
-    git pull
     cd $my_dir
 }
 
