@@ -35,7 +35,7 @@ null_ls.setup({
       },
     }),
     -- cargo install stylua
-    format.stylua,
+    -- format.stylua,
     format.gofmt,
   },
 })
