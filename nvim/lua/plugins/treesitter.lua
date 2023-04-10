@@ -23,7 +23,7 @@ configs.setup({
 		end,
 	},
 	ensure_installed = {
-		"help", -- vim help
+		-- "help", -- vim help
 		"bash",
 		"go",
 		"javascript",
