@@ -484,4 +484,7 @@ if [[ $OSTYPE == "darwin"* ]];  then
   eval "$(zoxide init zsh)"
 fi
 
+# unset display in wsl or vim will starup slow
+[[ $(uname -a) == *"Microsoft"* ]] && unset DISPLAY
+
 

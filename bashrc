@@ -232,3 +232,7 @@ else
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# unset display in wsl or vim will starup slow
+[[ $(uname -a) == *"Microsoft"* ]] && unset DISPLAY
