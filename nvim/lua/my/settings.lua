@@ -76,17 +76,19 @@ o.maxmempattern = 20000
 o.wrapscan = true
 o.breakindent = true
 opt.isfname:append("@-@")
-opt.clipboard:append("unnamedplus")
+if vim.fn.has("wsl") == 0 then
+  opt.clipboard:append("unnamedplus")
+end
 
 -- o.virtualedit="all"
 
 if vim.fn.executable("rg") == 1 then
-	o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
-	-- o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git' 1>/dev/null]]
-	o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git']]
+  o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
+  -- o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git' 1>/dev/null]]
+  o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git']]
 else
-	o.grepprg = [[grep -n $* /dev/null]]
-	o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
+  o.grepprg = [[grep -n $* /dev/null]]
+  o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
 end
 
 --- window-local options ---
@@ -120,12 +122,12 @@ bo.formatoptions = "qlj" -- TODO: overwritten in my_cmds.lua
 bo.matchpairs = "(:),{:},[:]"
 
 vim.g.floating_window_border = {
-	"╭",
-	"─",
-	"╮",
-	"│",
-	"╯",
-	"─",
-	"╰",
-	"│",
+  "╭",
+  "─",
+  "╮",
+  "│",
+  "╯",
+  "─",
+  "╰",
+  "│",
 }
