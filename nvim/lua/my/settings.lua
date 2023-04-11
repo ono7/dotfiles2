@@ -92,8 +92,8 @@ if vim.fn.has("wsl") == 1 then
     },
     cache_enabled = 0,
   }
-else
-  opt.clipboard:append("unnamedplus")
+-- else
+--   opt.clipboard:append("unnamedplus")
 end
 
 -- o.virtualedit="all"
