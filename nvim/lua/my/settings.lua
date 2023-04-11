@@ -120,6 +120,7 @@ bo.tabstop = 2
 bo.textwidth = 80
 bo.expandtab = true
 bo.spelllang = "en_us"
+vim.o.spellsuggest = 'best,9'
 
 -- vim.opt.smartindent = true
 -- vim.opt.autoindent = true
