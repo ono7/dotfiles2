@@ -76,7 +76,15 @@ o.maxmempattern = 20000
 o.wrapscan = true
 o.breakindent = true
 opt.isfname:append("@-@")
-if vim.fn.has("wsl") == 0 then
+
+if vim.fn.has("wsl") then
+  vim.g.clipboard = {
+    name = 'wsl clipboard',
+    copy = { ["+"] = { "clip.exe" },["*"] = { "clip.exe" } },
+    paste = { ["+"] = { "nvim_paste" },["*"] = { "nvim_paste" } }, -- ~/bin/nvim_paste
+    cache_enabled = true
+  }
+else
   opt.clipboard:append("unnamedplus")
 end
 
