@@ -10,7 +10,7 @@ return {
 		{
 			key = "w",
 			mods = "CMD",
-			action = wezterm.action.CloseCurrentPane({ confirm = true }),
+			action = wezterm.action.CloseCurrentPane({ confirm = false }),
 		},
 		{
 			-- turn off cmd+m to minimize window from the os
