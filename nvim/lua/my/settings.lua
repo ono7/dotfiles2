@@ -77,7 +77,7 @@ o.wrapscan = true
 o.breakindent = true
 opt.isfname:append("@-@")
 
-if vim.fn.has("wsl") then
+if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
     name = 'wsl clipboard',
     copy = { ["+"] = { "clip.exe" },["*"] = { "clip.exe" } },
