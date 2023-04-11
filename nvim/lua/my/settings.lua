@@ -78,8 +78,8 @@ o.breakindent = true
 opt.isfname:append("@-@")
 
 if vim.fn.has("wsl") == 1 then
-  local copy_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
-  local paste_prg = "/mnt/c/Windows/System32/clip.exe"
+  local paste_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+  local copy_prg = "/mnt/c/Windows/System32/clip.exe"
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
