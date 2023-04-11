@@ -2,12 +2,13 @@
 
 --[[
 
+-- pratice ge, jump back do end of word
+-- xxd -psd (get hex codes to use with wezterm)
+
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
 -- $_ (shell) - access last argument to previous command, !^ - access first argument
 -- e.g. mkdir testdir || cd $_ (cd to testdir)
-
--- don't be a blind art dealer
 
 --- brew install universal-ctags
 
@@ -22,7 +23,6 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 -- "1 - holds recent deleted text
 -- z + enter, moves buffer to top of screen
 -- count number of matches %s/test//gn (gn n=no op), will show the number of matches
--- pratice ge, jump back do end of word
 -- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
 -- use fc command for editing last command in zsh
 
