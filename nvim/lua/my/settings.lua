@@ -78,17 +78,17 @@ o.breakindent = true
 opt.isfname:append("@-@")
 
 if vim.fn.has("wsl") == 1 then
-  local ps_path = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/"
-  local clip_path = "/mnt/c/Windows/System32/"
+  local copy_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+  local paste_prg = "/mnt/c/Windows/System32/clip.exe"
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
-      ['+'] = clip_path .. 'clip.exe',
-      ['*'] = clip_path .. 'clip.exe',
+      ['+'] = clip_prg,
+      ['*'] = clip_prg,
     },
     paste = {
-      ['+'] = ps_path .. 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = ps_path .. 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['+'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
     cache_enabled = 0,
   }
