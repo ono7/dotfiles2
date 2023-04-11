@@ -78,7 +78,7 @@ o.breakindent = true
 opt.isfname:append("@-@")
 
 if vim.fn.has("wsl") == 1 then
-  local ps_path = "/mt/c/Windows/System32/WindowsPowerShell/v1.0/"
+  local ps_path = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/"
   local clip_path = "/mnt/c/Windows/System32/"
   vim.g.clipboard = {
     name = 'WslClipboard',
