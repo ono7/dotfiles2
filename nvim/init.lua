@@ -91,9 +91,12 @@ k("n", ",r", vim.lsp.buf.format, silent)
 
 k("n", "<leader>cd", ":lcd %:h<CR>")
 
--- dont use system clipboard by default
+-- manage my clipboard
 -- k({ "n", "v" }, "<leader>d", '"_d')
--- k("x", "<leader>p", '"_dP')
+k("x", "<leader>p", [["_dP]])
+k({"n", "v"}, "<leader>y", [["+y]])
+k({"n"}, "<leader>Y", [["+Y]])
+k({"n", "v"}, "<leader>d", [["_d]])
 
 -- move blocks of text with s-J s-K in visual mode
 -- k("v", "J", ":m '>+1<CR>gv=gv")
