@@ -83,8 +83,8 @@ if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
-      ['+'] = clip_prg,
-      ['*'] = clip_prg,
+      ['+'] = copy_prg,
+      ['*'] = copy_prg,
     },
     paste = {
       ['+'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
