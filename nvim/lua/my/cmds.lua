@@ -97,17 +97,17 @@ c("FocusGained", {
 	desc = "Update file when there are changes",
 })
 
--- autocmd("ModeChanged", {
---   callback = function()
---     if fn.getcmdtype() == "/" or fn.getcmdtype() == "?" then
---       vim.opt.hlsearch = true
---     else
---       vim.opt.hlsearch = false
---     end
---   end,
---   group = mygrp,
---   desc = "Highlighting matched words when searching",
--- })
+c("ModeChanged", {
+  callback = function()
+    if vim.fn.getcmdtype() == "/" or vim.fn.getcmdtype() == "?" then
+      vim.opt.hlsearch = true
+    else
+      vim.opt.hlsearch = false
+    end
+  end,
+  group = mygrp,
+  desc = "Highlighting matched words when searching",
+})
 
 -- remove this if there's an issue
 -- c({ "BufReadPost", "BufNewFile" }, {
