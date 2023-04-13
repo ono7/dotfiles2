@@ -13,6 +13,8 @@ vim.filetype.add({
     env = "env",
     j2 = "jinja",
     conf = "config",
+    yaml = "ansible",
+    yml = "ansible",
     md = "markdown",
     ts = "typescript",
     tf = "terraform",
