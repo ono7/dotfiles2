@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 return {
   default_prog = { "wsl.exe" },
   -- default_cwd = "C:\\Users\\A270581\\Desktop\\work",
+  default_domain = 'WSL:Ubuntu-18.04', -- wsl -l -v
   default_cwd = wezterm.homedir,
   audible_bell = "Disabled",
   pane_focus_follows_mouse = true,
