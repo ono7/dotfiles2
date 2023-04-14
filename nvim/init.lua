@@ -27,12 +27,11 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 -- use fc command for editing last command in zsh
 
 --]]
-
 vim.cmd([[set termguicolors]])
 
 P = function(x)
-	print(vim.inspect(x))
-	return x
+  print(vim.inspect(x))
+  return x
 end
 
 vim.g.markdown_fold_style = "nested"
@@ -50,13 +49,13 @@ local MYHOME = os.getenv("HOME")
 vim.o.shada = "'20,<1000,s1000,:500,/100,h,r/tmp,n~/.shada"
 
 local function get_git_root()
-	local dot_git_path = vim.fn.finddir(".git", ".;")
-	print(vim.fn.fnamemodify(dot_git_path, ":h"))
-	return vim.fn.fnamemodify(dot_git_path, ":h")
+  local dot_git_path = vim.fn.finddir(".git", ".;")
+  print(vim.fn.fnamemodify(dot_git_path, ":h"))
+  return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
 vim.api.nvim_create_user_command("CdGitRoot", function()
-	vim.api.nvim_set_current_dir(get_git_root())
+  vim.api.nvim_set_current_dir(get_git_root())
 end, {})
 
 vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
@@ -73,15 +72,15 @@ vim.opt.path:append({ "**" })
 
 --- nop ---
 k({ "c", "x", "n" }, "<c-z>", "") -- use this for searching repos
-k("n", "<c-f>", "") -- use this for searching files
-k("n", "<c-b>", "") -- this conflicts with tmux...
+k("n", "<c-f>", "")               -- use this for searching files
+k("n", "<c-b>", "")               -- this conflicts with tmux...
 k("n", "ZZ", "")
 k("n", "ZQ", "")
 k("n", "M", "")
 k("n", "L", "")
 k("n", "H", "")
-k("n", "s", "") -- surround
-k("x", "s", "") -- surround
+k("n", "s", "")               -- surround
+k("x", "s", "")               -- surround
 
 k("n", "gp", "`[v`]", silent) -- vs last paste
 k("x", "y", [[ygv<Esc>]], silent)
@@ -94,9 +93,11 @@ k("n", "<leader>cd", ":lcd %:h<CR>")
 -- manage my clipboard
 -- k({ "n", "v" }, "<leader>d", '"_d')
 k("x", "<leader>p", [["_dP]])
-k({"n", "v"}, "<leader>y", [["+y]])
-k({"n"}, "<leader>Y", [["+Y]])
-k({"n", "v"}, "<leader>d", [["_d]])
+k("n", "<leader>p", [["*p]])
+k({"n", "x"}, "x", '"_x')
+k({ "n", "v" }, "<leader>y", [["+y]])
+k({ "n" }, "<leader>Y", [["+Y]])
+k({ "n", "v" }, "<leader>d", [["_d]])
 
 -- move blocks of text with s-J s-K in visual mode
 -- k("v", "J", ":m '>+1<CR>gv=gv")
@@ -158,27 +159,27 @@ m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]]
 -- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
 
 local pair_map = {
-	["("] = ")",
-	["["] = "]",
-	["{"] = "}",
-	["<"] = ">",
-	["'"] = "'",
-	['"'] = '"',
-	["`"] = "`",
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
+  ["<"] = ">",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`",
 }
 
 k("i", "<BS>", function()
-	-- compare ')' == ')'
-	-- -> delete both pairs <del><c-h> or single backspace if false
-	local line = vim.fn.getline(".")
-	local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
-	return pair_map[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and "<del><c-h>" or "<bs>"
+  -- compare ')' == ')'
+  -- -> delete both pairs <del><c-h> or single backspace if false
+  local line = vim.fn.getline(".")
+  local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
+  return pair_map[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and "<del><c-h>" or "<bs>"
 end, xpr)
 
 local pair_map_2 = {
-	["("] = ")",
-	["["] = "]",
-	["{"] = "}",
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
 }
 
 -- k("i", "<enter>", function()
@@ -189,12 +190,12 @@ local pair_map_2 = {
 -- end, { expr = true })
 
 k("i", "<enter>", function()
-	-- use this one when we are not autoclosing
-	local line = vim.fn.getline(".")
-	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
-	return pair_map_2[line:sub(prev_col, prev_col)]
-			and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
-		or "<Enter>"
+  -- use this one when we are not autoclosing
+  local line = vim.fn.getline(".")
+  local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+  return pair_map_2[line:sub(prev_col, prev_col)]
+      and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
+      or "<Enter>"
 end, { expr = true })
 
 --- resize window ---
@@ -218,9 +219,6 @@ k("n", "'m", [[`M'\"]], opt)
 k("n", "'a", [[`A'\"]], opt)
 k("n", "'b", [[`B'\"]], opt)
 
--- copy paste without losing item in paste register
-k("x", "<leader>p", '"_dP')
-
 k("i", "<C-c>", "<Esc>", opt)
 k("n", "Y", "y$", opt)
 
@@ -242,19 +240,19 @@ cmd("syntax sync maxlines=300")
 cmd("syntax on")
 
 function _G.legacy()
-	-- :lua legacy()
-	vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, "", -1)
+  -- :lua legacy()
+  vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, "", -1)
 end
 
 function _G.legacy_min()
-	-- :lua legacy()
-	vim.api.nvim_paste(require("my.extra_vars").legacy_min, "", -1)
+  -- :lua legacy()
+  vim.api.nvim_paste(require("my.extra_vars").legacy_min, "", -1)
 end
 
 function _G.perflog()
-	cmd([[profile start ~/profile.log]])
-	cmd([[profile func *]])
-	cmd([[profile file *]])
+  cmd([[profile start ~/profile.log]])
+  cmd([[profile func *]])
+  cmd([[profile file *]])
 end
 
 --- :grep magic ---
@@ -274,36 +272,36 @@ m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 -- )
 
 local packages = {
-	"my.vars",
-	"my.cmds",
-	"my.settings",
-	"my.lazy",
-	"plugins.lsp.mason", -- mason first, or lsp breaks
-	"plugins.treesitter",
-	"plugins.telescope",
-	"plugins.navigator",
-	"plugins.neotree",
-	"plugins.surround",
-	-- "plugins.theme_ayu",
-	-- "plugins.theme_numetal", -- 1
-	"plugins.theme_catppuccin", -- 2
-	-- "plugins.theme_tokyonight",
-	"plugins.snippet",
-	"plugins.bufferline",
-	"plugins.floaterm",
-	"plugins.lsp.cmp",
-	"plugins.null_ls",
-	"plugins.gitsigns",
-	-- "plugins.harpoon",
-	-- "plugins.core_dap",
-	-- "plugins.dap_adapters",
+  "my.vars",
+  "my.cmds",
+  "my.settings",
+  "my.lazy",
+  "plugins.lsp.mason", -- mason first, or lsp breaks
+  "plugins.treesitter",
+  "plugins.telescope",
+  "plugins.navigator",
+  "plugins.neotree",
+  "plugins.surround",
+  -- "plugins.theme_ayu",
+  -- "plugins.theme_numetal", -- 1
+  "plugins.theme_catppuccin", -- 2
+  -- "plugins.theme_tokyonight",
+  "plugins.snippet",
+  "plugins.bufferline",
+  "plugins.floaterm",
+  "plugins.lsp.cmp",
+  "plugins.null_ls",
+  "plugins.gitsigns",
+  -- "plugins.harpoon",
+  -- "plugins.core_dap",
+  -- "plugins.dap_adapters",
 }
 
 for _, mod in ipairs(packages) do
-	local ok, err = pcall(require, mod)
-	if not ok then
-		error("Module -> " .. mod .. " not loaded... ay.." .. err)
-	end
+  local ok, err = pcall(require, mod)
+  if not ok then
+    error("Module -> " .. mod .. " not loaded... ay.." .. err)
+  end
 end
 
 vim.cmd([[cabbrev q1 q!]])
@@ -343,15 +341,15 @@ command! -register Cm call CopyMatches(<q-reg>)
 ]])
 
 if vim.opt.diff:get() then
-	vim.wo.signcolumn = "no"
-	vim.wo.foldcolumn = "0"
-	vim.wo.numberwidth = 1
-	vim.wo.number = true
-	vim.o.cmdheight = 2
-	vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
-	vim.o.laststatus = 3
-	m("n", "]", "]c", opt)
-	m("n", "[", "[c", opt)
+  vim.wo.signcolumn = "no"
+  vim.wo.foldcolumn = "0"
+  vim.wo.numberwidth = 1
+  vim.wo.number = true
+  vim.o.cmdheight = 2
+  vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
+  vim.o.laststatus = 3
+  m("n", "]", "]c", opt)
+  m("n", "[", "[c", opt)
 end
 
 -- vim.o.guicursor = "" -- uncomment for beam cursor
