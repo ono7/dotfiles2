@@ -5,6 +5,7 @@ return {
   default_cwd = "C:\\Users\\A270581\\Desktop\\work",
   audible_bell = "Disabled",
   pane_focus_follows_mouse = true,
+  use_dead_keys = false,
   keys = {
     -- use xxd -psd to get hex char sequences
     {
@@ -30,8 +31,13 @@ return {
     },
     {
       key = "v",
-      mods = "ALT",
+      mods = "CTRL|SHIFT",
       action = wezterm.action.PasteFrom("Clipboard"),
+    },
+    {
+      key = "c",
+      mods = "CTRL|SHIFT",
+      action = wezterm.action.CopyTo("Clipboard"),
     },
     {
       -- delete word
