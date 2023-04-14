@@ -312,10 +312,9 @@ ls.add_snippets("yaml", {
   tasks:
 
     - name: "{}"
-      {}
       register: response
 ]],
-      { i(1), i(2, "localhost"), i(3), i(0)}
+      { i(1), i(2, "localhost"), i(0) }
     )
   ),
 }, {
