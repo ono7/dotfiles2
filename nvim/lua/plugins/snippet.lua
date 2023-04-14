@@ -312,11 +312,10 @@ ls.add_snippets("yaml", {
   tasks:
 
     - name: "{}"
-      nxos_command:
-        commands: show running-config
-      register: config
-]]     ,
-      { i(1), i(2, "localhost"), rep(1) }
+      {}
+      register: response
+]],
+      { i(1), i(2, "localhost"), i(3), i(0)}
     )
   ),
 }, {
