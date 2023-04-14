@@ -7,6 +7,7 @@ return {
 	audible_bell = "Disabled",
   use_dead_keys = false,
   unicode_version  = 14,
+  default_cwd = wezterm.homedir,
 	keys = {
 		-- use xxd -psd to get hex char sequences
 		{

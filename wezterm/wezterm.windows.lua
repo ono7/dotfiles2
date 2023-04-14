@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 
 return {
   default_prog = { "wsl.exe" },
-  default_cwd = "C:\\Users\\A270581\\Desktop\\work",
+  -- default_cwd = "C:\\Users\\A270581\\Desktop\\work",
+  default_cwd = wezterm.homedir,
   audible_bell = "Disabled",
   pane_focus_follows_mouse = true,
   use_dead_keys = false,
