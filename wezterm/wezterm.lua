@@ -6,6 +6,7 @@ return {
 	default_prog = { "/bin/zsh", "--login" },
 	audible_bell = "Disabled",
   use_dead_keys = false,
+  unicode_version  = 14,
 	keys = {
 		-- use xxd -psd to get hex char sequences
 		{

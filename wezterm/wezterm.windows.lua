@@ -6,6 +6,7 @@ return {
   audible_bell = "Disabled",
   pane_focus_follows_mouse = true,
   use_dead_keys = false,
+  unicode_version  = 14,
   keys = {
     -- use xxd -psd to get hex char sequences
     {
