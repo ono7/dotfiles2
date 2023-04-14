@@ -86,7 +86,7 @@ vim.cmd.colorscheme("catppuccin")
 -- setup must be called before loading
 vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
 vim.api.nvim_set_hl(0, "TreesitterContext", { link = "DiffText" })
-vim.api.nvim_set_hl(0, "Visual", { link = "IncSearch" })
+vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 vim.api.nvim_set_hl(0, "DiffDelete", { link = "NonText" })
 -- vim.api.nvim_set_hl(0, "@keyword.operator", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#cba6f7", italic = true })
