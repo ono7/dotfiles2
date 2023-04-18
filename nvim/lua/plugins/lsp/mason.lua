@@ -92,7 +92,7 @@ local lsp_opts = {
 }
 
 local ts_opts = { root_dir = nvim_lsp.util.root_pattern("yarn.lock", "lerna.json", ".git") }
-nvim_lsp.tsserver.setup(handle_lsp(lsp_opts, ts_opts))
+-- nvim_lsp.tsserver.setup(handle_lsp(lsp_opts, ts_opts))
 
 local pyright_opts = {
 	root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
@@ -113,11 +113,11 @@ nvim_lsp.lua_ls.setup({
 })
 
 -- nvim_lsp.yamlls.setup(handle_lsp(lsp_opts))
-nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
+-- nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
 
 nvim_lsp.jsonls.setup(handle_lsp(lsp_opts))
 
-nvim_lsp.omnisharp.setup(handle_lsp(lsp_opts))
+-- nvim_lsp.omnisharp.setup(handle_lsp(lsp_opts))
 
 nvim_lsp.gopls.setup({
 	filetypes = { "go", "gomod" },
