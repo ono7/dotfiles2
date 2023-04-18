@@ -17,11 +17,11 @@ require("lazy").setup({
   -- "tpope/vim-fugitive",
   -- "tpope/vim-rhubarb",
   "tpope/vim-repeat",
-  "folke/tokyonight.nvim",
+  -- "folke/tokyonight.nvim",
   "jose-elias-alvarez/null-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
-  "Shatur/neovim-ayu",
+  -- "Shatur/neovim-ayu",
   "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",     name = "catppuccin" },
 
@@ -35,16 +35,16 @@ require("lazy").setup({
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      {
-        "j-hui/fidget.nvim",
-        config = function()
-          require("fidget").setup({
-            text = { spinner = "dots_pulse" },
-            window = { blend = 0 },
-            fmt = { stack_upwards = false },
-          })
-        end,
-      },
+      -- {
+      --   "j-hui/fidget.nvim",
+      --   config = function()
+      --     require("fidget").setup({
+      --       text = { spinner = "dots_pulse" },
+      --       window = { blend = 0 },
+      --       fmt = { stack_upwards = false },
+      --     })
+      --   end,
+      -- },
     },
   },
   { "numtostr/fterm.nvim", opts = {} },
@@ -96,7 +96,7 @@ require("lazy").setup({
 
   {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-treesitter/playground",
+    -- "nvim-treesitter/playground",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
