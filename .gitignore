@@ -24,3 +24,4 @@ my_creds.py
 # ~formatting_*
 profile.log
 packer_compiled.lua
+nvim/lazy-lock.json
