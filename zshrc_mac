@@ -262,7 +262,7 @@ function dev_env () {
   python3 -m venv ~/.virtualenvs/prod3
   source ~/.virtualenvs/bin/active
   pip install -U pip
-  pip install debugpy black mdformat rpdb ipython ipdb dns yamllint
+  pip install debugpy black mdformat rpdb ipython ipdb dns yamllint pyvim
 }
 
 function vc () {
@@ -278,7 +278,7 @@ function vc () {
   python3 --version
   python3 -m venv $venv_dir
   source $venv_dir/bin/activate
-  pip install pip wheel pyright black pytest yamllint -U
+  pip install pip wheel pyright black pytest yamllint pyvim -U
   pip freeze > requirements.txt
   echo ""
   echo ""
