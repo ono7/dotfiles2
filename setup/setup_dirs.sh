@@ -58,6 +58,7 @@ ln -sf ~/.dotfiles/dircolors ~/.dircolors
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 cp ~/.dotfiles/gitconfig_template ~/.gitconfig
 # ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
+ls -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ipdb ~/.ipdb
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
