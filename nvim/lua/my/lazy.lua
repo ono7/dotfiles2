@@ -14,7 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- "tpope/vim-fugitive",
+  "tpope/vim-fugitive",
   -- "tpope/vim-rhubarb",
   "tpope/vim-repeat",
   -- "folke/tokyonight.nvim",
