@@ -3,11 +3,9 @@
   name = lima
   email = lima@mbp
 [core]
+  pager = delta
   editor = nvim
   mergeoptions = --no-edit
-[push]
-  default = simple
-  autoSetupRemote = true
 [http]
   sslVerify = false
 [url "https://github.com/"]
@@ -18,21 +16,32 @@
   defaultBranch = main
 	templatedir = ~/.git_templates
 [pull]
-  rebase = true
+  rebase = false
 [diff]
-  tool = nvimdiff
-  prompt = false
-[difftool]
-  prompt = false
-#  tool = nvimdiff
-#[difftool "nvimdiff"]
-#  cmd = "nvim -d \"$REMOTE\" \"$LOCAL\" "
+	algorithm = patience
+	compactionHeuristic = true
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 [merge]
-#  tool = mvimdiff
+	tool = nvimdiff4
+	prompt = false
+[mergetool "nvimdiff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	features = side-by-side line-numbers decorations
+	navigate = true
+	whitespace-error-style = 22 reverse
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+[interactive]
+	diffFilter = delta --color-only
 [mergetool]
-  prompt = true
-# [mergetool "mnvimdiff"]
-#   cmd = "nvim -d \"$REMOTE\" \"$MERGED\" \"$LOCAL\" -c 'wincmd w' -c 'wincmd J'"
-
-
+	keepBackup = false
+[push]
+	autoSetupRemote = true
 
