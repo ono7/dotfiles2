@@ -22,14 +22,15 @@
 	tool = nvimdiff4
 	prompt = false
 [mergetool "nvimdiff4"]
-  # requires tpope/fugitive
+# requires tpope/fugitive
   cmd = vim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [mergetool]
 	keepBackup = false
 	prompt = false
 [push]
 	autoSetupRemote = true
-	# push only the default branch
+	
+# push only the default branch
 	default = simple
 
 [diff]
