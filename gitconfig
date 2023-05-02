@@ -29,6 +29,7 @@
 	prompt = false
 [push]
 	autoSetupRemote = true
+	# push only the default branch
 	default = simple
 
 [diff]
