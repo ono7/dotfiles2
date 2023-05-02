@@ -15,6 +15,7 @@
   defaultBranch = main
 	templatedir = ~/.git_templates
 [pull]
+# requires git > 2.6
 # `git rebase –abort` when we need to reset the changes
 	rebase = true
 [merge]
