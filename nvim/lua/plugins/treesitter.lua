@@ -6,7 +6,7 @@ if not status_ok then
 end
 
 configs.setup({
-  auto_install = false,
+  auto_install = true,
   indent = { enable = true, disable = { "python" } },
   highlight = {
     max_file_lines = 10000,
@@ -22,22 +22,22 @@ configs.setup({
       return vim.fn.getfsize(vim.api.nvim_buf_get_name(bufnr)) > 1048576
     end,
   },
-  ensure_installed = {
-    "vimdoc",
-    "bash",
-    "go",
-    "javascript",
-    "typescript",
-    "markdown",
-    "terraform",
-    "json",
-    "lua",
-    "make",
-    "python",
-    "regex",
-    "vim",
-    "yaml",
-  },
+  -- ensure_installed = {
+  --   "vimdoc",
+  --   "bash",
+  --   "go",
+  --   "javascript",
+  --   "typescript",
+  --   "markdown",
+  --   "terraform",
+  --   "json",
+  --   "lua",
+  --   "make",
+  --   "python",
+  --   "regex",
+  --   "vim",
+  --   "yaml",
+  -- },
   textobjects = {
     select = {
       enable = true,
