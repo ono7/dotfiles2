@@ -28,6 +28,12 @@ return {
 			action = wezterm.action.DisableDefaultAssignment,
 		},
 		{
+			-- disable clear scrollback
+			key = "k",
+			mods = "CMD",
+			action = wezterm.action.DisableDefaultAssignment,
+		},
+		{
 			-- turn off cmd+h to hide window from the os
 			key = "h",
 			mods = "CMD",

@@ -10,6 +10,12 @@
 
 `break myfile.go:10`
 
-#  show code
+# show code
 
-`list main.go:10  (list code starting at line 10)`
+`list main.go:10 (list code starting at line 10)`
+
+# breakpoints
+
+breakpoints - shows all breakpoints
+clear 1 - clears breakpoint 1
+clearall - deletes all breakpoints
