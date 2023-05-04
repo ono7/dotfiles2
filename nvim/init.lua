@@ -293,8 +293,8 @@ local packages = {
   "plugins.null_ls",
   "plugins.gitsigns",
   -- "plugins.harpoon",
-  -- "plugins.core_dap",
-  -- "plugins.dap_adapters",
+  "plugins.core_dap",
+  "plugins.dap_adapters",
 }
 
 for _, mod in ipairs(packages) do

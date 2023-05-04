@@ -52,6 +52,9 @@ if not mason_status then
 end
 
 mason.setup()
+require("mason-nvim-dap").setup({
+    ensure_installed = { "python", "delve" }
+})
 
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 

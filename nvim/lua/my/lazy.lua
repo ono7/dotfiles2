@@ -29,6 +29,8 @@ require("lazy").setup({
   "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
+  "mfussenegger/nvim-dap",
+  "jay-babu/mason-nvim-dap.nvim",
   {
     "neovim/nvim-lspconfig",
     dependencies = {
