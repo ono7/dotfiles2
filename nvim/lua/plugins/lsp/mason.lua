@@ -112,6 +112,16 @@ nvim_lsp.lua_ls.setup({
 	},
 })
 
+nvim_lsp.ansiblels.setup({
+	ansible = {
+    validation = {
+      lint = {
+        enabled = false
+      }
+    }
+	},
+})
+
 -- nvim_lsp.yamlls.setup(handle_lsp(lsp_opts))
 nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
 
