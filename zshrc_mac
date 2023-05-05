@@ -157,7 +157,7 @@ export EDITOR=vim
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 
 # debug in headless mode, allows debugging session to start paused
-alias dlvh="dlv debug --headless --api-version=2 --listen=:2345"
+alias dlvh="dlv debug --headless --api-version=2 --listen=127.0.0.1:2345"
 
 # set nvim as man pager
 if [[ "$(command -v nvim)" ]]; then
