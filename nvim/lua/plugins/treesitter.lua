@@ -7,7 +7,7 @@ end
 
 configs.setup({
   auto_install = true,
-  indent = { enable = true, disable = { "python" } },
+  indent = { enable = false, disable = { "python" } },
   highlight = {
     max_file_lines = 10000,
     enable = true,

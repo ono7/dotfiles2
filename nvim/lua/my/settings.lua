@@ -130,8 +130,8 @@ bo.expandtab = true
 bo.spelllang = "en_us"
 vim.o.spellsuggest = 'best,9'
 
--- vim.opt.smartindent = true
--- vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- bo.complete = ".,w,b,u,kspell"
 bo.complete = ".,w,b,u"
