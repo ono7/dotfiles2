@@ -9,6 +9,11 @@
 ### debug with dlv
 
 `dlv debug main.go`
+* headless mode ( start debugging paused )
+
+`dlv debug --headless --api-version=2 --listen=:2345`
+
+`dlv connect :2345`
 
 ### set breakpoint
 
