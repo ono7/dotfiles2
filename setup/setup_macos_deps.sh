@@ -19,9 +19,10 @@ echo '========== install brew packages =========='
 
 # ansifilter needed to filter out ansi junk on tmux-logging plugin
 # tmux copy and paste reattach-to-user-namespace
-brew install ansifilter wget tree go neovim rar clang-format kitty zoxide wezterm
-brew install fd cmake ack rg coreutils ssh-copy-id jq p7zip kitty curl tmux universal-ctags mtr lua ninja rust npm starship 
+brew install ansifilter wget tree go neovim rar clang-format zoxide wezterm
+brew install fd cmake ack rg coreutils ssh-copy-id jq p7zip curl tmux universal-ctags mtr lua ninja rust npm starship
 brew install bpytop
+brew install golang delve
 # npm install lua-fmt prettier jsonlint typescript typescript-language-server eslint jsonlint -g
 npm install lua-fmt prettier jsonlint typescript eslint jsonlint -g
 

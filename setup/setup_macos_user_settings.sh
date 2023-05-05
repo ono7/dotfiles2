@@ -31,16 +31,14 @@ echo '========== macos keyboard repeat settings =========='
 # set keyrate for faster keyboard repeat
 
 # normal is 2
-# defaults write -g KeyRepeat -int 1
+defaults write -g KeyRepeat -int 1
 
 # normal minimum is 15 (225 ms)
 # defaults write -g InitialKeyRepeat -int 9
-# defaults write -g InitialKeyRepeat -int 14
+defaults write -g InitialKeyRepeat -int 14
 
 
 # hide desktop icons permantely?
-defaults write com.apple.finder CreateDesktop false
-killall Finder
 
 echo 'macos userland settings set!'
 
@@ -56,4 +54,5 @@ echo 'install magnet'
 
 echo 'dont forget to setup option @ accessiblity -> reduce motion'
 
-
+defaults write com.apple.finder CreateDesktop false
+killall Finder
