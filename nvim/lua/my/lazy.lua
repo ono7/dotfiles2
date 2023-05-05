@@ -14,7 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "tpope/vim-fugitive",
+  -- "tpope/vim-fugitive",
   -- "tpope/vim-rhubarb",
   "tpope/vim-repeat",
   -- "folke/tokyonight.nvim",
@@ -99,9 +99,9 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     -- "nvim-treesitter/playground",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    -- dependencies = {
+    --   "nvim-treesitter/nvim-treesitter-textobjects",
+    -- },
     config = function()
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
@@ -121,5 +121,4 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
-  -- { import = "custom.plugins" },
 }, {})
