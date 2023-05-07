@@ -13,10 +13,18 @@ import (
 
 // body: {"page":"words","input":"","words":["word1","word2","word3"]}
 
+type Page struct {
+	Name string `json:"name"`
+	Page string `json:"page"` // extract fields from json for use in struct values
+}
+
 type Words struct {
-	Page  string   `json:"page"` // extract fields from json for use in struct values
 	Input string   `json:"input"`
 	Words []string `json:"words"`
+}
+
+type Occurrence struct {
+	Words map[string]int `json:"words"`
 }
 
 func main() {
@@ -44,12 +52,31 @@ func main() {
 		log.Fatal("Wrong status code: ", response.StatusCode)
 	}
 
-	var words Words
-	err = json.Unmarshal(r, &words) // view signature to figure out what this returns and that it needs a pointer
+	var page Page
+	err = json.Unmarshal(r, &page) // view signature to figure out what this returns and that it needs a pointer
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Page: %s, Words -> %s", words.Page, strings.Join(words.Words, ", "))
+	switch page.Name {
+	case "words":
+		var words Words
+		err = json.Unmarshal(r, &words) // view signature to figure out what this returns and that it needs a pointer
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("Page: %s, Words: %s", page.Name, strings.Join(words.Words, ", "))
+	case "occurrance":
+		var occurrance Occurrence
+		err = json.Unmarshal(r, &occurrance) // view signature to figure out what this returns and that it needs a pointer
+		if err != nil {
+			log.Fatal(err)
+		}
+		for word, occurrance := range occurrance.Words {
+			fmt.Printf("%s, %d", word, occurrance)
+		}
+	default:
+		fmt.Printf("Page not found\n")
+	}
 
 }
