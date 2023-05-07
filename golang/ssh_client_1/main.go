@@ -4,15 +4,14 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"regexp"
-	"runtime"
 	"strings"
 	"time"
 
 	"golang.org/x/crypto/ssh"
 )
-
 
 type iseNode struct {
 	ipAddr      string
@@ -25,12 +24,11 @@ type iseNode struct {
 }
 
 func (i *iseNode) process() bool {
-	runtime.Breakpoint()
 	config := ssh.ClientConfig{
 		User:            i.username,
 		Auth:            []ssh.AuthMethod{ssh.Password(i.password)},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout: time.Second * 20,
+		Timeout:         time.Second * 20,
 	}
 
 	client, err := ssh.Dial("tcp", i.ipAddr+":22", &config)
@@ -76,8 +74,8 @@ func (i *iseNode) process() bool {
 	i.startTime = time.Now() // Start the timer
 
 	var (
-		uPrompt    = regexp.MustCompile(fmt.Sprintf(`[\s\S]*?\/%s#`, i.username)) // example: 'ise/admin#''
-		sPrompt    = regexp.MustCompile(`Enter session number to resume`)         // Handles if a previous ssh session found
+		uPrompt = regexp.MustCompile(fmt.Sprintf(`[\s\S]*?\/%s#`, i.username)) // example: 'ise/admin#''
+		sPrompt = regexp.MustCompile(`Enter session number to resume`)         // Handles if a previous ssh session found
 	)
 
 	for {
@@ -134,6 +132,12 @@ func main() {
 }
 
 func runCmd(w io.Writer, cmd string) {
-	fmt.Fprintf(w, cmd+"\n")
-	time.Sleep(1500 * time.Millisecond)
+	n, err := fmt.Fprintf(w, cmd+"\n")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if n <= 1 {
+		fmt.Printf("Something wrong with this commnand?\nBytes Written: %v\nCommand: %v", n, cmd)
+	}
+	time.Sleep(300 * time.Millisecond)
 }
