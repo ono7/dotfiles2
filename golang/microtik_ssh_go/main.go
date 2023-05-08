@@ -62,7 +62,7 @@ func (i *iseNode) process() bool {
 
 	modes := ssh.TerminalModes{
 		ssh.ECHO:  1, // Ensure echoing is enabled
-		ssh.IGNCR: 0, // Ignore CR on input.
+		ssh.IGNCR: 0, // Dont Ignore CR on input. (needed for microtik)
 	}
 
 	if err = session.RequestPty("vty", 0, 200, modes); err != nil {
