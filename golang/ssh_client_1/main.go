@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -36,6 +35,7 @@ func (i *iseNode) process() bool {
 		i.errMsg = err
 		return false
 	}
+	defer client.Close()
 
 	fmt.Printf("Attempting to connect to ise node (%s)...\n", i.ipAddr)
 	session, err := client.NewSession()
@@ -48,7 +48,9 @@ func (i *iseNode) process() bool {
 	fmt.Printf("Connected to ise node (%s)\n", i.ipAddr)
 
 	var b strings.Builder
-	session.Stdout = &b
+	// mW := io.MultiWriter(os.Stdout, &b)
+	mW := io.MultiWriter(&b)
+	session.Stdout = mW
 
 	pipe, err := session.StdinPipe()
 	if err != nil {
@@ -62,7 +64,7 @@ func (i *iseNode) process() bool {
 		ssh.IGNCR: 1, // Ignore CR on input.
 	}
 
-	if err = session.RequestPty("vt100", 80, 40, modes); err != nil {
+	if err = session.RequestPty("vt100", 0, 200, modes); err != nil {
 		i.errMsg = fmt.Errorf("request for pseudo terminal failed: %s", err)
 	}
 
@@ -76,14 +78,31 @@ func (i *iseNode) process() bool {
 	var (
 		uPrompt = regexp.MustCompile(fmt.Sprintf(`[\s\S]*?\/%s#`, i.username)) // example: 'ise/admin#''
 		sPrompt = regexp.MustCompile(`Enter session number to resume`)         // Handles if a previous ssh session found
+		mPrompt = regexp.MustCompile(`--More--`)                               // Handles if session is stuck at a --More-- paginated prompt
 	)
 
 	for {
 		switch {
-		case sPrompt.MatchString(b.String()):
-			runCmd(pipe, "/ip/address/print")
+		case sPrompt.MatchString(b.String()): // Handles if a previous ssh session was found
+			const Count = 30
+			fmt.Println("Found open ssh session")
+			runCmd(pipe, "1")
+			if mPrompt.MatchString(b.String()[len(b.String())-30:]) {
+				for i := 0; i < Count; i++ {
+					runCmd(pipe, "\n")
+					fmt.Print(".")
+					if !mPrompt.MatchString(b.String()[len(b.String())-30:]) {
+						break
+					}
+				}
+			}
+			runCmd(pipe, "exit")
+			if uPrompt.MatchString(b.String()[len(b.String())-10:]) {
+				runCmd(pipe, "exit") // if we are still at admin#, we were in config (config)# mode, send one more exit
+			}
+			fmt.Println("\nSession 1 seleted, and cleared")
 			return true
-		case uPrompt.MatchString(b.String()):
+		case uPrompt.MatchString(b.String()): // Intial prompt after login, nothing to do here
 			runCmd(pipe, "exit")
 			fmt.Println("No active sessions")
 			return true
@@ -127,12 +146,6 @@ func main() {
 }
 
 func runCmd(w io.Writer, cmd string) {
-	n, err := fmt.Fprintf(w, cmd+"\n")
-	if err != nil {
-		log.Fatal(err)
-	}
-	if n <= 1 {
-		fmt.Printf("Something wrong with this commnand?\nBytes Written: %v\nCommand: %v", n, cmd)
-	}
-	time.Sleep(300 * time.Millisecond)
+	fmt.Fprintf(w, cmd+"\n")
+	time.Sleep(1500 * time.Millisecond)
 }
