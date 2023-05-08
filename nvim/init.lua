@@ -143,12 +143,13 @@ k("c", "<c-b>", "<S-left>", opt)
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
 
--- k("i", "(", "()<left>", opt)
--- k("i", "{", "{}<left>", opt)
--- k("i", "[", "[]<left>", opt)
+k("i", "(", "()<left>", opt)
+k("i", "{", "{}<left>", opt)
+k("i", "[", "[]<left>", opt)
 -- m("i", '"', [[""<left>]], opt)
 -- m("i", "'", [[''<left>]], opt)
 -- m("i", "`", [[``<left>]], opt)
+
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
@@ -184,21 +185,21 @@ local pair_map_2 = {
   ["{"] = "}",
 }
 
--- k("i", "<enter>", function()
--- 	-- use this one when we are autoclosing
--- 	local line = vim.fn.getline(".")
--- 	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
--- 	return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
--- end, { expr = true })
-
 k("i", "<enter>", function()
-  -- use this one when we are not autoclosing
-  local line = vim.fn.getline(".")
-  local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
-  return pair_map_2[line:sub(prev_col, prev_col)]
-      and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
-      or "<Enter>"
+	-- use this one when we are autoclosing
+	local line = vim.fn.getline(".")
+	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+	return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
 end, { expr = true })
+
+-- k("i", "<enter>", function()
+--   -- use this one when we are not autoclosing
+--   local line = vim.fn.getline(".")
+--   local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+--   return pair_map_2[line:sub(prev_col, prev_col)]
+--       and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
+--       or "<Enter>"
+-- end, { expr = true })
 
 --- resize window ---
 k("n", "<M-j>", [[:resize -2<cr>]], silent)
