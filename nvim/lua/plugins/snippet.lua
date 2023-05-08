@@ -1,15 +1,15 @@
 local ls = require("luasnip")
 
 local snip = ls.s --> snippet
-local i = ls.i --> insert node
-local t = ls.t --> text node
+local i = ls.i    --> insert node
+local t = ls.t    --> text node
 
 local d = ls.dynamic_node
 local c = ls.choice_node
 local f = ls.function_node
-local sn = ls.snippet_node -- snippet node, used to return from dynamic node
+local sn = ls.snippet_node                    -- snippet node, used to return from dynamic node
 local fmt = require("luasnip.extras.fmt").fmt --format snips
-local rep = require("luasnip.extras").rep --repeat
+local rep = require("luasnip.extras").rep     --repeat
 
 --- parse simple snippets ---
 local simple = ls.parser.parse_snippet
@@ -47,7 +47,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   { "i", "s" }, -- insert and select mode
-  "<c-l>", -- list, cycles through snip options if configured
+  "<c-l>",      -- list, cycles through snip options if configured
   function()
     if ls.choice_active() then
       ls.change_choice(1)
@@ -57,7 +57,7 @@ vim.keymap.set(
 )
 
 ls.config.set_config({
-  history = true, --keep around last snippet local to jump back
+  history = true,                            --keep around last snippet local to jump back
   updateevents = "TextChanged,TextChangedI", --update changes as you type
   enable_autosnippets = false,
   ext_opts = {
@@ -246,7 +246,7 @@ end
 
 ls.add_snippets("python", {
   simple("!", "#!/usr/bin/env python\n\n"),
-  snip(--header
+  snip( --header
     "h",
     fmt(
       [[
@@ -259,7 +259,7 @@ ls.add_snippets("python", {
 
 """
 {}
-]]     ,
+]],
       { i(1), i(2, ""), f(datetime), i(0) }
     )
   ),
@@ -290,7 +290,7 @@ def {1}({4}):
 class FilterModule:
     def filters(self):
         return {{ "{2}" : {3} }}
-    ]] ,
+    ]],
       { i(1), rep(1), rep(1), i(2), i(0) }
     )
   ),
@@ -343,7 +343,7 @@ ls.add_snippets("go", {
  var (
      {}
 	)
-  ]]   ,
+  ]],
       { i(0) }
     )
   ),
@@ -361,7 +361,7 @@ ls.add_snippets("go", {
   --     t({ "", "}", "" }),
   --   }
   -- ),
-  snip(-- package
+  snip( -- package
     "p",
     {
       t("package "),
@@ -370,16 +370,16 @@ ls.add_snippets("go", {
       i(0),
     }
   ),
-  snip(-- error
+  snip(
     "e",
-    {
-      t("if err != nil"),
-      t({ " {", "" }),
-      t("\t"),
-      i(1, "log.Fatal(err)"),
-      t({ "", "}" }),
-      i(0),
-    }
+    fmt(
+      [[
+	if err != nil {{
+    {}("{}%v\n", err)
+	}}
+]],
+      { i(1, "log.Fatalf"), i(0)}
+    )
   ),
   -- snip(-- error
   --   "err",
@@ -393,6 +393,19 @@ ls.add_snippets("go", {
   --     t({ "", "}" }),
   --   }
   -- ),
+  snip( -- error
+    "er",
+    {
+      t("if "),
+      t("err != "),
+      t("nil"),
+      t({ " {", "" }),
+      t('\tlog.Fatal("'),
+      i(0),
+      t('%v\n", err)'),
+      t({ "", "}" }),
+    }
+  ),
   snip(
     "el",
     {

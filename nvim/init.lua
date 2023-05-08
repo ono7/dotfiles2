@@ -146,8 +146,9 @@ k("i", "<c-a>", "<c-o>^", silent)
 -- k("i", "(", "()<left>", opt)
 -- k("i", "{", "{}<left>", opt)
 -- k("i", "[", "[]<left>", opt)
--- k("i", '"', [[""<left>]], opt)
--- k("i", "'", [[''<left>]], opt)
+-- m("i", '"', [[""<left>]], opt)
+-- m("i", "'", [[''<left>]], opt)
+-- m("i", "`", [[``<left>]], opt)
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
@@ -155,8 +156,9 @@ m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]]
 m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
 m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
 -- m is needed for doulbe and single quotes
--- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
--- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
+m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
+m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
+m("i", '`', [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`\`\<Left>"]], xpr)
 
 local pair_map = {
   ["("] = ")",

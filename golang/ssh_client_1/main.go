@@ -80,15 +80,10 @@ func (i *iseNode) process() bool {
 
 	for {
 		switch {
-		case sPrompt.MatchString(b.String()): // Handles if a previous ssh session was found
-			fmt.Println("Found open ssh session")
-			runCmd(pipe, "1")
-			runCmd(pipe, "\n")
-			runCmd(pipe, "exit")
-			runCmd(pipe, "exit") // if in config mode, send one more
-			fmt.Println("Session 1 seleted, and cleared")
+		case sPrompt.MatchString(b.String()):
+			runCmd(pipe, "/ip/address/print")
 			return true
-		case uPrompt.MatchString(b.String()): // Intial prompt after login
+		case uPrompt.MatchString(b.String()):
 			runCmd(pipe, "exit")
 			fmt.Println("No active sessions")
 			return true
