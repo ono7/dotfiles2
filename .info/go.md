@@ -150,6 +150,19 @@ Starting server on port 8080...
 
 Println - print a line with new line
 Printf - allows formatting the string
+```go
+var (
+	a = 2
+	b = 3.5
+)
+
+fmt.Printf("type: %18T, val : %8[1]v\n",a)
+fmt.Printf("type: %18T, val : %8[1]v\n",b)
+
+// out: 
+// type:                int, val :        2
+// type:            float64, val :      3.5
+```
 
 ## go language reference guide
 
