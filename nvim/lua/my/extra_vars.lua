@@ -208,6 +208,7 @@ cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? '
 set completeopt=menu,menuone,longest
 set pumheight=10
 set notitle
+" ~ search upwards until home dir
 set tags=./tags,tags;~
 set virtualedit=all
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
