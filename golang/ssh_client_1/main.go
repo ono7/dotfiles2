@@ -101,16 +101,22 @@ func (i *iseNode) process() bool {
 		errPrompt = regexp.MustCompile(regexJoinSlice(rawErrors))
 	)
 
+	var deployed bool
+
 	for {
 		time.Sleep(1 * time.Second)
 		switch {
 		case errPrompt.MatchString(b.String()):
-			fmt.Fprintf(os.Stderr, "Case ErrPrompt: %v", b.String())
-			session.Signal(ssh.SIGTERM)
+			i.errMsg = fmt.Errorf("in errPrompt: %v", errPrompt.FindString(b.String()))
+			runCmd(pipe, "quit", &b) // test should pass
 			return false
+		case deployed:
+			return true
 		case uPrompt.MatchString(b.String()):
-			runCmd(pipe, "/ip/address/print\r\n", &b)   // test should pass
-			runCmd(pipe, "verybadcommand test\r\n", &b) // test should fail and SIGTERM
+			if !deployed {
+				runCmd(pipe, "/ip/addss/print", &b) // test should pass
+			}
+			deployed = true // run once more to check for errors
 		}
 	}
 }
@@ -119,7 +125,7 @@ func main() {
 
 	node := iseNode{
 		ipAddr:   "",
-		username: "admin",
+		username: "",
 		password: "",
 	}
 
