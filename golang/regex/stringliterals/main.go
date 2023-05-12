@@ -7,6 +7,19 @@ import (
 	// "strings"
 )
 
+// escape and format string slice for use with re 'or' operator
+func reEscape(s []string) string {
+
+	var newString []string
+
+	for _, v := range s {
+		newString = append(newString, regexp.QuoteMeta(v))
+	}
+
+	return strings.Join(newString, "|")
+
+}
+
 func main() {
 	fakeErr := `
 		% invalid markr detected
@@ -18,18 +31,8 @@ func main() {
 		`bad things | (y/n) [yes/no]`,
 	}
 
-	var newString []string
-
-	for _, v := range cliErrors {
-		newString = append(newString, regexp.QuoteMeta(v))
-	}
-
-	newRegexOr := strings.Join(newString, "|")
-
-	reErrors := regexp.MustCompile(newRegexOr)
-
-	fmt.Println(newRegexOr)
-
+	reErrors := regexp.MustCompile(reEscape(cliErrors))
+	print(reEscape(cliErrors))
 	fmt.Println(reErrors.MatchString(fakeErr))
 
 }
