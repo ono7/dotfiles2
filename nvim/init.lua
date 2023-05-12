@@ -319,7 +319,8 @@ import vim
 
 # reference from re module, py3.8, removed empty space :)
 # adding ' and " for python processing!
-c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\t\n\r\v\f\'\"'}
+# c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\t\n\r\v\f\'\"'}
+c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\n\r\v\f\'\"'}
 
 def escape(pattern):
     if isinstance(pattern, str):

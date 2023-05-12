@@ -1,9 +1,9 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -22,6 +22,21 @@ type iseNode struct {
 	errMsg      error
 }
 
+// returns string literals for regex consumption
+func regexEscapeSlice(s []string) []string {
+	var n []string
+
+	for _, v := range s {
+		n = append(n, regexp.QuoteMeta(v))
+	}
+	return n
+}
+
+// returns regex OR operator string
+func regexJoinSlice(s []string) string {
+	return strings.Join(s, "|")
+}
+
 func (i *iseNode) process() bool {
 	config := ssh.ClientConfig{
 		User:            i.username,
@@ -37,7 +52,7 @@ func (i *iseNode) process() bool {
 	}
 	defer client.Close()
 
-	fmt.Printf("Attempting to connect to ise node (%s)...\n", i.ipAddr)
+	fmt.Printf("Attempting to connect to node (%s)...\n", i.ipAddr)
 	session, err := client.NewSession()
 	if err != nil {
 		i.errMsg = err
@@ -45,95 +60,67 @@ func (i *iseNode) process() bool {
 	}
 	defer session.Close()
 
-	fmt.Printf("Connected to ise node (%s)\n", i.ipAddr)
+	fmt.Printf("Connected to node (%s)\n", i.ipAddr)
 
 	var b strings.Builder
-	// mW := io.MultiWriter(os.Stdout, &b)
-	mW := io.MultiWriter(&b)
+	mW := io.MultiWriter(os.Stdout, &b)
+	// mW := io.MultiWriter(&b)
 	session.Stdout = mW
 
 	pipe, err := session.StdinPipe()
 	if err != nil {
 		i.errMsg = err
+		fmt.Printf("session.StdinPipe -> %v", err)
 		return false
 	}
 	defer pipe.Close()
 
 	modes := ssh.TerminalModes{
 		ssh.ECHO:  1, // Ensure echoing is enabled
-		ssh.IGNCR: 1, // Ignore CR on input.
+		ssh.IGNCR: 0, // DONT Ignore CR on input. (needed for microtik)
 	}
 
-	if err = session.RequestPty("vt100", 0, 200, modes); err != nil {
+	if err = session.RequestPty("vty", 0, 200, modes); err != nil {
 		i.errMsg = fmt.Errorf("request for pseudo terminal failed: %s", err)
 	}
+	fmt.Println("PTY acquired...")
 
 	if err = session.Shell(); err != nil {
 		i.errMsg = err
 		return false
 	}
+	fmt.Println("shell acquaired...")
 
 	i.startTime = time.Now() // Start the timer
 
 	var (
-		uPrompt = regexp.MustCompile(fmt.Sprintf(`[\s\S]*?\/%s#`, i.username)) // example: 'ise/admin#''
-		sPrompt = regexp.MustCompile(`Enter session number to resume`)         // Handles if a previous ssh session found
-		mPrompt = regexp.MustCompile(`--More--`)                               // Handles if session is stuck at a --More-- paginated prompt
+		// bad command name rstaote (line 1 column 1)
+		// syntax error (line 1 column 7)
+		rawErrors = []string{`syntax error \(line \d+ column \d+\)`, `bad command name \S+ \(line \d+ column \d+\)`}
+		uPrompt   = regexp.MustCompile(`[>] `) // example: 'ise/admin#''
+		errPrompt = regexp.MustCompile(regexJoinSlice(rawErrors))
 	)
 
 	for {
+		time.Sleep(1 * time.Second)
 		switch {
-		case sPrompt.MatchString(b.String()): // Handles if a previous ssh session was found
-			const Count = 30
-			fmt.Println("Found open ssh session")
-			runCmd(pipe, "1")
-			if mPrompt.MatchString(b.String()[len(b.String())-30:]) {
-				for i := 0; i < Count; i++ {
-					runCmd(pipe, "\n")
-					fmt.Print(".")
-					if !mPrompt.MatchString(b.String()[len(b.String())-30:]) {
-						break
-					}
-				}
-			}
-			runCmd(pipe, "exit")
-			if uPrompt.MatchString(b.String()[len(b.String())-10:]) {
-				runCmd(pipe, "exit") // if we are still at admin#, we were in config (config)# mode, send one more exit
-			}
-			fmt.Println("\nSession 1 seleted, and cleared")
-			return true
-		case uPrompt.MatchString(b.String()): // Intial prompt after login, nothing to do here
-			runCmd(pipe, "exit")
-			fmt.Println("No active sessions")
-			return true
+		case errPrompt.MatchString(b.String()):
+			fmt.Fprintf(os.Stderr, "Case ErrPrompt: %v", b.String())
+			session.Signal(ssh.SIGTERM)
+			return false
+		case uPrompt.MatchString(b.String()):
+			runCmd(pipe, "/ip/address/print\r\n", &b)   // test should pass
+			runCmd(pipe, "verybadcommand test\r\n", &b) // test should fail and SIGTERM
 		}
-
 	}
 }
 
 func main() {
-	iseNodeIP, iseNodeIPSet := os.LookupEnv("ISE_NODE_IP")
-	iseUsername, iseUsernameSet := os.LookupEnv("ISE_SSH_USERNAME")
-	isePassword, isePasswordSet := os.LookupEnv("ISE_SSH_PASSWORD")
-
-	switch {
-	case !iseNodeIPSet:
-		fmt.Fprintln(os.Stderr, "Environment variable not set: ISE_NODE_IP")
-		os.Exit(1)
-	case !iseUsernameSet:
-		fmt.Fprintln(os.Stderr, "Environment variable not set: ISE_SSH_USERNAME")
-		os.Exit(1)
-	case !isePasswordSet:
-		fmt.Fprintln(os.Stderr, "Environment variable not set: ISE_SSH_PASSWORD")
-		os.Exit(1)
-	}
-
-	flag.Parse()
 
 	node := iseNode{
-		ipAddr:   iseNodeIP,
-		username: iseUsername,
-		password: isePassword,
+		ipAddr:   "",
+		username: "admin",
+		password: "",
 	}
 
 	if success := node.process(); !success {
@@ -145,7 +132,14 @@ func main() {
 	os.Exit(0)
 }
 
-func runCmd(w io.Writer, cmd string) {
-	fmt.Fprintf(w, cmd+"\n")
-	time.Sleep(1500 * time.Millisecond)
+func runCmd(w io.Writer, cmd string, b *strings.Builder) {
+	b.Reset() // clear stdout before each command
+	_, err := fmt.Fprintf(w, cmd+"\r\n")
+	if err == io.EOF {
+		err = nil
+	}
+	if err != nil {
+		log.Fatalf("runCmd -> %v\n", err)
+	}
+	time.Sleep(300 * time.Millisecond)
 }
