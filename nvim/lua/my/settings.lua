@@ -20,7 +20,7 @@ o.swapfile = false
 o.smartcase = true
 o.laststatus = 0
 opt.fillchars:append("stl: ")
-opt.cursorline = false
+opt.cursorline = true
 o.cursorcolumn = false
 o.cursorlineopt = "number"
 o.hlsearch = false
