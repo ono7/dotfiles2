@@ -67,7 +67,7 @@ func (i *iseNode) process() bool {
 	mW := io.MultiWriter(os.Stdout, &b)
 	// mW := io.MultiWriter(&b)
 	filteredWriter := NewFilteredWriter(mW, func(r rune) bool {
-		return r != '\t' || r != '\n' || r != '\r' || !unicode.IsPrint(r)
+		return r == 0x0a || r == 0x0d || r == 0x0c || r == 0x1b || unicode.IsPrint(r)
 	})
 	// session.Stdout = mW
 	session.Stdout = filteredWriter
