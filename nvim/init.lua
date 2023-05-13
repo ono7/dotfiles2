@@ -21,6 +21,7 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 -- use csqb  (changes the nearest quotes.. q is aliased to `, ', " in surround.nvim)
 -- "0 - holds recent yanked text
 -- "1 - holds recent deleted text
+-- stty sane // fix bad terminal
 -- z + enter, moves buffer to top of screen
 -- count number of matches %s/test//gn (gn n=no op), will show the number of matches
 -- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
