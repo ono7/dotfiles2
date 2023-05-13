@@ -67,6 +67,10 @@ func (i *iseNode) process() bool {
 	mW := io.MultiWriter(os.Stdout, &b)
 	// mW := io.MultiWriter(&b)
 	filteredWriter := NewFilteredWriter(mW, func(r rune) bool {
+		// 0x0a = LF
+		// 0x0d = CR
+		// 0x0c = FF
+		// 0x1b = ESC
 		return r == 0x0a || r == 0x0d || r == 0x0c || r == 0x1b || unicode.IsPrint(r)
 	})
 	// session.Stdout = mW
@@ -83,7 +87,6 @@ func (i *iseNode) process() bool {
 	modes := ssh.TerminalModes{
 		ssh.ECHO:    1, // Ensure echoing is enabled
 		ssh.IGNCR:   0, // DONT Ignore CR on input. (needed for microtik)
-		ssh.ECHOCTL: 0,
 	}
 
 	if err = session.RequestPty("vty", 0, 200, modes); err != nil {
