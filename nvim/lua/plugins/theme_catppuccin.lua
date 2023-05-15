@@ -16,7 +16,7 @@ require("catppuccin").setup({
     percentage = 0.15,
   },
   no_italic = false, -- Force no italic
-  no_bold = false,  -- Force no bold
+  no_bold = false,   -- Force no bold
   styles = {
     comments = {},
     conditionals = { "italic" },
@@ -92,4 +92,5 @@ vim.api.nvim_set_hl(0, "DiffDelete", { link = "NonText" })
 vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@method.call.go", { link = "Normal" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f38ba8" , bold = true})
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f38ba8", bold = true })
+vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2f303d" })

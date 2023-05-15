@@ -25,7 +25,6 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 -- z + enter, moves buffer to top of screen
 -- count number of matches %s/test//gn (gn n=no op), will show the number of matches
 -- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
--- use fc command for editing last command in zsh
 
 --]]
 vim.cmd([[set termguicolors]])
