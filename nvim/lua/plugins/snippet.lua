@@ -375,7 +375,7 @@ ls.add_snippets("go", {
     fmt(
       [[
 	if err != nil {{
-    {}("{}%v\n", err)
+     {}("{}%v\n", err)
 	}}
 ]],
       { i(1, "log.Fatalf"), i(0)}
