@@ -103,11 +103,11 @@ end
 
 local get_comment = function(pos)
   local r = vim.fn.split(vim.api.nvim_buf_get_option(0, "commentstring"), "%s", true)
-  -- if pos < 0 then
-  --   return r[2] == "" and " " .. vim.trim(r[1]) or " " .. vim.trim(r[2])
-  -- else
-  return vim.trim(r[1])
-  -- end
+  if pos < 0 then
+    return r[2] == "" and " " .. vim.trim(r[1]) or " " .. vim.trim(r[2])
+  else
+    return vim.trim(r[1])
+  end
 end
 
 --- snippets ---
@@ -118,7 +118,7 @@ ls.add_snippets("all", {
   snip("ins", fmt([[print(vim.inspect({}))]], { i(1) })),
   snip(
     "todo",
-    fmt([[{} TODO: ({}) ~ {}{}]], {
+    fmt([[{} TODO: ({}) ~ {}]], {
       f(function()
         return get_comment(1)
       end),
@@ -130,9 +130,6 @@ ls.add_snippets("all", {
       end),
       -- i(1, os.getenv("USER")),
       i(0),
-      f(function()
-        return get_comment(-1)
-      end),
     })
   ),
 }, {
@@ -378,7 +375,7 @@ ls.add_snippets("go", {
      {}("{}%v\n", err)
 	}}
 ]],
-      { i(1, "log.Fatalf"), i(0)}
+      { i(1, "log.Fatalf"), i(0) }
     )
   ),
   -- snip(-- error
