@@ -103,11 +103,11 @@ end
 
 local get_comment = function(pos)
   local r = vim.fn.split(vim.api.nvim_buf_get_option(0, "commentstring"), "%s", true)
-  if pos < 0 then
-    return r[2] == "" and " " .. vim.trim(r[1]) or " " .. vim.trim(r[2])
-  else
-    return vim.trim(r[1])
-  end
+  -- if pos < 0 then
+  --   return r[2] == "" and " " .. vim.trim(r[1]) or " " .. vim.trim(r[2])
+  -- else
+  return vim.trim(r[1])
+  -- end
 end
 
 --- snippets ---
