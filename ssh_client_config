@@ -29,6 +29,8 @@
 
 Host *
   SendEnv LANG -LC_* -LANG*
+  # send the local contents of $TMUX to remote host
+  SendEnv TMUX
   # ConnectTimeout 7
   Compression yes
   ServerAliveInterval 120
