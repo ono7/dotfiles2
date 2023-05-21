@@ -243,9 +243,12 @@ function dotc () {
 function ta () {
   if [ ! -z "$1" ]
   then
-    tmux new-session -As "$1"
+    tmux new -As "$1"
+  elif [ ! -z $TMUX ]
+  then
+    tmux new -d -s $1 || tmux switch-client -t $1
   else
-    tmux new-session -As main
+    tmux new -As main
   fi
 }
 
