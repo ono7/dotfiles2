@@ -244,7 +244,7 @@ function ta () {
   if [ ! -z "$1" ]
   then
     tmux new -As "$1"
-  elif [ ! -z $TMUX ]
+  elif [ ! -z $TMUX ] && [ ! -z $1 ]
   then
     tmux new -d -s $1 || tmux switch-client -t $1
   else
