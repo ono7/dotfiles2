@@ -240,13 +240,15 @@ function dotc () {
     cd $my_dir
 }
 
+# function ta() { tmux detach -E "tmux new -A -s '$1'"; }
+
 function ta () {
-  if [ ! -z "$1" ]
+  if [ ! -z $TMUX ] && [ ! -z $1 ]
   then
-    tmux new -As "$1"
-  elif [ ! -z $TMUX ] && [ ! -z $1 ]
+    tmux detach -E "tmux new -A -s '$1'"
+  elif [ ! -z $TMUX ]
   then
-    tmux new -d -s $1 || tmux switch-client -t $1
+    return
   else
     tmux new -As main
   fi
