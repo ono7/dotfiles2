@@ -13,7 +13,7 @@
   
 ## message body
 
-`Resolves #10
- With: Jonh`
+>Resolves #10
+>With: Jonh`
  
  
