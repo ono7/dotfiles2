@@ -12,7 +12,6 @@ bool can be set to true by simply calling the flag
 
 this would set the debug and preview flag to true
 
-
 # go notes
 
 - path ~/go/bin added via PATHS (zshrc)
@@ -150,6 +149,7 @@ Starting server on port 8080...
 
 Println - print a line with new line
 Printf - allows formatting the string
+
 ```go
 var (
 	a = 2
@@ -159,7 +159,7 @@ var (
 fmt.Printf("type: %18T, val : %8[1]v\n",a)
 fmt.Printf("type: %18T, val : %8[1]v\n",b)
 
-// out: 
+// out:
 // type:                int, val :        2
 // type:            float64, val :      3.5
 ```
@@ -199,6 +199,10 @@ go build -o eliza main.go
 
 maps , use make to create one, map\[int\]string
 creates a map of integers with string values
+
+# map types
+
+`map[string]*Abc` map of strings keys and struct pointers
 
 ## go variables
 
@@ -393,6 +397,29 @@ type Words struct {
 	Input string
 	Words []string // array of strings
 }
+
+// annonymous struct
+s := struct {
+    X int `json:"mykey"`
+  }{1}
+
+```
+
+structs can be converted
+
+```go
+type T1 struct {
+    Name: string `json:"key"`
+  }
+
+type T2 struct {
+    Name: string `ymal:"key"`
+  }
+
+V1 := T1{1}
+
+V2 := T2(V1)  // convert type
+
 ```
 
 ## strings
