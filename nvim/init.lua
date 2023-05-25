@@ -83,7 +83,7 @@ k("n", "s", "")               -- surround
 k("x", "s", "")               -- surround
 
 k("n", "gp", "`[v`]", silent) -- vs last paste
-k("x", "y", [[ygv<Esc>]], silent)
+-- k("x", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
 k("n", ",r", vim.lsp.buf.format, silent)
@@ -92,12 +92,22 @@ k("n", "<leader>cd", ":lcd %:h<CR>")
 
 -- manage my clipboard
 -- k({ "n", "v" }, "<leader>d", '"_d')
-k("x", "<leader>p", [["_dP]])
-k("n", "<leader>p", [["*p]])
-k({"n", "x"}, "<leader>x", '"_x')
-k({ "n", "v" }, "<leader>y", [["+y]])
-k({ "n" }, "<leader>Y", [["+Y]])
-k({ "n", "v" }, "<leader>d", [["_d]])
+-- vnoremap p "0p
+-- vnoremap P "0P
+-- vnoremap y "0y
+-- vnoremap d "0d
+
+k("v", "p", [["0p]])
+k("v", "P", [["0P]])
+k("v", "y", [["0y]])
+k("v", "d", [["0d]])
+
+-- k("x", "<leader>p", [["_dP]])
+-- k("n", "<leader>p", [["*p]])
+-- k({"n", "x"}, "<leader>x", '"_x')
+-- k({ "n", "v" }, "<leader>y", [["+y]])
+-- k({ "n" }, "<leader>Y", [["+Y]])
+-- k({ "n", "v" }, "<leader>d", [["_d]])
 
 -- move blocks of text with s-J s-K in visual mode
 -- k("v", "J", ":m '>+1<CR>gv=gv")
