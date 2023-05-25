@@ -1,37 +1,46 @@
 
 [user]
-  name = lima
-  email = lima@mbp
+name = lima
+email = lima@mbp
+  
 [core]
-  editor = vim
-  mergeoptions = --no-edit
+editor = vim
+mergeoptions = --no-edit
+  
 [http]
-  sslVerify = false
+sslVerify = false
+  
 [url "https://github.com/"]
-  insteadOf = git://github.com/
+insteadOf = git://github.com/
+  
 [credential]
-  helper = store
+helper = store
+  
 [init]
-  defaultBranch = main
-	templatedir = ~/.git_templates
+defaultBranch = main
+templatedir = ~/.git_templates
+  
 [pull]
 # requires git > 2.6
 # `git rebase –abort` when we need to reset the changes
-	rebase = true
+rebase = true
+  
 [merge]
-	tool = nvimdiff4
-	prompt = false
-[mergetool "nvimdiff4"]
-# requires tpope/fugitive
-  cmd = vim -f -c \"Gdiffsplit!\" \"$MERGED\"
+ tool = vimdiff
+ conflictstyle = diff3
+
 [mergetool]
-	keepBackup = false
-	prompt = false
+ keepBackup = false
+ prompt = false
+
+[mergetool "vimdiff"]
+ cmd = "vim  -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J | wincmd ='"
+  
 [push]
-	autoSetupRemote = true
+ autoSetupRemote = true
 	
 # push only the default branch
-	default = simple
+default = simple
 
 [diff]
-	colorMoved = zebra
+colorMoved = zebra
