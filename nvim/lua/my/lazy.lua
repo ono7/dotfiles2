@@ -18,6 +18,7 @@ require("lazy").setup({
   -- "tpope/vim-rhubarb",
   "tpope/vim-repeat",
   -- "folke/tokyonight.nvim",
+  "roxma/vim-tmux-clipboard",
   "jose-elias-alvarez/null-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
@@ -29,8 +30,8 @@ require("lazy").setup({
   "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
-  "mfussenegger/nvim-dap",
-  "jay-babu/mason-nvim-dap.nvim",
+  -- "mfussenegger/nvim-dap",
+  -- "jay-babu/mason-nvim-dap.nvim",
   {
     "neovim/nvim-lspconfig",
     dependencies = {
