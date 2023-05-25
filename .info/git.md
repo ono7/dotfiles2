@@ -187,6 +187,19 @@ git config --global credential.helper 'cache --timeout 7200'
 
 git clone -b branch --single-branch git://github/repository.git
 
+# clone tag
+
+`git clone -b [tag_name] [repository_url]`
+
+Replace [tag_name] with the name of the tag you want to clone.
+Replace [repository_url] with the repository link obtained in the previous step.
+For example:
+
+`git clone -b v1.2 https://github.com/bosko-pnap/git-project.git`
+
+shallow clone to save space
+`git clone -b v1.2 --depth 1 https://github.com/bosko-pnap/git-project.git`
+
 # git diff, HEAD vs previous commits
 
 If you have just made a commit, or want to see what has changed in the last
