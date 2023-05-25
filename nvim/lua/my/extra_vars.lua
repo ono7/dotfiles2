@@ -127,6 +127,11 @@ nnoremap <c-h> <C-W><C-H>
 noremap v <c-v>
 vunmap v
 
+vnoremap p "0p
+vnoremap P "0P
+" vnoremap y "0y
+vnoremap d "0d
+
 inoremap <C-c> <Esc>
 
 " change local cd per buffer

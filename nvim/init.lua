@@ -97,9 +97,10 @@ k("n", "<leader>cd", ":lcd %:h<CR>")
 -- vnoremap y "0y
 -- vnoremap d "0d
 
+-- paste over selection without overwriting clipboard
 k("v", "p", [["0p]])
 k("v", "P", [["0P]])
-k("v", "y", [["0y]])
+-- k("v", "y", [["0y]])
 k("v", "d", [["0d]])
 
 -- k("x", "<leader>p", [["_dP]])
