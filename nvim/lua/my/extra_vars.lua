@@ -421,6 +421,12 @@ nnoremap <c-l> <C-W><C-L>
 nnoremap <c-h> <C-W><C-H>
 noremap v <c-v>
 vunmap v
+
+vnoremap p "0p
+vnoremap P "0P
+" vnoremap y "0y
+vnoremap d "0d
+
 cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
