@@ -6,7 +6,6 @@ import (
 	"encoding/pem"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 )
@@ -45,7 +44,7 @@ func findRootCACertificate(cert *x509.Certificate) *x509.Certificate {
 	// Iterate through the certificate chain until we find the root CA certificate
 	for {
 		if cert.IsCA {
-			log.Printf("found cert %s", cert.Issuer)
+			fmt.Printf("ROOT CA ISSUER -> %s\n", cert.Issuer.CommonName)
 			return cert
 		}
 
@@ -73,7 +72,7 @@ func findRootCACertificate(cert *x509.Certificate) *x509.Certificate {
 			cert = issuingCert
 		} else if cert.Issuer.CommonName == cert.Subject.CommonName {
 			// Reached the root CA certificate
-			log.Printf("found cert %s", cert.Issuer)
+			fmt.Printf("found cert %s", cert.Issuer)
 			return cert
 		} else {
 			fmt.Println("Failed to find root CA certificate")
@@ -88,6 +87,10 @@ func saveCertificateAsPEM(filename string, cert *x509.Certificate) {
 		Type:  "CERTIFICATE",
 		Bytes: cert.Raw,
 	})
+	fmt.Printf("Valid from %v\n", cert.NotBefore)
+	fmt.Printf("Valid to %v\n", cert.NotAfter)
+	delta := cert.NotAfter.Sub(cert.NotBefore)
+	fmt.Printf("Days left before expiry %v\n", delta.Hours() / 24 )
 	err := ioutil.WriteFile(filename, certBytes, 0644)
 	if err != nil {
 		fmt.Printf("Failed to save certificate: %v\n", err)
