@@ -14,12 +14,10 @@ import (
 )
 
 func main() {
-	// Specify the target website's address
-	// args := os.Args
 	var (
 		targetHost = flag.String("s", "www.google.com", "target site e.g. www.google.com")
-		targetPort = flag.String("p", "443", "target site e.g. www.google.com")
-		timeout    = flag.Duration("t", 5*time.Second, "timeout value for dialing in seconds, use s = seconds, m = minutes -> 2s, 3m")
+		targetPort = flag.String("p", "443", "target tcp port")
+		timeout    = flag.Duration("t", 5*time.Second, "timeout value for dialing in seconds, use s = seconds, eg. 10s, 5s")
 	)
 	flag.Parse()
 
