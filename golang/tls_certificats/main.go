@@ -17,6 +17,7 @@ func main() {
 	var (
 		targetHost = flag.String("s", "www.google.com", "target site e.g. www.google.com")
 		targetPort = flag.String("p", "443", "target tcp port")
+		outputFile = flag.String("o", "root_ca.crt", "output file (default root_ca.crt)")
 		timeout    = flag.Duration("t", 5*time.Second, "timeout value for dialing in seconds, use s = seconds, eg. 10s, 5s")
 	)
 	flag.Parse()
@@ -50,7 +51,7 @@ func main() {
 
 	// Save the root CA certificate in PEM format
 	// TODO: (jlima) ~ take optional flag to save as
-	saveCertificateAsPEM("root_ca.pem", rootCACert)
+	saveCertificateAsPEM(*outputFile, rootCACert)
 }
 
 // Helper function to find the root CA certificate from a certificate chain
@@ -58,7 +59,7 @@ func findRootCACertificate(cert *x509.Certificate) *x509.Certificate {
 	// Iterate through the certificate chain until we find the root CA certificate
 	for {
 		if cert.IsCA {
-			fmt.Printf("ROOT CA ISSUER -> %s\n", cert.Issuer.CommonName)
+			fmt.Printf("%-20s %50s\n", "Issuer:", cert.Issuer.CommonName)
 			return cert
 		}
 
@@ -86,7 +87,7 @@ func findRootCACertificate(cert *x509.Certificate) *x509.Certificate {
 			cert = issuingCert
 		} else if cert.Issuer.CommonName == cert.Subject.CommonName {
 			// Reached the root CA certificate
-			fmt.Printf("found cert %s\n", cert.Issuer)
+			fmt.Printf("found cert %-20s\n", cert.Issuer)
 			return cert
 		} else {
 			fmt.Println("Failed to find root CA certificate")
@@ -101,14 +102,14 @@ func saveCertificateAsPEM(filename string, cert *x509.Certificate) {
 		Type:  "CERTIFICATE",
 		Bytes: cert.Raw,
 	})
-	fmt.Printf("Valid from %v\n", cert.NotBefore)
-	fmt.Printf("Valid to %v\n", cert.NotAfter)
+	fmt.Printf("%-20s %50s\n", "Valid from:", cert.NotBefore)
+	fmt.Printf("%-20s %50s\n", "Valid to:", cert.NotAfter)
 	delta := cert.NotAfter.Sub(cert.NotBefore)
-	fmt.Printf("Days left before expiry %v\n", int(delta.Hours()/24))
+	fmt.Printf("%-20s %50d\n", "Expires in (days): ", int(delta.Hours()/24))
 	err := ioutil.WriteFile(filename, certBytes, 0644)
 	if err != nil {
 		fmt.Printf("Failed to save certificate: %v\n", err)
 		os.Exit(1)
 	}
-	fmt.Printf("Root CA certificate saved as %s\n", filename)
+	fmt.Printf("%-20s %50s\n", "Saved as:", filename)
 }
