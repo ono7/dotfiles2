@@ -9,6 +9,7 @@ ipython/
 .DS_Store
 .virtualenvs
 .vim
+.crt
 .netrwhist
 tags
 vtags
