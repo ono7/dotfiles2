@@ -143,20 +143,57 @@ k("i", "<c-a>", "<c-o>^", silent)
 k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
--- m("i", '"', [[""<left>]], opt)
--- m("i", "'", [[''<left>]], opt)
--- m("i", "`", [[``<left>]], opt)
+
+vim.keymap.set('i', '"', function()
+  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+  P(nextChar)
+  if nextChar == '"' then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return '"'
+  else
+    return '""<Left>'
+  end
+end
+, { expr = true })
+
+
+vim.keymap.set('i', '`', function()
+  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+  P(nextChar)
+  if nextChar == '`' then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return '`'
+  else
+    return '``<Left>'
+  end
+end
+, { expr = true })
+
+vim.keymap.set('i', "'", function()
+  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+  P(nextChar)
+  if nextChar == "'" then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return "'"
+  else
+    return "''<Left>"
+  end
+end
+, { expr = true })
 
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
-m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
-m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
-m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
+-- m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
+-- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
+-- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
 -- m is needed for doulbe and single quotes
-m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
+-- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
 -- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
-m("i", '`', [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`\`\<Left>"]], xpr)
+-- m("i", '`', [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`\`\<Left>"]], xpr)
 
 local pair_map = {
   ["("] = ")",
@@ -183,10 +220,10 @@ local pair_map_2 = {
 }
 
 k("i", "<enter>", function()
-	-- use this one when we are autoclosing
-	local line = vim.fn.getline(".")
-	local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
-	return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
+  -- use this one when we are autoclosing
+  local line = vim.fn.getline(".")
+  local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+  return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
 end, { expr = true })
 
 -- k("i", "<enter>", function()
