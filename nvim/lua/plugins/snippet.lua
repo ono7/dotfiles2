@@ -449,7 +449,7 @@ ls.add_snippets("markdown",
     snip(
       "img",
       fmt(
-        [[<img align="{}"]],
-        { i(0) }
+        [[<img align="{}" width="{}" height="{}" alt="{}" src="{}">]],
+        { i(1, "left"), i(2, "500"), i(3, "400"), i(4, "image"), i(0) }
       )),
   }, { key = "markdown snippets" })
