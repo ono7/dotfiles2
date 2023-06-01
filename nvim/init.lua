@@ -152,6 +152,7 @@ end
 
 local rightBrackets = '[})%]>]'
 local quotesAndBrackets = '[\'"`})%]>]'
+-- local quotes = '[\'"`]'
 
 k('i', '"', function()
   local prevChar, nextChar = getCurPos()
