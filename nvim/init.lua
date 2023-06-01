@@ -240,7 +240,6 @@ k('i', '}', function()
 end
 , { expr = true })
 
-
 -- handle ()
 k('i', '(', function()
   local _, nextChar = getCurPos()
@@ -263,17 +262,6 @@ k('i', ')', function()
   end
 end
 , { expr = true })
--- m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
--- m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
--- m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
-
--- m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
--- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
--- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
--- m is needed for doulbe and single quotes
--- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"]], xpr)
--- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"]], xpr)
--- m("i", '`', [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`\`\<Left>"]], xpr)
 
 local pair_map = {
   ["("] = ")",
@@ -399,10 +387,7 @@ local packages = {
   "plugins.navigator",
   "plugins.neotree",
   "plugins.surround",
-  -- "plugins.theme_ayu",
-  -- "plugins.theme_numetal", -- 1
   "plugins.theme_catppuccin", -- 2
-  -- "plugins.theme_tokyonight",
   "plugins.snippet",
   "plugins.bufferline",
   "plugins.floaterm",
