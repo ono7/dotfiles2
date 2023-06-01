@@ -150,8 +150,8 @@ local function getCurPos()
   return prevChar, nextChar
 end
 
-local rightBrackets = '[})%]]'
-local quotesAndBrackets = '[\'"`})%]]'
+local rightBrackets = '[})%]>]'
+local quotesAndBrackets = '[\'"`})%]>]'
 
 k('i', '"', function()
   local prevChar, nextChar = getCurPos()
@@ -266,6 +266,31 @@ k('i', ')', function()
     return '<Right>'
   else
     return ')'
+  end
+end
+, { expr = true })
+
+-- handle < >
+k('i', '<', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '<' then
+    return '<Right>'
+  elseif string.match(nextChar, quotesAndBrackets) then
+    return '<><Left>'
+  elseif string.match(nextChar, '%S') then
+    return '<'
+  else
+    return '<><Left>'
+  end
+end
+, { expr = true })
+
+k('i', '>', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '>' then
+    return '<Right>'
+  else
+    return '>'
   end
 end
 , { expr = true })
