@@ -150,10 +150,14 @@ local function getCurPos()
   return prevChar, nextChar
 end
 
+local rightBrackets = '[})%]]'
+
 k('i', '"', function()
   local prevChar, nextChar = getCurPos()
   if nextChar == '"' then
     return '<Right>'
+  elseif string.match(nextChar, rightBrackets) then
+    return '""<Left>'
   elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
     return '"'
   else
@@ -162,6 +166,33 @@ k('i', '"', function()
 end
 , { expr = true })
 
+k('i', '`', function()
+  local prevChar, nextChar = getCurPos()
+  if nextChar == '`' then
+    return '<Right>'
+  elseif string.match(nextChar, rightBrackets) then
+    return '``<Left>'
+  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
+    return '`'
+  else
+    return '``<Left>'
+  end
+end
+, { expr = true })
+
+k('i', "'", function()
+  local prevChar, nextChar = getCurPos()
+  if nextChar == "'" then
+    return '<Right>'
+  elseif string.match(nextChar, rightBrackets) then
+    return "''<Left>"
+  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
+    return "'"
+  else
+    return "''<Left>"
+  end
+end
+, { expr = true })
 
 -- handle []
 k('i', '[', function()
@@ -232,31 +263,6 @@ k('i', ')', function()
   end
 end
 , { expr = true })
-
-k('i', '`', function()
-  local prevChar, nextChar = getCurPos()
-  if nextChar == '`' then
-    return '<Right>'
-  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
-    return '`'
-  else
-    return '``<Left>'
-  end
-end
-, { expr = true })
-
-k('i', "'", function()
-  local prevChar, nextChar = getCurPos()
-  if nextChar == "'" then
-    return '<Right>'
-  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
-    return "'"
-  else
-    return "''<Left>"
-  end
-end
-, { expr = true })
-
 -- m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 -- m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 -- m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
