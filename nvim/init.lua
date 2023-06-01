@@ -146,7 +146,6 @@ k("i", "[", "[]<left>", opt)
 
 vim.keymap.set('i', '"', function()
   local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
-  P(nextChar)
   if nextChar == '"' then
     return '<Right>'
   elseif string.match(nextChar, '%S') then
@@ -160,7 +159,6 @@ end
 
 vim.keymap.set('i', '`', function()
   local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
-  P(nextChar)
   if nextChar == '`' then
     return '<Right>'
   elseif string.match(nextChar, '%S') then
@@ -173,7 +171,7 @@ end
 
 vim.keymap.set('i', "'", function()
   local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
-  P(nextChar)
+  -- P(nextChar)
   if nextChar == "'" then
     return '<Right>'
   elseif string.match(nextChar, '%S') then
@@ -187,6 +185,7 @@ end
 m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
 m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
 m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
+
 -- m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
 -- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
 -- m("i", "'", [[strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"]], xpr)
