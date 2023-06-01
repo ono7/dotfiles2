@@ -144,11 +144,17 @@ k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
-vim.keymap.set('i', '"', function()
+local function getPos()
   local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+  local prevChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1)
+  return prevChar, nextChar
+end
+
+k('i', '"', function()
+  local prevChar, nextChar = getPos()
   if nextChar == '"' then
     return '<Right>'
-  elseif string.match(nextChar, '%S') then
+  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
     return '"'
   else
     return '""<Left>'
@@ -156,12 +162,11 @@ vim.keymap.set('i', '"', function()
 end
 , { expr = true })
 
-
-vim.keymap.set('i', '`', function()
-  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+k('i', '`', function()
+  local prevChar, nextChar = getPos()
   if nextChar == '`' then
     return '<Right>'
-  elseif string.match(nextChar, '%S') then
+  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
     return '`'
   else
     return '``<Left>'
@@ -169,12 +174,11 @@ vim.keymap.set('i', '`', function()
 end
 , { expr = true })
 
-vim.keymap.set('i', "'", function()
-  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
-  -- P(nextChar)
+k('i', "'", function()
+  local prevChar, nextChar = getPos()
   if nextChar == "'" then
     return '<Right>'
-  elseif string.match(nextChar, '%S') then
+  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
     return "'"
   else
     return "''<Left>"
