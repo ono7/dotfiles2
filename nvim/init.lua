@@ -144,14 +144,14 @@ k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
-local function getPos()
+local function getCurPos()
   local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
   local prevChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1)
   return prevChar, nextChar
 end
 
 k('i', '"', function()
-  local prevChar, nextChar = getPos()
+  local prevChar, nextChar = getCurPos()
   if nextChar == '"' then
     return '<Right>'
   elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
@@ -163,7 +163,7 @@ end
 , { expr = true })
 
 k('i', '`', function()
-  local prevChar, nextChar = getPos()
+  local prevChar, nextChar = getCurPos()
   if nextChar == '`' then
     return '<Right>'
   elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
@@ -175,7 +175,7 @@ end
 , { expr = true })
 
 k('i', "'", function()
-  local prevChar, nextChar = getPos()
+  local prevChar, nextChar = getCurPos()
   if nextChar == "'" then
     return '<Right>'
   elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
