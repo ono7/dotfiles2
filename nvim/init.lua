@@ -162,6 +162,77 @@ k('i', '"', function()
 end
 , { expr = true })
 
+
+-- handle []
+k('i', '[', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '[' then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return '['
+  else
+    return '[]<Left>'
+  end
+end
+, { expr = true })
+
+k('i', ']', function()
+  local _, nextChar = getCurPos()
+  if nextChar == ']' then
+    return '<Right>'
+  else
+    return ']'
+  end
+end
+, { expr = true })
+
+-- handle {}
+k('i', '{', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '{' then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return '{'
+  else
+    return '{}<Left>'
+  end
+end
+, { expr = true })
+
+k('i', '}', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '}' then
+    return '<Right>'
+  else
+    return '}'
+  end
+end
+, { expr = true })
+
+
+-- handle ()
+k('i', '(', function()
+  local _, nextChar = getCurPos()
+  if nextChar == '(' then
+    return '<Right>'
+  elseif string.match(nextChar, '%S') then
+    return '('
+  else
+    return '()<Left>'
+  end
+end
+, { expr = true })
+
+k('i', ')', function()
+  local _, nextChar = getCurPos()
+  if nextChar == ')' then
+    return '<Right>'
+  else
+    return ')'
+  end
+end
+, { expr = true })
+
 k('i', '`', function()
   local prevChar, nextChar = getCurPos()
   if nextChar == '`' then
@@ -186,9 +257,9 @@ k('i', "'", function()
 end
 , { expr = true })
 
-m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
-m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
-m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
+-- m("i", ")", [[strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"]], xpr)
+-- m("i", "}", [[strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"]], xpr)
+-- m("i", "]", [[strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"]], xpr)
 
 -- m("i", "`", [[strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"]], xpr)
 -- m("i", '"', [[strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""]], xpr)
