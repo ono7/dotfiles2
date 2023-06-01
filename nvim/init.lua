@@ -245,7 +245,7 @@ k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
 k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 
 --- tmux ---
--- k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 --- visual selection search ---
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)

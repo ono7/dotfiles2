@@ -224,7 +224,7 @@ msg() {
 }
 
 err_msg() {
-  echo >&2 -e "**************************************** ${1-} ****************************************"
+  echo >&2 -e "[Error] ${1-}"
 }
 ]]
   ),
@@ -421,12 +421,30 @@ ls.add_snippets("go", {
   key = "go snippets",
 })
 
-ls.add_snippets("markdown", { snip(
-  "c",
-  fmt(
-    [[
+ls.add_snippets("markdown",
+  {
+    snip(
+      "c",
+      fmt(
+        [[
 ```{}
 ```]],
-    { i(0) }
-  )
-) }, { key = "markdown snippets" })
+        { i(0) }
+      )),
+    snip(
+      "ta",
+      fmt(
+        [[
+<{}>
+  {}
+</{}>]],
+        { i(1), i(0), rep(1) }
+      )),
+
+    snip(
+      "ti",
+      fmt(
+        [[<{}>{}</{}>]],
+        { i(1), i(0), rep(1) }
+      )),
+  }, { key = "markdown snippets" })
