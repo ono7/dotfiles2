@@ -440,11 +440,16 @@ ls.add_snippets("markdown",
 </{}>]],
         { i(1), i(0), rep(1) }
       )),
-
     snip(
       "ti",
       fmt(
         [[<{}>{}</{}>]],
         { i(1), i(0), rep(1) }
+      )),
+    snip(
+      "img",
+      fmt(
+        [[<img align="{}"]],
+        { i(0) }
       )),
   }, { key = "markdown snippets" })
