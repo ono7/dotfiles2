@@ -153,7 +153,12 @@ local rightBrackets = '[})%]>]'
 local quotesAndBrackets = '[\'"`})%]>]'
 local sm = string.match
 
--- local quotes = '[\'"`]'
+local function testQuotes(prevChar, nextChar)
+  if sm(nextChar, '%S') or sm(prevChar, '[%a%p]') then
+    return true
+  end
+  return false
+end
 
 k('i', '"', function()
   local p, n = prevAndNextChar()
@@ -163,9 +168,7 @@ k('i', '"', function()
     return '"'
   elseif sm(n, rightBrackets) then
     return '""<Left>'
-  elseif sm(p, '[%a%p]') then
-    return '"'
-  elseif sm(n, '%S') then
+  elseif testQuotes(p, n) then
     return '"'
   else
     return '""<Left>'
@@ -180,9 +183,7 @@ k('i', '`', function()
     return '<Right>'
   elseif sm(n, rightBrackets) then
     return '``<Left>'
-  elseif sm(p, '[%a%p]') then
-    return '`'
-  elseif sm(n, '%S') then
+  elseif testQuotes(p, n) then
     return '`'
   else
     return '``<Left>'
@@ -196,9 +197,7 @@ k('i', "'", function()
     return '<Right>'
   elseif sm(n, rightBrackets) then
     return "''<Left>"
-  elseif sm(p, '[%a%p]') then
-    return "'"
-  elseif sm(n, '%S') then
+  elseif testQuotes(p, n) then
     return "'"
   else
     return "''<Left>"
@@ -206,12 +205,20 @@ k('i', "'", function()
 end
 , { expr = true })
 
+
+local function testBrackets(prevChar, nextChar)
+  if sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[^%s]') and sm(nextChar, quotesAndBrackets) then
+    return true
+  end
+  return false
+end
+
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
   if n == '[' then
     return '<Right>'
-  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
+  elseif testBrackets(p, n) then
     return '[]<Left>'
   elseif sm(n, '%S') then
     return '['
@@ -236,7 +243,7 @@ k('i', '{', function()
   local p, n = prevAndNextChar()
   if n == '{' then
     return '<Right>'
-  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
+  elseif testBrackets(p, n) then
     return '{}<Left>'
   elseif sm(n, '%S') then
     return '{'
@@ -264,7 +271,7 @@ k('i', '(', function()
   local p, n = prevAndNextChar()
   if n == '(' then
     return '<Right>'
-  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
+  elseif testBrackets(p, n) then
     return '()<Left>'
   elseif sm(n, '%S') then
     return '('
@@ -289,7 +296,7 @@ k('i', '<', function()
   local p, n = prevAndNextChar()
   if n == '<' then
     return '<Right>'
-  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
+  elseif testBrackets(p, n) then
     return '<><Left>'
   elseif sm(n, '%S') then
     return '<'
