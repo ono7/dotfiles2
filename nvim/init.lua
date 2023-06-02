@@ -150,19 +150,22 @@ local function getCurPos()
 end
 
 local rightBrackets = '[})%]>]'
-local leftBrackets = '[%[{(<]'
 local quotesAndBrackets = '[\'"`})%]>]'
+local sm = string.match
+
 -- local quotes = '[\'"`]'
 
 k('i', '"', function()
-  local prevChar, nextChar = getCurPos()
-  if nextChar == '"' then
+  local p, n = getCurPos()
+  if n == '"' then
     return '<Right>'
-  elseif string.match(nextChar, rightBrackets) then
-    return '""<Left>'
-  elseif string.match(prevChar, '[%a%p]') then
+  elseif sm(p, '[%a]') then
     return '"'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, rightBrackets) then
+    return '""<Left>'
+  elseif sm(p, '[%a%p]') then
+    return '"'
+  elseif sm(n, '%S') then
     return '"'
   else
     return '""<Left>'
@@ -172,14 +175,14 @@ end
 
 
 k('i', '`', function()
-  local prevChar, nextChar = getCurPos()
-  if nextChar == '`' then
+  local p, n = getCurPos()
+  if n == '`' then
     return '<Right>'
-  elseif string.match(nextChar, rightBrackets) then
+  elseif sm(n, rightBrackets) then
     return '``<Left>'
-  elseif string.match(prevChar, '[%a%p]') then
+  elseif sm(p, '[%a%p]') then
     return '`'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return '`'
   else
     return '``<Left>'
@@ -188,14 +191,14 @@ end
 , { expr = true })
 
 k('i', "'", function()
-  local prevChar, nextChar = getCurPos()
-  if nextChar == "'" then
+  local p, n = getCurPos()
+  if n == "'" then
     return '<Right>'
-  elseif string.match(nextChar, rightBrackets) then
+  elseif sm(n, rightBrackets) then
     return "''<Left>"
-  elseif string.match(prevChar, '[%a%p]') then
+  elseif sm(p, '[%a%p]') then
     return "'"
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return "'"
   else
     return "''<Left>"
@@ -205,12 +208,12 @@ end
 
 -- handle []
 k('i', '[', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '[' then
+  local p, n = getCurPos()
+  if n == '[' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
     return '[]<Left>'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return '['
   else
     return '[]<Left>'
@@ -219,8 +222,8 @@ end
 , { expr = true })
 
 k('i', ']', function()
-  local _, nextChar = getCurPos()
-  if nextChar == ']' then
+  local _, n = getCurPos()
+  if n == ']' then
     return '<Right>'
   else
     return ']'
@@ -230,12 +233,12 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '{' then
+  local p, n = getCurPos()
+  if n == '{' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
     return '{}<Left>'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return '{'
   else
     return '{}<Left>'
@@ -244,8 +247,8 @@ end
 , { expr = true })
 
 k('i', '}', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '}' then
+  local _, n = getCurPos()
+  if n == '}' then
     return '<Right>'
   else
     return '}'
@@ -258,12 +261,12 @@ end
 
 -- handle ()
 k('i', '(', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '(' then
+  local p, n = getCurPos()
+  if n == '(' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
     return '()<Left>'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return '('
   else
     return '()<Left>'
@@ -272,8 +275,8 @@ end
 , { expr = true })
 
 k('i', ')', function()
-  local _, nextChar = getCurPos()
-  if nextChar == ')' then
+  local _, n = getCurPos()
+  if n == ')' then
     return '<Right>'
   else
     return ')'
@@ -283,12 +286,12 @@ end
 
 -- handle < >
 k('i', '<', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '<' then
+  local _, n = getCurPos()
+  if n == '<' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif sm(n, quotesAndBrackets) then
     return '<><Left>'
-  elseif string.match(nextChar, '%S') then
+  elseif sm(n, '%S') then
     return '<'
   else
     return '<><Left>'
@@ -297,8 +300,8 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local _, nextChar = getCurPos()
-  if nextChar == '>' then
+  local _, n = getCurPos()
+  if n == '>' then
     return '<Right>'
   else
     return '>'
