@@ -15,3 +15,13 @@ snippet d
 
 snippet rd
   import rpdb;rpdb.set_trace()
+
+snippet filter
+  def ${1}(${2}):
+    ${0}
+    return
+
+
+  class FilterModule:
+    def filters(self):
+      return {"${1}": ${1}}
