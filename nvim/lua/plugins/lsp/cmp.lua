@@ -7,6 +7,8 @@ require('snippy').setup({
   },
 })
 
+local snippy = require("snippy")
+
 local lspkind_status_ok, lspkind = pcall(require, "lspkind")
 
 if not lspkind_status_ok then
@@ -115,14 +117,10 @@ cmp.setup({
     ["<c-c>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      -- if luasnip.expandable() then
-      -- 	luasnip.expand()
-      -- elseif cmp.visible() then
-      -- 	cmp.select_next_item()
-      -- elseif luasnip.jumpable(1) then
-      -- 	luasnip.jump(1)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif snippy.can_expand_or_advance() then
+        snippy.expand_or_advance()
       else
         fallback()
       end
@@ -130,8 +128,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-        -- elseif luasnip.jumpable(-1) then
-        --   luasnip.jump(-1)
+      elseif snippy.can_jump(-1) then
+        snippy.previous()
       else
         fallback()
       end
