@@ -144,7 +144,7 @@ k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
 local function prevAndNextChar()
-  -- return prevChar, nextChar
+  -- return prevChar, nextChar in relation to current cursor position
   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
       vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
 end

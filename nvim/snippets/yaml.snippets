@@ -1,8 +1,14 @@
 snippet h
   ---
   - name: "${1}"
-    hosts: ${2}
+    hosts: ${2:localhost}
     gather_facts: false
 
     tasks:
       - name: "${0}"
+snippet debug
+  - name: "${1/.*/\U&/g}"
+    ansible.builtin.debug:
+      msg: |
+        ${0}
+
