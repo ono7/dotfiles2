@@ -144,12 +144,13 @@ k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
 local function getCurPos()
-  local nextChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
-  local prevChar = vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1)
-  return prevChar, nextChar
+  -- return prevChar, nextChar
+  return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
+      vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
 end
 
 local rightBrackets = '[})%]>]'
+local leftBrackets = '[%[{(<]'
 local quotesAndBrackets = '[\'"`})%]>]'
 -- local quotes = '[\'"`]'
 
