@@ -1,0 +1,8 @@
+snippet h
+  ---
+  - name: "${1}"
+    hosts: ${2}
+    gather_facts: false
+
+    tasks:
+      - name: "${0}"
