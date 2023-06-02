@@ -1,6 +1,10 @@
 require('snippy').setup({
   snippet_dirs = '~/.dotfiles/nvim/snippets',
   mappings = {
+    is = {
+      ['<Tab>'] = 'expand_or_advance',
+      ['<S-Tab>'] = 'previous',
+    },
     nx = {
       ['<leader>x'] = 'cut_text',
     },
@@ -117,19 +121,19 @@ cmp.setup({
     ["<c-c>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif snippy.can_expand_or_advance() then
+      if snippy.can_expand_or_advance() then
         snippy.expand_or_advance()
+      elseif cmp.visible() then
+        cmp.select_next_item()
       else
         fallback()
       end
     end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif snippy.can_jump(-1) then
+      if snippy.can_jump(-1) then
         snippy.previous()
+      elseif cmp.visible() then
+        cmp.select_prev_item()
       else
         fallback()
       end
@@ -137,8 +141,8 @@ cmp.setup({
   },
   sources = {
     -- { name = "nvim_lsp", keyword_length = 3 },
-    { name = "nvim_lsp",               keyword_length = 2 },
     { name = 'snippy' },
+    { name = "nvim_lsp",               keyword_length = 2 },
     { name = "nvim_lua" },
     { name = "nvim_lsp_signature_help" },
     { name = "path" },
