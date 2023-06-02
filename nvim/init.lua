@@ -159,7 +159,9 @@ k('i', '"', function()
     return '<Right>'
   elseif string.match(nextChar, rightBrackets) then
     return '""<Left>'
-  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
+  elseif string.match(prevChar, '[%a%p]') then
+    return '"'
+  elseif string.match(nextChar, '%S') then
     return '"'
   else
     return '""<Left>'
@@ -167,13 +169,16 @@ k('i', '"', function()
 end
 , { expr = true })
 
+
 k('i', '`', function()
   local prevChar, nextChar = getCurPos()
   if nextChar == '`' then
     return '<Right>'
   elseif string.match(nextChar, rightBrackets) then
     return '``<Left>'
-  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
+  elseif string.match(prevChar, '[%a%p]') then
+    return '`'
+  elseif string.match(nextChar, '%S') then
     return '`'
   else
     return '``<Left>'
@@ -187,7 +192,9 @@ k('i', "'", function()
     return '<Right>'
   elseif string.match(nextChar, rightBrackets) then
     return "''<Left>"
-  elseif string.match(nextChar, '%S') or string.match(prevChar, '%S') then
+  elseif string.match(prevChar, '[%a%p]') then
+    return "'"
+  elseif string.match(nextChar, '%S') then
     return "'"
   else
     return "''<Left>"
@@ -200,7 +207,7 @@ k('i', '[', function()
   local _, nextChar = getCurPos()
   if nextChar == '[' then
     return '<Right>'
-  elseif string.match(nextChar, '[\'"`})>]') then
+  elseif string.match(nextChar, quotesAndBrackets) then
     return '[]<Left>'
   elseif string.match(nextChar, '%S') then
     return '['
@@ -225,7 +232,7 @@ k('i', '{', function()
   local _, nextChar = getCurPos()
   if nextChar == '{' then
     return '<Right>'
-  elseif string.match(nextChar, '[\'"`)%]>]') then
+  elseif string.match(nextChar, quotesAndBrackets) then
     return '{}<Left>'
   elseif string.match(nextChar, '%S') then
     return '{'
@@ -250,7 +257,7 @@ k('i', '(', function()
   local _, nextChar = getCurPos()
   if nextChar == '(' then
     return '<Right>'
-  elseif string.match(nextChar, '[\'"`}%]>]') then
+  elseif string.match(nextChar, quotesAndBrackets) then
     return '()<Left>'
   elseif string.match(nextChar, '%S') then
     return '('
@@ -275,7 +282,7 @@ k('i', '<', function()
   local _, nextChar = getCurPos()
   if nextChar == '<' then
     return '<Right>'
-  elseif string.match(nextChar, '[\'"`})%]]') then
+  elseif string.match(nextChar, quotesAndBrackets) then
     return '<><Left>'
   elseif string.match(nextChar, '%S') then
     return '<'
