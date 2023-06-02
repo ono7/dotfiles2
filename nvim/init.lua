@@ -1,7 +1,6 @@
 --- Follow the white Rabbit...   🐇
 
 --[[
-
 -- pratice ge, jump back do end of word
 -- xxd -psd (get hex codes to use with wezterm)
 
@@ -201,7 +200,7 @@ k('i', '[', function()
   local _, nextChar = getCurPos()
   if nextChar == '[' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif string.match(nextChar, '[\'"`})>]') then
     return '[]<Left>'
   elseif string.match(nextChar, '%S') then
     return '['
@@ -226,7 +225,7 @@ k('i', '{', function()
   local _, nextChar = getCurPos()
   if nextChar == '{' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif string.match(nextChar, '[\'"`)%]>]') then
     return '{}<Left>'
   elseif string.match(nextChar, '%S') then
     return '{'
@@ -251,7 +250,7 @@ k('i', '(', function()
   local _, nextChar = getCurPos()
   if nextChar == '(' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif string.match(nextChar, '[\'"`}%]>]') then
     return '()<Left>'
   elseif string.match(nextChar, '%S') then
     return '('
@@ -276,7 +275,7 @@ k('i', '<', function()
   local _, nextChar = getCurPos()
   if nextChar == '<' then
     return '<Right>'
-  elseif string.match(nextChar, quotesAndBrackets) then
+  elseif string.match(nextChar, '[\'"`})%]]') then
     return '<><Left>'
   elseif string.match(nextChar, '%S') then
     return '<'
@@ -421,7 +420,7 @@ local packages = {
   "plugins.neotree",
   "plugins.surround",
   "plugins.theme_catppuccin", -- 2
-  "plugins.snippet",
+  -- "plugins.snippet",
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",

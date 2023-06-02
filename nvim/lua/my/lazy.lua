@@ -30,6 +30,8 @@ require("lazy").setup({
   "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
+  "dcampos/cmp-snippy",
+  "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
   {
@@ -51,6 +53,7 @@ require("lazy").setup({
     },
   },
   { "numtostr/fterm.nvim", opts = {} },
+
   {
     "f-person/git-blame.nvim",
     config = function()
@@ -64,9 +67,9 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "L3MON4D3/LuaSnip",
+      -- "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
+      -- "saadparwaiz1/cmp_luasnip",
     },
   },
   {
