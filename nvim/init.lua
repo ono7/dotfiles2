@@ -143,7 +143,7 @@ k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
-local function getCurPos()
+local function prevAndNextChar()
   -- return prevChar, nextChar
   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
       vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
@@ -156,7 +156,7 @@ local sm = string.match
 -- local quotes = '[\'"`]'
 
 k('i', '"', function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '"' then
     return '<Right>'
   elseif sm(p, '[%a]') then
@@ -175,7 +175,7 @@ end
 
 
 k('i', '`', function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '`' then
     return '<Right>'
   elseif sm(n, rightBrackets) then
@@ -191,7 +191,7 @@ end
 , { expr = true })
 
 k('i', "'", function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == "'" then
     return '<Right>'
   elseif sm(n, rightBrackets) then
@@ -208,7 +208,7 @@ end
 
 -- handle []
 k('i', '[', function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '[' then
     return '<Right>'
   elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
@@ -222,7 +222,7 @@ end
 , { expr = true })
 
 k('i', ']', function()
-  local _, n = getCurPos()
+  local _, n = prevAndNextChar()
   if n == ']' then
     return '<Right>'
   else
@@ -233,7 +233,7 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '{' then
     return '<Right>'
   elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
@@ -247,7 +247,7 @@ end
 , { expr = true })
 
 k('i', '}', function()
-  local _, n = getCurPos()
+  local _, n = prevAndNextChar()
   if n == '}' then
     return '<Right>'
   else
@@ -261,7 +261,7 @@ end
 
 -- handle ()
 k('i', '(', function()
-  local p, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '(' then
     return '<Right>'
   elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
@@ -275,7 +275,7 @@ end
 , { expr = true })
 
 k('i', ')', function()
-  local _, n = getCurPos()
+  local _, n = prevAndNextChar()
   if n == ')' then
     return '<Right>'
   else
@@ -286,10 +286,10 @@ end
 
 -- handle < >
 k('i', '<', function()
-  local _, n = getCurPos()
+  local p, n = prevAndNextChar()
   if n == '<' then
     return '<Right>'
-  elseif sm(n, quotesAndBrackets) then
+  elseif sm(n, quotesAndBrackets) and sm(p, '[^%s]') then
     return '<><Left>'
   elseif sm(n, '%S') then
     return '<'
@@ -300,7 +300,7 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local _, n = getCurPos()
+  local _, n = prevAndNextChar()
   if n == '>' then
     return '<Right>'
   else
