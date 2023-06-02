@@ -252,6 +252,9 @@ k('i', '}', function()
 end
 , { expr = true })
 
+-- todo fix this:  ()"trstr"
+-- if there is a space before, we should return 1 bracket not two
+
 -- handle ()
 k('i', '(', function()
   local _, nextChar = getCurPos()

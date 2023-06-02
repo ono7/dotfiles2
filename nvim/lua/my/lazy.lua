@@ -31,6 +31,7 @@ require("lazy").setup({
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
   "dcampos/cmp-snippy",
+  'monkoose/matchparen.nvim',
   "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",

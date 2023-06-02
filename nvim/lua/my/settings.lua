@@ -140,7 +140,7 @@ vim.opt.autoindent = true
 -- bo.complete = ".,w,b,u,kspell"
 bo.complete = ".,w,b,u"
 bo.formatoptions = "qlj" -- TODO: overwritten in my_cmds.lua
-bo.matchpairs = "(:),{:},[:]"
+-- bo.matchpairs = "(:),{:},[:]"
 
 vim.g.floating_window_border = {
   "╭",
