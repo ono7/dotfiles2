@@ -4,6 +4,22 @@ snippet h
   # Author: Jose Lima
   # Date: `strftime("%Y-%m-%d %H:%M")` CST
 
+  set -Eeuo pipefail
+  trap cleanup SIGINT SIGTERM ERR EXIT
+
+  cleanup() {
+    trap - SIGINT SIGTERM ERR EXIT
+    # script cleanup here
+    exit 1
+  }
+
+  msg() {
+    echo -e "**************************************** ${1-} ****************************************"
+  }
+
+  err_msg() {
+    echo >&2 -e "[Error] ${1-}"
+  }
   ${0}
 
 
