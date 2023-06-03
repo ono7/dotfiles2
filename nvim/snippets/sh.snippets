@@ -4,6 +4,12 @@ snippet h
   # Author: Jose Lima
   # Date: `strftime("%Y-%m-%d %H:%M")` CST
 
+snippet h1
+  #!/usr/bin/env bash
+  #
+  # Author: Jose Lima
+  # Date: `strftime("%Y-%m-%d %H:%M")` CST
+
   set -Eeuo pipefail
   trap cleanup SIGINT SIGTERM ERR EXIT
 
@@ -22,4 +28,19 @@ snippet h
   }
   ${0}
 
+snippet if
+  if [[ $1 ]]; then
+    ${0:${VISUAL}}
+  fi
+snippet elif
+  elif [[ $1 ]]; then
+    ${0:${VISUAL}}
+snippet wh
+  while [[ $1 ]]; do
+    ${0:${VISUAL}}
+  done
+snippet until
+  until [[ $1 ]]; do
+    ${0:${VISUAL}}
+  done
 
