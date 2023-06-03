@@ -423,6 +423,9 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 
 -- paste matches indentation
 k("n", "p", 'p=`]')
+-- leave unnnamed reg alone when changing text
+k("n", "c", '"ac')
+k("n", "C", '"aC')
 
 --- shellcode ---
 -- m(

@@ -153,6 +153,11 @@ nnoremap <leader>w :w<cr>
 
 " return cursor position after yank in v-mode
 vnoremap y ygv<Esc>
+" paste matches indentation
+nnoremap p p=`]
+" leave unnamed alone when changing text
+nnoremap c "ac
+nnoremap C "aC
 
 nnoremap <silent><Esc>j :resize -2<cr>
 nnoremap <silent><Esc>k :resize +2<cr>
@@ -439,6 +444,10 @@ nnoremap ,d :bd!<cr>
 nnoremap ,q :qall!<cr>
 nnoremap <leader>w :w<cr>
 vnoremap y ygv<Esc>
+" paste matches indentation
+nnoremap p p=`]
+nnoremap c "ac
+nnoremap C "aC
 nnoremap ' `
 nnoremap ma mA
 nnoremap mb mB
