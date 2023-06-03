@@ -82,7 +82,7 @@ k("n", "s", "")               -- surround
 k("x", "s", "")               -- surround
 
 k("n", "gp", "`[v`]", silent) -- vs last paste
--- k("x", "y", [[ygv<Esc>]], silent)
+k("v", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
 k("n", ",r", vim.lsp.buf.format, silent)
