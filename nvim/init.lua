@@ -45,7 +45,7 @@ local silent = { noremap = true, silent = true }
 
 local MYHOME = os.getenv("HOME")
 
-vim.o.shada = "'40,<1000,s1000,:500,/100,h,r/tmp,n~/.shada"
+vim.o.shada = "'25,<1000,s1000,:500,/100,h,r/tmp,n~/.shada"
 
 local function get_git_root()
   local dot_git_path = vim.fn.finddir(".git", ".;")
@@ -418,8 +418,11 @@ cmd([[cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep'
 cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep']])
 
 --- miniyank ---
-m("n", "p", [[<Plug>(miniyank-autoput)]], {})
-m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+-- m("n", "p", [[<Plug>(miniyank-autoput)]], {})
+-- m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+
+-- paste matches indentation
+k("n", "p", 'p=`]')
 
 --- shellcode ---
 -- m(
