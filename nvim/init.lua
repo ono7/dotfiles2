@@ -428,7 +428,6 @@ k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 k("n", ";", ":")
-k("n", ":", ";")
 
 -- switch between current and prev file
 k("n", "<space><space>", "<c-^>")
