@@ -125,6 +125,9 @@ nnoremap ; :
 nnoremap : ;
 xnoremap ; :
 
+" switch between current and prev file
+nnoremap <space><space> <c-^>
+
 noremap v <c-v>
 vunmap v
 
@@ -162,6 +165,9 @@ nnoremap C "aC
 nnoremap ; :
 nnoremap : ;
 xnoremap ; :
+
+" switch between current and prev file
+nnoremap <space><space> <c-^>
 
 nnoremap <silent><Esc>j :resize -2<cr>
 nnoremap <silent><Esc>k :resize +2<cr>
