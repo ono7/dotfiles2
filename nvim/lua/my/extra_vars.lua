@@ -121,8 +121,9 @@ nnoremap <c-l> <C-W><C-L>
 nnoremap <c-h> <C-W><C-H>
 
 " save some keystrokes
-" nnoremap ; :
-" xnoremap ; :
+nnoremap ; :
+nnoremap : ;
+xnoremap ; :
 
 noremap v <c-v>
 vunmap v
@@ -158,6 +159,9 @@ nnoremap p p=`]
 " leave unnamed alone when changing text
 nnoremap c "ac
 nnoremap C "aC
+nnoremap ; :
+nnoremap : ;
+xnoremap ; :
 
 nnoremap <silent><Esc>j :resize -2<cr>
 nnoremap <silent><Esc>k :resize +2<cr>
