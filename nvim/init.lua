@@ -154,12 +154,13 @@ local quotesAndBrackets = '[\'"`})%]>]'
 local sm = string.match
 
 local function testQuotes(prevChar, nextChar)
-  if sm(nextChar, '%S') or sm(prevChar, '[%a%p]') then
+  if sm(nextChar, '%S') or sm(prevChar, '[%a%d%p]') then
     return true
   end
   return false
 end
 
+-- handles ""
 k('i', '"', function()
   local p, n = prevAndNextChar()
   if n == '"' then
@@ -176,7 +177,7 @@ k('i', '"', function()
 end
 , { expr = true })
 
-
+-- handles ``
 k('i', '`', function()
   local p, n = prevAndNextChar()
   if n == '`' then
@@ -191,6 +192,8 @@ k('i', '`', function()
 end
 , { expr = true })
 
+
+-- handles ''
 k('i', "'", function()
   local p, n = prevAndNextChar()
   if n == "'" then
