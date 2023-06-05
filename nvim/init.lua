@@ -291,6 +291,31 @@ k('i', ')', function()
 end
 , { expr = true })
 
+-- handle < >
+-- k('i', '<', function()
+--   local p, n = prevAndNextChar()
+--   if n == '<' then
+--     return '<Right>'
+--   elseif testBrackets(p, n) then
+--     return '<><Left>'
+--   elseif sm(n, '%S') then
+--     return '<'
+--   else
+--     return '<><Left>'
+--   end
+-- end
+-- , { expr = true })
+
+k('i', '>', function()
+  local _, n = prevAndNextChar()
+  if n == '>' then
+    return '<Right>'
+  else
+    return '>'
+  end
+end
+, { expr = true })
+
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
