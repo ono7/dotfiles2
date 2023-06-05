@@ -421,14 +421,11 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 -- m("n", "p", [[<Plug>(miniyank-autoput)]], {})
 -- m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
--- paste matches indentation
-k("n", "p", 'p=`]')
 -- leave unnnamed reg alone when changing text
 k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 k("n", ";", ":")
-
 -- switch between current and prev file
 k("n", "<space><space>", "<c-^>")
 
