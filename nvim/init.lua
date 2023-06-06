@@ -143,6 +143,16 @@ k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
+local pair_map = {
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
+  ["<"] = ">",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`",
+}
+
 local function prevAndNextChar()
   -- return prevChar, nextChar in relation to current cursor position
   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
@@ -210,7 +220,9 @@ end
 
 
 local function testBrackets(prevChar, nextChar)
-  if sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[^%s]') and sm(nextChar, quotesAndBrackets) then
+  if not pair_map[nextChar] then
+    return true
+  elseif sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[%S]') and sm(nextChar, quotesAndBrackets) then
     return true
   end
   return false
@@ -319,15 +331,6 @@ k('i', '>', function()
 end
 , { expr = true })
 
-local pair_map = {
-  ["("] = ")",
-  ["["] = "]",
-  ["{"] = "}",
-  ["<"] = ">",
-  ["'"] = "'",
-  ['"'] = '"',
-  ["`"] = "`",
-}
 
 k("i", "<BS>", function()
   -- compare ')' == ')'
