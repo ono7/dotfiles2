@@ -91,7 +91,7 @@ c("BufWritePre", {
 
 c({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup("clear_trailing_spaces", { clear = true }),
-  pattern = { "*.py", "*.yml", "*.cfg" },
+  pattern = { "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua"},
   callback = function()
     local save_cursor = vim.fn.getcurpos()
     vim.cmd([[silent! %s/\s\+$//e]])
