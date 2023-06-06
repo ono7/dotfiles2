@@ -331,6 +331,17 @@ k('i', '>', function()
 end
 , { expr = true })
 
+k('i', ' ', function()
+  local p, n = prevAndNextChar()
+  if sm(n, rightBrackets) then
+    return '<space><space><left>'
+  else
+    return '<space>'
+  end
+end
+, { expr = true })
+
+
 
 k("i", "<BS>", function()
   -- compare ')' == ')'
