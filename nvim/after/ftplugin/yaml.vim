@@ -5,4 +5,3 @@ setlocal errorformat=%f:%l:\ %m
 
 setlocal suffixesadd+=.yml
 setlocal suffixesadd+=.yaml
-

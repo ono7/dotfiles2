@@ -122,7 +122,6 @@ nnoremap <c-h> <C-W><C-H>
 
 " save some keystrokes
 nnoremap ; :
-nnoremap : ;
 xnoremap ; :
 
 " switch between current and prev file
@@ -163,7 +162,6 @@ nnoremap p p=`]
 nnoremap c "ac
 nnoremap C "aC
 nnoremap ; :
-nnoremap : ;
 xnoremap ; :
 
 " switch between current and prev file
@@ -373,10 +371,10 @@ augroup _files
   autocmd!
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
   autocmd FileType python setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
-  " autocmd FileType python setlocal suffixadd+=.py
+  " autocmd FileType python setlocal suffixesadd+=.py
   " help gf find files missing extentions
-  " autocmd FileType go setlocal suffixadd+=.go
-  autocmd FileType yaml setlocal suffixadd+=.yml
+  " autocmd FileType go setlocal suffixesadd+=.go
+  autocmd FileType yaml setlocal suffixesadd+=.yml
   autocmd FileType make setlocal sw=4 ts=4 noet sts=4 tw=0 nowrap autoindent nolisp
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd filetype * :call <SID>mySyntax()
@@ -395,6 +393,12 @@ augroup _init
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 800000 | setlocal syntax=OFF nowrap noundofile noswapfile foldmethod=manual | endif
   autocmd BufEnter * silent! set formatoptions=qnlj
   autocmd BufEnter * :call <SID>mySyntax()
+augroup END
+
+augroup _clean
+  " clean empty lines at end of file
+  autocmd!
+  autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 augroup END
 
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
@@ -423,11 +427,19 @@ inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\""
 inoremap <expr> ` strpart(getline('.'), col('.')-1, 1) == "\`" ? "\<Right>" : "\`"
+
+augroup _clean
+  " clean empty lines at end of file
+  autocmd!
+  autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
+augroup END
+
 augroup _quickfix
   autocmd!
   autocmd QuickFixCmdPost [^l]* copen 6 | nnoremap <buffer> <CR> <CR>
   autocmd QuickFixCmdPost l* lwindow 6 | nnoremap <buffer> <CR> <CR>
 augroup END
+
 nnoremap s" ciw"<c-r><c-p>""
 nnoremap s' ciw'<c-r><c-p>"'
 nnoremap <c-j> <C-W><C-J>
