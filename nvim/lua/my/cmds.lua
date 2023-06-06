@@ -69,8 +69,8 @@ c({
 
 -- auto source snippets file
 c("BufWritePost", {
-	pattern = "snippet.lua",
-	command = [[:luafile %]],
+	pattern = "*.snippet",
+	command = [[:SnippyReload<CR>]],
 	group = mygrp,
 })
 
@@ -82,7 +82,24 @@ c("BufWritePre", {
 	end,
 })
 
+-- auto create dirs when saving files
+c("BufWritePre", {
+	group = vim.api.nvim_create_augroup("write_and_clean_empty_lines", { clear = true }),
+  command = [[:%s#\($\n\s*\)\+\%$##e]]
+})
+
 c({ "BufWritePre" }, {
+	group = vim.api.nvim_create_augroup("clear_trailing_spaces", { clear = true }),
+	pattern = { "*.py", "*.yml", "*.cfg" },
+	callback = function()
+     local save_cursor = vim.fn.getcurpos()
+    vim.cmd([[silent! %s/\s\+$//e]])
+    vim.fn.setpos('.', save_cursor)
+	end,
+})
+
+c({ "BufWritePre" }, {
+	group = vim.api.nvim_create_augroup("terraform", { clear = true }),
 	pattern = { "*.tf", "*.tfvars" },
 	callback = function()
 		vim.lsp.buf.format()
@@ -108,29 +125,6 @@ c("ModeChanged", {
   group = mygrp,
   desc = "Highlighting matched words when searching",
 })
-
--- remove this if there's an issue
--- c({ "BufReadPost", "BufNewFile" }, {
---   once = true,
---   callback = function()
---     if vim.fn.has "wsl" == 1 then
---       -- Set a compatible clipboard manager
---       vim.g.clipboard = {
---         copy = {
---           ["+"] = "win32yank.exe -i --crlf",
---           ["*"] = "win32yank.exe -i --crlf",
---         },
---         paste = {
---           ["+"] = "win32yank.exe -o --lf",
---           ["*"] = "win32yank.exe -o --lf",
---         },
---       }
---     end
---     vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
---   end,
---   group = augroup,
---   desc = "Lazy load clipboard",
--- })
 
 c("TermOpen", {
 	callback = function()

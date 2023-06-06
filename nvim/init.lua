@@ -1,7 +1,7 @@
 --- Follow the white Rabbit...   🐇
 
 --[[
--- pratice ge, jump back do end of word
+-- ge, jump back do end of word
 -- xxd -psd (get hex codes to use with wezterm)
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
