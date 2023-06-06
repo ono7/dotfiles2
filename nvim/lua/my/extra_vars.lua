@@ -326,10 +326,15 @@ function! <SID>RemoveWhiteSpace()
   let c = col(".")
   %s/\s\+$//e
   call cursor(l, c)
-  update
 endfunction
-
 command! RemoveWhiteSpace call <SID>RemoveWhiteSpace()
+
+fun! <SID>TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
 
 function! <SID>mySyntax()
   syntax match myCyanBold /[*.,:;]/
@@ -354,6 +359,7 @@ augroup END
 augroup _write
   autocmd!
   autocmd BufWritePre * silent! :retab!
+  autocmd BufWritePre * call <SID>TrimWhitespace()
 augroup END
 
 augroup _resize
