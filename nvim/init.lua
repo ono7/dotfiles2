@@ -173,7 +173,9 @@ end
 -- handles ""
 k('i', '"', function()
   local p, n = prevAndNextChar()
-  if n == '"' then
+  if sm(p, '\\') then
+    return '"'
+  elseif n == '"' then
     return '<Right>'
   elseif sm(p, '[%a]') then
     return '"'
@@ -190,7 +192,9 @@ end
 -- handles ``
 k('i', '`', function()
   local p, n = prevAndNextChar()
-  if n == '`' then
+  if sm(p, '\\') then
+    return "`"
+  elseif n == '`' then
     return '<Right>'
   elseif sm(n, rightBrackets) then
     return '``<Left>'
@@ -206,8 +210,12 @@ end
 -- handles ''
 k('i', "'", function()
   local p, n = prevAndNextChar()
-  if n == "'" then
+  if sm(p, '\\') then
+    return "'"
+  elseif n == "'" then
     return '<Right>'
+  elseif sm(p, '[%a\\]') then
+    return "'"
   elseif sm(n, rightBrackets) then
     return "''<Left>"
   elseif testQuotes(p, n) then
