@@ -239,7 +239,9 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if n == '[' then
+  if sm(p, '\\') then
+    return '['
+  elseif n == '[' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '[]<Left>'
@@ -264,7 +266,9 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if n == '{' then
+  if sm(p, '\\') then
+    return '{'
+  elseif n == '{' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '{}<Left>'
@@ -292,7 +296,9 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if n == '(' then
+  if sm(p, '\\') then
+    return '('
+  elseif n == '(' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '()<Left>'
