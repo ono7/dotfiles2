@@ -21,9 +21,7 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 -- "0 - holds recent yanked text
 -- "1 - holds recent deleted text
 -- stty sane // fix bad terminal
--- z + enter, moves buffer to top of screen
 -- count number of matches %s/test//gn (gn n=no op), will show the number of matches
--- is/as = inside sentence, around sentence, ap/ip = around paragraph vs inside paragraph
 
 --]]
 vim.cmd([[set termguicolors]])
@@ -479,13 +477,13 @@ local packages = {
   "plugins.neotree",
   "plugins.surround",
   "plugins.theme_catppuccin", -- 2
-  -- "plugins.snippet",
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
   "plugins.null_ls",
   "plugins.gitsigns",
   -- "plugins.harpoon",
+  -- "plugins.snippet",
   -- "plugins.core_dap",
   -- "plugins.dap_adapters",
 }
@@ -549,5 +547,3 @@ end
 -- vim.o.guicursor = "" -- uncomment for beam cursor
 vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
 vim.o.mouse = "n"
-vim.cmd([[hi! link FidgetTask Comment]])
-vim.cmd([[hi! link FidgetTitle Title]])

@@ -20,9 +20,9 @@ configs.setup({
     },
     disable = function(lang, buf)
       local max_filesize = 500 * 1024   -- 100 KB
-      print("treesitter buffer > 500KB check plugins/treesitter.lua")
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
       if ok and stats and stats.size > max_filesize then
+        print("max stats.size > 500KB lua, check max size in plugins/treesitter.lua")
         return true
       end
     end,
