@@ -33,6 +33,8 @@ P = function(x)
   return x
 end
 
+vim.opt.commentstring="#%s"
+
 vim.g.markdown_fold_style = "nested"
 
 require("my.disabled")
@@ -228,7 +230,9 @@ end
 
 
 local function testBrackets(prevChar, nextChar)
-  if not pair_map[nextChar] then
+  if sm(nextChar, '[%w]') then
+    return false
+  elseif not pair_map[nextChar] then
     return true
   elseif sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[%S]') and sm(nextChar, quotesAndBrackets) then
     return true
