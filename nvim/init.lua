@@ -202,7 +202,7 @@ local function prevAndNextChar()
 end
 
 local function testQuotes(prevChar, nextChar)
-  if nextChar:match('%S') or prevChar:match('[%a%d%p]') then
+  if nextChar ~= '' or prevChar:match('[%a%d%p]') then
     return true
   end
   return false
@@ -221,9 +221,8 @@ k('i', '"', function()
     return '""<Left>'
   elseif testQuotes(p, n) then
     return '"'
-  else
-    return '""<Left>'
   end
+  return '""<Left>'
 end
 , { expr = true })
 
@@ -238,9 +237,8 @@ k('i', '`', function()
     return '``<Left>'
   elseif testQuotes(p, n) then
     return '`'
-  else
-    return '``<Left>'
   end
+  return '``<Left>'
 end
 , { expr = true })
 
@@ -257,23 +255,22 @@ k('i', "'", function()
     return "''<Left>"
   elseif testQuotes(p, n) then
     return "'"
-  else
-    return "''<Left>"
   end
+  return "''<Left>"
 end
 , { expr = true })
 
 
-local function testBrackets(prevChar, nextChar)
-  if alphabetTable[nextChar] then
-    return false
-  elseif not pair_map[nextChar] then
-    return true
-  elseif prevChar:match('[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
-    return true
-  end
-  return false
-end
+-- local function testBrackets(prevChar, nextChar)
+--   if alphabetTable[nextChar] then
+--     return false
+--   elseif not pair_map[nextChar] then
+--     return true
+--   elseif prevChar:match('[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
+--     return true
+--   end
+--   return false
+-- end
 
 -- handle []
 k('i', '[', function()
@@ -282,13 +279,12 @@ k('i', '[', function()
     return '['
   elseif n == '[' then
     return '<Right>'
-  elseif testBrackets(p, n) then
-    return '[]<Left>'
-  elseif n ~= '' then
-    return '['
-  else
-    return '[]<Left>'
+    -- elseif testBrackets(p, n) then
+    --   return '[]<Left>'
+    -- elseif n ~= '' then
+    --   return '['
   end
+  return '[]<Left>'
 end
 , { expr = true })
 
@@ -296,9 +292,8 @@ k('i', ']', function()
   local _, n = prevAndNextChar()
   if n == ']' then
     return '<Right>'
-  else
-    return ']'
   end
+  return ']'
 end
 , { expr = true })
 
@@ -309,13 +304,12 @@ k('i', '{', function()
     return '{'
   elseif n == '{' then
     return '<Right>'
-  elseif testBrackets(p, n) then
-    return '{}<Left>'
-  elseif n ~= '' then
-    return '{'
-  else
-    return '{}<Left>'
+    -- elseif testBrackets(p, n) then
+    --   return '{}<Left>'
+    -- elseif n ~= '' then
+    --   return '{'
   end
+  return '{}<Left>'
 end
 , { expr = true })
 
@@ -323,9 +317,8 @@ k('i', '}', function()
   local _, n = prevAndNextChar()
   if n == '}' then
     return '<Right>'
-  else
-    return '}'
   end
+  return '}'
 end
 , { expr = true })
 
@@ -336,14 +329,12 @@ k('i', '(', function()
     return '('
   elseif n == '(' then
     return '<Right>'
-  elseif testBrackets(p, n) then
-    return '()<Left>'
-    -- elseif n:match('%S') then
-  elseif n ~= '' then
-    return '('
-  else
-    return '()<Left>'
+    -- elseif testBrackets(p, n) then
+    --   return '()<Left>'
+    -- elseif n ~= '' then
+    --   return '('
   end
+  return '()<Left>'
 end
 , { expr = true })
 
@@ -351,9 +342,8 @@ k('i', ')', function()
   local _, n = prevAndNextChar()
   if n == ')' then
     return '<Right>'
-  else
-    return ')'
   end
+  return ')'
 end
 , { expr = true })
 
@@ -361,9 +351,8 @@ k('i', '>', function()
   local _, n = prevAndNextChar()
   if n == '>' then
     return '<Right>'
-  else
-    return '>'
   end
+  return '>'
 end
 , { expr = true })
 
