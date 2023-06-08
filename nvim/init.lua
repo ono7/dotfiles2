@@ -165,16 +165,22 @@ local r_pair_map = {
   ["`"] = "`",
 }
 
+local all_pair_map = {}
+
+for _, v in ipairs(pair_map) do
+  table.insert(all_pair_map, v)
+end
+
+for _, v in ipairs(r_pair_map) do
+  table.insert(all_pair_map, v)
+end
+
 local alphabetTable = {}
 
 for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   local lowercaseKey = string.char(ascii)
   alphabetTable[lowercaseKey] = true
-end
-
-for lowercaseKey, _ in pairs(alphabetTable) do
-  local uppercaseKey = string.upper(lowercaseKey)
-  alphabetTable[uppercaseKey] = true
+  alphabetTable[string.upper(lowercaseKey)] = true
 end
 
 for digit = 0, 9 do
@@ -182,14 +188,20 @@ for digit = 0, 9 do
   alphabetTable[digitKey] = true
 end
 
+-- local function prevAndNextChar()
+--   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
+--       vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+-- end
+
 local function prevAndNextChar()
-  -- return prevChar, nextChar in relation to current cursor position
-  return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
-      vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  return line:sub(col - 1, col - 1), line:sub(col, col)
 end
 
-local rightBrackets = '[})%]>]'
-local quotesAndBrackets = '[\'"`})%]>]'
+-- local rightBrackets = '[})%]>]'
+-- local quotesAndBrackets = '[\'"`})%]>]'
+
 local sm = string.match
 
 local function testQuotes(prevChar, nextChar)
@@ -208,7 +220,6 @@ k('i', '"', function()
     return '<Right>'
   elseif alphabetTable[p] then
     return '"'
-    -- elseif sm(n, rightBrackets) then
   elseif r_pair_map[n] then
     return '""<Left>'
   elseif testQuotes(p, n) then
@@ -226,7 +237,6 @@ k('i', '`', function()
     return "`"
   elseif n == '`' then
     return '<Right>'
-  -- elseif sm(n, rightBrackets) then
   elseif r_pair_map[n] then
     return '``<Left>'
   elseif testQuotes(p, n) then
@@ -246,7 +256,6 @@ k('i', "'", function()
     return '<Right>'
   elseif alphabetTable[p] then
     return "'"
-  -- elseif sm(n, rightBrackets) then
   elseif r_pair_map[n] then
     return "''<Left>"
   elseif testQuotes(p, n) then
@@ -259,14 +268,11 @@ end
 
 
 local function testBrackets(prevChar, nextChar)
-  -- if sm(nextChar, '[%w]') then
   if alphabetTable[nextChar] then
     return false
   elseif not pair_map[nextChar] then
     return true
-    -- elseif sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[%S]') and sm(nextChar, quotesAndBrackets) then
-  -- elseif sm(prevChar, '[%S]') and (sm(prevChar, rightBrackets) or sm(nextChar, quotesAndBrackets)) then
-  elseif sm(prevChar, '[%S]') and (r_pair_map[prevChar] or sm(nextChar, quotesAndBrackets)) then
+  elseif sm(prevChar, '[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
     return true
   end
   return false
@@ -325,9 +331,6 @@ k('i', '}', function()
   end
 end
 , { expr = true })
-
--- todo fix this:  ()"trstr"
--- if there is a space before, we should return 1 bracket not two
 
 -- handle ()
 k('i', '(', function()
