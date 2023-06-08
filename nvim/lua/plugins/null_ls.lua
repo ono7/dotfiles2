@@ -26,7 +26,6 @@ null_ls.setup({
       command = MYHOME .. "/.virtualenvs/prod3/bin/python3",
       args = { "-m", "black", "--fast", "--line-length", "88", "-" },
       stdin = true
-      -- extra_args = { "--fast" }
     }
     ),
     format.prettier.with({
