@@ -106,20 +106,18 @@ return {
 			action = wezterm.action.SendString("\x02\x7c"),
 		},
 	},
-	-- color_scheme = "theme_numetal", -- 1st pick
 	front_end = "WebGpu",
-	-- color_scheme = "Catppuccin Frappe",
-	-- color_scheme = "Catppuccin Macchiato",
-	-- color_scheme = "Catppuccin Mocha",
+	-- color_scheme = "theme_numetal", -- 1st pick
 	-- color_scheme = "Tokyo Night Storm (Gogh)",
-	color_scheme = "tokyonight_storm",
+	-- color_scheme = "tokyonight_storm",  -- current best
+	-- color_scheme = "Galaxy",
+  color_scheme = 'Harmonic16 Dark (base16)',
 	font = wezterm.font({ family = "MonoLisa Liga" }),
 	-- freetype_load_target = "HorizontalLcd",
 	cursor_blink_rate = 350,
 	-- default_cursor_style = "BlinkingBlock",
 	-- freetype_load_target = 'Light',
 	-- freetype_render_target = 'HorizontalLcd',
-	-- color_scheme = "_bash (Gogh)" -- 4.11.3 b ( colors not working correctly )
 	font_size = 18,
 	line_height = 1.4,
 	underline_position = -8,

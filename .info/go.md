@@ -705,3 +705,16 @@ func main() {
     `104 = h` , 104 is the rune in go
 
     - rune literals are the actual characters `104 = h`, h is the rune leteral
+
+# channels
+
+```go
+myCh := make(ch int)
+
+myCh <- 6  // sends int 6 to the channel
+
+varA := <- myCh  // save output from myCh to varA
+
+<- myCha // discards whatever comes out of the channel
+
+```
