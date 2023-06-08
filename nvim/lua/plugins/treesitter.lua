@@ -18,8 +18,13 @@ configs.setup({
     rainbow = {
       max_file_lines = 5000,
     },
-    disable = function(lang, bufnr)
-      return vim.fn.getfsize(vim.api.nvim_buf_get_name(bufnr)) > 1048576
+    disable = function(lang, buf)
+      local max_filesize = 500 * 1024   -- 100 KB
+      print("treesitter buffer > 500KB check plugins/treesitter.lua")
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
     end,
   },
   ensure_installed = {
