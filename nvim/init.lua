@@ -33,7 +33,7 @@ P = function(x)
   return x
 end
 
-vim.opt.commentstring="#%s"
+vim.opt.commentstring = "#%s"
 
 vim.g.markdown_fold_style = "nested"
 
@@ -155,6 +155,33 @@ local pair_map = {
   ["`"] = "`",
 }
 
+local r_pair_map = {
+  [")"] = "(",
+  ["]"] = "[",
+  ["}"] = "{",
+  [">"] = "<",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`",
+}
+
+local alphabetTable = {}
+
+for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
+  local lowercaseKey = string.char(ascii)
+  alphabetTable[lowercaseKey] = true
+end
+
+for lowercaseKey, _ in pairs(alphabetTable) do
+  local uppercaseKey = string.upper(lowercaseKey)
+  alphabetTable[uppercaseKey] = true
+end
+
+for digit = 0, 9 do
+  -- local digitKey = tostring(digit)
+  alphabetTable[digit] = true
+end
+
 local function prevAndNextChar()
   -- return prevChar, nextChar in relation to current cursor position
   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
@@ -175,13 +202,14 @@ end
 -- handles ""
 k('i', '"', function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return '"'
   elseif n == '"' then
     return '<Right>'
-  elseif sm(p, '[%a]') then
+  elseif alphabetTable[p] then
     return '"'
-  elseif sm(n, rightBrackets) then
+    -- elseif sm(n, rightBrackets) then
+  elseif r_pair_map[n] then
     return '""<Left>'
   elseif testQuotes(p, n) then
     return '"'
@@ -194,11 +222,12 @@ end
 -- handles ``
 k('i', '`', function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return "`"
   elseif n == '`' then
     return '<Right>'
-  elseif sm(n, rightBrackets) then
+  -- elseif sm(n, rightBrackets) then
+  elseif r_pair_map[n] then
     return '``<Left>'
   elseif testQuotes(p, n) then
     return '`'
@@ -208,17 +237,17 @@ k('i', '`', function()
 end
 , { expr = true })
 
-
 -- handles ''
 k('i', "'", function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return "'"
   elseif n == "'" then
     return '<Right>'
-  elseif sm(p, '[%a\\]') then
+  elseif alphabetTable[p] then
     return "'"
-  elseif sm(n, rightBrackets) then
+  -- elseif sm(n, rightBrackets) then
+  elseif r_pair_map[n] then
     return "''<Left>"
   elseif testQuotes(p, n) then
     return "'"
@@ -230,11 +259,14 @@ end
 
 
 local function testBrackets(prevChar, nextChar)
-  if sm(nextChar, '[%w]') then
+  -- if sm(nextChar, '[%w]') then
+  if alphabetTable[nextChar] then
     return false
   elseif not pair_map[nextChar] then
     return true
-  elseif sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[%S]') and sm(nextChar, quotesAndBrackets) then
+    -- elseif sm(prevChar, '[%S]') and sm(prevChar, rightBrackets) or sm(prevChar, '[%S]') and sm(nextChar, quotesAndBrackets) then
+  -- elseif sm(prevChar, '[%S]') and (sm(prevChar, rightBrackets) or sm(nextChar, quotesAndBrackets)) then
+  elseif sm(prevChar, '[%S]') and (r_pair_map[prevChar] or sm(nextChar, quotesAndBrackets)) then
     return true
   end
   return false
@@ -243,7 +275,7 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return '['
   elseif n == '[' then
     return '<Right>'
@@ -270,7 +302,7 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return '{'
   elseif n == '{' then
     return '<Right>'
@@ -300,7 +332,7 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if sm(p, '\\') then
+  if p == '\\' then
     return '('
   elseif n == '(' then
     return '<Right>'
@@ -348,18 +380,6 @@ k('i', '>', function()
   end
 end
 , { expr = true })
-
--- k('i', ' ', function()
---   local p, n = prevAndNextChar()
---   if sm(n, rightBrackets) then
---     return '<space><space><left>'
---   else
---     return '<space>'
---   end
--- end
--- , { expr = true })
-
-
 
 k("i", "<BS>", function()
   -- compare ')' == ')'
