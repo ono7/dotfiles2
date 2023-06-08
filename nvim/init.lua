@@ -196,7 +196,9 @@ end
 local function prevAndNextChar()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
-  return line:sub(col - 1, col - 1), line:sub(col, col)
+  local prevChar = line:sub(col - 1, col - 1)
+  local nextChar = line:sub(col, col)
+  return prevChar, nextChar
 end
 
 local function testQuotes(prevChar, nextChar)
@@ -276,13 +278,13 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '['
   elseif n == '[' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '[]<Left>'
-  elseif n:match('%S') then
+  elseif n ~= '' then
     return '['
   else
     return '[]<Left>'
@@ -303,13 +305,13 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '{'
   elseif n == '{' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '{}<Left>'
-  elseif n:match('%S') then
+  elseif n ~= '' then
     return '{'
   else
     return '{}<Left>'
@@ -330,13 +332,14 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '('
   elseif n == '(' then
     return '<Right>'
   elseif testBrackets(p, n) then
     return '()<Left>'
-  elseif n:match('%S') then
+    -- elseif n:match('%S') then
+  elseif n ~= '' then
     return '('
   else
     return '()<Left>'
