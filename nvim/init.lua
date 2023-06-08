@@ -178,8 +178,8 @@ for lowercaseKey, _ in pairs(alphabetTable) do
 end
 
 for digit = 0, 9 do
-  -- local digitKey = tostring(digit)
-  alphabetTable[digit] = true
+  local digitKey = tostring(digit)
+  alphabetTable[digitKey] = true
 end
 
 local function prevAndNextChar()
