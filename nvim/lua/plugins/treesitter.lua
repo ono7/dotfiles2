@@ -30,6 +30,7 @@ configs.setup({
     "typescript",
     "markdown",
     "terraform",
+    "comment",
     "json",
     "lua",
     "make",
