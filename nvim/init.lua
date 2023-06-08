@@ -165,6 +165,12 @@ local r_pair_map = {
   ["`"] = "`",
 }
 
+local quotes = {
+  ['"'] = true,
+  ["'"] = true,
+  ['`'] = true,
+}
+
 local all_pair_map = {}
 
 for _, v in ipairs(pair_map) do
@@ -183,15 +189,9 @@ for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   alphabetTable[string.upper(lowercaseKey)] = true
 end
 
-for digit = 0, 9 do
-  local digitKey = tostring(digit)
-  alphabetTable[digitKey] = true
+for digit = 48, 57 do -- ASCII values for '0' to '9'
+  alphabetTable[string.char(digit)] = true
 end
-
--- local function prevAndNextChar()
---   return vim.api.nvim_get_current_line():sub(vim.fn.col('.') - 1, vim.fn.col('.') - 1),
---       vim.api.nvim_get_current_line():sub(vim.fn.col('.'), vim.fn.col('.'))
--- end
 
 local function prevAndNextChar()
   local line = vim.api.nvim_get_current_line()
@@ -199,13 +199,8 @@ local function prevAndNextChar()
   return line:sub(col - 1, col - 1), line:sub(col, col)
 end
 
--- local rightBrackets = '[})%]>]'
--- local quotesAndBrackets = '[\'"`})%]>]'
-
-local sm = string.match
-
 local function testQuotes(prevChar, nextChar)
-  if sm(nextChar, '%S') or sm(prevChar, '[%a%d%p]') then
+  if nextChar:match('%S') or prevChar:match('[%a%d%p]') then
     return true
   end
   return false
@@ -272,7 +267,7 @@ local function testBrackets(prevChar, nextChar)
     return false
   elseif not pair_map[nextChar] then
     return true
-  elseif sm(prevChar, '[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
+  elseif prevChar:match('[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
     return true
   end
   return false
@@ -287,7 +282,7 @@ k('i', '[', function()
     return '<Right>'
   elseif testBrackets(p, n) then
     return '[]<Left>'
-  elseif sm(n, '%S') then
+  elseif n:match('%S') then
     return '['
   else
     return '[]<Left>'
@@ -314,7 +309,7 @@ k('i', '{', function()
     return '<Right>'
   elseif testBrackets(p, n) then
     return '{}<Left>'
-  elseif sm(n, '%S') then
+  elseif n:match('%S') then
     return '{'
   else
     return '{}<Left>'
@@ -341,7 +336,7 @@ k('i', '(', function()
     return '<Right>'
   elseif testBrackets(p, n) then
     return '()<Left>'
-  elseif sm(n, '%S') then
+  elseif n:match('%S') then
     return '('
   else
     return '()<Left>'
@@ -358,21 +353,6 @@ k('i', ')', function()
   end
 end
 , { expr = true })
-
--- handle < >
--- k('i', '<', function()
---   local p, n = prevAndNextChar()
---   if n == '<' then
---     return '<Right>'
---   elseif testBrackets(p, n) then
---     return '<><Left>'
---   elseif sm(n, '%S') then
---     return '<'
---   else
---     return '<><Left>'
---   end
--- end
--- , { expr = true })
 
 k('i', '>', function()
   local _, n = prevAndNextChar()
