@@ -258,18 +258,6 @@ k('i', "'", function()
 end
 , { expr = true })
 
-
--- local function testBrackets(prevChar, nextChar)
---   if alphabetTable[nextChar] then
---     return false
---   elseif not pair_map[nextChar] then
---     return true
---   elseif prevChar:match('[%S]') and (r_pair_map[prevChar] or pair_map[nextChar]) then
---     return true
---   end
---   return false
--- end
-
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
