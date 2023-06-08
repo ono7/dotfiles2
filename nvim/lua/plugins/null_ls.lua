@@ -1,5 +1,7 @@
 local status_ok, null_ls = pcall(require, "null-ls")
 
+local MYHOME = os.getenv("HOME")
+
 if not status_ok then
   print("null-ls not loaded - plugins/null_ls.lua")
   return
@@ -20,7 +22,13 @@ null_ls.setup({
       filetypes = { "text" },
     }),
     -- pip install black pylint
-    format.black.with({ extra_args = { "--fast" } }),
+    format.black.with({
+      command = MYHOME .. "/.virtualenvs/prod3/bin/python3",
+      args = { "-m", "black", "--fast", "--line-length", "88", "-" },
+      stdin = true
+      -- extra_args = { "--fast" }
+    }
+    ),
     format.prettier.with({
       filetypes = {
         "javascript",
