@@ -30,9 +30,9 @@ require("lazy").setup({
   "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
-  {'norcalli/nvim-colorizer.lua', config = function()
-    require'colorizer'.setup()
-  end},
+  -- {'norcalli/nvim-colorizer.lua', config = function()
+  --   require'colorizer'.setup()
+  -- end},
   {
     "neovim/nvim-lspconfig",
     dependencies = {
