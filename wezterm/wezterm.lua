@@ -113,19 +113,19 @@ return {
   -- color_scheme = "Galaxy",
   -- color_scheme                 = 'Harmonic16 Dark (base16)',
   color_scheme                 = 'mine',
-  color_schemes                = {
+  color_schemes                              = {
     ['mine'] = {
+      -- background = "#222932",
       background = "#202933",
-      -- background = "#1d252c",
-      foreground = "#bbc2ca",
+      foreground = "#dee6f0",
       cursor_fg = "#323a4c",
       cursor_bg = "#ffffff",
       cursor_border = "#ffcc66",
       selection_bg = "#33415e",
       selection_fg = "#cbccc6",
-      ansi = { "#191e2a", "#e27e8d", "#A8D699", "#fad07b", "#8EAAF4", "#cfbafa", "#c0f0f0", "#c7c7c7" },
-      brights = { "#686868", "#e27e8d", "#A8D699", "#ffd580", "#8EAAF4", "#d4bfff", "#c0f0f0", "#ffffff", }
-    },
+      ansi = { "#192028", "#e27e8d", "#8ec596", "#fad07b", "#8EAAF4", "#c6a0f6", "#c0f0f0", "#c7c7c7" },
+      brights = { "#686868", "#e27e8d", "#8ec596", "#ffd580", "#8EAAF4", "#b7bdf8", "#c0f0f0", "#ffffff", }
+    }
   },
   font                         = wezterm.font({ family = "MonoLisa Liga" }),
   -- freetype_load_target = "HorizontalLcd",
