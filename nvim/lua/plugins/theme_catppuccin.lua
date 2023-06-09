@@ -9,7 +9,7 @@ require("catppuccin").setup({
   },
   transparent_background = true,
   show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-  term_colors = false,
+  term_colors = true,
   dim_inactive = {
     enabled = false,
     shade = "dark",
@@ -33,7 +33,7 @@ require("catppuccin").setup({
     operators = {},
   },
   color_overrides = {},
-  custom_highlights = {},
+  -- custom_highlights = {},
   integrations = {
     cmp = true,
     gitsigns = true,
@@ -84,14 +84,23 @@ require("catppuccin").setup({
 vim.cmd.colorscheme("catppuccin")
 
 -- setup must be called before loading
+vim.api.nvim_set_hl(0, "ErrorMsg", { fg = "#e27e8d" })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#4D5967" })
+vim.api.nvim_set_hl(0, "Normal", { fg = "#b7c5d3" })
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "Comment" })
+vim.api.nvim_set_hl(0, "Function", { fg = "#8EAAF4" })
 vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
-vim.api.nvim_set_hl(0, "TreesitterContext", { link = "DiffText" })
+-- vim.api.nvim_set_hl(0, "TreesitterContext", { link = "DiffText" })
+vim.api.nvim_set_hl(0, "Search", { bg = "#33415e" })
+vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#33415e" })
 vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 vim.api.nvim_set_hl(0, "DiffDelete", { link = "NonText" })
 -- vim.api.nvim_set_hl(0, "@keyword.operator", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#cba6f7", italic = true })
 vim.api.nvim_set_hl(0, "@method.call.go", { link = "Normal" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f38ba8", bold = true })
-vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2f303d" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#b7c5d3", bold = true })
+vim.api.nvim_set_hl(0, "String", { fg = "#A8D699" })
 vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
+vim.api.nvim_set_hl(0, "@field", {})
+vim.api.nvim_set_hl(0, "@variable.builtin.python", {})

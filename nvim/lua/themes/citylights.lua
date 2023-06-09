@@ -2,15 +2,15 @@ local theme = {}
 
 -- Color Palette
 theme.palette = {
-  bg = "#181B21",
+  -- bg = "#222932",
   fg = "#ABB2BF",
   gray = "#5C6370",
   red = "#E06C75",
   yellow = "#E5C07B",
-  green = "#98C379",
+  green = "#A8D699",
   cyan = "#56B6C2",
   blue = "#61AFEF",
-  purple = "#C678DD",
+  purple = "#cfbafa",
   orange = "#D19A66",
 }
 
