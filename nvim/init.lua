@@ -261,8 +261,10 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  if p == '\\' then
     return '['
+  elseif p:match('%S') and quotes[n] then
+    return '[]<Left>'
   elseif n == '[' then
     return '<Right>'
     -- elseif testBrackets(p, n) then
@@ -286,8 +288,10 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  if p == '\\' then
     return '{'
+  elseif p:match('%S') and quotes[n] then
+    return '{}<Left>'
   elseif n == '{' then
     return '<Right>'
     -- elseif testBrackets(p, n) then
@@ -311,8 +315,10 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  if p == '\\' then
     return '('
+  elseif p:match('%S') and quotes[n] then
+    return '()<Left>'
   elseif n == '(' then
     return '<Right>'
     -- elseif testBrackets(p, n) then
