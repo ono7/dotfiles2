@@ -115,7 +115,7 @@ return {
   color_scheme                 = 'mine',
   color_schemes                = {
     ['mine'] = {
-      background = "#222932",
+      background = "#202933",
       -- background = "#1d252c",
       foreground = "#d8e2ec",
       cursor_fg = "#323a4c",
