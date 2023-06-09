@@ -474,7 +474,7 @@ local packages = {
   "plugins.neotree",
   "plugins.surround",
   "plugins.theme_catppuccin", -- 2
-  -- "themes.citylights",
+  -- "themes.tokyolights",
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",

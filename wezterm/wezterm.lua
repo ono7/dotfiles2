@@ -133,7 +133,7 @@ return {
 	},
 	-- window_background_image = "/Users/jlima/Documents/1.jpg",
 	-- window_background_opacity = 0.90,
-	window_background_opacity = 0.95,
+	-- window_background_opacity = 0.95,
 	macos_window_background_blur = 20,
 	-- window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_NS_VISUAL_EFFECT_MATERIAL_BLUR", -- will blurr eventually
 	window_decorations = "RESIZE",
