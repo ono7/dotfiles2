@@ -143,6 +143,17 @@ k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
 
+local ret_single = {
+  ["("] = true,
+  ["["] = true,
+  ["{"] = true,
+  ["<"] = true,
+  ["'"] = true,
+  ['"'] = true,
+  ["`"] = true,
+  ["\\"] = true,
+}
+
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -180,6 +191,7 @@ for _, v in ipairs(r_pair_map) do
 end
 
 local alphabetTable = {}
+local alpha_and_quotes = {}
 
 for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   local lowercaseKey = string.char(ascii)
@@ -190,6 +202,7 @@ end
 for digit = 48, 57 do -- ASCII values for '0' to '9'
   alphabetTable[string.char(digit)] = true
 end
+
 
 local function prevAndNextChar()
   local line = vim.api.nvim_get_current_line()
@@ -261,16 +274,12 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '['
   elseif p:match('%S') and quotes[n] then
     return '[]<Left>'
   elseif n == '[' then
     return '<Right>'
-    -- elseif testBrackets(p, n) then
-    --   return '[]<Left>'
-    -- elseif n ~= '' then
-    --   return '['
   end
   return '[]<Left>'
 end
@@ -288,16 +297,12 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '{'
   elseif p:match('%S') and quotes[n] then
     return '{}<Left>'
   elseif n == '{' then
     return '<Right>'
-    -- elseif testBrackets(p, n) then
-    --   return '{}<Left>'
-    -- elseif n ~= '' then
-    --   return '{'
   end
   return '{}<Left>'
 end
@@ -315,10 +320,8 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if p == '\\' then
+  if p == '\\' or quotes[n] then
     return '('
-  elseif p:match('%S') and quotes[n] then
-    return '()<Left>'
   elseif n == '(' then
     return '<Right>'
     -- elseif testBrackets(p, n) then
