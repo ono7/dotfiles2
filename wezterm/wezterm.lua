@@ -117,7 +117,7 @@ return {
     ['mine'] = {
       background = "#202933",
       -- background = "#1d252c",
-      foreground = "#d8e2ec",
+      foreground = "#bbc2ca",
       cursor_fg = "#323a4c",
       cursor_bg = "#ffffff",
       cursor_border = "#ffcc66",
