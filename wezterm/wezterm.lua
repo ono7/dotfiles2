@@ -113,10 +113,11 @@ return {
   -- color_scheme = "Galaxy",
   -- color_scheme                 = 'Harmonic16 Dark (base16)',
   color_scheme                 = 'mine',
-  color_schemes                              = {
+  color_schemes                = {
     ['mine'] = {
       -- background = "#222932",
-      background = "#202933",
+      -- background = "#202933",
+      background = "#222932",
       foreground = "#dee6f0",
       cursor_fg = "#323a4c",
       cursor_bg = "#ffffff",
@@ -130,7 +131,7 @@ return {
   font                         = wezterm.font({ family = "MonoLisa Liga" }),
   -- freetype_load_target = "HorizontalLcd",
   cursor_blink_rate            = 350,
-  default_cursor_style = "BlinkingBlock",
+  default_cursor_style         = "BlinkingBlock",
   -- freetype_load_target = 'Light',
   -- freetype_render_target = 'HorizontalLcd',
   font_size                    = 18,
@@ -165,5 +166,5 @@ return {
   --   && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
   --   && tic -x -o ~/.terminfo $tempfile \
   --   && rm $tempfile
-  term = "wezterm",
+  term                         = "wezterm",
 }

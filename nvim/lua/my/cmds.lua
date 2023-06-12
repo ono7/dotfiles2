@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd("BufRead", {
 
 -- set my fo options
 -- 2023-04-05 disabled... testing
+
 c({ "BufEnter" }, { pattern = "*.go", command = [[:LspStart]], group = mygrp })
 
 c("BufEnter", {

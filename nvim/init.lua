@@ -464,10 +464,10 @@ k("n", "<space><space>", "<c-^>")
 
 local packages = {
   "my.vars",
-  "my.cmds",
   "my.settings",
   "my.lazy",
   "plugins.lsp.mason", -- mason first, or lsp breaks
+  "my.cmds",
   "plugins.treesitter",
   "plugins.telescope",
   "plugins.navigator",
