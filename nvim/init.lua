@@ -468,7 +468,6 @@ local packages = {
   "my.lazy",
   "plugins.lsp.mason", -- mason first, or lsp breaks
   "my.cmds",
-  "plugins.treesitter",
   "plugins.telescope",
   "plugins.navigator",
   "plugins.neotree",
@@ -479,6 +478,7 @@ local packages = {
   "plugins.lsp.cmp",
   "plugins.null_ls",
   "plugins.gitsigns",
+  "plugins.treesitter",
 
   -- "plugins.harpoon",
   -- "plugins.snippet",
