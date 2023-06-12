@@ -65,15 +65,12 @@ if not mason_lspconfig_status then
 end
 
 local servers = {
-  -- clangd = {},
   gopls = {},
   pyright = {},
   -- yamlls = {},
   ansiblels = {},
   jsonls = {},
   terraformls = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
   lua_ls = {},
 }
 
@@ -94,8 +91,27 @@ local lsp_opts = {
     debounce_text_changes = 150,
   },
 }
+nvim_lsp.gopls.setup({
+  filetypes = { "go", "gomod" },
+  autostart = true,
+  root_dir = nvim_lsp.util.root_pattern("go.mod", "main.go"),
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
 
-local ts_opts = { root_dir = nvim_lsp.util.root_pattern("yarn.lock", "lerna.json", ".git") }
+-- local ts_opts = { root_dir = nvim_lsp.util.root_pattern("yarn.lock", "lerna.json", ".git") }
 -- nvim_lsp.tsserver.setup(handle_lsp(lsp_opts, ts_opts))
 
 local pyright_opts = {
@@ -132,23 +148,3 @@ nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
 nvim_lsp.jsonls.setup(handle_lsp(lsp_opts))
 
 -- nvim_lsp.omnisharp.setup(handle_lsp(lsp_opts))
-
-nvim_lsp.gopls.setup({
-  filetypes = { "go", "gomod" },
-  auto_start = true,
-  root_dir = nvim_lsp.util.root_pattern("go.mod", "main.go"),
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-})

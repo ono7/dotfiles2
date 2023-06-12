@@ -474,12 +474,12 @@ local packages = {
   "plugins.neotree",
   "plugins.surround",
   "plugins.theme_catppuccin", -- 2
-  -- "themes.tokyolights",
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
   "plugins.null_ls",
   "plugins.gitsigns",
+
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
