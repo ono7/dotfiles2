@@ -92,12 +92,7 @@ k("n", "<leader>cd", ":lcd %:h<CR>")
 -- paste over selection without overwriting clipboard
 k("v", "p", [["0p]])
 k("v", "P", [["0P]])
--- k("v", "y", [["0y]])
 k("v", "d", [["0d]])
-
--- move blocks of text with s-J s-K in visual mode
--- k("v", "J", ":m '>+1<CR>gv=gv")
--- k("v", "k", ":m '<-2<cr>gv=gv")
 
 k({ "n", "v" }, "J", "mzJ`z") -- when using J keep cursor to the right
 
@@ -109,8 +104,6 @@ k("n", "D", "d$", opt)
 k("n", "cp", "yap<S-}>p", opt)
 
 k("n", "U", "<c-r>", opt)
--- k("v", "y", "ygv<Esc>", opt) -- return to the cursor position after yank in v mode
--- k("i", "<m-bs>", "<c-w>", opt) -- handle this in alacritty with mod key in config
 
 --- show buffers ---
 -- k("n", "<leader>l", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
@@ -142,17 +135,6 @@ k("i", "<c-a>", "<c-o>^", silent)
 k("i", "(", "()<left>", opt)
 k("i", "{", "{}<left>", opt)
 k("i", "[", "[]<left>", opt)
-
-local ret_single = {
-  ["("] = true,
-  ["["] = true,
-  ["{"] = true,
-  ["<"] = true,
-  ["'"] = true,
-  ['"'] = true,
-  ["`"] = true,
-  ["\\"] = true,
-}
 
 local pair_map = {
   ["("] = ")",
@@ -336,7 +318,7 @@ k('i', '(', function()
   if p == '\\' or a[n] then
     return '('
   elseif p:match('%S') and q[n] then
-      return '()<Left>'
+    return '()<Left>'
   elseif n == '(' then
     return '<Right>'
   end
@@ -461,7 +443,6 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 k("n", "c", '"ac')
 k("n", "C", '"aC')
 
--- k("n", ";", ":")
 -- switch between current and prev file
 k("n", "<space><space>", "<c-^>")
 
