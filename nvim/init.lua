@@ -203,6 +203,13 @@ for digit = 48, 57 do -- ASCII values for '0' to '9'
   alphabetTable[string.char(digit)] = true
 end
 
+for key, v in pairs(alphabetTable) do
+  alpha_and_quotes[key] = v
+end
+
+for key, v in pairs(quotes) do
+  alpha_and_quotes[key] = v
+end
 
 local function prevAndNextChar()
   local line = vim.api.nvim_get_current_line()
@@ -274,9 +281,11 @@ end
 -- handle []
 k('i', '[', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  local a = alpha_and_quotes
+  local q = quotes
+  if p == '\\' or a[n] then
     return '['
-  elseif p:match('%S') and quotes[n] then
+  elseif p:match('%S') and q[n] then
     return '[]<Left>'
   elseif n == '[' then
     return '<Right>'
@@ -297,9 +306,11 @@ end
 -- handle {}
 k('i', '{', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  local a = alpha_and_quotes
+  local q = quotes
+  if p == '\\' or a[n] then
     return '{'
-  elseif p:match('%S') and quotes[n] then
+  elseif p:match('%S') and q[n] then
     return '{}<Left>'
   elseif n == '{' then
     return '<Right>'
@@ -320,14 +331,14 @@ end
 -- handle ()
 k('i', '(', function()
   local p, n = prevAndNextChar()
-  if p == '\\' or quotes[n] then
+  local a = alpha_and_quotes
+  local q = quotes
+  if p == '\\' or a[n] then
     return '('
+  elseif p:match('%S') and q[n] then
+      return '()<Left>'
   elseif n == '(' then
     return '<Right>'
-    -- elseif testBrackets(p, n) then
-    --   return '()<Left>'
-    -- elseif n ~= '' then
-    --   return '('
   end
   return '()<Left>'
 end
@@ -472,13 +483,13 @@ local packages = {
   "plugins.navigator",
   "plugins.neotree",
   "plugins.surround",
-  "plugins.theme_catppuccin", -- 2
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
   "plugins.null_ls",
   "plugins.gitsigns",
   "plugins.treesitter",
+  "plugins.theme_catppuccin", -- 2
 
   -- "plugins.harpoon",
   -- "plugins.snippet",
