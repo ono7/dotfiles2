@@ -4,12 +4,12 @@ snippet c
 	\`\`\`
 
 snippet ti
-  <${1}>${0:${VISUAL}}</${1}>
+  <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
 snippet ta
   <${1}>
     ${0:${VISUAL}}
-  </${1}>
+  </${1/\v(\w+).*/\1/g}>
 
 snippet img
   <img align="${1:left}" width="${2:500}" height="${3:400}" alt="${4:image}" src="${0}">

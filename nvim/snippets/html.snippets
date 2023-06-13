@@ -1,9 +1,9 @@
 extends markdown
 
 snippet ti
-  <${1}>${0:${VISUAL}}</${1}>
+  <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
 snippet ta
   <${1}>
     ${0:${VISUAL}}
-  </${1}>
+  </${1/\v(\w+).*/\1/g}>
