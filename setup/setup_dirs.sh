@@ -85,7 +85,7 @@ echo 'setting up terminfo (italics support!)'
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 
 tic -xo $HOME/.terminfo ~/.dotfiles/xterm-256color-italic.terminfo
-tic -xo $HOME/.terminfo ~/.dotfiles/tmux/tmux-256color.terminfo
+tic -xo $HOME/.terminfo ~/.dotfiles/tmux/wezterm.terminfo
 
 echo 'setting up directories and symlinks..done!'
 
