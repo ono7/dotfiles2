@@ -1,3 +1,11 @@
+snippet ti
+  <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
+
+snippet ta
+  <${1}>
+    ${0:${VISUAL}}
+  </${1/\v(\w+).*/\1/g}>
+
 snippet e
 	if err != nil {
 		${1:log.Fatal(err)}
