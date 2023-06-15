@@ -137,8 +137,3 @@ c("TermOpen", {
   -- group = augroup,
   desc = "Terminal Options",
 })
-
-
-vim.cmd[[
-autocmd BufReadPost * silent! normal! g`"zv
-]]
