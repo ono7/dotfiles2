@@ -19,7 +19,8 @@ snippet h1
   cleanup() {
     trap - SIGINT SIGTERM ERR EXIT
     # script cleanup here
-    exit 1
+    echo 'clean up done'
+    kill 0
   }
 
   msg() {

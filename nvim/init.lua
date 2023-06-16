@@ -265,7 +265,9 @@ k('i', '[', function()
   local p, n = prevAndNextChar()
   local a = alpha_and_quotes
   local q = quotes
-  if p == '\\' or a[n] then
+  if p:match('["\'`]') then
+    return '[]<Left>'
+  elseif p == '\\' or a[n] then
     return '['
   elseif p:match('%S') and q[n] then
     return '[]<Left>'
@@ -290,7 +292,9 @@ k('i', '{', function()
   local p, n = prevAndNextChar()
   local a = alpha_and_quotes
   local q = quotes
-  if p == '\\' or a[n] then
+  if p:match('["\'`]') then
+    return '{}<Left>'
+  elseif p == '\\' or a[n] then
     return '{'
   elseif p:match('%S') and q[n] then
     return '{}<Left>'
@@ -315,7 +319,9 @@ k('i', '(', function()
   local p, n = prevAndNextChar()
   local a = alpha_and_quotes
   local q = quotes
-  if p == '\\' or a[n] then
+  if p:match('["\'`]') then
+    return '()<Left>'
+  elseif p == '\\' or a[n] then
     return '('
   elseif p:match('%S') and q[n] then
     return '()<Left>'
