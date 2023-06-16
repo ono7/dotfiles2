@@ -30,9 +30,12 @@ require("lazy").setup({
   "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
-  {'norcalli/nvim-colorizer.lua', config = function()
-    require'colorizer'.setup()
-  end},
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -98,7 +101,12 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require("treesitter-context").setup()
+      require("treesitter-context").setup({
+        max_lines = 1,
+      })
+      vim.keymap.set("n", "[c", function()
+        require("treesitter-context").go_to_context()
+      end, { silent = true })
     end,
   },
   {

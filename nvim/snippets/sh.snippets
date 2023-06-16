@@ -4,6 +4,9 @@ snippet h
   # Author: Jose Lima
   # Date: `strftime("%Y-%m-%d %H:%M")` CST
 
+  trap "exit" INT TERM
+  trap "kill 0" EXIT
+
 snippet h1
   #!/usr/bin/env bash
   #
@@ -43,4 +46,3 @@ snippet until
   until [[ $1 ]]; do
     ${0:${VISUAL}}
   done
-

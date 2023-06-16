@@ -87,12 +87,17 @@ c("BufWritePre", {
 -- auto create dirs when saving files
 c("BufWritePre", {
   group = vim.api.nvim_create_augroup("write_and_clean_empty_lines", { clear = true }),
-  command = [[:%s#\($\n\s*\)\+\%$##e]]
+  pattern = { "*" },
+  callback = function()
+    local save_cursor = vim.fn.getcurpos()
+    vim.cmd [[:%s#\($\n\s*\)\+\%$##e]]
+    vim.fn.setpos('.', save_cursor)
+  end,
 })
 
 c({ "BufWritePre" }, {
   group = vim.api.nvim_create_augroup("clear_trailing_spaces", { clear = true }),
-  pattern = { "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua"},
+  pattern = { "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua" },
   callback = function()
     local save_cursor = vim.fn.getcurpos()
     vim.cmd([[silent! %s/\s\+$//e]])
