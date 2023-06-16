@@ -2,16 +2,14 @@ package main
 
 import (
 	"fmt"
-	"syscall"
-	// "io"
 	"log"
 	"net"
 	"net/http"
 	"os"
 	"os/signal"
-
-	// "path/filepath"
+	"path"
 	"strings"
+	"syscall"
 )
 
 const wwwRoot = "./logs"
@@ -44,17 +42,46 @@ func main() {
 
 func handleReq(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("%s %s -> %s", r.Host, r.Method, r.URL)
+		// log.Printf("%s %s -> %s", r.Host, r.Method, r.URL)
 		if r.Method != "GET" || len(r.Method) > 3 {
 			http.Error(w, ":) We only support GET here", http.StatusNotFound)
 			return
 		}
-		// TODO: jlima ~ implement file writer here
-				fmt.Fprintf(w, `
-		<meta http-equiv="refresh" content="3">
-		Automation logs
-		`)
-		h.ServeHTTP(w, r)
+		filePath := path.Base(r.URL.Path)
+		log.Println(filePath)
+		file, err := os.Open(filePath)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed to open file: %s", err), http.StatusInternalServerError)
+			return
+		}
+		defer file.Close()
+
+		// Read the contents of the file
+		fileInfo, err := file.Stat()
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed to get file info: %s", err), http.StatusInternalServerError)
+			return
+		}
+		fileSize := fileInfo.Size()
+		buffer := make([]byte, fileSize)
+		_, err = file.Read(buffer)
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed to read file: %s", err), http.StatusInternalServerError)
+			return
+		}
+
+		// w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprintf(w, `<html>
+  <head>
+    <meta name="color-scheme" content="light dark">
+	<meta http-equiv="refresh" content="3">
+  </head>
+  <body>
+    <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
+  </body>
+</html>`, buffer)
+
+		// h.ServeHTTP(w, r)
 	})
 }
 
@@ -88,7 +115,7 @@ func waitForTerm() {
 }
 
 func testIp(s string) bool {
-	baddies := []string{"127.0.0", "::"}
+	baddies := []string{"127.0.0", ":"}
 	for _, x := range baddies {
 		if strings.Contains(s, x) {
 			return false
