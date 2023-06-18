@@ -146,9 +146,9 @@ k("c", "<c-b>", "<S-left>", opt)
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
 
-k("i", "(", "()<left>", opt)
-k("i", "{", "{}<left>", opt)
-k("i", "[", "[]<left>", opt)
+-- k("i", "(", "()<left>", opt)
+-- k("i", "{", "{}<left>", opt)
+-- k("i", "[", "[]<left>", opt)
 
 local pair_map = {
   ["("] = ")",
@@ -178,7 +178,7 @@ local quotes = {
 
 local all_pair_map = {}
 local alpha_and_quotes = {}
-local isAlphaNumPunct = {}
+-- local isAlphaNumPunct = {}
 local isAlphaNum = {}
 
 for _, v in ipairs(pair_map) do
@@ -210,17 +210,17 @@ for key, v in pairs(quotes) do
 end
 
 
-for ascii = 48, 57 do -- ASCII values for '0' to '9'
-  isAlphaNumPunct[string.char(ascii)] = true
-end
-
-for ascii = 65, 90 do -- ASCII values for 'A' to 'Z'
-  isAlphaNumPunct[ascii] = true
-end
-
-for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
-  isAlphaNumPunct[ascii] = true
-end
+-- for ascii = 48, 57 do -- ASCII values for '0' to '9'
+--   isAlphaNumPunct[string.char(ascii)] = true
+-- end
+--
+-- for ascii = 65, 90 do -- ASCII values for 'A' to 'Z'
+--   isAlphaNumPunct[ascii] = true
+-- end
+--
+-- for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
+--   isAlphaNumPunct[ascii] = true
+-- end
 
 -- handles ""
 k('i', '"', function()
@@ -296,13 +296,10 @@ k('i', '[', function()
   local prevChar = line:sub(col - 1, col - 1)
   local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
-  local q = quotes
   if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '[]<Left>'
   elseif prevChar == '\\' or a[nextChar] then
     return '['
-  elseif prevChar:match('%S') and q[nextChar] then
-    return '[]<Left>'
   elseif nextChar == '[' then
     return '<Right>'
   end
@@ -327,13 +324,10 @@ k('i', '{', function()
   local prevChar = line:sub(col - 1, col - 1)
   local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
-  local q = quotes
   if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '{}<Left>'
   elseif prevChar == '\\' or a[nextChar] then
     return '{'
-  elseif prevChar:match('%S') and q[nextChar] then
-    return '{}<Left>'
   elseif nextChar == '{' then
     return '<Right>'
   end
@@ -359,13 +353,10 @@ k('i', '(', function()
   local prevChar = line:sub(col - 1, col - 1)
   local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
-  local q = quotes
   if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '()<Left>'
   elseif prevChar == '\\' or a[nextChar] then
     return '('
-  elseif prevChar:match('%S') and q[nextChar] then
-    return '()<Left>'
   elseif nextChar == '(' then
     return '<Right>'
   end
@@ -412,9 +403,14 @@ local pair_map_2 = {
 
 k("i", "<enter>", function()
   -- use this one when we are autoclosing
-  local line = vim.fn.getline(".")
-  local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
-  return pair_map_2[line:sub(prev_col, prev_col)] and "<enter><Esc>O" or "<Enter>"
+  local line = vim.api.nvim_get_current_line()
+  local prev_col = vim.fn.col(".") - 1
+  local prev_char = line:sub(prev_col, prev_col)
+  if pair_map_2[prev_char] then
+    return "<CR><Esc>O"
+  else
+    return "<CR>"
+  end
 end, { expr = true })
 
 -- k("i", "<enter>", function()
