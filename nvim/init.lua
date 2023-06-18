@@ -492,7 +492,7 @@ k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 -- switch between current and prev file
-k("n", "<space><space>", "<c-^>")
+-- k("n", "<space><space>", "<c-^>") -- code action in mason.lua
 
 --- shellcode ---
 -- m(
