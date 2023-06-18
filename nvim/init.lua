@@ -241,6 +241,8 @@ k('i', '`', function()
     return "`"
   elseif n == '`' then
     return '<Right>'
+  -- TODO: elseif an[p] then -- why am i skipping this??
+  --   return "`"
   elseif r_pair_map[n] then
     return '``<Left>'
   elseif n ~= '' or an[p] then
