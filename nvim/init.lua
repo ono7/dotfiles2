@@ -87,6 +87,19 @@ k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
 k("n", ",r", vim.lsp.buf.format, silent)
 
+-- Lua function to send text to Tmux
+_G.send_to_tmux = function(text)
+  vim.fn.system('tmux load-buffer -', text)
+  -- vim.fn.system('tmux paste-buffer -s')
+end
+
+-- Map the key binding for a range of text or selected text
+vim.api.nvim_set_keymap('v', '<leader>y', [[:lua send_to_tmux(vim.fn.getreg(''))<CR>]], { noremap = true, silent = true })
+
+-- Map the key binding for the current line (no selection)
+vim.api.nvim_set_keymap('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]],
+  { noremap = true, silent = true })
+
 k("n", "<leader>cd", ":lcd %:h<CR>")
 
 -- paste over selection without overwriting clipboard
@@ -241,8 +254,8 @@ k('i', '`', function()
     return "`"
   elseif n == '`' then
     return '<Right>'
-  -- TODO: elseif an[p] then -- why am i skipping this??
-  --   return "`"
+    -- TODO: elseif an[p] then -- why am i skipping this??
+    --   return "`"
   elseif r_pair_map[n] then
     return '``<Left>'
   elseif n ~= '' or an[p] then
