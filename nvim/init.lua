@@ -465,12 +465,12 @@ cmd("syntax on")
 
 function _G.legacy()
   -- :lua legacy()
-  vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, "", -1)
+  vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, true, -1)
 end
 
 function _G.legacy_min()
   -- :lua legacy()
-  vim.api.nvim_paste(require("my.extra_vars").legacy_min, "", -1)
+  vim.api.nvim_paste(require("my.extra_vars").legacy_min, true, -1)
 end
 
 function _G.perflog()
