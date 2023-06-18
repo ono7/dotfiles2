@@ -166,6 +166,7 @@ local all_pair_map = {}
 local alphabetTable = {}
 local alpha_and_quotes = {}
 local isAlphaNumPunct = {}
+local isAlphaNum = {}
 
 for _, v in ipairs(pair_map) do
   table.insert(all_pair_map, v)
@@ -179,10 +180,13 @@ for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   local lowercaseKey = string.char(ascii)
   alphabetTable[lowercaseKey] = true
   alphabetTable[string.upper(lowercaseKey)] = true
+  isAlphaNum[lowercaseKey] = true
+  isAlphaNum[string.upper(lowercaseKey)] = true
 end
 
 for digit = 48, 57 do -- ASCII values for '0' to '9'
   alphabetTable[string.char(digit)] = true
+  isAlphaNum[string.char(digit)] = true
 end
 
 for key, v in pairs(alphabetTable) do
@@ -195,7 +199,7 @@ end
 
 
 for ascii = 48, 57 do -- ASCII values for '0' to '9'
-  isAlphaNumPunct[ascii] = true
+  isAlphaNumPunct[string.char(ascii)] = true
 end
 
 for ascii = 65, 90 do -- ASCII values for 'A' to 'Z'
@@ -237,7 +241,7 @@ k('i', '"', function()
     return '"'
   elseif r_pair_map[n] then
     return '""<Left>'
-  elseif n ~= '' or p:match('[%a%d%p]') then
+  elseif n ~= '' or isAlphaNum[p] then
     return '"'
   end
   return '""<Left>'
@@ -256,7 +260,7 @@ k('i', '`', function()
     return '<Right>'
   elseif r_pair_map[n] then
     return '``<Left>'
-  elseif n ~= '' or p:match('[%a%d%p]') then
+  elseif n ~= '' or isAlphaNum[p] then
     return '`'
   end
   return '``<Left>'
@@ -277,7 +281,7 @@ k('i', "'", function()
     return "'"
   elseif r_pair_map[n] then
     return "''<Left>"
-  elseif n ~= '' or p:match('[%a%d%p]') then
+  elseif n ~= '' or isAlphaNum[p] then
     return "'"
   end
   return "''<Left>"
