@@ -163,6 +163,9 @@ local quotes = {
 }
 
 local all_pair_map = {}
+local alphabetTable = {}
+local alpha_and_quotes = {}
+local isAlphaNumPunct = {}
 
 for _, v in ipairs(pair_map) do
   table.insert(all_pair_map, v)
@@ -171,9 +174,6 @@ end
 for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
-
-local alphabetTable = {}
-local alpha_and_quotes = {}
 
 for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   local lowercaseKey = string.char(ascii)
@@ -193,24 +193,42 @@ for key, v in pairs(quotes) do
   alpha_and_quotes[key] = v
 end
 
-local function prevAndNextChar()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local prevChar = line:sub(col - 1, col - 1)
-  local nextChar = line:sub(col, col)
-  return prevChar, nextChar
+
+for ascii = 48, 57 do -- ASCII values for '0' to '9'
+  isAlphaNumPunct[ascii] = true
 end
 
-local function testQuotes(prevChar, nextChar)
-  if nextChar ~= '' or prevChar:match('[%a%d%p]') then
-    return true
-  end
-  return false
+for ascii = 65, 90 do -- ASCII values for 'A' to 'Z'
+  isAlphaNumPunct[ascii] = true
 end
+
+for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
+  isAlphaNumPunct[ascii] = true
+end
+
+-- local function prevAndNextChar()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local prevChar = line:sub(col - 1, col - 1)
+--   local nextChar = line:sub(col, col)
+--   return prevChar, nextChar
+-- end
+
+-- local function testQuotes(prevChar, nextChar)
+--   if nextChar ~= '' or prevChar:match('[%a%d%p]') then
+--     return true
+--   end
+--   return false
+-- end
+
+-- n ~= '' or p:match('[%a%d%p]')
 
 -- handles ""
 k('i', '"', function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
   if p == '\\' then
     return '"'
   elseif n == '"' then
@@ -219,7 +237,7 @@ k('i', '"', function()
     return '"'
   elseif r_pair_map[n] then
     return '""<Left>'
-  elseif testQuotes(p, n) then
+  elseif n ~= '' or p:match('[%a%d%p]') then
     return '"'
   end
   return '""<Left>'
@@ -228,14 +246,17 @@ end
 
 -- handles ``
 k('i', '`', function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
   if p == '\\' then
     return "`"
   elseif n == '`' then
     return '<Right>'
   elseif r_pair_map[n] then
     return '``<Left>'
-  elseif testQuotes(p, n) then
+  elseif n ~= '' or p:match('[%a%d%p]') then
     return '`'
   end
   return '``<Left>'
@@ -244,7 +265,10 @@ end
 
 -- handles ''
 k('i', "'", function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
   if p == '\\' then
     return "'"
   elseif n == "'" then
@@ -253,7 +277,7 @@ k('i', "'", function()
     return "'"
   elseif r_pair_map[n] then
     return "''<Left>"
-  elseif testQuotes(p, n) then
+  elseif n ~= '' or p:match('[%a%d%p]') then
     return "'"
   end
   return "''<Left>"
@@ -262,24 +286,45 @@ end
 
 -- handle []
 k('i', '[', function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local prevChar = line:sub(col - 1, col - 1)
+  local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
   local q = quotes
-  if p:match('["\'`]') then
+  if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '[]<Left>'
-  elseif p == '\\' or a[n] then
+  elseif prevChar == '\\' or a[nextChar] then
     return '['
-  elseif p:match('%S') and q[n] then
+  elseif prevChar:match('%S') and q[nextChar] then
     return '[]<Left>'
-  elseif n == '[' then
+  elseif nextChar == '[' then
     return '<Right>'
   end
   return '[]<Left>'
-end
-, { expr = true })
+end, { expr = true })
+
+-- k('i', '[', function()
+--   local p, n = prevAndNextChar()
+--   local a = alpha_and_quotes
+--   local q = quotes
+--   if p:match('["\'`]') then
+--     return '[]<Left>'
+--   elseif p == '\\' or a[n] then
+--     return '['
+--   elseif p:match('%S') and q[n] then
+--     return '[]<Left>'
+--   elseif n == '[' then
+--     return '<Right>'
+--   end
+--   return '[]<Left>'
+-- end
+-- , { expr = true })
 
 k('i', ']', function()
-  local _, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
   if n == ']' then
     return '<Right>'
   end
@@ -289,16 +334,19 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local prevChar = line:sub(col - 1, col - 1)
+  local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
   local q = quotes
-  if p:match('["\'`]') then
+  if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '{}<Left>'
-  elseif p == '\\' or a[n] then
+  elseif prevChar == '\\' or a[nextChar] then
     return '{'
-  elseif p:match('%S') and q[n] then
+  elseif prevChar:match('%S') and q[nextChar] then
     return '{}<Left>'
-  elseif n == '{' then
+  elseif nextChar == '{' then
     return '<Right>'
   end
   return '{}<Left>'
@@ -306,7 +354,9 @@ end
 , { expr = true })
 
 k('i', '}', function()
-  local _, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
   if n == '}' then
     return '<Right>'
   end
@@ -316,16 +366,19 @@ end
 
 -- handle ()
 k('i', '(', function()
-  local p, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local prevChar = line:sub(col - 1, col - 1)
+  local nextChar = line:sub(col, col)
   local a = alpha_and_quotes
   local q = quotes
-  if p:match('["\'`]') then
+  if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '()<Left>'
-  elseif p == '\\' or a[n] then
+  elseif prevChar == '\\' or a[nextChar] then
     return '('
-  elseif p:match('%S') and q[n] then
+  elseif prevChar:match('%S') and q[nextChar] then
     return '()<Left>'
-  elseif n == '(' then
+  elseif nextChar == '(' then
     return '<Right>'
   end
   return '()<Left>'
@@ -333,7 +386,9 @@ end
 , { expr = true })
 
 k('i', ')', function()
-  local _, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
   if n == ')' then
     return '<Right>'
   end
@@ -342,7 +397,9 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local _, n = prevAndNextChar()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
   if n == '>' then
     return '<Right>'
   end
