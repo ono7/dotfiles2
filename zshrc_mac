@@ -485,7 +485,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 if [[ $OSTYPE == "darwin"* ]];  then
   KRATE=1
-  INITKRATE=14
+  INITKRATE=10
 
   # normal is 2, lower is faster
   defaults write -g KeyRepeat -int $KRATE
