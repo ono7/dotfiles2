@@ -113,19 +113,19 @@ return {
   -- color_scheme = "Galaxy",
   -- color_scheme                 = 'Harmonic16 Dark (base16)',
   color_scheme                 = 'mine',
-  color_schemes                = {
+  color_schemes                              = {
     ['mine'] = {
       -- background = "#222932",
-      -- background = "#202933",
-      background = "#222932",
-      foreground = "#dee6f0",
+      background = "#202933",
+      -- foreground = "#dee6f0",
+      foreground = "#c7cff7",
       cursor_fg = "#323a4c",
       cursor_bg = "#ffffff",
       cursor_border = "#ffcc66",
       selection_bg = "#33415e",
       selection_fg = "#cbccc6",
-      ansi = { "#192028", "#e27e8d", "#B4D485", "#fad07b", "#8EAAF4", "#c6a0f6", "#c0f0f0", "#c7c7c7" },
-      brights = { "#686868", "#e27e8d", "#8ec596", "#ffd580", "#8EAAF4", "#b7bdf8", "#c0f0f0", "#ffffff", }
+      ansi = { "#192028", "#e27e8d", "#c5dea1", "#c49a5a", "#8EAAF4", "#c6a0f6", "#5ec4ff", "#c7c7c7" },
+      brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
     }
   },
   font                         = wezterm.font({ family = "MonoLisa Liga" }),
