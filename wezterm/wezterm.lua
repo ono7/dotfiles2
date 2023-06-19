@@ -68,19 +68,19 @@ return {
       mods = "ALT",
       action = wezterm.action.SendString("\x15"),
     },
-    {
-      -- https://www.youtube.com/watch?v=BLp61-Lq0kQ
-      -- tmux next-window
-      key = "]",
-      mods = "ALT",
-      action = wezterm.action.SendString("\x02\x6e"),
-    },
-    {
-      -- tmux previous-window
-      key = "[",
-      mods = "ALT",
-      action = wezterm.action.SendString("\x02\x70"),
-    },
+    -- {
+    --   -- https://www.youtube.com/watch?v=BLp61-Lq0kQ
+    --   -- tmux next-window
+    --   key = "]",
+    --   mods = "ALT",
+    --   action = wezterm.action.SendString("\x02\x6e"),
+    -- },
+    -- {
+    --   -- tmux previous-window
+    --   key = "[",
+    --   mods = "ALT",
+    --   action = wezterm.action.SendString("\x02\x70"),
+    -- },
     {
       -- tmux rename window
       key = "n",
