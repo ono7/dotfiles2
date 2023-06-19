@@ -1,15 +1,15 @@
 local wezterm = require("wezterm")
 
 return {
-  -- default_prog = { "wsl.exe" },
-  -- default_cwd = "C:\\Users\\A270581\\Desktop\\work",
-  default_domain = 'WSL:Ubuntu', -- wsl -l -v
-  default_cwd = wezterm.homedir,
-  audible_bell = "Disabled",
-  pane_focus_follows_mouse = true,
-  use_dead_keys = false,
-  unicode_version  = 14,
-  keys = {
+  -- default_prog = { "cmd.exe" },
+  default_cwd                                = "C:\\Users\\A270581\\Desktop\\work",
+  default_domain                             = 'WSL:Ubuntu', -- wsl -l -v
+  -- default_cwd = wezterm.homedir,
+  audible_bell                               = "Disabled",
+  pane_focus_follows_mouse                   = true,
+  use_dead_keys                              = false,
+  unicode_version                            = 14,
+  keys                                       = {
     -- use xxd -psd to get hex char sequences
     {
       key = "w",
@@ -54,19 +54,19 @@ return {
       mods = "ALT",
       action = wezterm.action.SendString("\x15"),
     },
-    {
-      -- https://www.youtube.com/watch?v=BLp61-Lq0kQ
-      -- tmux next-window
-      key = "]",
-      mods = "ALT",
-      action = wezterm.action.SendString("\x02\x6e"),
-    },
-    {
-      -- tmux previous-window
-      key = "[",
-      mods = "ALT",
-      action = wezterm.action.SendString("\x02\x70"),
-    },
+    -- {
+    --   -- https://www.youtube.com/watch?v=BLp61-Lq0kQ
+    --   -- tmux next-window
+    --   key = "]",
+    --   mods = "ALT",
+    --   action = wezterm.action.SendString("\x1b"),
+    -- },
+    -- {
+    --   -- tmux previous-window
+    --   key = "[",
+    --   mods = "ALT",
+    --   action = wezterm.action.SendString("\x02\x70"),
+    -- },
     {
       -- tmux rename window
       key = "n",
@@ -94,25 +94,41 @@ return {
   },
   -- color_scheme = "theme_numetal", -- 1st pick
   -- front_end = "WebGpu",
-  color_scheme = "tokyonight_storm",
-  font = wezterm.font({ family = "MonoLisa Liga" }),
+  -- color_scheme = "tokyonight_storm",
+  color_scheme                               = 'mine',
+  color_schemes                              = {
+    ['mine'] = {
+      -- background = "#222932",
+      background = "#202933",
+      -- foreground = "#dee6f0",
+      foreground = "#c7cff7",
+      cursor_fg = "#323a4c",
+      cursor_bg = "#ffffff",
+      cursor_border = "#ffcc66",
+      selection_bg = "#33415e",
+      selection_fg = "#cbccc6",
+      ansi = { "#192028", "#e27e8d", "#c5dea1", "#c49a5a", "#8EAAF4", "#c6a0f6", "#5ec4ff", "#c7c7c7" },
+      brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
+    }
+  },
+  font                                       = wezterm.font({ family = "MonoLisa Liga" }),
   -- freetype_load_target = "HorizontalLcd",
   -- front_end = "OpenGL",
-  cursor_blink_rate = 350,
-  font_size = 12,
-  line_height = 1.4,
+  cursor_blink_rate                          = 350,
+  font_size                                  = 12,
+  line_height                                = 1.5,
   -- dpi = 110,
-  underline_position = -8,
-  underline_thickness = 3, -- ()
-  colors = {
+  underline_position                         = -8,
+  underline_thickness                        = 3, -- ()
+  colors                                     = {
   },
   adjust_window_size_when_changing_font_size = false,
   -- window_background_opacity = 0.95,
   -- macos_window_background_blur = 20,
   -- window_decorations = "RESIZE",
-  window_close_confirmation = "NeverPrompt",
-  hide_tab_bar_if_only_one_tab = true,
-  window_padding = {
+  window_close_confirmation                  = "NeverPrompt",
+  hide_tab_bar_if_only_one_tab               = true,
+  window_padding                             = {
     left = 3,
     right = 3,
     top = 3,
@@ -123,5 +139,5 @@ return {
   --   && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
   --   && tic -x -o ~/.terminfo $tempfile \
   --   && rm $tempfile
-  -- term = "wezterm",
+  term = "wezterm",
 }
