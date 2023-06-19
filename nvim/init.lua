@@ -87,6 +87,24 @@ k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
 k("n", ",r", vim.lsp.buf.format, silent)
 
+local function get_visual_selection()
+  local mode = vim.api.nvim_get_mode().mode
+  P("mode: " .. mode)
+  if mode:match('[vV ]') then
+    -- Visual or Visual Line mode
+    return vim.fn.getreg('"')
+  elseif mode:match(' ') then
+    -- Block Visual mode
+    local start_line = vim.fn.line("'<")
+    local end_line = vim.fn.line("'>")
+    local lines = vim.fn.getline(start_line, end_line)
+    return table.concat(lines, '\n')
+  else
+    -- No visual selection
+    return nil
+  end
+end
+
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
   vim.fn.system('tmux load-buffer -w -', text)
@@ -96,11 +114,17 @@ end
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux_visual = function()
-  local selected_text = vim.fn.getreg('"', 1, 1)
-  vim.fn.system('tmux load-buffer -w -', selected_text)
+  local vstart = vim.fn.getpos("'<")
+  local vend = vim.fn.getpos("'>")
+  local line_start = vstart[2]
+  local line_end = vend[2]
 
-  print(':)')
-  -- vim.fn.system('tmux paste-buffer -s')
+  -- or use api.nvim_buf_get_lines
+  local lines = vim.fn.getline(line_start, line_end)
+  if lines then
+    vim.fn.system('tmux load-buffer -w -', table.concat(lines))
+    print('v - :)')
+  end
 end
 
 -- Map the key binding for a range of text or selected text
