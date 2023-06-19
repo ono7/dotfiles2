@@ -122,7 +122,7 @@ _G.send_to_tmux_visual = function()
   -- or use api.nvim_buf_get_lines
   local lines = vim.fn.getline(line_start, line_end)
   if lines then
-    vim.fn.system('tmux load-buffer -w -', table.concat(lines))
+    vim.fn.system('tmux load-buffer -w -', table.concat(lines, "\n"))
     print('v - :)')
   end
 end
