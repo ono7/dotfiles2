@@ -89,7 +89,7 @@ k("n", ",r", vim.lsp.buf.format, silent)
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
-  vim.fn.system('tmux load-buffer -', text)
+  vim.fn.system('tmux load-buffer -w -', text)
   print(':)')
   -- vim.fn.system('tmux paste-buffer -s')
 end
