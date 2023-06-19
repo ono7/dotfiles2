@@ -104,6 +104,7 @@ _G.send_to_tmux_visual = function()
 end
 
 -- Map the key binding for a range of text or selected text
+-- TODO: jlima ~ fix this to allow visually selected text
 vim.api.nvim_set_keymap('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
 
 -- Map the key binding for the current line (no selection)
