@@ -1,4 +1,17 @@
 # macos 07/23/22
+# find type of interface
+
+```go
+func emtpy(i interface{}) {
+    switch i.(type) { // this can only beused inside a switch statement to
+      // check the type of an interface
+      case string:
+        fmt.Println("this is a string %s", i)
+      case int:
+        fmt.Println("this is a int %d", i)
+      }
+}
+```
 
 # go program flags
 
