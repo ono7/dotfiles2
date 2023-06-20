@@ -552,7 +552,7 @@ local packages = {
 for _, mod in ipairs(packages) do
   local ok, err = pcall(require, mod)
   if not ok then
-    error("Module -> " .. mod .. " not loaded... ay.." .. err)
+    error("Module -> " .. mod .. " not loaded... ay..")
   end
 end
 
