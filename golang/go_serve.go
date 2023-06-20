@@ -29,9 +29,9 @@ func main() {
 	http.HandleFunc("/", handleRoot)
 
 	// TODO: jlima ~ maket his server port dynamic
-	displayServerAddress("8080")
+	displayServerAddress("9091")
 
-	addr := ":8080"
+	addr := ":9091"
 	log.Printf("Starting server on port %s\n", addr)
 	go func() {
 		log.Fatal(http.ListenAndServe(addr, nil))
@@ -112,6 +112,10 @@ func waitForTerm() {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
 	<-stop
 	log.Println("Term signal recieved, shutting down server....")
+	err := os.Remove("server.pid")
+	if err != nil {
+		log.Println("failed to remove server.pid")
+	}
 }
 
 func testIp(s string) bool {
@@ -130,17 +134,17 @@ func displayServerAddress(p string) {
 		log.Println("Error retrieving network interface addresses:", err)
 		return
 	}
-	logFile, err := os.Create("server.info")
-	if err != nil {
-		log.Fatalf("server.info Create: %v\n", err)
-	}
-	defer logFile.Close()
+	// logFile, err := os.Create("server.info")
+	// if err != nil {
+	// 	log.Fatalf("server.info Create: %v\n", err)
+	// }
+	// defer logFile.Close()
 
 	for _, addr := range addrs {
 		if testIp(addr.String()) {
 			ip := strings.Split(addr.String(), "/")[0]
 			log.Printf("http://%s:%s", ip, p)
-			fmt.Fprintf(logFile, "http://%s:%s\n", ip, p)
+			// fmt.Fprintf(logFile, "http://%s:%s\n", ip, p)
 		}
 	}
 
