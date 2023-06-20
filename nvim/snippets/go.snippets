@@ -6,6 +6,11 @@ snippet ta
     ${0:${VISUAL}}
   </${1/\v(\w+).*/\1/g}>
 
+snippet bc "block comment"
+  /*
+    ${0:${VISUAL}}
+  */
+
 snippet e
 	if err != nil {
 		${1:log.Fatal(err)}
