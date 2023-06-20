@@ -150,7 +150,7 @@ nnoremap <silent><cr> :noh<cr>1<c-g>
 " inoremap <m-f> <C-o>W
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
-nnoremap <leader>d :bd!<cr>
+nnoremap ,d :bd!<cr>
 nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :w<cr>
 
