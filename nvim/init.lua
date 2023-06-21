@@ -103,8 +103,7 @@ k("n", ",r", vim.lsp.buf.format, silent)
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
   vim.fn.system('tmux load-buffer -w -', text)
-  print(':)')
-  -- vim.fn.system('tmux paste-buffer -s')
+  print('')
 end
 
 -- Lua function to send text to Tmux
@@ -112,7 +111,7 @@ _G.send_to_tmux_visual = function()
   local lines = get_visual_selection()
   if lines then
     vim.fn.system('tmux load-buffer -w -', table.concat(lines, "\n"))
-    print('v - :)')
+    print('')
   end
 end
 
@@ -566,9 +565,6 @@ function! Esc()
 python3 << EOF_
 import vim
 
-# reference from re module, py3.8, removed empty space :)
-# adding ' and " for python processing!
-# c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\t\n\r\v\f\'\"'}
 c_map = {i: '\\' + chr(i) for i in b'()[]{}?*+-|^$\\.&~#\n\r\v\f\'\"'}
 
 def escape(pattern):
