@@ -168,10 +168,6 @@ k("c", "<c-b>", "<S-left>", opt)
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
 
--- k("i", "(", "()<left>", opt)
--- k("i", "{", "{}<left>", opt)
--- k("i", "[", "[]<left>", opt)
-
 local pair_map = {
   ["("] = ")",
   ["["] = "]",

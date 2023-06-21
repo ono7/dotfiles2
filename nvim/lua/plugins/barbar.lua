@@ -16,4 +16,4 @@ local opt = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<s-Tab>", ":BufferPrevious<CR>", { silent = true })
 vim.keymap.set("n", "<Tab>", ":BufferNext<CR>", { silent = true })
-vim.keymap.set({ "n", "x" }, ",d", ":BufferClose!<cr>", { silent = true })
+vim.keymap.set({ "n", "x" }, ",dd", ":BufferClose!<cr>", { silent = true })

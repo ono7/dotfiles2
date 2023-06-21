@@ -94,4 +94,4 @@ require("bufferline").setup({
 vim.keymap.set("n", "<s-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
 -- vim.keymap.set({ "n", "x" }, ",d", ":BufferClose!<cr>", { silent = true })
-vim.keymap.set({ "n", "x" }, ",d", ":bd!<cr>", { silent = true })
+vim.keymap.set({ "n", "x" }, ",dd", ":bd!<cr>", { silent = true })
