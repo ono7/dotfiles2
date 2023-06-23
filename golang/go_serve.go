@@ -8,6 +8,8 @@ import (
 	"os"
 	"os/signal"
 	"path"
+	"path/filepath"
+	"regexp"
 	"strings"
 	"syscall"
 )
@@ -48,8 +50,8 @@ func handleReq(h http.Handler) http.Handler {
 			return
 		}
 		filePath := path.Base(r.URL.Path)
-		log.Println(filePath)
-		file, err := os.Open(filePath)
+		// log.Println(filePath)
+		file, err := os.Open(filepath.Join(wwwRoot, filePath))
 		if err != nil {
 			http.Error(w, fmt.Sprintf("Failed to open file: %s", err), http.StatusInternalServerError)
 			return
@@ -69,17 +71,42 @@ func handleReq(h http.Handler) http.Handler {
 			http.Error(w, fmt.Sprintf("Failed to read file: %s", err), http.StatusInternalServerError)
 			return
 		}
+		p := regexp.MustCompile(`\x1B(?:[@-Z\\-_=(>][B]?|\[[0-?rm7]*[ -/]*[@-~])|[\x08]`)
+		filtered := p.ReplaceAllString(string(buffer), "")
 
 		// w.Header().Set("Content-Type", "text/plain")
-		fmt.Fprintf(w, `<html>
+		fmt.Fprintf(w, `
+<!DOCTYPE html>
+<html>
   <head>
-    <meta name="color-scheme" content="light dark">
+	<style>
+		body {
+			background-color: rgb(45, 58, 69);
+			color: rgb(199, 207, 247);
+		}
+		a:visited {
+			color: rgb(199, 207, 247);
+		}
+	</style>
 	<meta http-equiv="refresh" content="3">
   </head>
   <body>
+	<div></div>
     <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
+	<p id="logs"></p>
+	<script>
+		document.AddEventListener('DOMContentLoaded', function() {
+			setTimeout(function() {
+				var e = document.getElementById('logs')
+
+				if (e) {
+					element.scrollIntoView();
+				}
+			}, 100);
+		});
+	</script>
   </body>
-</html>`, buffer)
+</html>`, filtered)
 
 		// h.ServeHTTP(w, r)
 	})
@@ -92,19 +119,33 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	}
 	files, err := os.ReadDir(wwwRoot)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		// http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Waiting for logs...", http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Fprintf(w, `<head>
-<meta http-equiv="refresh" content="3">
-<h2>Automation logs</h2>
+	fmt.Fprintf(w, `<html><head>
+	<style>
+		body {
+			color: rgb(199, 207, 247);
+			background-color: rgb(45, 58, 69);
+		}
+		a:visited {
+			color: rgb(199, 207, 247);
+		}
+	</style>
+	<meta http-equiv="refresh" content="3">
 </head>`)
+	fmt.Fprintf(w, `<body>
+	<h2>Automation logs</h2>
+	`)
 	fmt.Fprint(w, "<ul>")
 	for _, file := range files {
 		fmt.Fprintf(w, "<li><a href=\"/files/%s\">%s</a></li>", file.Name(), file.Name())
 	}
 	fmt.Fprint(w, "</ul>")
+	fmt.Fprintf(w, `</body>`)
+	fmt.Fprintf(w, `</head></html>`)
 }
 
 func waitForTerm() {
