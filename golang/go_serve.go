@@ -86,34 +86,57 @@ func handleReq(h http.Handler) http.Handler {
 		fmt.Fprintf(w, `
 <!DOCTYPE html>
 <html>
-  <head>
-	<style>
-		body {
-			background-color: rgb(45, 58, 69);
-			color: rgb(199, 207, 247);
-		}
-		a:visited {
-			color: rgb(199, 207, 247);
-		}
-	</style>
-	<meta http-equiv="refresh" content="3">
-  </head>
-  <body>
-	<script>
-		document.AddEventListener('DOMContentLoaded', function() {
-			setTimeout(function() {
-				var e = document.getElementById('logs')
+<head>
+  <style>
+    body {
+      background-color: rgb(45, 58, 69);
+      color: rgb(199, 207, 247);
+    }
+    a:visited {
+      color: rgb(199, 207, 247);
+    }
+  </style>
+  <script>
+    var refreshEnabled = true;
 
-				if (e) {
-					element.scrollIntoView();
-				}
-			}, 100);
-		});
-	</script>
-    <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
-	<p id="logs"></p>
-  </body>
-</html>`, filtered)
+    function toggleRefresh() {
+      refreshEnabled = !refreshEnabled;
+      var btn = document.getElementById("toggleBtn");
+      if (refreshEnabled) {
+        btn.innerText = "Pause log";
+        refreshPage();
+      } else {
+        btn.innerText = "Continue";
+      }
+    }
+
+    function refreshPage() {
+      if (refreshEnabled) {
+        location.reload();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        var element = document.getElementById('logs');
+
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 1000); // Increased the timeout to 1000ms for better visibility in case of long log files
+    });
+  </script>
+</head>
+<body>
+  <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
+  <button id="toggleBtn" onclick="toggleRefresh()">Pause log</button>
+  <p id="logs"></p>
+  <script>
+    setInterval(refreshPage, 3000); // Refresh the page every 3 seconds (adjust as needed)
+  </script>
+</body>
+</html>
+`, filtered)
 
 		// h.ServeHTTP(w, r)
 	})
