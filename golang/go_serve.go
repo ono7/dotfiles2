@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -15,6 +16,13 @@ import (
 )
 
 const wwwRoot = "./logs"
+
+var port string
+
+func init() {
+	flag.StringVar(&port, "p", "9191", "-p <port_number>")
+	flag.Parse()
+}
 
 func main() {
 
@@ -31,9 +39,9 @@ func main() {
 	http.HandleFunc("/", handleRoot)
 
 	// TODO: jlima ~ maket his server port dynamic
-	displayServerAddress("9091")
+	displayServerAddress(port)
 
-	addr := ":9091"
+	addr := fmt.Sprintf(":%s", port)
 	log.Printf("Starting server on port %s\n", addr)
 	go func() {
 		log.Fatal(http.ListenAndServe(addr, nil))
@@ -91,9 +99,6 @@ func handleReq(h http.Handler) http.Handler {
 	<meta http-equiv="refresh" content="3">
   </head>
   <body>
-	<div></div>
-    <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
-	<p id="logs"></p>
 	<script>
 		document.AddEventListener('DOMContentLoaded', function() {
 			setTimeout(function() {
@@ -105,6 +110,8 @@ func handleReq(h http.Handler) http.Handler {
 			}, 100);
 		});
 	</script>
+    <pre style="word-wrap: break-word; white-space: pre-wrap;">%s</pre>
+	<p id="logs"></p>
   </body>
 </html>`, filtered)
 
