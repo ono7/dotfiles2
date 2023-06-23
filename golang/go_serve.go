@@ -182,7 +182,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 		lastModified := fileInfo.ModTime().Format("2006-01-02 15:04:05")
-		fmt.Fprintf(w, "<li><a href=\"/files/%s\">[ %s ] - %s</a></li>", fileName, lastModified, fileName)
+		fmt.Fprintf(w, "<li><a href=\"/files/%s\"> %s - %s</a></li>", fileName, lastModified, fileName)
 	}
 	fmt.Fprint(w, "</ul>")
 	fmt.Fprintf(w, `</body>`)
