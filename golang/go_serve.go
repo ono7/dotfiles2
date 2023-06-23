@@ -82,7 +82,6 @@ func handleReq(h http.Handler) http.Handler {
 		p := regexp.MustCompile(`\x1B(?:[@-Z\\-_=(>][B]?|\[[0-?rm7]*[ -/]*[@-~])|[\x08]`)
 		filtered := p.ReplaceAllString(string(buffer), "")
 
-		// w.Header().Set("Content-Type", "text/plain")
 		fmt.Fprintf(w, `
 <!DOCTYPE html>
 <html>
@@ -139,8 +138,6 @@ func handleReq(h http.Handler) http.Handler {
 </body>
 </html>
 `, filtered)
-
-		// h.ServeHTTP(w, r)
 	})
 }
 
