@@ -92,8 +92,10 @@ func handleReq(h http.Handler) http.Handler {
       background-color: rgb(45, 58, 69);
       color: rgb(199, 207, 247);
     }
+	a:link,
     a:visited {
       color: rgb(199, 207, 247);
+	  text-decoration: none !important;
     }
   </style>
   <script>
@@ -149,7 +151,6 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	}
 	files, err := os.ReadDir(wwwRoot)
 	if err != nil {
-		// http.Error(w, err.Error(), http.StatusInternalServerError)
 		http.Error(w, "Waiting for logs...", http.StatusInternalServerError)
 		return
 	}
@@ -160,8 +161,10 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 			color: rgb(199, 207, 247);
 			background-color: rgb(45, 58, 69);
 		}
+		a:link,
 		a:visited {
 			color: rgb(199, 207, 247);
+			text-decoration: none !important;
 		}
 	</style>
 	<meta http-equiv="refresh" content="3">
@@ -171,7 +174,15 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	`)
 	fmt.Fprint(w, "<ul>")
 	for _, file := range files {
-		fmt.Fprintf(w, "<li><a href=\"/files/%s\">%s</a></li>", file.Name(), file.Name())
+		fileName := file.Name()
+		filePath := filepath.Join(wwwRoot, fileName)
+		fileInfo, err := os.Stat(filePath)
+		if err != nil {
+			fmt.Fprintf(w, "<li>%s</li>", fileName)
+			continue
+		}
+		lastModified := fileInfo.ModTime().Format("2006-01-02 15:04:05")
+		fmt.Fprintf(w, "<li><a href=\"/files/%s\">[ %s ] - %s</a></li>", fileName, lastModified, fileName)
 	}
 	fmt.Fprint(w, "</ul>")
 	fmt.Fprintf(w, `</body>`)
