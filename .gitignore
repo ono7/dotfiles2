@@ -5,6 +5,7 @@ venv/
 build/
 
 ipython/
+logs/
 .pytest_cache/
 .DS_Store
 .luac
