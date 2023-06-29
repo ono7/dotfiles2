@@ -1,27 +1,28 @@
 --- Follow the white Rabbit...   🐇
 
 --[[
--- ge, jump back do end of word
--- xxd -psd (get hex codes to use with wezterm)
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
--- $_ (shell) - access last argument to previous command, !^ - access first argument
--- e.g. mkdir testdir || cd $_ (cd to testdir)
+	*  ge, jump back do end of word
+	*  xxd -psd (get hex codes to use with wezterm)
 
---- brew install universal-ctags
+	*  $_ (shell) - access last argument to previous command, !^ - access first argument
+	*  e.g. mkdir testdir || cd $_ (cd to testdir)
 
--- :so (source this file)
--- bro filt /this/ old
--- s/\%Vaaa/bbb/g -- \%V replace only inside visual selection
--- use ce or cE instead of cw or cW, easier to type
--- USE gi, jump to last insert position
--- use '' to go back to the cursor position before the last jump
--- use csqb  (changes the nearest quotes.. q is aliased to `, ', " in surround.nvim)
--- "0 - holds recent yanked text
--- "1 - holds recent deleted text
--- stty sane // fix bad terminal
--- count number of matches %s/test//gn (gn n=no op), will show the number of matches
+	* - brew install universal-ctags
+
+	*  :so (source this file)
+	*  bro filt /this/ old
+	*  s/\%Vaaa/bbb/g -- \%V replace only inside visual selection
+	*  use ce or cE instead of cw or cW, easier to type
+	*  USE gi, jump to last insert position
+	*  use '' to go back to the cursor position before the last jump
+	*  use csqb  (changes the nearest quotes.. q is aliased to `, ', " in surround.nvim)
+	*  "0 - holds recent yanked text
+	*  "1 - holds recent deleted text
+	*  stty sane // fix bad terminal
+	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 
 --]]
 vim.cmd([[set termguicolors]])
@@ -97,8 +98,6 @@ k("v", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
 k("n", ",r", vim.lsp.buf.format, silent)
-
-
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
@@ -213,7 +212,6 @@ for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   isAlphaNum[string.upper(lowercaseKey)] = true
 end
 
-
 -- populate alpha_and_quotes before we add digits 0 - 9
 for key, v in pairs(isAlphaNum) do
   alpha_and_quotes[key] = v
@@ -226,7 +224,6 @@ end
 for key, v in pairs(quotes) do
   alpha_and_quotes[key] = v
 end
-
 
 -- for ascii = 48, 57 do -- ASCII values for '0' to '9'
 --   isAlphaNumPunct[string.char(ascii)] = true
@@ -283,7 +280,6 @@ k('i', '`', function()
   return '``<Left>'
 end
 , { expr = true })
-
 
 -- handles ''
 k('i', "'", function()
