@@ -25,13 +25,26 @@ require("lazy").setup({
   "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
+  -- {
+  --   "utilyre/sentiment.nvim",
+  --   version = "*",
+  --   event = "VeryLazy", -- keep for lazy loading
+  --   opts = {
+  --     delay = 50,
+  --   },
+  --   init = function()
+  --     -- `matchparen.vim` needs to be disabled manually in case of lazy loading
+  --     vim.g.loaded_matchparen = 1
+  --   end,
+  -- },
+
   {
     'monkoose/matchparen.nvim',
     config = function()
       require('matchparen').setup({
       on_startup = true,         -- Should it be enabled by default
       hl_group = 'MatchParen',   -- highlight group of the matched brackets
-      debounce_time = 1,       -- debounce time in milliseconds for rehighlighting of brackets.
+      debounce_time = 10,       -- debounce time in milliseconds for rehighlighting of brackets.
     })
   end
   },
