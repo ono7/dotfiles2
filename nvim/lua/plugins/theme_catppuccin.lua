@@ -45,42 +45,6 @@ require("catppuccin").setup({
   },
 })
 
--- require("catppuccin").remap({
---  ErrorMsg = { fg = cp.red, style = "bold" },
---  TSProperty = { fg = cp.yellow, style = "NONE" },
---  TSInclude = { fg = cp.teal, style = "NONE" },
---  TSOperator = { fg = cp.sky, style = "bold" },
---  TSKeywordOperator = { fg = cp.sky, style = "bold" },
---  TSPunctSpecial = { fg = cp.maroon, style = "bold" },
---  TSFloat = { fg = cp.peach, style = "bold" },
---  TSNumber = { fg = cp.peach, style = "bold" },
---  TSBoolean = { fg = cp.peach, style = "bold" },
---  TSConditional = { fg = cp.mauve, style = "bold" },
---  TSRepeat = { fg = cp.mauve, style = "bold" },
---  TSException = { fg = cp.peach, style = "NONE" },
---  TSConstBuiltin = { fg = cp.lavender, style = "NONE" },
---  TSFuncBuiltin = { fg = cp.peach, style = "NONE" },
---  TSTypeBuiltin = { fg = cp.yellow, style = "NONE" },
---  TSVariableBuiltin = { fg = cp.teal, style = "NONE" },
---  TSFunction = { fg = cp.blue, style = "NONE" },
---  TSParameter = { fg = cp.rosewater, style = "NONE" },
---  TSKeywordFunction = { fg = cp.maroon, style = "NONE" },
---  TSKeyword = { fg = cp.red, style = "NONE" },
---  TSMethod = { fg = cp.blue, style = "NONE" },
---  TSNamespace = { fg = cp.rosewater, style = "NONE" },
---  TSStringRegex = { fg = cp.peach, style = "NONE" },
---  TSVariable = { fg = cp.white, style = "NONE" },
---  TSTagAttribute = { fg = cp.mauve, style = "NONE" },
---  TSURI = { fg = cp.rosewater, style = "underline" },
---  TSLiteral = { fg = cp.teal, style = "NONE" },
---  TSEmphasis = { fg = cp.maroon, style = "NONE" },
---  TSStringEscape = { fg = cp.pink, style = "NONE" },
---  bashTSFuncBuiltin = { fg = cp.red, style = "NONE" },
---  bashTSParameter = { fg = cp.yellow, style = "NONE" },
---  typescriptTSProperty = { fg = cp.lavender, style = "NONE" },
---  cssTSProperty = { fg = cp.yellow, style = "NONE" }
---})
-
 vim.cmd.colorscheme("catppuccin")
 
 -- setup must be called before loading
@@ -88,7 +52,8 @@ vim.api.nvim_set_hl(0, "ErrorMsg", { fg = "#e27e8d" })
 vim.api.nvim_set_hl(0, "Comment", { fg = "#4D5967" })
 vim.api.nvim_set_hl(0, "Normal", { fg = "#d8e2ec" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Comment" })
-vim.api.nvim_set_hl(0, "Function", { fg = "#8EAAF4" })
+-- vim.api.nvim_set_hl(0, "Function", { fg = "#8EAAF4" })
+vim.api.nvim_set_hl(0, "Function", { fg = "#9abdf5" })
 vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
 -- vim.api.nvim_set_hl(0, "TreesitterContext", { link = "DiffText" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#33415e" })
@@ -98,9 +63,10 @@ vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#33415e" })
 vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#26323b", bg = "NONE" })
 vim.api.nvim_set_hl(0, "DiffChange", {})
--- vim.api.nvim_set_hl(0, "@keyword.operator", { fg = "#cba6f7", italic = true })
-vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#cba6f7", italic = true })
-vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#cba6f7", italic = true })
+-- vim.api.nvim_set_hl(0, "@keyword.operator", { fg = "#bb9af7", italic = true })
+vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#bb9af7", italic = true })
+-- vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#8d7cd8", italic = true })
+vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#9d7cd8", italic = true })
 vim.api.nvim_set_hl(0, "@method.call.go", { link = "Normal" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#737aa2", bold = true })
 -- vim.api.nvim_set_hl(0, "String", { fg = "#c5dea1" })
@@ -112,7 +78,7 @@ vim.api.nvim_set_hl(0, "@field", {})
 vim.api.nvim_set_hl(0, "FloatShadow", {})
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC"})
 vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Constant"})
-vim.api.nvim_set_hl(0, "@variable.builtin.python", {})
+vim.api.nvim_set_hl(0, "@variable.builtin.python", {fg = "#e27e8d"})
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#192028" })
 vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#192028" })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#41505e" })
