@@ -25,7 +25,16 @@ require("lazy").setup({
   "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
   "folke/neodev.nvim",
-  'monkoose/matchparen.nvim',
+  {
+    'monkoose/matchparen.nvim',
+    config = function()
+      require('matchparen').setup({
+      on_startup = true,         -- Should it be enabled by default
+      hl_group = 'MatchParen',   -- highlight group of the matched brackets
+      debounce_time = 1,       -- debounce time in milliseconds for rehighlighting of brackets.
+    })
+  end
+  },
   "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
