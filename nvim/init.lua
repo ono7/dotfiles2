@@ -147,8 +147,8 @@ k("n", "U", "<c-r>", opt)
 -- k("n", "<leader>l", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
 
 --- basic surround without plugins
-m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
-m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
+-- m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
+-- m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
 
 -- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
