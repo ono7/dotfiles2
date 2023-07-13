@@ -99,8 +99,20 @@ end
 --     },
 --     cache_enabled = 0,
 --   }
--- else
--- end
+
+
+vim.g.clipboard = {
+  name = 'myTmux',
+  copy = {
+    ['+'] = "tmux load-buffer -",
+    ['*'] = "tmux load-buffer -",
+  },
+  paste = {
+    ['+'] = "tmux save-buffer -",
+    ['*'] = "tmux save-buffer -",
+  },
+  cache_enabled = 1,
+}
 
 -- o.virtualedit="all"
 
