@@ -1,0 +1,14 @@
+snippet h
+  [all:vars]
+
+  # ansible_network_os=ios
+  # ansible_connection=network_cli
+  # ansible_become=yes
+  # ansible_become_method=enable
+
+
+snippet debug
+  - name: "${1/.*/\U&/g}"
+    ansible.builtin.debug:
+      msg: |
+        ${0}

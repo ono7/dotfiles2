@@ -5,7 +5,9 @@ snippet h
 
   - name: "${1}"
     hosts: ${2:localhost}
+    # order: shuffle
     gather_facts: false
+    # serial: 10
 
     tasks:
       - name: "${0}"
@@ -15,4 +17,3 @@ snippet debug
     ansible.builtin.debug:
       msg: |
         ${0}
-
