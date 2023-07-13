@@ -77,11 +77,13 @@ o.wrapscan = true
 o.breakindent = true
 opt.isfname:append("@-@")
 
-if vim.fn.has("wsl") == 1 then
-  vim.g.clipboard = ""
-else
-  opt.clipboard:append("unnamedplus")
-end
+opt.clipboard:append("unnamed")
+
+-- if vim.fn.has("wsl") == 1 then
+--   vim.g.clipboard = ""
+-- else
+--   opt.clipboard:append("unnamedplus")
+-- end
 
 --   local paste_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
 --   local copy_prg = "/mnt/c/Windows/System32/clip.exe"
