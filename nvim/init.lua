@@ -125,6 +125,7 @@ vim.api.nvim_set_keymap('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'
 k("n", "<leader>cd", ":lcd %:h<CR>")
 
 -- paste over selection without overwriting clipboard
+k("x", "p", "pgvy")
 k("v", "p", [["0p]])
 k("v", "P", [["0P]])
 k("v", "d", [["0d]])
