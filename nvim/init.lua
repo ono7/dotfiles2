@@ -128,9 +128,9 @@ k("n", "<leader>cd", ":lcd %:h<CR>")
 -- k("v", "p", [["0p]])
 -- k("v", "P", [["0P]])
 -- k("v", "d", [["0d]])
-k("v", "p", [["*p]])
-k("v", "P", [["*P]])
-k("v", "d", [["*d]])
+k("v", "p", [["+p]])
+k("v", "P", [["+P]])
+k("v", "d", [["+d]])
 
 k({ "n", "v" }, "J", "mzJ`z") -- when using J keep cursor to the right
 
