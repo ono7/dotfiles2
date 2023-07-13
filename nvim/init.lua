@@ -4,6 +4,7 @@
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
+  * replace with contents of register :s/abc/\=getreg('*')/g
 	*  ge, jump back do end of word
 	*  xxd -psd (get hex codes to use with wezterm)
 
