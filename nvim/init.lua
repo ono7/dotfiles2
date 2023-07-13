@@ -505,6 +505,9 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 k("n", "c", '"ac')
 k("n", "C", '"aC')
 
+-- k("n", "p", [[<Plug>(miniyank-autoput)]], {})
+-- k("n", "P", [[<Plug>(miniyank-autoPut)]], {})
+
 -- switch between current and prev file
 -- k("n", "<space><space>", "<c-^>") -- code action in mason.lua
 
