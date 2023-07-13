@@ -10,7 +10,8 @@ snippet h
     # serial: 10
 
     tasks:
-      - name: "${0}"
+      - name: "${1/\w+/\u&/g} ${3}"
+        ${0}
 
 snippet debug
   - name: "${1/.*/\U&/g}"
