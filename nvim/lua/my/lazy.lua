@@ -15,16 +15,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   "tpope/vim-repeat",
-  "roxma/vim-tmux-clipboard",
+  -- "roxma/vim-tmux-clipboard",
   "jose-elias-alvarez/null-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",     name = "catppuccin" },
   "numtostr/navigator.nvim",
-  "bfredl/nvim-miniyank",
+  -- "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
-  "folke/neodev.nvim",
   -- {
   --   "utilyre/sentiment.nvim",
   --   version = "*",
@@ -42,11 +41,11 @@ require("lazy").setup({
     'monkoose/matchparen.nvim',
     config = function()
       require('matchparen').setup({
-      on_startup = true,         -- Should it be enabled by default
-      hl_group = 'MatchParen',   -- highlight group of the matched brackets
-      debounce_time = 10,       -- debounce time in milliseconds for rehighlighting of brackets.
-    })
-  end
+        on_startup = true,       -- Should it be enabled by default
+        hl_group = 'MatchParen', -- highlight group of the matched brackets
+        debounce_time = 10,      -- debounce time in milliseconds for rehighlighting of brackets.
+      })
+    end
   },
   "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
@@ -139,4 +138,5 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
     },
   },
+  "folke/neodev.nvim",
 }, {})

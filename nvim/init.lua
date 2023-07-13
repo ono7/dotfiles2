@@ -529,11 +529,10 @@ local packages = {
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
-  "plugins.null_ls",
+  -- "plugins.null_ls",
   "plugins.gitsigns",
   "plugins.treesitter",
   "plugins.theme_catppuccin", -- 2
-
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
