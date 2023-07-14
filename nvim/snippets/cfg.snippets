@@ -12,49 +12,58 @@ snippet inv "inventor.cfg" b
 
 snippet ansible.cfg "ansible config file" b
   [defaults]
+
+  # generate new ansible.cfg with `ansible-config init > ansible.cfg`
+
   # lets go!
 
-  # library = ""
+  # transport: smart (default), ssh, paramiko
+  transport=paramiko
 
-  # strategy = free
-  gathering = explicit
+  # library=""
 
-  # command_warnings=False
+  # strategy: free, linear
+  # strategy=free
 
-  # this is needed for version of nxos etc..
-  # interpreter_python = python3
-  interpreter_python = auto_silent
+  # gathering: smart, implicit (default), explicit (save time)
+  gathering=explicit
 
-  # do not check ssh keys
-  host_key_checking = False
+  # deprication_warnings=True
+  # devel_warnings=True
+  # localhost_warning=True
 
-  forks = 20
+  # interpreter_python=python3
+  interpreter_python=auto_silent
+
+  host_key_checking=False
+
+  forks=20
 
   # vault
-  # vault_identity_list = inline@~/.vinline, files@~/ansible/.vfiles
-  # vault_identity_list = inline@vault.key
+  # vault_identity_list=inline@~/.vinline, files@~/ansible/.vfiles
+  # vault_identity_list=inline@vault.key
 
   # dont display skipped host tasks
-  display_skipped_hosts = False
+  display_skipped_hosts=False
 
   # human readable output
   stdout_callback=debug
   stderr_callback=debug
 
-  # Use the stdout_callback when running ad-hoc commands.
-  # bin_ansible_callbacks = True
+  # Use the stdout_callback when running ad-hoc commands --> /usr/bin/ansible
+  # bin_ansible_callbacks=True
 
-  # default inventory file
-  inventory = inventory.cfg
-  # retries=2
+  inventory=inventory.cfg
 
   [persistent_connection]
-  command_timeout = 30
-  connection_timeout = 5
-  network_cli_retries = 0
-  persistent_connect_timeout=5
-  ssh_type=paramiko
-  # connection_cli_retries = 0
+  command_timeout=30
+  connect_timout=5
+  # command_timeout=30
+  # connect_retry_timout=15
 
   [ssh_connection]
-  pipelining = True
+  pipelining=True
+
+  [galaxy]
+  # disable_gpg_verify=False
+  # ignore_certs=False
