@@ -1,4 +1,4 @@
-snippet scode Start basic code for assembly
+snippet h "header" wb
 	.data
 
 
@@ -11,7 +11,7 @@ snippet scode Start basic code for assembly
 	main:
 
 
-snippet scodes Start basic code for assembly with _start label
+snippet scodes "Start basic code for assembly with _start label" wb
 	.data
 
 
@@ -24,57 +24,57 @@ snippet scodes Start basic code for assembly with _start label
 	_start:
 
 
-snippet lo Long
+snippet lo Long wb
 	$1: .long $2
-snippet wo Word
+snippet wo Word wb
 	$1: .word $2
-snippet by Byte
+snippet by Byte wb
 	$1: .byte $2
-snippet sp Space
+snippet sp Space wb
 	$1: .space $2
-snippet ai Ascii
+snippet ai Ascii wb
 	$1: .ascii "$2"
-snippet az Asciz
+snippet az Asciz wb
 	$1: .asciz "$2"
-snippet ze Zero
+snippet ze Zero wb
 	$1: .zero "$2"
-snippet qu Quad
+snippet qu Quad wb
 	$1: .quad "$2"
-snippet si Single
+snippet si Single wb
 	$1: .single "$2"
-snippet do Double
+snippet do Double wb
 	$1: .single "$2"
-snippet fl Float
+snippet fl Float wb
 	$1: .single "$2"
-snippet oc Octa
+snippet oc Octa wb
 	$1: .single "$2"
-snippet sh Short
+snippet sh Short wb
 	$1: .single "$2"
-snippet exit0 Exit without error
+snippet exit0 "Exit without error" wb
 	movl \$1, %eax
 	xorl %ebx, %ebx
 	int \$0x80
 
-snippet exit Exit with error
+snippet exit "Exit with error" wb
 	mov \$1, %eax
 	mov $1, %ebx
 	int \$0x80
 
-snippet readfstdin Read fixed length text from stdin
+snippet readfstdin "Read fixed length text from stdin" wb
 	mov \$3, %eax
 	mov \$2, %ebx
 	mov $1, %ecx
 	mov $2, %edx
 	int \$0x80
 
-snippet writestdout Write text to stdout
+snippet writestdout "Write text to stdout" wb
 	mov \$4, %eax
 	mov \$1, %ebx
 	mov $1, %ecx
 	mov $2, %edx
 	int \$0x80
 
-snippet writestderr Write text to stderr
+snippet writestderr "Write text to stderr"
 	mov \$4, %eax
 	mov \$2, %ebx
 	mov $1, %ecx
@@ -91,15 +91,15 @@ snippet / Division
 
 snippet jmpl Conditional lower jump
 	cmp $1, $2
-	jl $3 
+	jl $3
 
 snippet jmple Conditional lower or equal jump
 	cmp $1, $2
-	jle $3 
+	jle $3
 
 snippet jmpe Conditional equal jump
 	cmp $1, $2
-	je $3 
+	je $3
 
 snippet jmpn Conditional not equal jump
 	cmp $1, $2
@@ -143,7 +143,7 @@ snippet loopv Loop through a vector
 		inc %ecx
 		jmp et_for
 
-snippet mul Multiply
+snippet mul Multiply wb
 	xor %edx, %edx
 	mov $1, %eax
 	mul $2

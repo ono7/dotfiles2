@@ -1,4 +1,4 @@
-snippet h
+snippet h "header" wb
   ---
   # Author: Jose Lima
   #   Date: `strftime("%Y-%m-%d %H:%M")` CST
@@ -13,7 +13,7 @@ snippet h
       - name: "${1/\v(^\w+).*/\u\1/g} ${3}"
         ${0}
 
-snippet debug
+snippet debug "debug task" wb
   - name: "${1/.*/\U&/g}"
     ansible.builtin.debug:
       msg: |

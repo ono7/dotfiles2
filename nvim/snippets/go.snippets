@@ -1,34 +1,34 @@
-snippet ti
+snippet ti "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
-snippet ta
+snippet ta "tag" w
   <${1}>
     ${0:${VISUAL}}
   </${1/\v(\w+).*/\1/g}>
 
-snippet bc "block comment"
+snippet bc "block comment" wb
   /*
     ${0:${VISUAL}}
   */
 
-snippet e
+snippet e "error" wb
 	if err != nil {
 		${1:log.Fatal(err)}
 	}
-snippet v "shorthand variable declaration"
+snippet v "shorthand variable declaration" wb
   ${1} := ${2}
 
-snippet fori "for int loop"
+snippet fori "for int loop" wb
   for ${2:i} := 0; $2 < ${1:count}; $2${3:++} {
     ${0:${VISUAL}}
   }
 
-snippet forr "for range loop"
+snippet forr "for range loop" wb
   for ${1:e} := range ${2:collection} {
     ${0:${VISUAL}}
   }
 
-snippet test "test function"
+snippet test "test function" wb
   func Test${1:name}(t *testing.T) {
     ${0:${VISUAL}}
   }

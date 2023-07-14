@@ -1,4 +1,4 @@
-snippet inv
+snippet inv "inventor.cfg" wb
   [all:vars]
 
   # ansible_network_os=ios
@@ -11,18 +11,18 @@ snippet inv
 
 
 
-snippet debug
+snippet debug "debug task" wb
   - name: "${1/.*/\U&/g}"
     ansible.builtin.debug:
       msg: |
         ${0}
 
-snippet ansible.cfg
+snippet ansible.cfg "ansible config file" wb
   [defaults]
+  # lets go!
 
   # library = ""
 
-  # lets go!
   # strategy = free
   gathering = explicit
 
@@ -53,9 +53,7 @@ snippet ansible.cfg
 
   # default inventory file
   inventory = inventory.cfg
-
-  # try to compensate for Cisco ISE server issues..
-  retries=2
+  # retries=2
 
   [persistent_connection]
   command_timeout = 30

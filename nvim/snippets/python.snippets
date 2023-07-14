@@ -1,4 +1,4 @@
-snippet h
+snippet h "header" wb
   #!/usr/bin/env python3
   """${1}
 
@@ -10,13 +10,13 @@ snippet h
   """
   ${0}
 
-snippet d
+snippet d "debug" wb
   import pdb;pdb.set_trace()
 
-snippet rd
+snippet rd "remote debug" wb
   import rpdb;rpdb.set_trace()
 
-snippet filter
+snippet filter "ansible filter" wb
   def ${1}(${2}):
     ${0}
     return

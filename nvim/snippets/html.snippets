@@ -1,9 +1,9 @@
 extends markdown
 
-snippet ti
+snippet ti "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
-snippet ta
+snippet ta "tag" w
   <${1}>
     ${0:${VISUAL}}
   </${1/\v(\w+).*/\1/g}>

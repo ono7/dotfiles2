@@ -1,16 +1,16 @@
-snippet date
+snippet date "date" w
 	`strftime("%Y-%m-%d")`
-snippet ddate
+snippet ddate "date" w
 	`strftime("%B %d, %Y")`
-snippet diso
+snippet diso "date" w
 	`strftime("%Y-%m-%dT%H:%M:%S")`
-snippet time
+snippet time "time" w
 	`strftime("%H:%M")`
-snippet dt
+snippet dt "date and time" w
 	`strftime("%Y-%m-%d %H:%M")`
-snippet todo
+snippet todo "todo" wb
   `trim(split(&commentstring, '%s')[0])` TODO: `$USER` ~ ${0:${VISUAL}}
-snippet fix
+snippet fix "fix" wb
   `trim(split(&commentstring, '%s')[0])` FIXME: `$USER` ~ ${0:${VISUAL}}
-snippet note
+snippet note "note" wb
   `trim(split(&commentstring, '%s')[0])` NOTE: `$USER` ~ ${0:${VISUAL}}

@@ -1,4 +1,4 @@
-snippet h
+snippet h "header" wb
   #!/usr/bin/env bash
   #
   # Author: Jose Lima
@@ -7,7 +7,7 @@ snippet h
   trap "exit" INT TERM
   trap "kill 0" EXIT
 
-snippet h1
+snippet h1 "optional header for cicd script" wb
   #!/usr/bin/env bash
   #
   # Author: Jose Lima
@@ -32,18 +32,18 @@ snippet h1
   }
   ${0}
 
-snippet if
+snippet if "if statement" wb
   if [[ $1 ]]; then
     ${0:${VISUAL}}
   fi
-snippet elif
+snippet elif "else if statement" wb
   elif [[ $1 ]]; then
     ${0:${VISUAL}}
-snippet wh
+snippet wh "while loop" wb
   while [[ $1 ]]; do
     ${0:${VISUAL}}
   done
-snippet until
+snippet until "until loop" wb
   until [[ $1 ]]; do
     ${0:${VISUAL}}
   done
