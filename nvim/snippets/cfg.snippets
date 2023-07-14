@@ -1,4 +1,4 @@
-snippet inv "inventor.cfg" w
+snippet inv "inventor.cfg" b
   [all:vars]
 
   # ansible_network_os=ios
@@ -10,14 +10,7 @@ snippet inv "inventor.cfg" w
   ${0}hostabc1 ansible_host=10.1.1.1
 
 
-
-snippet debug "debug task" w
-  - name: "${1/.*/\U&/g}"
-    ansible.builtin.debug:
-      msg: |
-        ${0}
-
-snippet ansible.cfg "ansible config file" w
+snippet ansible.cfg "ansible config file" b
   [defaults]
   # lets go!
 
