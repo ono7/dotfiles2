@@ -20,7 +20,7 @@ require("lazy").setup({
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
-  { "catppuccin/nvim",     name = "catppuccin" },
+  { "catppuccin/nvim",        name = "catppuccin" },
   "numtostr/navigator.nvim",
   -- "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
@@ -47,7 +47,6 @@ require("lazy").setup({
       })
     end
   },
-  "dcampos/nvim-snippy",
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
   {
@@ -56,6 +55,7 @@ require("lazy").setup({
       require 'colorizer'.setup()
     end
   },
+  { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -63,7 +63,7 @@ require("lazy").setup({
       { "williamboman/mason-lspconfig.nvim" },
     },
   },
-  { "numtostr/fterm.nvim", opts = {} },
+  { "numtostr/fterm.nvim",     opts = {} },
   {
     "f-person/git-blame.nvim",
     config = function()
@@ -74,12 +74,11 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
+      "dcampos/nvim-snippy",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      -- "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      -- "saadparwaiz1/cmp_luasnip",
     },
   },
   {
@@ -95,13 +94,12 @@ require("lazy").setup({
       },
     },
   },
-  { "numToStr/Comment.nvim",   opts = {} },
+  { "numToStr/Comment.nvim", opts = {} },
   {
     "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
@@ -113,8 +111,6 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
-      -- pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-      -- require('nvim-treesitter')
       require('plugins.treesitter')
     end,
   },

@@ -525,7 +525,6 @@ local packages = {
   "my.vars",
   "my.settings",
   "my.lazy",
-  "plugins.lsp.mason", -- mason first, or lsp breaks
   "my.cmds",
   "plugins.telescope",
   "plugins.navigator",
@@ -534,10 +533,11 @@ local packages = {
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
-  -- "plugins.null_ls",
+  "plugins.lsp.mason", -- mason first, or lsp breaks
   "plugins.gitsigns",
   "plugins.treesitter",
   "plugins.theme_catppuccin", -- 2
+  -- "plugins.null_ls",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
