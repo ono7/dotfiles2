@@ -1,4 +1,4 @@
-snippet h
+snippet inv
   [all:vars]
 
   # ansible_network_os=ios
@@ -6,7 +6,9 @@ snippet h
   # ansible_become=yes
   # ansible_become_method=enable
 
-  ${0}
+  [${1:group_1}]
+  ${0}hostabc1 ansible_host=10.1.1.1
+
 
 
 snippet debug
