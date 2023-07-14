@@ -8,9 +8,9 @@ snippet time "time" w
 	`strftime("%H:%M")`
 snippet dt "date and time" w
 	`strftime("%Y-%m-%d %H:%M")`
-snippet todo "todo" wb
+snippet todo "todo" w
   `trim(split(&commentstring, '%s')[0])` TODO: `$USER` ~ ${0:${VISUAL}}
-snippet fix "fix" wb
+snippet fix "fix" w
   `trim(split(&commentstring, '%s')[0])` FIXME: `$USER` ~ ${0:${VISUAL}}
-snippet note "note" wb
+snippet note "note" w
   `trim(split(&commentstring, '%s')[0])` NOTE: `$USER` ~ ${0:${VISUAL}}

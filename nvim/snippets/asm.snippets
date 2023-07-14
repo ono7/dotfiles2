@@ -1,4 +1,4 @@
-snippet h "header" wb
+snippet h "header" w
 	.data
 
 
@@ -11,7 +11,7 @@ snippet h "header" wb
 	main:
 
 
-snippet scodes "Start basic code for assembly with _start label" wb
+snippet scodes "Start basic code for assembly with _start label" w
 	.data
 
 
@@ -24,50 +24,50 @@ snippet scodes "Start basic code for assembly with _start label" wb
 	_start:
 
 
-snippet lo Long wb
+snippet lo Long w
 	$1: .long $2
-snippet wo Word wb
+snippet wo Word w
 	$1: .word $2
-snippet by Byte wb
+snippet by Byte w
 	$1: .byte $2
-snippet sp Space wb
+snippet sp Space w
 	$1: .space $2
-snippet ai Ascii wb
+snippet ai Ascii w
 	$1: .ascii "$2"
-snippet az Asciz wb
+snippet az Asciz w
 	$1: .asciz "$2"
-snippet ze Zero wb
+snippet ze Zero w
 	$1: .zero "$2"
-snippet qu Quad wb
+snippet qu Quad w
 	$1: .quad "$2"
-snippet si Single wb
+snippet si Single w
 	$1: .single "$2"
-snippet do Double wb
+snippet do Double w
 	$1: .single "$2"
-snippet fl Float wb
+snippet fl Float w
 	$1: .single "$2"
-snippet oc Octa wb
+snippet oc Octa w
 	$1: .single "$2"
-snippet sh Short wb
+snippet sh Short w
 	$1: .single "$2"
-snippet exit0 "Exit without error" wb
+snippet exit0 "Exit without error" w
 	movl \$1, %eax
 	xorl %ebx, %ebx
 	int \$0x80
 
-snippet exit "Exit with error" wb
+snippet exit "Exit with error" w
 	mov \$1, %eax
 	mov $1, %ebx
 	int \$0x80
 
-snippet readfstdin "Read fixed length text from stdin" wb
+snippet readfstdin "Read fixed length text from stdin" w
 	mov \$3, %eax
 	mov \$2, %ebx
 	mov $1, %ecx
 	mov $2, %edx
 	int \$0x80
 
-snippet writestdout "Write text to stdout" wb
+snippet writestdout "Write text to stdout" w
 	mov \$4, %eax
 	mov \$1, %ebx
 	mov $1, %ecx
@@ -143,7 +143,7 @@ snippet loopv Loop through a vector
 		inc %ecx
 		jmp et_for
 
-snippet mul Multiply wb
+snippet mul Multiply w
 	xor %edx, %edx
 	mov $1, %eax
 	mul $2
