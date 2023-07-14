@@ -12,7 +12,7 @@ snippet h "header" b
     # serial: 10
 
     tasks:
-      - name: "${1/\v(^\w+).*/\u\1/g} ${3}"
+      - name: "${1/\v(^\w+).*/\u\1/g} --> ${3}"
         ${0}
 
 snippet debug "debug task" b
