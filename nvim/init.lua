@@ -56,6 +56,12 @@ local function get_git_root()
 end
 
 -- return a table of lines, table.contact(thistable, "\n")
+local function get_visual()
+  local _, ls, cs = unpack(vim.fn.getpos('v'))
+  local _, le, ce = unpack(vim.fn.getpos('.'))
+  return vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {})
+end
+
 local function get_visual_selection()
   local vstart = vim.fn.getpos("'<")
   local vend = vim.fn.getpos("'>")
@@ -108,9 +114,13 @@ end
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux_visual = function()
-  local lines = get_visual_selection()
-  if lines then
-    vim.fn.system('tmux load-buffer -w -', table.concat(lines, "\n"))
+  -- TODO: jlima ~ nvim_buf_get_text({buffer}, {start_row}, {start_col}, {end_row}, {end_col},
+  -- this might fix this issue
+  local text = get_visual()
+  if text then
+    -- vim.fn.system('tmux load-buffer -w -', table.concat(lines, "\n"))
+    vim.fn.system('tmux load-buffer -w -', text)
+    P(text)
     print('')
   end
 end
