@@ -55,21 +55,18 @@ local function get_git_root()
   return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
--- return a table of lines, table.contact(thistable, "\n")
-local function get_visual()
-  local _, ls, cs = unpack(vim.fn.getpos('v'))
-  local _, le, ce = unpack(vim.fn.getpos('.'))
-  return vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {})
-end
-
 local function get_visual_selection()
-  local vstart = vim.fn.getpos("'<")
-  local vend = vim.fn.getpos("'>")
-  local line_start = vstart[2]
-  local line_end = vend[2]
-  -- or use api.nvim_buf_get_lines
-  local lines = vim.fn.getline(line_start, line_end)
-  return lines
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+  lines[1] = string.sub(lines[1], s_start[3], -1)
+  if n_lines == 1 then
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+  else
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+  end
+  return table.concat(lines, '\n')
 end
 
 vim.api.nvim_create_user_command("CdGitRoot", function()
@@ -114,13 +111,9 @@ end
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux_visual = function()
-  -- TODO: jlima ~ nvim_buf_get_text({buffer}, {start_row}, {start_col}, {end_row}, {end_col},
-  -- this might fix this issue
-  local text = get_visual()
+  local text = get_visual_selection()
   if text then
-    -- vim.fn.system('tmux load-buffer -w -', table.concat(lines, "\n"))
     vim.fn.system('tmux load-buffer -w -', text)
-    P(text)
     print('')
   end
 end
