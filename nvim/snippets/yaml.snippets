@@ -16,7 +16,6 @@ snippet h "header" b
         ${0}
 
 snippet debug "debug task" b
-  - name: "${1/.*/\U&/g}"
     ansible.builtin.debug:
       msg: |
         ${0}
