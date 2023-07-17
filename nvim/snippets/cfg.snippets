@@ -18,7 +18,7 @@ snippet ansible.cfg "ansible config file" b
   # lets go!
 
   # transport: smart (default), ssh, paramiko
-  transport=paramiko
+  # transport=paramiko
 
   # library=""
 
@@ -58,6 +58,7 @@ snippet ansible.cfg "ansible config file" b
   [persistent_connection]
   command_timeout=30
   connect_timout=5
+  ssh_type=paramiko
   # command_timeout=30
   # connect_retry_timout=15
 
