@@ -1,4 +1,6 @@
 snippet inv "inventor.cfg" b
+  localhost ansible_connection=local
+
   [all:vars]
 
   # ansible_network_os=ios
@@ -8,7 +10,6 @@ snippet inv "inventor.cfg" b
   # ansible_ssh_user=""
   # ansible_ssh_password=""
 
-  localhost ansible_connection=local
 
   [${1:group_1}]
   ${2:host1} ${0:ansible_host=1.1.1.1}
