@@ -5,6 +5,8 @@ snippet inv "inventor.cfg" b
   # ansible_connection=network_cli
   # ansible_become=yes
   # ansible_become_method=enable
+  # ansible_ssh_user=""
+  # ansible_ssh_password=""
 
   [${1:group_1}]
   ${2:hostname} ${0:ansible_host=1.1.1.1}
