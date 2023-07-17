@@ -8,6 +8,8 @@ snippet inv "inventor.cfg" b
   # ansible_ssh_user=""
   # ansible_ssh_password=""
 
+  localhost ansible_connection=local
+
   [${1:group_1}]
   ${2:hostname} ${0:ansible_host=1.1.1.1}
 
