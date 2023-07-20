@@ -1,0 +1,15 @@
+---
+# Author: Jose Lima
+# Date: 2023-07-20 15:59 CST
+
+- name: "all"
+  hosts: all
+  # order: shuffle
+  gather_facts: false
+  # serial: 10
+
+  tasks:
+    - name: "All --> "
+      ansible.builtin.debug:
+        msg: |
+          {{ test_var }}
