@@ -347,11 +347,16 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#e5e9f0,hl:#81a1c1
-    --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
-    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
-    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+#     --color=fg:#e5e9f0,hl:#81a1c1
+#     --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
+#     --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
+#     --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
 FD_CMD='fd -I --type f --exclude ".git" --exclude "__pycache__" --follow --hidden'
 if command -v fd &> /dev/null; then
@@ -481,8 +486,11 @@ if [[ $OSTYPE == "linux"* ]];  then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-export CLICOLOR=1
+export LS_COLORS=$(vivid generate catppuccin-mocha)
+zstyle ':completion:*:default' list-colors ""
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+export CLICOLOR=1
+export LSCOLOR=
 
 if [[ $OSTYPE == "darwin"* ]];  then
   KRATE=1
@@ -494,7 +502,7 @@ if [[ $OSTYPE == "darwin"* ]];  then
   # normal minimum is 15 (225 ms) , higher is faster
   defaults write -g InitialKeyRepeat -int $INITKRATE
 
-  eval "$(zoxide init zsh)"
+  # eval "$(zoxide init zsh)"
 fi
 
 # unset display in wsl or vim will starup slow

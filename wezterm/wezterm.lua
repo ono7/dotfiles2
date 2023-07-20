@@ -106,28 +106,24 @@ return {
       action = wezterm.action.SendString("\x02\x7c"),
     },
   },
-  -- front_end                    = "WebGpu",
-  -- color_scheme = "theme_numetal", -- 1st pick
-  -- color_scheme = "Tokyo Night Storm (Gogh)",
-  -- color_scheme = "tokyonight_storm",  -- current best
-  -- color_scheme = "Galaxy",
-  -- color_scheme                 = 'Harmonic16 Dark (base16)',
-  color_scheme                 = 'mine',
-  color_schemes                              = {
-    ['mine'] = {
-      -- background = "#222932",
-      background = "#202933",
-      -- foreground = "#dee6f0",
-      foreground = "#c7cff7",
-      cursor_fg = "#323a4c",
-      cursor_bg = "#ffffff",
-      cursor_border = "#ffcc66",
-      selection_bg = "#33415e",
-      selection_fg = "#cbccc6",
-      ansi = { "#192028", "#e27e8d", "#c5dea1", "#c49a5a", "#8EAAF4", "#c6a0f6", "#5ec4ff", "#c7c7c7" },
-      brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
-    }
-  },
+  -- color_scheme                 = "Catppuccin Macchiato",
+  color_scheme                 = "Catppuccin Mocha",
+  -- color_scheme                 = 'mine',
+  -- color_schemes                = {
+  --   ['mine'] = {
+  --     -- background = "#222932",
+  --     background = "#202933",
+  --     -- foreground = "#dee6f0",
+  --     foreground = "#c7cff7",
+  --     cursor_fg = "#323a4c",
+  --     cursor_bg = "#ffffff",
+  --     cursor_border = "#ffcc66",
+  --     selection_bg = "#33415e",
+  --     selection_fg = "#cbccc6",
+  --     ansi = { "#192028", "#e27e8d", "#c5dea1", "#c49a5a", "#8EAAF4", "#c6a0f6", "#5ec4ff", "#c7c7c7" },
+  --     brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
+  --   }
+  -- },
   font                         = wezterm.font({ family = "MonoLisa Liga" }),
   -- freetype_load_target = "HorizontalLcd",
   cursor_blink_rate            = 350,
