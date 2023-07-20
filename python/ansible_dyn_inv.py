@@ -6,8 +6,6 @@ import json
 
 
 def fetch_inventory_data():
-    # Replace this function with your logic to fetch inventory data from your source (e.g., cloud provider API).
-    # For this example, I'm using hardcoded data.
     return [
         {
             "name": "server1",
