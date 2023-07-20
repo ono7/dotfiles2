@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "tpope/vim-repeat",
   -- "roxma/vim-tmux-clipboard",
-  -- "jose-elias-alvarez/null-ls.nvim",
+  "ono7/null-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme

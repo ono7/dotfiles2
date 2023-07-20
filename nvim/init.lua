@@ -540,7 +540,7 @@ local packages = {
   "plugins.gitsigns",
   "plugins.treesitter",
   "plugins.theme_catppuccin", -- 2
-  -- "plugins.null_ls",
+  "plugins.null_ls",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
