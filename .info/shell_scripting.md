@@ -1,3 +1,7 @@
+# bash must read
+
+https://www.cyberciti.biz/tips/bash-shell-parameter-substitution-2.html
+
 # bash one liners
 
 - recursively remove any node_modules folder
