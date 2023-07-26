@@ -1,6 +1,7 @@
 --- Follow the white Rabbit...   🐇
 
 --[[
+* g, - jump to last change
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
