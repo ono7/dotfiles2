@@ -19,7 +19,7 @@ configs.setup({
       max_file_lines = 5000,
     },
     disable = function(lang, buf)
-      local max_filesize = 500 * 1024   -- 100 KB
+      local max_filesize = 500 * 1024 -- 100 KB
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
       if ok and stats and stats.size > max_filesize then
         print("max stats.size > 500KB lua, check max size in plugins/treesitter.lua")
@@ -34,6 +34,7 @@ configs.setup({
     "javascript",
     "typescript",
     "markdown",
+    "markdown_inline",
     "terraform",
     "comment",
     "json",
