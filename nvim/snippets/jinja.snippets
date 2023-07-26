@@ -6,6 +6,9 @@ snippet bc "block comment" w
     ${0:${VISUAL}}
   #}
 
+snippet raw "Raw block" w
+  {% raw %} ${0:${VISUAL}} {% endraw %}
+
 snippet %% "block" b
   {% ${1:tag_name} %}
   ${0}
