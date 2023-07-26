@@ -6,10 +6,13 @@ snippet bc "block comment" w
     ${0:${VISUAL}}
   #}
 
-snippet raw "Raw block" b
+snippet c "block comment" w
+  {# ${0:${VISUAL}} #}
+
+snippet raw "Raw block" w
   {% raw %} ${0:${VISUAL}} {% endraw %}
 
-snippet bl "block" w
+snippet b "block" w
   {% ${1} %}
     ${0:${VISUAL}}
   {% end${1/\v(\w+).*/\1/g} %}
