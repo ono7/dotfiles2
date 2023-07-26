@@ -173,6 +173,12 @@ k("c", "<c-b>", "<S-left>", opt)
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
 
+local quotes = {
+  ['"'] = true,
+  ["'"] = true,
+  ['`'] = true,
+}
+
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -193,16 +199,11 @@ local r_pair_map = {
   ["`"] = "`",
 }
 local closedBrackets = {
-  [")"] = ")",
-  ["]"] = "]",
-  ["}"] = "}",
+  [")"] = true,
+  ["]"] = true,
+  ["}"] = true,
 }
 
-local quotes = {
-  ['"'] = true,
-  ["'"] = true,
-  ['`'] = true,
-}
 
 local all_pair_map = {}
 local alpha_and_quotes = {}
@@ -269,7 +270,11 @@ k('i', '"', function()
   local n = line:sub(col, col)
   local an = isAlphaNum
   local cb = closedBrackets
-  if p == '\\' or cb[p] then
+  local q = {
+    ["'"] = true,
+    ['`'] = true,
+  }
+  if p == '\\' or cb[p] or q[p] or q[n] then
     return '"'
   elseif n == '"' then
     return '<Right>'
@@ -292,7 +297,11 @@ k('i', '`', function()
   local n = line:sub(col, col)
   local an = isAlphaNum
   local cb = closedBrackets
-  if p == '\\' or cb[p] then
+  local q = {
+    ["'"] = true,
+    ['"'] = true,
+  }
+  if p == '\\' or cb[p] or q[p] or q[n] then
     return "`"
   elseif n == '`' then
     return '<Right>'
@@ -313,7 +322,11 @@ k('i', "'", function()
   local n = line:sub(col, col)
   local an = isAlphaNum
   local cb = closedBrackets
-  if p == '\\' or cb[p] then
+  local q = {
+    ['"'] = true,
+    ['`'] = true,
+  }
+  if p == '\\' or cb[p] or q[p] or q[n] then
     return "'"
   elseif n == "'" then
     return '<Right>'

@@ -216,9 +216,9 @@ function gitl () {
     f=$(git status --porcelain | cut -c4-)
     if test -z "$1"; then
       # replace new line, using longest match //
-      git commit "-m updates -> ${f//$'\n'/, }"
+      git commit "-m updates -> ${f//$'\n'/ }"
     else
-      git commit '-m' "$1 -> ${f//$'\n'/, }"
+      git commit '-m' "$1 -> ${f//$'\n'/ }"
     fi
     if [ ! -z "$(git remote -v)" ]; then
       git push
@@ -238,7 +238,8 @@ function dotc () {
     cd ~/.dotfiles
     git pull
     git add .
-    git commit '-m' 'updates'
+    f=$(git status --porcelain | cut -c4-)
+    git commit "-m updates -> ${f//$'\n'/ }"
     git push
     cd $my_dir
 }
