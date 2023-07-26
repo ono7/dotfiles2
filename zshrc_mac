@@ -213,10 +213,12 @@ function gitl () {
     my_dir=$PWD
     cdr
     git add .
+    f=$(git status --porcelain | cut -c4-)
     if test -z "$1"; then
-      git commit '-m updates'
+      # replace new line, using longest match //
+      git commit "-m updates -> ${f//$'\n'/, }"
     else
-      git commit '-m' $1
+      git commit '-m' "$1 -> ${f//$'\n'/, }"
     fi
     if [ ! -z "$(git remote -v)" ]; then
       git push
