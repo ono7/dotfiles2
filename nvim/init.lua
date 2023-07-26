@@ -192,6 +192,11 @@ local r_pair_map = {
   ['"'] = '"',
   ["`"] = "`",
 }
+local closedBrackets = {
+  [")"] = ")",
+  ["]"] = "]",
+  ["}"] = "}",
+}
 
 local quotes = {
   ['"'] = true,
@@ -243,6 +248,19 @@ end
 --   isAlphaNumPunct[ascii] = true
 -- end
 
+-- -- for jinja!
+-- k('i', "%", function()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local p = line:sub(col - 1, col - 1)
+--   if p == '{' then
+--     return "%%<Left>"
+--   else
+--     return "%"
+--   end
+-- end
+-- , { expr = true })
+
 -- handles ""
 k('i', '"', function()
   local line = vim.api.nvim_get_current_line()
@@ -250,7 +268,8 @@ k('i', '"', function()
   local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
   local an = isAlphaNum
-  if p == '\\' then
+  local cb = closedBrackets
+  if p == '\\' or cb[p] then
     return '"'
   elseif n == '"' then
     return '<Right>'
@@ -272,12 +291,11 @@ k('i', '`', function()
   local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
   local an = isAlphaNum
-  if p == '\\' then
+  local cb = closedBrackets
+  if p == '\\' or cb[p] then
     return "`"
   elseif n == '`' then
     return '<Right>'
-    -- TODO: elseif an[p] then -- why am i skipping this??
-    --   return "`"
   elseif r_pair_map[n] then
     return '``<Left>'
   elseif n ~= '' or an[p] then
@@ -294,7 +312,8 @@ k('i', "'", function()
   local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
   local an = isAlphaNum
-  if p == '\\' then
+  local cb = closedBrackets
+  if p == '\\' or cb[p] then
     return "'"
   elseif n == "'" then
     return '<Right>'
