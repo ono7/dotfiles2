@@ -18,8 +18,8 @@ snippet b "block" w
     ${0:${VISUAL}}
   {% end${1/\v(\w+).*/\1/g} %}
 
-# snippet { "curly" w
-#   {{ ${1} }}
+snippet v "variable inside curly" w
+   {{ ${0:${VISUAL}} }}
 
 snippet if "if statement" w
   {% if ${1} %}
