@@ -1,5 +1,5 @@
-snippet %% "block"
-  {% ${1} %}
+snippet bl"block"
+  {% ${0:${VISUAL}} %}
 
 snippet bc "block comment" w
   {#
@@ -22,10 +22,10 @@ snippet b "block" w
 
 snippet if "if statement" w
   {% if ${1} %}
-    ${0}
+    ${0:${VISUAL}}
   {% endif %}
 
 snippet for "for loop" w
   {% for ${1} %}
-    ${0}
+    ${0:${VISUAL}}
   {% endfor %}
