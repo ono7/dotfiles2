@@ -11,7 +11,7 @@ snippet raw "Raw block" b
 
 snippet bl "block"
   {% ${1:tag_name} %}
-  ${0}
+    ${0:%{VISUAL}}
   {% end${1/\v(\w+).*/\1/g} %}
 
 # snippet { "curly" w
