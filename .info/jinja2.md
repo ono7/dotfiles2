@@ -7,6 +7,7 @@
 variables in playbook loop are also avalible in templates if they are being used
 as part of with_items or loop
 
+```sh
 server {
     listen 80;
     server_name {{ item.item.host }};
@@ -18,7 +19,10 @@ server {
         try_files $uri $uri/index.html $uri.html =404;
     };
 }
+```
 
+
+```yaml
 ---
 - hosts: localhost
   connection: local
@@ -46,3 +50,14 @@ server {
         name: test
       vars:
         role_vhost: '{{ es_vhost }}'
+```
+
+```jinja
+{% for host in groups['webservers'] %}
+    {% if inventory_hostname in hostvars[host]['ansible_fqdn'] %}
+{{ hostvars[host]['ansible_default_ipv4']['address'] }} {{ hostvars[host]['ansible_fqdn'] }} {{ hostvars[host]['inventory_hostname'] }} MYSELF
+    {% else %}
+{{ hostvars[host]['ansible_default_ipv4']['address'] }} {{ hostvars[host]['ansible_fqdn'] }} jcs-server{{ loop.index }} {{ hostvars[host]['inventory_hostname'] }}
+    {% endif %}
+{% endfor %}
+```
