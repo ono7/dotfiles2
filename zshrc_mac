@@ -213,7 +213,7 @@ function gitl () {
     my_dir=$PWD
     cdr
     git add .
-    f=$(git status --porcelain | cut -c4- | head -n 4)
+    f=$(git status --porcelain | cut -c4- | head -n 5)
     if test -z "$1"; then
       # replace new line, using longest match //
       git commit "-m updates -> ${f//$'\n'/ }"
@@ -238,7 +238,7 @@ function dotc () {
     cd ~/.dotfiles
     git pull
     git add .
-    f=$(git status --porcelain | cut -c4- | head -n 4)
+    f=$(git status --porcelain | cut -c4- | head -n 5)
     git commit "-m updates -> ${f//$'\n'/ }"
     git push
     cd $my_dir
