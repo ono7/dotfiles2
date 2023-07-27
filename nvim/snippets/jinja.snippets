@@ -1,4 +1,4 @@
-snippet h "header" w
+snippet jh "header" w
   #jinja2: lstrip_blocks: True
   {# 
 
@@ -6,41 +6,33 @@ snippet h "header" w
       Date: `strftime("%Y-%m-%d %H:%M")` CST
 
   #}
-snippet bl "block" w
+
+snippet jbi "block" w
   {% ${1:${VISUAL}} %}
   ${0}
 
-snippet bc "block comment" w
+snippet jbc "block comment" w
   {#
     ${0:${VISUAL}}
   #}
 
-snippet c "block comment" w
+snippet jc "block comment" w
   {# ${0:${VISUAL}} #}
 
-snippet raw "Raw block" w
+snippet jr "Raw block" w
   {% raw %} ${0:${VISUAL}} {% endraw %}
 
-snippet b "block" w
+snippet jb "block" w
   {% ${1} %}
     ${0:${VISUAL}}
   {% end${1/\v(\w+).*/\1/g} %}
 
-snippet v "variable inside curly" w
+snippet jv "variable inside curly" w
    {{ ${0:${VISUAL}} }}
 
-snippet if "if statement" w
-  {% if ${1} %}
-    ${0:${VISUAL}}
-  {% endif %}
-
-snippet elif "if statement" w
+snippet jelif "if statement" w
   {% if ${1} %}
     ${0:${VISUAL}}
   {% else %}
   {% endif %}
 
-snippet for "for loop" w
-  {% for ${1} %}
-    ${0:${VISUAL}}
-  {% endfor %}
