@@ -238,7 +238,7 @@ function dotc () {
     cd ~/.dotfiles
     git pull
     git add .
-    f=$(git status --porcelain | cut -c4-)
+    f=$(git status --porcelain | cut -c4- | head -n 4)
     git commit "-m updates -> ${f//$'\n'/ }"
     git push
     cd $my_dir
