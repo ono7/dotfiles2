@@ -213,7 +213,7 @@ function gitl () {
     my_dir=$PWD
     cdr
     git add .
-    f=$(git status --porcelain | cut -c4- | head -n 5)
+    f=$(git status --porcelain | grep -E "^M" | cut -c4- | head -n 5)
     if test -z "$1"; then
       # replace new line, using longest match //
       git commit "-m updates -> ${f//$'\n'/ }"
