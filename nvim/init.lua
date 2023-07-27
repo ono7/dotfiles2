@@ -179,6 +179,18 @@ local quotes = {
   ['`'] = true,
 }
 
+local open_brackets = {
+  ["("] = true,
+  ["["] = true,
+  ["{"] = true,
+}
+
+local closed_brackets = {
+  [")"] = true,
+  ["]"] = true,
+  ["}"] = true,
+}
+
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -345,14 +357,15 @@ end
 k('i', '[', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
-  local prevChar = line:sub(col - 1, col - 1)
-  local nextChar = line:sub(col, col)
-  local a = alpha_and_quotes
-  if prevChar == '"' or prevChar == "'" or prevChar == "`" then
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  local a = isAlphaNum
+  local ob = open_brackets
+  if p == '"' or p == "'" or p == "`" then
     return '[]<Left>'
-  elseif prevChar == '\\' or a[nextChar] then
+  elseif p == '\\' or a[n] or ob[n] then
     return '['
-  elseif nextChar == '[' then
+  elseif n == '[' then
     return '<Right>'
   end
   return '[]<Left>'
@@ -375,10 +388,11 @@ k('i', '{', function()
   local col = vim.fn.col('.')
   local prevChar = line:sub(col - 1, col - 1)
   local nextChar = line:sub(col, col)
-  local a = alpha_and_quotes
+  local a = isAlphaNum
+  local ob = open_brackets
   if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '{}<Left>'
-  elseif prevChar == '\\' or a[nextChar] then
+  elseif prevChar == '\\' or a[nextChar] or ob[nextChar] then
     return '{'
   elseif nextChar == '{' then
     return '<Right>'
@@ -404,10 +418,11 @@ k('i', '(', function()
   local col = vim.fn.col('.')
   local prevChar = line:sub(col - 1, col - 1)
   local nextChar = line:sub(col, col)
-  local a = alpha_and_quotes
+  local a = isAlphaNum
+  local ob = open_brackets
   if prevChar == '"' or prevChar == "'" or prevChar == "`" then
     return '()<Left>'
-  elseif prevChar == '\\' or a[nextChar] then
+  elseif prevChar == '\\' or a[nextChar] or ob[nextChar] then
     return '('
   elseif nextChar == '(' then
     return '<Right>'
