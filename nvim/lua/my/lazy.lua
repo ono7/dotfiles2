@@ -63,7 +63,7 @@ require("lazy").setup({
       { "williamboman/mason-lspconfig.nvim" },
     },
   },
-  { "numtostr/fterm.nvim",     opts = {} },
+  { "numtostr/fterm.nvim" },
   {
     "f-person/git-blame.nvim",
     config = function()
@@ -94,7 +94,13 @@ require("lazy").setup({
       },
     },
   },
-  { "numToStr/Comment.nvim", opts = {} },
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    setup = function()
+      require("comment").setup({})
+    end
+  },
   {
     "nvim-telescope/telescope.nvim",
     version = "*",
@@ -110,9 +116,10 @@ require("lazy").setup({
 
   {
     "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require('plugins.treesitter')
-    end,
+    build = ":TSUpdate",
+    -- config = function()
+    --   require('plugins.treesitter')
+    -- end,
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },

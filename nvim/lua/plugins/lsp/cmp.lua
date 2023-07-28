@@ -1,4 +1,11 @@
-require('snippy').setup({
+local snippy_status_ok, snippy_setup = pcall(require, "snippy")
+
+if not snippy_status_ok then
+  print("snippy not loaded - plugins/snippy.lua")
+  return
+end
+
+snippy_setup.setup({
   snippet_dirs = '~/.dotfiles/nvim/snippets',
   mappings = {
     is = {
@@ -13,14 +20,14 @@ require('snippy').setup({
 
 local snippy = require("snippy")
 
-local lspkind_status_ok, lspkind = pcall(require, "lspkind")
+local lspkind_status_ok, lspkind_config = pcall(require, "lspkind")
 
 if not lspkind_status_ok then
   print("lspkind not loaded - plugins/lspkind.lua")
   return
 end
 
-lspkind.init({
+lspkind_config.init({
   symbol_map = {
     Text = "   ",
     Method = "  ",
@@ -51,7 +58,7 @@ lspkind.init({
   },
 })
 
-local cmp_status_ok, cmp = pcall(require, "cmp")
+local cmp_status_ok, cmp_config = pcall(require, "cmp")
 
 if not cmp_status_ok then
   print("cmp not loaded - plugins/cmp.lua")
@@ -102,7 +109,7 @@ vim.opt.shortmess:append("c")
 local types = require("cmp.types")
 -- local luasnip = require("luasnip")
 
-cmp.setup({
+cmp_config.setup({
   preselect = types.cmp.PreselectMode.None, -- do not randomly select item from menu
   snippet = {
     expand = function(_)
@@ -110,30 +117,30 @@ cmp.setup({
   },
   window = {
     -- completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    documentation = cmp_config.config.window.bordered(),
   },
   mapping = {
-    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<c-c>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({ select = false }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<C-n>"] = cmp_config.mapping.select_next_item({ behavior = cmp_config.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp_config.mapping.select_prev_item({ behavior = cmp_config.SelectBehavior.Insert }),
+    ["<C-d>"] = cmp_config.mapping.scroll_docs(4),
+    ["<C-b>"] = cmp_config.mapping.scroll_docs(-4),
+    ["<C-Space>"] = cmp_config.mapping.complete(),
+    ["<c-c>"] = cmp_config.mapping.close(),
+    ["<CR>"] = cmp_config.mapping.confirm({ select = false }),
+    ["<Tab>"] = cmp_config.mapping(function(fallback)
       if snippy.can_expand_or_advance() then
         snippy.expand_or_advance()
-      elseif cmp.visible() then
-        cmp.select_next_item()
+      elseif cmp_config.visible() then
+        cmp_config.select_next_item()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<S-Tab>"] = cmp_config.mapping(function(fallback)
       if snippy.can_jump(-1) then
         snippy.previous()
-      elseif cmp.visible() then
-        cmp.select_prev_item()
+      elseif cmp_config.visible() then
+        cmp_config.select_prev_item()
       else
         fallback()
       end
@@ -149,7 +156,7 @@ cmp.setup({
     { name = "buffer",                 keyword_length = 2 },
   },
   formatting = {
-    format = lspkind.cmp_format({
+    format = lspkind_config.cmp_format({
       with_text = false,
       maxwidth = 50,
       menu = {

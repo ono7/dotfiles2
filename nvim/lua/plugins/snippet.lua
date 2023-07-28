@@ -1,4 +1,9 @@
-local ls = require("luasnip")
+local status_ok, ls = require("luasnip")
+
+if not status_ok then
+  print("luasnip not loaded correctly")
+  return
+end
 
 local snip = ls.s --> snippet
 local i = ls.i    --> insert node

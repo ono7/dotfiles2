@@ -584,10 +584,10 @@ local packages = {
   "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
-  "plugins.lsp.mason", -- mason first, or lsp breaks
+  "plugins.lsp.mason",        -- mason first, or lsp breaks
   "plugins.gitsigns",
-  "plugins.treesitter",
   "plugins.theme_catppuccin", -- 2
+  "plugins.treesitter",
   "plugins.null_ls",
   -- "plugins.harpoon",
   -- "plugins.snippet",

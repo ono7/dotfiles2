@@ -1,6 +1,13 @@
 -- local cp = require 'catppuccin.utils.colors'.get_colors()
+local status_ok, config = pcall(require, "catppuccin")
 
-require("catppuccin").setup({
+if not status_ok then
+  print("problem loading catppuccin theme")
+  return
+end
+
+
+config.setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = {
     -- :h background
@@ -77,11 +84,11 @@ vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1d252c" })
 vim.api.nvim_set_hl(0, "PmenuSel", { link = "Search" })
 vim.api.nvim_set_hl(0, "@field", {})
 vim.api.nvim_set_hl(0, "FloatShadow", {})
-vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC"})
-vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Constant"})
-vim.api.nvim_set_hl(0, "MatchParen", { link = "Visual"})
-vim.api.nvim_set_hl(0, "@variable.builtin.python", {fg = "#e27e8d"})
-vim.api.nvim_set_hl(0, "@parameter", {fg = "#e27e8d"})
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC" })
+vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Constant" })
+vim.api.nvim_set_hl(0, "MatchParen", { link = "Visual" })
+vim.api.nvim_set_hl(0, "@variable.builtin.python", { fg = "#e27e8d" })
+vim.api.nvim_set_hl(0, "@parameter", { fg = "#e27e8d" })
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#192028" })
 vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#192028" })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#41505e" })

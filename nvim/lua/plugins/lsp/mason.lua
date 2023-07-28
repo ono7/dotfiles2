@@ -80,7 +80,12 @@ mason_lspconfig.setup({
 
 require("neodev").setup({})
 
-local nvim_lsp = require("lspconfig")
+local nvim_lsp_status, nvim_lsp = pcall(require, "lspconfig")
+
+if not nvim_lsp_status then
+  print("lspconfig not loaded in cmp.lua")
+  return
+end
 
 local lsp_opts = {
   root_dir = nvim_lsp.util.root_pattern(".git"),

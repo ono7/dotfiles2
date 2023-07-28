@@ -1,4 +1,11 @@
-require("nvim-tundra").setup({
+local status_ok, configs = pcall(require, "nvim-tundra")
+
+if not status_ok then
+  print("problem loading nvim-tundra")
+  return
+end
+
+configs.setup({
   transparent_background = true,
   dim_inactive_windows = {
     enabled = false,

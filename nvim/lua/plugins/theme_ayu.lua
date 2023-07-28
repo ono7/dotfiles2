@@ -1,12 +1,19 @@
 vim.o.background = "dark"
-require("ayu").setup({
 
-	mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-	overrides = { Normal = { bg = "#212733" , fg = "#e6e1cf" }, String = { fg = "#b8cc52" } }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-	-- overrides = { Normal = { bg = "none" , fg = "#e6e1cf" }, String = { fg = "#b8cc52" } }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-	options = {
-		theme = "ayu",
-	},
+local status_ok, config = pcall(require, "ayu")
+
+if not status_ok then
+  print("problem loading ayu theme")
+  return
+end
+
+config.setup({
+  mirage = true,                                                                            -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  overrides = { Normal = { bg = "#212733", fg = "#e6e1cf" }, String = { fg = "#b8cc52" } }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+  -- overrides = { Normal = { bg = "none" , fg = "#e6e1cf" }, String = { fg = "#b8cc52" } }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+  options = {
+    theme = "ayu",
+  },
 })
 
 require("ayu").colorscheme()
