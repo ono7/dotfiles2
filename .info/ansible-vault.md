@@ -1,3 +1,11 @@
+# ansible use proxy/jumpbox
+
+```
+[group:vars]
+
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o ProxyCommand="ssh -o StrictHostKeyChecking=no -W [%h]:%p -q ubuntu@10.1.0.49"'
+```
+
 # create ansible variable file
 
 ~/all.yml
