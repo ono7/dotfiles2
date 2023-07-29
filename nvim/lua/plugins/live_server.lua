@@ -6,5 +6,5 @@ if not ok then
 end
 
 config.setup({
-  args = { '--port=7000', '--browser=chrome' }
+  args = { '--port=7000' }
 })

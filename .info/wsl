@@ -1,8 +1,0 @@
-# Start-Process powershell -Verb runas
-run this as admin to set metric on vpn client to 6000, should run every time we connect
-needs LxssManager to restart 
-
-```powershell
-Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 6000
-Restart-Service LxssManager
-```
