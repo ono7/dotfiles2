@@ -65,6 +65,7 @@ require("lazy").setup({
   },
   { "numtostr/fterm.nvim" },
   {
+    -- npm install -g yarn
     'barrett-ruth/live-server.nvim',
     build = 'yarn global add live-server',
     config = true
