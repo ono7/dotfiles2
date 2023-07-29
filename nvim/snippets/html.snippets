@@ -1,9 +1,19 @@
-extends markdown
+extends jinja
 
 
 snippet h "header" b
   <!DOCTYPE html>
-  <html lang="en">$0</html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>${1}</title>
+      <style>
+      </style>
+    </head>
+    <body>
+    </body>
+  </html>
 
 snippet t "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
@@ -14,4 +24,39 @@ snippet ta "tag" w
   </${1/\v(\w+).*/\1/g}>
 
 snippet im "Image" b
-  <img src="${1}" alt="${0}">
+  <img src="${1:${VISUAL}}" alt="${0}">
+
+snippet head "head" b
+  <head>
+    <meta charset="UTF-8">
+    ${0:${VISUAL}}
+  </head>
+
+snippet p "paragraph" b
+  <p>${1:${VISUAL}}</p>
+
+# target=_blank = new page
+# <a href="${1:${VISUAL}}" target="_blank">${0}</a>
+snippet href "href" b
+  <a href="${1:${VISUAL}}">${0}</a>
+
+snippet em "emphasis" b
+  <em>${1:${VISUAL}}</em>
+
+snippet h1 "h1" b
+  <h1>${1:${VISUAL}}</h1>
+
+snippet h2 "h2" b
+  <h2>${1:${VISUAL}}</h2>
+
+snippet h3 "h3" b
+  <h3>${1:${VISUAL}}</h3>
+
+snippet h4 "h4" b
+  <h4>${1:${VISUAL}}</h4>
+
+snippet h5 "h5" b
+  <h5>${1:${VISUAL}}</h5>
+
+snippet h6 "h6" b
+  <h6>${1:${VISUAL}}</h6>

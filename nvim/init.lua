@@ -580,7 +580,6 @@ local packages = {
   "plugins.navigator",
   "plugins.neotree",
   "plugins.surround",
-  "plugins.bufferline",
   "plugins.floaterm",
   "plugins.lsp.cmp",
   "plugins.lsp.mason",        -- mason first, or lsp breaks
@@ -589,6 +588,7 @@ local packages = {
   "plugins.treesitter",
   "plugins.live_server",
   "plugins.null_ls",
+  "plugins.bufferline",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
