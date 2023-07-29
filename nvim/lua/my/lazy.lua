@@ -65,6 +65,11 @@ require("lazy").setup({
   },
   { "numtostr/fterm.nvim" },
   {
+    'barrett-ruth/live-server.nvim',
+    build = 'yarn global add live-server',
+    config = true
+  },
+  {
     "f-person/git-blame.nvim",
     config = function()
       vim.g.gitblame_enabled = 0

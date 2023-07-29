@@ -588,6 +588,7 @@ local packages = {
   "plugins.gitsigns",
   "plugins.theme_catppuccin", -- 2
   "plugins.treesitter",
+  "plugins.live_server",
   "plugins.null_ls",
   -- "plugins.harpoon",
   -- "plugins.snippet",
