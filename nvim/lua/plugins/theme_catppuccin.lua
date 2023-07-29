@@ -45,6 +45,7 @@ config.setup({
     cmp = true,
     gitsigns = true,
     nvimtree = true,
+    neotree = true,
     telescope = true,
     notify = false,
     mini = false,
@@ -80,8 +81,8 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#737aa2", bold = true })
 -- vim.api.nvim_set_hl(0, "String", { fg = "#c5dea1" })
 vim.api.nvim_set_hl(0, "String", { fg = "#b6d68a" })
 vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1d252c" })
-vim.api.nvim_set_hl(0, "PmenuSel", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1d252c" })
+-- vim.api.nvim_set_hl(0, "PmenuSel", { link = "Search" })
 vim.api.nvim_set_hl(0, "@field", {})
 vim.api.nvim_set_hl(0, "FloatShadow", {})
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC" })
@@ -89,9 +90,7 @@ vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Constant" })
 vim.api.nvim_set_hl(0, "MatchParen", { link = "Visual" })
 vim.api.nvim_set_hl(0, "@variable.builtin.python", { fg = "#e27e8d" })
 vim.api.nvim_set_hl(0, "@parameter", { fg = "#e27e8d" })
-vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#192028" })
-vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#192028" })
+-- vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#192028" })
+-- vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#192028" })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#41505e" })
--- vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1d252c" })
--- vim.api.nvim_set_hl(0, "WinbarNC", { bg = "#1d252c" })
-vim.api.nvim_set_hl(0, "WinSeparator", { bg = "#1d252c", fg = "#1d252c" })
+-- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "#1d252c", fg = "#1d252c" })

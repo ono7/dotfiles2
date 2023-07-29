@@ -5,10 +5,13 @@ snippet h "header" b
   <!DOCTYPE html>
   ${0}
 
-snippet ti "tag inline" w
+snippet t "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
 snippet ta "tag" w
   <${1}>
     ${0:${VISUAL}}
   </${1/\v(\w+).*/\1/g}>
+
+snippet im "Image" b
+  <img src="${1}" alt="${0}">

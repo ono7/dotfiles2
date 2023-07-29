@@ -49,12 +49,12 @@ require("lazy").setup({
   },
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
-  -- {
-  --   'norcalli/nvim-colorizer.lua',
-  --   config = function()
-  --     require 'colorizer'.setup()
-  --   end
-  -- },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  },
   { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",
@@ -146,7 +146,7 @@ require("lazy").setup({
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
