@@ -32,6 +32,7 @@ configs.setup({
     "comment",
     "go",
     "html",
+    "css",
     "javascript",
     "json",
     "lua",
