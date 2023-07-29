@@ -9,6 +9,8 @@ logs/
 .pytest_cache/
 .DS_Store
 .luac
+.yarn.lock
+.yarn-integrity
 .virtualenvs
 .vim
 .crt
