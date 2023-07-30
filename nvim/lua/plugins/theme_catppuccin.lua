@@ -40,7 +40,7 @@ config.setup({
     operators = {},
   },
   color_overrides = {},
-  -- custom_highlights = {},
+  custom_highlights = {},
   integrations = {
     cmp = true,
     gitsigns = true,
