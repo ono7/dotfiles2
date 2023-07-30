@@ -27,6 +27,7 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 
 --]]
+vim.cmd([[set t_Co=256]])
 vim.cmd([[set termguicolors]])
 
 P = function(x)
@@ -589,8 +590,8 @@ local packages = {
   "plugins.live_server",
   "plugins.null_ls",
   "plugins.bufferline",
-  -- "plugins.colorizer",
-  "plugins.hl_colors",
+  "plugins.colorizer",
+  -- "plugins.hicolors",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",

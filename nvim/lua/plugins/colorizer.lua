@@ -8,7 +8,7 @@ end
 config.setup {
   'javascript',
   'lua',
-  'html',
+  'css',
   css  = {
     rgb_fn = true,         -- CSS rgb() and rgba() functions
     names  = true,

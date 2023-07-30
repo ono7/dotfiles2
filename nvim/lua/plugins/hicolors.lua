@@ -15,4 +15,6 @@ config.setup {
     -- label property will be used as a pattern initially(string.gmatch), therefore you need to escape the special characters by yourself with %
     { label = '%-%-theme%-font%-color', color = '#fff' },
   }
+
 }
+require('nvim-highlight-colors').setup {}
