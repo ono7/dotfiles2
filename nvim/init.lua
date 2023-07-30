@@ -524,12 +524,14 @@ k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
-
--- cmd("syntax enable") -- we dont need this on with treesitter
+-- we dont need this on with treesitter
+-- cmd("syntax enable")
 cmd("set synmaxcol=512")
 cmd("syntax sync minlines=256")
 cmd("syntax sync maxlines=300")
-cmd("syntax off") -- we dont need this on with treesitter
+-- if syntax is on/enabled treesitter has issues
+-- other weird things happen, like lsp not starting automatically etc
+cmd("syntax off")
 
 function _G.legacy()
   -- :lua legacy()

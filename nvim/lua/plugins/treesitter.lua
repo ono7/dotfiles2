@@ -2,7 +2,6 @@ local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 
 if not status_ok then
   print("problem loading treesitter - plugins/treesitter.lua")
-  print(status_ok)
   return
 end
 
