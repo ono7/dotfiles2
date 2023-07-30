@@ -14,6 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  "ap/vim-css-color",
   "tpope/vim-repeat",
   -- "roxma/vim-tmux-clipboard",
   "ono7/null-ls.nvim",
@@ -49,12 +50,8 @@ require("lazy").setup({
   },
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require 'colorizer'.setup()
-    end
-  },
+  -- 'norcalli/nvim-colorizer.lua',
+  "brenoprata10/nvim-highlight-colors",
   { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",

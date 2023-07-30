@@ -589,6 +589,8 @@ local packages = {
   "plugins.live_server",
   "plugins.null_ls",
   "plugins.bufferline",
+  -- "plugins.colorizer",
+  "plugins.hl_colors",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
