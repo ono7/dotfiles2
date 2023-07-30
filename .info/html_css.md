@@ -4,6 +4,24 @@
 
 or search for css validator for css
 
+# booleans in html
+
+the presense of an attribute is equal to true, the absence
+of an attribute means its false. adding "controls" below means
+true, so there is no need to sawy `controls="true"`
+
+`<video controls src="video/1.mp4"></video>`
+
+# find free images
+
+`https://unsplash.com`
+
+# video elements
+
+- `<video controls src="video/1.mp4"></video>` shows video and adds controls
+- `<video controls autoplay src="video/1.mp4"></video>` shows video and adds controls, video automatially starts
+- `<video controls autoplay loop src="video/1.mp4">the browser does not support video</video>` shows text when video is not available
+
 # url/links href
 
 `<a href=""></a>` hypertext reference or link
