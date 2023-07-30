@@ -524,11 +524,11 @@ k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
-cmd("syntax enable")
+-- cmd("syntax enable")
 cmd("set synmaxcol=512")
 cmd("syntax sync minlines=256")
 cmd("syntax sync maxlines=300")
-cmd("syntax on")
+cmd("syntax off")
 
 function _G.legacy()
   -- :lua legacy()
@@ -573,10 +573,10 @@ k("n", "C", '"aC')
 -- )
 
 local packages = {
+  "my.lazy",
   "my.vars",
   "my.settings",
-  "my.lazy",
-  "my.cmds",
+  "plugins.treesitter",
   "plugins.telescope",
   "plugins.navigator",
   "plugins.neotree",
@@ -586,12 +586,11 @@ local packages = {
   "plugins.lsp.mason",        -- mason first, or lsp breaks
   "plugins.gitsigns",
   "plugins.theme_catppuccin", -- 2
-  "plugins.treesitter",
   "plugins.live_server",
   "plugins.null_ls",
   "plugins.bufferline",
   "plugins.colorizer",
-  -- "plugins.hicolors",
+  "my.cmds",
   -- "plugins.harpoon",
   -- "plugins.snippet",
   -- "plugins.core_dap",
