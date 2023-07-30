@@ -50,7 +50,7 @@ require("lazy").setup({
   },
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
-  'norcalli/nvim-colorizer.lua',
+  "NvChad/nvim-colorizer.lua",
   "brenoprata10/nvim-highlight-colors",
   { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
