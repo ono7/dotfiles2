@@ -524,11 +524,12 @@ k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
--- cmd("syntax enable")
+
+-- cmd("syntax enable") -- we dont need this on with treesitter
 cmd("set synmaxcol=512")
 cmd("syntax sync minlines=256")
 cmd("syntax sync maxlines=300")
-cmd("syntax off")
+cmd("syntax off") -- we dont need this on with treesitter
 
 function _G.legacy()
   -- :lua legacy()
@@ -572,6 +573,7 @@ k("n", "C", '"aC')
 -- 	silent
 -- )
 
+
 local packages = {
   "my.lazy",
   "my.vars",
@@ -596,6 +598,8 @@ local packages = {
   -- "plugins.core_dap",
   -- "plugins.dap_adapters",
 }
+
+vim.g.gitblame_enabled = 0
 
 for _, mod in ipairs(packages) do
   local ok, err = pcall(require, mod)
