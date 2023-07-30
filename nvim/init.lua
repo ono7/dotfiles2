@@ -531,6 +531,7 @@ cmd("syntax sync minlines=256")
 cmd("syntax sync maxlines=300")
 -- if syntax is on/enabled treesitter has issues
 -- other weird things happen, like lsp not starting automatically etc
+-- see https://thevaluable.dev/tree-sitter-neovim-overview/
 cmd("syntax off")
 
 function _G.legacy()
@@ -604,7 +605,7 @@ local packages = {
 vim.g.gitblame_enabled = 0
 
 for _, mod in ipairs(packages) do
-  local ok, err = pcall(require, mod)
+  local ok, _ = pcall(require, mod)
   if not ok then
     error("Module -> " .. mod .. " not loaded... ay..")
   end
