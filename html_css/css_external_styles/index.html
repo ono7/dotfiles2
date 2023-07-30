@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>testing new style</title>
+    <!-- call external css -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- you can override certain things -->
+    <style>
+      em {
+        color: black;
+      }
+      #test {
+        color: blue;
+      }
+    </style>
+
+    <!-- apply only to this id -->
+  </head>
+  <body>
+    <em>testing this new header</em>
+    <p style="color: blue; font-weight: bold">this is a bold test in blue!</p>
+    <!-- apply only to this id -->
+    <p id="test">this is a test using #id</p>
+    <p>regular paragraph 2</p>
+  </body>
+</html>

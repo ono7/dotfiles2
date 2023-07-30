@@ -1,3 +1,15 @@
+# normalize css
+
+normalize all css
+
+download a copy from
+
+`https://necolas.github.io/normalize.css/`
+
+```html
+<link rel="stilysheets" href="css/normalize.css" />
+```
+
 # validate pages/sites
 
 `https://validator.w3.org` - takes URLs or file uploads
