@@ -1,3 +1,78 @@
+# selector specifity
+
+determins the priority in which styling is applied when
+multiple styles exists
+
+id(single element) -> class & attribute -> element selector
+
+override with `!important`
+
+```css
+/* do not let other rules override the color !important 
+this is considered bad because it can be hard to troubleshoot
+*/
+
+section :first-child {
+  color: green !important;
+  font-style: italic;
+}
+
+/* better approach is to increate the priority by including other types */
+
+.highlight#products :first-child {
+  color: green !important;
+  font-style: italic;
+}
+/* this now weights more because it has a class and an ID selector */
+```
+
+# pseudo element selector
+
+they can be access in css with double ::
+
+they are used to style `part` of an element
+
+```css
+/* change background color for mouse selection for all elements */
+::selectionn {
+  background-color: pink;
+}
+
+/* change background selection only for paragraphs */
+p::selectionn {
+  background-color: pink;
+}
+```
+
+# pseudo class selectors
+
+these are selectors injected by the browser
+
+they can be access in css with :
+they are used to style entire classes/whole element
+
+these are considered brittle because the `first-child` might change but are useful
+
+```css
+/* add styling to the first child */
+section :first-child {
+  color: green;
+  font-style: italic;
+}
+
+/* adds styling to the first of each type in section */
+section :first-of-type {
+  color: green;
+  font-style: italic;
+}
+
+/* adds styling to the first of each type of paragraph element in section */
+section p:first-of-type {
+  color: green;
+  font-style: italic;
+}
+```
+
 # normalize css
 
 normalize all css

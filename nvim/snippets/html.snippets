@@ -1,5 +1,9 @@
 extends jinja
 
+snippet hc "comment" b
+  <!---
+    ${0:${VISUAL}}
+  --->
 
 snippet h "header" b
   <!DOCTYPE html>
@@ -37,8 +41,8 @@ snippet p "paragraph" b
 
 # target=_blank = new page
 # <a href="${1:${VISUAL}}" target="_blank">${0}</a>
-snippet href "href" b
-  <a href="${1:${VISUAL}}">${0}</a>
+snippet a "anchor" b
+  <a href="${1:${VISUAL}}"${2}>${0}</a>
 
 snippet link "link" b
   <link rel="${1:${VISUAL}}" href="${0}">

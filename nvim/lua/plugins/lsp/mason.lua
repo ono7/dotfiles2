@@ -70,6 +70,7 @@ local servers = {
   -- yamlls = {},
   ansiblels = {},
   jsonls = {},
+  cssls = {},
   terraformls = {},
   lua_ls = {},
 }
@@ -146,6 +147,9 @@ nvim_lsp.ansiblels.setup({
     }
   },
 })
+
+
+nvim_lsp.cssls.setup {}
 
 -- nvim_lsp.yamlls.setup(handle_lsp(lsp_opts))
 nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
