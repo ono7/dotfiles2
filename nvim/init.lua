@@ -262,18 +262,6 @@ for key, v in pairs(quotes) do
   alpha_and_quotes[key] = v
 end
 
--- for ascii = 48, 57 do -- ASCII values for '0' to '9'
---   isAlphaNumPunct[string.char(ascii)] = true
--- end
---
--- for ascii = 65, 90 do -- ASCII values for 'A' to 'Z'
---   isAlphaNumPunct[ascii] = true
--- end
---
--- for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
---   isAlphaNumPunct[ascii] = true
--- end
-
 -- -- for jinja!
 -- k('i', "%", function()
 --   local line = vim.api.nvim_get_current_line()
@@ -557,10 +545,6 @@ end
 --- :grep magic ---
 cmd([[cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep']])
 cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep']])
-
---- miniyank ---
--- m("n", "p", [[<Plug>(miniyank-autoput)]], {})
--- m("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
 -- leave unnnamed reg alone when changing text
 k("n", "c", '"ac')
