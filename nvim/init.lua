@@ -27,8 +27,21 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 
 --]]
-vim.cmd([[set t_Co=256]])
-vim.cmd([[set termguicolors]])
+-- vim.cmd([[set t_Co=256]])
+vim.g.t_co = 256
+vim.g.t_co = 256
+vim.opt.termguicolors = true
+vim.opt.syntax = "off"
+vim.opt.synmaxcol = 512
+
+vim.cmd("set synmaxcol=512")
+vim.cmd("syntax sync minlines=256")
+vim.cmd("syntax sync maxlines=300")
+
+-- if syntax is on/enabled treesitter has issues
+-- other weird things happen, like lsp not starting automatically etc
+-- see https://thevaluable.dev/tree-sitter-neovim-overview/
+
 
 P = function(x)
   print(vim.inspect(x))
@@ -524,13 +537,6 @@ k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
-cmd("set synmaxcol=512")
-cmd("syntax sync minlines=256")
-cmd("syntax sync maxlines=300")
--- if syntax is on/enabled treesitter has issues
--- other weird things happen, like lsp not starting automatically etc
--- see https://thevaluable.dev/tree-sitter-neovim-overview/
-cmd("syntax off")
 
 function _G.legacy()
   -- :lua legacy()
