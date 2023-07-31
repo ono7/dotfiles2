@@ -10,7 +10,7 @@ setopt NO_BEEP
 # 10ms for key sequences
 export KEYTIMEOUT=1
 
-export PASSWORD_STORE_CHARACTER_SET='[:alnum:]!&*%$#^@{}[]()<>'
+export PASSWORD_STORE_CHARACTER_SET='[:alnum:]!&%^@{}[]()'
 
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
