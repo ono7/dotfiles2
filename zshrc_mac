@@ -303,9 +303,10 @@ function vc () {
 }
 
 function vs () {
-  local fname
-  fname=$(fzf) || return
-  vim "$fname"
+  # local fname
+  # fname=$(fzf) || return
+  # vim "$fname"
+  fd --type f --hidden --exclude .git | fzf-tmux -p 85%,50% --reverse | xargs nvim
 }
 
 function dp() {

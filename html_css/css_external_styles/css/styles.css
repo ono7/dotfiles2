@@ -60,7 +60,7 @@ a:link {
 /* hover affects mouse, focus affects keyboard navigation */
 a:hover,
 a:focus {
-  color: dodgerblue;
+  color: green;
 }
 
 /* this is how to do it manually, but we should use a pseudo element */

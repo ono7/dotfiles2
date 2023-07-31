@@ -1,3 +1,15 @@
+# borders
+
+```css
+.box {
+  width: 600px;
+  height: 200px;
+  background: dodgerblue;
+  border: 10px dashed royalblue;
+  border-width: 10px 20px 20px 10px; /* trbl top right bottom lest */
+}
+```
+
 # selector specifity
 
 determins the priority in which styling is applied when
