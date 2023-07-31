@@ -1,4 +1,6 @@
 # palette = "catppuccin_macchiato"
+add_newline = true
+palette = "catppuccin_mocha"
 
 # Inserts a blank line between shell prompts
 [palettes.catppuccin_mocha]
@@ -57,8 +59,6 @@ base = "#24273a"
 mantle = "#1e2030"
 crust = "#181926"
 
-palette = "catppuccin_mocha"
-add_newline = true
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
@@ -80,7 +80,7 @@ min_time = 1_000
 [directory]
 truncation_length = 5
 format = "[$path]($style)[$lock_symbol]($lock_style) "
-style ="bold mauve"
+style ="bold lavender"
 
 [memory_usage]
 format = '\[$symbol[$ram( | $swap)]($style)\]'
