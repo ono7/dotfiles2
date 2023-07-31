@@ -524,8 +524,6 @@ k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
--- we dont need this on with treesitter
--- cmd("syntax enable")
 cmd("set synmaxcol=512")
 cmd("syntax sync minlines=256")
 cmd("syntax sync maxlines=300")
