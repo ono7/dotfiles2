@@ -42,7 +42,7 @@ config.setup({
     -- see link below for override names
     -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
     mocha = {
-      green = "#bce6b2",
+      green = "#ceeac8",
       -- mauve = "#8174d3"
       mauve = "#caa1fd"
     }

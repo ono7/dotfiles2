@@ -17,7 +17,8 @@ local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
 local ansi = {
   "#45475a",
   "#f38ba8",
-  "#bce6b2",
+  "#ceeac8",
+  -- "#bce6b2",
   "#f9e2af",
   "#89b4fa",
   "#cba6f7",
