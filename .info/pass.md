@@ -1,3 +1,13 @@
+# using pass
+
+- `pass github/testaccount -c` copy to clipboard
+
+- `export API_KEY=$(pass github/api_key)` stores the key/password to a
+  variable, nice way to pass creds to programs
+
+- `alias aws="AWS_ACCESS_KEY_ID=$(pass show aws/access_id) AWS_SECRET_ACCES_KEY=$(pass show aws/access_token) aws"`
+  create a command alias to use the key effectively in cli
+
 # install pass
 
 - `brew install pass` macos
