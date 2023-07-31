@@ -6,7 +6,8 @@ if not ok then
 end
 
 config.setup {
-  filetypes            = { 'lua', 'css', 'html', 'scss' },
+  filetypes = { lua = { names = false }, 'css', 'html', 'scss'
+  },
   user_default_options = {
     css = true,
     css_fn = true,

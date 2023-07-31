@@ -39,6 +39,8 @@ config.setup({
     operators = {},
   },
   color_overrides = {
+    -- see link below for override names
+    -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
     mocha = {
       green = "#bce6b2"
     }
