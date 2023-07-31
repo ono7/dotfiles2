@@ -4,6 +4,20 @@ if you have a box, you can make it round by setting the border-radius to 100%
 
 you can google css shapes and find info on how to create other shapes
 
+# shadows
+
+```css
+p {
+  /* box-shadow: 10px 10px; */
+  /* box-shadow: 10px 10px grey; */
+  /* box-shadow: 10px 10px 5px grey; */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* black blends best using alpha
+  channel
+  black is rgba(0, 0, 0)
+  */
+}
+```
+
 ```css
 .box {
   width: 200px;
