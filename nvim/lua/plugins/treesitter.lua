@@ -7,6 +7,7 @@ if not status_ok then
 end
 
 configs.setup {
+  sync_install = false,
   auto_install = true,
   indent = { enable = false, disable = { "python" } },
   highlight = {

@@ -1,3 +1,17 @@
+# making a circle from a square
+
+if you have a box, you can make it round by setting the border-radius to 100%
+
+you can google css shapes and find info on how to create other shapes
+
+```css
+.box {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+```
+
 # borders
 
 ```css
