@@ -427,7 +427,9 @@ if [[ $OSTYPE == "darwin"* ]]; then
  if command -v gls &>/dev/null; then
    alias ls='gls --color'
  else
-   echo "brew instal coreutils - we need gnu-ls"
+   echo "brew install coreutils - we need gnu-ls"
+   brew install coreutils
+   alias ls='gls --color'
  fi
 fi
 
