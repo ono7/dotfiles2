@@ -8,6 +8,7 @@ return {
   use_dead_keys                = false,
   unicode_version              = 14,
   default_cwd                  = wezterm.homedir,
+  enable_csi_u_key_encoding    = true,
   keys                         = {
     -- use xxd -psd to get hex char sequences
     {
@@ -105,6 +106,11 @@ return {
       mods = "ALT",
       action = wezterm.action.SendString("\x02\x7c"),
     },
+    -- {
+    --   -- enter
+    --   key = "Enter",
+    --   action = wezterm.action.SendString("\x0a"),
+    -- },
   },
   -- color_scheme                 = "Catppuccin Macchiato",
   color_scheme                 = "Catppuccin Mocha",

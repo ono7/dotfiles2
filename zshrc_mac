@@ -510,5 +510,6 @@ if [[ $OSTYPE == "darwin"* ]];  then
   # eval "$(zoxide init zsh)"
 fi
 
+export PASSWORD_STORE_CHARACTER_SET='[:alnum:]!&*%$#^@{}[]()<>'
 # unset display in wsl or vim will starup slow
 [[ $(uname -a) == *"Microsoft"* ]] && unset DISPLAY
