@@ -94,6 +94,7 @@ local lsp_opts = {
   init_options = { hostInfo = "neovim" },
   capabilities = capabilities,
   flags = {
+    allow_incremental_sync = true,
     debounce_text_changes = 150,
   },
 }
@@ -149,8 +150,8 @@ nvim_lsp.ansiblels.setup({
 })
 
 
--- nvim_lsp.cssls.setup {}
-nvim_lsp.emmet_ls.setup {}
+-- nvim_lsp.emmet_ls.setup(handle_lsp(lsp_opts))
+nvim_lsp.cssls.setup(handle_lsp(lsp_opts))
 
 -- nvim_lsp.yamlls.setup(handle_lsp(lsp_opts))
 nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))

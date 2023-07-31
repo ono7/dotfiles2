@@ -148,9 +148,9 @@ cmp_config.setup({
   },
   sources = {
     -- { name = "nvim_lsp", keyword_length = 3 },
-    { name = 'snippy' },
+    -- { name = 'snippy' },
     { name = "nvim_lsp",               keyword_length = 2 },
-    { name = "nvim_lua" },
+    -- { name = "nvim_lua" },
     { name = "nvim_lsp_signature_help" },
     { name = "path" },
     { name = "buffer",                 keyword_length = 2 },
