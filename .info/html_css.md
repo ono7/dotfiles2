@@ -1,10 +1,51 @@
-# making a circle from a square
+### measurement units
+
+| absolute | relative |
+| -------- | -------- |
+| px       | %        |
+|          | wv       |
+|          | wh       |
+|          | em       |
+|          | rem      |
+
+### control overflow
+
+```css
+.box {
+  /* hide overwlow */
+  overflow: hidden;
+  /* show scroll bars */
+  overflow: auto;
+  /* control both vertical and horizontal scroll bars */
+  overflow: hidden auto;
+}
+```
+
+### side by side boxes
+
+```html
+<!-- by default inline elements donot respect the width and height
+properties, we can change this by setting the display: inline-block -->
+<span class="box"></span>
+<span class="box"></span>
+```
+
+```css
+.box {
+    widh: 100px;
+    height: 100px
+    backgroud-color: green;
+    display: inline-block; /* change this to inline-block */
+  }
+```
+
+### making a circle from a square
 
 if you have a box, you can make it round by setting the border-radius to 100%
 
 you can google css shapes and find info on how to create other shapes
 
-# shadows
+### shadows
 
 ```css
 p {
@@ -26,7 +67,7 @@ p {
 }
 ```
 
-# borders
+### borders
 
 ```css
 .box {
@@ -38,7 +79,7 @@ p {
 }
 ```
 
-# selector specifity
+### selector specifity
 
 determins the priority in which styling is applied when
 multiple styles exists
@@ -66,7 +107,7 @@ section :first-child {
 /* this now weights more because it has a class and an ID selector */
 ```
 
-# pseudo element selector
+### pseudo element selector
 
 they can be access in css with double ::
 
@@ -84,7 +125,7 @@ p::selectionn {
 }
 ```
 
-# pseudo class selectors
+### pseudo class selectors
 
 these are selectors injected by the browser
 
@@ -113,7 +154,7 @@ section p:first-of-type {
 }
 ```
 
-# normalize css
+### normalize css
 
 normalize all css
 
@@ -125,13 +166,13 @@ download a copy from
 <link rel="stilysheets" href="css/normalize.css" />
 ```
 
-# validate pages/sites
+### validate pages/sites
 
 `https://validator.w3.org` - takes URLs or file uploads
 
 or search for css validator for css
 
-# booleans in html
+### booleans in html
 
 the presense of an attribute is equal to true, the absence
 of an attribute means its false. adding "controls" below means
@@ -139,21 +180,21 @@ true, so there is no need to sawy `controls="true"`
 
 `<video controls src="video/1.mp4"></video>`
 
-# find free images
+### find free images
 
 `https://unsplash.com`
 
-# video elements
+### video elements
 
 - `<video controls src="video/1.mp4"></video>` shows video and adds controls
 - `<video controls autoplay src="video/1.mp4"></video>` shows video and adds controls, video automatially starts
 - `<video controls autoplay loop src="video/1.mp4">the browser does not support video</video>` shows text when video is not available
 
-# url/links href
+### url/links href
 
 `<a href=""></a>` hypertext reference or link
 
-# html entities (display characters that are also part of html language such as <> )
+### html entities (display characters that are also part of html language such as <> )
 
 google html entities for a full list
 
@@ -178,7 +219,7 @@ entities for a full list
 <!-- ret: Testing <HTML> -->
 ```
 
-# CSS elements
+### CSS elements
 
 - `<em></em>` emphasis (do not use for italics)
 - `<strong></strong>` represents strong importance, similar to emphasis

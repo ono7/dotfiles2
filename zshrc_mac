@@ -372,9 +372,10 @@ bindkey "^R" fzf-history-widget
 bindkey "^T" fzf-file-widget
 
 function _vs () {
-  local fname
-  fname=$(fzf) || return
-  vim "$fname"
+  # local fname
+  # fname=$(fzf) || return
+  # vim "$fname"
+  fd --type f --hidden --exclude .git | fzf-tmux -p 95%,50% --reverse | xargs nvim
 }
 
 # _vs declear as widget for zsh
@@ -427,7 +428,7 @@ if [[ $OSTYPE == "darwin"* ]]; then
  if command -v gls &>/dev/null; then
    alias ls='gls --color'
  else
-   echo "brew install coreutils - we need gnu-ls"
+   echo "brew instal coreutils - we need gnu-ls"
    brew install coreutils
    alias ls='gls --color'
  fi
