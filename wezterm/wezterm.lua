@@ -1,7 +1,21 @@
 local wezterm = require("wezterm")
-local act = wezterm.action
--- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
+local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
+-- from wezterm debug mode see keybinding below
+local ansi = {
+  "#45475a",
+  "#f38ba8",
+  "#bce6b2",
+  "#f9e2af",
+  "#89b4fa",
+  "#cba6f7",
+  "#94e2d5",
+  "#bac2de",
+}
 
+scheme.ansi = ansi
+scheme.brights = ansi
+
+-- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
 return {
   default_prog                               = { "/bin/zsh", "--login" },
   audible_bell                               = "Disabled",
@@ -11,6 +25,8 @@ return {
   enable_csi_u_key_encoding                  = true,
   keys                                       = {
     -- use xxd -psd to get hex char sequences
+    -- CTRL-SHIFT-l activates the debug overlay
+    { key = 'l', mods = 'CMD', action = wezterm.action.ShowDebugOverlay },
     {
       key = "w",
       mods = "CMD",
@@ -88,7 +104,10 @@ return {
       action = wezterm.action.SendString("\x02\x7c"),
     },
   },
-  color_scheme                               = "Catppuccin Mocha",
+  color_schemes                              = {
+    ["Catppuccin Mocha"] = scheme,
+  },
+  color_scheme                               = 'Catppuccin Mocha',
   -- color_scheme                 = 'mine',
   -- color_schemes                = {
   --   ['mine'] = {

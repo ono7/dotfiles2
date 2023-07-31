@@ -6,13 +6,13 @@ if not ok then
 end
 
 config.setup {
-  filetypes = { lua = { names = false }, 'css', 'html', 'scss'
+  filetypes = { lua = { names = false, mode = 'background' }, 'css', 'html', 'scss'
   },
   user_default_options = {
     css = true,
     css_fn = true,
     names = true,
-    mode = "virtualtext",
+    mode = "background",
     tailwind = true,
     sass = { enable = false, parsers = { "css" }, },
     virtualtext = "■",
