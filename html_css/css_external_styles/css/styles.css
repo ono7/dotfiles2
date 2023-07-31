@@ -7,7 +7,7 @@ em {
 
 /* any target */
 a[target] {
-  color: green;
+  color: steelblue;
 }
 
 /* any target called _blank */

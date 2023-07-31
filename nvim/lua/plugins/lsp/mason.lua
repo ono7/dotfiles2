@@ -41,7 +41,8 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-capabilities.textDocument.completion.completionItem.snippetSupport = false
+-- true needed for html/css
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- print(vim.inspect(capabilities))
 
@@ -69,6 +70,7 @@ local servers = {
   pyright = {},
   -- yamlls = {},
   ansiblels = {},
+  html = {},
   jsonls = {},
   cssls = {},
   terraformls = {},
@@ -150,8 +152,10 @@ nvim_lsp.ansiblels.setup({
 })
 
 
--- nvim_lsp.emmet_ls.setup(handle_lsp(lsp_opts))
 nvim_lsp.cssls.setup(handle_lsp(lsp_opts))
+nvim_lsp.html.setup {
+  filetypes = { 'html' },
+}
 
 -- nvim_lsp.yamlls.setup(handle_lsp(lsp_opts))
 nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
