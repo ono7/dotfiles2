@@ -105,3 +105,10 @@ cd ~/.dotfiles/setup
 # ~/.fzf/install
 
 echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
+
+# Skip the not really helping Ubuntu global compinit
+
+if [[ $OSTYPE == "linux"* ]];  then
+   echo '# compinit is done twice in ubuntu, skipping' > ~/.zshenv
+   echo 'skip_global_compinit=1' >> ~/.zshenv
+fi
