@@ -21,3 +21,12 @@
 
 reset terminal
 `stty sane`
+
+# charaters can be controlled via the PASSWORD_STORE_CHARACTER_SET variable
+
+```bash
+
+export PASSWORD_STORE_CHARACTER_SET='[:alnum:].,!&*%_~$#^@{}[]()<>|=/\+-'
+# dash `-` should go last to avoid nasties
+
+```
