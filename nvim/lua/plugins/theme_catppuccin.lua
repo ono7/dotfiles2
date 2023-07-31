@@ -42,7 +42,9 @@ config.setup({
     -- see link below for override names
     -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
     mocha = {
-      green = "#bce6b2"
+      green = "#bce6b2",
+      -- mauve = "#8174d3"
+      mauve = "#caa1fd"
     }
   },
   custom_highlights = {},
@@ -66,11 +68,11 @@ vim.cmd.colorscheme("catppuccin")
 -- vim.api.nvim_set_hl(0, "FloatBorder", { link = "Comment" })
 -- vim.api.nvim_set_hl(0, "Function", { fg = "#9abdf5" })
 -- vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
--- vim.api.nvim_set_hl(0, "Search", { bg = "#33415e" })
+vim.api.nvim_set_hl(0, "Search", { bg = "#8174d3", fg = "#000000" })
 -- vim.api.nvim_set_hl(0, "QuickFixLine", { link = "Search" })
 -- vim.api.nvim_set_hl(0, "Folded", { link = "Comment" })
--- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#33415e" })
--- vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
+vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
+vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 -- vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#26323b", bg = "NONE" })
 vim.api.nvim_set_hl(0, "DiffChange", {})
 -- vim.api.nvim_set_hl(0, "Keyword", { fg = "#bb9af7" })
@@ -78,7 +80,7 @@ vim.api.nvim_set_hl(0, "DiffChange", {})
 -- vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#9d7cd8", italic = true })
 -- vim.api.nvim_set_hl(0, "@method.call.go", { link = "Normal" })
 -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#737aa2", bold = true })
--- vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
+vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
 vim.api.nvim_set_hl(0, "@field", {})
 vim.api.nvim_set_hl(0, "FloatShadow", {})
 -- vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC" })

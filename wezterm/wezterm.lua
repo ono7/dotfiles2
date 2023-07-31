@@ -1,6 +1,19 @@
 local wezterm = require("wezterm")
 local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
 -- from wezterm debug mode see keybinding below
+-- [
+--     "#2d2e3e",
+--     "#e5e693",
+--     "#685da5",
+--     "#ac68a6",
+--     "#a9cee1",
+--     "#667684",
+--     "#7c527f",
+--     "#4c5568",
+--     "#8174d3",
+--     "#b3da99",
+-- ]
+
 local ansi = {
   "#45475a",
   "#f38ba8",
@@ -105,25 +118,10 @@ return {
     },
   },
   color_schemes                              = {
+    -- new or override scheme
     ["Catppuccin Mocha"] = scheme,
   },
   color_scheme                               = 'Catppuccin Mocha',
-  -- color_scheme                 = 'mine',
-  -- color_schemes                = {
-  --   ['mine'] = {
-  --     -- background = "#222932",
-  --     background = "#202933",
-  --     -- foreground = "#dee6f0",
-  --     foreground = "#c7cff7",
-  --     cursor_fg = "#323a4c",
-  --     cursor_bg = "#ffffff",
-  --     cursor_border = "#ffcc66",
-  --     selection_bg = "#33415e",
-  --     selection_fg = "#cbccc6",
-  --     ansi = { "#192028", "#e27e8d", "#c5dea1", "#c49a5a", "#8EAAF4", "#c6a0f6", "#5ec4ff", "#c7c7c7" },
-  --     brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
-  --   }
-  -- },
   font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font' },
   font_rules                                 = {
     {
