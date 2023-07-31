@@ -3,13 +3,13 @@ local act = wezterm.action
 -- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
 
 return {
-  default_prog                 = { "/bin/zsh", "--login" },
-  audible_bell                 = "Disabled",
-  use_dead_keys                = false,
-  unicode_version              = 14,
-  default_cwd                  = wezterm.homedir,
-  enable_csi_u_key_encoding    = true,
-  keys                         = {
+  default_prog                               = { "/bin/zsh", "--login" },
+  audible_bell                               = "Disabled",
+  use_dead_keys                              = false,
+  unicode_version                            = 14,
+  default_cwd                                = wezterm.homedir,
+  enable_csi_u_key_encoding                  = true,
+  keys                                       = {
     -- use xxd -psd to get hex char sequences
     {
       key = "w",
@@ -113,7 +113,7 @@ return {
     -- },
   },
   -- color_scheme                 = "Catppuccin Macchiato",
-  color_scheme                 = "Catppuccin Mocha",
+  color_scheme                               = "Catppuccin Mocha",
   -- color_scheme                 = 'mine',
   -- color_schemes                = {
   --   ['mine'] = {
@@ -130,17 +130,19 @@ return {
   --     brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
   --   }
   -- },
-  font                         = wezterm.font({ family = "MonoLisa Liga" }),
+  font                                       = wezterm.font({ family = "MonoLisa Liga" }),
+  adjust_window_size_when_changing_font_size = false,
+  window_close_confirmation                  = "NeverPrompt",
   -- freetype_load_target = "HorizontalLcd",
-  cursor_blink_rate            = 350,
-  default_cursor_style         = "BlinkingBlock",
+  cursor_blink_rate                          = 350,
+  default_cursor_style                       = "BlinkingBlock",
   -- freetype_load_target = 'Light',
   -- freetype_render_target = 'HorizontalLcd',
-  font_size                    = 18,
-  line_height                  = 1.4,
-  underline_position           = -8,
-  underline_thickness          = 3, -- ()
-  colors                       = {
+  font_size                                  = 18,
+  line_height                                = 1.4,
+  underline_position                         = -8,
+  underline_thickness                        = 3, -- ()
+  colors                                     = {
 
     -- cursor_bg = "white",
     -- Overrides the text color when the current cell is occupied by the cursor
@@ -155,9 +157,9 @@ return {
   -- window_background_opacity = 0.95,
   -- macos_window_background_blur = 20,
   -- window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_NS_VISUAL_EFFECT_MATERIAL_BLUR", -- will blurr eventually
-  window_decorations           = "RESIZE",
-  hide_tab_bar_if_only_one_tab = true,
-  window_padding               = {
+  window_decorations                         = "RESIZE",
+  hide_tab_bar_if_only_one_tab               = true,
+  window_padding                             = {
     left = 3,
     right = 3,
     top = 3,
@@ -168,5 +170,5 @@ return {
   --   && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
   --   && tic -x -o ~/.terminfo $tempfile \
   --   && rm $tempfile
-  term                         = "wezterm",
+  term                                       = "wezterm",
 }
