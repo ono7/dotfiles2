@@ -43,7 +43,7 @@ config.setup({
     -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
     mocha = {
       -- green = "#ceeac8",
-      green = "#b6cfaf",
+      green = "#b2d6a9",
       -- mauve = "#8174d3"
       mauve = "#caa1fd"
     }
