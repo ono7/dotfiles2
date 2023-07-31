@@ -32,7 +32,7 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -93,9 +93,37 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # add plugins before oh-my-zsh.sh is sourced
-plugins=(zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+# plugins=(zsh-autosuggestions)
+# source $ZSH/oh-my-zsh.sh
+
+autoload -Uz compinit && compinit
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit light ohmyzsh/ohmyzsh
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+# zinit snippet OMZP::aws
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
+# zinit snippet OMZP::rust
+zinit snippet OMZL::clipboard.zsh
+zinit snippet OMZL::termsupport.zsh
+zinit snippet OMZP::command-not-found
+
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
   export DISPLAY=:0.0
