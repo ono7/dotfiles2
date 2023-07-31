@@ -109,10 +109,13 @@ k("n", "ZQ", "")
 k("n", "M", "")
 k("n", "L", "")
 k("n", "H", "")
-k("n", "s", "")               -- surround
-k("x", "s", "")               -- surround
 
-k("n", "gp", "`[v`]", silent) -- vs last paste
+-- surround
+k("n", "s", "")
+k("x", "s", "")
+
+-- vs last paste
+k("n", "gp", "`[v`]", silent)
 k("v", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
 k("n", ",w", ":w<cr>", silent)
@@ -134,7 +137,6 @@ _G.send_to_tmux_visual = function()
 end
 
 -- Map the key binding for a range of text or selected text
--- TODO: jlima ~ fix this to allow visually selected text
 k('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
 
 -- Map the key binding for the current line (no selection)
@@ -143,18 +145,17 @@ k('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]], { noremap = 
 k("n", "<leader>cd", ":lcd %:h<CR>")
 
 -- paste over selection without overwriting clipboard
-k("x", "p", "pgvy") -- prevent paste from overwritting what was copied originally
--- k("v", "p", [["0p]])
--- k("v", "P", [["0P]])
--- k("v", "d", [["0d]])
+k("x", "p", "pgvy")
 
-k({ "n", "v" }, "J", "mzJ`z") -- when using J keep cursor to the right
+-- when using J keep cursor to the right
+k({ "n", "v" }, "J", "mzJ`z")
 
-k({ "n", "x" }, "v", "<c-v>") -- sigh :)
+k({ "n", "x" }, "v", "<c-v>")
 vim.cmd("vunmap v")
 
---- crazy editing skillz ---
 k("n", "D", "d$", opt)
+
+-- copy and paste paragraph
 k("n", "cp", "yap<S-}>p", opt)
 
 k("n", "U", "<c-r>", opt)
@@ -231,8 +232,6 @@ local closedBrackets = {
 
 
 local all_pair_map = {}
-local alpha_and_quotes = {}
--- local isAlphaNumPunct = {}
 local isAlphaNum = {}
 
 for _, v in ipairs(pair_map) do
@@ -249,17 +248,8 @@ for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
   isAlphaNum[string.upper(lowercaseKey)] = true
 end
 
--- populate alpha_and_quotes before we add digits 0 - 9
-for key, v in pairs(isAlphaNum) do
-  alpha_and_quotes[key] = v
-end
-
 for digit = 48, 57 do -- ASCII values for '0' to '9'
   isAlphaNum[string.char(digit)] = true
-end
-
-for key, v in pairs(quotes) do
-  alpha_and_quotes[key] = v
 end
 
 -- -- for jinja!

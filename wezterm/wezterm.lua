@@ -51,12 +51,6 @@ return {
       mods = "CMD",
       action = wezterm.action.PasteFrom("Clipboard"),
     },
-    -- {
-    -- 	-- remove word, to avoid confusion this binding is disabled for now
-    -- 	key = "Backspace",
-    -- 	mods = "CTRL",
-    -- 	action = wezterm.action.SendString("\x17"),
-    -- },
     {
       -- delete word
       key = "Backspace",
@@ -69,19 +63,6 @@ return {
       mods = "ALT",
       action = wezterm.action.SendString("\x15"),
     },
-    -- {
-    --   -- https://www.youtube.com/watch?v=BLp61-Lq0kQ
-    --   -- tmux next-window
-    --   key = "]",
-    --   mods = "ALT",
-    --   action = wezterm.action.SendString("\x02\x6e"),
-    -- },
-    -- {
-    --   -- tmux previous-window
-    --   key = "[",
-    --   mods = "ALT",
-    --   action = wezterm.action.SendString("\x02\x70"),
-    -- },
     {
       -- tmux rename window
       key = "n",
@@ -106,13 +87,7 @@ return {
       mods = "ALT",
       action = wezterm.action.SendString("\x02\x7c"),
     },
-    -- {
-    --   -- enter
-    --   key = "Enter",
-    --   action = wezterm.action.SendString("\x0a"),
-    -- },
   },
-  -- color_scheme                 = "Catppuccin Macchiato",
   color_scheme                               = "Catppuccin Mocha",
   -- color_scheme                 = 'mine',
   -- color_schemes                = {
@@ -145,24 +120,13 @@ return {
   },
   adjust_window_size_when_changing_font_size = false,
   window_close_confirmation                  = "NeverPrompt",
-  -- freetype_load_target = "HorizontalLcd",
   cursor_blink_rate                          = 350,
   default_cursor_style                       = "BlinkingBlock",
-  -- freetype_load_target = 'Light',
-  -- freetype_render_target = 'HorizontalLcd',
   font_size                                  = 18,
   line_height                                = 1.4,
   underline_position                         = -8,
   underline_thickness                        = 3, -- ()
   colors                                     = {
-
-    -- cursor_bg = "white",
-    -- Overrides the text color when the current cell is occupied by the cursor
-    -- cursor_fg = "black",
-    -- Specifies the border color of the cursor when the cursor style is set to Block,
-    -- or the color of the vertical or horizontal bar when the cursor style is set to
-    -- Bar or Underline.
-    -- cursor_border = "#52ad70",
   },
   -- window_background_image = "/Users/jlima/Documents/1.jpg",
   -- window_background_opacity = 0.90,
