@@ -27,36 +27,7 @@ if not lspkind_status_ok then
   return
 end
 
-lspkind_config.init({
-  -- symbol_map = {
-  --   Text = "   ",
-  --   Method = "  ",
-  --   Function = "  ",
-  --   Constructor = "  ",
-  --   Field = " ﴲ ",
-  --   Variable = "[]",
-  --   Class = "  ",
-  --   Interface = " ﰮ ",
-  --   Module = "  ",
-  --   Property = " 襁",
-  --   Unit = "  ",
-  --   Value = "  ",
-  --   Enum = "  ",
-  --   -- Enum = " 練",
-  --   Keyword = "  ",
-  --   Snippet = "  ",
-  --   Color = "  ",
-  --   File = "  ",
-  --   Reference = "  ",
-  --   Folder = "  ",
-  --   EnumMember = "  ",
-  --   Constant = " ﲀ ",
-  --   Struct = " ﳤ ",
-  --   Event = "  ",
-  --   Operator = "  ",
-  --   TypeParameter = "  ",
-  -- },
-})
+lspkind_config.init({})
 
 local cmp_status_ok, cmp_config = pcall(require, "cmp")
 
