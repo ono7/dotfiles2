@@ -1,11 +1,3 @@
-snippet ti "tag inline" w
-  <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
-
-snippet ta "tag" w
-  <${1}>
-    ${0:${VISUAL}}
-  </${1/\v(\w+).*/\1/g}>
-
 snippet bc "block comment" w
   /*
     ${0:${VISUAL}}
@@ -15,6 +7,7 @@ snippet e "error" w
 	if err != nil {
 		${1:log.Fatal(err)}
 	}
+
 snippet v "shorthand variable declaration" w
   ${1} := ${2}
 
