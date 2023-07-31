@@ -105,7 +105,7 @@ return {
   --     brights = { "#686868", "#e27e8d", "#b6d68a", "#ffd580", "#8EAAF4", "#b7bdf8", "#70e1e8", "#ffffff", }
   --   }
   -- },
-  font                                       = wezterm.font({ family = "MonoLisa Liga" }),
+  font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font' },
   font_rules                                 = {
     {
       intensity = 'Bold',
