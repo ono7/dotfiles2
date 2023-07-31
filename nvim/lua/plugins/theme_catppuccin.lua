@@ -38,7 +38,11 @@ config.setup({
     types = {},
     operators = {},
   },
-  color_overrides = {},
+  color_overrides = {
+    mocha = {
+      green = "#bce6b2"
+    }
+  },
   custom_highlights = {},
   integrations = {
     cmp = true,
