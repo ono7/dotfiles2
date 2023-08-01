@@ -16,3 +16,20 @@ snippet note "note" w
   NOTE: `$USER` ~ ${0:${VISUAL}}
 snippet d "done" w
   ${0:${VISUAL}} ✅
+
+snippet make "Makefile" w
+  BINARY_NAME := ${1}
+  OUTPUT_DIR := ${2}
+
+  all: build
+
+  build:
+    ${3} $(BINARY_NAME) ${0}
+
+  install:
+    cp $(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+
+  clean:
+    rm -f $(BINARY_NAME)
+
+  .PHONY: all build install clean
