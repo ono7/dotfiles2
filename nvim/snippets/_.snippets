@@ -21,7 +21,7 @@ snippet make "Makefile" w
   BINARY_NAME := ${1}
   OUTPUT_DIR := ${2}
 
-  all: build
+  all: build install
 
   build:
     ${3} $(BINARY_NAME) ${0}
