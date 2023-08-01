@@ -275,7 +275,7 @@ k('i', '"', function()
   local cb = closedBrackets
   local q = {
     ["'"] = true,
-    ['`'] = true,
+    -- ['`'] = true,
   }
   if p == '\\' or cb[p] or q[p] or q[n] then
     return '"'
@@ -327,7 +327,7 @@ k('i', "'", function()
   local cb = closedBrackets
   local q = {
     ['"'] = true,
-    ['`'] = true,
+    -- ['`'] = true,
   }
   if p == '\\' or cb[p] or q[p] or q[n] then
     return "'"

@@ -4,8 +4,14 @@ __pycache__/
 venv/
 build/
 
+1.json
+2.json
+data.json
+test.json
+library/
 ipython/
 logs/
+dev/
 .pytest_cache/
 .DS_Store
 .luac
@@ -30,3 +36,5 @@ my_creds.py
 profile.log
 packer_compiled.lua
 nvim/lazy-lock.json
+go_command
+go_config
