@@ -36,5 +36,4 @@ my_creds.py
 profile.log
 packer_compiled.lua
 nvim/lazy-lock.json
-go_command
 go_config
