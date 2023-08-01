@@ -103,12 +103,14 @@ fi
 
 if [[ -f ~/nvim/bin/nvim ]]; then
   alias vim='~/nvim/bin/nvim'
+  alias nvim='~/nvim/bin/nvim'
   # legacy vim
   alias vi=vim
   alias vil='/usr/bin/vim'
   alias vimdiff='~/nvim/bin/nvim -d'
 elif command -v nvim &>/dev/null; then
   alias vim=$(which nvim)
+  alias nvim=vim
   alias vi=vim
   # legacy vim
   alias vil=vim
@@ -266,13 +268,6 @@ function vc () {
   cd $my_dir
 }
 
-function vs () {
-  # local fname
-  # fname=$(fzf) || return
-  # vim "$fname"
-  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs vim
-}
-
 function dp() {
   unset http_proxy
   unset https_proxy
@@ -371,11 +366,18 @@ bindkey "^P" up-line-or-history
 bindkey "^R" fzf-history-widget
 bindkey "^T" fzf-file-widget
 
+function vs () {
+  # local fname
+  # fname=$(fzf) || return
+  # vim "$fname"
+  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
+}
+
 function _vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
-  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs vim
+  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
 }
 
 # _vs declear as widget for zsh
