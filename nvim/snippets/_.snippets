@@ -31,5 +31,6 @@ snippet make "Makefile" w
 
   clean:
     rm -f $(BINARY_NAME)
+    rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
   .PHONY: all build install clean
