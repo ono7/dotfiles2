@@ -14,7 +14,7 @@
         command: /system/clock/print
         provider:
           username: admin
-          password: jocker
+          password: "{{ lookup('env', 'api_admin') }}"
           host: 100.64.0.1
       # debugger: always
       register: out
