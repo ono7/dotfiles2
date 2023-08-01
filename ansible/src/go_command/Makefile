@@ -1,17 +1,18 @@
 BINARY_NAME := go_command
 OUTPUT_DIR := ../../library
+BUILD_DIR := build
 
 all: build install
 
 build:
-	mkdir -p build
-	go build -o build/$(BINARY_NAME) main.go
+	mkdir -p $(BUILD_DIR)
+	go $(BUILD_DIR) -o $(BUILD_DIR)/$(BINARY_NAME) main.go
 
 install:
-	cp build/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+	cp $(BUILD_DIR)/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
 
 clean:
-	rm -f build/$(BINARY_NAME)
+	rm -f $(BUILD_DIR)/$(BINARY_NAME)
 	rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
 .PHONY: all build install clean
