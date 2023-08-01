@@ -2,7 +2,7 @@
 # Author: Jose Lima
 # Date: 2023-07-31 18:27 CST
 
-- name: "testing go mod"
+- name: "Testing go mod"
   hosts: localhost
   # order: shuffle
   gather_facts: false
@@ -11,14 +11,15 @@
   tasks:
     - name: "Testing --> "
       go_command:
-        command: testing command
+        command: /system/clock/print
         provider:
-          username: testname
-          password: testpass
+          username: admin
+          password: jocker
+          host: 100.64.0.1
       # debugger: always
       register: out
 
     - name: Debug
       ansible.builtin.debug:
         msg: |
-          {{ out.msg }}
+          {{ out.stdout }}
