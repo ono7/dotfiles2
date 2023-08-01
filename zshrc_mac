@@ -270,7 +270,7 @@ function vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
-  fd --type f --hidden --exclude .git | fzf-tmux -p 95%,50% --reverse | xargs vim
+  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs vim
 }
 
 function dp() {
@@ -375,7 +375,7 @@ function _vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
-  fd --type f --hidden --exclude .git | fzf-tmux -p 95%,50% --reverse | xargs vim
+  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs vim
 }
 
 # _vs declear as widget for zsh
