@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	// "log"
 	"os"
 	"regexp"
 	"strings"
@@ -132,11 +131,14 @@ func (i *ansibleDevice) send() (string, error) {
 	// )
 }
 
+func checkCommandErrors() {}
+
 func runCmd(w io.Writer, cmd string, b *strings.Builder) (string, error) {
 	b.Reset()
 	counter := 0
 	uPrompt := regexp.MustCompile(`[>] `)
 	// TODO: jlima ~ take in prompt regex through ModuleArgs
+	// TODO: jlima ~ check for errors using rawErrors
 	for {
 		time.Sleep(300 * time.Millisecond)
 		if uPrompt.MatchString(b.String()) {
@@ -185,11 +187,11 @@ func main() {
 		FailJSON(response)
 	}
 
-	err = os.WriteFile("data.json", rawJson, 0644)
-	if err != nil {
-		fmt.Println("Error writing data to file:", err)
-		return
-	}
+	// err = os.WriteFile("data.json", rawJson, 0644)
+	// if err != nil {
+	// 	fmt.Println("Error writing data to file:", err)
+	// 	return
+	// }
 
 	var providerMy Provider
 	err = json.Unmarshal(rawJson, &providerMy)
@@ -197,8 +199,6 @@ func main() {
 		response.Msg = "Error unmarshaling provider data"
 		FailJSON(response)
 	}
-
-	// fmt.Println(providerMy)
 
 	var command Cmd
 	err = json.Unmarshal(rawJson, &command)

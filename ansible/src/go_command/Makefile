@@ -4,13 +4,14 @@ OUTPUT_DIR := ../../library
 all: build install
 
 build:
-	go build -o $(BINARY_NAME) main.go
+	mkdir -p build
+	go build -o build/$(BINARY_NAME) main.go
 
 install:
-	cp $(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+	cp build/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
 
 clean:
-	rm -f $(BINARY_NAME)
+	rm -f build/$(BINARY_NAME)
 	rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
 .PHONY: all build install clean

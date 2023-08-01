@@ -24,13 +24,15 @@ snippet make "Makefile" w
   all: build install
 
   build:
+    mkdir -p $(OUTPUT_DIR)
+    mkdir -p build
     ${3} $(BINARY_NAME) ${0}
 
   install:
-    cp $(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+    cp build/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
 
   clean:
-    rm -f $(BINARY_NAME)
+    rm -f build/$(BINARY_NAME)
     rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
   .PHONY: all build install clean
