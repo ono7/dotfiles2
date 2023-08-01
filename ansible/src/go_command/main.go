@@ -12,7 +12,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-// ModuleArgs are the module inputs
+// from ansible
 type Provider struct {
 	Provider struct {
 		Username string `json:"username"`
@@ -21,22 +21,23 @@ type Provider struct {
 	} `json:"provider"`
 }
 
+// from ansible
 type Cmd struct {
 	Command interface{} `json:"command"`
 }
 
-// Response are the values returned from the module
+// send this back to ansible
 type Response struct {
-	Msg     string `json:"msg"`
-	Stdout  string `json:"stdout"`
-	Changed bool   `json:"changed"`
-	Failed  bool   `json:"failed"`
+	Msg    string `json:"msg"`
+	Stdout string `json:"stdout"`
+	Failed bool   `json:"failed"`
 }
 
 func regexJoinSlice(s []string) string {
 	return strings.Join(s, "|")
 }
 
+// remove first and lastline from text, usually the command prompt from the device
 func stripPrompt(s string) string {
 	if len(s) < 2 {
 		return s
@@ -79,12 +80,26 @@ type ansibleDevice struct {
 }
 
 func (i *ansibleDevice) send() (string, error) {
+
+	if i.User == "" {
+		i.AnsibleResponse.Msg = "missing provider: username"
+		FailJSON(i.AnsibleResponse)
+	} else if i.Password == "" {
+		i.AnsibleResponse.Msg = "missing provider: password"
+		FailJSON(i.AnsibleResponse)
+
+	} else if i.Host == "" {
+		i.AnsibleResponse.Msg = "missing provider: host"
+		FailJSON(i.AnsibleResponse)
+	}
+
 	config := ssh.ClientConfig{
 		User:            i.User,
 		Auth:            []ssh.AuthMethod{ssh.Password(i.Password)},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 		Timeout:         time.Second * 20,
 	}
+
 	client, err := ssh.Dial("tcp", i.Host+":22", &config)
 	if err != nil {
 		i.AnsibleResponse.Msg = fmt.Sprintf("ansibleDevice: %v", err.Error())
@@ -115,10 +130,12 @@ func (i *ansibleDevice) send() (string, error) {
 		ssh.ECHO:  1, // Ensure echoing is enabled
 		ssh.IGNCR: 0, // DONT Ignore CR on input. (needed for microtik)
 	}
+
 	if err = session.RequestPty("vty", 0, 200, modes); err != nil {
 		i.AnsibleResponse.Msg = fmt.Sprintf("VTY: %v", err.Error())
 		FailJSON(i.AnsibleResponse)
 	}
+
 	if err = session.Shell(); err != nil {
 		i.AnsibleResponse.Msg = fmt.Sprintf("Shell: %v", err.Error())
 		FailJSON(i.AnsibleResponse)
@@ -212,6 +229,10 @@ func main() {
 	switch cmd := command.Command.(type) {
 	case string:
 		device.Cmd = cmd
+		if cmd == "" {
+			response.Msg = "module argument: command, is empty"
+			FailJSON(response)
+		}
 		ret, err := device.send()
 		if err != nil {
 			response.Msg = fmt.Sprintf("Send command error, %v", err)
