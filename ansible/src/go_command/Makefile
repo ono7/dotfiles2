@@ -15,4 +15,7 @@ clean:
 	rm -f $(BUILD_DIR)/$(BINARY_NAME)
 	rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
-.PHONY: all build install clean
+test:
+	cd $(BUILD_DIR);./$(BINARY_NAME) 1.json
+
+.PHONY: all build install clean test

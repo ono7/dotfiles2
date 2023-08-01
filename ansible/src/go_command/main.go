@@ -140,7 +140,7 @@ func runCmd(w io.Writer, cmd string, b *strings.Builder) (string, error) {
 	// TODO: jlima ~ take in prompt regex through ModuleArgs
 	// TODO: jlima ~ check for errors using rawErrors
 	for {
-		time.Sleep(300 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
 		if uPrompt.MatchString(b.String()) {
 			if counter >= 120 {
 				return stripPrompt(b.String()), fmt.Errorf("timeout error in runCmd")
@@ -152,10 +152,8 @@ func runCmd(w io.Writer, cmd string, b *strings.Builder) (string, error) {
 					err = nil
 				}
 				if err != nil {
-					return stripPrompt(b.String()), fmt.Errorf("Error in runCmd after sending command: %v", err)
+					return stripPrompt(b.String()), fmt.Errorf("error in runCmd after sending command: %v", err)
 				}
-
-				fmt.Println("waiting for response")
 				for {
 					// wait for response
 					if uPrompt.MatchString(b.String()) {
@@ -219,6 +217,7 @@ func main() {
 			response.Msg = fmt.Sprintf("Send command error, %v", err)
 			FailJSON(response)
 		}
+		response.Msg = "ok"
 		response.Stdout = ret
 		ExitJSON(response)
 	case []interface{}:
