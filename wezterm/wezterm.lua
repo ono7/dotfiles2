@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
 -- from wezterm debug mode see keybinding below
+-- https://wezfurlong.org/wezterm/config/lua/wezterm.color/extract_colors_from_image.html
 -- [
 --     "#2d2e3e",
 --     "#e5e693",
