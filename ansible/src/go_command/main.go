@@ -23,11 +23,16 @@ type Provider struct {
 }
 
 // type cmdType json.RawMessage
-type cmdType interface{}
+type GenericType interface{}
 
 // from ansible
 type Cmd struct {
-	Command cmdType `json:"command"`
+	Command GenericType `json:"command"`
+}
+
+// from ansible
+type Prompt struct {
+	Prompt GenericType `json:"prompt"`
 }
 
 // send this back to ansible
@@ -83,7 +88,7 @@ type ansibleDevice struct {
 	Cmd             string
 }
 
-func (i *ansibleDevice) send() (string, error) {
+func (i *ansibleDevice) send(rawJson []byte) (string, error) {
 
 	if i.User == "" {
 		i.AnsibleResponse.Msg = "missing provider: username"
@@ -145,7 +150,14 @@ func (i *ansibleDevice) send() (string, error) {
 		FailJSON(i.AnsibleResponse)
 	}
 
-	return runCmd(pipe, i.Cmd, &b)
+	var prompt Prompt
+	err = json.Unmarshal(rawJson, &prompt)
+	if err != nil {
+		i.AnsibleResponse.Msg = "Error unmarshaling prompt data"
+		FailJSON(i.AnsibleResponse)
+	}
+
+	return runCmd(pipe, i.Cmd, prompt.Prompt.(string), &b)
 
 	// var (
 	//  rawErrors = []string{`syntax error \(line \d+ column \d+\)`, `bad command name \S+ \(line \d+ column \d+\)`}
@@ -154,35 +166,32 @@ func (i *ansibleDevice) send() (string, error) {
 
 func checkCommandErrors() {}
 
-func runCmd(w io.Writer, cmd string, b *strings.Builder) (string, error) {
+func runCmd(w io.Writer, cmd string, p string, b *strings.Builder) (string, error) {
 	b.Reset()
-	counter := 0
-	uPrompt := regexp.MustCompile(regexp.QuoteMeta(`) >`))
-	// TODO: jlima ~ take in prompt regex through ModuleArgs
+	uPrompt := regexp.MustCompile(p)
 	// TODO: jlima ~ check for errors using rawErrors
 	for {
-		time.Sleep(50 * time.Millisecond)
 		if uPrompt.MatchString(b.String()) {
-			if counter >= 120 {
-				return stripPrompt(b.String()), fmt.Errorf("timeout error in runCmd")
+			b.Reset()
+			_, err := fmt.Fprintf(w, cmd+"\r\n")
+			time.Sleep(50 * time.Millisecond)
+			if err == io.EOF {
+				err = nil
 			}
-			if counter == 0 {
-				b.Reset()
-				_, err := fmt.Fprintf(w, cmd+"\r\n")
-				if err == io.EOF {
-					err = nil
+			if err != nil {
+				return stripPrompt(b.String()), fmt.Errorf("error in runCmd after sending command: %v", err)
+			}
+			counter := 0
+			for {
+				// 1000 (1 second) / 50ms * 30(seconds) = 600
+				if counter >= 600 {
+					return stripPrompt(b.String()), fmt.Errorf("timeout after sending command: %v", err)
 				}
-				if err != nil {
-					return stripPrompt(b.String()), fmt.Errorf("error in runCmd after sending command: %v", err)
+				if uPrompt.MatchString(b.String()) {
+					return stripPrompt(b.String()), nil
 				}
-				for {
-					// wait for response
-					if uPrompt.MatchString(b.String()) {
-						return stripPrompt(b.String()), nil
-					}
-					counter++
-					time.Sleep(300 * time.Millisecond)
-				}
+				counter++
+				time.Sleep(50 * time.Millisecond)
 			}
 		}
 	}
@@ -225,29 +234,30 @@ func main() {
 		response.Msg = "Error unmarshaling command data"
 		FailJSON(response)
 	}
+
 	var device ansibleDevice
 	device.Host = providerMy.Provider.Host
 	device.Password = providerMy.Provider.Password
 	device.User = providerMy.Provider.Username
 	device.AnsibleResponse = response
-	// switch cmd := command.Command.(type) {
-	// case string:
-	// 	device.Cmd = cmd
-	// 	if cmd == "" {
-	// 		response.Msg = "module argument: command, is empty"
-	// 		FailJSON(response)
-	// 	}
-	// 	ret, err := device.send()
-	// 	if err != nil {
-	// 		response.Msg = fmt.Sprintf("Send command error, %v", err)
-	// 		FailJSON(response)
-	// 	}
-	// 	response.Msg = "ok"
-	// 	response.Stdout = ret
-	// 	ExitJSON(response)
-	// case []interface{}:
-	// 	response.Msg = fmt.Sprintf("command should not be a list, %v", cmd)
-	// 	FailJSON(response)
-	// }
+	switch cmd := command.Command.(type) {
+	case string:
+		device.Cmd = cmd
+		if cmd == "" {
+			response.Msg = "module argument: command, is empty"
+			FailJSON(response)
+		}
+		ret, err := device.send(rawJson)
+		if err != nil {
+			response.Msg = fmt.Sprintf("Send command error, %v", err)
+			FailJSON(response)
+		}
+		response.Msg = "ok"
+		response.Stdout = ret
+		ExitJSON(response)
+	case []interface{}:
+		response.Msg = fmt.Sprintf("command should not be a list, %v", cmd)
+		FailJSON(response)
+	}
 
 }

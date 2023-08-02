@@ -3,6 +3,7 @@ OUTPUT_DIR := ../../library
 BUILD_DIR := build
 
 all: build install
+test: build test_node
 
 build:
 	mkdir -p $(BUILD_DIR)
@@ -15,8 +16,7 @@ clean:
 	rm -f $(BUILD_DIR)/$(BINARY_NAME)
 	rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
-test:
-	# cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json | jq
-	cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json
+test_node:
+	cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json | jq
 
 .PHONY: all build install clean test
