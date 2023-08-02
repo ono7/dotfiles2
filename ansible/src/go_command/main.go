@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/ono7/utils"
+	// "github.com/ono7/utils"
 	"io"
 	"os"
 	"regexp"
@@ -22,7 +22,8 @@ type Provider struct {
 	} `json:"provider"`
 }
 
-type cmdType json.RawMessage
+// type cmdType json.RawMessage
+type cmdType interface{}
 
 // from ansible
 type Cmd struct {
@@ -156,7 +157,7 @@ func checkCommandErrors() {}
 func runCmd(w io.Writer, cmd string, b *strings.Builder) (string, error) {
 	b.Reset()
 	counter := 0
-	uPrompt := regexp.MustCompile(`[>] `)
+	uPrompt := regexp.MustCompile(regexp.QuoteMeta(`) >`))
 	// TODO: jlima ~ take in prompt regex through ModuleArgs
 	// TODO: jlima ~ check for errors using rawErrors
 	for {
