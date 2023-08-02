@@ -1,4 +1,25 @@
+# comparable
+
+any type that can be directly compared to it self
+
+```go
+// go generics
+type CustomMap[T comparable, k int|string], map[T]k
+type CustomMap[T comparable, k any], map[T]k
+
+m :=make(CustomMap[int, string])
+m[3] = "3"
+// key = int(3), val = string("3")
+```
+
+## allow private repos from ono7 org
+
+go env -w GOPRIVATE=github.com/ono7
+
+repos should have a tag to work, @latest
+
 # macos 07/23/22
+
 # find type of interface
 
 ```go

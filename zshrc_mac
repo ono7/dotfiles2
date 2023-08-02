@@ -133,6 +133,14 @@ if [[ "$(command -v nvim)" ]]; then
     export MANWIDTH=999
 fi
 
+function mkt () {
+  git tag -a $1 -m "added tag $1"; git push origin $1
+}
+
+function rmt () {
+  git tag -d $1;git push --delete origin $1
+}
+
 function vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
   vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
