@@ -2,6 +2,8 @@
 
 --[[
 * g, - jump to last change
+* zm, fold
+* zi, toggle fold
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
