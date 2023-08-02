@@ -37,6 +37,7 @@ return {
   unicode_version                            = 14,
   default_cwd                                = wezterm.homedir,
   enable_csi_u_key_encoding                  = true,
+  use_ime                                    = false, -- change macos ctrl key behavior e.g. ctrl-d
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
