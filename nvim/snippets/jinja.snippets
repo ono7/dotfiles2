@@ -1,6 +1,6 @@
 snippet jh "header" w
   #jinja2: lstrip_blocks: True
-  {# 
+  {#
 
       Author: Jose Lima
       Date: `strftime("%Y-%m-%d %H:%M")` CST
@@ -12,13 +12,15 @@ snippet jbi "block" w
   {% ${1:${VISUAL}} %}
   ${0}
 
-snippet jbc "block comment" w
+snippet jc "block comment" w
   {#
+
     ${0:${VISUAL}}
+
   #}
 
-snippet jc "block comment" w
-  {# ${0:${VISUAL}} #}
+# snippet jc "block comment" w
+#   {# ${0:${VISUAL}} #}
 
 snippet jr "Raw block" w
   {% raw %} ${0:${VISUAL}} {% endraw %}
@@ -36,4 +38,3 @@ snippet jelif "if statement" w
     ${0:${VISUAL}}
   {% else %}
   {% endif %}
-

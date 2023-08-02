@@ -1,17 +1,27 @@
-snippet bc "block comment" w
+snippet c "block comment" w
   /*
     ${0:${VISUAL}}
   */
 
 snippet e "error" w
 	if err != nil {
-		${1:log.Fatal(err)}
+		${0:log.Fatal(err)}
 	}
+
+snippet ee "error" w
+  if ${1} := ${0}; ${1/\v(\S+)\s+(\S+)/\2/} != nil {
+  }
 
 snippet if "if statement" b
   if ${1} {
-    ${VISUAL}
+    ${0}${VISUAL}
   }
+
+snippet for "for statement" b
+  for ${1} {
+    ${0}${VISUAL}
+  }
+
 
 
 snippet v "shorthand variable declaration" w
