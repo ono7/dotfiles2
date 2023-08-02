@@ -8,27 +8,30 @@ snippet e "error" w
 		${0:log.Fatal(err)}
 	}
 
+snippet ok "check ok" b
+  ${1} := ${0}
+  if !${1/\v\S+\s+(\S+)/\1/} {
+  }
+
 snippet ee "error" w
   if ${1} := ${0}; ${1/\v(\S+)\s+(\S+)/\2/} != nil {
   }
 
 snippet if "if statement" b
-  if ${1} {
-    ${0}${VISUAL}
+  if ${0} {
+    ${VISUAL}
   }
 
 snippet for "for statement" b
-  for ${1} {
-    ${0}${VISUAL}
+  for ${0} {
+    ${VISUAL}
   }
-
-
 
 snippet v "shorthand variable declaration" w
   ${1} := ${2}
 
 snippet fori "for int loop" w
-  for ${2:i} := 0; $2 < ${1:count}; $2${3:++} {
+  for ${1:i} := 0; $1 < ${2:count}; $1${3:++} {
     ${0:${VISUAL}}
   }
 
