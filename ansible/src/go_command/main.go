@@ -157,7 +157,7 @@ func (i *ansibleDevice) send(rawJson []byte) (string, error) {
 		FailJSON(i.AnsibleResponse)
 	}
 
-	return runCmd(pipe, i.Cmd, prompt.Prompt.(string), &b)
+	return runCmd(pipe, i.Cmd, prompt.Prompt.(string), &b, 30)
 
 	// var (
 	//  rawErrors = []string{`syntax error \(line \d+ column \d+\)`, `bad command name \S+ \(line \d+ column \d+\)`}
@@ -166,7 +166,8 @@ func (i *ansibleDevice) send(rawJson []byte) (string, error) {
 
 func checkCommandErrors() {}
 
-func runCmd(w io.Writer, cmd string, p string, b *strings.Builder) (string, error) {
+// w io.Writer, cmd string, p string, b *strings.Builder, timeout int -> string, error
+func runCmd(w io.Writer, cmd string, p string, b *strings.Builder, timeout int) (string, error) {
 	b.Reset()
 	uPrompt := regexp.MustCompile(p)
 	// TODO: jlima ~ check for errors using rawErrors
@@ -182,9 +183,10 @@ func runCmd(w io.Writer, cmd string, p string, b *strings.Builder) (string, erro
 				return stripPrompt(b.String()), fmt.Errorf("error in runCmd after sending command: %v", err)
 			}
 			counter := 0
+			// 1000 (1 second in millis) * seconds / 50
+			max := 1000 * timeout / 50
 			for {
-				// 1000 (1 second) / 50ms * 30(seconds) = 600
-				if counter >= 600 {
+				if counter >= max {
 					return stripPrompt(b.String()), fmt.Errorf("timeout after sending command: %v", err)
 				}
 				if uPrompt.MatchString(b.String()) {
