@@ -22,9 +22,11 @@ type Provider struct {
 	} `json:"provider"`
 }
 
+type cmdType json.RawMessage
+
 // from ansible
 type Cmd struct {
-	Command interface{} `json:"command"`
+	Command cmdType `json:"command"`
 }
 
 // send this back to ansible
@@ -227,24 +229,24 @@ func main() {
 	device.Password = providerMy.Provider.Password
 	device.User = providerMy.Provider.Username
 	device.AnsibleResponse = response
-	switch cmd := command.Command.(type) {
-	case string:
-		device.Cmd = cmd
-		if cmd == "" {
-			response.Msg = "module argument: command, is empty"
-			FailJSON(response)
-		}
-		ret, err := device.send()
-		if err != nil {
-			response.Msg = fmt.Sprintf("Send command error, %v", err)
-			FailJSON(response)
-		}
-		response.Msg = "ok"
-		response.Stdout = ret
-		ExitJSON(response)
-	case []interface{}:
-		response.Msg = fmt.Sprintf("command should not be a list, %v", cmd)
-		FailJSON(response)
-	}
+	// switch cmd := command.Command.(type) {
+	// case string:
+	// 	device.Cmd = cmd
+	// 	if cmd == "" {
+	// 		response.Msg = "module argument: command, is empty"
+	// 		FailJSON(response)
+	// 	}
+	// 	ret, err := device.send()
+	// 	if err != nil {
+	// 		response.Msg = fmt.Sprintf("Send command error, %v", err)
+	// 		FailJSON(response)
+	// 	}
+	// 	response.Msg = "ok"
+	// 	response.Stdout = ret
+	// 	ExitJSON(response)
+	// case []interface{}:
+	// 	response.Msg = fmt.Sprintf("command should not be a list, %v", cmd)
+	// 	FailJSON(response)
+	// }
 
 }
