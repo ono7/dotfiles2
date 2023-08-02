@@ -6,8 +6,9 @@ if not ok then
 end
 
 config.setup {
-  show_current_context = true,
-  show_current_context_start = true,
+  -- show_current_context = true,
+  -- show_current_context_start = true,
+  space_char_blankline = " ",
 }
 
 local ts_ok, ts_config = pcall(require, "treesitter_indent_object")
