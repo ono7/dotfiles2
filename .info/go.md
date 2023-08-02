@@ -1,4 +1,16 @@
-# comparable
+# generics ~
+
+```go
+// ~string = anything that has an underlying type of string
+type Ordered interface {
+    Integer | Flat | ~string
+  }
+
+type MyString string /* MyString would work because its underlying data type is string
+the interface would be satisfied because of the use of ~string */
+```
+
+# generics comparable
 
 any type that can be directly compared to it self
 
