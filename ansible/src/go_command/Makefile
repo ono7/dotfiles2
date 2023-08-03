@@ -17,6 +17,7 @@ clean:
 	rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
 
 test_node:
-	cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json | jq
+	# cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json | jq
+	cd $(BUILD_DIR) && ./$(BINARY_NAME) 1.json
 
 .PHONY: all build install clean test

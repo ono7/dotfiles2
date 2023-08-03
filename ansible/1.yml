@@ -8,18 +8,41 @@
   gather_facts: false
   # serial: 10
 
+  vars:
+    provider:
+      username: admin
+      password: "{{ lookup('env', 'api_admin') }}"
+      host: 100.64.0.1
+
   tasks:
     - name: "Testing --> "
       go_command:
         command: /system/clock/print
-        provider:
-          username: admin
-          password: "{{ lookup('env', 'api_admin') }}"
-          host: 100.64.0.1
-      # debugger: always
+        prompt: '\[\w+@\w+\]\s+>'
+        provider: "{{ provider }}"
       register: out
 
     - name: Debug
       ansible.builtin.debug:
         msg: |
           {{ out.stdout }}
+
+    - name: "Testing --> "
+      go_command:
+        command: date
+        prompt: "%"
+        provider:
+          username: jlima
+          password: "{{ lookup('env', 'api_jlima') }}"
+          host: 100.64.0.10
+      # debugger: always
+      register: out_2
+      tags:
+        - lan10
+
+    - name: Debug
+      ansible.builtin.debug:
+        msg: |
+          {{ out_2.stdout }}
+      tags:
+        - lan10

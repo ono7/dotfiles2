@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+
 	// "github.com/ono7/utils"
 	"io"
 	"os"
@@ -169,9 +170,20 @@ func checkCommandErrors() {}
 // w io.Writer, cmd string, p string, b *strings.Builder, timeout int -> string, error
 func runCmd(w io.Writer, cmd string, p string, b *strings.Builder, timeout int) (string, error) {
 	b.Reset()
+	fmt.Println(p)
+	// cleanPrompt, err := strconv.Unquote(p)
+	// if err != nil {
+	// 	return "", fmt.Errorf("error cleanPrompt %s", cleanPrompt)
+	// }
 	uPrompt := regexp.MustCompile(p)
 	// TODO: jlima ~ check for errors using rawErrors
+	counter := 0
+	// 1000 (1 second in millis) * seconds / 50
+	max := 1000 * timeout / 50
 	for {
+		if counter >= max {
+			return "", fmt.Errorf("timeout waiting for prompt '%s': %s", p, b.String())
+		}
 		if uPrompt.MatchString(b.String()) {
 			b.Reset()
 			_, err := fmt.Fprintf(w, cmd+"\r\n")
@@ -182,9 +194,8 @@ func runCmd(w io.Writer, cmd string, p string, b *strings.Builder, timeout int) 
 			if err != nil {
 				return stripPrompt(b.String()), fmt.Errorf("error in runCmd after sending command: %v", err)
 			}
-			counter := 0
-			// 1000 (1 second in millis) * seconds / 50
-			max := 1000 * timeout / 50
+			// reset counter
+			counter = 0
 			for {
 				if counter >= max {
 					return stripPrompt(b.String()), fmt.Errorf("timeout after sending command: %v", err)
@@ -196,6 +207,8 @@ func runCmd(w io.Writer, cmd string, p string, b *strings.Builder, timeout int) 
 				time.Sleep(50 * time.Millisecond)
 			}
 		}
+		counter++
+		time.Sleep(50 * time.Millisecond)
 	}
 }
 
@@ -251,7 +264,7 @@ func main() {
 		}
 		ret, err := device.send(rawJson)
 		if err != nil {
-			response.Msg = fmt.Sprintf("Send command error, %v", err)
+			response.Msg = fmt.Sprintf("Send command error, %v, buffer: %s", err, ret)
 			FailJSON(response)
 		}
 		response.Msg = "ok"
@@ -261,5 +274,4 @@ func main() {
 		response.Msg = fmt.Sprintf("command should not be a list, %v", cmd)
 		FailJSON(response)
 	}
-
 }
