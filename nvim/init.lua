@@ -1,6 +1,9 @@
 --- Follow the white Rabbit...   🐇
 
 --[[
+
+golang: https://fulltimegodev.teachable.com/courses/1970304
+
 * g, - jump to last change
 * zm, fold
 * zi, toggle fold
