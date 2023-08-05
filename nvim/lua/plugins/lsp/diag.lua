@@ -1,3 +1,6 @@
+--[[ this shows only the first diag on the current line, it uses hover events
+that rely on cursor holdtime and updatetime ]]
+
 local function best_diagnostic(diagnostics)
   if vim.tbl_isempty(diagnostics) then
     return
