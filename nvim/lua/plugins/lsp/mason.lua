@@ -82,7 +82,15 @@ mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
 })
 
-require("neodev").setup({})
+local neodev_ok, neodev_config = pcall(require, "neodev")
+
+if not neodev_ok then
+  print("Error in pcall neodev -> ~/.dotfiles/nvim/lua/plugins/lsp/mason.lua")
+  return
+end
+
+neodev_config.setup({})
+
 
 local nvim_lsp_status, nvim_lsp = pcall(require, "lspconfig")
 

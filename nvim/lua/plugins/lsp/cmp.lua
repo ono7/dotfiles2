@@ -72,13 +72,15 @@ vim.opt.completeopt = { "menu", "menuone" }
 --   },
 -- })
 --
+
 local plugins_lsp_diag_ok, _ = pcall(require, "plugins.lsp.diag")
 
 if not plugins_lsp_diag_ok then
   print("Error in pcall plugins.lsp.diag -> ~/.dotfiles/nvim/lua/plugins/lsp/cmp.lua")
   return
 end
--- require("plugins.lsp.diag")
+
+
 
 -- Don't show the dumb matching stuff.
 vim.opt.shortmess:append("c")
