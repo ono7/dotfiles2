@@ -13,3 +13,11 @@ snippet repeat "repeat" w
 	repeat
 		${2:what}
 	while ${1:condition}
+
+snippet pcall "setup a pcall"
+  local ${1/-/_/g}_ok, ${1/-/_/g}_${2} = pcall(require, "${1}")
+
+  if not ${1/-/_/g}_ok then
+    print("${1/-/_/g} not loaded -> `expand('%:p:~')`")
+    return
+  end
