@@ -1,0 +1,220 @@
+# cleaup  repository and destroy all history
+```sh
+# copy remote url from .git/config
+cd myrepo
+rm -rf .git
+
+git init
+git add .
+git commit -m 'revomiving history due to sensitive data'
+
+git remote add origing git@github.com:ono7/dotfiles2.git
+git push -u --force origin main
+```
+# DISCARD all local commits on this branch, keep remote
+
+https://sethrobertson.github.io/GitFixUm/fixup.html
+
+`git reset --hard @{u}`
+
+`@{u}` is shorthand for the last fetched HEAD of the upstream branch.
+
+other alternatives when working with remote
+
+`https://stackoverflow.com/questions/1463340/how-can-i-revert-multiple-git-commits/1470452#1470452`
+
+# stash changes
+
+git stash -u // include untracked files
+
+git stash branch abcde // creates a new branch with stash applied, stash is abcde
+
+       Interrupted workflow
+           When you are in the middle of something, your boss comes in and demands that you fix something immediately. Traditionally, you would make a commit to a temporary branch to store your changes away, and return to your original branch to make the emergency fix, like this:
+
+               # ... hack hack hack ...
+               $ git switch -c my_wip
+               $ git commit -a -m "WIP"
+               $ git switch master
+               $ edit emergency fix
+               $ git commit -a -m "Fix in a hurry"
+               $ git switch my_wip
+               $ git reset --soft HEAD^
+               # ... continue hacking ...
+
+           You can use git stash to simplify the above, like this:
+
+               # ... hack hack hack ...
+               $ git stash // or git stash -u to include untracked files
+               $ edit emergency fix
+               $ git commit -a -m "Fix in a hurry"
+               $ git stash pop
+               # ... continue hacking ...
+
+# highlight code for sharing
+
+- add #L(start num)-L(end num) to the end of URL, see below
+
+  https://github.com/ono7/security_and_bug_hunting/blob/main/hex.lua#L19-L20
+
+# proxy
+
+- fix issues with things using the git protocol instead http://github.com...
+
+git config --global url.https://github.com/.insteadOf git://github.com/
+
+this changes goes into the ~/.dotfiles/gitconfig settings
+
+# change remote to from http to ssh (priv key)
+
+git remote set-url origin git@github.com:ono7/oswe.git
+
+# find current origin url
+
+git remote show origin
+
+or
+
+git config --get remote.origin.url
+
+# alacritty / terminal settings
+
+requires full disk access in security settings for key chain passwords to work
+
+# tags
+
+- add new tag
+  git tag -a v1.0 -am "init working vim config with minor plugins"
+
+- push tag to add
+  git push origin v1.0
+
+- delete remote tag
+  git push --delete origin v1.0
+
+- delete local tag
+  git tag -d v1.0
+
+# restore to previous commit by checking out new branch
+
+git checkout -b old-project-state 0ad5a7a6
+
+# delete old branch
+
+git push origin --delete lima
+
+# create new repo and push to remote/origin
+
+login to github or bitbucket
+create new repo, git repo url
+
+ginit new project
+
+cd ~/proj
+cp ~/.dotfiles/gitignore .
+git init
+git add .
+git commit -am 'init'
+
+git remote add origin git@github.com:ono7/docker_test.git
+git push -u origin master
+
+# global ~/.gitignore, also used by ripgrip
+
+- restore deleted files
+
+```
+git rev-list -n 1 HEAD -- <file_path>
+
+Then checkout the version at the commit before, using the caret (^) symbol:
+
+git checkout <deleting_commit>^ -- <file_path>
+```
+
+# searching
+
+git grep -n "stuff"
+
+# remove commits
+
+bfg --replace-text ~/replace_this.txt repo_name
+
+~/replace_this.txt entries:
+
+blob ->
+
+replaceme
+replaceme2
+
+regex ->
+
+regex:(replaceme|replaceme2)
+
+BFG run is complete! When ready, run:
+
+git reflog expire --expire=now --all && git gc --prune=now --aggressi
+
+# remove files already in repo
+
+find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
+echo .DS_Store >> .gitignore
+git commit -m 'removing DS_Store'
+
+# set editor
+
+git config --global core.editor "vim"
+git config --global push.default simple
+
+# force local override
+
+git fetch --all
+git reset --hard origin/master
+
+# change repo to ssh
+
+git remote set-url origin git@github.com:username/repo-name-here.git
+
+# add username
+
+https://username@x.x.x.x.x.x/repo/git.git
+
+# enable cached credentials
+
+git config credential.helper store
+git config --global credential.helper 'cache --timeout 7200'
+
+# clone specific branch, e.g mac, requires git verxion 1.8+
+
+git clone -b branch --single-branch git://github/repository.git
+
+# clone tag
+
+`git clone -b [tag_name] [repository_url]`
+
+Replace [tag_name] with the name of the tag you want to clone.
+Replace [repository_url] with the repository link obtained in the previous step.
+For example:
+
+`git clone -b v1.2 https://github.com/bosko-pnap/git-project.git`
+
+shallow clone to save space
+`git clone -b v1.2 --depth 1 https://github.com/bosko-pnap/git-project.git`
+
+# git diff, HEAD vs previous commits
+
+If you have just made a commit, or want to see what has changed in the last
+commit compared to the current state (assuming you have a clean working tree)
+you can use:
+
+`git diff HEAD^`
+
+This will compare the HEAD with the commit immediately prior. One could also do
+
+`git diff HEAD^^`
+
+to compare to the state of play 2 commits ago. To see the diff between the
+current state and a certain commit, just simply do:
+
+`git diff b6af6qc`
+
+Where b6af6qc is an example of a commit hash.

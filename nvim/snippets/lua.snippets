@@ -1,0 +1,15 @@
+snippet fun "function" w
+	function ${1:name}(${2:params})
+		${0:$VISUAL}
+	end
+snippet upcase "upcase" w
+	local ${1:var} = '${1/.*/\U\0/g}'
+snippet choices "choices" w
+	print('My favorite language is: ${1|JavaScript,Lua,Rust|}')
+snippet date "date" w
+	Current date is `strftime('%c')`
+# Custom tabstop order
+snippet repeat "repeat" w
+	repeat
+		${2:what}
+	while ${1:condition}

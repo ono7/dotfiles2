@@ -1,0 +1,29 @@
+/*
+  * {} set the border-box to all elements
+  should not be used often, it has performance implications
+  does not apply to pseudo elements
+*/
+* {
+  box-sizing: border-box;
+}
+.box::before {
+  content: "hello";
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  /* padding: 20px; */
+  /* border: 10px solid orange; */
+  /* box-shadow: 15px 15px rgba(0, 0, 0, 0.1); */
+  margin: 50px;
+  /* box-sizing: border-box; */
+}
+
+p {
+  /* you can vie all the different available options for the boxes
+  in devtools */
+  padding: 10px 10px;
+  border: 10px solid seashell;
+}

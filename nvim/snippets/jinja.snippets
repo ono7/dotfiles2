@@ -1,0 +1,40 @@
+snippet jh "header" w
+  #jinja2: lstrip_blocks: True
+  {#
+
+      Author: Jose Lima
+      Date: `strftime("%Y-%m-%d %H:%M")` CST
+
+  #}
+  ${0}
+
+snippet jbi "block" w
+  {% ${1:${VISUAL}} %}
+  ${0}
+
+snippet jc "block comment" w
+  {#
+
+    ${0:${VISUAL}}
+
+  #}
+
+# snippet jc "block comment" w
+#   {# ${0:${VISUAL}} #}
+
+snippet jr "Raw block" w
+  {% raw %} ${0:${VISUAL}} {% endraw %}
+
+snippet jb "block" w
+  {% ${1} %}
+    ${0:${VISUAL}}
+  {% end${1/\v(\w+).*/\1/g} %}
+
+snippet jv "variable inside curly" w
+   {{ ${0:${VISUAL}} }}
+
+snippet jelif "if statement" w
+  {% if ${1} %}
+    ${0:${VISUAL}}
+  {% else %}
+  {% endif %}

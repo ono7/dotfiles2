@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function fetchTextFile() {
+      fetch('path/to/your/text/file.txt')
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('file-content').textContent = text;
+        });
+    }
+
+    // Fetch the text file initially
+    fetchTextFile();
+
+    // Fetch the text file every 5 seconds (adjust the interval as needed)
+    setInterval(fetchTextFile, 5000);
+  </script>
+</head>
+<body>
+  <pre id="file-content"></pre>
+</body>
+</html>

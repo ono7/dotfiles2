@@ -1,0 +1,7 @@
+{
+  "changed": false,
+  "module_stderr": "",
+  "module_stdout": "\n_ansible_verbosity 2\n\n_ansible_version 2.13.2\n\n_ansible_socket <nil>\n\n_ansible_shell_executable /bin/sh\n\n_ansible_selinux_special_fs [fuse nfs vboxsf ramfs 9p vfat]\n\n_ansible_string_conversion_action warn\n\n_ansible_keep_remote_files false\n\ncommands testing command\n\n_ansible_check_mode false\n\n_ansible_no_log false\n\n_ansible_module_name go_command\n\n_ansible_tmpdir /Users/jlima/.ansible/tmp/ansible-tmp-1690854815.022091-97534-150777384488278/\n\n_ansible_remote_tmp ~/.ansible/tmp\n\nprovider map[password:testpass username:testname]\n\n_ansible_debug false\n\n_ansible_diff false\n\n_ansible_syslog_facility LOG_USER\n{{testname testpass} []}\n{\"msg\":\"Configuration file not valid JSON: /Users/jlima/.ansible/tmp/ansible-tmp-1690854815.022091-97534-150777384488278/args\",\"busy\":false,\"changed\":false,\"failed\":true}\n",
+  "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error",
+  "rc": 1
+}

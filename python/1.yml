@@ -1,0 +1,16 @@
+---
+# Author: Jose Lima
+# Date: 2023-07-20 16:29 CST
+
+- name: "Test"
+  hosts: all
+  # order: shuffle
+  gather_facts: false
+  # serial: 10
+
+  tasks:
+    - name: "Test --> show time"
+      ansible.builtin.debug:
+        msg: |
+          {{ '%Y-%m-%d' | strftime }}
+          ISO8601 {{ '%Y-%m-%dT%H:%M:%S.%fZ' | strftime }}

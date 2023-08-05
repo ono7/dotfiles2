@@ -1,0 +1,26 @@
+snippet h "header" b
+  #!/usr/bin/env python3
+  """${1}
+
+    Author: Jose Lima
+    Date: `strftime("%Y-%m-%d %H:%M")` CST
+
+    ${2:${VISUAL}}
+  """
+  ${0}
+
+snippet dl "debug" b
+  import pdb;pdb.set_trace()
+
+snippet dr "remote debug" b
+  import rpdb;rpdb.set_trace()
+
+snippet filter "ansible filter" b
+  def ${1}(${2}):
+    ${0}
+    return
+
+
+  class FilterModule:
+    def filters(self):
+      return {"${1}": ${1}}

@@ -1,0 +1,9 @@
+#
+foo := $(bar)
+bar := $(ugh)
+ugh := Huh?
+
+all:
+	echo 'foo ->' $(foo)
+	echo 'bar ->' $(bar)
+	echo 'ugh ->' $(ugh)

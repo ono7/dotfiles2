@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>testing new style</title>
+    <!-- call external css -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- you can override certain things -->
+    <style>
+      em {
+        color: black;
+      }
+
+      #test {
+        color: blue;
+      }
+    </style>
+    < !-- apply only to this id -->
+  </head>
+
+  <body>
+    <em>testing this new header</em>
+    <p style="color: blue; font-weight: bold">this is a bold test in blue !</p>
+    < !-- apply only to this id -->
+    <p id="test">this is a test using #id</p>
+    <p>regular paragraph 2</p>
+    < !-- create new anchor --><a href="https://google.com" target="_blank"
+      >Google</a
+    >
+    < !-- see css/styles.css for different ways to access the targets -->
+    <section id="products">
+      <p>this is a test inside products section</p>
+      <em>this should not be affected inside products</em>
+    </section>
+    <section id="section2">
+      <p class="new_class">this is a paragraph in new section2</p>
+      <a href="https://www.google.com">Link</a>
+      <a href="https://www.google.com/test">Link2</a>
+      <!-- make these bold and deeppink -->
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+      </ul>
+    </section>
+    <section>
+      <p><span class="first-letter">pseudo</span>selectors testing section</p>
+    </section>
+  </body>
+</html>

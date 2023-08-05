@@ -1,0 +1,77 @@
+snippet inv "inventor.cfg" b
+  localhost ansible_connection=local
+
+  [all:vars]
+
+  # ansible_network_os=ios
+  # ansible_connection=network_cli
+  # ansible_become=yes
+  # ansible_become_method=enable
+  # ansible_ssh_user=""
+  # ansible_ssh_password=""
+
+
+  [${1:group_1}]
+  ${2:host1} ${0:ansible_host=1.1.1.1}
+
+
+snippet ansible.cfg "ansible config file" b
+  [defaults]
+
+  # generate new ansible.cfg with 'ansible-config init > ansible.cfg'
+
+  # lets go!
+
+  # transport: smart (default), ssh, paramiko
+  # transport=paramiko
+
+  # library=""
+
+  # strategy: free, linear
+  # strategy=free
+
+  # gathering: smart, implicit (default), explicit (save time)
+  gathering=explicit
+
+  # deprication_warnings=True
+  # devel_warnings=True
+  # localhost_warning=True
+
+  # interpreter_python=python3
+  interpreter_python=auto_silent
+
+  host_key_checking=False
+
+  forks=20
+
+  # vault
+  # vault_identity_list=inline@~/.vinline, files@~/ansible/.vfiles
+  # vault_identity_list=inline@vault.key
+
+  # dont display skipped host tasks
+  display_skipped_hosts=False
+
+  # human readable output
+  # install debug callback with: ansible-galaxy collection install community.general
+  # and: pip install ansible -U
+  stdout_callback=debug
+  stderr_callback=debug
+
+  # Use the stdout_callback when running ad-hoc commands --> /usr/bin/ansible
+  # bin_ansible_callbacks=True
+
+  inventory=inventory.cfg
+
+  [persistent_connection]
+  command_timeout=30
+  connect_timout=5
+  ssh_type=paramiko
+  # command_timeout=30
+  # connect_retry_timout=15
+
+  [ssh_connection]
+  pipelining=True
+
+  [galaxy]
+  # disable_gpg_verify=False
+  # ignore_certs=False

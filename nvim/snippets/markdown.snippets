@@ -1,0 +1,22 @@
+extends html, jinja
+
+snippet c "code block" w
+	\`\`\`${1}
+	${0:${VISUAL}}
+	\`\`\`
+
+snippet ti "tag inline" w
+  <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
+
+snippet ta "tag" w
+  <${1}>
+    ${0:${VISUAL}}
+  </${1/\v(\w+).*/\1/g}>
+
+snippet img "image html" w
+  <img align="${1:left}" width="${2:500}" height="${3:400}" alt="${4:image}" src="${0}">
+
+snippet cimg "image centered" w
+  <center>
+    <img align="${1|left,right|}" width="${2:500}" height="${3:400}" alt="${4:image}" src="${0}">
+  </center>

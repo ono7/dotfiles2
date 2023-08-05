@@ -1,0 +1,6 @@
+github.com/ono7/utils v0.0.0-20230802025003-10f9a2117526 h1:wt1IVJGloqPQAzQn+AgNr1LQCIRnJClE4N+2FR/TbZo=
+github.com/ono7/utils v0.0.0-20230802025003-10f9a2117526/go.mod h1:Xb2XbYN7v5hDPXzI5fDFxTI4y1UatN2wS/iSDyfEbbQ=
+golang.org/x/crypto v0.11.0 h1:6Ewdq3tDic1mg5xRO4milcWCfMVQhI4NkqWWvqejpuA=
+golang.org/x/crypto v0.11.0/go.mod h1:xgJhtzW8F9jGdVFWZESrid1U1bjeNy4zgy5cRr/CIio=
+golang.org/x/sys v0.10.0 h1:SqMFp9UcQJZa+pmYuAKjd9xq1f0j5rLcDIk0mj4qAsA=
+golang.org/x/sys v0.10.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
