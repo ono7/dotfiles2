@@ -37,7 +37,6 @@ if not cmp_status_ok then
 end
 
 vim.opt.completeopt = { "menu", "menuone" }
--- vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- view defined symbols :echo sign_getdefined()
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "WildMenu" })
@@ -53,12 +52,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   -- signs = {
   -- 	severity_limit = "Warning",
   -- },
-  -- virtual_text = {
-  --   spacing = 2,
-  --   severity_limit = "Warning", -- disable hints...
-  --   underline = true,
-  -- },
-  virtual_text = false,
+  virtual_text = {
+    spacing = 2,
+    severity_limit = "Warning", -- disable hints...
+    underline = true,
+  },
   virtual_lines = { only_current_line = true },
   update_in_insert = false,
   underline = true,

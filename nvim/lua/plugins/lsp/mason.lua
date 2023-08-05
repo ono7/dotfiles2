@@ -11,6 +11,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- null-ls handles this for now
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
 

@@ -1,5 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "Lua.workspace.checkThirdParty": false,
-    "Lua.completion.callSnippet" : "Disable"
+    "Lua.completion.callSnippet" : "Disable",
+    "workspace.checkThirdParty": false
 }
