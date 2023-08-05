@@ -48,7 +48,13 @@ vim.opt.commentstring = "#%s"
 
 vim.g.markdown_fold_style = "nested"
 
-require("my.disabled")
+local my_disabled_ok, _ = pcall(require, "my.disabled")
+
+if not my_disabled_ok then
+    print("Error in pcall my.disabled -> ~/.dotfiles/nvim/init.lua")
+end
+
+
 
 --- hold my beer ---
 local cmd, g, m, k = vim.cmd, vim.g, vim.api.nvim_set_keymap, vim.keymap.set
@@ -558,7 +564,7 @@ local packages = {
     "plugins.treesitter",
     "plugins.telescope",
     "plugins.navigator",
-    -- "plugins.neotree",
+    "plugins.neotree",
     "plugins.surround",
     "plugins.floaterm",
     "plugins.lsp.cmp",
@@ -581,7 +587,7 @@ vim.g.gitblame_enabled = 0
 for _, mod in ipairs(packages) do
     local ok, _ = pcall(require, mod)
     if not ok then
-        error("Module -> " .. mod .. " not loaded... ay..")
+        error("in init.lua, Module -> " .. mod .. " not loaded... ay..")
     end
 end
 

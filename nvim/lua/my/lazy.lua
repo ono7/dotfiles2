@@ -111,7 +111,8 @@ require("lazy").setup({
     opts = {},
     config = function()
       local ft = require("Comment.ft")
-      ft.set('jinja', { '{#%s#}', '{#%s#}' })
+      ft.jinja = { '{#%s#}', '{#%s#}' }
+      ft.text = { '#%s', '#%s#' }
       require('Comment').setup()
     end
   },

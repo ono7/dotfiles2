@@ -1,9 +1,11 @@
-local snippy_status_ok, snippy_setup = pcall(require, "snippy")
+local snippy_ok, snippy_setup = pcall(require, "snippy")
 
-if not snippy_status_ok then
-  print("snippy not loaded - plugins/snippy.lua")
+if not snippy_ok then
+  print("Error in pcall snippy -> ~/.dotfiles/nvim/lua/plugins/lsp/cmp.lua")
   return
 end
+
+
 
 snippy_setup.setup({
   snippet_dirs = '~/.dotfiles/nvim/snippets',
@@ -20,12 +22,14 @@ snippy_setup.setup({
 
 local snippy = require("snippy")
 
-local lspkind_status_ok, lspkind_config = pcall(require, "lspkind")
+local lspkind_ok, lspkind_config = pcall(require, "lspkind")
 
-if not lspkind_status_ok then
-  print("lspkind not loaded - plugins/lspkind.lua")
+if not lspkind_ok then
+  print("Error in pcall lspkind -> ~/.dotfiles/nvim/lua/plugins/lsp/cmp.lua")
   return
 end
+
+
 
 lspkind_config.init({})
 
@@ -38,40 +42,6 @@ end
 
 vim.opt.completeopt = { "menu", "menuone" }
 
--- view defined symbols :echo sign_getdefined()
--- vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "WildMenu" })
--- vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "Error" })
--- vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "Normal" })
--- vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "CursorLineNr" })
--- vim.fn.sign_define("DiagnosticsVirtualTextHint", { text = "", texthl = "Normal" })
--- 
-
---- virtual text
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
---   signs = true,
---   -- signs = {
---   -- 	severity_limit = "Warning",
---   -- },
---   virtual_text = {
---     spacing = 2,
---     severity_limit = "Warning", -- disable hints...
---     underline = true,
---   },
---   virtual_lines = { only_current_line = true },
---   update_in_insert = false,
---   underline = true,
--- })
-
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
---
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-
--- vim.diagnostic.config({
---   float = {
---     border = "rounded",
---   },
--- })
---
 
 local plugins_lsp_diag_ok, _ = pcall(require, "plugins.lsp.diag")
 
@@ -79,8 +49,6 @@ if not plugins_lsp_diag_ok then
   print("Error in pcall plugins.lsp.diag -> ~/.dotfiles/nvim/lua/plugins/lsp/cmp.lua")
   return
 end
-
-
 
 -- Don't show the dumb matching stuff.
 vim.opt.shortmess:append("c")
