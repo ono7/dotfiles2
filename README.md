@@ -1,5 +1,7 @@
 ## always WIP... always
 
+testing
+
 <style>
   .box {
       width: 100rem;
@@ -7,9 +9,6 @@
       color: #6c7086;
     }
 </style>
-
-testing
-
-<div class="box"></div>
+<div class="box"> inside div</div>
 
 test
