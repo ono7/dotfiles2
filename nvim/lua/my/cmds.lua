@@ -1,11 +1,7 @@
 local c = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-
-local mygrp = augroup("mygrp", { clear = true })
-local yank_group = augroup("HighlightYank", {})
+local create_augroup = vim.api.nvim_create_augroup
 
 c("TextYankPost", {
-  group = yank_group,
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({
@@ -13,10 +9,15 @@ c("TextYankPost", {
       timeout = 40,
     })
   end,
+  group = create_augroup("highlight_yanked_text", { clear = true }),
 })
 
 -- resize windows
-c({ "VimResized" }, { pattern = "*", command = [[:wincmd =]], group = mygrp })
+c({ "VimResized" }, {
+  pattern = "*",
+  command = [[:wincmd =]],
+  group = create_augroup("vim_resize_windows_automatically", { clear = true }),
+})
 
 -- restore cursor position on enter
 vim.api.nvim_create_autocmd("BufRead", {
@@ -37,7 +38,7 @@ vim.api.nvim_create_autocmd("BufRead", {
       end,
     })
   end,
-  group = mygrp,
+  group = create_augroup("restore_cursor_position_on_enter", { clear = true }),
 })
 
 -- set my fo options
@@ -70,14 +71,16 @@ c("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
-  group = mygrp,
+  group = create_augroup("remove_format_options", { clear = true }),
   desc = "Disable New Line Comment",
 })
 
--- c({"Syntax"}, {pattern = "*", command = "syntax sync minlines=200", group = mygrp })
-
 -- remap enter in quickfix
-c({ "BufReadPost" }, { pattern = "quickfix", command = [[map <buffer> <CR> <CR> ]], group = mygrp })
+c({ "BufReadPost" }, {
+  pattern = "quickfix",
+  command = [[map <buffer> <CR> <CR> ]],
+  group = create_augroup("set_quickfix_maps", { clear = true }),
+})
 
 -- handle large files, syntax=OFF only affects buffer, where syntax off is global
 -- syn sync clear, we can keep syntax and still work on large files!
@@ -87,19 +90,19 @@ c({
   pattern = "*",
   command =
   [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
-  group = mygrp,
+  group = create_augroup("check_if_file_size_too_big", { clear = true }),
 })
 
 -- auto source snippets file
 c("BufWritePost", {
   pattern = "*.snippet",
   command = [[:SnippyReload<CR>]],
-  group = mygrp,
+  group = create_augroup("reload_snippets", { clear = true }),
 })
 
 -- auto create dirs when saving files
 c("BufWritePre", {
-  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+  group = create_augroup("auto_create_dir", { clear = true }),
   callback = function(ctx)
     vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ":p:h"), "p")
   end,
@@ -107,7 +110,7 @@ c("BufWritePre", {
 
 -- auto create dirs when saving files
 c("BufWritePre", {
-  group = vim.api.nvim_create_augroup("write_and_clean_empty_lines", { clear = true }),
+  group = create_augroup("write_and_clean_empty_lines", { clear = true }),
   pattern = { "*" },
   callback = function()
     local save_cursor = vim.fn.getcurpos()
@@ -117,7 +120,7 @@ c("BufWritePre", {
 })
 
 c({ "BufWritePre" }, {
-  group = vim.api.nvim_create_augroup("clear_trailing_spaces", { clear = true }),
+  group = create_augroup("clear_trailing_spaces", { clear = true }),
   pattern = { "*.tf", "*.tfvars", "*.nasm", "*.js", "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua" },
   callback = function()
     local save_cursor = vim.fn.getcurpos()
@@ -127,7 +130,7 @@ c({ "BufWritePre" }, {
 })
 
 c({ "BufWritePre" }, {
-  group = vim.api.nvim_create_augroup("all_files", { clear = true }),
+  group = create_augroup("all_files", { clear = true }),
   -- pattern = { "*.tf", "*.tfvars" },
   pattern = { "*.*" },
   callback = function()
@@ -139,7 +142,7 @@ c("FocusGained", {
   callback = function()
     vim.cmd("checktime")
   end,
-  group = mygrp,
+  group = create_augroup("update_file_when_changes_detected", { clear = true }),
   desc = "Update file when there are changes",
 })
 
@@ -151,7 +154,7 @@ c("ModeChanged", {
       vim.opt.hlsearch = false
     end
   end,
-  group = mygrp,
+  group = create_augroup("clear_hl_highlight_on_search", { clear = true }),
   desc = "Highlighting matched words when searching",
 })
 
@@ -161,6 +164,6 @@ c("TermOpen", {
     vim.opt_local.number = false
     vim.cmd("startinsert!")
   end,
-  -- group = augroup,
+  group = create_augroup("set_buf_number_options", { clear = true }),
   desc = "Terminal Options",
 })
