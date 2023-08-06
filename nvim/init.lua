@@ -30,7 +30,6 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 	*  "1 - holds recent deleted text
 	*  stty sane // fix bad terminal
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
-
 --]]
 
 vim.g.t_co = 256

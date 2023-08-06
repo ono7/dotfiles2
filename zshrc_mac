@@ -173,11 +173,11 @@ fi
 
 alias tf='terraform'
 alias rdp='xfreerdp +clipboard'
-alias ssh='TERM=xterm-256color ssh'
+alias ssh='TERM=xterm-256color ssh '
 
 # GpG
-alias gpg-agent='gpg-agent --keep-display'
-export GPG_TTY="$(tty)"
+# alias gpg-agent='gpg-agent --keep-display'
+# export GPG_TTY="$(tty)"
 
 # init new repo
 ginit () {
@@ -192,6 +192,8 @@ gitl () {
     cdr
     git add .
     f=$(git status --porcelain | cut -c4- | head -n 5)
+    more_changes=$(git status --porcelain | sed -n 6p)
+    [ -n "$more_changes" ] && f="$f ..."
     if test -z "$1"; then
       # replace new line, using longest match //
       git commit "-m updates -> ${f//$'\n'/ }"
@@ -217,6 +219,8 @@ dotc () {
     git pull
     git add .
     f=$(git status --porcelain | cut -c4- | head -n 5)
+    more_changes=$(git status --porcelain | sed -n 6p)
+    [ -n "$more_changes" ] && f="$f ..."
     git commit "-m updates -> ${f//$'\n'/ }"
     git push
     cd $my_dir
