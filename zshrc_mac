@@ -384,10 +384,8 @@ alias xargs='xargs '
 
 function _d () {
   # change directories with fzf, if in git repo, first moves to the root
-  curdir=$PWD
   cdr
-  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf-tmux -p 90%,50% --border)"
-  # fd --type d -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs cd
+  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
 }
 
 # _d declear as widget for zsh
@@ -400,14 +398,16 @@ function vs () {
   # vim "$fname"
   # xargs does not know about aliases
   # fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
-  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
+  vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
+  # fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf --height 30%  --reverse --border | xargs nvim
 }
 
 function _vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
-  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
+  fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf --height 40%  --reverse | xargs nvim
+  # fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs nvim
 }
 
 # _vs declear as widget for zsh
