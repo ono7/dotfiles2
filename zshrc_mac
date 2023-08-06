@@ -341,14 +341,14 @@ if command -v fd &> /dev/null; then
   export FZF_ALT_C_COMMAND=$FD_CMD
   export FZF_DEFAULT_COMMAND=$FD_CMD
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_COMPLETION_TRIGGER="**"
+  export FZF_COMPLETION_TRIGGER="~~"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
 fi
 
 # pretty colors
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -386,7 +386,7 @@ function _d () {
   # change directories with fzf, if in git repo, first moves to the root
   curdir=$PWD
   cdr
-  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf)"
+  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 40% --border)"
 }
 
 # _d declear as widget for zsh
