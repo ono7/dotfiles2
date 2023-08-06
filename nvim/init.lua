@@ -164,7 +164,7 @@ k("n", "cp", "yap<S-}>p", opt)
 k("n", "U", "<c-r>", opt)
 
 --- show buffers ---
--- k("n", "<leader>l", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
+k("n", "<leader>b", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
 
 --- basic surround without plugins
 -- m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
@@ -255,19 +255,6 @@ for digit = 48, 57 do -- ASCII values for '0' to '9'
     isAlphaNum[string.char(digit)] = true
 end
 
--- -- for jinja!
--- k('i', "%", function()
---   local line = vim.api.nvim_get_current_line()
---   local col = vim.fn.col('.')
---   local p = line:sub(col - 1, col - 1)
---   if p == '{' then
---     return "%%<Left>"
---   else
---     return "%"
---   end
--- end
--- , { expr = true })
-
 -- handles ""
 k('i', '"', function()
     local line = vim.api.nvim_get_current_line()
@@ -278,7 +265,6 @@ k('i', '"', function()
     local cb = closedBrackets
     local q = {
         ["'"] = true,
-        -- ['`'] = true,
     }
     if p == '\\' or cb[p] or q[p] or q[n] then
         return '"'
