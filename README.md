@@ -1,3 +1,3 @@
-<div style="width: 100%;">
+<!-- <div style="width: 100%;"> -->
   <img src="css/intro.svg" style="width: 100%;" alt="Click to see source">
-</div>
+<!-- </div> -->
