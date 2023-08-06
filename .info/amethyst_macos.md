@@ -1,6 +1,7 @@
 # tyling window manager
 
-1. disable mission control -> `automatically rearrange spaces based on most recent use`
+- install -> `brew install amethyst`
+- disable mission control -> `automatically rearrange spaces based on most recent use`
 
 # shortcuts
 
