@@ -133,20 +133,20 @@ if [[ "$(command -v nvim)" ]]; then
     export MANWIDTH=999
 fi
 
-function mkt () {
+mkt () {
   git tag -a $1 -m "added tag $1"; git push origin $1
 }
 
-function rmt () {
+rmt () {
   git tag -d $1;git push --delete origin $1
 }
 
-function vq () {
+vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
   vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
 }
 
-function timezsh() {
+timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
@@ -180,14 +180,14 @@ alias gpg-agent='gpg-agent --keep-display'
 export GPG_TTY="$(tty)"
 
 # init new repo
-function ginit () {
+ginit () {
   git init
   cp ~/.dotfiles/gitignore .gitignore
   git add .
   git commit -am 'initial commit'
 }
 
-function gitl () {
+gitl () {
     my_dir=$PWD
     cdr
     git add .
@@ -204,14 +204,14 @@ function gitl () {
     cd $my_dir
 }
 
-function dotp () {
+dotp () {
     my_dir=$PWD
     cd ~/.dotfiles
     git pull
     cd $my_dir
 }
 
-function dotc () {
+dotc () {
     my_dir=$PWD
     cd ~/.dotfiles
     git pull
@@ -224,7 +224,7 @@ function dotc () {
 
 # function ta() { tmux detach -E "tmux new -A -s '$1'"; }
 
-function ta () {
+ta () {
   if [ ! -z $TMUX ] && [ ! -z $1 ]
   then
     tmux detach -E "tmux new -A -s '$1'"
@@ -237,7 +237,7 @@ function ta () {
 }
 
 # activate virtual environment if there is one in this repo
-function va () {
+va () {
   if [[ -d $(git rev-parse --show-toplevel 2>/dev/null)/venv ]]; then
     source $(git rev-parse --show-toplevel)/venv/bin/activate
   fi
@@ -245,19 +245,19 @@ function va () {
 }
 
 # deactivate virtual environment if there is one in this repo
-function vd () {
+vd () {
   deactivate 2> /dev/null
   source $HOME/.virtualenvs/prod3/bin/activate
 }
 
-function dev_env () {
+dev_env () {
   python3 -m venv ~/.virtualenvs/prod3
   source ~/.virtualenvs/bin/active
   pip install -U pip
   pip install debugpy black mdformat rpdb ipython ipdb dns yamllint pyvim
 }
 
-function vc () {
+vc () {
   deactivate 2> /dev/null
   venv_dir="venv"
   my_dir=$PWD
@@ -280,7 +280,7 @@ function vc () {
   cd $my_dir
 }
 
-function dp() {
+dp() {
   unset http_proxy
   unset https_proxy
   unset all_proxy
@@ -360,11 +360,11 @@ eval "$(starship init zsh)"
 
 # defaults to vi-mode, and let us toggle back and forth
 bindkey -v
-function v () {
+v () {
   bindkey -v; clear
 }
 
-function e () {
+e () {
   bindkey -e; clear
 }
 
@@ -382,12 +382,16 @@ bindkey "^T" fzf-file-widget
 # Adding a trailing space to the command being aliased causes other aliased commands to expand:
 alias xargs='xargs '
 
-function _d () {
+get_root_dir(){
+  echo `git rev-parse --show-toplevel 2>/dev/null` || echo '.'
+}
+
+_d () {
   # change directories with fzf, if in git repo, first moves to the root
-  # root=$(git rev-parse --show-toplevel 2>/dev/null)
+  # root=get_root_dir
   cdr
   # if [ -z "$root" ]; then
-    cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
+  cd $(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)
   # else
   #   cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" --full-path "${root}" | fzf --height 30% --reverse --border)"
   # fi
@@ -397,7 +401,7 @@ function _d () {
 zle -N _d
 bindkey -s "^G" _d^M
 
-function vs () {
+vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
@@ -407,7 +411,7 @@ function vs () {
   # fd --type f -HI --exclude ".git" --exclude "__pycache__" | fzf --height 30%  --reverse --border | xargs nvim
 }
 
-function _vs () {
+_vs () {
   # local fname
   # fname=$(fzf) || return
   # vim "$fname"
