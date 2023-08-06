@@ -381,6 +381,11 @@ bindkey "^T" fzf-file-widget
 # Adding a trailing space to the command being aliased causes other aliased commands to expand:
 alias xargs='xargs '
 
+function d () {
+  cdr
+  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf)"
+}
+
 function vs () {
   # local fname
   # fname=$(fzf) || return
