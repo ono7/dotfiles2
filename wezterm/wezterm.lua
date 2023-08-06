@@ -86,9 +86,11 @@ return {
     },
     {
       -- delete word
+      -- key = "Backspace"
       key = "Backspace",
       mods = "CTRL",
       action = wezterm.action.SendString("\x17"),
+      -- action = wezterm.action.SendString("test"),
     },
     {
       -- delete line
