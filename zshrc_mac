@@ -341,6 +341,7 @@ if command -v fd &> /dev/null; then
   export FZF_ALT_C_COMMAND=$FD_CMD
   export FZF_DEFAULT_COMMAND=$FD_CMD
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_COMPLETION_TRIGGER="**"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
 fi
@@ -381,10 +382,16 @@ bindkey "^T" fzf-file-widget
 # Adding a trailing space to the command being aliased causes other aliased commands to expand:
 alias xargs='xargs '
 
-function d () {
+function _d () {
+  # change directories with fzf, if in git repo, first moves to the root
+  curdir=$PWD
   cdr
   cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf)"
 }
+
+# _d declear as widget for zsh
+zle -N _d
+bindkey -s "^G" _d^M
 
 function vs () {
   # local fname
@@ -404,7 +411,6 @@ function _vs () {
 
 # _vs declear as widget for zsh
 zle -N _vs
-
 bindkey -s "^S" _vs^M
 
 # ci" in vi-mode
