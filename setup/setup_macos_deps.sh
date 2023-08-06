@@ -22,7 +22,7 @@ echo '========== install brew packages =========='
 brew install ansifilter wget tree go neovim rar clang-format zoxide wezterm
 brew install fd cmake ack rg coreutils ssh-copy-id jq p7zip curl tmux universal-ctags mtr lua ninja rust npm starship
 brew install bpytop pinentry-mac
-brew install golang delve
+brew install golang delve amethyst
 # npm install lua-fmt prettier jsonlint typescript typescript-language-server eslint jsonlint -g
 npm install lua-fmt prettier jsonlint typescript eslint jsonlint -g
 
