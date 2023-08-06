@@ -142,6 +142,13 @@ gitl () {
     [ -n "$more_changes" ] && f="$f ..."
     if test -z "$1"; then
       # replace new line, using longest match //
+      # $'\n' represents a newline character in bash. The $ sign here is telling the
+      # shell to interpret the following characters ('\n') as a special escape
+      # sequence, translating it into an actual newline character.
+      #
+      # So, in the expression ${f//$'\n'/ }, the first $ is used to get the value of
+      # the f variable, and the second $ is used to specify a newline character that
+      # you want to replace with a space within the value of f.
       git commit "-m updates -> ${f//$'\n'/ }"
     else
       git commit '-m' "$1 -> ${f//$'\n'/ }"
