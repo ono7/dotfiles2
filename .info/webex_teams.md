@@ -1,3 +1,5 @@
+#
+
 Open Finder.
 Click on Go.
 Under Go to the folder: type in "~/Library/Caches" (without the " symbols).

@@ -9,3 +9,5 @@
 `alt-shift-space` - cycle through layouts (main on is tall)
 `alt-shift-j` - cycle through windows counter clockwise
 `alt-shift-n` - cycle through windows clockwise
+
+# other info
