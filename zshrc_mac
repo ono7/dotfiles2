@@ -386,7 +386,8 @@ function _d () {
   # change directories with fzf, if in git repo, first moves to the root
   curdir=$PWD
   cdr
-  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 40% --border)"
+  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf-tmux -p 90%,50% --border)"
+  # fd --type d -HI --exclude ".git" --exclude "__pycache__" | fzf-tmux -p 95%,50% --reverse | xargs cd
 }
 
 # _d declear as widget for zsh
