@@ -89,7 +89,7 @@ vim.diagnostic.handlers.current_line_virt = {
 
 vim.diagnostic.config {
   float = { source = "always" },
-  signs = false,
+  signs = true,
   virtual_text = false,
   severity_sort = true,
   current_line_virt = true,
@@ -213,6 +213,12 @@ function _G.on_attach_callback(client, bufnr)
     })
   end
 end
+
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "WildMenu" })
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "Error" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "Normal" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "CursorLineNr" })
+vim.fn.sign_define("DiagnosticsVirtualTextHint", { text = "", texthl = "Normal" })
 
 --- old config for reference
 

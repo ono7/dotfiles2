@@ -47,8 +47,6 @@ P = function(x)
     return x
 end
 
-vim.opt.commentstring = "#%s"
-
 vim.g.markdown_fold_style = "nested"
 
 local my_disabled_ok, _ = pcall(require, "my.disabled")
