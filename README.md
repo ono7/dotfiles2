@@ -1,15 +1,5 @@
 <!-- ## always WIP... always -->
 
-<!-- testing -->
-
-<style>
-.box {
-    width: 100rem;
-    height: 1px;
-    color: #6c7086;
-  }
-</style>
-
-<div class="box"> inside div</div>
-
-<!-- test -->
+<div style="width:100%;">
+  <img src="css/intro.svg" style="width: 100%;" alt="Click to see source"></img>
+</div>
