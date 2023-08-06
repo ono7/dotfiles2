@@ -1,3 +1,7 @@
+### fonts
+
+all browsers start by befault with 16px font size
+
 ### measurement units
 
 | absolute | relative |
@@ -7,6 +11,14 @@
 |          | wh       |
 |          | em       |
 |          | rem      |
+
+```css
+.box {
+  width: 10em; /* 10 times the font size of the current element */
+  height: 100vh; /* 100% of the view port, dynamicall expands/retracts as the
+  browser page gets bigger or smaller */
+}
+```
 
 ### control overflow
 

@@ -1,5 +1,17 @@
+body {
+  margin: 10px;
+}
+
 .box {
+  width: 10em;
+  height: 50vh;
+  font-size: 20px;
+  background-color: #6c7086;
+  border-top: 3px solid orange;
+}
+
+/* .box {
   width: 100rem;
   height: 1px;
   background-color: #6c7086;
-}
+} */

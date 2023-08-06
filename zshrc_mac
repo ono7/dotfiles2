@@ -384,8 +384,13 @@ alias xargs='xargs '
 
 function _d () {
   # change directories with fzf, if in git repo, first moves to the root
+  # root=$(git rev-parse --show-toplevel 2>/dev/null)
   cdr
-  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
+  # if [ -z "$root" ]; then
+    cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
+  # else
+  #   cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" --full-path "${root}" | fzf --height 30% --reverse --border)"
+  # fi
 }
 
 # _d declear as widget for zsh
