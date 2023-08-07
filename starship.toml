@@ -1,6 +1,7 @@
 # palette = "catppuccin_macchiato"
 add_newline = true
 palette = "catppuccin_mocha"
+right_format="$custom"
 
 # Inserts a blank line between shell prompts
 [palettes.catppuccin_mocha]
@@ -116,10 +117,11 @@ format = ' [${symbol}${pyenv_prefix} ($virtualenv)]($style) '
 disabled = true
 symbol = "[ ](blue)"
 
-# [custom.tmux]
-# # function is_tmux() in zshrc
-# # command = 'echo $TERM | cut -d"-" -f1'
-# command = 'echo $TERM'
-# symbol = "[](red)"
-# when = "true"
-# format = '| [${symbol}${output}]($style) '
+
+[custom.tmux]
+# function is_tmux() in zshrc
+# command = 'echo $TERM | cut -d"-" -f1'
+command = 'echo $TERM'
+symbol = "🐇()"
+when = "true"
+format = '[${symbol}]($style)'
