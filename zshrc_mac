@@ -24,7 +24,8 @@ ta () {
   fi
 }
 
-ta
+# lets go right to businees
+command -v tmux &> /dev/null && ta || echo "tmux not found..."
 
 # fix certain weird characters
 setopt COMBINING_CHARS
