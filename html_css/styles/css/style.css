@@ -8,13 +8,21 @@
 }
 
 .box-one {
-  background: tomato;
+  background: gold;
+  position: relative;
+  left: 5rem;
 }
 
 .box-two {
-  background: green;
+  background: tomato;
+  position: relative;
+  right: -4rem;
+  bottom: 4rem;
+  z-index: -1;
 }
 
 .box-three {
-  background: cyan;
+  background: darkolivegreen;
+  position: relative;
+  left: 5rem;
 }

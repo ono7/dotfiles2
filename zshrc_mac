@@ -1,6 +1,31 @@
 # uncomment next line to start profiling
 # zmodload zsh/zprof
 
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
+
+if [[ -f ~/local/bin/tmux ]]; then
+  alias tmux='~/local/bin/tmux'
+elif command -v tmux &>/dev/null; then
+  alias tmux=tmux
+else
+  echo 'need tmux in ~/loca/bin/tmux'
+fi
+
+ta () {
+  if [ ! -z $TMUX ] && [ ! -z $1 ]
+  then
+    tmux detach -E "tmux new -A -s '$1'"
+  elif [ ! -z $TMUX ]
+  then
+    return
+  else
+    tmux new -As main
+  fi
+}
+
+ta
+
 # fix certain weird characters
 setopt COMBINING_CHARS
 
@@ -28,8 +53,6 @@ ZSH_DISABLE_COMPFIX="true"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # If you come from bash you might have to change your $PATH.
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -96,14 +119,6 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-
-if [[ -f ~/local/bin/tmux ]]; then
-  alias tmux='~/local/bin/tmux'
-elif command -v tmux &>/dev/null; then
-  alias tmux=tmux
-else
-  echo 'need tmux in ~/loca/bin/tmux'
-fi
 
 
 alias gd='git diff'
@@ -180,18 +195,6 @@ dotc () {
 }
 
 # function ta() { tmux detach -E "tmux new -A -s '$1'"; }
-
-ta () {
-  if [ ! -z $TMUX ] && [ ! -z $1 ]
-  then
-    tmux detach -E "tmux new -A -s '$1'"
-  elif [ ! -z $TMUX ]
-  then
-    return
-  else
-    tmux new -As main
-  fi
-}
 
 # activate virtual environment if there is one in this repo
 va () {
