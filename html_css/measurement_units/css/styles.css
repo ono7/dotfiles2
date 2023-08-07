@@ -1,3 +1,8 @@
+html {
+  /* 62.5% of 16px */
+  font-size: 62.5%;
+}
+
 body {
   margin: 10px;
 }
