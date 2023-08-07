@@ -105,13 +105,13 @@ format = '( [$all_status$ahead_behind]($style)) '
 commit_hash_length = 8
 style = "bold white"
 
-# [golang]
-# symbol = "[](cyan)"
-# format = ' Go[ $symbol ]($style)'
+[golang]
+symbol = "[](cyan)"
+format = ' Go[ $symbol ]($style) '
 
-# [python]
-# symbol = "[](green)"
-# format = ' [${symbol}${pyenv_prefix} ($virtualenv)]($style) '
+[python]
+symbol = "[](green)"
+format = ' [${symbol}${pyenv_prefix} ($virtualenv)]($style) '
 
 # [lua]
 # disabled = true
@@ -123,7 +123,7 @@ style = "bold white"
 # command = 'echo $TERM | cut -d"-" -f1'
 symbol = "🐇()"
 when = "[ ! -z $TMUX ]"
-format = '[${symbol}]($style) '
+format = ' [${symbol}]($style) '
 
 [time]
 disabled = false
@@ -167,9 +167,6 @@ format = ' [$symbol]($style)'
 format = ' [$symbol]($style)'
 
 [fennel]
-format = ' [$symbol]($style)'
-
-[golang]
 format = ' [$symbol]($style)'
 
 [gradle]
@@ -218,9 +215,6 @@ format = ' [$symbol]($style)'
 format = ' [$symbol$stack]($style)'
 
 [purescript]
-format = ' [$symbol]($style)'
-
-[python]
 format = ' [$symbol]($style)'
 
 [raku]
