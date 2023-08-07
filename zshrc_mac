@@ -396,7 +396,7 @@ if [[ $OSTYPE == "darwin"* ]]; then
  fi
 fi
 
-# export HISTFILE=~/.history
+export HISTFILE=~/.zsh_history
 # HISTSIZE should be > SAVEHIST or dups will show up
 export HISTSIZE=10000   # the number of items for the internal history list
 export SAVEHIST=9000   # maximum number of items for the history file
