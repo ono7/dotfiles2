@@ -129,9 +129,9 @@ alias gs='git status'
 alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
 alias c='clear'
 
-if [[ -f /opt/homebrew/opt/fzf/bin/fzf ]]; then
+if [[ -f '/opt/homebrew/opt/fzf/bin/fzf' ]]; then
  alias fzf='/opt/homebrew/opt/fzf/bin/fzf'
-else
+elif [ -f '~/.fzf/bin/fzf' ]; then
   alias fzf='~/.fzf/bin/fzf'
 fi
 
