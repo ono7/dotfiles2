@@ -1,5 +1,7 @@
 # uncomment next line to start profiling
 # zmodload zsh/zprof
+# uset ttyctl -f to freeze terminal preventing any new changes to the tty
+# ttyctl -u unfreezes the terminal
 export NVM_LAZY=1
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
@@ -281,6 +283,7 @@ export XCURSOR_SIZE=60
 # autocompletion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion::complete:*' gain-privileges 1
 
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
