@@ -496,7 +496,7 @@ chpwd_dirstack() {
 }
 add-zsh-hook -Uz chpwd chpwd_dirstack
 
-DIRSTACKSIZE='20'
+DIRSTACKSIZE='10'
 
 setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
 
