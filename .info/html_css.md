@@ -137,6 +137,20 @@ p::selectionn {
 }
 ```
 
+### classes
+
+```css
+/* single class */
+<div class="boxses"></div>
+
+/* multiple classes */
+<div class="box box-one"></div>
+
+.box {
+  color: blue;
+}
+```
+
 ### pseudo class selectors
 
 these are selectors injected by the browser
