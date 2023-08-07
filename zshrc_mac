@@ -4,7 +4,7 @@
 # ttyctl -u unfreezes the terminal
 export NVM_LAZY=1
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin
+export PATH=$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin:$HOME/.fzf/bin
 # 10ms for key sequences
 export KEYTIMEOUT=1
 
