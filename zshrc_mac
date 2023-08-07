@@ -467,6 +467,19 @@ if [ -f ~/.zshf ]; then
   source ~/.zshf
 fi
 
+
+# freeze tty
+ttyctl -f
+
+# prevent terminal from getting garbled up
+autoload -Uz add-zsh-hook
+
+function reset_broken_terminal () {
+	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
+}
+
+add-zsh-hook -Uz precmd reset_broken_terminal
+
 # load this last
 [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
