@@ -401,8 +401,9 @@ fi
 # HISTSIZE should be > SAVEHIST or dups will show up
 export HISTSIZE=10000   # the number of items for the internal history list
 export SAVEHIST=9000   # maximum number of items for the history file
-export HISTTIMEFORMAT='[%F %T] '
+# export HISTTIMEFORMAT='[%F %T] '
 export HISTIGNORE='ls:ll:pwd'
+HISTDUP=erase
 
 # The meaning of these options can be found in man page of `zshoptions`.
 setopt HIST_IGNORE_DUPS
