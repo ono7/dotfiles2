@@ -47,7 +47,6 @@ setopt COMBINING_CHARS
 # no beep, ever
 setopt NO_BEEP
 
-
 [[ -d ~/.tmp ]] || mkdir -p ~/.tmp
 
 # create ram drive
@@ -59,19 +58,10 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # If you come from bash you might have to change your $PATH.
 
-# Path to your oh-my-zsh installation.
-# export ZSH=$HOME/.oh-my-zsh
-
-
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# add plugins before oh-my-zsh.sh is sourced
-plugins=(zsh-autosuggestions)
-
-# source $ZSH/oh-my-zsh.sh
 
 if [[ $OSTYPE == "linux-gnu"* ]]; then
   export DISPLAY=:0.0
