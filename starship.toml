@@ -131,124 +131,124 @@ style = "bold bright-black"
 format = "[$time]($style)"
 
 [bun]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [buf]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [cmake]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [cobol]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [crystal]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [daml]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [dart]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [deno]
-format = "via [$symbol]($style)"
+format = " [$symbol]($style)"
 
 [dotnet]
 format = "[$symbol(🎯 $tfm )]($style)"
 
 [elixir]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [elm]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [erlang]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [fennel]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [golang]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [gradle]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [haxe]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [helm]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [java]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [julia]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [kotlin]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [lua]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [meson]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [nim]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [nodejs]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
+format = ' [$symbol(\($switch_indicator$switch_name\) )]($style)'
 
 [opa]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [perl]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [php]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [pulumi]
-format = 'via [$symbol$stack]($style)'
+format = ' [$symbol$stack]($style)'
 
 [purescript]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [python]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [raku]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [red]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [rlang]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [ruby]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [rust]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [solidity]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [swift]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [vagrant]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [vlang]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
 
 [zig]
-format = 'via [$symbol]($style)'
+format = ' [$symbol]($style)'
