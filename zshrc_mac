@@ -46,6 +46,7 @@ ta () {
 command -v tmux &> /dev/null && ta || echo "tmux not found..."
 
 # zsh completion
+echo 'cloning zsh-autosuggestions'
 [ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -506,6 +507,12 @@ setopt PUSHD_IGNORE_DUPS
 ## This reverts the +/- operators.
 setopt PUSHD_MINUS
 
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo 'cloning tmux/tpm'
+[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # load this last
+
+echo 'cloning zsh-syntax-highlighting'
 [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
