@@ -356,7 +356,7 @@ get_root_dir(){
 
 _d () {
   cdr
-  cd $(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)
+  cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
 }
 
 # _d declear as widget for zsh
