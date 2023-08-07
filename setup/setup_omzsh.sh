@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [ -d ~/.oh-my-zsh ]; then
-  rm -rf ~/.oh-my-zsh
-fi
-
-echo 'cloning oh-my-zsh'
-echo ''
-
-sh -c "$(curl -fsSLk https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# if [ -d ~/.oh-my-zsh ]; then
+#   rm -rf ~/.oh-my-zsh
+# fi
+#
+# echo 'cloning oh-my-zsh'
+# echo ''
+#
+# sh -c "$(curl -fsSLk https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
 echo 'installing auto-suggestions for zsh'

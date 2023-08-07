@@ -96,7 +96,7 @@ echo 'setting up directories and symlinks..done!'
 
 cd ~/.dotfiles/setup
 
-. ./setup_omzsh.sh
+# . ./setup_omzsh.sh
 
 # setup starship
 

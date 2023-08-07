@@ -27,6 +27,10 @@ ta () {
 # lets go right to businees
 command -v tmux &> /dev/null && ta || echo "tmux not found..."
 
+[ -d "~/.zsh/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # fix certain weird characters
 setopt COMBINING_CHARS
 
