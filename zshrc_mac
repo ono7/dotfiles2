@@ -484,7 +484,7 @@ function d () {
 
 autoload -Uz add-zsh-hook
 
-[ ! -d $HOME/.cache/zsh/ ] || mkdir -p $HOME/.cache/zsh/
+[ ! -d $HOME/.cache/zsh/ ] && mkdir -p $HOME/.cache/zsh/
 
 DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
 if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
