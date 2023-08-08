@@ -23,7 +23,6 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
-
 if [[ -f ~/local/bin/tmux ]]; then
   alias tmux='~/local/bin/tmux'
 elif command -v tmux &>/dev/null; then
@@ -124,7 +123,6 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
-
 
 alias gd='git diff'
 alias gs='git status'
@@ -263,10 +261,13 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export XCURSOR_SIZE=60
 
 # autocompletion
-zstyle ':completion:*' completer _complete
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-zstyle ':completion::complete:*' gain-privileges 1
+autoload -U compinit
 
+compinit
+# zstyle ':completion:*' completer _complete
+# zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion:*' matcher-list '' 'r:|?=** m:{a-z\-}={A-Z\_}'
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
@@ -448,7 +449,6 @@ fi
 if [ -f ~/.zshf ]; then
   source ~/.zshf
 fi
-
 
 # freeze tty
 ttyctl -f
