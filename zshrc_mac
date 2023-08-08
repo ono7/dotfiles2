@@ -50,6 +50,9 @@ command -v tmux &> /dev/null && ta || echo "tmux not found..."
 [ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 # fix certain weird characters
 setopt COMBINING_CHARS
 
@@ -269,9 +272,11 @@ setopt auto_list
 compinit
 # zstyle ':completion:*' completer _complete
 # zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
-zstyle ':completion::complete:*' gain-privileges 1
 # zstyle ':completion:*' matcher-list '' 'r:|?=** m:{a-z\-}={A-Z\_}'
-zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
+# zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z\-}={A-Za-z\_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+zstyle ':completion::complete:*' gain-privileges 1
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
