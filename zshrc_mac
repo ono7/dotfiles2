@@ -266,17 +266,19 @@ export XCURSOR_SIZE=60
 # autocompletion
 # autoload -U compinit
 autoload -Uz compinit && compinit -C
-setopt menu_complete
-setopt auto_list
+setopt MENU_COMPLETE
+unsetopt LIST_AMBIGUOUS
+setopt COMPLETE_IN_WORD
+setopt AUTO_LIST
 
 compinit
 # zstyle ':completion:*' completer _complete
 # zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 # zstyle ':completion:*' matcher-list '' 'r:|?=** m:{a-z\-}={A-Z\_}'
-# zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z\-}={A-Za-z\_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
 
-zstyle ':completion::complete:*' gain-privileges 1
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z\-}={A-Za-z\_}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion::complete:*' gain-privileges 1
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
