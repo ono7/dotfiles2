@@ -1,8 +1,29 @@
 # k8s/kubernetes notes
 
-https://kubernetes.io
+official docs - https://kubernetes.io
 
 rancher, kubernetes as a service
+
+## components
+
+- namespaces
+- pods
+  - group of containers that make up an application
+- replication sets
+- deployments
+- config maps
+- kubernetes manifest
+
+- servers:
+  - master node
+    - Api server - front end (kubectl talks to it)
+    - Schuduler
+    - controllers
+    - etcd - shared k,v store
+  - worker nodes
+    - Runtimes (docker, etc)
+    - Kubelet (takes work from the controllers to deploy)
+    - Kube-proxy (handles network communications)
 
 ## master node components
 
@@ -29,6 +50,8 @@ executes them.
 
 - manage nodes
   `kubectl get nodes` - get information about nodes and their current state
+  `kubectl describe -n awx pod awx-54696666c5-fn5pb` - get info about a
+  particular vm running in a pod called awx
 
 - manage pods
   `kubectl get pods --all-namespaces` - returns all pods in all name spaces
