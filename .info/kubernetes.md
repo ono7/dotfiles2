@@ -1,5 +1,9 @@
 # k8s/kubernetes notes
 
+https://kubernetes.io
+
+rancher, kubernetes as a service
+
 ## master node components
 
 -jcomponetes

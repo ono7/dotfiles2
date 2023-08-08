@@ -1,12 +1,19 @@
-# install oh-my-zsh
+# zsh notes
+
+working with expansion must read
+https://thevaluable.dev/zsh-expansion-guide-example/
+
+## install oh-my-zsh
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# install powerline theme
-# run cd oh-my-zsh-powerline-theme && ./install_in_omz.sh
+## install powerline theme
+
+## run cd oh-my-zsh-powerline-theme && ./install_in_omz.sh
+
 git clone https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git
 
-
-# profile slow issues
+## profile slow issues
 
 brew install moreutils
 call zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log
