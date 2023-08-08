@@ -7,13 +7,13 @@ echo "$0"
 
 echo '========== install homebrew =========='
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+[ ! -d /opt/homebrew/bin ] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-if [ $? -ne 0 ]; then
-  echo "$0"
-  echo 'homebrew install failed'
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#   echo "$0"
+#   echo 'homebrew install failed'
+#   exit 1
+# fi
 
 echo '========== install brew packages =========='
 
