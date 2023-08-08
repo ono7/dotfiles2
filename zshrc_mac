@@ -261,13 +261,17 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export XCURSOR_SIZE=60
 
 # autocompletion
-autoload -U compinit
+# autoload -U compinit
+autoload -Uz compinit && compinit -C
+setopt menu_complete
+setopt auto_list
 
 compinit
 # zstyle ':completion:*' completer _complete
 # zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 zstyle ':completion::complete:*' gain-privileges 1
-zstyle ':completion:*' matcher-list '' 'r:|?=** m:{a-z\-}={A-Z\_}'
+# zstyle ':completion:*' matcher-list '' 'r:|?=** m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
@@ -513,5 +517,5 @@ setopt PUSHD_MINUS
 [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # load this last
 
-[ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
