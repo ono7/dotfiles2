@@ -139,6 +139,8 @@ if [[ "$(command -v nvim)" ]]; then
     export MANWIDTH=999
 fi
 
+# functions
+
 take () {
   [ -z $1 ] && return
   local dir="$@"
