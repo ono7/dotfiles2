@@ -1,3 +1,17 @@
+### media queries
+
+can be used to do different things based on device attributes like screen size
+(port view)
+
+```css
+/* if view port is at least 520px the flex-direction is changed */
+@media screen and (min-width: 520px) {
+  .container {
+    flex-direction: row;
+  }
+}
+```
+
 ### grids
 
 - `justify-items` along the horizontal axis

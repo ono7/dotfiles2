@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  background: gold;
+  padding: 1rem;
+}
+
+.box:nth-of-type(2) {
+  background: dodgerblue;
+}
+
+/* can use multiple conditions */
+@media screen and (min-width: 520px) and (max-width: 900px) {
+  .container {
+    flex-direction: row;
+  }
+  .box {
+    background: white;
+  }
+}
