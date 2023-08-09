@@ -13,6 +13,7 @@ rancher, kubernetes as a service
 - deployments
 - config maps
 - kubernetes manifest
+- CoreDNS - the cluter's DNS service
 
 - servers:
   - master node
@@ -48,9 +49,13 @@ executes them.
 
 ## commands
 
+- kubectl
+  `kubectl cluster-info` (k8 cluster info)
+
 - manage nodes
   `kubectl get nodes` - get information about nodes and their current state
   `kubectl describe -n awx pod awx-54696666c5-fn5pb` - get info about a
+  `kubectl describe node xyz`
   particular vm running in a pod called awx
 
 - manage pods
