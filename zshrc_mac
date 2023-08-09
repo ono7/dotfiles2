@@ -27,7 +27,7 @@ unsetopt LIST_AMBIGUOUS
 setopt COMPLETE_IN_WORD
 setopt AUTO_LIST
 
-autoload -Uz compinstall && compinstall
+# autoload -Uz compinstall && compinstall
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -67,15 +67,17 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # fpath=$(~/.zsh/zsh-completions $fpath)
 
+# autoload -Uz compinit && compinit -C
+autoload -Uz compinit && compinit
+
 zstyle ':completion:*:default' list-colors ""
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' gain-privileges 1
-zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
+# zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
-
-setopt glob
 
 # fix certain weird characters
 setopt COMBINING_CHARS
@@ -123,7 +125,7 @@ export EDITOR=vim
 
 if command -v kubectl &>/dev/null; then
   alias k='kubectl '
-  source <(kubectl completion zsh)
+  # source <(kubectl completion zsh)
 fi
 
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
@@ -536,6 +538,5 @@ setopt PUSHD_MINUS
 [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # load this last
 
-autoload -Uz compinit && compinit -C
 # [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 # source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
