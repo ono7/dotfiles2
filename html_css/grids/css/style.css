@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  /* grid-template-rows: repeat(3, 100px); */
+  /* grid-template-columns: repeat(2, 100px); */
+  /* grid-template: repeat(3, 100px) / repeat(2, 100px); this is short hand */
+  grid-template: 100px auto 100px / 30fr 70fr; /*  this is short hand */
+  border: 3px solid lightblue;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  /* row-gap: 10px; */
+  /* column-gap: 10px; */
+  gap: 5px; /*  short for column-gap: and row-gap: */
+  /* justify-items: center;  the default on this and below is stretch */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* align-content: center; */
+  height: 100vh;
+}
+
+.box {
+  /* width: 5rem; does not work with align */
+  /* height: 5rem; */
+  align-content: center;
+  background: gold;
+}
+
+.box-one {
+  /* grid-column: 1/ -1;  -1 is the last line on the grid  */
+  grid-area: header;
+}
+
+.box-two {
+  /* grid-column: 1/ -1;  -1 is the last line on the grid  */
+  grid-area: footer;
+}
+
+.image {
+  width: 50vw;
+  height: 50hv;
+}

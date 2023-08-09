@@ -1,3 +1,24 @@
+### grids
+
+- `justify-items` along the horizontal axis
+- `align-items` along the vertical axis
+
+```css
+.container {
+  display: grid;
+  /* grid-template-rows: repeat(3, 100px); */
+  /* grid-template-columns: repeat(2, 100px); */
+  grid-template: repeat(3, 100px) / repeat(2, 100px); /*  this is short hand */
+  border: 3px solid lightblue;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+}
+```
+
 ### flex boxes
 
 allow dynamically alignment of elements
@@ -34,13 +55,14 @@ all browsers start by befault with 16px font size
 
 ### measurement units
 
-| absolute | relative |
-| -------- | -------- |
-| px       | %        |
-|          | wv       |
-|          | wh       |
-|          | em       |
-|          | rem      |
+| absolute | relative | desc                  |
+| -------- | -------- | --------------------- |
+| px       | %        | percentage            |
+|          | wv       |                       |
+|          | wh       | with viewport         |
+|          | em       |                       |
+|          | rem      | relative to font size |
+|          | fr       | fraction              |
 
 ```css
 .box {
