@@ -17,33 +17,33 @@ rancher, kubernetes as a service
 
 - servers:
   - master node
-    - Api server - front end (kubectl talks to it)
+    - Api server - front end kubectl talks to it
     - Schuduler
     - controllers
     - etcd - shared k,v store
   - worker nodes
-    - Runtimes (docker, etc)
-    - Kubelet (takes work from the controllers to deploy)
-    - Kube-proxy (handles network communications)
+    - Runtimes docker, etc
+    - Kubelet takes work from the controllers to deploy
+    - Kube-proxy handles network communications
 
 ## master node components
 
 - componetes
-  - `controller manager` (runs server workloads and processes)
-  - `etcd` (database used by k8 to store info about it self. this is a k,v store)
-  - `api server` (the front end exposed to the world)
-  - `scheduler` (control plane process that assignes resources on the nodes,)
+  - `controller manager` runs server workloads and processes
+  - `etcd` database used by k8 to store info about it self. this is a k,v store
+  - `api server` the front end exposed to the world
+  - `scheduler` control plane process that assignes resources on the nodes,
     knows which resources have capacity
 
 ## worker node components
 
-- `kubelet` (main service, takes intructions from api server makes sure all)
+- `kubelet` main service, takes intructions from api server makes sure all
   containers are healthy, reports status to master, does not make decicions only
   executes them.
 
 - `kube-proxy`
 
-- `pod` (smallest entity in a k8 cluster and has containers)
+- `pod` smallest entity in a k8 cluster and has containers
 
 ### k3s, lightweight version of k8s, can run on raspberrypi etc
 
@@ -51,25 +51,25 @@ rancher, kubernetes as a service
 
 - kubectl
 
-  - `kubectl cluster-info` (k8 cluster info)
+  - `kubectl cluster-info` k8 cluster info
 
 - manage nodes
 
-  - `kubectl get nodes` (get information about nodes and their current state)
-  - `kubectl describe -n awx pod awx-54696666c5-fn5pb` (get info about a)
-  - `kubectl describe node xyz` (particular vm running in a pod called awx)
+  - `kubectl get nodes` get information about nodes and their current state
+  - `kubectl describe -n awx pod awx-54696666c5-fn5pb` get info about a
+  - `kubectl describe node xyz` particular vm running in a pod called awx
 
 - manage pods
 
-  - `kubectl get pods --all-namespaces` (returns all pods in all name spaces)
-    the `system` (namespace is where k8 stores its internal components and should)
+  - `kubectl get pods --all-namespaces` returns all pods in all name spaces
+    the `system` namespace is where k8 stores its internal components and should
     not be used.
-  - `kubectl get pods -n xyz` (get the pods for namespace xyz)
+  - `kubectl get pods -n xyz` get the pods for namespace xyz
 
 - manage namespaces
 
   - `kubectl create namespace webservers`
-  - `kubectl config set context webservers` (change default config context)
+  - `kubectl config set context webservers` change default config context
 
 - running pods
 
@@ -77,11 +77,11 @@ rancher, kubernetes as a service
 
 - get pod status
 
-  - `kubectl get pods -o wide` (shows details about where things are running for the)
+  - `kubectl get pods -o wide` shows details about where things are running for the
     pod
 
 - deploy new images/vms
-  - `kubectl apply -f deploy_server.yml` (deploys a new server to the pods created)
+  - `kubectl apply -f deploy_server.yml` deploys a new server to the pods created
 
 ## other notes
 
