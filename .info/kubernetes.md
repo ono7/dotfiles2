@@ -1,8 +1,31 @@
 # k8s/kubernetes notes
 
 official docs - https://kubernetes.io
+https://github.com/devopsjourney1/learn-k8s
 
 rancher, kubernetes as a service
+
+## kubescape
+
+scan for security concerns, can also scan repos and code as well as containers
+it can be integrated into the CI pipeline
+
+## gotchas
+
+- `configuration maps in manifest` - treat them as mutable, once defined do not
+  change them
+
+```yml
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: myconfigmapv1.1 # change the version when making changes (myconfigmapv1.2)
+data:
+  BG_COLOR: "#12181b"
+  FONT_COLOR: "#FFFFFF"
+  CUSTOM_HEADER: "DevOps Journey - lima! config map change"
+```
 
 ## components
 
@@ -49,9 +72,16 @@ rancher, kubernetes as a service
 
 ## commands
 
+- load balancer
+
+  - `kubectl expose deployment example-node --type=LoadBalancer --port=8080 -n lab`
+    expose service on namespace lab
+  - `minikube service hello-node -n lab` show the service configured
+
 - kubectl
 
   - `kubectl cluster-info` k8 cluster info
+  - `kubectl get events -n prod` get all events for namespace prod
 
 - manage nodes
 

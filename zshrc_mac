@@ -337,6 +337,7 @@ if command -v fd &> /dev/null; then
   export FZF_COMPLETION_TRIGGER="~~"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
+  brew install fd
 fi
 
 # pretty colors
@@ -352,14 +353,15 @@ zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 eval "$(starship init zsh)"
 
 # defaults to vi-mode, and let us toggle back and forth
+
 bindkey -v
 v () {
   bindkey -v; clear
 }
 
-e () {
-  bindkey -e; clear
-}
+# e () {
+#   bindkey -e; clear
+# }
 
 # alias v='bindkey -v'
 # alias e='bindkey -e'
