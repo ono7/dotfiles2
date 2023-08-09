@@ -141,7 +141,8 @@ fi
 
 take () {
   [ -z $1 ] && return
-  mkdir -p "$1"; cd $_
+  local dir="$@"
+  mkdir -p "${dir// /-}"; cd "${dir// /-}"
 }
 
 mkt () {
