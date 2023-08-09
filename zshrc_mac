@@ -27,9 +27,7 @@ unsetopt LIST_AMBIGUOUS
 setopt COMPLETE_IN_WORD
 setopt AUTO_LIST
 
-
-
-# autoload -Uz compinit && compinit -C
+autoload -Uz compinstall && compinstall
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -125,6 +123,7 @@ export EDITOR=vim
 
 if command -v kubectl &>/dev/null; then
   alias k='kubectl '
+  source <(kubectl completion zsh)
 fi
 
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
@@ -301,8 +300,6 @@ dp() {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export XCURSOR_SIZE=60
 
-# autocompletion
-# autoload -U compinit
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
@@ -457,7 +454,6 @@ if [[ $OSTYPE == "linux"* ]];  then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-
 if [[ $OSTYPE == "darwin"* ]];  then
   KRATE=1
   INITKRATE=9
@@ -540,5 +536,6 @@ setopt PUSHD_MINUS
 [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # load this last
 
+autoload -Uz compinit && compinit -C
 # [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 # source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
