@@ -94,13 +94,10 @@ cmp_config.setup({
     end, { "i", "s" }),
   },
   sources = {
-    -- { name = "nvim_lsp", keyword_length = 3 },
-    -- { name = 'snippy' },
     { name = "nvim_lsp",               keyword_length = 2 },
-    -- { name = "nvim_lua" },
     { name = "nvim_lsp_signature_help" },
     { name = "path" },
-    { name = "buffer",                 keyword_length = 2 },
+    { name = "buffer", },
   },
   formatting = {
     format = lspkind_config.cmp_format({
@@ -112,8 +109,8 @@ cmp_config.setup({
         nvim_lua = "[api]",
         path = "[path]",
         -- luasnip = "[snip]",
-        gh_issues = "[issues]",
-        tn = "[TabNine]",
+        -- gh_issues = "[issues]",
+        -- tn = "[TabNine]",
       },
     }),
   },
