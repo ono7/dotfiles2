@@ -55,13 +55,13 @@ executes them.
 - manage nodes
   `kubectl get nodes` - get information about nodes and their current state
   `kubectl describe -n awx pod awx-54696666c5-fn5pb` - get info about a
-  `kubectl describe node xyz`
-  particular vm running in a pod called awx
+  `kubectl describe node xyz` (particular vm running in a pod called awx)
 
 - manage pods
   `kubectl get pods --all-namespaces` - returns all pods in all name spaces
   the `system` namespace is where k8 stores its internal components and should
   not be used.
+  `kubectl get pods -n xyz` (get the pods for namespace xyz)
 
 - manage namespaces
   `kubectl create namespace webservers`
