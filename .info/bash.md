@@ -1,3 +1,14 @@
+# bash as shell
+
+- make bash completion case insensitive
+
+```bash
+
+# ~/.inputrc
+set completion-ignore-case on
+
+```
+
 # bash and zsh goodies
 
 `${var:-value}` Use var if set; otherwise, use value
@@ -18,8 +29,8 @@ interactive). If value isn’t supplied, print the phrase parameter null or not 
 `${var#pattern}` - Use value of var after removing text matching pattern
 from the left. Remove the shortest matching piece.
 
-`${var##pattern}` -  Same as #pattern, but remove the longest matching piece.
-    e.g. ${var##*/} = remove the longest match for '/' returns file name only if var = /etc/test/test.tgz
+`${var##pattern}` - Same as #pattern, but remove the longest matching piece.
+e.g. ${var##\*/} = remove the longest match for '/' returns file name only if var = /etc/test/test.tgz
 
 `${var%pattern}` - Use value of var after removing text matching pattern from the
 right. Remove the shortest matching piece.

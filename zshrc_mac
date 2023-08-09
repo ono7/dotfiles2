@@ -73,7 +73,9 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*:default' list-colors ""
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' gain-privileges 1
-# zstyle ':completion:*' menu select 'r:|?=** m:{a-z\-}={A-Z\_}'
+
+# % cd /u/lo/b⇥ 
+# % cd /usr/local/bin 
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
