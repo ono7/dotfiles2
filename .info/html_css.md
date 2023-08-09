@@ -1,3 +1,33 @@
+### flex boxes
+
+allow dynamically alignment of elements
+
+- `flex-basis` sets the initial size of a flex item
+- `flex-grow` sets grow factor
+- `flex-shink` sets the shrink factor
+- `flex` combines all properties
+
+```css
+.container {
+  border: 3px solid lightgrey;
+  display: flex; /* changes layoout of elements in one direction */
+  /* flex-direction: column-reverse; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* justify-content: space-between; */
+  align-items: flex-end; /* container has to be tall enough for this to work */
+  height: 90vh;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background: gold;
+  margin: 1rem;
+}
+```
+
 ### fonts
 
 all browsers start by befault with 16px font size

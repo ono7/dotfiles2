@@ -1,0 +1,33 @@
+.container {
+  border: 3px solid lightgrey;
+  display: flex; /* changes layoout of elements in one direction */
+  /* flex-direction: column-reverse; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* flex-grow: 1; */
+  justify-content: center;
+  /* justify-content: space-between; */
+  align-items: center; /* container has to be tall enough for this to work */
+  height: 90vh;
+}
+
+.box {
+  flex-basis: 5rem; /* translates to the width property */
+  flex-grow: 1; /*  flex grow can be set 1 or zero */
+  /* width: 5rem; */
+  height: 5rem;
+  background: gold;
+  /* flex-grow: 2; */
+  margin: 1rem;
+}
+
+.box-one {
+  flex-basis: 5rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  /* flex: 1 15rem;  the first value is grow, the second is basis */
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5%;
+  /* flex-grow: 2; */
+}
