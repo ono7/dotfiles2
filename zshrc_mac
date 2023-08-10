@@ -259,7 +259,7 @@ va () {
 
 # deactivate virtual environment if there is one in this repo
 vd () {
-  deactivate 2> /dev/null
+  deactivate 2>/dev/null
   source $HOME/.virtualenvs/prod3/bin/activate
 }
 
@@ -271,7 +271,7 @@ dev_env () {
 }
 
 vc () {
-  deactivate 2> /dev/null
+  deactivate 2>/dev/null
   venv_dir="venv"
   my_dir=$PWD
   if [[ -d $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
@@ -324,7 +324,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 FD_CMD='fd -I --type f --exclude ".git" --exclude "__pycache__" --follow --hidden'
-if command -v fd &> /dev/null; then
+if command -v fd &>/dev/null; then
   _fzf_compgen_path() {
     fd -I --hidden --follow --exclude ".git" . "$1"
   }
@@ -342,7 +342,7 @@ else
   brew install fd
 fi
 
-[ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin 2>/dev/null ] && brew install gnu-sed
+[ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin &>/dev/null ] && brew install gnu-sed
 
 # pretty colors
 
