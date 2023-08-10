@@ -205,8 +205,8 @@ gitl () {
     my_dir=$PWD
     cdr
     git add .
-    f=$(git status --porcelain | cut -c4- | head -n 5)
-    more_changes=$(git status --porcelain | sed -n 6p)
+    f=$(git status --porcelain | cut -c4- | head -n 4)
+    more_changes=$(git status --porcelain | sed -n 5p)
     [ -n "$more_changes" ] && f="$f ..."
     if test -z "$1"; then
       # replace new line, using longest match //
@@ -239,8 +239,8 @@ dotc () {
     cd ~/.dotfiles
     git pull
     git add .
-    f=$(git status --porcelain | cut -c4- | head -n 5)
-    more_changes=$(git status --porcelain | sed -n 6p)
+    f=$(git status --porcelain | cut -c4- | head -n 4)
+    more_changes=$(git status --porcelain | sed -n 5p)
     [ -n "$more_changes" ] && f="$f ..."
     git commit "-m updates -> ${f//$'\n'/ }"
     git push
@@ -342,7 +342,7 @@ else
   brew install fd
 fi
 
-[ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin ] && brew install gnu-sed
+[ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin 2>/dev/null ] && brew install gnu-sed
 
 # pretty colors
 
