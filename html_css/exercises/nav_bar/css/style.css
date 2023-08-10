@@ -9,15 +9,30 @@
 }
 
 .box {
-  align-content: center;
+  /* align-content: center; */
+  align-items: center;
   background: black;
   padding: 1rem;
   color: white;
+  flex: 1;
 }
 
-@media screen and (min-width: 400) {
+.image-container {
+  /* background-size: cover; */
+  /* background-position: center; */
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+
+@media screen and (min-width: 400px) {
+  /* this should be the corret type, forgetting to add px to 400 will make this query not work */
   .container {
+    /* display: flex; */
     flex-direction: row;
+    align-items: center;
   }
   .box {
     white-space: normal;
