@@ -342,7 +342,9 @@ else
   brew install fd
 fi
 
-[ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin &>/dev/null ] && brew install gnu-sed
+if [[ $OSTYPE == "darwin"* ]]; then
+  [ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin &>/dev/null ] && brew install gnu-sed
+fi
 
 # pretty colors
 
