@@ -8,6 +8,7 @@ end
 
 config.setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
+  type = "dark",
   background = {
     -- :h background
     light = "latte",
@@ -106,9 +107,7 @@ vim.cmd.colorscheme("catppuccin")
 vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
 vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2b2c36", bg = "NONE" })
-vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#B5E8E0" })
--- #B5E8E0
--- #F38BA8
+vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#8bc2f0" })
 vim.api.nvim_set_hl(0, "@property", { fg = "#ffa5c3" })
 vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
 vim.api.nvim_set_hl(0, "@function", {})
