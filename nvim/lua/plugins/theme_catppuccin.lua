@@ -42,6 +42,37 @@ config.setup({
     -- see link below for override names
     -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
     mocha = {
+      white = "#D9E0EE",
+      darker_black = "#191828",
+      black = "#1E1D2D", --  nvim bg
+      black2 = "#252434",
+      one_bg = "#2d2c3c", -- real bg of onedark
+      one_bg2 = "#363545",
+      one_bg3 = "#3e3d4d",
+      grey = "#474656",
+      grey_fg = "#4e4d5d",
+      grey_fg2 = "#555464",
+      light_grey = "#605f6f",
+      red = "#F38BA8",
+      baby_pink = "#ffa5c3",
+      pink = "#F5C2E7",
+      line = "#383747", -- for lines like vertsplit
+      -- green = "#ABE9B3",
+      vibrant_green = "#b6f4be",
+      nord_blue = "#8bc2f0",
+      blue = "#89B4FA",
+      yellow = "#FAE3B0",
+      sun = "#ffe9b6",
+      purple = "#d0a9e5",
+      dark_purple = "#c7a0dc",
+      teal = "#B5E8E0",
+      orange = "#F8BD96",
+      cyan = "#89DCEB",
+      statusline_bg = "#232232",
+      lightbg = "#2f2e3e",
+      pmenu_bg = "#ABE9B3",
+      folder_bg = "#89B4FA",
+      lavender = "#c7d1ff",
       -- green = "#ceeac8",
       green = "#b2d6a9",
       -- mauve = "#8174d3"
@@ -63,32 +94,16 @@ config.setup({
 
 vim.cmd.colorscheme("catppuccin")
 
--- vim.api.nvim_set_hl(0, "ErrorMsg", { fg = "#e27e8d" })
--- vim.api.nvim_set_hl(0, "Comment", { fg = "#4D5967" })
--- vim.api.nvim_set_hl(0, "Normal", { fg = "#d8e2ec" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { link = "Comment" })
--- vim.api.nvim_set_hl(0, "Function", { fg = "#9abdf5" })
--- vim.api.nvim_set_hl(0, "@conceal", { link = "Comment" })
-vim.api.nvim_set_hl(0, "Search", { bg = "#3e4b6b" })
-vim.api.nvim_set_hl(0, "IncSearch", { fg = "#b2d6a9", reverse = true })
--- vim.api.nvim_set_hl(0, "QuickFixLine", { link = "Search" })
-vim.api.nvim_set_hl(0, "Folded", { fg = "#3e404c" })
-vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
-vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "Search", { bg = "#3e4b6b" })
+-- vim.api.nvim_set_hl(0, "IncSearch", { fg = "#b2d6a9", reverse = true })
+-- vim.api.nvim_set_hl(0, "Folded", { fg = "#3e404c" })
+-- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
+-- vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2b2c36", bg = "NONE" })
-vim.api.nvim_set_hl(0, "DiffChange", {})
--- vim.api.nvim_set_hl(0, "Keyword", { fg = "#bb9af7" })
--- vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#bb9af7", italic = true })
--- vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#9d7cd8", italic = true })
-vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
--- vim.api.nvim_set_hl(0, "@method.call.go", { link = "Normal" })
--- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#737aa2", bold = true })
-vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
-vim.api.nvim_set_hl(0, "@field", {})
--- vim.api.nvim_set_hl(0, "FloatShadow", {})
--- vim.api.nvim_set_hl(0, "NormalFloat", { link = "NormalNC" })
--- vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Constant" })
--- vim.api.nvim_set_hl(0, "MatchParen", { link = "Visual" })
--- vim.api.nvim_set_hl(0, "@variable.builtin.python", { fg = "#e27e8d" })
--- vim.api.nvim_set_hl(0, "@parameter", { fg = "#e27e8d" })
--- vim.api.nvim_set_hl(0, "LineNr", { fg = "#41505e" })
+-- vim.api.nvim_set_hl(0, "DiffChange", {})
+-- vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
+-- vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
+-- vim.api.nvim_set_hl(0, "@field", {})
+vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#F38BA8" })
+vim.api.nvim_set_hl(0, "@property", { fg = "#B5E8E0" })
+vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
