@@ -44,7 +44,7 @@ config.setup({
     mocha = {
       white = "#D9E0EE",
       darker_black = "#191828",
-      black = "#1E1D2D", --  nvim bg
+      black = "#1E1D2D",  --  nvim bg
       black2 = "#252434",
       one_bg = "#2d2c3c", -- real bg of onedark
       one_bg2 = "#363545",
@@ -73,10 +73,11 @@ config.setup({
       pmenu_bg = "#ABE9B3",
       folder_bg = "#89B4FA",
       lavender = "#c7d1ff",
-      -- green = "#ceeac8",
-      green = "#b2d6a9",
+      -- my overrides --
+      green = "#ceeac8",
+      -- green = "#b2d6a9",
       -- mauve = "#8174d3"
-      mauve = "#caa1fd"
+      -- mauve = "#caa1fd"
     }
   },
   custom_highlights = {},
@@ -97,13 +98,16 @@ vim.cmd.colorscheme("catppuccin")
 -- vim.api.nvim_set_hl(0, "Search", { bg = "#3e4b6b" })
 -- vim.api.nvim_set_hl(0, "IncSearch", { fg = "#b2d6a9", reverse = true })
 -- vim.api.nvim_set_hl(0, "Folded", { fg = "#3e404c" })
--- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
 -- vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
-vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2b2c36", bg = "NONE" })
 -- vim.api.nvim_set_hl(0, "DiffChange", {})
--- vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
--- vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
 -- vim.api.nvim_set_hl(0, "@field", {})
-vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#F38BA8" })
-vim.api.nvim_set_hl(0, "@property", { fg = "#B5E8E0" })
+
+-- vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
+vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
+vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
+vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2b2c36", bg = "NONE" })
+vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#B5E8E0" })
+-- #B5E8E0
+-- #F38BA8
+vim.api.nvim_set_hl(0, "@property", { fg = "#ffa5c3" })
 vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
