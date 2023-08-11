@@ -4,10 +4,6 @@ body {
   color: white;
 }
 
-heading {
-  font-style: oblique;
-}
-
 p {
   /* font stack, first we try Arial, if not available use Helvetica etc.. */
   font-family: Arial, Helvetica, sans-serif;
