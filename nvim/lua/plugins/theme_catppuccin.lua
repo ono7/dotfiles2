@@ -111,3 +111,4 @@ vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#B5E8E0" })
 -- #F38BA8
 vim.api.nvim_set_hl(0, "@property", { fg = "#ffa5c3" })
 vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
+vim.api.nvim_set_hl(0, "@function", {})

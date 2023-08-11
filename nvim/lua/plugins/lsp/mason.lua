@@ -109,13 +109,15 @@ local lsp_opts = {
     debounce_text_changes = 150,
   },
 }
+
 nvim_lsp.gopls.setup({
-  filetypes = { "go", "gomod" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
   autostart = true,
-  root_dir = nvim_lsp.util.root_pattern("go.mod", "main.go"),
+  root_dir = nvim_lsp.util.root_pattern("go.mod", "main.go", "go.work", ".git"),
   settings = {
     gopls = {
-      experimentalPostfixCompletions = true,
+      completeUnimported = true,
+      -- experimentalPostfixCompletions = true,
       analyses = {
         unusedparams = true,
         shadow = true,
