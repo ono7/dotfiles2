@@ -15,6 +15,7 @@ configs.setup {
   auto_install = true,
   indent = { enable = false, disable = { "python" } },
   highlight = {
+    use_languagetree = true,
     max_file_lines = 10000,
     enable = true,
     additional_vim_regex_highlighting = false,
