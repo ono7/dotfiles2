@@ -553,5 +553,7 @@ setopt PUSHD_MINUS
 [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # load this last
 
+[ -n $VIRTUAL_ENV ] && . ~/.virtualenvs/prod3/bin/activate
+
 # [ ! -d ~/.zsh/zsh-syntax-highlighting &>/dev/null ] &&  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 # source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
