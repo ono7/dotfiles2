@@ -14,36 +14,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- "ap/vim-css-color",
-
   "tpope/vim-repeat",
-  -- "roxma/vim-tmux-clipboard",
   "ono7/null-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",        name = "catppuccin" },
   "numtostr/navigator.nvim",
-  -- "bfredl/nvim-miniyank",
   "kylechui/nvim-surround",
-  -- {
-  --   "utilyre/sentiment.nvim",
-  --   version = "*",
-  --   event = "VeryLazy", -- keep for lazy loading
-  --   opts = {
-  --     delay = 50,
-  --   },
-  --   init = function()
-  --     -- `matchparen.vim` needs to be disabled manually in case of lazy loading
-  --     vim.g.loaded_matchparen = 1
-  --   end,
-  -- },
-  -- {
-  --   "fgheng/winbar.nvim",
-  --   config = function()
-  --     require('winbar').setup {}
-  --   end
-  -- },
   {
     'monkoose/matchparen.nvim',
     config = function()
@@ -132,22 +110,8 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    -- config = function()
-    --   require('plugins.treesitter')
-    -- end,
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
-      -- {
-      --   "lukas-reineke/indent-blankline.nvim",
-      --   config = function()
-      --     require "indent_blankline".setup {
-      --       space_char_blankline = " ",
-      --       show_current_context = true,
-      --       show_current_context_start = true,
-      --       show_trailing_blankline_indent = false,
-      --     }
-      --   end
-      -- },
     },
   },
   {
