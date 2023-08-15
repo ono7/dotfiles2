@@ -63,8 +63,16 @@ cmp_config.setup({
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    documentation = cmp_config.config.window.bordered(),
+    completion = {
+      border = 'rounded',
+      scrollbar = '║',
+      winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
+    },
+    documentation = {
+      border = nil,
+      scrollbar = '',
+      winhighlight = "Comment:cmpDoc",
+    }
   },
   mapping = {
     ["<C-n>"] = cmp_config.mapping.select_next_item({ behavior = cmp_config.SelectBehavior.Insert }),

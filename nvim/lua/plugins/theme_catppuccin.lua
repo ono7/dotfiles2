@@ -5,6 +5,44 @@ if not status_ok then
   return
 end
 
+local mycolors = {
+  white = "#D9E0EE",
+  darker_black = "#191828",
+  black = "#1E1D2D",  --  nvim bg
+  black2 = "#252434",
+  one_bg = "#2d2c3c", -- real bg of onedark
+  one_bg2 = "#363545",
+  one_bg3 = "#3e3d4d",
+  grey = "#474656",
+  grey_fg = "#4e4d5d",
+  grey_fg2 = "#555464",
+  light_grey = "#605f6f",
+  red = "#F38BA8",
+  baby_pink = "#ffa5c3",
+  pink = "#F5C2E7",
+  line = "#383747", -- for lines like vertsplit
+  -- green = "#ABE9B3",
+  vibrant_green = "#b6f4be",
+  nord_blue = "#8bc2f0",
+  blue = "#9DBBF4",
+  yellow = "#FAE3B0",
+  sun = "#ffe9b6",
+  purple = "#d0a9e5",
+  dark_purple = "#c7a0dc",
+  teal = "#B5E8E0",
+  orange = "#F8BD96",
+  cyan = "#89DCEB",
+  statusline_bg = "#232232",
+  lightbg = "#2f2e3e",
+  pmenu_bg = "#ABE9B3",
+  folder_bg = "#9DBBF4",
+  lavender = "#c7d1ff",
+  -- my overrides --
+  green = "#ceeac8",
+  -- green = "#b2d6a9",
+  -- mauve = "#8174d3"
+  -- mauve = "#caa1fd"
+}
 
 config.setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -42,44 +80,7 @@ config.setup({
   color_overrides = {
     -- see link below for override names
     -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
-    mocha = {
-      white = "#D9E0EE",
-      darker_black = "#191828",
-      black = "#1E1D2D",  --  nvim bg
-      black2 = "#252434",
-      one_bg = "#2d2c3c", -- real bg of onedark
-      one_bg2 = "#363545",
-      one_bg3 = "#3e3d4d",
-      grey = "#474656",
-      grey_fg = "#4e4d5d",
-      grey_fg2 = "#555464",
-      light_grey = "#605f6f",
-      red = "#F38BA8",
-      baby_pink = "#ffa5c3",
-      pink = "#F5C2E7",
-      line = "#383747", -- for lines like vertsplit
-      -- green = "#ABE9B3",
-      vibrant_green = "#b6f4be",
-      nord_blue = "#8bc2f0",
-      blue = "#9DBBF4",
-      yellow = "#FAE3B0",
-      sun = "#ffe9b6",
-      purple = "#d0a9e5",
-      dark_purple = "#c7a0dc",
-      teal = "#B5E8E0",
-      orange = "#F8BD96",
-      cyan = "#89DCEB",
-      statusline_bg = "#232232",
-      lightbg = "#2f2e3e",
-      pmenu_bg = "#ABE9B3",
-      folder_bg = "#9DBBF4",
-      lavender = "#c7d1ff",
-      -- my overrides --
-      green = "#ceeac8",
-      -- green = "#b2d6a9",
-      -- mauve = "#8174d3"
-      -- mauve = "#caa1fd"
-    }
+    mocha = mycolors,
   },
   custom_highlights = {},
   integrations = {
@@ -113,3 +114,7 @@ vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
 vim.api.nvim_set_hl(0, "@function", {})
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
 vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "#1B192C", fg = "#1B192C" })
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })
+vim.api.nvim_set_hl(0, "cmpBorder", { fg = "#2b2c36" })
+vim.api.nvim_set_hl(0, "cmpDoc", { bg = "#1B192C" })
+vim.api.nvim_set_hl(0, "cmpSelect", { bg = mycolors.baby_pink, fg = mycolors.darker_black })

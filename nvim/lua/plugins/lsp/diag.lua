@@ -220,6 +220,16 @@ vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "Normal" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "CursorLineNr" })
 vim.fn.sign_define("DiagnosticsVirtualTextHint", { text = "", texthl = "Normal" })
 
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+-- vim.diagnostic.config({
+--   float = {
+--     border = "rounded",
+--   },
+-- })
+
 --- old config for reference
 
 
