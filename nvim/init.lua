@@ -480,6 +480,9 @@ k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 --- visual selection search ---
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
+--- go struct tags ---
+k("n", "gsj", [[:GoTagAdd json<cr>]])
+
 --- marks/jumps ---
 -- k("n", "'", "`", opt)
 k("n", "mm", "mM", opt)
