@@ -117,6 +117,7 @@ nvim_lsp.gopls.setup({
   settings = {
     gopls = {
       completeUnimported = true,
+      usePlaceholders = true,
       -- experimentalPostfixCompletions = true,
       analyses = {
         unusedparams = true,
