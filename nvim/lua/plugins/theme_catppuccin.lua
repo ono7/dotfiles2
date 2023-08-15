@@ -61,7 +61,7 @@ config.setup({
       -- green = "#ABE9B3",
       vibrant_green = "#b6f4be",
       nord_blue = "#8bc2f0",
-      blue = "#89B4FA",
+      blue = "#9DBBF4",
       yellow = "#FAE3B0",
       sun = "#ffe9b6",
       purple = "#d0a9e5",
@@ -72,7 +72,7 @@ config.setup({
       statusline_bg = "#232232",
       lightbg = "#2f2e3e",
       pmenu_bg = "#ABE9B3",
-      folder_bg = "#89B4FA",
+      folder_bg = "#9DBBF4",
       lavender = "#c7d1ff",
       -- my overrides --
       green = "#ceeac8",
@@ -111,5 +111,5 @@ vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#8bc2f0" })
 vim.api.nvim_set_hl(0, "@property", { fg = "#ffa5c3" })
 vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
 vim.api.nvim_set_hl(0, "@function", {})
-vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#181825" })
-vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "#181825", fg = "#181825" })
+vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
+vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "#1B192C", fg = "#1B192C" })
