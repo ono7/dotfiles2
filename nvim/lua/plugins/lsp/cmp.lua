@@ -65,12 +65,13 @@ cmp_config.setup({
   window = {
     completion = {
       border = 'rounded',
-      scrollbar = '║',
+      -- scrollbar = '║',
+      scrollbar = false,
       winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
     },
     documentation = {
       border = nil,
-      scrollbar = '',
+      scrollbar = false,
       winhighlight = "Comment:cmpDoc",
     }
   },
