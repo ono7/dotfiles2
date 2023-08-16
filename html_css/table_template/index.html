@@ -51,7 +51,9 @@
 
       .btn:active {
         background-color: #009879;
+        color: #fff;
         font-weight: bold;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
       }
 
       .btn {
@@ -71,7 +73,7 @@
         hx-swap="innerHTML"
         hx-target="#swapme"
       >
-        report 1
+        Devices with no errors
       </button>
     </div>
     <div class="parent-div">
@@ -81,7 +83,7 @@
         hx-swap="innerHTML"
         hx-target="#swapme"
       >
-        report 2
+        Devices with errors
       </button>
     </div>
     <div id="swapme"></div>
