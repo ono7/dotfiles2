@@ -1,0 +1,89 @@
+<!doctype html>
+
+<!-- https://www.youtube.com/watch?v=biI9OFH6Nmg -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table</title>
+    <style>
+      .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        /* make borders round */
+        border-radius: 5px 5px 0 0;
+        /* make sure the border radius works correctly due to table row */
+        overflow: hidden;
+        /* shadow */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        /* heading colunms are bold */
+        font-weight: bold;
+      }
+
+      .content-table th,
+      .content-table td {
+        /* extra line spacing */
+        padding: 12px 15px;
+      }
+
+      .content-table tbody tr {
+        /* border on table row */
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .content-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Automation Report</h1>
+    <table class="content-table">
+      <thead>
+        <th>Device</th>
+        <th>Version</th>
+        <th>Date</th>
+        <th>Result</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>switch1</td>
+          <td>7.1</td>
+          <td>2023-08-15</td>
+          <td>success</td>
+        </tr>
+        <tr>
+          <td>switch2</td>
+          <td>7.2</td>
+          <td>2023-08-15</td>
+          <td>success</td>
+        </tr>
+        <tr>
+          <td>router1</td>
+          <td>7.2a</td>
+          <td>2023-08-15</td>
+          <td>failed, connection timed out</td>
+        </tr>
+        <tr>
+          <td>wlc1</td>
+          <td>1.7.2a</td>
+          <td>2023-08-15</td>
+          <td>success</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
