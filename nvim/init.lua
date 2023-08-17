@@ -265,16 +265,18 @@ k('i', '"', function()
     local q = {
         ["'"] = true,
     }
-    if p == '\\' or cb[p] or q[p] or q[n] then
+    -- if p == '\\' or cb[p] or q[p] or q[n] then
+    --     return '"'
+    if p == '\\' or cb[p] then
         return '"'
     elseif n == '"' then
         return '<Right>'
-    elseif an[p] then
+    elseif an[p] or an[n] then
         return '"'
     elseif r_pair_map[n] then
         return '""<Left>'
-    elseif n ~= '' or an[p] then
-        return '"'
+        -- elseif n ~= '' or an[p] then
+        --     return '"'
     end
     return '""<Left>'
 end
@@ -307,26 +309,30 @@ end
 
 -- handles ''
 k('i', "'", function()
+    if vim.bo[0].buftype == 'prompt' then
+        return "'"
+    end
     local line = vim.api.nvim_get_current_line()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
     local an = isAlphaNum
     local cb = closedBrackets
-    local q = {
-        ['"'] = true,
-        -- ['`'] = true,
-    }
-    if p == '\\' or cb[p] or q[p] or q[n] then
+    -- local q = {
+    --     ['"'] = true,
+    --     -- ['`'] = true,
+    -- }
+    -- if p == '\\' or cb[p] or q[p] or q[n] then
+    if p == '\\' or cb[p] then
         return "'"
     elseif n == "'" then
         return '<Right>'
-    elseif an[p] then
+    elseif an[p] or an[n] then
         return "'"
     elseif r_pair_map[n] then
         return "''<Left>"
-    elseif n ~= '' or an[p] then
-        return "'"
+        -- elseif n ~= '' or an[p] then
+        --     return "'"
     end
     return "''<Left>"
 end
