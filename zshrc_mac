@@ -164,6 +164,11 @@ rmt () {
   git tag -d $1;git push --delete origin $1
 }
 
+# copies data to tmux clipboard, echo 'test' | copy
+c () {
+  tmux loadb -
+}
+
 vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
   vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
@@ -177,7 +182,6 @@ timezsh() {
 alias gd='git diff'
 alias gs='git status'
 alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
-alias c='clear'
 
 if [[ -f '/opt/homebrew/opt/fzf/bin/fzf' ]]; then
  alias fzf='/opt/homebrew/opt/fzf/bin/fzf'
