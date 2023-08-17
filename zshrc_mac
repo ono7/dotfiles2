@@ -475,7 +475,7 @@ fi
 
 if [[ $OSTYPE == "darwin"* ]];  then
   KRATE=1
-  INITKRATE=9
+  INITKRATE=10
   # show current settings:
   # defaults read NSGlobalDomain InitialKeyRepeat
   # normal is 2, lower is faster

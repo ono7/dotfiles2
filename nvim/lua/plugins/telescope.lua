@@ -52,10 +52,10 @@ configs.setup({
 })
 
 k("n", "<c-w>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-k("n", "<leader>/", function()
+k("n", "<c-_>", function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-    winblend = 10,
+    -- winblend = 10,
     previewer = false,
   }))
 end, { desc = "[/] Fuzzily search in current buffer" })
@@ -66,7 +66,7 @@ k("n", "<c-z>", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
 k("n", "<leader>h", "<cmd>lua require('telescope.builtin').live_grep({ cwd = '~/.dotfiles/.info'})<cr>", opt)
 -- k({ "n", "c", "x" }, "<c-z>", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opt)
 k({ "n", "c", "x" }, "<c-s>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>", silent)
--- k({ "n", "x" }, "<leader><leader>", "<cmd>lua require('telescope.builtin').buffers()<cr>", opt)
+k({ "n", "x" }, "<leader>t", "<cmd>lua require('telescope.builtin').buffers()<cr>", opt)
 k("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opt)
 k(
   "n",
