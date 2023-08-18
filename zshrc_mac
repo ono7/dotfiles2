@@ -153,6 +153,27 @@ fi
 
 # functions
 
+mkrole () {
+  local dir1="$@"
+  mydir=${dir1// /_}
+  echo "creating ansible role -> $mydir"
+  for d in defaults files handlers meta tasks templates tests vars
+  do
+    if [ ! -d $mydir/$d ]; then
+      mkdir -p $mydir/$d
+      echo "created $mydir/$d (dir)"
+    fi
+  done
+  for f in defaults handlers tasks meta vars
+  do
+    if [ ! -f "$mydir/$f/main.yml" ]; then
+      echo '---' >> $mydir/$f/main.yml
+      echo "created $mydir/$f/main.yml (file)"
+    fi
+  done
+  echo "ansible role $mydir created!"
+}
+
 take () {
   [ -z $1 ] && return
   local dir="$@"
