@@ -184,7 +184,7 @@ timezsh() {
 }
 
 alias gd='git diff'
-alias gs='git status'
+alias gs='git status --untracked-files=all'
 alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
 
 if [[ -f '/opt/homebrew/opt/fzf/bin/fzf' ]]; then
