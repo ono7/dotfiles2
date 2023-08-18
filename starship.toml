@@ -81,7 +81,8 @@ min_time = 1_000
 # disabled = true
 
 [directory]
-truncation_length = 5
+truncation_length = 50
+truncate_to_repo = false
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 style ="bold lavender"
 
