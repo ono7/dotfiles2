@@ -169,6 +169,10 @@ c () {
   tmux loadb -
 }
 
+p () {
+  tmux saveb -
+}
+
 vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
   vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"

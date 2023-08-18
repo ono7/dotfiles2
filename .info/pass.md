@@ -43,3 +43,11 @@ export PASSWORD_STORE_CHARACTER_SET='[:alnum:].,!&*%_~$#^@{}[]()<>|=/\+-'
 # dash `-` should go last to avoid nasties
 
 ```
+
+# macos
+
+```sh
+mkdir -m 0700 -p ~/.gnupg
+echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
+pkill -TERM gpg-agent
+```
