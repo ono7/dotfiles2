@@ -95,7 +95,7 @@ format = '\[$symbol[$ram( | $swap)]($style)\]'
 # symbol = "[ ](blue)"
 # symbol = "[ ](blue)"
 # symbol = "[ ](blue)"
-symbol = "[ ](teal)"
+symbol = "[ ](rosewater)"
  
 format = '[$symbol$branch]($style)'
 
@@ -107,7 +107,7 @@ ahead = "[⇡](blue)${count}"
 staged = '[++\($count\)](green)'
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "[⇣](blue)${count}"
-format = '( [$all_status$ahead_behind]($style)) '
+format = '( [$all_status$ahead_behind]($style))  '
 
 [git_commit]
 commit_hash_length = 8
@@ -115,7 +115,7 @@ style = "bold white"
 
 [golang]
 symbol = "[](cyan)"
-format = ' Go[ $symbol ]($style) '
+format = ' [ $symbol]($style) Go '
 
 [python]
 symbol = "[](green)"
@@ -127,11 +127,9 @@ format = ' [${symbol}${pyenv_prefix} ($virtualenv)]($style) '
 
 
 [custom.tmux]
-# function is_tmux() in zshrc
-# command = 'echo $TERM | cut -d"-" -f1'
 symbol = "🐇()"
 when = "[ ! -z $TMUX ]"
-format = ' [${symbol}]($style) '
+format = '   [${symbol}]($style) '
 
 [time]
 disabled = false
