@@ -109,10 +109,12 @@ echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
 if [[ $OSTYPE == "linux"* ]];  then
   echo '# compinit is done twice in ubuntu, skipping' > ~/.zshenv
   echo 'skip_global_compinit=1' >> ~/.zshenv
-if ! command -v pinentry-curses &> /dev/null then
-  echo 'installing pinentry-mac'
-  brew install pinentry-mac
+  if ! command -v pinentry-curses &> /dev/null then
+    echo 'installing pinentry-mac'
+    brew install pinentry-mac
+  fi
 fi
+
   echo "pinentry-program $(whence pinentry-curses)" > ~/.gnupg/gpg-agent.conf
   echo 'enable-ssh-support' >> ~/.gnupg/gpg-agent.conf
 fi
