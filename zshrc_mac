@@ -57,9 +57,12 @@ ta () {
 }
 
 # lets go right to businees
-command -v tmux &> /dev/null && ta || echo "tmux not found..."
+if [ ! -n $SSH_TTY ]; then
+  command -v tmux &> /dev/null && ta || echo "tmux not found..."
+fi
 
 typeset -U path
+
 
 # zsh completion
 [ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
