@@ -84,14 +84,16 @@ min_time = 1_000
 # truncate_length = how many directories deep before path is truncated
 truncation_length = 4
 truncate_to_repo = false
-format = "[$path]($style)[$lock_symbol]($lock_style) "
+# format = "[$path]($style)[$lock_symbol]($lock_style) "
+format = "[:$path]($style)[$read_only]($read_only_style) "
 style ="bold lavender"
 
 [memory_usage]
 format = '\[$symbol[$ram( | $swap)]($style)\]'
 
 [git_branch]
-symbol = "[](blue)"
+symbol = "[ ](blue)"
+ 
 format = '[$symbol $branch]($style)'
 
 [git_status]
