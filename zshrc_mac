@@ -155,14 +155,16 @@ fi
 
 mkrole () {
   local dir1="$@"
-  mydir=${dir1// /_}
+  mydir="roles/${dir1// /_}"
+  if [ -d $mydir ]; then
+    echo "role $mydir already exists :("
+    return 1
+  fi
   echo "creating ansible role -> $mydir"
   for d in defaults files handlers meta tasks templates tests vars
   do
-    if [ ! -d $mydir/$d ]; then
-      mkdir -p $mydir/$d
-      echo "created $mydir/$d (dir)"
-    fi
+    mkdir -p $mydir/$d
+    echo "created $mydir/$d (dir)"
   done
   for f in defaults handlers tasks meta vars
   do
@@ -171,13 +173,19 @@ mkrole () {
       echo "created $mydir/$f/main.yml (file)"
     fi
   done
-  echo "ansible role $mydir created!"
+  echo "done!"
 }
 
 mkansible () {
   mydir="$@"
   target=${mydir// /_}
+  if [ -d $target ]; then
+    echo "directory $target, already exists :("
+    return 1
+  fi
+  echo "creating ansible shell project $target"
   cp -r ~/.dotfiles/ansible/shell $target
+  echo "done!"
 }
 
 take () {
