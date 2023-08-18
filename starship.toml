@@ -94,7 +94,8 @@ format = '\[$symbol[$ram( | $swap)]($style)\]'
 [git_branch]
 # symbol = "[ ](blue)"
 # symbol = "[ ](blue)"
-symbol = "[ ](blue)"
+# symbol = "[ ](blue)"
+symbol = "[ ](teal)"
  
 format = '[$symbol$branch]($style)'
 
