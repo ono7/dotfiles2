@@ -81,7 +81,8 @@ min_time = 1_000
 # disabled = true
 
 [directory]
-truncation_length = 50
+# truncate_length = how many directories deep before path is truncated
+truncation_length = 4
 truncate_to_repo = false
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 style ="bold lavender"
