@@ -52,9 +52,7 @@ ln -sf ~/.dotfiles/zshrc_mac ~/.zshrc
 ln -sf ~/.dotfiles/mysql/cn.cnf ~/.cn.cnf
 ln -sf ~/.dotfiles/ctags ~/.ctags
 ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
-
 ln -sf ~/.dotfiles/dircolors ~/.dircolors
-
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 cp ~/.dotfiles/gitconfig_template ~/.gitconfig
 # ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py

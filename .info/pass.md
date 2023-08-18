@@ -26,6 +26,9 @@
 # trust key
 
 - `gpg --edit-key xyz` where xyz is the gpg key from `gpg -K`
+  - `trust`
+  * change expiration date
+    - `expire`
 
 # reset terminal
 
