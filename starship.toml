@@ -92,9 +92,10 @@ style ="bold lavender"
 format = '\[$symbol[$ram( | $swap)]($style)\]'
 
 [git_branch]
-symbol = "[ ](blue)"
+# symbol = "[ ](blue)"
+symbol = "[ ](blue)"
  
-format = '[$symbol $branch]($style)'
+format = '[$symbol$branch]($style)'
 
 [git_status]
 # up_to_date = "[✓](bold green)"
