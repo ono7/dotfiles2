@@ -102,6 +102,7 @@ format = '[$symbol$branch]($style)'
 # up_to_date = "[✓](bold green)"
 stashed = ""
 ahead = "[⇡](blue)${count}"
+# staged = '[++\($count\)](green)'
 staged = '[++\($count\)](green)'
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "[⇣](blue)${count}"
