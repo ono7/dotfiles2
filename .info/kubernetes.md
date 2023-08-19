@@ -13,6 +13,11 @@ rancher, kubernetes as a service
 
 this will return the schema needed to build automation for configmap.data
 
+## access containers in k8
+
+`kubectl exec -it xyz-container-name bash`
+this will log in to container xyz-container-name using bash interactively
+
 ## kubescape
 
 scan for security concerns, can also scan repos and code as well as containers
