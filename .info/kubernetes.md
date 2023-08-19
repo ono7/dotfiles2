@@ -5,6 +5,14 @@ https://github.com/devopsjourney1/learn-k8s
 
 rancher, kubernetes as a service
 
+# use kubectl explain to get dataneeded to create apis
+
+** discover schemas for any of the k8 apis by using kubectl explain command **
+
+`kubectl explain configmap.data`
+
+this will return the schema needed to build automation for configmap.data
+
 ## kubescape
 
 scan for security concerns, can also scan repos and code as well as containers
