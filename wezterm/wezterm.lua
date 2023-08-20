@@ -94,7 +94,8 @@ return {
       -- delete line
       key = "Backspace",
       mods = "ALT",
-      action = wezterm.action.SendString("\x15"),
+      -- action = wezterm.action.SendString("\x15"),
+      action = wezterm.action.SendString("\x17"),
     },
     {
       -- tmux rename window
