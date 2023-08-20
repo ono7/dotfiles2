@@ -25,7 +25,7 @@ local on_attach = function(client, bufnr)
   k("<space>i", "<cmd>lua vim.lsp.buf.implementation()<cr>")
   k("<space><space>", vim.lsp.buf.code_action, "[<code action>]")
   -- k("<c-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  k("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+  k("gn", vim.lsp.buf.rename, "[R]e[n]ame")
   -- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   -- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 end

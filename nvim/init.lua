@@ -456,9 +456,11 @@ local pair_map_2 = {
 k("i", "<enter>", function()
     -- use this one when we are autoclosing
     local line = vim.api.nvim_get_current_line()
-    local prev_col = vim.fn.col(".") - 1
-    local prev_char = line:sub(prev_col, prev_col)
-    if pair_map_2[prev_char] then
+    local col = vim.fn.col('.')
+    local p = line:sub(col - 1, col - 1)
+    local n = line:sub(col, col)
+    local pmap = pair_map_2
+    if pmap[p] then
         return "<CR><Esc>O"
     else
         return "<CR>"

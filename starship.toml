@@ -96,7 +96,6 @@ format = '\[$symbol[$ram( | $swap)]($style)\]'
 # symbol = "[ ](blue)"
 # symbol = "[ ](blue)"
 symbol = "[ ](rosewater)"
-
 format = '[$symbol$branch]($style)'
 
 [git_status]
@@ -107,7 +106,7 @@ ahead = "[⇡](blue)${count}"
 staged = '[++\($count\)](green)'
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "[⇣](blue)${count}"
-format = '([$all_status$ahead_behind]($style)) '
+format = ' ([$all_status$ahead_behind]($style)) '
 
 [git_commit]
 commit_hash_length = 8
@@ -115,7 +114,7 @@ style = "bold white"
 
 [golang]
 symbol = "[](cyan)"
-format = '[ $symbol]($style) Go '
+format = '[$symbol]($style) Go '
 
 [python]
 symbol = "[](green)"
