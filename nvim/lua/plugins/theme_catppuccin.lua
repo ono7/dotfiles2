@@ -43,7 +43,7 @@ local mycolors = {
   green = "#ceeac8",
   -- green = "#b2d6a9",
   -- mauve = "#8174d3"
-  -- mauve = "#caa1fd"
+  mauve = "#caa1fd"
 }
 
 config.setup({
@@ -114,6 +114,7 @@ vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#8bc2f0" })
 vim.api.nvim_set_hl(0, "@property", { fg = "#ffa5c3" })
 vim.api.nvim_set_hl(0, "@variable", { fg = "#c7d1ff" })
 vim.api.nvim_set_hl(0, "@function", {})
+vim.api.nvim_set_hl(0, "@keyword.function", { fg = mycolors.mauve, italic = true })
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
 vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "#1B192C", fg = "#1B192C" })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })

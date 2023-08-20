@@ -35,7 +35,7 @@ o.writebackup = false
 o.history = 1000
 o.ruler = true
 o.scrolloff = 8
-o.sidescrolloff = 8
+o.sidescrolloff = 1
 opt.splitright = true
 opt.splitbelow = true
 -- opt.winbar = "%=%M %-.45f"

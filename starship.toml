@@ -118,7 +118,7 @@ format = '[$symbol]($style) Go '
 
 [python]
 symbol = "[](green)"
-format = '[${symbol}${pyenv_prefix} ($virtualenv)]($style) '
+format = '[${symbol}${pyenv_prefix} (${virtualenv})]($style) '
 
 # [lua]
 # disabled = true

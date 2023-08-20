@@ -267,7 +267,7 @@ k('i', '"', function()
     }
     -- if p == '\\' or cb[p] or q[p] or q[n] then
     --     return '"'
-    if p == '\\' or cb[p] then
+    if p == '\\' or cb[p] or p == '"' then
         return '"'
     elseif n == '"' then
         return '<Right>'
@@ -290,11 +290,12 @@ k('i', '`', function()
     local n = line:sub(col, col)
     local an = isAlphaNum
     local cb = closedBrackets
-    local q = {
-        ["'"] = true,
-        ['"'] = true,
-    }
-    if p == '\\' or cb[p] or q[p] or q[n] then
+    -- local q = {
+    --     ["'"] = true,
+    --     ['"'] = true,
+    --     ['`'] = true,
+    -- }
+    if p == '\\' or cb[p] or p == "`" then
         return "`"
     elseif n == '`' then
         return '<Right>'
@@ -323,7 +324,8 @@ k('i', "'", function()
     --     -- ['`'] = true,
     -- }
     -- if p == '\\' or cb[p] or q[p] or q[n] then
-    if p == '\\' or cb[p] then
+    -- if p == '\\' or cb[p] then
+    if p == '\\' or cb[p] or p == "'" then
         return "'"
     elseif n == "'" then
         return '<Right>'
