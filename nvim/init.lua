@@ -188,6 +188,12 @@ k("c", "<c-b>", "<S-left>", opt)
 
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
+k("n", "g(", "?(<cr>")
+k("n", "g)", "/(<cr>")
+k("n", "g{", "?{<cr>")
+k("n", "g}", "/}<cr>")
+k("n", "g[", "?[<cr>")
+k("n", "g]", "/]<cr>")
 
 local quotes = {
     ['"'] = true,
