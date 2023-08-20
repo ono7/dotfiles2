@@ -44,7 +44,7 @@ configs.setup({
       expander_highlight = "NeoTreeExpander",
     },
     icon = {
-      folder_closed = "",
+      folder_closed = "",
       folder_open = "",
       -- folder_closed = "",
       --    folder_open = "",
