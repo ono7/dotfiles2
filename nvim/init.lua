@@ -190,8 +190,10 @@ k("c", "<c-b>", "<S-left>", opt)
 
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
-k("n", "g(", [[?\v\w+ \w+.{-}\(\zs<cr>]])
-k("n", "g)", [[/\v\w+ \w+.{-}\(\zs<cr>]])
+-- k("n", "g(", [[?\v(\w+\s)?\w+.{-}\(\zs<cr>]])
+-- k("n", "g)", [[/\v(\w+\s)?\w+.{-}\(\zs<cr>]])
+k("n", "g(", [[?\v\w+.{-}\(\zs<cr>]])
+k("n", "g)", [[/\v\w+.{-}\(\zs<cr>]])
 k("n", "g{", "?{<cr>")
 k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
@@ -275,7 +277,7 @@ k('i', '"', function()
     }
     -- if p == '\\' or cb[p] or q[p] or q[n] then
     --     return '"'
-    if p == '\\' or cb[p] or p == '"' then
+    if p == '\\' or cb[p] or p == '"' or p == ':' then
         return '"'
     elseif n == '"' then
         return '<Right>'
@@ -303,7 +305,7 @@ k('i', '`', function()
     --     ['"'] = true,
     --     ['`'] = true,
     -- }
-    if p == '\\' or cb[p] or p == "`" then
+    if p == '\\' or cb[p] or p == "`" or p == '`' then
         return "`"
     elseif n == '`' then
         return '<Right>'
@@ -333,7 +335,7 @@ k('i', "'", function()
     -- }
     -- if p == '\\' or cb[p] or q[p] or q[n] then
     -- if p == '\\' or cb[p] then
-    if p == '\\' or cb[p] or p == "'" then
+    if p == '\\' or cb[p] or p == "'" or p == ":" then
         return "'"
     elseif n == "'" then
         return '<Right>'

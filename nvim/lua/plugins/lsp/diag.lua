@@ -36,9 +36,9 @@ local function current_line_diagnostics()
 end
 
 local signs = {
-  Error = " ",
-  Warn = " ",
-  Hint = " ",
+  Error = "󰯆 ",
+  Warn = " ",
+  Hint = "󰛨 ",
   Info = " ",
 }
 

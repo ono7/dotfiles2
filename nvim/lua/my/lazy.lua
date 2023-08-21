@@ -91,7 +91,7 @@ require("lazy").setup({
       local ft = require("Comment.ft")
       ft.jinja = { '{#%s#}', '{#%s#}' }
       ft.text = { '#%s', '#%s#' }
-      require('Comment').setup()
+      require('Comment').setup({ ignore = "^$" })
     end
   },
   {
