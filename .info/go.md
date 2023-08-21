@@ -1,3 +1,7 @@
+# dlv (debug)
+
+`dlv debug main.go -- build/1.json` debug main.go, pass build/1.json as an argument
+
 # generics ~
 
 ```go
