@@ -1,0 +1,34 @@
+snippet make "Makefile" w
+  BINARY_NAME := ${1}
+  OUTPUT_DIR := ${2}
+  BUILD_DIR := build
+
+  RED := \033[0;31m
+  GREEN := \033[0;32m
+  YELLOW := \033[0;33m
+  RESET := \033[0m
+
+  all: build
+  test: testing
+
+  build:
+    @echo "$(GREEN)building...$(RESET)"
+    mkdir -p $(BUILD_DIR)
+    go build -o $(BUILD_DIR)/$(BINARY_NAME)
+
+  install:
+    @echo "$(GREEN)installing binaries to $(OUTPUT_DIR)...$(RESET)"
+    cp $(BUILD_DIR)/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+
+  clean:
+    @echo "$(RED)deleting built and installed binaries...$(RESET)"
+    rm -f $(BUILD_DIR)/$(BINARY_NAME)
+  ifdef OUTPUT_DIR
+    rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
+  endif
+
+  testing:
+    @echo "running test suite..."
+    cd $(BUILD_DIR);./$(BINARY_NAME)
+
+  .PHONY: all build install clean testing

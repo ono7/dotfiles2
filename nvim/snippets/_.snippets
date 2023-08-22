@@ -18,24 +18,3 @@ snippet note "note" w
   NOTE: `$USER` ~ ${0:${VISUAL}}
 snippet d "done" w
   ${0:${VISUAL}} ✅
-
-snippet make "Makefile" w
-  BINARY_NAME := ${1}
-  OUTPUT_DIR := ${2}
-  BUILD_DIR := build
-
-  all: build install
-
-  build:
-    mkdir -p $(OUTPUT_DIR)
-    mkdir -p $(BUILD_DIR)
-    ${3} $(BUILD_DIR)/$(BINARY_NAME) ${0}
-
-  install:
-    cp $(BUILD_DIR)/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
-
-  clean:
-    rm -f $(BUILD_DIR)/$(BINARY_NAME)
-    rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
-
-  .PHONY: all build install clean
