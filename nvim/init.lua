@@ -275,18 +275,14 @@ k('i', '"', function()
     local q = {
         ["'"] = true,
     }
-    -- if p == '\\' or cb[p] or q[p] or q[n] then
-    --     return '"'
-    if p == '\\' or cb[p] or p == ':' then
+    if p == '\\' or cb[p] then
         return '"'
     elseif n == '"' then
         return '<Right>'
-    elseif an[p] or an[n] then
+    elseif an[p] or an[n] or p == ":" then
         return '"'
     elseif r_pair_map[n] then
         return '""<Left>'
-        -- elseif n ~= '' or an[p] then
-        --     return '"'
     end
     return '""<Left>'
 end
@@ -329,22 +325,14 @@ k('i', "'", function()
     local n = line:sub(col, col)
     local an = isAlphaNum
     local cb = closedBrackets
-    -- local q = {
-    --     ['"'] = true,
-    --     -- ['`'] = true,
-    -- }
-    -- if p == '\\' or cb[p] or q[p] or q[n] then
-    -- if p == '\\' or cb[p] then
-    if p == '\\' or cb[p] or p == ":" then
+    if p == '\\' or cb[p] then
         return "'"
     elseif n == "'" then
         return '<Right>'
-    elseif an[p] or an[n] then
+    elseif an[p] or an[n] or p == ":" then
         return "'"
     elseif r_pair_map[n] then
         return "''<Left>"
-        -- elseif n ~= '' or an[p] then
-        --     return "'"
     end
     return "''<Left>"
 end
