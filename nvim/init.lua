@@ -575,7 +575,6 @@ local packages = {
     "plugins.navigator",
     "plugins.neotree",
     "plugins.surround",
-    "plugins.floaterm",
     "plugins.lsp.cmp",
     "plugins.lsp.mason",        -- mason first, or lsp breaks
     "plugins.gitsigns",
@@ -587,6 +586,7 @@ local packages = {
     "my.cmds",
     -- "plugins.harpoon",
     -- "plugins.snippet",
+    -- "plugins.floaterm",
     -- "plugins.core_dap",
     -- "plugins.dap_adapters",
 }
