@@ -28,7 +28,7 @@ snippet make "Makefile" w
   endif
 
   testing:
-    @echo "running test suite..."
+    @echo "$(GREEN)Running tests suite...$(RESET)"
     cd $(BUILD_DIR);./$(BINARY_NAME)
 
   .PHONY: all build install clean testing
