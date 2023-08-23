@@ -11,14 +11,18 @@ o.foldmethod = "indent"
 o.mouse = "nv"
 o.spellsuggest = "best,5"
 o.title = false
-o.cmdheight = 0
 o.colorcolumn = "99999" -- fixes indentline?
 o.directory = "~/.tmp"
 o.undodir = os.getenv("HOME") .. "/.nvim_undo"
 o.undofile = true
 o.swapfile = false
 o.smartcase = true
-o.laststatus = 3
+
+--- status line area ---
+o.laststatus = 0
+o.showmode = true
+o.cmdheight = 1
+
 opt.fillchars:append("stl: ")
 opt.cursorline = true
 o.cursorcolumn = false
@@ -65,7 +69,6 @@ o.wildignore = [[.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/
 -- o.tags = [[tags;/]]
 o.tags = [[./tags,tags;~]] -- search upwards until ~ (homedir)
 o.showmatch = false
-o.showmode = true
 o.showtabline = 0
 o.matchtime = 0
 o.ttimeout = true -- disable for indefinite wait time
