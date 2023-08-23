@@ -634,7 +634,7 @@ if vim.opt.diff:get() then
     m("n", "[", "[c", opt)
 end
 
--- vim.o.guicursor = "" -- uncomment for beam cursor
-vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
+vim.o.guicursor = "" -- uncomment for beam cursor
+-- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
 vim.o.mouse = "n"
 -- # vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
