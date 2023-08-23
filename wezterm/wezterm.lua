@@ -142,7 +142,7 @@ return {
   },
   adjust_window_size_when_changing_font_size = false,
   window_close_confirmation                  = "NeverPrompt",
-  cursor_blink_rate                          = 350,
+  cursor_blink_rate                          = 0,
   default_cursor_style                       = "BlinkingBlock",
   font_size                                  = 18,
   line_height                                = 1.4,

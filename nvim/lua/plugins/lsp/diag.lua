@@ -46,6 +46,7 @@ local virt_handler = vim.diagnostic.handlers.virtual_text
 local ns = vim.api.nvim_create_namespace "current_line_virt"
 local severity = vim.diagnostic.severity
 local virt_options = {
+  border = "rounded",
   prefix = "",
   format = function(diagnostic)
     local message = vim.split(diagnostic.message, "\n")[1]
@@ -224,11 +225,11 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { 
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
--- vim.diagnostic.config({
---   float = {
---     border = "rounded",
---   },
--- })
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+})
 
 --- old config for reference
 

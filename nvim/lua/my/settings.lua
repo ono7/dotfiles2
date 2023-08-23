@@ -11,14 +11,14 @@ o.foldmethod = "indent"
 o.mouse = "nv"
 o.spellsuggest = "best,5"
 o.title = false
-o.cmdheight = 1
+o.cmdheight = 0
 o.colorcolumn = "99999" -- fixes indentline?
 o.directory = "~/.tmp"
 o.undodir = os.getenv("HOME") .. "/.nvim_undo"
 o.undofile = true
 o.swapfile = false
 o.smartcase = true
-o.laststatus = 0
+o.laststatus = 2
 opt.fillchars:append("stl: ")
 opt.cursorline = true
 o.cursorcolumn = false
