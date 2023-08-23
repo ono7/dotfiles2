@@ -22,6 +22,7 @@ snippet ansible.cfg "ansible config file" b
 
   # lets go!
 
+
   # transport: smart (default), ssh, paramiko
   # transport=paramiko
 
@@ -31,7 +32,11 @@ snippet ansible.cfg "ansible config file" b
   # strategy=free
 
   # gathering: smart, implicit (default), explicit (save time)
-  gathering=explicit
+  gathering = smart
+  fact_caching = jsonfile
+  fact_caching_connection = fact_cache
+  # 4 hours
+  fact_caching_timeout = 1440
 
   # deprication_warnings=True
   # devel_warnings=True
