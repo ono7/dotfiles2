@@ -128,7 +128,7 @@ k("n", ",r", vim.lsp.buf.format, silent)
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
     vim.fn.system('tmux load-buffer -w -', text)
-    print('n |  ')
+    -- print('n |  ')
 end
 
 -- Lua function to send text to Tmux
@@ -136,7 +136,7 @@ _G.send_to_tmux_visual = function()
     local text = get_visual_selection()
     if text then
         vim.fn.system('tmux load-buffer -w -', text)
-        print('v |  ')
+        -- print('v |  ')
     end
 end
 
