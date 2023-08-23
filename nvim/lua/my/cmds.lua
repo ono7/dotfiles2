@@ -19,6 +19,24 @@ c({ "VimResized" }, {
   group = create_augroup("vim_resize_windows_automatically", { clear = true }),
 })
 
+c({ "InsertLeavePre" }, {
+  pattern = "*",
+  callback = function()
+    vim.opt.laststatus = 3
+    vim.opt.cmdheight = 0
+  end,
+  group = create_augroup("last_status_leave", { clear = true }),
+})
+
+c({ "InsertEnter" }, {
+  pattern = "*",
+  callback = function()
+    vim.opt.laststatus = 0
+    vim.opt.cmdheight = 1
+  end,
+  group = create_augroup("last_status_enter", { clear = true }),
+})
+
 -- restore cursor position on enter
 vim.api.nvim_create_autocmd("BufRead", {
   callback = function(opts)
