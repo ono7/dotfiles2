@@ -58,7 +58,7 @@ ta () {
 }
 
 # lets go right to businees
-if [ ! -n $SSH_TTY ]; then
+if [ -n $SSH_TTY ]; then
   command -v tmux &> /dev/null && ta || echo "tmux not found..."
 fi
 

@@ -22,8 +22,10 @@ c({ "VimResized" }, {
 c({ "InsertLeave" }, {
   pattern = "*",
   callback = function()
-    vim.opt.laststatus = 3
-    vim.opt.cmdheight = 0
+    vim.schedule(function()
+      vim.opt.laststatus = 3
+      vim.opt.cmdheight = 0
+    end)
   end,
   group = create_augroup("last_status_leave", { clear = true }),
 })
@@ -31,8 +33,10 @@ c({ "InsertLeave" }, {
 c({ "InsertEnter" }, {
   pattern = "*",
   callback = function()
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 1
+    vim.schedule(function()
+      vim.opt.laststatus = 0
+      vim.opt.cmdheight = 1
+    end)
   end,
   group = create_augroup("last_status_enter", { clear = true }),
 })
