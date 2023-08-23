@@ -19,7 +19,7 @@ c({ "VimResized" }, {
   group = create_augroup("vim_resize_windows_automatically", { clear = true }),
 })
 
-c({ "InsertLeavePre" }, {
+c({ "InsertLeave" }, {
   pattern = "*",
   callback = function()
     vim.opt.laststatus = 3
