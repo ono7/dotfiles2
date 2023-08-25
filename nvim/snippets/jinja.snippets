@@ -1,3 +1,7 @@
+extends html
+
+priority 1000
+
 snippet jh "header" w
   #jinja2: lstrip_blocks: True
   {#
@@ -8,13 +12,13 @@ snippet jh "header" w
   #}
   ${0}
 
-snippet jbi "block" w
-  {% ${0:${VISUAL}} %}
+snippet bi "block" w
+  {% ${0} %}
 
-snippet jset "set" w
-  {% set ${0:${VISUAL}} %}
+snippet set "set" w
+  {% set ${0} %}
 
-snippet jc "block comment" w
+snippet bc "block comment" w
   {#
 
     ${0:${VISUAL}}
@@ -29,6 +33,7 @@ snippet jr "Raw block" w
 
 snippet jb "block" w
   {% ${0} %}
+    ${VISUAL}
   {% end${0/\v(\w+).*/\1/g} %}
 
 snippet jv "variable inside curly" w
@@ -36,5 +41,11 @@ snippet jv "variable inside curly" w
 
 snippet jelif "if statement" w
   {% if ${0} %}
+    ${VISUAL}
   {% else %}
+  {% endif %}
+
+snippet jif "if statement" w
+  {% if ${0} %}
+    ${VISUAL}
   {% endif %}

@@ -14,8 +14,8 @@ snippy_setup.setup({
       ['<Tab>'] = 'expand_or_advance',
       ['<S-Tab>'] = 'previous',
     },
-    nx = {
-      ['<leader>d'] = 'cut_text',
+    x = {
+      ['<Tab>'] = 'cut_text',
     },
   },
 })
