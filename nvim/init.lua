@@ -286,24 +286,39 @@ for digit = 48, 57 do -- ASCII values for '0' to '9'
 end
 
 -- handles ""
+-- k('i', '"', function()
+--     local line = vim.api.nvim_get_current_line()
+--     local col = vim.fn.col('.')
+--     local p = line:sub(col - 1, col - 1)
+--     local n = line:sub(col, col)
+--     local an = isAlphaNum
+--     local cb = closedBrackets
+--     local q = {
+--         ["'"] = true,
+--     }
+--     if p == '\\' or cb[p] then
+--         return '"'
+--     elseif n == '"' then
+--         return '<Right>'
+--     elseif an[p] or an[n] or p == ":" then
+--         return '"'
+--     elseif r_pair_map[n] then
+--         return '""<Left>'
+--     end
+--     return '""<Left>'
+-- end
+-- , { expr = true })
+
+-- handles ""
 k('i', '"', function()
     local line = vim.api.nvim_get_current_line()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local an = isAlphaNum
-    local cb = closedBrackets
-    local q = {
-        ["'"] = true,
-    }
-    if p == '\\' or cb[p] then
+    if p == '\\' then
         return '"'
     elseif n == '"' then
         return '<Right>'
-    elseif an[p] or an[n] or p == ":" then
-        return '"'
-    elseif r_pair_map[n] then
-        return '""<Left>'
     end
     return '""<Left>'
 end
@@ -315,21 +330,10 @@ k('i', '`', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local an = isAlphaNum
-    local cb = closedBrackets
-    -- local q = {
-    --     ["'"] = true,
-    --     ['"'] = true,
-    --     ['`'] = true,
-    -- }
-    if p == '\\' or cb[p] or p == '`' then
+    if p == '\\' then
         return "`"
     elseif n == '`' then
         return '<Right>'
-    elseif r_pair_map[n] then
-        return '``<Left>'
-    elseif n ~= '' or an[p] then
-        return '`'
     end
     return '``<Left>'
 end
@@ -344,16 +348,10 @@ k('i', "'", function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local an = isAlphaNum
-    local cb = closedBrackets
-    if p == '\\' or cb[p] then
+    if p == '\\' then
         return "'"
     elseif n == "'" then
         return '<Right>'
-    elseif an[p] or an[n] or p == ":" then
-        return "'"
-    elseif r_pair_map[n] then
-        return "''<Left>"
     end
     return "''<Left>"
 end
