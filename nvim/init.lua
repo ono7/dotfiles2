@@ -341,10 +341,9 @@ k('i', '[', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local a = isAlphaNum
     if n == '[' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
         return '['
     end
     return '[]<Left>'
@@ -367,10 +366,9 @@ k('i', '{', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local a = isAlphaNum
     if n == '{' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
         return '{'
     end
     return '{}<Left>'
@@ -394,10 +392,9 @@ k('i', '(', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local a = isAlphaNum
     if n == '(' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
         return '('
     end
     return '()<Left>'
