@@ -130,7 +130,6 @@ c("BufWritePre", {
   end,
 })
 
--- auto create dirs when saving files
 c("BufWritePre", {
   group = create_augroup("write_and_clean_empty_lines", { clear = true }),
   pattern = { "*" },

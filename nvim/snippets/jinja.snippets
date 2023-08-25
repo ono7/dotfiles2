@@ -1,3 +1,4 @@
+extends html
 snippet jh "header" w
   #jinja2: lstrip_blocks: True
   {#
@@ -9,8 +10,10 @@ snippet jh "header" w
   ${0}
 
 snippet jbi "block" w
-  {% ${1:${VISUAL}} %}
-  ${0}
+  {% ${0:${VISUAL}} %}
+
+snippet jset "set" w
+  {% set ${0:${VISUAL}} %}
 
 snippet jc "block comment" w
   {#
@@ -26,15 +29,13 @@ snippet jr "Raw block" w
   {% raw %} ${0:${VISUAL}} {% endraw %}
 
 snippet jb "block" w
-  {% ${1} %}
-    ${0:${VISUAL}}
-  {% end${1/\v(\w+).*/\1/g} %}
+  {% ${0} %}
+  {% end${0/\v(\w+).*/\1/g} %}
 
 snippet jv "variable inside curly" w
    {{ ${0:${VISUAL}} }}
 
 snippet jelif "if statement" w
-  {% if ${1} %}
-    ${0:${VISUAL}}
+  {% if ${0} %}
   {% else %}
   {% endif %}

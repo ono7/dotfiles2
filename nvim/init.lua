@@ -120,10 +120,31 @@ k("x", "s", "")
 k("n", "gp", "`[v`]", silent)
 k("v", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
-k("n", "<leader>w", ":w<cr>", silent)
-k("n", ",w", ":w<cr>", silent)
-k("n", "<leader>r", vim.lsp.buf.format, silent)
-k("n", ",r", vim.lsp.buf.format, silent)
+-- k("n", "<leader>w", ":w<cr>", silent)
+
+k("n", "<leader>w", function()
+    vim.opt.laststatus = 0
+    vim.opt.cmdheight = 1
+    vim.cmd [[:write!]]
+end, silent)
+
+k("n", ",w", function()
+    vim.opt.laststatus = 0
+    vim.opt.cmdheight = 1
+    vim.cmd [[:write!]]
+end, silent)
+
+k("n", "<leader>r", function()
+    vim.opt.laststatus = 0
+    vim.opt.cmdheight = 1
+    vim.lsp.buf.format()
+end, silent)
+k("n", ",r", function()
+    vim.opt.laststatus = 0
+    vim.opt.cmdheight = 1
+    vim.lsp.buf.format()
+end, silent)
+-- k("n", ",r", vim.lsp.buf.format, silent)
 
 -- Lua function to send text to Tmux
 _G.send_to_tmux = function(text)
