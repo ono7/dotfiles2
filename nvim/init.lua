@@ -315,10 +315,10 @@ k('i', '"', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    if p == '\\' then
-        return '"'
-    elseif n == '"' then
+    if n == '"' then
         return '<Right>'
+    elseif p == '\\' then
+        return '"'
     end
     return '""<Left>'
 end
@@ -330,10 +330,10 @@ k('i', '`', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    if p == '\\' then
-        return "`"
-    elseif n == '`' then
+    if n == '`' then
         return '<Right>'
+    elseif p == '\\' then
+        return "`"
     end
     return '``<Left>'
 end
@@ -348,10 +348,10 @@ k('i', "'", function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    if p == '\\' then
-        return "'"
-    elseif n == "'" then
+    if n == "'" then
         return '<Right>'
+    elseif p == '\\' then
+        return "'"
     end
     return "''<Left>"
 end
