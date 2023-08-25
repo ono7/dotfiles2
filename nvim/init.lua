@@ -343,7 +343,7 @@ k('i', '[', function()
     local n = line:sub(col, col)
     if n == '[' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
+    elseif p == '\\' or isAlphaNum[n] then
         return '['
     end
     return '[]<Left>'
@@ -368,7 +368,7 @@ k('i', '{', function()
     local n = line:sub(col, col)
     if n == '{' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
+    elseif p == '\\' or isAlphaNum[n] then
         return '{'
     end
     return '{}<Left>'
@@ -394,7 +394,7 @@ k('i', '(', function()
     local n = line:sub(col, col)
     if n == '(' then
         return '<Right>'
-    elseif p == '\\' or n == '"' or n == "'" or n == "`" or isAlphaNum[n] then
+    elseif p == '\\' or isAlphaNum[n] then
         return '('
     end
     return '()<Left>'
