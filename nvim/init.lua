@@ -365,12 +365,10 @@ k('i', '[', function()
     local n = line:sub(col, col)
     local a = isAlphaNum
     local ob = openBrackets
-    if p == '"' or p == "'" or p == "`" then
-        return '[]<Left>'
-    elseif p == '\\' or a[n] or ob[n] then
-        return '['
-    elseif n == '[' then
+    if n == '[' then
         return '<Right>'
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+        return '['
     end
     return '[]<Left>'
 end, { expr = true })
@@ -393,13 +391,10 @@ k('i', '{', function()
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
     local a = isAlphaNum
-    local ob = openBrackets
-    if p == '"' or p == "'" or p == "`" then
-        return '{}<Left>'
-    elseif p == '\\' or a[n] or ob[n] then
-        return '{'
-    elseif n == '{' then
+    if n == '{' then
         return '<Right>'
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+        return '{'
     end
     return '{}<Left>'
 end
@@ -424,12 +419,10 @@ k('i', '(', function()
     local n = line:sub(col, col)
     local a = isAlphaNum
     local ob = openBrackets
-    if p == '"' or p == "'" or p == "`" then
-        return '()<Left>'
-    elseif p == '\\' or a[n] or ob[n] then
-        return '('
-    elseif n == '(' then
+    if n == '(' then
         return '<Right>'
+    elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
+        return '('
     end
     return '()<Left>'
 end
