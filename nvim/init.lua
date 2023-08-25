@@ -222,12 +222,6 @@ k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
 
-local quotes = {
-    ['"'] = true,
-    ["'"] = true,
-    ['`'] = true,
-}
-
 local openBrackets = {
     ["("] = true,
     ["["] = true,
@@ -244,17 +238,6 @@ local rightBracketsAndQuotes = {
     ['\\'] = true,
 }
 
-local rightBrackets = {
-    [")"] = true,
-    ["]"] = true,
-    ["}"] = true,
-}
-
-local closed_brackets = {
-    [")"] = true,
-    ["]"] = true,
-    ["}"] = true,
-}
 
 local pair_map = {
     ["("] = ")",
@@ -274,12 +257,6 @@ local r_pair_map = {
     ["'"] = "'",
     ['"'] = '"',
     ["`"] = "`",
-}
-
-local closedBrackets = {
-    [")"] = true,
-    ["]"] = true,
-    ["}"] = true,
 }
 
 
@@ -305,42 +282,16 @@ for digit = 48, 57 do -- ASCII values for '0' to '9'
 end
 
 --- handles ""
--- k('i', '"', function()
---     local line = vim.api.nvim_get_current_line()
---     local col = vim.fn.col('.')
---     local p = line:sub(col - 1, col - 1)
---     local n = line:sub(col, col)
---     local an = isAlphaNum
---     local cb = closedBrackets
---     local q = {
---         ["'"] = true,
---     }
---     if p == '\\' or cb[p] then
---         return '"'
---     elseif n == '"' then
---         return '<Right>'
---     elseif an[p] or an[n] or p == ":" then
---         return '"'
---     elseif r_pair_map[n] then
---         return '""<Left>'
---     end
---     return '""<Left>'
--- end
--- , { expr = true })
-
---- handles ""
 k('i', '"', function()
     local line = vim.api.nvim_get_current_line()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local rbq = rightBracketsAndQuotes
-    local oB = openBrackets
     if n == '"' then
         return '<Right>'
-    elseif rbq[p] then
+    elseif rightBracketsAndQuotes[p] then
         return '"'
-    elseif oB[n] then
+    elseif openBrackets[n] then
         return '"'
     end
     return '""<Left>'
@@ -353,13 +304,11 @@ k('i', '`', function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local allB = rightBracketsAndQuotes
-    local oB = openBrackets
     if n == '`' then
         return '<Right>'
-    elseif allB[p] then
+    elseif rightBracketsAndQuotes[p] then
         return "`"
-    elseif oB[n] then
+    elseif openBrackets[n] then
         return "`"
     end
     return '``<Left>'
@@ -375,13 +324,11 @@ k('i', "'", function()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
-    local allB = rightBracketsAndQuotes
-    local oB = openBrackets
     if n == "'" then
         return '<Right>'
-    elseif allB[p] then
+    elseif rightBracketsAndQuotes[p] then
         return "'"
-    elseif oB[n] then
+    elseif openBrackets[n] then
         return "'"
     end
     return "''<Left>"
@@ -395,7 +342,6 @@ k('i', '[', function()
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
     local a = isAlphaNum
-    local ob = openBrackets
     if n == '[' then
         return '<Right>'
     elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
@@ -449,7 +395,6 @@ k('i', '(', function()
     local p = line:sub(col - 1, col - 1)
     local n = line:sub(col, col)
     local a = isAlphaNum
-    local ob = openBrackets
     if n == '(' then
         return '<Right>'
     elseif p == '\\' or n == '"' or n == "'" or n == "`" or a[n] then
@@ -501,7 +446,6 @@ k("i", "<enter>", function()
     local line = vim.api.nvim_get_current_line()
     local col = vim.fn.col('.')
     local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
     local pmap = pair_map_2
     if pmap[p] then
         return "<CR><Esc>O"
