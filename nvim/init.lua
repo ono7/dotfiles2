@@ -95,6 +95,7 @@ vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
 --- map leader ---
 k({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
+--- update jump list whenn we hop more than one line ---
 vim.cmd([[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k' ]])
 vim.cmd([[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j' ]])
 
@@ -115,8 +116,10 @@ k("n", "H", "")
 k({ "n", "x" }, "<c-e>", "$")
 
 -- surround
-k("n", "s", "")
-k("x", "s", "")
+-- k("n", "sw", "siw")
+-- k("x", "sW", "siW")
+k("n", [[s"]], [[ciw"<c-r><c-p>""]])
+k("n", [[s']], [[ciw'<c-r><c-p>"']])
 
 -- vs last paste
 k("n", "gp", "`[v`]", silent)
