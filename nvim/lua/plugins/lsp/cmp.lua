@@ -15,7 +15,7 @@ snippy_setup.setup({
       ['<S-Tab>'] = 'previous',
     },
     x = {
-      ['<Tab>'] = 'cut_text',
+      ['<leader>d'] = 'cut_text',
     },
   },
 })
