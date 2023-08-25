@@ -315,8 +315,9 @@ vd () {
 dev_env () {
   python3 -m venv ~/.virtualenvs/prod3
   source ~/.virtualenvs/bin/active
-  pip install -U pip
+  pip install -U pip wheel
   pip install debugpy black mdformat rpdb ipython ipdb dns yamllint ansible ansible-lint
+  pip install jq yp
 }
 
 vc () {
@@ -332,7 +333,8 @@ vc () {
   python3 --version
   python3 -m venv $venv_dir
   source $venv_dir/bin/activate
-  pip install pip wheel pyright ansible black pytest yamllint ansible-lint -U
+  pip install pip wheel -U
+  pip install jq yq pyright ansible black pytest yamllint ansible-lint -U
   pip freeze > requirements.txt
   echo ""
   echo ""
@@ -388,7 +390,7 @@ if command -v fd &>/dev/null; then
   export FZF_COMPLETION_TRIGGER="~~"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
-  brew install fd
+  brew install fd jq neovim alaccrity wezterm
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then

@@ -17,7 +17,8 @@ if [ -d ~/.virtualenvs/prod3/bin ]; then
   if [ $? -eq 0 ]; then
     easy_install pip
     # lookatme used for slides, presentations in cli
-    pip3 install wheel pytest black pylint neovim pynvim jedi lookatme
+    pip3 install wheel pip -U
+    pip3 install pytest yq black pylint neovim jedi -U
     pip3 install -r $pip3_file
     # initial pip upgrade must run last
     pip3 install --upgrade pip
@@ -32,10 +33,10 @@ else
   source ~/.virtualenvs/prod3/bin/activate
   if [ $? -eq 0 ]; then
     easy_install pip
-    pip3 install wheel pytest black pylint neovim pynvim jedi
+    pip3 install --upgrade pip wheel
+    pip3 install yq pytest black pylint neovim pynvim jedi
     pip3 install -r $pip3_file
     # initial pip upgrade must run last
-    pip3 install --upgrade pip
     deactivate
   else
     echo "$0"
@@ -44,4 +45,3 @@ else
 fi
 
 echo 'virtualenv setup done!'
-
