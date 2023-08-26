@@ -47,18 +47,19 @@ return {
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
-    { key = 'm',     mods = 'CTRL',       action = wezterm.action.TogglePaneZoomState, },
-    { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
-    { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
-    { key = '[',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(1), },
-    { key = ']',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(-1) },
-    { key = 'k',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Down', },
-    { key = 'j',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up', },
     -- {
     --   key = 'l',
     --   mods = 'CMD',
     --   action = wezterm.action.ShowDebugOverlay
     -- },
+    { key = 'm',     mods = 'CTRL',       action = wezterm.action.TogglePaneZoomState, },
+    { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
+    { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
+    { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
+    { key = '[',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(1), },
+    { key = ']',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(-1) },
+    { key = 'k',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Down', },
+    { key = 'j',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up', },
     { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
     { key = '+',     mods = 'CTRL',       action = act.IncreaseFontSize },
     { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
@@ -113,7 +114,7 @@ return {
     },
     {
       key = "v",
-      mods = "CMD",
+      mods = "CTRL|SHIFT",
       action = act.PasteFrom("Clipboard"),
     },
     {
@@ -126,7 +127,6 @@ return {
       -- delete line
       key = "Backspace",
       mods = "ALT",
-      -- action = act.SendString("\x15"),
       action = act.SendString("\x17"),
     },
     {
