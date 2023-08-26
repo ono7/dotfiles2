@@ -164,11 +164,27 @@ _G.send_to_tmux_visual = function()
     end
 end
 
--- Map the key binding for a range of text or selected text
-k('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
+if vim.loop.os_uname().sysname == "Darwin" then
+    vim.opt.clipboard:append("unnamedplus")
+else
+    -- Map the key binding for a range of text or selected text
+    k('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
 
--- Map the key binding for the current line (no selection)
-k('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]], { noremap = true, silent = true })
+    -- Map the key binding for the current line (no selection)
+    k('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]], { noremap = true, silent = true })
+    vim.g.clipboard = {
+        name = 'myTmux',
+        copy = {
+            ['+'] = "tmux load-buffer -",
+            ['*'] = "tmux load-buffer -",
+        },
+        paste = {
+            ['+'] = "tmux save-buffer -",
+            ['*'] = "tmux save-buffer -",
+        },
+        cache_enabled = 1,
+    }
+end
 
 k("n", "<leader>cd", ":lcd %:h<CR>")
 

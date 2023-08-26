@@ -87,8 +87,6 @@ opt.isfname:append("@-@")
 --   opt.clipboard:append("unnamedplus")
 -- end
 
-opt.clipboard:append("unnamedplus")
-
 --   local paste_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
 --   local copy_prg = "/mnt/c/Windows/System32/clip.exe"
 --   vim.g.clipboard = {
@@ -105,18 +103,6 @@ opt.clipboard:append("unnamedplus")
 --   }
 
 
-vim.g.clipboard = {
-  name = 'myTmux',
-  copy = {
-    ['+'] = "tmux load-buffer -",
-    ['*'] = "tmux load-buffer -",
-  },
-  paste = {
-    ['+'] = "tmux save-buffer -",
-    ['*'] = "tmux save-buffer -",
-  },
-  cache_enabled = 1,
-}
 
 -- o.virtualedit="all"
 
