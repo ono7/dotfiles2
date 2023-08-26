@@ -79,8 +79,8 @@ return {
       action = act.CloseCurrentPane({ confirm = false }),
     },
     {
-      key = "/",
-      mods = "SHIFT|CTRL",
+      key = "?",
+      mods = "CTRL|SHIFT",
       action = act.Search("CurrentSelectionOrEmptyString")
     },
     {
