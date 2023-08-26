@@ -29,6 +29,7 @@ local ansi = {
 
 scheme.ansi = ansi
 scheme.brights = ansi
+local act = wezterm.action
 
 -- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
 return {
@@ -42,139 +43,115 @@ return {
   -- use_ime = change macos ctrl key behavior e.g. ctrl-d, affects new versions of macos 2023-08-02
   -- use_ime                                    = false,
   disable_default_key_binding                = true,
+  leader                                     = { key = 'b', mods = 'CMD', timeout_milliseconds = 700 },
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
-    {
-      key = 'm',
-      mods = 'CTRL',
-      action = wezterm.action.TogglePaneZoomState,
-    },
-    {
-      key = '[',
-      mods = 'ALT',
-      action = wezterm.action.ActivateTabRelative(1),
-    },
-    {
-      key = ']',
-      mods = 'ALT',
-      action = wezterm.action.ActivateTabRelative(-1)
-    },
-    {
-      key = 'k',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Down',
-    },
-    {
-      key = 'j',
-      mods = 'CTRL',
-      action = wezterm.action.ActivatePaneDirection 'Up',
-    },
+    { key = 'm',     mods = 'CTRL',       action = wezterm.action.TogglePaneZoomState, },
+    { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
+    { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
+    { key = '[',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(1), },
+    { key = ']',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(-1) },
+    { key = 'k',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Down', },
+    { key = 'j',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up', },
     -- {
     --   key = 'l',
     --   mods = 'CMD',
     --   action = wezterm.action.ShowDebugOverlay
     -- },
-    {
-      key = '+',
-      mods = 'CTRL',
-      action = wezterm.action.IncreaseFontSize
-    },
-    {
-      key = '-',
-      mods = 'CTRL',
-      action = wezterm.action.DecreaseFontSize
-    },
+    { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
+    { key = '+',     mods = 'CTRL',       action = act.IncreaseFontSize },
+    { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
     {
       key = 'u',
       mods = 'CTRL|SHIFT',
-      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+      action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
     {
       key = 'i',
       mods = 'CTRL|SHIFT',
-      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+      action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
       key = "w",
       mods = "CMD",
-      action = wezterm.action.CloseCurrentPane({ confirm = false }),
+      action = act.CloseCurrentPane({ confirm = false }),
     },
     {
       key = "/",
       mods = "SHIFT|CTRL",
-      action = wezterm.action.Search("CurrentSelectionOrEmptyString")
+      action = act.Search("CurrentSelectionOrEmptyString")
     },
     {
       -- turn off cmd+m to minimize window from the os
       key = "m",
       mods = "CMD",
-      action = wezterm.action.DisableDefaultAssignment,
+      action = act.DisableDefaultAssignment,
     },
     {
       key = "i",
       mods = "CTRL",
-      action = wezterm.action.DisableDefaultAssignment,
+      action = act.DisableDefaultAssignment,
     },
     {
       -- disable clear scrollback
       key = "k",
       mods = "CMD",
-      action = wezterm.action.DisableDefaultAssignment,
+      action = act.DisableDefaultAssignment,
     },
     {
       -- turn off cmd+h to hide window from the os
       key = "h",
       mods = "CMD",
-      action = wezterm.action.DisableDefaultAssignment,
+      action = act.DisableDefaultAssignment,
     },
     {
       -- turn off cmd+m to hide window from the os
       key = "q",
       mods = "CTRL",
-      action = wezterm.action.DisableDefaultAssignment,
+      action = act.DisableDefaultAssignment,
     },
     {
       key = "v",
       mods = "CMD",
-      action = wezterm.action.PasteFrom("Clipboard"),
+      action = act.PasteFrom("Clipboard"),
     },
     {
       -- delete word
       key = "Backspace",
       mods = "CTRL",
-      action = wezterm.action.SendString("\x17"),
+      action = act.SendString("\x17"),
     },
     {
       -- delete line
       key = "Backspace",
       mods = "ALT",
-      -- action = wezterm.action.SendString("\x15"),
-      action = wezterm.action.SendString("\x17"),
+      -- action = act.SendString("\x15"),
+      action = act.SendString("\x17"),
     },
     {
       -- tmux rename window
       key = "n",
       mods = "ALT",
-      action = wezterm.action.SendString("\x02\x2c"),
+      action = act.SendString("\x02\x2c"),
     },
     {
       -- tmux zoom pane
       key = "m",
       mods = "ALT",
-      action = wezterm.action.SendString("\x02\x7a"),
+      action = act.SendString("\x02\x7a"),
     },
     {
       -- tmux create horizontal pane
       key = "u",
       mods = "ALT",
-      action = wezterm.action.SendString("\x02\x2d"),
+      action = act.SendString("\x02\x2d"),
     },
     {
       -- tmux create vertical pane
       key = "i",
       mods = "ALT",
-      action = wezterm.action.SendString("\x02\x7c"),
+      action = act.SendString("\x02\x7c"),
     },
   },
   color_schemes                              = {
