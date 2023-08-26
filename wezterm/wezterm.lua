@@ -43,7 +43,7 @@ return {
   -- use_ime = change macos ctrl key behavior e.g. ctrl-d, affects new versions of macos 2023-08-02
   -- use_ime                                    = false,
   disable_default_key_binding                = true,
-  leader                                     = { key = 'b', mods = 'CMD', timeout_milliseconds = 700 },
+  leader                                     = { key = 'b', mods = 'CTRL', timeout_milliseconds = 700 },
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
@@ -56,10 +56,10 @@ return {
     { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
     { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
     { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
-    { key = '[',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(1), },
-    { key = ']',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(-1) },
-    { key = 'k',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Down', },
-    { key = 'j',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up', },
+    { key = ']',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(1), },
+    { key = '[',     mods = 'ALT',        action = wezterm.action.ActivateTabRelative(-1) },
+    { key = 'j',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Down', },
+    { key = 'k',     mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up', },
     { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
     { key = '+',     mods = 'CTRL',       action = act.IncreaseFontSize },
     { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
