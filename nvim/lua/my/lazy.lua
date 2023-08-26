@@ -32,6 +32,9 @@ require("lazy").setup({
       })
     end
   },
+  {
+    "fgheng/winbar.nvim"
+  },
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
   "NvChad/nvim-colorizer.lua",

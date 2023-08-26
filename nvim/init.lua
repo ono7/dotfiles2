@@ -565,6 +565,7 @@ local packages = {
     "plugins.neotree",
     "plugins.surround",
     "plugins.lsp.cmp",
+    "plugins.winbar",
     "plugins.lsp.mason",        -- mason first, or lsp breaks
     "plugins.gitsigns",
     "plugins.theme_catppuccin", -- 2
