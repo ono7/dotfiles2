@@ -194,8 +194,16 @@ k("x", "p", "pgvy")
 -- when using J keep cursor to the right
 k({ "n", "v" }, "J", "mzJ`z")
 
-k({ "n", "x" }, "v", "<c-v>")
-vim.cmd("vunmap v")
+-- swap v with cv
+-- k({ "n", "x" }, "v", "<c-v>")
+-- vim.cmd("vunmap v")
+
+-- navigation
+k("n", "<C-j>", "<C-w>j")
+k("n", "<C-k>", "<C-w>k")
+k("n", "<C-h>", "<C-w>h")
+k("n", "<C-l>", "<C-w>l")
+
 
 k("n", "D", "d$", opt)
 
@@ -561,7 +569,7 @@ local packages = {
     "my.settings",
     "plugins.treesitter",
     "plugins.telescope",
-    "plugins.navigator",
+    -- "plugins.navigator",
     "plugins.neotree",
     "plugins.surround",
     "plugins.lsp.cmp",

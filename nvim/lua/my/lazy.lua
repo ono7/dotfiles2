@@ -20,8 +20,9 @@ require("lazy").setup({
   "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",        name = "catppuccin" },
-  "numtostr/navigator.nvim",
+  -- "numtostr/navigator.nvim",
   "kylechui/nvim-surround",
+  "SmiteshP/nvim-navic",
   {
     'monkoose/matchparen.nvim',
     config = function()
@@ -159,17 +160,17 @@ require("lazy").setup({
       },
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({
-        max_lines = 1,
-      })
-      vim.keymap.set("n", "[c", function()
-        require("treesitter-context").go_to_context()
-      end, { silent = true })
-    end,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   config = function()
+  --     require("treesitter-context").setup({
+  --       max_lines = 1,
+  --     })
+  --     vim.keymap.set("n", "[c", function()
+  --       require("treesitter-context").go_to_context()
+  --     end, { silent = true })
+  --   end,
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
