@@ -43,11 +43,24 @@ return {
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
-    { key = 'l', mods = 'CMD', action = wezterm.action.ShowDebugOverlay },
+    { key = 'l', mods = 'CMD|SHIFT', action = wezterm.action.ActivateTabRelative(1) },
+    { key = 'h', mods = 'CMD|SHIFT', action = wezterm.action.ActivateTabRelative(-1) },
+    { key = 'j', mods = 'CMD',       action = wezterm.action.ActivatePaneDirection 'Down', },
+    { key = 'k', mods = 'CMD',       action = wezterm.action.ActivatePaneDirection 'Up', },
+    { key = 'l', mods = 'CMD',       action = wezterm.action.ShowDebugOverlay },
+    { key = '+', mods = 'CTRL',      action = wezterm.action.IncreaseFontSize },
+    { key = '-', mods = 'CTRL',      action = wezterm.action.DecreaseFontSize },
+    { key = 'f', mods = 'CMD',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }, },
+    { key = 'd', mods = 'CMD',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
     {
       key = "w",
       mods = "CMD",
       action = wezterm.action.CloseCurrentPane({ confirm = false }),
+    },
+    {
+      key = "/",
+      mods = "SHIFT|CTRL",
+      action = wezterm.action.Search("CurrentSelectionOrEmptyString")
     },
     {
       -- turn off cmd+m to minimize window from the os
@@ -56,7 +69,6 @@ return {
       action = wezterm.action.DisableDefaultAssignment,
     },
     {
-      -- turn off cmd+m to minimize window from the os
       key = "i",
       mods = "CTRL",
       action = wezterm.action.DisableDefaultAssignment,
@@ -127,7 +139,8 @@ return {
     ["Catppuccin Mocha"] = scheme,
   },
   color_scheme                               = 'Catppuccin Mocha',
-  font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font' },
+  font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font',
+    'Apple Symbols', 'Arial Unicode MS' },
   font_rules                                 = {
     {
       intensity = 'Bold',
