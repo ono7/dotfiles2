@@ -52,7 +52,7 @@ return {
     --   mods = 'CMD',
     --   action = wezterm.action.ShowDebugOverlay
     -- },
-    { key = 'm',     mods = 'CTRL',       action = wezterm.action.TogglePaneZoomState, },
+    { key = 'm',     mods = 'ALT',        action = wezterm.action.TogglePaneZoomState, },
     { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
     { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
     { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
@@ -129,30 +129,30 @@ return {
       mods = "ALT",
       action = act.SendString("\x17"),
     },
-    {
-      -- tmux rename window
-      key = "n",
-      mods = "ALT",
-      action = act.SendString("\x02\x2c"),
-    },
-    {
-      -- tmux zoom pane
-      key = "m",
-      mods = "ALT",
-      action = act.SendString("\x02\x7a"),
-    },
-    {
-      -- tmux create horizontal pane
-      key = "u",
-      mods = "ALT",
-      action = act.SendString("\x02\x2d"),
-    },
-    {
-      -- tmux create vertical pane
-      key = "i",
-      mods = "ALT",
-      action = act.SendString("\x02\x7c"),
-    },
+    -- {
+    --   -- tmux rename window
+    --   key = "n",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x2c"),
+    -- },
+    -- {
+    --   -- tmux zoom pane
+    --   key = "m",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x7a"),
+    -- },
+    -- {
+    --   -- tmux create horizontal pane
+    --   key = "u",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x2d"),
+    -- },
+    -- {
+    --   -- tmux create vertical pane
+    --   key = "i",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x7c"),
+    -- },
   },
   color_schemes                              = {
     -- new or override scheme
