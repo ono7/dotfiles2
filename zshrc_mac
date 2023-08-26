@@ -556,6 +556,7 @@ function reset_broken_terminal () {
 
 add-zsh-hook -Uz precmd reset_broken_terminal
 
+alias pb="ansible-playbook "
 # remember directories
 # directory maps
 alias -- -='cd -'

@@ -116,8 +116,6 @@ k("n", "H", "")
 k({ "n", "x" }, "<c-e>", "$")
 
 -- surround
--- k("n", "sw", "siw")
--- k("x", "sW", "siW")
 k("n", [[s"]], [[ciw"<c-r><c-p>""]])
 k("n", [[s']], [[ciw'<c-r><c-p>"']])
 
@@ -125,7 +123,6 @@ k("n", [[s']], [[ciw'<c-r><c-p>"']])
 k("n", "gp", "`[v`]", silent)
 k("v", "y", [[ygv<Esc>]], silent)
 k({ "n", "x" }, ",q", ":qa!<cr>", silent)
--- k("n", "<leader>w", ":w<cr>", silent)
 
 k("n", "<leader>w", function()
     vim.opt.laststatus = 0
@@ -149,6 +146,7 @@ k("n", ",r", function()
     vim.opt.cmdheight = 1
     vim.lsp.buf.format()
 end, silent)
+
 -- k("n", ",r", vim.lsp.buf.format, silent)
 
 -- Lua function to send text to Tmux
