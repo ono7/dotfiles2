@@ -65,12 +65,12 @@ return {
     { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
     {
       key = 'u',
-      mods = 'CTRL|SHIFT',
+      mods = 'ALT',
       action = act.SplitVertical { domain = 'CurrentPaneDomain' },
     },
     {
       key = 'i',
-      mods = 'CTRL|SHIFT',
+      mods = 'ALT',
       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
