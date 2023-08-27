@@ -164,7 +164,8 @@ _G.send_to_tmux_visual = function()
     end
 end
 
-if vim.loop.os_uname().sysname == "Darwin" then
+-- if vim.loop.os_uname().sysname == "Darwin" then
+if vim.fn.has("wsl") == 1 then
     vim.opt.clipboard:append("unnamedplus")
 else
     -- Map the key binding for a range of text or selected text
