@@ -42,7 +42,7 @@ return {
   -- enable_csi_u_key_encoding                  = true,
   -- use_ime = change macos ctrl key behavior e.g. ctrl-d, affects new versions of macos 2023-08-02
   -- use_ime                                    = false,
-  disable_default_key_binding                = true,
+  disable_default_key_bindings               = true,
   leader                                     = { key = 'b', mods = 'CTRL', timeout_milliseconds = 700 },
   keys                                       = {
     -- use xxd -psd to get hex char sequences
