@@ -173,12 +173,12 @@ return {
     'Apple Symbols', 'Arial Unicode MS' },
   font_rules                                 = {
     {
-      intensity = 'Bold',
+      -- intensity = 'Bold',
       italic = false,
       font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Normal" })
     },
     {
-      intensity = 'Bold',
+      -- intensity = 'Bold',
       italic = true,
       font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Italic" })
     },
