@@ -172,16 +172,16 @@ return {
   font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font',
     'Apple Symbols', 'Arial Unicode MS' },
   font_rules                                 = {
-    {
-      -- intensity = 'Bold',
-      italic = false,
-      font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Normal" })
-    },
-    {
-      -- intensity = 'Bold',
-      italic = true,
-      font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Italic" })
-    },
+    -- {
+    --   -- intensity = 'Bold',
+    --   italic = false,
+    --   font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Normal" })
+    -- },
+    -- {
+    --   -- intensity = 'Bold',
+    --   italic = true,
+    --   font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Italic" })
+    -- },
   },
   adjust_window_size_when_changing_font_size = false,
   window_close_confirmation                  = "NeverPrompt",
