@@ -63,15 +63,25 @@ return {
     { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
     { key = '+',     mods = 'CTRL',       action = act.IncreaseFontSize },
     { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
+    -- {
+    --   key = 'u',
+    --   mods = 'ALT',
+    --   action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    -- },
+    -- {
+    --   key = 'i',
+    --   mods = 'ALT',
+    --   action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    -- },
     {
       key = 'u',
       mods = 'ALT',
-      action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } },
     },
     {
       key = 'i',
       mods = 'ALT',
-      action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+      action = act.SplitPane { direction = 'Right', size = { Percent = 40 } },
     },
     {
       key = "w",
