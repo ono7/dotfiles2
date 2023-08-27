@@ -22,7 +22,7 @@ require("lazy").setup({
   { "catppuccin/nvim",        name = "catppuccin" },
   -- "numtostr/navigator.nvim",
   "kylechui/nvim-surround",
-  "SmiteshP/nvim-navic",
+  -- "SmiteshP/nvim-navic",
   {
     'monkoose/matchparen.nvim',
     config = function()
