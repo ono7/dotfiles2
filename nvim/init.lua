@@ -119,106 +119,10 @@ k({ "n", "x" }, "<c-e>", "$")
 k("n", [[s"]], [[ciw"<c-r><c-p>""]])
 k("n", [[s']], [[ciw'<c-r><c-p>"']])
 
--- vs last paste
-k("n", "gp", "`[v`]", silent)
-k("v", "y", [[ygv<Esc>]], silent)
-k({ "n", "x" }, ",q", ":qa!<cr>", silent)
-
-k("n", "<leader>w", function()
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 1
-    vim.cmd [[:write!]]
-end, silent)
-
-k("n", ",w", function()
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 1
-    vim.cmd [[:write!]]
-end, silent)
-
-k("n", "<leader>r", function()
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 1
-    vim.lsp.buf.format()
-end, silent)
-k("n", ",r", function()
-    vim.opt.laststatus = 0
-    vim.opt.cmdheight = 1
-    vim.lsp.buf.format()
-end, silent)
-
--- k("n", ",r", vim.lsp.buf.format, silent)
-
--- Lua function to send text to Tmux
-_G.send_to_tmux = function(text)
-    vim.fn.system('tmux load-buffer -w -', text)
-    -- print('n |  ')
-end
-
--- Lua function to send text to Tmux
-_G.send_to_tmux_visual = function()
-    local text = get_visual_selection()
-    if text then
-        vim.fn.system('tmux load-buffer -w -', text)
-        -- print('v |  ')
-    end
-end
-
--- if vim.loop.os_uname().sysname == "Darwin" then
-if vim.fn.has("wsl") ~= 1 then
-    vim.opt.clipboard:append("unnamedplus")
-else
-    -- Map the key binding for a range of text or selected text
-    k('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
-
-    -- Map the key binding for the current line (no selection)
-    k('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]], { noremap = true, silent = true })
-    vim.g.clipboard = {
-        name = 'myTmux',
-        copy = {
-            ['+'] = "tmux load-buffer -",
-            ['*'] = "tmux load-buffer -",
-        },
-        paste = {
-            ['+'] = "tmux save-buffer -",
-            ['*'] = "tmux save-buffer -",
-        },
-        cache_enabled = 1,
-    }
-end
-
-k("n", "<leader>cd", ":lcd %:h<CR>")
-
--- paste over selection without overwriting clipboard
-k("x", "p", "pgvy")
-
--- when using J keep cursor to the right
-k({ "n", "v" }, "J", "mzJ`z")
-
--- swap v with cv
--- k({ "n", "x" }, "v", "<c-v>")
--- vim.cmd("vunmap v")
-
--- navigation
-k("n", "<C-j>", "<C-w>j")
-k("n", "<C-k>", "<C-w>k")
-k("n", "<C-h>", "<C-w>h")
-k("n", "<C-l>", "<C-w>l")
-
-
-k("n", "D", "d$", opt)
-
--- copy and paste paragraph
-k("n", "cp", "yap<S-}>p", opt)
-
-k("n", "U", "<c-r>", opt)
-
---- show buffers ---
-k("n", "<leader>b", ":ls<cr>:b ", opt) -- might conflict with dap breakpoint...
-
---- basic surround without plugins
--- m("n", 's"', [[ciw"<c-r><c-p>""]], silent)
--- m("n", "s'", [[ciw'<c-r><c-p>"']], silent)
+k("n", [[ci"]], [[/"<CR>ci"]], silent)
+k("n", [[ci']], [[/'<CR>ci']], silent)
+k("x", [[vi"]], [[/"<CR>vi"]], silent)
+k("x", [[vi']], [[/'<CR>vi']], silent)
 
 -- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
@@ -247,6 +151,11 @@ k("n", "g{", "?{<cr>")
 k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
+
+k("n", "<leader>w", ":w<cr>", silent)
+k("n", ",w", ":w<cr>", silent)
+k("n", ",q", ":q!<cr>", silent)
+k("n", "<leader>q", ":q!<cr>", silent)
 
 local openBrackets = {
     ["("] = true,
@@ -493,7 +402,7 @@ k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
 k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 
 --- tmux ---
-k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
+-- k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 --- visual selection search ---
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)

@@ -5,7 +5,7 @@ snippet c "block comment" w
 
 snippet e "error" w
 	if err != nil {
-	    return ${0}, err
+	    ${0|return,log.Fatal(err)|}
 	}
 
 snippet ok "check ok" b

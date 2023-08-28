@@ -128,6 +128,11 @@ return {
       action = act.PasteFrom("Clipboard"),
     },
     {
+      key = "v",
+      mods = "CMD",
+      action = act.PasteFrom("Clipboard"),
+    },
+    {
       -- delete word
       key = "Backspace",
       mods = "CTRL",
