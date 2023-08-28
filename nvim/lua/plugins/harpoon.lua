@@ -5,7 +5,7 @@ local ui = require("harpoon.ui")
 local mark = require("harpoon.mark")
 
 k("n", "mm", mark.add_file)
-k("n", "<c-b>", ui.toggle_quick_menu)
+k("n", "<c-s-h>", ui.toggle_quick_menu)
 k("n", "<c-s-n>", function() ui.nav_file(1) end, silent)
 k("n", "<c-s-e>", function() ui.nav_file(2) end, silent)
 k("n", "<c-s-i>", function() ui.nav_file(3) end, silent)
