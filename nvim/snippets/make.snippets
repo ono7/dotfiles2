@@ -13,22 +13,22 @@ snippet make "Makefile" w
 
   build:
     @echo "$(GREEN)building...$(RESET)"
-    mkdir -p $(BUILD_DIR)
-    go build -o $(BUILD_DIR)/$(BINARY_NAME)
+    @mkdir -p $(BUILD_DIR)
+    @go build -o $(BUILD_DIR)/$(BINARY_NAME)
 
   install:
     @echo "$(GREEN)installing binaries to $(OUTPUT_DIR)...$(RESET)"
-    cp $(BUILD_DIR)/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
+    @cp $(BUILD_DIR)/$(BINARY_NAME) $(OUTPUT_DIR)/$(BINARY_NAME)
 
   clean:
     @echo "$(RED)deleting built and installed binaries...$(RESET)"
-    rm -f $(BUILD_DIR)/$(BINARY_NAME)
+    @rm -f $(BUILD_DIR)/$(BINARY_NAME)
   ifdef OUTPUT_DIR
-    rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
+    @rm -f $(OUTPUT_DIR)/$(BINARY_NAME)
   endif
 
   testing:
     @echo "$(GREEN)Running tests suite...$(RESET)"
-    cd $(BUILD_DIR);./$(BINARY_NAME)
+    @cd $(BUILD_DIR);./$(BINARY_NAME)
 
   .PHONY: all build install clean testing
