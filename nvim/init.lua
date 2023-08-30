@@ -471,6 +471,9 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 k("n", "c", '"ac')
 k("n", "C", '"aC')
 
+k({ "n", "x" }, "v", "<c-v>")
+vim.cmd("vunmap v")
+
 -- k("n", "p", [[<Plug>(miniyank-autoput)]], {})
 -- k("n", "P", [[<Plug>(miniyank-autoPut)]], {})
 
