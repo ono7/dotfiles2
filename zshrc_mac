@@ -438,6 +438,32 @@ get_root_dir(){
   echo `git rev-parse --show-toplevel 2>/dev/null` || echo '.'
 }
 
+stopssh () {
+  sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+  sudo kill $(lsof -t -i:2222)
+}
+
+startssh () {
+  sudo launchctl load /System/Library/LaunchDaemons/ssh.plist
+}
+
+proxyon () {
+  if [ -n $1 ]; then
+    networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 6000
+  else
+    networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 $1
+  fi
+  sudo ssh -N -f -D 127.0.0.1:6000 jlima@127.0.0.1 -p 2222 -o ServerAliveCountMax=3 -o ServerAliveInterval=3
+  networksetup -setsocksfirewallproxystate Wi-Fi on
+}
+
+proxyoff () {
+  networksetup -setsocksfirewallproxystate Wi-Fi off
+  if [ ! -n $(lsof -t -i:2222) ]; then
+    sudo kill $(lsof -t -i:2222)
+  fi
+}
+
 _d () {
   cdr
   cd "$(fd --type d -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)"
@@ -502,7 +528,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=10000   # the number of items for the internal history list
 export SAVEHIST=9000   # maximum number of items for the history file
 # export HISTTIMEFORMAT='[%F %T] '
-export HISTIGNORE='ls:ll:pwd'
+export HISTIGNORE='ls:ll:pwd:sudo ssh*'
 HISTDUP=erase
 
 # The meaning of these options can be found in man page of `zshoptions`.
