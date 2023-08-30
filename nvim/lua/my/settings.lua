@@ -87,20 +87,21 @@ opt.isfname:append("@-@")
 --   opt.clipboard:append("unnamedplus")
 -- end
 
---   local paste_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
---   local copy_prg = "/mnt/c/Windows/System32/clip.exe"
---   vim.g.clipboard = {
---     name = 'WslClipboard',
---     copy = {
---       ['+'] = copy_prg,
---       ['*'] = copy_prg,
---     },
---     paste = {
---       ['+'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---       ['*'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
---     },
---     cache_enabled = 0,
---   }
+opt.clipboard:append("unnamedplus")
+-- local paste_prg = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+-- local copy_prg = "/mnt/c/Windows/System32/clip.exe"
+-- vim.g.clipboard = {
+--   name = 'WslClipboard',
+--   copy = {
+--     ['+'] = copy_prg,
+--     ['*'] = copy_prg,
+--   },
+--   paste = {
+--     ['+'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     ['*'] = paste_prg .. ' -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--   },
+--   cache_enabled = 0,
+-- }
 
 
 
