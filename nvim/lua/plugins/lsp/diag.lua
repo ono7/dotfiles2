@@ -1,39 +1,39 @@
 --[[ this shows only the first diag on the current line, it uses hover events
 that rely on cursor holdtime and updatetime ]]
 
-local function best_diagnostic(diagnostics)
-  if vim.tbl_isempty(diagnostics) then
-    return
-  end
+-- local function best_diagnostic(diagnostics)
+--   if vim.tbl_isempty(diagnostics) then
+--     return
+--   end
 
-  local best = nil
-  local line_diagnostics = {}
-  local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
+--   local best = nil
+--   local line_diagnostics = {}
+--   local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
 
-  for k, v in pairs(diagnostics) do
-    if v.lnum == line_nr then
-      line_diagnostics[k] = v
-    end
-  end
+--   for k, v in pairs(diagnostics) do
+--     if v.lnum == line_nr then
+--       line_diagnostics[k] = v
+--     end
+--   end
 
-  for _, diagnostic in ipairs(line_diagnostics) do
-    if best == nil then
-      best = diagnostic
-    elseif diagnostic.severity < best.severity then
-      best = diagnostic
-    end
-  end
+--   for _, diagnostic in ipairs(line_diagnostics) do
+--     if best == nil then
+--       best = diagnostic
+--     elseif diagnostic.severity < best.severity then
+--       best = diagnostic
+--     end
+--   end
 
-  return best
-end
+--   return best
+-- end
 
-local function current_line_diagnostics()
-  local bufnr = 0
-  local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
-  local opts = { ["lnum"] = line_nr }
+-- local function current_line_diagnostics()
+--   local bufnr = 0
+--   local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
+--   local opts = { ["lnum"] = line_nr }
 
-  return vim.diagnostic.get(bufnr, opts)
-end
+--   return vim.diagnostic.get(bufnr, opts)
+-- end
 
 local signs = {
   Error = "󰯆 ",
@@ -65,28 +65,28 @@ local virt_options = {
   end,
 }
 
-vim.diagnostic.handlers.current_line_virt = {
-  show = function(_, bufnr, diagnostics, _)
-    local diagnostic = best_diagnostic(diagnostics)
-    if not diagnostic then
-      return
-    end
+-- vim.diagnostic.handlers.current_line_virt = {
+--   show = function(_, bufnr, diagnostics, _)
+--     local diagnostic = best_diagnostic(diagnostics)
+--     if not diagnostic then
+--       return
+--     end
 
-    local filtered_diagnostics = { diagnostic }
+--     local filtered_diagnostics = { diagnostic }
 
-    pcall(
-      virt_handler.show,
-      ns,
-      bufnr,
-      filtered_diagnostics,
-      { virtual_text = virt_options }
-    )
-  end,
-  hide = function(_, bufnr)
-    bufnr = bufnr or vim.api.nvim_get_current_buf()
-    virt_handler.hide(ns, bufnr)
-  end,
-}
+--     pcall(
+--       virt_handler.show,
+--       ns,
+--       bufnr,
+--       filtered_diagnostics,
+--       { virtual_text = virt_options }
+--     )
+--   end,
+--   hide = function(_, bufnr)
+--     bufnr = bufnr or vim.api.nvim_get_current_buf()
+--     virt_handler.hide(ns, bufnr)
+--   end,
+-- }
 
 vim.diagnostic.config {
   float = { source = "always" },
@@ -132,88 +132,88 @@ vim.lsp.handlers["textDocument/declaration"] = location_handler
 vim.lsp.handlers["textDocument/definition"] = location_handler
 vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
-vim.lsp.handlers["textDocument/references"] = function(hz, result, ctx, _)
-  originalReferenceHandler(hz, result, ctx, { loclist = true })
-end
+-- vim.lsp.handlers["textDocument/references"] = function(hz, result, ctx, _)
+--   originalReferenceHandler(hz, result, ctx, { loclist = true })
+-- end
 
-function augroup(name, fn)
-  vim.api.nvim_create_augroup(name, {
-    clear = true,
-  })
+-- function augroup(name, fn)
+--   vim.api.nvim_create_augroup(name, {
+--     clear = true,
+--   })
 
-  return {
-    autocmd = function(event, opts)
-      opts.group = name
-      vim.api.nvim_create_autocmd(event, opts)
-    end,
-  }
-end
+--   return {
+--     autocmd = function(event, opts)
+--       opts.group = name
+--       vim.api.nvim_create_autocmd(event, opts)
+--     end,
+--   }
+-- end
 
-vim.api.nvim_create_augroup("lsp_document_highlight", {
-  clear = true,
-})
+-- vim.api.nvim_create_augroup("lsp_document_highlight", {
+--   clear = true,
+-- })
 
-vim.api.nvim_create_augroup("lsp_diagnostic_current_line", {
-  clear = true,
-})
+-- vim.api.nvim_create_augroup("lsp_diagnostic_current_line", {
+--   clear = true,
+-- })
 
-function _G.on_attach_callback(client, bufnr)
-  require("lsp-format").on_attach(client, bufnr)
+-- function _G.on_attach_callback(client, bufnr)
+--   require("lsp-format").on_attach(client, bufnr)
 
-  vim.cmd [[
-    hi! link DiagnosticVirtualTextHint Comment
-    hi! link DiagnosticVirtualTextInfo Comment
-    hi! link DiagnosticVirtualTextWarn Comment
-    hi! link DiagnosticVirtualTextError Comment
-  ]]
+--   vim.cmd [[
+--     hi! link DiagnosticVirtualTextHint Comment
+--     hi! link DiagnosticVirtualTextInfo Comment
+--     hi! link DiagnosticVirtualTextWarn Comment
+--     hi! link DiagnosticVirtualTextError Comment
+--   ]]
 
-  if not vim.api.nvim_buf_is_loaded(bufnr) then
-    return
-  end
+--   if not vim.api.nvim_buf_is_loaded(bufnr) then
+--     return
+--   end
 
-  vim.api.nvim_clear_autocmds {
-    buffer = bufnr,
-    group = "lsp_diagnostic_current_line",
-  }
+--   vim.api.nvim_clear_autocmds {
+--     buffer = bufnr,
+--     group = "lsp_diagnostic_current_line",
+--   }
 
-  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    group = "lsp_diagnostic_current_line",
-    buffer = bufnr,
-    callback = function()
-      vim.diagnostic.handlers.current_line_virt.show(
-        nil,
-        0,
-        current_line_diagnostics(),
-        nil
-      )
-    end,
-  })
+--   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--     group = "lsp_diagnostic_current_line",
+--     buffer = bufnr,
+--     callback = function()
+--       vim.diagnostic.handlers.current_line_virt.show(
+--         nil,
+--         0,
+--         current_line_diagnostics(),
+--         nil
+--       )
+--     end,
+--   })
 
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    group = "lsp_diagnostic_current_line",
-    buffer = bufnr,
-    callback = function()
-      vim.diagnostic.handlers.current_line_virt.hide(nil, nil)
-    end,
-  })
+--   vim.api.nvim_create_autocmd("CursorMoved", {
+--     group = "lsp_diagnostic_current_line",
+--     buffer = bufnr,
+--     callback = function()
+--       vim.diagnostic.handlers.current_line_virt.hide(nil, nil)
+--     end,
+--   })
 
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_clear_autocmds {
-      buffer = bufnr,
-      group = "lsp_document_highlight",
-    }
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      group = "lsp_document_highlight",
-      buffer = bufnr,
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = "lsp_document_highlight",
-      buffer = bufnr,
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
-end
+--   if client.resolved_capabilities.document_highlight then
+--     vim.api.nvim_clear_autocmds {
+--       buffer = bufnr,
+--       group = "lsp_document_highlight",
+--     }
+--     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--       group = "lsp_document_highlight",
+--       buffer = bufnr,
+--       callback = vim.lsp.buf.document_highlight,
+--     })
+--     vim.api.nvim_create_autocmd("CursorMoved", {
+--       group = "lsp_document_highlight",
+--       buffer = bufnr,
+--       callback = vim.lsp.buf.clear_references,
+--     })
+--   end
+-- end
 
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "WildMenu" })
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "Error" })

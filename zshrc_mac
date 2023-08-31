@@ -195,11 +195,11 @@ take () {
   mkdir -p "${dir// /-}"; cd "${dir// /-}"
 }
 
-mkt () {
+mktag () {
   git tag -a $1 -m "added tag $1"; git push origin $1
 }
 
-rmt () {
+rmtag () {
   git tag -d $1;git push --delete origin $1
 }
 
