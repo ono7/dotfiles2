@@ -246,9 +246,9 @@ k('i', '"', function()
     local n = line:sub(col, col)
     if n == '"' then
         return '<Right>'
-    elseif rightBracketsAndQuotes[p] then
+    elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
         return '"'
-    elseif openBrackets[n] then
+    elseif openBrackets[n] or isAlphaNum[p] then
         return '"'
     end
     return '""<Left>'
@@ -285,12 +285,32 @@ k('i', "'", function()
         return '<Right>'
     elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
         return "'"
-    elseif openBrackets[n] then
+    elseif openBrackets[n] or isAlphaNum[p] then
         return "'"
     end
     return "''<Left>"
 end
 , { expr = true })
+
+-- ---  handles ''
+-- k('i', "'", function()
+--     if vim.bo[0].buftype == 'prompt' then
+--         return "'"
+--     end
+--     local line = vim.api.nvim_get_current_line()
+--     local col = vim.fn.col('.')
+--     local p = line:sub(col - 1, col - 1)
+--     local n = line:sub(col, col)
+--     if n == "'" then
+--         return '<Right>'
+--     elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
+--         return "'"
+--     elseif openBrackets[n] then
+--         return "'"
+--     end
+--     return "''<Left>"
+-- end
+-- , { expr = true })
 
 --- handle []
 k('i', '[', function()
