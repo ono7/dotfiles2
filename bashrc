@@ -254,7 +254,3 @@ fi
 
 # unset display in wsl or vim will starup slow
 [[ $(uname -a) == *"Microsoft"* ]] && unset DISPLAY
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/jlima/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
