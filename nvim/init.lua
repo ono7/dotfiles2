@@ -144,6 +144,9 @@ m("v", ".", ":norm .<cr>", opt)
 m("v", "Q", ":'<,'>norm @q<cr>", silent)
 m("n", "Q", "@q", opt)
 
+--- copy block
+k("n", "cp", "yap<S-}>p", opt)
+
 --- quickfix nav ---
 k("n", "[q", ":cprev<cr>", opt)
 k("n", "]q", ":cnext<cr>", opt)
@@ -156,8 +159,6 @@ k("c", "<c-b>", "<S-left>", opt)
 
 k("i", "<c-e>", "<c-o>$", silent)
 k("i", "<c-a>", "<c-o>^", silent)
--- k("n", "g(", [[?\v(\w+\s)?\w+.{-}\(\zs<cr>]])
--- k("n", "g)", [[/\v(\w+\s)?\w+.{-}\(\zs<cr>]])
 k("n", "g(", [[?\v\w+.{-}\(\zs<cr>]])
 k("n", "g)", [[/\v\w+.{-}\(\zs<cr>]])
 k("n", "g{", "?{<cr>")
@@ -274,7 +275,7 @@ k('i', "'", function()
     local n = line:sub(col, col)
     if n == "'" then
         return '<Right>'
-    elseif rightBracketsAndQuotes[p] then
+    elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
         return "'"
     elseif openBrackets[n] then
         return "'"
@@ -421,7 +422,7 @@ k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 --- go struct tags ---
-k("n", "gsj", [[:GoTagAdd json<cr>]])
+k("n", "gt", [[:GoTagAdd json<cr>]])
 
 --- marks/jumps ---
 -- k("n", "'", "`", opt)
