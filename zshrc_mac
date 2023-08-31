@@ -7,7 +7,7 @@ export GOPATH=$HOME/go
 export GOPRIVATE=github.com/ono7/utils,github.com/ono7/other
 
 
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$GOPATH/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin:$HOME/.fzf/bin"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$GOPATH/bin:$HOME/.rd/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin:$HOME/.fzf/bin"
 typeset -U path
 typeset -U PATH
 # 10ms for key sequences
@@ -440,6 +440,9 @@ get_root_dir(){
 
 stopssh () {
   sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
+  if [ -n $(lsof -t -i:2222) ]; then
+    return
+  fi
   sudo kill $(lsof -t -i:2222)
 }
 
@@ -459,9 +462,10 @@ proxyon () {
 
 proxyoff () {
   networksetup -setsocksfirewallproxystate Wi-Fi off
-  if [ ! -n $(lsof -t -i:2222) ]; then
-    sudo kill $(lsof -t -i:2222)
+  if [ -n $(lsof -t -i:2222) ]; then
+    return 
   fi
+  sudo kill $(lsof -t -i:2222)
 }
 
 _d () {

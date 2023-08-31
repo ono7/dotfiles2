@@ -1,5 +1,15 @@
 # working with json data
 
+## tagging structs
+
+```go
+type User struct {
+    ID string `json:"id,omitempty"` // skips this if empty
+    FirstName string `json:"firstName"`
+    LastName string `json:"lastName"`
+  }
+```
+
 ## parsing unknown data
 
 ```go

@@ -43,7 +43,8 @@ require("lazy").setup({
         require("lsp_lines").toggle,
         { desc = "Toggle lsp_lines" }
       )
-      vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+      -- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+      vim.diagnostic.config({ virtual_lines = false })
     end,
   },
   -- {
