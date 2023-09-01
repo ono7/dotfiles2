@@ -7,6 +7,7 @@ golang: https://fulltimegodev.teachable.com/courses/1970304
 * g, - jump to last change
 * zm, fold
 * zi, toggle fold
+* sliped `brew install slides`
 
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 

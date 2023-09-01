@@ -5,6 +5,10 @@ true-color = true
 mouse = false
 line-number = "relative"
 bufferline = "multiple"
+shell = ["zsh", "-c"]
+
+[editor.file-picker]
+hidden = false
 
 [editor.cursor-shape]
 insert = "block"

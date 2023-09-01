@@ -90,7 +90,7 @@
 "ui.virtual.indent-guide" = "surface0"
 "ui.virtual.inlay-hint" = { fg = "surface1", bg = "mantle" }
 
-"ui.selection" = { bg = "surface1" }
+"ui.selection" = { bg = "visual" }
 
 "ui.cursor" = { fg = "base", bg = "secondary_cursor" }
 "ui.cursor.primary" = { fg = "base", bg = "rosewater" }
@@ -137,6 +137,7 @@ sky = "#89dceb"
 sapphire = "#74c7ec"
 blue = "#9DBBF4"
 lavender = "#b4befe"
+visual = "#2f5293"
 
 text = "#cdd6f4"
 subtext1 = "#bac2de"
