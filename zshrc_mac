@@ -235,6 +235,7 @@ fi
 alias tf='terraform'
 alias rdp='xfreerdp +clipboard'
 alias ssh='TERM=xterm-256color ssh '
+alias h=hx
 
 # GpG
 # alias gpg-agent='gpg-agent --keep-display'
