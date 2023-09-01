@@ -1,0 +1,25 @@
+theme = "mycatppuccin_mocha"
+
+[editor]
+true-color = true
+mouse = false
+line-number = "relative"
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "block"
+
+[keys.normal]
+G = "goto_file_end"
+X = "extend_line_above"
+ret = ["move_line_down", "goto_line_start"]
+esc = ["collapse_selection", "keep_primary_selection"]
+
+[keys.normal.g]
+q = ":reflow"
+
+
+
+
+
+

@@ -61,7 +61,7 @@ return {
     { key = 'j',     mods = 'ALT',        action = wezterm.action.ActivatePaneDirection 'Down', },
     { key = 'k',     mods = 'ALT',        action = wezterm.action.ActivatePaneDirection 'Up', },
     { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
-    { key = '+',     mods = 'CTRL',       action = act.IncreaseFontSize },
+    { key = '=',     mods = 'CTRL',       action = act.IncreaseFontSize },
     { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
     -- {
     --   key = 'u',
@@ -192,7 +192,7 @@ return {
   window_close_confirmation                  = "NeverPrompt",
   cursor_blink_rate                          = 0,
   default_cursor_style                       = "BlinkingBlock",
-  font_size                                  = 18,
+  font_size                                  = 22,
   line_height                                = 1.4,
   underline_position                         = -8,
   underline_thickness                        = 3, -- ()

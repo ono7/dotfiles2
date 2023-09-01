@@ -390,7 +390,7 @@ if command -v fd &>/dev/null; then
   export FZF_COMPLETION_TRIGGER="~~"
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
-  brew install fd jq neovim alaccrity wezterm
+  brew install fd jq neovim alaccrity wezterm llvm && ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then
