@@ -1,3 +1,4 @@
+# https://docs.helix-editor.com/configuration.html
 theme = "mycatppuccin_mocha"
 
 [editor]
@@ -6,12 +7,19 @@ mouse = false
 line-number = "relative"
 bufferline = "multiple"
 shell = ["zsh", "-c"]
+# color-modes = true
 
 [editor.file-picker]
 hidden = false
 
 [editor.cursor-shape]
 insert = "block"
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
 
 [keys.normal]
 G = "goto_file_end"
@@ -21,8 +29,6 @@ esc = ["collapse_selection", "keep_primary_selection"]
 
 [keys.normal.g]
 q = ":reflow"
-
-
 
 
 

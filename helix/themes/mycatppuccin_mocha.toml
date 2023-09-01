@@ -28,12 +28,13 @@
 "keyword" = "mauve"
 "keyword.storage.modifier.ref" = "teal"
 "keyword.control.conditional" = { fg = "mauve", modifiers = ["italic"] }
+"keyword.function" = { fg = "mauve", modifiers = ["italic"] }
 
 "operator" = "sky"
 
 "function" = "blue"
-"function.macro" = "mauve"
-
+# "function.macro" = "mauve"
+"function.macro" =  { fg = "mauve", modifiers = ["italic"] }
 "tag" = "mauve"
 "attribute" = "blue"
 
@@ -72,6 +73,7 @@
 "ui.statusline.normal" = { fg = "base", bg = "lavender", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "base", bg = "green", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "base", bg = "flamingo", modifiers = ["bold"] }
+"ui.statusline.version-control" = { fg = "mauve" }
 
 "ui.popup" = { fg = "text", bg = "surface0" }
 "ui.window" = { fg = "crust" }
@@ -109,7 +111,7 @@
 "ui.highlight" = { bg = "surface1", modifiers = ["bold"] }
 
 "ui.menu" = { fg = "overlay2", bg = "surface0" }
-"ui.menu.selected" = { fg = "text", bg = "surface1", modifiers = ["bold"] }
+"ui.menu.selected" = { fg = "text", bg = "visual", modifiers = ["bold"] }
 
 "diagnostic.error" = { underline = { color = "red", style = "curl" } }
 "diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
