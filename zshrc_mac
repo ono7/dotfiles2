@@ -440,10 +440,14 @@ get_root_dir(){
 
 stopssh () {
   sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
-  if [ -n $(lsof -t -i:2222) ]; then
+  if [ ! -n $(lsof -t -iTCP:22) ]; then
     return
   fi
-  sudo kill $(lsof -t -i:2222)
+  echo "killing ssh sessions"
+  for i in $(lsof -t -iTCP:22); do
+    echo $i
+    sudo kill $i
+  done
 }
 
 startssh () {
@@ -462,10 +466,14 @@ proxyon () {
 
 proxyoff () {
   networksetup -setsocksfirewallproxystate Wi-Fi off
-  if [ -n $(lsof -t -i:2222) ]; then
-    return 
+  if [ ! -n $(lsof -t -iTCP:22) ]; then
+    return
   fi
-  sudo kill $(lsof -t -i:2222)
+  echo "killing ssh sessions"
+  for i in $(lsof -t -iTCP:22); do
+    echo $i
+    sudo kill $i
+  done
 }
 
 _d () {
