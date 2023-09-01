@@ -192,7 +192,7 @@ return {
   window_close_confirmation                  = "NeverPrompt",
   cursor_blink_rate                          = 0,
   default_cursor_style                       = "BlinkingBlock",
-  font_size                                  = 22,
+  font_size                                  = 21,
   line_height                                = 1.4,
   underline_position                         = -8,
   underline_thickness                        = 3, -- ()
