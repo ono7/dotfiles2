@@ -512,13 +512,13 @@ k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 --- visual block by default
-k({ "n" }, "v", "<c-v>")
+-- k({ "n" }, "v", "<c-v>")
 -- vim.cmd("vunmap v")
 
---- helix
+--- helix -- this breaks viw :(
 vim.cmd [[xnoremap i <esc>`<i]]
 vim.cmd [[xnoremap a <esc>`>a]]
-vim.cmd [[nnoremap e v<Right>e]]
+vim.cmd [[nnoremap e v<Right>e]] -- this fixes viw issue
 
 
 
