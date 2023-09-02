@@ -512,8 +512,13 @@ k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 --- visual block by default
-k({ "n", "x" }, "v", "<c-v>")
-vim.cmd("vunmap v")
+k({ "n" }, "v", "<c-v>")
+-- vim.cmd("vunmap v")
+
+--- helix
+
+vim.cmd [[xnoremap i <esc>`<i]]
+vim.cmd [[xnoremap a <esc>`>a]]
 
 
 
