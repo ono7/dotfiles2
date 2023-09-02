@@ -516,9 +516,9 @@ k("n", "C", '"aC')
 -- vim.cmd("vunmap v")
 
 --- helix -- this breaks viw :(
-vim.cmd [[xnoremap i <esc>`<i]]
-vim.cmd [[xnoremap a <esc>`>a]]
-vim.cmd [[nnoremap e v<Right>e]] -- this fixes viw issue
+-- vim.cmd [[xnoremap i <esc>`<i]]
+-- vim.cmd [[xnoremap a <esc>`>a]]
+-- vim.cmd [[nnoremap e v<Right>e]] -- this fixes viw issue, but breaks vaw...
 
 
 
