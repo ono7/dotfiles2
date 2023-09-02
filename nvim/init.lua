@@ -516,9 +516,10 @@ k({ "n" }, "v", "<c-v>")
 -- vim.cmd("vunmap v")
 
 --- helix
-
 vim.cmd [[xnoremap i <esc>`<i]]
 vim.cmd [[xnoremap a <esc>`>a]]
+vim.cmd [[nnoremap e v<Right>e]]
+
 
 
 
