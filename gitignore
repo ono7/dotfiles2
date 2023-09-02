@@ -11,6 +11,8 @@ build/
 .netrwhist
 
 tags
+
+.helix/
 *.log
 vtags
 *.pyc

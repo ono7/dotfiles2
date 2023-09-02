@@ -22,7 +22,6 @@ mkdir -p ~/bin
 mkdir -p ~/go
 mkdir -p ~/.npm-packages
 mkdir -p ~/local/bin
-mkdir -p ~/.ctags.d/
 
 echo ################################################################################
 echo #                              creating symlinks                               #
@@ -31,11 +30,10 @@ echo ###########################################################################
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
 mkdir -p ~/.vim/indent
-ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
 ln -sf ~/.dotfiles/shortpath ~/local/bin/shortpath
 ln -sf ~/.dotfiles/starship.toml ~/.config/
 ln -sf ~/.dotfiles/ipython ~/.ipython
-ln -sf ~/.dotfiles/ctagsrc ~/.ctags.d/default.ctags
+# ln -sf ~/.dotfiles/ctagsrc ~/.ctags.d/default.ctags
 ln -sf ~/.dotfiles/mongorc.js ~/.mongorc.js
 ln -sf ~/.dotfiles/mongorc.js ~/.mongoshrc.js
 ln -sf ~/.dotfiles/ctagsrc ~/.ctags

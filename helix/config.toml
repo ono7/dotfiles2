@@ -7,16 +7,19 @@ mouse = false
 line-number = "relative"
 bufferline = "multiple"
 shell = ["zsh", "-c"]
-# color-modes = true
+# lsp.display-inlay-hints = false
 
 [editor.file-picker]
 hidden = false # do not ignore hidden files
 
 [editor.cursor-shape]
-insert = "block"
+insert = "bar"
 
 [editor.statusline]
-left = ["mode", "spinner", "version-control", "file-name"]
+# left = ["mode", "spinner", "version-control", "file-name"]
+left = [ "mode", "spinner" ]
+center = [ "file-name" ]
+right = [ "file-encoding", "file-line-ending", "file-type"]
 mode.normal = "N "
 mode.insert = "I "
 mode.select = "S "
@@ -115,6 +118,10 @@ G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_b
 w = ["move_next_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
 W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
 g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"] }
+
+[keys.normal."+"]
+m = ":run-shell-command make"
+t = ":run-shell-command make test"
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
