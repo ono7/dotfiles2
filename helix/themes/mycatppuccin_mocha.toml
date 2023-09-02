@@ -75,7 +75,7 @@
 "ui.statusline.select" = { fg = "base", bg = "flamingo", modifiers = ["bold"] }
 "ui.statusline.version-control" = { fg = "mauve" }
 
-"ui.popup" = { fg = "text", bg = "surface0" }
+"ui.popup" = { fg = "text", bg = "mantle" }
 "ui.window" = { fg = "crust" }
 "ui.help" = { fg = "overlay2", bg = "surface0" }
 
