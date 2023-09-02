@@ -4,7 +4,7 @@ scope = "source.ansible"
 file-types = ["yml", "yaml"]
 roots = [".git", "ansible.cfg"]
 comment-token = "#"
-indent = { tab-width =2, unit = "  "}
+indent = { tab-width =2, unit = " "}
 language-server = { command = "ansible-language-server", args = ["--stdio"]}
 
 

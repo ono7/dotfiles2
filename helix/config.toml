@@ -60,7 +60,6 @@ O = ["open_above", "insert_mode"]
 
 V = ["select_mode", "extend_to_line_bounds"]
 
-
 # C = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
 D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
 S = "surround_add" # Would be nice to be able to do something after this but it isn't chainable
@@ -122,6 +121,10 @@ g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to
 [keys.normal."+"]
 m = ":run-shell-command make"
 t = ":run-shell-command make test"
+
+[keys.normal.","]
+w = ":write!"
+q = ":quit-all!"
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
