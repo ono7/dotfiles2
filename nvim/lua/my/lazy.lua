@@ -44,7 +44,7 @@ require("lazy").setup({
         { desc = "Toggle lsp_lines" }
       )
       -- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-      vim.diagnostic.config({ virtual_lines = false })
+      vim.diagnostic.config({ virtual_lines = true })
     end,
   },
   -- {
@@ -81,6 +81,8 @@ require("lazy").setup({
     -- npm install -g yarn
     -- or
     -- npm install -g live-server
+    -- npm install -g nodemon
+    -- nodemon --exec go run main.go --signal SIGTERM
     'barrett-ruth/live-server.nvim',
     -- build = 'yarn global add live-server',
     build = 'npm install -g live-server',

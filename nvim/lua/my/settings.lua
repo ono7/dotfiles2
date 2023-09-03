@@ -44,7 +44,7 @@ opt.splitright = true
 opt.splitbelow = true
 -- opt.winbar = "%=%M %-.45f"
 opt.iskeyword:append("-")
-opt.iskeyword:append('"') -- have vim skip over ", when using w or b
+-- opt.iskeyword:append('"') -- have vim skip over ", when using w or b
 o.smartcase = true
 o.smarttab = true
 -- vim.opt.whichwrap:append "<>[]hl"

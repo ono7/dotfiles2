@@ -1,8 +1,23 @@
-# dlv (debug)
+## dlv (debug)
 
 `dlv debug main.go -- build/1.json` debug main.go, pass build/1.json as an argument
 
-# generics ~
+## pointers and return values
+
+when a pointer is returned as part of a function signature, you can return nil
+instead when returning errors, because the pointer might not exists
+
+```go
+fucn (s string) (*types.User, error) {
+    x, err := newSomething()
+    if err != nil {
+        return nil, err // return nil instead of a pointer
+      }
+    return x, nil // return x(*types.User) and nil for the error
+  }
+```
+
+## generics ~
 
 ```go
 // ~string = anything that has an underlying type of string
@@ -14,7 +29,7 @@ type MyString string /* MyString would work because its underlying data type is 
 the interface would be satisfied because of the use of ~string */
 ```
 
-# generics comparable
+## generics comparable
 
 any type that can be directly compared to it self
 
@@ -34,9 +49,9 @@ go env -w GOPRIVATE=github.com/ono7
 
 repos should have a tag to work, @latest
 
-# macos 07/23/22
+## macos 07/23/22
 
-# find type of interface
+## find type of interface
 
 ```go
 func emtpy(i interface{}) {
@@ -50,7 +65,7 @@ func emtpy(i interface{}) {
 }
 ```
 
-# go program flags
+## go program flags
 
 when using "flag" package:
 
@@ -62,7 +77,7 @@ bool can be set to true by simply calling the flag
 
 this would set the debug and preview flag to true
 
-# go notes
+## go notes
 
 - path ~/go/bin added via PATHS (zshrc)
 - every go file must have a package declaration
@@ -218,7 +233,7 @@ fmt.Printf("type: %18T, val : %8[1]v\n",b)
 
 - ref: https://www.includehelp.com/golang/builtin-package.aspx
 
-# packages/package
+## packages/package
 
 ```go
 // different ways to import
@@ -250,7 +265,7 @@ go build -o eliza main.go
 maps , use make to create one, map\[int\]string
 creates a map of integers with string values
 
-# map types
+## map types
 
 `map[string]*Abc` map of strings keys and struct pointers
 
@@ -386,7 +401,7 @@ var a string
 a = "test"
 ```
 
-# functions
+## functions
 
 - passing values to functions, copies the data into a local variable for the function, this is why
   pointers maybe necessary to interact with passed values into a function call
@@ -438,7 +453,7 @@ import ("time", "math/rand")
 rand.Seed(time.Now().UnixNano()) //nano changes more frequently and provides a better rand generator
 ```
 
-# golang structs
+## golang structs
 
 ```go
 // {"page":"words","input":"","words":[]}
@@ -573,7 +588,7 @@ switch true {  // switch type is bool
 }
 ```
 
-# data structures arrays, slices, string, maps, structs
+## data structures arrays, slices, string, maps, structs
 
 - arrays
 
@@ -645,7 +660,7 @@ rates := [3]float64{
 // order does not matter when using keyed elements
 ```
 
-# unnamed types
+## unnamed types
 
 ```go
 [3]int{6, 9, 3}
@@ -663,7 +678,7 @@ bookcase{6, 7, 8} == bookcaste(
 // you can only convert them if their underlying types are identical
 ```
 
-# arrays vs slices
+## arrays vs slices
 
 - go is statically typed, meaning arrays cannot grow at run time, they are static `[2]int`
 - slice can change and its declared with out a fixed length `[]int`, **length is not part of its type**
@@ -673,7 +688,7 @@ bookcase{6, 7, 8} == bookcaste(
   - if a slice is empty the lenght will aways be 0
 - slice values are stored in a `backing` array in memory that can be shared, pointers?
 
-# append (slices)
+## append (slices)
 
 - `append(sliceName, 1, 2)` -- returns a new slice with the new values appended
 - slices grow in size when allocating new elements, they grow dynamically by copying the contents
@@ -697,7 +712,7 @@ y := []int{4,5,6}
 append(x, y...) // --> []int{1,2,3,4,5,6}, ellipses appends all elements of y to x and returns new slice
 ```
 
-# data types
+## data types
 
 - slices
 
@@ -715,11 +730,11 @@ append(x, y...) // --> []int{1,2,3,4,5,6}, ellipses appends all elements of y to
 
   - groups of different types of variables together
 
-# standard libray
+## standard libray
 
 sort - used to sort slice
 
-# pagination (slices)
+## pagination (slices)
 
 ```go
 func main() {
@@ -741,7 +756,7 @@ func main() {
 }
 ```
 
-# encoding and decoding
+## encoding and decoding
 
 - strings are bytes
   they can be interchangable
@@ -756,7 +771,7 @@ func main() {
 
     - rune literals are the actual characters `104 = h`, h is the rune leteral
 
-# channels
+## channels
 
 ```go
 myCh := make(ch int)
