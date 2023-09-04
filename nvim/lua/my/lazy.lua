@@ -1,4 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local esc = vim.api.nvim_replace_termcodes(
+  '<ESC>', true, false, true
+)
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -123,9 +126,16 @@ require("lazy").setup({
     opts = {},
     config = function()
       local ft = require("Comment.ft")
+      local api = require("Comment.api")
       ft.jinja = { '{#%s#}', '{#%s#}' }
       ft.text = { '#%s', '#%s#' }
       require('Comment').setup({ ignore = "^$" })
+      vim.keymap.set("n", "<C-c>", function() api.toggle.linewise.current() end,
+        { noremap = true, silent = true })
+      vim.keymap.set('x', '<C-c>', function()
+        vim.api.nvim_feedkeys(esc, 'nx', false)
+        api.toggle.linewise(vim.fn.visualmode())
+      end)
     end
   },
   {
