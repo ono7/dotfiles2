@@ -45,6 +45,13 @@ else
   echo 'need tmux in ~/loca/bin/tmux'
 fi
 
+rungo () {
+  if [ $# -eq 0 ]; then 
+    nodemon --exec go run main.go --signal SIGTERM
+  fi
+  nodemon --exec go run $1 --signal SIGTERM
+}
+
 ta () {
   if [ ! -z $TMUX ] && [ ! -z $1 ]
   then
