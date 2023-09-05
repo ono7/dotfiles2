@@ -80,17 +80,17 @@ require("lazy").setup({
       vim.keymap.set("t", "<c-t>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
     end
   },
-  {
-    -- npm install -g yarn
-    -- or
-    -- npm install -g live-server
-    -- npm install -g nodemon
-    -- nodemon --exec go run main.go --signal SIGTERM
-    'barrett-ruth/live-server.nvim',
-    -- build = 'yarn global add live-server',
-    build = 'npm install -g live-server',
-    config = true
-  },
+  -- {
+  --   -- npm install -g yarn
+  --   -- or
+  --   -- npm install -g live-server
+  --   -- npm install -g nodemon
+  --   -- nodemon --exec go run main.go --signal SIGTERM
+  --   'barrett-ruth/live-server.nvim',
+  --   -- build = 'yarn global add live-server',
+  --   build = 'npm install -g live-server',
+  --   config = true
+  -- },
   {
     "f-person/git-blame.nvim",
     config = function()

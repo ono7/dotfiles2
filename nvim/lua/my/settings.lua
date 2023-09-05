@@ -17,6 +17,7 @@ o.undodir = os.getenv("HOME") .. "/.nvim_undo"
 o.undofile = true
 o.swapfile = false
 o.smartcase = true
+o.showbreak = [[↪ ]]
 
 --- status line area ---
 o.laststatus = 0

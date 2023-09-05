@@ -45,7 +45,10 @@ else
   echo 'need tmux in ~/loca/bin/tmux'
 fi
 
-rungo () {
+gorun () {
+  if ! command -v gls &>/dev/null; then
+    npm install -g nodemon
+  fi
   if [ $# -eq 0 ]; then 
     nodemon --exec go run main.go --signal SIGTERM
   fi
