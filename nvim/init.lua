@@ -576,7 +576,7 @@ local packages = {
     "plugins.lsp.mason",        -- mason first, or lsp breaks
     "plugins.gitsigns",
     "plugins.theme_catppuccin", -- 2
-    "plugins.live_server",
+    -- "plugins.live_server",
     "plugins.null_ls",
     "plugins.bufferline",
     "plugins.colorizer",
