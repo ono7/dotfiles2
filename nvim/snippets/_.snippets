@@ -11,10 +11,10 @@ snippet time "time" w
 snippet dt "date and time" w
 	`strftime("%Y-%m-%d %H:%M")`
 snippet todo "todo" w
-  TODO: `$USER` ~ ${0:${VISUAL}}
+  `split(&commentstring, '%s')[0]`TODO(`$USER`): ${0:${VISUAL}}
 snippet fix "fix" w
-  FIXME: `$USER` ~ ${0:${VISUAL}}
+  `split(&commentstring, '%s')[0]`FIXME(`$USER`): ${0:${VISUAL}}
 snippet note "note" w
-  NOTE: `$USER` ~ ${0:${VISUAL}}
+  `split(&commentstring, '%s')[0]`NOTE(`$USER`): ${0:${VISUAL}}
 snippet d "done" w
   ${0:${VISUAL}} ✅

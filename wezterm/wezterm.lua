@@ -177,8 +177,9 @@ return {
     ["Catppuccin Mocha"] = scheme,
   },
   color_scheme                               = 'Catppuccin Mocha',
-  font                                       = wezterm.font_with_fallback { 'MonoLisa Liga', 'Fira Code Nerd Font',
-    'Apple Symbols', 'Arial Unicode MS' },
+  font                                       = wezterm.font_with_fallback { 'MonoLisa Liga',
+    'Fira Code Nerd Font',
+    'Apple Symbols', 'Arial Unicode MS', 'MesloLGS NF' },
   font_rules                                 = {
     -- {
     --   -- intensity = 'Bold',

@@ -465,26 +465,40 @@ startssh () {
   sudo launchctl load /System/Library/LaunchDaemons/ssh.plist
 }
 
+cleartunnel () {
+echo "killing ssh sessions"
+if [ ! -z $(lsof -t -iTCP:22) ]; then
+  for i in $(lsof -t -iTCP:22); do
+    echo $i
+    sudo kill $i
+  done
+fi
+}
+
+starttunnel () {
+  echo "starting ssh proxy"
+  sudo ssh -N -f -D 127.0.0.1:6000 jlima@127.0.0.1 -p 2222 -o ServerAliveCountMax=3 -o ServerAliveInterval=3
+}
+
 proxyon () {
   if [ -n $1 ]; then
     networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 6000
   else
     networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 $1
   fi
-  sudo ssh -N -f -D 127.0.0.1:6000 jlima@127.0.0.1 -p 2222 -o ServerAliveCountMax=3 -o ServerAliveInterval=3
   networksetup -setsocksfirewallproxystate Wi-Fi on
 }
 
 proxyoff () {
   networksetup -setsocksfirewallproxystate Wi-Fi off
-  if [ ! -n $(lsof -t -iTCP:22) ]; then
-    return
-  fi
-  echo "killing ssh sessions"
-  for i in $(lsof -t -iTCP:22); do
-    echo $i
-    sudo kill $i
-  done
+  # if [ ! -n $(lsof -t -iTCP:22) ]; then
+  #   return
+  # fi
+  # echo "killing ssh sessions"
+  # for i in $(lsof -t -iTCP:22); do
+  #   echo $i
+  #   sudo kill $i
+  # done
 }
 
 _d () {
