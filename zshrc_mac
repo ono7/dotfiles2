@@ -135,7 +135,7 @@ if [[ -f ~/nvim/bin/nvim ]]; then
   alias vil='/usr/bin/vim'
   alias vimdiff='~/nvim/bin/nvim -d'
 elif command -v nvim &>/dev/null; then
-  alias vim=$(whence nvim)
+  alias vim="$(whence nvim)"
   alias nvim=vim
   alias vi=vim
   alias vil=vim
@@ -512,6 +512,10 @@ bindkey -s "^G" _d^M
 
 vs () {
   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
+}
+
+hs () {
+  hx "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
 _vs () {

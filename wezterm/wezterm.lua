@@ -29,6 +29,7 @@ local ansi = {
 
 scheme.ansi = ansi
 scheme.brights = ansi
+scheme.cursor_bg = "#00acc1"
 local act = wezterm.action
 
 -- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")

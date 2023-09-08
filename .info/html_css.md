@@ -1,3 +1,9 @@
+### resources
+
+1. font awesome (good for icons)
+2. milligram.io (minimallist web framework)
+3. htmx
+
 ### media queries
 
 can be used to do different things based on device attributes like screen size

@@ -1,3 +1,34 @@
+
+[[language]]
+name = "python"
+language-server = { command = "pylsp" }
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+
+[language.config.pylsp.plugins]
+pyflakes = { enabled = false }
+mccabe = { enabled = false }
+pyls_isort = { enabled = false }
+pycodestyle = { enabled = false, maxLineLength = 88 }
+pydocstyle = { enabled = false }
+autopep8 = { enabled = false }
+yapf = { enabled = false }
+flake8 = { enabled = false }
+pylint = { enabled = false }
+ruff = { enabled = true, extendSelect = ["I"] }
+mypy = { enabled = true, live_mode = true, strict = true }
+
+[[language]]
+name = "typescript"
+formatter = { command = "prettier" }
+auto-format = true
+
+
+[[language]]
+name = "toml"
+formatter = { command = "prettier" }
+auto-format = true
+
 [[language]]
 name = "ansible"
 scope = "source.ansible"
@@ -7,14 +38,12 @@ comment-token = "#"
 indent = { tab-width =2, unit = " "}
 language-server = { command = "ansible-language-server", args = ["--stdio"]}
 
+[[language]]
+name = "yaml"
+formatter = { command = "prettier" }
+auto-format = true
 
-
-
-
-
-
-
-
-
-
-
+[[language]]
+name = "dockerfile"
+file-types = ["Dockerfile", "Dockerfile.lambda"]
+auto-format = true

@@ -7,30 +7,46 @@ mouse = false
 line-number = "relative"
 bufferline = "multiple"
 shell = ["zsh", "-c"]
+scrolloff = 10
+color-modes = true
+completion-trigger-len = 1
+
+[editor.soft-wrap]
+enable = true
+
 # lsp.display-inlay-hints = false
 
 [editor.file-picker]
 hidden = false # do not ignore hidden files
+ignore = true # this is the default, but we can add files to a .ignore file that is not .gitignore
 
 [editor.cursor-shape]
-insert = "bar"
+insert = "block"
+normal = "block"
+
+# [editor.statusline]
+# left = [ "mode", "spinner" ]
+# center = [ "file-name" ]
+# right = [ "file-encoding", "file-line-ending", "file-type"]
+# mode.normal = "N "
+# mode.insert = "I "
+# mode.select = "S "
 
 [editor.statusline]
-# left = ["mode", "spinner", "version-control", "file-name"]
-left = [ "mode", "spinner" ]
-center = [ "file-name" ]
-right = [ "file-encoding", "file-line-ending", "file-type"]
-mode.normal = "N "
-mode.insert = "I "
-mode.select = "S "
+left = ["mode", "spacer","file-name", "spacer", "file-modification-indicator", "diagnostics", "workspace-diagnostics", "spinner"]
+center = [ "version-control" ]
+right = ["spacer","file-type", "position", "total-line-numbers", "position-percentage", "spacer"]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
 
 [editor.lsp]
 snippets = true
 
-# [editor.whitespace.render]
-# space = "trailing"   
-# newline = "trailing"
-# tab = "trailing"
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+newline = "none"
 
 [editor.indent-guides]
 render = true
@@ -42,6 +58,8 @@ G = "goto_file_end"
 X = "extend_line_above"
 ret = ["move_line_down", "goto_line_start"]
 esc = ["collapse_selection", "keep_primary_selection"]
+C-n = ":buffer-previous"
+C-e = ":buffer-next"
 
 # C-o = ":config-open"
 # C-o = ":o ~/.dotfiles"
@@ -52,6 +70,7 @@ O = ["open_above", "insert_mode"]
 
 "{" = ["goto_prev_paragraph", "collapse_selection"]
 "}" = ["goto_next_paragraph", "collapse_selection"]
+# C-] = ["goto_definition"]
 
 0 = "goto_line_start"
 "$" = "goto_line_end"
@@ -92,31 +111,31 @@ u = ["undo", "collapse_selection"]
 j = "move_line_down"
 k = "move_line_up"
 
-[keys.normal.d]
-d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]
-t = ["extend_till_char"]
-s = ["surround_delete"]
-i = ["select_textobject_inner"]
-a = ["select_textobject_around"]
-j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
-down = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
-k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
-up = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
-G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
-w = ["move_next_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
-W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
-g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"] }
+# [keys.normal.d]
+# d = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection"]
+# t = ["extend_till_char"]
+# s = ["surround_delete"]
+# i = ["select_textobject_inner"]
+# a = ["select_textobject_around"]
+# j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
+# down = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
+# k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
+# up = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
+# G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"]
+# w = ["move_next_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
+# W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "delete_selection"]
+# g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "normal_mode"] }
 
-[keys.normal.y]
-y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode", "collapse_selection"]
-j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-down = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-up = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-w = ["move_next_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
-g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"] }
+# [keys.normal.y]
+# y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode", "collapse_selection"]
+# j = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# down = ["select_mode", "extend_to_line_bounds", "extend_line_below", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# k = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# up = ["select_mode", "extend_to_line_bounds", "extend_line_above", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# w = ["move_next_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
+# g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"] }
 
 [keys.normal."+"]
 m = ":run-shell-command make"
@@ -124,7 +143,22 @@ t = ":run-shell-command make test"
 
 [keys.normal.","]
 w = ":write!"
-q = ":quit-all!"
+q = ":quit-all"
+d = ":buffer-close"
+
+[keys.normal.g]
+q = ":reflow"
+a = "code_action"
+
+[keys.normal.space]
+l = ":toggle lsp.display-inlay-hints"
+
+[keys.normal.backspace]
+b = ":run-shell-command zellij run -f -- make build"
+r = ":run-shell-command zellij run -f -- make run"
+t = ":run-shell-command zellij run -f -- make test"
+g = ":run-shell-command zellij run -fc -- lazygit"
+f = ":run-shell-command zellij run -fc -- broot"
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
@@ -147,6 +181,7 @@ u = ["switch_to_lowercase", "collapse_selection", "normal_mode"]
 U = ["switch_to_uppercase", "collapse_selection", "normal_mode"]
 
 # Visual-mode specific muscle memory
+
 i = "select_textobject_inner"
 a = "select_textobject_around"
 
@@ -168,6 +203,3 @@ P = "paste_clipboard_before"
 
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
-
-[keys.normal.g]
-q = ":reflow"

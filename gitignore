@@ -13,6 +13,7 @@ build/
 tags
 
 .helix/
+.ignore
 *.log
 vtags
 *.pyc

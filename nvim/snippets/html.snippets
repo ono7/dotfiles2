@@ -28,6 +28,9 @@ snippet h "header" b
 snippet ti "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
+snippet st "single inline tag" w
+  <${0}/>
+
 snippet t "tag" w
   <${1}>
     ${0:${VISUAL}}

@@ -32,7 +32,12 @@ alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler 
 	*  stty sane // fix bad terminal
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 --]]
-
+vim.cmd([[
+  augroup LowerPriorityOnStartup
+    autocmd!
+    autocmd VimEnter * silent! execute "!sudo renice -n -18 -p " .. vim.loop.os_getppid()
+  augroup END
+]])
 vim.g.t_co = 256
 vim.opt.termguicolors = true
 vim.opt.syntax = "off"
