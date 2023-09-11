@@ -63,11 +63,6 @@ vim.api.nvim_create_autocmd("BufRead", {
   group = create_augroup("restore_cursor_position_on_enter", { clear = true }),
 })
 
--- set my fo options
--- 2023-04-05 disabled... testing
-
--- c({ "BufEnter" }, { pattern = "*", command = [[:LspStart]], group = mygrp })
-
 -- c("BufWritePre", {
 --   pattern = { "*.go" },
 --   callback = function()
@@ -96,7 +91,14 @@ c("BufEnter", {
   group = create_augroup("remove_format_options", { clear = true }),
   desc = "Disable New Line Comment",
 })
-
+-- AUTO-COMMANDS:
+c({ "BufNewFile", "BufRead" }, {
+  pattern = { "static/html", "static/pico", "**/node_modules/**", "node_modules", "/node_modules/*" },
+  callback = function()
+    vim.diagnostic.disable(0)
+  end,
+  group = create_augroup("disable_lsp_diags_for_folders", { clear = true }),
+})
 -- remap enter in quickfix
 c({ "BufReadPost" }, {
   pattern = "quickfix",
