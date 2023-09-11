@@ -20,12 +20,12 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "ono7/null-ls.nvim",
   "onsails/lspkind-nvim",
-  "Glench/Vim-Jinja2-Syntax",
+  -- "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",        name = "catppuccin" },
   -- "numtostr/navigator.nvim",
   "kylechui/nvim-surround",
-  "SmiteshP/nvim-navic",
+  -- "SmiteshP/nvim-navic",
   {
     'monkoose/matchparen.nvim',
     config = function()
@@ -80,17 +80,6 @@ require("lazy").setup({
       vim.keymap.set("t", "<c-t>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
     end
   },
-  -- {
-  --   -- npm install -g yarn
-  --   -- or
-  --   -- npm install -g live-server
-  --   -- npm install -g nodemon
-  --   -- nodemon --exec go run main.go --signal SIGTERM
-  --   'barrett-ruth/live-server.nvim',
-  --   -- build = 'yarn global add live-server',
-  --   build = 'npm install -g live-server',
-  --   config = true
-  -- },
   {
     "f-person/git-blame.nvim",
     config = function()
@@ -158,46 +147,20 @@ require("lazy").setup({
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
   },
-  {
-    "kiyoon/treesitter-indent-object.nvim",
-    -- keys = {
-    --   {
-    --     "ai",
-    --     "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_outer()<CR>",
-    --     mode = { "x", "o" },
-    --     desc = "Select context-aware indent (outer)",
-    --   },
-    --   {
-    --     "aI",
-    --     "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_outer(true)<CR>",
-    --     mode = { "x", "o" },
-    --     desc = "Select context-aware indent (outer, line-wise)",
-    --   },
-    --   {
-    --     "ii",
-    --     "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_inner()<CR>",
-    --     mode = { "x", "o" },
-    --     desc = "Select context-aware indent (inner, partial range)",
-    --   },
-    --   {
-    --     "iI",
-    --     "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_inner(true)<CR>",
-    --     mode = { "x", "o" },
-    --     desc = "Select context-aware indent (inner, entire range)",
-    --   },
-    -- },
-  },
   -- {
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   config = function()
-  --     require("treesitter-context").setup({
-  --       max_lines = 1,
-  --     })
-  --     vim.keymap.set("n", "[c", function()
-  --       require("treesitter-context").go_to_context()
-  --     end, { silent = true })
-  --   end,
+  --   "kiyoon/treesitter-indent-object.nvim",
   -- },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup({
+        max_lines = 1,
+      })
+      vim.keymap.set("n", "[c", function()
+        require("treesitter-context").go_to_context()
+      end, { silent = true })
+    end,
+  },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
