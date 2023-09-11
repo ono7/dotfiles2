@@ -70,7 +70,7 @@ local silent = { noremap = true, silent = true }
 
 local MYHOME = os.getenv("HOME")
 
-vim.o.shada = "'25,<1000,s1000,:500,/100,h,n~/.shada"
+vim.o.shada = "'20,<1000,s1000,:500,/100,h,n~/.shada"
 
 local function get_git_root()
     local dot_git_path = vim.fn.finddir(".git", ".;")
@@ -119,7 +119,7 @@ k("n", "ZQ", "")
 --- k("n", "L", "")
 --- k("n", "H", "")
 
-k({ "n", "x" }, "<c-e>", "$")
+k({ "n", "x" }, "<c-e>", "g_")
 
 k({ "n", "x" }, "gh", "^")
 k({ "n", "x" }, "gl", "g_")
@@ -131,10 +131,10 @@ k("n", "gp", "`[v`]", silent)
 k("v", "y", [[ygv<Esc>]], silent)
 
 k("n", ",r", vim.lsp.buf.format, silent)
-k("n", "<leader>w", ":w<cr>", silent)
-k("n", ",w", ":w<cr>", silent)
-k("n", ",q", ":q!<cr>", silent)
-k("n", "<leader>q", ":q!<cr>", silent)
+k("n", "<leader>w", "<cmd>w<cr>", silent)
+k("n", ",w", "<cmd>w<cr>", silent)
+k("n", ",q", "<cmd>q!<cr>", silent)
+k("n", "<leader>q", "<cmd>q!<cr>", silent)
 
 --- surround
 k("n", [[s"]], [[ciw"<c-r><c-p>""]])
@@ -169,8 +169,8 @@ m("n", "Q", "@q", opt)
 k("n", "cp", "yap<S-}>p", opt)
 
 --- quickfix nav ---
-k("n", "[q", ":cprev<cr>", opt)
-k("n", "]q", ":cnext<cr>", opt)
+k("n", "[q", "<cmd>cprev<cr>", opt)
+k("n", "]q", "<cmd>cnext<cr>", opt)
 
 --- ex/command mode bindings
 k("c", "<c-a>", "<Home>", opt)

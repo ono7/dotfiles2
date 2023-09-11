@@ -70,9 +70,10 @@ cmp_config.setup({
       winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
     },
     documentation = {
-      border = nil,
+      border = 'rounded',
       scrollbar = false,
-      winhighlight = "Comment:cmpDoc",
+      -- winhighlight = "Comment:cmpDoc",
+      winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
     }
   },
   mapping = {
