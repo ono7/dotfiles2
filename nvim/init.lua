@@ -146,7 +146,6 @@ k("x", [[vi"]], [[/"<CR>vi"]], silent)
 k("x", [[vi']], [[/'<CR>vi']], silent)
 
 --- navigate between splits ---
-
 k("n", "<c-k>", "<C-W>k")
 k("n", "<c-j>", "<C-W>j")
 k("n", "<c-h>", "<C-W>h")
@@ -157,6 +156,7 @@ k("n", "<c-l>", "<C-W>l")
 --- k("n", "<c-s-h>", "<C-W>h")
 --- k("n", "<c-s-l>", "<C-W>l")
 
+k("n", ";", ":")
 
 --- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)

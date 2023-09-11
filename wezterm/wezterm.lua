@@ -45,7 +45,6 @@ return {
   -- use_ime = change macos ctrl key behavior e.g. ctrl-d, affects new versions of macos 2023-08-02
   -- use_ime                                    = false,
   disable_default_key_bindings               = true,
-  leader                                     = { key = 'b', mods = 'CTRL', timeout_milliseconds = 700 },
   keys                                       = {
     -- use xxd -psd to get hex char sequences
     -- CTRL-SHIFT-l activates the debug overlay
@@ -54,49 +53,40 @@ return {
     --   mods = 'CMD',
     --   action = wezterm.action.ShowDebugOverlay
     -- },
-    { key = 'm',     mods = 'ALT',        action = act.TogglePaneZoomState, },
-    { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
-    { key = 'f',     mods = 'CMD',        action = act.Search { Regex = "" } },
-    { key = 'C',     mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
+    ---- use this key bindings to use only wezterm as a multiplexer ----
+    -- { key = 'm',     mods = 'ALT',        action = act.TogglePaneZoomState, },
+    -- { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
+    -- { key = 'f',     mods = 'CMD',        action = act.Search { Regex = "" } },
     -- { key = 'Space', mods = 'SHIFT|CTRL', action = act.QuickSelect },
-    { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
-    { key = ']',     mods = 'ALT',        action = act.ActivateTabRelative(1), },
-    { key = '[',     mods = 'ALT',        action = act.ActivateTabRelative(-1) },
-    { key = 'j',     mods = 'ALT',        action = act.ActivatePaneDirection 'Down', },
-    { key = 'k',     mods = 'ALT',        action = act.ActivatePaneDirection 'Up', },
-    { key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
-    { key = '=',     mods = 'CTRL',       action = act.IncreaseFontSize },
-    { key = '-',     mods = 'CTRL',       action = act.DecreaseFontSize },
+    -- { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
+    -- { key = ']',     mods = 'ALT',        action = act.ActivateTabRelative(1), },
+    -- { key = '[',     mods = 'ALT',        action = act.ActivateTabRelative(-1) },
+    -- { key = 'j',     mods = 'ALT',        action = act.ActivatePaneDirection 'Down', },
+    -- { key = 'k',     mods = 'ALT',        action = act.ActivatePaneDirection 'Up', },
     -- {
     --   key = 'u',
     --   mods = 'ALT',
-    --   action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    --   action = act.SplitPane { direction = 'Down', size = { Percent = 30 } },
     -- },
     -- {
     --   key = 'i',
     --   mods = 'ALT',
-    --   action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    --   action = act.SplitPane { direction = 'Right', size = { Percent = 40 } },
     -- },
-    {
-      key = 'u',
-      mods = 'ALT',
-      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } },
-    },
-    {
-      key = 'i',
-      mods = 'ALT',
-      action = act.SplitPane { direction = 'Right', size = { Percent = 40 } },
-    },
+    { key = 'C', mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
+    { key = '0', mods = 'CTRL',       action = act.ResetFontSize },
+    { key = '=', mods = 'CTRL',       action = act.IncreaseFontSize },
+    { key = '-', mods = 'CTRL',       action = act.DecreaseFontSize },
     {
       key = "w",
       mods = "CMD",
       action = act.CloseCurrentPane({ confirm = false }),
     },
-    {
-      key = "?",
-      mods = "CTRL|SHIFT",
-      action = act.Search("CurrentSelectionOrEmptyString")
-    },
+    -- {
+    --   key = "?",
+    --   mods = "CTRL|SHIFT",
+    --   action = act.Search("CurrentSelectionOrEmptyString")
+    -- },
     {
       -- turn off cmd+m to minimize window from the os
       key = "m",
@@ -154,24 +144,24 @@ return {
     --   mods = "ALT",
     --   action = act.SendString("\x02\x2c"),
     -- },
-    -- {
-    --   -- tmux zoom pane
-    --   key = "m",
-    --   mods = "ALT",
-    --   action = act.SendString("\x02\x7a"),
-    -- },
-    -- {
-    --   -- tmux create horizontal pane
-    --   key = "u",
-    --   mods = "ALT",
-    --   action = act.SendString("\x02\x2d"),
-    -- },
-    -- {
-    --   -- tmux create vertical pane
-    --   key = "i",
-    --   mods = "ALT",
-    --   action = act.SendString("\x02\x7c"),
-    -- },
+    {
+      -- tmux zoom pane
+      key = "m",
+      mods = "ALT",
+      action = act.SendString("\x02\x7a"),
+    },
+    {
+      -- tmux create horizontal pane
+      key = "u",
+      mods = "ALT",
+      action = act.SendString("\x02\x2d"),
+    },
+    {
+      -- tmux create vertical pane
+      key = "i",
+      mods = "ALT",
+      action = act.SendString("\x02\x7c"),
+    },
   },
   color_schemes                              = {
     -- new or override scheme
