@@ -23,9 +23,7 @@ require("lazy").setup({
   -- "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   { "catppuccin/nvim",        name = "catppuccin" },
-  -- "numtostr/navigator.nvim",
   "kylechui/nvim-surround",
-  -- "SmiteshP/nvim-navic",
   {
     'monkoose/matchparen.nvim',
     config = function()
@@ -36,28 +34,10 @@ require("lazy").setup({
       })
     end
   },
-  -- {
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --     vim.keymap.set(
-  --       "n",
-  --       ",t",
-  --       require("lsp_lines").toggle,
-  --       { desc = "Toggle lsp_lines" }
-  --     )
-  --     -- vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-  --     vim.diagnostic.config({ virtual_lines = true })
-  --   end,
-  -- },
-  -- {
-  --   "fgheng/winbar.nvim"
-  -- },
   -- "mfussenegger/nvim-dap",
   -- "jay-babu/mason-nvim-dap.nvim",
   'ThePrimeagen/harpoon',
   "NvChad/nvim-colorizer.lua",
-  -- "brenoprata10/nvim-highlight-colors",
   { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",
