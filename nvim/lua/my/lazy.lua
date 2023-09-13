@@ -77,19 +77,19 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
   },
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = "+" },
-        change = { text = "~" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "~" },
-      },
-    },
-  },
+--  {
+--    "lewis6991/gitsigns.nvim",
+--    opts = {
+--      -- See `:help gitsigns.txt`
+--      signs = {
+--        add = { text = "+" },
+--        change = { text = "~" },
+--        delete = { text = "_" },
+--        topdelete = { text = "‾" },
+--        changedelete = { text = "~" },
+--      },
+--    },
+--  },
   {
     "numToStr/Comment.nvim",
     opts = {},

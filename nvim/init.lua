@@ -579,9 +579,8 @@ local packages = {
     "plugins.lsp.cmp",
     -- "plugins.winbar",
     "plugins.lsp.mason",        -- mason first, or lsp breaks
-    "plugins.gitsigns",
+    -- "plugins.gitsigns", -- wtf broken 2023-09-13
     "plugins.theme_catppuccin", -- 2
-    -- "plugins.live_server",
     "plugins.null_ls",
     "plugins.bufferline",
     "plugins.colorizer",

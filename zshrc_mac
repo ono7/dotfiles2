@@ -601,6 +601,9 @@ if [[ $OSTYPE == "darwin"* ]];  then
   defaults write -g KeyRepeat -int $KRATE
   # normal minimum is 15 (225 ms) , higher is faster
   defaults write -g InitialKeyRepeat -int $INITKRATE
+
+# allow holding key instead of mac default holding key to choose alternate key
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 fi
 
 # unset display in wsl or vim will starup slow
