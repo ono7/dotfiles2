@@ -38,6 +38,14 @@ vim.cmd([[
     autocmd VimEnter * silent! execute "!sudo renice -n -18 -p " .. vim.loop.os_getppid()
   augroup END
 ]])
+
+-- vim.cmd([[
+-- noremap p gp
+-- noremap P gP
+-- noremap gp p
+-- noremap gP P
+-- ]])
+
 vim.g.t_co = 256
 vim.opt.termguicolors = true
 vim.opt.syntax = "off"
@@ -517,8 +525,8 @@ k("n", "c", '"ac')
 k("n", "C", '"aC')
 
 --- visual block by default
--- k({ "n" }, "v", "<c-v>")
--- vim.cmd("vunmap v")
+k({ "n" }, "v", "<c-v>")
+--- vim.cmd("vunmap v")
 
 --- helix -- this breaks viw :(
 -- vim.cmd [[xnoremap i <esc>`<i]]
@@ -579,7 +587,7 @@ local packages = {
     "plugins.lsp.cmp",
     -- "plugins.winbar",
     "plugins.lsp.mason",        -- mason first, or lsp breaks
-    -- "plugins.gitsigns", -- wtf broken 2023-09-13
+    "plugins.gitsigns",         -- wtf broken 2023-09-13
     "plugins.theme_catppuccin", -- 2
     "plugins.null_ls",
     "plugins.bufferline",

@@ -94,6 +94,12 @@ return {
       action = act.DisableDefaultAssignment,
     },
     {
+      -- turn off cmd+m to minimize window from the os
+      key = "h",
+      mods = "CTRL|SHIFT",
+      action = act.DisableDefaultAssignment,
+    },
+    {
       key = "i",
       mods = "CTRL",
       action = act.DisableDefaultAssignment,

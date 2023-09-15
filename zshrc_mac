@@ -480,6 +480,11 @@ starttunnel () {
   sudo ssh -N -f -D 127.0.0.1:6000 jlima@127.0.0.1 -p 2222 -o ServerAliveCountMax=3 -o ServerAliveInterval=3
 }
 
+tunnel(){
+  cleartunnel
+  starttunnel
+}
+
 proxyon () {
   if [ -n $1 ]; then
     networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 6000
