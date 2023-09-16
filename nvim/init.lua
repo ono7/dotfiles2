@@ -118,8 +118,8 @@ g.mapleader = " "
 vim.opt.path:append({ "**" })
 
 --- nop ---
-k({ "c", "x", "n" }, "<c-z>", "") -- use this for searching repos
-k("n", "<c-f>", "")               -- use this for searching files
+-- k({ "c", "x", "n" }, "<c-z>", "") -- needed to send vim to background task
+k("n", "<c-f>", "") -- use this for searching files
 --- k("n", "<c-b>", "")               -- this conflicts with tmux...
 k("n", "ZZ", "")
 k("n", "ZQ", "")
