@@ -45,6 +45,19 @@ else
   echo 'need tmux in ~/loca/bin/tmux'
 fi
 
+# bring back vim after c-z
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER=fg
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey ^Z fancy-ctrl-z
+
 gorun () {
   if ! command -v gls &>/dev/null; then
     npm install -g nodemon
@@ -214,13 +227,13 @@ rmtag () {
 }
 
 # copies data to tmux clipboard, echo 'test' | copy
-c () {
-  tmux loadb -
-}
+# c () {
+#   tmux loadb -
+# }
 
-p () {
-  tmux saveb -
-}
+# p () {
+#   tmux saveb -
+# }
 
 vq () {
   # pass all args to rg via $@ .. allows to append rg flags, muhahah
