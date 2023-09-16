@@ -127,9 +127,9 @@ require("lazy").setup({
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
   },
-  -- {
-  --   "kiyoon/treesitter-indent-object.nvim",
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()

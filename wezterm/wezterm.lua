@@ -93,12 +93,12 @@ return {
       mods = "CMD",
       action = act.DisableDefaultAssignment,
     },
-    {
-      -- turn off cmd+m to minimize window from the os
-      key = "h",
-      mods = "CTRL|SHIFT",
-      action = act.DisableDefaultAssignment,
-    },
+    -- {
+    --   -- turn off cmd+m to minimize window from the os
+    --   key = "h",
+    --   mods = "CTRL|SHIFT",
+    --   action = act.DisableDefaultAssignment,
+    -- },
     {
       key = "i",
       mods = "CTRL",
@@ -175,14 +175,15 @@ return {
   },
   color_scheme                               = 'Catppuccin Mocha',
   font                                       = wezterm.font_with_fallback { 'MonoLisa Liga',
+    -- font                                       = wezterm.font_with_fallback { 'MesloLGS NF',
     'Fira Code Nerd Font',
     'Apple Symbols', 'Arial Unicode MS', 'MesloLGS NF' },
   font_rules                                 = {
-    -- {
-    --   -- intensity = 'Bold',
-    --   italic = false,
-    --   font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Normal" })
-    -- },
+    {
+      -- intensity = 'Bold',
+      italic = true,
+      font = wezterm.font("MonoLisa Liga", { stretch = "Normal", style = "Italic" })
+    },
     -- {
     --   -- intensity = 'Bold',
     --   italic = true,
