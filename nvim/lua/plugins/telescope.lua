@@ -52,17 +52,19 @@ configs.setup({
 })
 
 k("n", "<c-w>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-k("n", "<c-/>", function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-    -- winblend = 10,
-    previewer = false,
-  }))
-end, { desc = "[/] Fuzzily search in current buffer" })
+-- Telescope live_grep search_dirs={'%'}
+-- k("n", "<c-/>", function()
+--   -- You can pass additional configuration to telescope to change theme, layout, etc.
+--   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+--     -- winblend = 10,
+--     previewer = false,
+--   }))
+-- end, { desc = "[/] Fuzzily search in current buffer" })
 
 k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", opt)
 k({ "n", "x" }, "<leader>fd", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
 k("n", "<c-x>", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
+k("n", "<c-/>", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", opt)
 k("n", "<leader>fi", "<cmd>lua require('telescope.builtin').live_grep({ cwd = '~/.dotfiles/.info'})<cr>", opt)
 -- k({ "n", "c", "x" }, "<c-z>", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opt)
 k({ "n", "c", "x" }, "<c-s>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>", silent)
