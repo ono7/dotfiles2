@@ -9,8 +9,9 @@ snippet e "error" w
 	}
 
 snippet ok "check ok" b
-  ${1} := ${0}
-  if !${1/\v\S+\s+(\S+)/\1/} {
+  if ${1:val, ok} := ${2}; !${1/\v\S+\s+(\S+)/\1/} {
+    ${0}
+  } else {
   }
 
 snippet ife "error" w
