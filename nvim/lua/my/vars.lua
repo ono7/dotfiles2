@@ -4,9 +4,12 @@ local gs, g = vim.api.nvim_set_var, vim.g
 g.completion_sorting = "length"
 
 --- lsp ---
-g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
+g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 
 g.tmux_navigator_disable_when_zoomed = 1
+
+--- disable highlighting errors, vimscript
+g.vimsyn_noerror = 1
 
 --- handle assembly language syntax ---
 g.asmsyntax = "nasm"
@@ -50,4 +53,3 @@ g.miniyank_maxitems = 10
 g.gitblame_enabled = 0
 g.gitblame_date_format = [[%m/%d/%Y]]
 g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
-

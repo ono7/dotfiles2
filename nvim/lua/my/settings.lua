@@ -20,7 +20,7 @@ o.smartcase = true
 o.showbreak = [[↪ ]]
 
 --- status line area ---
-o.laststatus = 0
+o.laststatus = 3
 o.showmode = true
 o.cmdheight = 1
 
@@ -122,7 +122,7 @@ end
 --- window-local options ---
 wo.number = true
 wo.relativenumber = true
-wo.wrap = false
+wo.wrap = true
 wo.numberwidth = 2
 wo.signcolumn = "yes"
 wo.foldenable = false

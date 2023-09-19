@@ -52,6 +52,10 @@ configs.setup({
 })
 
 k("n", "<c-w>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+
+-- vim.keymap.set("n", ":", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
+--   { silent = true })
+
 -- Telescope live_grep search_dirs={'%'}
 -- k("n", "<c-/>", function()
 --   -- You can pass additional configuration to telescope to change theme, layout, etc.
