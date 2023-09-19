@@ -98,7 +98,10 @@ config.setup({
 })
 
 
-vim.keymap.set("n", "<s-Tab>", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+-- vim.keymap.set("n", "<s-Tab>", ":bprevious<CR>", { silent = true })
+-- vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<a-n>", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<a-e>", ":bnext<CR>", { silent = true })
+
 -- vim.keymap.set({ "n", "x" }, ",d", ":BufferClose!<cr>", { silent = true })
 vim.keymap.set({ "n", "x" }, ",dd", ":bd!<cr>", { silent = true })
