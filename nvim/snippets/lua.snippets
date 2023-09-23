@@ -16,7 +16,6 @@ snippet repeat "repeat" w
 
 snippet pcall "setup a pcall"
   local ${1/\v[-.]/_/g}_ok, ${1/\v[-.]/_/g}_${2} = pcall(require, "${1}")
-
   if not ${1/\v[-.]/_/g}_ok then
     print("Error in pcall $1 -> `expand('%:p:~')`")
     return

@@ -100,7 +100,9 @@ if not neodev_ok then
   return
 end
 
-neodev_config.setup({})
+neodev_config.setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true }
+})
 
 
 local nvim_lsp_status, nvim_lsp = pcall(require, "lspconfig")

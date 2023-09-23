@@ -595,9 +595,7 @@ local packages = {
     "plugins.colorizer",
     "my.cmds",
     "plugins.harpoon",
-    -- "plugins.snippet",
-    -- "plugins.floaterm",
-    -- "plugins.core_dap",
+    "plugins.core_dap",
     -- "plugins.dap_adapters",
 }
 
