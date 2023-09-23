@@ -432,6 +432,7 @@ end, { expr = true })
 -- k("n", "L", "")
 -- k("n", "H", "")
 -- k("n", "H", "")
+k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
 
 --- -- Lua function to send text to Tmux
