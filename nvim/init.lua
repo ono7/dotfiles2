@@ -114,7 +114,7 @@ k("n", "<c-f>", "") -- use this for searching files
 k("n", "ZZ", "")
 k("n", "ZQ", "")
 
-k({ "n", "x" }, "<c-e>", "g_")
+-- k({ "n", "x" }, "<c-e>", "g_")
 
 k({ "n", "x" }, "gh", "^")
 k({ "n", "x" }, "gl", "g_")

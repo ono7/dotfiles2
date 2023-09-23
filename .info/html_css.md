@@ -1,8 +1,9 @@
 ### resources
 
-1. font awesome (good for icons)
-2. milligram.io (minimallist web framework)
-3. htmx
+- font awesome (good for icons)
+- milligram.io (minimallist web framework)
+- `https://lucide.dev/` (icons)
+- htmx/hyperscript
 
 ### media queries
 

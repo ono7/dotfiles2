@@ -36,6 +36,7 @@ require("lazy").setup({
   },
   --- dap goods ---
   "mfussenegger/nvim-dap",
+  "mfussenegger/nvim-dap-python",
   "jay-babu/mason-nvim-dap.nvim",
   "leoluz/nvim-dap-go",
   "rcarriga/nvim-dap-ui",

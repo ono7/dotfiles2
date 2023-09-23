@@ -1,4 +1,8 @@
 --[[
+* for golang, should make debug
+
+	  go build -gcflags="all=-N -l" -o $(BUILD_DIR)/$(BINARY_NAME)-debug
+
 * MACOS
   brew install llvm
   ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
@@ -43,7 +47,7 @@ function DapDebug()
       request = "launch",
       mode = "exec",
       hostName = "127.0.0.1",
-      port = "7777",
+      port = "5678",
       program = function()
         local argument_string = vim.fn.input "Path to binary: "
         vim.notify("Debugging binary: " .. argument_string)
@@ -56,7 +60,7 @@ function DapDebug()
   dap.adapters.delve = {
     type = "server",
     host = "127.0.0.1",
-    port = 7777,
+    port = 5678,
   }
   require("dap").continue()
 end
@@ -78,7 +82,7 @@ vim.keymap.set("n", '<leader>b', function() require('dap').toggle_breakpoint() e
 
 --- THE ONLY KEYBINDING I REALLY NEED, use twice to inspect more ---
 --- visually select a word, or it will use what is under the cursor in normal mode ---
-vim.keymap.set({ "n", "x" }, '<leader>e', function() require("dapui").eval() end)
+vim.keymap.set({ "n", "x" }, '<c-e>', function() require("dapui").eval() end)
 
 vim.keymap.set("n", '<leader>dus', function()
   local widgets = require("dap.ui.widgets")
@@ -174,10 +178,7 @@ dap.configurations.python = {
 --   dapui.close()
 -- end
 
-
-------------------------------------------------------------------------
---                             dap/python                             --
-------------------------------------------------------------------------
+require('dap-python').setup('~/.virtualenvs/prod3/bin/python')
 
 local MYHOME = os.getenv("HOME")
 local MY_VENV_BIN = MYHOME .. "/.virtualenvs/prod3/bin/python"
@@ -214,6 +215,21 @@ dap.configurations.python = {
     end
   }
 }
+
+
+-- should run python manually
+-- python -m debugpy --listen localhost:5678 -m flask run --port=5010 --no-reload
+-- watchexec -r -e py -- python -m debugpy --listen localhost:5678 -m flask run --port=5010 --no-reload
+table.insert(dap.configurations.python, 1, {
+  type = 'python',
+  request = 'attach',
+  name = 'Debugpy remote port 5678',
+  justMyCode = false,
+  connect = {
+    host = '127.0.0.1',
+    port = 5678,
+  }
+})
 
 -- --- dapgui ---
 -- dap.listeners.after.event_initialized["dapui_config"] = function()
