@@ -40,13 +40,6 @@ vim.cmd([[
   augroup END
 ]])
 
--- vim.cmd([[
--- noremap p gp
--- noremap P gP
--- noremap gp p
--- noremap gP P
--- ]])
-
 vim.g.t_co = 256
 vim.opt.termguicolors = true
 vim.opt.syntax = "off"
@@ -54,7 +47,6 @@ vim.opt.syntax = "off"
 --- if syntax is on/enabled treesitter has issues
 --- other weird things happen, like lsp not starting automatically etc
 --- see https://thevaluable.dev/tree-sitter-neovim-overview/
-
 
 P = function(x)
     print(vim.inspect(x))
@@ -68,8 +60,6 @@ local my_disabled_ok, _ = pcall(require, "my.disabled")
 if not my_disabled_ok then
     print("Error in pcall my.disabled -> ~/.dotfiles/nvim/init.lua")
 end
-
-
 
 --- hold my beer ---
 local cmd, g, m, k = vim.cmd, vim.g, vim.api.nvim_set_keymap, vim.keymap.set
@@ -119,14 +109,10 @@ g.mapleader = " "
 vim.opt.path:append({ "**" })
 
 --- nop ---
--- k({ "c", "x", "n" }, "<c-z>", "") -- needed to send vim to background task
 k("n", "<c-f>", "") -- use this for searching files
---- k("n", "<c-b>", "")               -- this conflicts with tmux...
+--- k("n", "<c-b>", "") -- allow tmux prefix to be used to jump to tmux pane
 k("n", "ZZ", "")
 k("n", "ZQ", "")
---- k("n", "M", "")
---- k("n", "L", "")
---- k("n", "H", "")
 
 k({ "n", "x" }, "<c-e>", "g_")
 
@@ -160,11 +146,6 @@ k("n", "<c-j>", "<C-W>j")
 k("n", "<c-h>", "<C-W>h")
 k("n", "<c-l>", "<C-W>l")
 
---- k("n", "<c-s-k>", "<C-W>k")
---- k("n", "<c-s-j>", "<C-W>j")
---- k("n", "<c-s-h>", "<C-W>h")
---- k("n", "<c-s-l>", "<C-W>l")
-
 k("n", ";", ":")
 
 --- make dot work in visual mode
@@ -176,10 +157,6 @@ m("n", "Q", "@q", opt)
 
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
-
---- quickfix nav ---
-k("n", "[q", "<cmd>cprev<cr>", opt)
-k("n", "]q", "<cmd>cnext<cr>", opt)
 
 --- ex/command mode bindings
 k("c", "<c-a>", "<Home>", opt)
@@ -196,7 +173,6 @@ k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
 
-
 local openBrackets = {
     ["("] = true,
     ["["] = true,
@@ -212,7 +188,6 @@ local rightBracketsAndQuotes = {
     ['`'] = true,
     ['\\'] = true,
 }
-
 
 local pair_map = {
     ["("] = ")",
@@ -233,7 +208,6 @@ local r_pair_map = {
     ['"'] = '"',
     ["`"] = "`",
 }
-
 
 local all_pair_map = {}
 local isAlphaNum = {}
@@ -309,26 +283,6 @@ k('i', "'", function()
     return "''<Left>"
 end
 , { expr = true })
-
--- ---  handles ''
--- k('i', "'", function()
---     if vim.bo[0].buftype == 'prompt' then
---         return "'"
---     end
---     local line = vim.api.nvim_get_current_line()
---     local col = vim.fn.col('.')
---     local p = line:sub(col - 1, col - 1)
---     local n = line:sub(col, col)
---     if n == "'" then
---         return '<Right>'
---     elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
---         return "'"
---     elseif openBrackets[n] then
---         return "'"
---     end
---     return "''<Left>"
--- end
--- , { expr = true })
 
 --- handle []
 k('i', '[', function()
@@ -455,11 +409,30 @@ end, { expr = true })
 ---       or "<Enter>"
 --- end, { expr = true })
 
---- resize window ---
-k("n", "<M-j>", [[:resize -2<cr>]], silent)
-k("n", "<M-k>", [[:resize +2<cr>]], silent)
-k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
-k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
+---- FREE/RECLAIMED BINDINGS ---
+-- k("n", "<c-s-k>", "<C-W>k")
+-- k("n", "<c-s-j>", "<C-W>j")
+-- k("n", "<c-s-h>", "<C-W>h")
+-- k("n", "<c-s-l>", "<C-W>l")
+-- k("n", "<M-j>", [[:resize -2<cr>]], silent)
+-- k("n", "<M-j>", [[:resize -2<cr>]], silent)
+-- k("n", "<M-k>", [[:resize +2<cr>]], silent)
+-- k("n", "<M-k>", [[:resize +2<cr>]], silent)
+-- k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
+-- k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
+-- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
+-- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
+-- k("n", "[q", "<cmd>cprev<cr>", opt)
+-- k("n", "[q", "<cmd>cprev<cr>", opt)
+-- k("n", "]q", "<cmd>cnext<cr>", opt)
+-- k("n", "]q", "<cmd>cnext<cr>", opt)
+-- k("n", "M", "")
+-- k("n", "M", "")
+-- k("n", "L", "")
+-- k("n", "L", "")
+-- k("n", "H", "")
+-- k("n", "H", "")
+
 
 --- -- Lua function to send text to Tmux
 --- _G.send_to_tmux = function(text)
@@ -467,10 +440,8 @@ k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 ---     print('n |  ')
 --- end
 
-
 -- converts bytes to a string, useful for debugging in delve
 _G.BytesToString = function()
-    -- use :'<,'>lua BytesToString
     local selected_text = vim.fn.getline("'<,'>")
     -- Remove any whitespace or non-hex characters
     selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
@@ -541,7 +512,6 @@ k("x", "p", "pgvy")
 --- when using J keep cursor to the right
 k({ "n", "v" }, "J", "mzJ`z")
 
-
 --- terminal ---
 k("t", "<Esc>", [[<c-\><c-n>]], silent)
 
@@ -553,17 +523,7 @@ k("n", "C", '"aC')
 k({ "n" }, "v", "<c-v>")
 --- vim.cmd("vunmap v")
 
---- helix -- this breaks viw :(
--- vim.cmd [[xnoremap i <esc>`<i]]
--- vim.cmd [[xnoremap a <esc>`>a]]
--- vim.cmd [[nnoremap e v<Right>e]] -- this fixes viw issue, but breaks vaw...
-
-
-
-
-
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
-
 
 function _G.legacy()
     -- :lua legacy()
@@ -585,12 +545,6 @@ end
 cmd([[cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep']])
 cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep']])
 
---- k("n", "p", [[<Plug>(miniyank-autoput)]], {})
---- k("n", "P", [[<Plug>(miniyank-autoPut)]], {})
-
---- switch between current and prev file
---- k("n", "<space><space>", "<c-^>") -- code action in mason.lua
-
 --- shellcode ---
 --- m(
 --- 	"x",
@@ -598,7 +552,6 @@ cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep
 --- 	[[:s/\v\s+//ge<cr><bar> :s/\v(..)/\\\x\1/ge<cr><bar> :s/\v.*/buffer \+\= b"&"/ge<cr>:noh<cr>]],
 --- 	silent
 --- )
-
 
 local packages = {
     "my.lazy",
@@ -620,7 +573,6 @@ local packages = {
     "my.cmds",
     "plugins.harpoon",
     "plugins.core_dap",
-    -- "plugins.dap_adapters",
 }
 
 vim.g.gitblame_enabled = 0
@@ -634,8 +586,6 @@ end
 
 vim.cmd([[cabbrev q1 q!]])
 vim.cmd([[cabbrev qall1 qall!]])
-
---- vim.cmd([[hi! clear FloatBorder]])
 
 vim.cmd([[
 function! Esc()
