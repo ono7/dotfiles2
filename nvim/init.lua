@@ -467,6 +467,30 @@ k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 ---     print('n |  ')
 --- end
 
+
+-- converts bytes to a string, useful for debugging in delve
+_G.BytesToString = function()
+    -- use :'<,'>lua BytesToString
+    local selected_text = vim.fn.getline("'<,'>")
+    -- Remove any whitespace or non-hex characters
+    selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
+    -- Check if the selected text is empty
+    if selected_text == '' then
+        vim.api.nvim_out_write("No valid bytes selected.\n")
+    else
+        -- Convert hex to string
+        local string_result = ''
+        local i = 1
+        while i <= #selected_text do
+            local hex_byte = string.sub(selected_text, i, i + 1)
+            string_result = string_result .. string.char(tonumber(hex_byte, 16))
+            i = i + 2
+        end
+        -- Display the result in the message area
+        vim.api.nvim_out_write(string_result .. '\n')
+    end
+end
+
 --- -- Lua function to send text to Tmux
 --- _G.send_to_tmux_visual = function()
 ---     local text = get_visual_selection()

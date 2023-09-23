@@ -204,9 +204,11 @@ return {
   -- window_background_opacity = 0.90,
   -- window_background_opacity = 0.95,
   -- macos_window_background_blur = 20,
-  -- window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_NS_VISUAL_EFFECT_MATERIAL_BLUR", -- will blurr eventually
+  -- window_decorations                         = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_NS_VISUAL_EFFECT_MATERIAL_BLUR", -- will blurr eventually
   window_decorations                         = "RESIZE",
   hide_tab_bar_if_only_one_tab               = true,
+  front_end                                  = "WebGpu",
+  webgpu_power_preference                    = "HighPerformance",
   window_padding                             = {
     left = 3,
     right = 3,

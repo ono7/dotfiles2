@@ -1,4 +1,4 @@
 {
   "go.delveConfig":
-    { "dlvLoadConfig": { "maxStringLen": 1024 }, "apiVersion": 2 },
+    { "dlvLoadConfig": { "maxStringLen": 10000 }, "apiVersion": 2 },
 }

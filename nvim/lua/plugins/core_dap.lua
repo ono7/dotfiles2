@@ -75,6 +75,11 @@ vim.keymap.set("n", '<F9>', function() require('dap').step_over() end)
 vim.keymap.set("n", '<leader>dl', function() require('dap').run_last() end)
 vim.keymap.set("n", '<leader>do', function() require('dapui').toggle() end)
 vim.keymap.set("n", '<leader>b', function() require('dap').toggle_breakpoint() end)
+
+--- THE ONLY KEYBINDING I REALLY NEED, use twice to inspect more ---
+--- visually select a word, or it will use what is under the cursor in normal mode ---
+vim.keymap.set({ "n", "x" }, '<leader>e', function() require("dapui").eval() end)
+
 vim.keymap.set("n", '<leader>dus', function()
   local widgets = require("dap.ui.widgets")
   local sidebar = widgets.sidebar(widgets.scopes)
