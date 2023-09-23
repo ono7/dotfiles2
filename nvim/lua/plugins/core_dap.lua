@@ -3,7 +3,7 @@
   brew install llvm
   ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
 
-* Debian
+* Debian/ubuntu
 
   sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" # Instructions from https://apt.llvm.org/
 
@@ -85,26 +85,6 @@ vim.keymap.set("n", '<leader>dus', function()
   local sidebar = widgets.sidebar(widgets.scopes)
   sidebar.open()
 end)
-
-vim.keymap.set("n", "<leader>dvv", function()
-  local types_enabled = true
-  local toggle_types = function()
-    types_enabled = not types_enabled
-    dapui.update_render({ max_type_length = types_enabled and -1 or 0 })
-  end
-end)
-
-
--- --- dapgui ---
--- dap.listeners.after.event_initialized["dapui_config"] = function()
---   dapui.open()
--- end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end
 
 dap.adapters.lldb = {
   type = "executable",
@@ -202,36 +182,46 @@ dap.configurations.python = {
 local MYHOME = os.getenv("HOME")
 local MY_VENV_BIN = MYHOME .. "/.virtualenvs/prod3/bin/python"
 
---- adapter
--- dap.adapters.python = {
---   type = "executable",
---   command = MY_VENV_BIN,
---   args = { "-m", "debugpy.adapter" }
--- }
+dap.adapters.python = {
+  type = "executable",
+  command = MY_VENV_BIN,
+  args = { "-m", "debugpy.adapter" }
+}
 
 --- adapter configuration
 -- ref: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#Python
--- dap.configurations.python = {
---   {
---     -- The first three options are required by nvim-dap
---     type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
---     request = "launch",
---     name = "Launch file",
---     -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+dap.configurations.python = {
+  {
+    -- The first three options are required by nvim-dap
+    type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+    request = "launch",
+    name = "Launch file",
+    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
---     program = "${file}", -- This configuration will launch the current file if used.
---     pythonPath = function()
---       -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
---       -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
---       -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
---       local cwd = vim.fn.getcwd()
---       if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
---         return cwd .. "/venv/bin/python"
---       elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
---         return cwd .. "/.venv/bin/python"
---       else
---         return MY_VENV_BIN
---       end
---     end
---   }
--- }
+    program = "${file}", -- This configuration will launch the current file if used.
+    pythonPath = function()
+      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+      local cwd = vim.fn.getcwd()
+      if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+        return cwd .. "/venv/bin/python"
+      elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+        return cwd .. "/.venv/bin/python"
+      else
+        return MY_VENV_BIN
+      end
+    end
+  }
+}
+
+-- --- dapgui ---
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dapui.close()
+-- end
