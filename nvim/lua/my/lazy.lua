@@ -34,6 +34,7 @@ require("lazy").setup({
       })
     end
   },
+  --- dap goods ---
   "mfussenegger/nvim-dap",
   "jay-babu/mason-nvim-dap.nvim",
   "leoluz/nvim-dap-go",
@@ -122,7 +123,6 @@ require("lazy").setup({
       return vim.fn.executable("make") == 1
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -146,7 +146,7 @@ require("lazy").setup({
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    -- branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
