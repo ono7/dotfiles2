@@ -19,28 +19,6 @@ c({ "VimResized" }, {
   group = create_augroup("vim_resize_windows_automatically", { clear = true }),
 })
 
--- c({ "InsertLeave" }, {
---   pattern = "*",
---   callback = function()
---     vim.schedule(function()
---       vim.opt.laststatus = 3
---       vim.opt.cmdheight = 0
---     end)
---   end,
---   group = create_augroup("last_status_leave", { clear = true }),
--- })
-
--- c({ "InsertEnter" }, {
---   pattern = "*",
---   callback = function()
---     vim.schedule(function()
---       vim.opt.laststatus = 0
---       vim.opt.cmdheight = 1
---     end)
---   end,
---   group = create_augroup("last_status_enter", { clear = true }),
--- })
-
 -- restore cursor position on enter
 vim.api.nvim_create_autocmd("BufRead", {
   callback = function(opts)
@@ -99,6 +77,7 @@ c({ "BufNewFile", "BufRead" }, {
   end,
   group = create_augroup("disable_lsp_diags_for_folders", { clear = true }),
 })
+
 -- remap enter in quickfix
 c({ "BufReadPost" }, {
   pattern = "quickfix",
@@ -107,15 +86,15 @@ c({ "BufReadPost" }, {
 })
 
 -- handle large files, syntax=OFF only affects buffer, where syntax off is global
--- syn sync clear, we can keep syntax and still work on large files!
-c({
-  "BufWinEnter",
-}, {
-  pattern = "*",
-  command =
-  [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
-  group = create_augroup("check_if_file_size_too_big", { clear = true }),
-})
+-- syn sync clear, we can keep syntax and still work on large files! 2023-09-23, probably not needed with treesitter
+-- c({
+--   "BufWinEnter",
+-- }, {
+--   pattern = "*",
+--   command =
+--   [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
+--   group = create_augroup("check_if_file_size_too_big", { clear = true }),
+-- })
 
 -- auto source snippets file
 c("BufWritePost", {

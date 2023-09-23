@@ -563,9 +563,8 @@ local packages = {
     "plugins.neotree",
     "plugins.surround",
     "plugins.lsp.cmp",
-    -- "plugins.winbar",
     "plugins.lsp.mason",        -- mason first, or lsp breaks
-    "plugins.gitsigns",         -- wtf broken 2023-09-13
+    "plugins.gitsigns",
     "plugins.theme_catppuccin", -- 2
     "plugins.null_ls",
     "plugins.bufferline",
