@@ -39,6 +39,8 @@ end
 
 dapui.setup()
 
+vim.fn.sign_define('DapBreakpoint', { text = '󰳟', texthl = '', linehl = '', numhl = '' })
+
 function DapDebug()
   dap.configurations.go = {
     {
@@ -54,6 +56,21 @@ function DapDebug()
         return vim.fn.split(argument_string, " ", true)[1]
       end,
     },
+    {
+      type = "go",
+      name = "Debug test", -- configuration for debugging test files
+      request = "launch",
+      mode = "test",
+      program = "${file}"
+    },
+    -- works with go.mod packages and sub packages
+    {
+      type = "go",
+      name = "Debug test (go.mod)",
+      request = "launch",
+      mode = "test",
+      program = "./${relativeFileDirname}"
+    }
   }
 
   -- we want to run delve manually
@@ -70,6 +87,7 @@ local opt = { silent = true }
 vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opt)
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
   opt)
+
 
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", opt)
 vim.keymap.set("n", '<F6>', function() require('dap').continue() end)
