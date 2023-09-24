@@ -485,7 +485,8 @@ end
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 --- go struct tags ---
-k("n", "gt", [[:GoTagAdd json<cr>]])
+-- k("n", "gtj", [[:GoTagAdd json<cr>]])
+-- k("n", "gty", [[:GoTagAdd yaml<cr>]])
 
 --- marks/jumps ---
 --- k("n", "'", "`", opt)
