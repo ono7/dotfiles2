@@ -91,11 +91,11 @@ return {
     --   mods = "CTRL|SHIFT",
     --   action = act.DisableDefaultAssignment,
     -- },
-    {
-      key = "i",
-      mods = "CTRL",
-      action = act.DisableDefaultAssignment,
-    },
+    { key = "h", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "n", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "e", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "i", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "o", mods = "CMD", action = act.DisableDefaultAssignment, },
     -- {
     --   -- disable clear scrollback
     --   key = "k",
@@ -131,6 +131,12 @@ return {
       mods = "ALT",
       action = act.SendString("\x17"),
     },
+    -- VIM bindings for hapoon \x1b = alt + neio
+    { key = "n", mods = "CMD", action = act.SendString("\x1b\x6e"), },
+    { key = "e", mods = "CMD", action = act.SendString("\x1b\x65"), },
+    { key = "i", mods = "CMD", action = act.SendString("\x1b\x69"), },
+    { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
+    { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
     -- {
     --   -- tmux rename window
     --   key = "n",
@@ -143,18 +149,18 @@ return {
       mods = "ALT",
       action = act.SendString("\x02\x7a"),
     },
-    {
-      -- tmux create horizontal pane
-      key = "u",
-      mods = "ALT",
-      action = act.SendString("\x02\x2d"),
-    },
-    {
-      -- tmux create vertical pane
-      key = "i",
-      mods = "ALT",
-      action = act.SendString("\x02\x7c"),
-    },
+    -- {
+    --   -- tmux create horizontal pane
+    --   key = "u",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x2d"),
+    -- },
+    -- {
+    --   -- tmux create vertical pane
+    --   key = "i",
+    --   mods = "ALT",
+    --   action = act.SendString("\x02\x7c"),
+    -- },
   },
   color_schemes                              = {
     -- new or override scheme
