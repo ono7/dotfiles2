@@ -101,8 +101,12 @@ vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
 k({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 --- update jump list whenn we hop more than one line ---
-vim.cmd([[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k' ]])
-vim.cmd([[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j' ]])
+-- vim.cmd([[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k' ]])
+-- vim.cmd([[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j' ]])
+
+-- add movements bigger then 1 line to the jump list, but also navigate through wrapped lines
+vim.cmd([[nnoremap <expr> j v:count ? (v:count > 1 ? "m'" . v:count : '') . 'j' : 'gj']])
+vim.cmd([[nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' : 'gk']])
 
 g.mapleader = " "
 
