@@ -41,9 +41,6 @@ return {
   -- scroll_to_bottom_on_input                  = true,
   unicode_version                            = 14,
   default_cwd                                = wezterm.homedir,
-  -- enable_csi_u_key_encoding                  = true,
-  -- use_ime = change macos ctrl key behavior e.g. ctrl-d, affects new versions of macos 2023-08-02
-  -- use_ime                                    = false,
   disable_default_key_bindings               = true,
   keys                                       = {
     -- use xxd -psd to get hex char sequences
@@ -73,20 +70,15 @@ return {
     --   mods = 'ALT',
     --   action = act.SplitPane { direction = 'Right', size = { Percent = 40 } },
     -- },
-    { key = 'C', mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
-    { key = '0', mods = 'CTRL',       action = act.ResetFontSize },
-    { key = '=', mods = 'CTRL',       action = act.IncreaseFontSize },
-    { key = '-', mods = 'CTRL',       action = act.DecreaseFontSize },
+    { key = 'C', mods = 'CMD',  action = act.CopyTo 'Clipboard' },
+    { key = '0', mods = 'CTRL', action = act.ResetFontSize },
+    { key = '=', mods = 'CTRL', action = act.IncreaseFontSize },
+    { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
     {
       key = "w",
       mods = "CMD",
       action = act.CloseCurrentPane({ confirm = false }),
     },
-    -- {
-    --   key = "?",
-    --   mods = "CTRL|SHIFT",
-    --   action = act.Search("CurrentSelectionOrEmptyString")
-    -- },
     {
       -- turn off cmd+m to minimize window from the os
       key = "m",
@@ -104,12 +96,12 @@ return {
       mods = "CTRL",
       action = act.DisableDefaultAssignment,
     },
-    {
-      -- disable clear scrollback
-      key = "k",
-      mods = "CMD",
-      action = act.DisableDefaultAssignment,
-    },
+    -- {
+    --   -- disable clear scrollback
+    --   key = "k",
+    --   mods = "CMD",
+    --   action = act.DisableDefaultAssignment,
+    -- },
     {
       -- turn off cmd+h to hide window from the os
       key = "h",
@@ -124,18 +116,13 @@ return {
     },
     {
       key = "v",
-      mods = "CTRL|SHIFT",
-      action = act.PasteFrom("Clipboard"),
-    },
-    {
-      key = "v",
       mods = "CMD",
       action = act.PasteFrom("Clipboard"),
     },
     {
       -- delete word
       key = "Backspace",
-      mods = "CTRL",
+      mods = "CMD",
       action = act.SendString("\x17"),
     },
     {

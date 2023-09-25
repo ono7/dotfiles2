@@ -4,7 +4,6 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 
 
-
 local on_attach = function(client, bufnr)
   local k = function(keys, func, desc)
     if desc then
