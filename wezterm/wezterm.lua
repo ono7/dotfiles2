@@ -138,13 +138,10 @@ return {
     { key = "i", mods = "CMD", action = act.SendString("\x1b\x69"), },
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
+    --- ctr-b = \x02
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
-    -- {
-    --   -- tmux rename window
-    --   key = "n",
-    --   mods = "ALT",
-    --   action = act.SendString("\x02\x2c"),
-    -- },
+    --- ctr-d = \x04
+    { key = "d", mods = "CMD", action = act.SendString("\x04"), },
     {
       -- tmux zoom pane
       key = "m",
