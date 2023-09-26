@@ -27,6 +27,7 @@ local ansi = {
   "#bac2de",
 }
 
+-- my color overrides
 scheme.ansi = ansi
 scheme.brights = ansi
 scheme.cursor_bg = "#00acc1"
@@ -38,7 +39,7 @@ return {
   audible_bell                               = "Disabled",
   use_dead_keys                              = false,
   scrollback_lines                           = 10000,
-  -- scroll_to_bottom_on_input                  = true,
+  scroll_to_bottom_on_input                  = true,
   unicode_version                            = 14,
   default_cwd                                = wezterm.homedir,
   disable_default_key_bindings               = true,
@@ -91,12 +92,6 @@ return {
     { key = "i", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "o", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "b", mods = "CMD", action = act.DisableDefaultAssignment, },
-    -- {
-    --   -- disable clear scrollback
-    --   key = "k",
-    --   mods = "CMD",
-    --   action = act.DisableDefaultAssignment,
-    -- },
     {
       -- turn off cmd+h to hide window from the os
       key = "h",
@@ -125,18 +120,16 @@ return {
       mods = "ALT",
       action = act.SendString("\x17"),
     },
-    -- VIM bindings for hapoon \x1b = alt + neio
+    -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
     { key = "n", mods = "CMD", action = act.SendString("\x1b\x6e"), },
     { key = "e", mods = "CMD", action = act.SendString("\x1b\x65"), },
     { key = "i", mods = "CMD", action = act.SendString("\x1b\x69"), },
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
-    --- ctr-b = \x02
+    --- ctr-b = \x02, use cmd+b as tmux leader
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
-    --- ctr-d = \x04
+    --- ctr-d = \x04, exit shell
     { key = "d", mods = "CMD", action = act.SendString("\x04"), },
-    -- { key = "[", mods = "CMD", action = act.SendString("\x10"), },
-    -- { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
     {
       -- tmux zoom pane
       key = "m",
