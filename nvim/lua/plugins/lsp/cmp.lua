@@ -5,8 +5,6 @@ if not snippy_ok then
   return
 end
 
-
-
 snippy_setup.setup({
   snippet_dirs = '~/.dotfiles/nvim/snippets',
   mappings = {
@@ -29,8 +27,6 @@ if not lspkind_ok then
   return
 end
 
-
-
 lspkind_config.init({})
 
 local cmp_status_ok, cmp_config = pcall(require, "cmp")
@@ -41,7 +37,6 @@ if not cmp_status_ok then
 end
 
 vim.opt.completeopt = { "menu", "menuone" }
-
 
 local plugins_lsp_diag_ok, _ = pcall(require, "plugins.lsp.diag")
 
@@ -104,10 +99,10 @@ cmp_config.setup({
     end, { "i", "s" }),
   },
   sources = {
-    { name = "nvim_lsp",                keyword_length = 6,  priority = 10,     group_index = 1,  max_item_count = 30 },
+    { name = "nvim_lsp",                keyword_length = 2,  priority = 10,     group_index = 1, max_item_count = 30 },
     { name = "nvim_lsp_signature_help", max_item_count = 30, keyword_length = 3 },
     { name = "path",                    max_item_count = 30, keyword_length = 3 },
-    { name = "buffer",                  max_item_count = 30, keyword_length = 3 },
+    { name = "buffer",                  max_item_count = 30, keyword_length = 1 },
   },
   performance = {
     trigger_debounce_time = 500,

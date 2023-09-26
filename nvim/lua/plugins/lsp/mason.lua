@@ -1,5 +1,5 @@
-vim.keymap.set("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
-vim.keymap.set("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
+vim.keymap.set("n", "<c-[>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
+vim.keymap.set("n", "<c-]>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 
@@ -11,16 +11,6 @@ local on_attach = function(client, bufnr)
     end
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
-
-  -- if client.server_capabilities.documentSymbolProvider then
-  --   local nvim_navic_ok, nvim_navic_cfg = pcall(require, "nvim-navic")
-
-  --   if not nvim_navic_ok then
-  --     print("Error in pcall nvim-navic -> ~/.dotfiles/nvim/lua/plugins/lsp/mason.lua")
-  --     return
-  --   end
-  --   nvim_navic_cfg.attach(client, bufnr)
-  -- end
 
   -- null-ls handles this for now
   client.server_capabilities.document_formatting = false

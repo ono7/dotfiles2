@@ -76,7 +76,7 @@ return {
     { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
     {
       key = "w",
-      mods = "CMD",
+      mods = "SHIFT|CMD",
       action = act.CloseCurrentPane({ confirm = false }),
     },
     {
@@ -85,12 +85,6 @@ return {
       mods = "CMD",
       action = act.DisableDefaultAssignment,
     },
-    -- {
-    --   -- turn off cmd+m to minimize window from the os
-    --   key = "h",
-    --   mods = "CTRL|SHIFT",
-    --   action = act.DisableDefaultAssignment,
-    -- },
     { key = "h", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "n", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "e", mods = "CMD", action = act.DisableDefaultAssignment, },
@@ -127,7 +121,6 @@ return {
       action = act.SendString("\x17"),
     },
     {
-      -- delete line
       key = "Backspace",
       mods = "ALT",
       action = act.SendString("\x17"),
@@ -142,6 +135,8 @@ return {
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     --- ctr-d = \x04
     { key = "d", mods = "CMD", action = act.SendString("\x04"), },
+    -- { key = "[", mods = "CMD", action = act.SendString("\x10"), },
+    -- { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
     {
       -- tmux zoom pane
       key = "m",
@@ -186,12 +181,14 @@ return {
   window_close_confirmation                  = "NeverPrompt",
   cursor_blink_rate                          = 0,
   default_cursor_style                       = "BlinkingBlock",
-  font_size                                  = 21,
+  font_size                                  = 18,
   line_height                                = 1.4,
+  initial_rows                               = 40,
+  initial_cols                               = 100,
   underline_position                         = -8,
   underline_thickness                        = 3, -- ()
-  colors                                     = {
-  },
+  -- colors                                     = {
+  -- },
   -- window_background_image = "/Users/jlima/Documents/1.jpg",
   -- window_background_opacity = 0.90,
   -- window_background_opacity = 0.95,

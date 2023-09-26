@@ -10,8 +10,8 @@ end
 local format = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
-vim.keymap.set("n", "<c-p>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
-vim.keymap.set("n", "<c-n>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
+vim.keymap.set("n", "<c-[>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
+vim.keymap.set("n", "<c-]>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
 
 null_ls.setup({
   debug = false,

@@ -135,6 +135,12 @@ require('dap-go').setup {
   -- :help dap-configuration
   dap_configurations = {
     {
+      type = "go",
+      name = "Debug (this file)",
+      request = "launch",
+      program = "${file}",
+    },
+    {
       -- Must be "go" or it will be ignored by the plugin
       type = "go",
       name = "Attach remote",
@@ -248,14 +254,3 @@ table.insert(dap.configurations.python, 1, {
     port = 5678,
   }
 })
-
--- --- dapgui ---
--- dap.listeners.after.event_initialized["dapui_config"] = function()
---   dapui.open()
--- end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end
