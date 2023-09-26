@@ -96,6 +96,7 @@ return {
     { key = "e", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "i", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "o", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "b", mods = "CMD", action = act.DisableDefaultAssignment, },
     -- {
     --   -- disable clear scrollback
     --   key = "k",
@@ -137,6 +138,7 @@ return {
     { key = "i", mods = "CMD", action = act.SendString("\x1b\x69"), },
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
+    { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     -- {
     --   -- tmux rename window
     --   key = "n",
