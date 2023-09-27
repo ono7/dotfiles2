@@ -126,6 +126,9 @@ return {
     { key = "i", mods = "CMD", action = act.SendString("\x1b\x69"), },
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
+    { key = "c", mods = "CMD", action = act.SendString("\x03"), },
+    -- { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
+    -- { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
     --- ctr-b = \x02, use cmd+b as tmux leader
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     --- ctr-d = \x04, exit shell
@@ -133,7 +136,7 @@ return {
     {
       -- tmux zoom pane
       key = "m",
-      mods = "ALT",
+      mods = "CMD",
       action = act.SendString("\x02\x7a"),
     },
     -- {
