@@ -127,8 +127,8 @@ return {
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
     { key = "c", mods = "CMD", action = act.SendString("\x03"), },
-    -- { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
-    -- { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
+    { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
+    { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
     --- ctr-b = \x02, use cmd+b as tmux leader
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     --- ctr-d = \x04, exit shell
