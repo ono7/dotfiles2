@@ -99,10 +99,10 @@ cmp_config.setup({
     end, { "i", "s" }),
   },
   sources = {
-    { name = "nvim_lsp",                keyword_length = 2,  priority = 10,     group_index = 1, max_item_count = 30 },
+    { name = "nvim_lsp",                priority = 10,       group_index = 1,   max_item_count = 30 },
     { name = "nvim_lsp_signature_help", max_item_count = 30, keyword_length = 3 },
     { name = "path",                    max_item_count = 30, keyword_length = 3 },
-    { name = "buffer",                  max_item_count = 30, keyword_length = 1 },
+    { name = "buffer",                  max_item_count = 30, keyword_length = 3 },
   },
   performance = {
     trigger_debounce_time = 500,

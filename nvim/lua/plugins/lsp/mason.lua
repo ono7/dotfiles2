@@ -1,5 +1,7 @@
-vim.keymap.set("n", "<c-[>", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
-vim.keymap.set("n", "<c-]>", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
+-- ["]M"] = "@function.outer",
+-- ["[M"] = "@function.outer",
+vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
+vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 
