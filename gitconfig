@@ -43,3 +43,9 @@ default = simple
 
 [diff]
 colorMoved = zebra
+
+[alias]
+co = checkout
+br = branch
+ci = commit
+st = status
