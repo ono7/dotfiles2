@@ -1,5 +1,5 @@
 -- view defined symbols :echo sign_getdefined()
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "WildMenu" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "ModeMsg" })
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "Error" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "Normal" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "CursorLineNr" })

@@ -8,6 +8,11 @@ snippet e "error" w
 	    ${0|return,log.Fatal(err)|}
 	}
 
+snippet hf "http handler func" w
+  func ${1}(w *http.ResponseWriter, r *http.Request) {
+    ${0}
+  }
+
 snippet ok "check ok" b
   if ${1:val, ok} := ${2}; !${1/\v\S+\s+(\S+)/\1/} {
     ${0}
