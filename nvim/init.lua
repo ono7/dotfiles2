@@ -4,6 +4,8 @@
 
 golang: https://fulltimegodev.teachable.com/courses/1970304
 
+move with c-d (down) and c-u (up)
+use Ff Tt to move horizontally
 * g, - jump to last change
 * zm, fold
 * zi, toggle fold
