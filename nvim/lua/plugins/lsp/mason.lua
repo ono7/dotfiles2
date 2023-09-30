@@ -1,5 +1,6 @@
 -- ["]M"] = "@function.outer",
 -- ["[M"] = "@function.outer",
+vim.keymap.set("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<cr>", { desc = "Open float" })
 vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>")
 vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
@@ -18,14 +19,14 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = false
   client.server_capabilities.document_range_formatting = false
   -- Mappings.
-  k("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  k("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[G]oto [D]eclaration")
   k("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
   k("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-  k("<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>")
   k("K", vim.lsp.buf.hover, "Hover Documentation")
-  k("<space>l", "<cmd>lua vim.diagnostic.set_loclist()<CR>")
-  k("<space>i", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+  k("<space>l", "<cmd>lua vim.diagnostic.set_loclist()<CR>", "set_loclist")
+  k("<space>i", "<cmd>lua vim.lsp.buf.implementation()<cr>", "implementation")
   k("<space><space>", vim.lsp.buf.code_action, "[<code action>]")
+  k("go", vim.lsp.buf.type_definition, "[type definition]")
   -- k("<c-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   k("gn", vim.lsp.buf.rename, "[R]e[n]ame")
   -- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
