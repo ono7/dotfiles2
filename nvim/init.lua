@@ -133,9 +133,9 @@ k("v", "y", [[ygv<Esc>]], silent)
 
 k("n", "<leader>w", "<cmd>w<cr>", silent)
 k("n", "<leader>r", vim.lsp.buf.format, silent)
--- k("n", ",w", "<cmd>w<cr>", silent)
--- k("n", ",q", "<cmd>q!<cr>", silent)
-k("n", "<leader>wq", "<cmd>xall!<cr>", silent)
+k("n", ",w", "<cmd>w<cr>", silent)
+k("n", ",q", "<cmd>q!<cr>", silent)
+k("n", "<leader>q", "<cmd>qall<cr>", silent)
 
 --- surround
 k("n", [[s"]], [[ciw"<c-r><c-p>""]])
