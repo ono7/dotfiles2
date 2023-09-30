@@ -35,7 +35,12 @@ require("lazy").setup({
   --   }
   -- },
   { "catppuccin/nvim",        name = "catppuccin" },
-  "folke/trouble.nvim",
+  {
+    "folke/trouble.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>xx", function() require("trouble").open() end)
+    end
+  },
   "kylechui/nvim-surround",
   {
     'monkoose/matchparen.nvim',
