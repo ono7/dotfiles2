@@ -22,7 +22,7 @@ configs.setup({
   defaults = {
     previewer = false,
     preview_cutoff = 1,
-    layout_strategy = "vertical",
+    layout_strategy = "vertical", -- flex (shows preview)
     file_ignore_patterns = {
       ".git/",
       ".cache",
