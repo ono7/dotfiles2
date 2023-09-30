@@ -92,6 +92,8 @@ return {
     { key = "i", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "o", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "b", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "d", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "u", mods = "CMD", action = act.DisableDefaultAssignment, },
     {
       -- turn off cmd+h to hide window from the os
       key = "h",
@@ -127,6 +129,8 @@ return {
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
     { key = "c", mods = "CMD", action = act.SendString("\x03"), },
+    { key = "d", mods = "CMD", action = act.SendString("\x04"), },
+    { key = "u", mods = "CMD", action = act.SendString("\x15"), },
     { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
     { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
     --- ctr-b = \x02, use cmd+b as tmux leader
