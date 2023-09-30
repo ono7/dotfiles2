@@ -1,5 +1,3 @@
--- NOTE: keybinds only work using kitty 2022-11-12
-
 local silent, k = { silent = true }, vim.keymap.set
 local ui = require("harpoon.ui")
 local mark = require("harpoon.mark")
