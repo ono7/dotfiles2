@@ -566,6 +566,7 @@ local packages = {
     "plugins.treesitter",
     "plugins.telescope",
     "plugins.notify",
+    "plugins.noice",
     -- "plugins.navigator",
     "plugins.neotree",
     "plugins.surround",
