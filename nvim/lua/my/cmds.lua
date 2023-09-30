@@ -12,6 +12,22 @@ c("TextYankPost", {
   group = create_augroup("highlight_yanked_text", { clear = true }),
 })
 
+-- Turn off diagnostics for .env files
+c({ "BufRead", "BufNewFile" }, {
+  pattern = ".env",
+  group = create_augroup("dotenv_disabled_diagnostics", { clear = true }),
+  callback = function(context)
+    vim.diagnostic.disable(context.buf)
+  end,
+})
+
+-- Check if we need to reload the file when it changed
+c({ "FocusGained", "TermClose", "TermLeave" }, {
+  pattern = "*",
+  group = create_augroup("checktime", { clear = true }),
+  command = "checktime",
+})
+
 -- resize windows
 c({ "VimResized" }, {
   pattern = "*",
