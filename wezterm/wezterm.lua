@@ -129,13 +129,13 @@ return {
     { key = "o", mods = "CMD", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CMD", action = act.SendString("\x1b\x68"), },
     { key = "c", mods = "CMD", action = act.SendString("\x03"), },
-    { key = "d", mods = "CMD", action = act.SendString("\x04"), },
+    --- c-u vim, move halfway up
     { key = "u", mods = "CMD", action = act.SendString("\x15"), },
     { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
     { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
     --- ctr-b = \x02, use cmd+b as tmux leader
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
-    --- ctr-d = \x04, exit shell
+    --- ctr-d = \x04, exit shell, vim move half page down
     { key = "d", mods = "CMD", action = act.SendString("\x04"), },
     {
       -- tmux zoom pane
