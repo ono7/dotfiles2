@@ -1,6 +1,5 @@
 local opt = { noremap = true, silent = true }
 local silent = { noremap = true, silent = true }
-local m = vim.api.nvim_set_keymap
 local k = vim.keymap.set
 
 local status_ok, configs = pcall(require, "telescope")
@@ -21,8 +20,9 @@ configs.load_extension("fzf")
 
 configs.setup({
   defaults = {
-    previewer = true,
-    layout_strategy = "flex",
+    previewer = false,
+    preview_cutoff = 1,
+    -- layout_strategy = "flex",
     file_ignore_patterns = {
       ".git/",
       ".cache",
@@ -34,9 +34,9 @@ configs.setup({
       "%.mkv",
       "%.zip",
     },
-    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+    -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
     mappings = {
       i = {

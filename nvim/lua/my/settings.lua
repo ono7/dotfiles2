@@ -48,9 +48,11 @@ opt.iskeyword:append("-")
 -- opt.iskeyword:append('"') -- have vim skip over ", when using w or b
 o.smartcase = true
 o.smarttab = true
--- vim.opt.whichwrap:append "<>[]hl"
+
+-- whichwrap: "<>[]hl" allow hl to move past end of line when moving
+vim.opt.whichwrap:append "<>[]hl"
 -- opt.jumpoptions = "stack"
--- opt.jumpoptions:append("view")
+opt.jumpoptions:append("view")
 o.inccommand = "nosplit"
 o.foldopen = "hor,mark,percent,quickfix,search,tag,undo" -- removed 'block'
 o.winaltkeys = "no"
@@ -58,13 +60,13 @@ o.pumheight = 10
 -- o.pumblend = 3
 o.emoji = false
 -- o.redrawtime = 10000
-o.lazyredraw = true
+o.lazyredraw = false
 o.timeout = false -- remove timeout for partially typed commands
 -- o.updatetime = 50
 o.updatetime = 500
 o.fillchars = [[diff:╱,vert:│,eob: ,msgsep:‾]]
 o.listchars = [[tab:  ,trail:•,nbsp:·,conceal: ]]
--- o.nrformats = "bin,hex,alpha"
+o.nrformats = "bin,hex,alpha"
 o.nrformats = "bin,hex"
 -- o.shortmess = "aoOTtIsc"
 o.shortmess = "aoOstTWICcF" -- F dont show file info when editing file, useful when statusline is enabled already
