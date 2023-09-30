@@ -35,6 +35,7 @@ require("lazy").setup({
   --   }
   -- },
   { "catppuccin/nvim",        name = "catppuccin" },
+  "folke/trouble.nvim",
   "kylechui/nvim-surround",
   {
     'monkoose/matchparen.nvim',
