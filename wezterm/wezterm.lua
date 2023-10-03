@@ -122,9 +122,11 @@ return {
       mods = "ALT",
       action = act.SendString("\x17"),
     },
+    -- make cmd more like control in macos
     { key = "e", mods = "CMD",  action = act.SendString("\x05"), },
     { key = "p", mods = "CMD",  action = act.SendString("\x10"), },
     { key = "n", mods = "CMD",  action = act.SendString("\x0e"), },
+    { key = "c", mods = "CMD",  action = act.SendString("\x03"), },
 
     -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
     { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
@@ -132,7 +134,7 @@ return {
     { key = "i", mods = "CTRL", action = act.SendString("\x1b\x69"), },
     { key = "o", mods = "CTRL", action = act.SendString("\x1b\x6f"), },
     { key = "h", mods = "CTRL", action = act.SendString("\x1b\x68"), },
-    { key = "c", mods = "CMD",  action = act.SendString("\x03"), },
+
     --- c-u vim, move halfway up
     { key = "u", mods = "CMD",  action = act.SendString("\x15"), },
     { key = "]", mods = "CMD",  action = act.SendString("\x1d"), },
