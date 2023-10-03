@@ -123,26 +123,29 @@ return {
       action = act.SendString("\x17"),
     },
     -- make cmd more like control in macos
-    { key = "e", mods = "CMD",  action = act.SendString("\x05"), },
-    { key = "p", mods = "CMD",  action = act.SendString("\x10"), },
-    { key = "n", mods = "CMD",  action = act.SendString("\x0e"), },
-    { key = "c", mods = "CMD",  action = act.SendString("\x03"), },
+    { key = "e", mods = "CMD", action = act.SendString("\x05"), },
+    { key = "p", mods = "CMD", action = act.SendString("\x10"), },
+    { key = "n", mods = "CMD", action = act.SendString("\x0e"), },
+    { key = "c", mods = "CMD", action = act.SendString("\x03"), },
 
     -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
-    { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
-    { key = "e", mods = "CTRL", action = act.SendString("\x1b\x65"), },
-    { key = "i", mods = "CTRL", action = act.SendString("\x1b\x69"), },
-    { key = "o", mods = "CTRL", action = act.SendString("\x1b\x6f"), },
-    { key = "h", mods = "CTRL", action = act.SendString("\x1b\x68"), },
+    -- { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
+    -- { key = "e", mods = "CTRL", action = act.SendString("\x1b\x65"), },
+    -- { key = "i", mods = "CTRL", action = act.SendString("\x1b\x69"), },
+    -- { key = "o", mods = "CTRL", action = act.SendString("\x1b\x6f"), },
+    -- { key = "h", mods = "CTRL", action = act.SendString("\x1b\x68"), },
+
+    { key = "i", mods = "CMD", action = act.SendString("\x09"), },
+    { key = "o", mods = "CMD", action = act.SendString("\x0f"), },
 
     --- c-u vim, move halfway up
-    { key = "u", mods = "CMD",  action = act.SendString("\x15"), },
-    { key = "]", mods = "CMD",  action = act.SendString("\x1d"), },
-    { key = "[", mods = "CMD",  action = act.SendString("\x1b"), },
+    { key = "u", mods = "CMD", action = act.SendString("\x15"), },
+    { key = "]", mods = "CMD", action = act.SendString("\x1d"), },
+    { key = "[", mods = "CMD", action = act.SendString("\x1b"), },
     --- ctr-b = \x02, use cmd+b as tmux leader
-    { key = "b", mods = "CMD",  action = act.SendString("\x02"), },
+    { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     --- ctr-d = \x04, exit shell, vim move half page down
-    { key = "d", mods = "CMD",  action = act.SendString("\x04"), },
+    { key = "d", mods = "CMD", action = act.SendString("\x04"), },
     {
       -- tmux zoom pane
       key = "m",
