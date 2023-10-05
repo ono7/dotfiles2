@@ -50,7 +50,7 @@ o.smartcase = true
 o.smarttab = true
 
 -- whichwrap: "<>[]hl" allow hl to move past end of line when moving
-vim.opt.whichwrap:append "<>[]hl"
+vim.opt.whichwrap:append "<>[]"
 -- opt.jumpoptions = "stack"
 opt.jumpoptions:append("view")
 o.inccommand = "nosplit"

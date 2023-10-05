@@ -128,6 +128,9 @@ return {
     { key = "n", mods = "CMD", action = act.SendString("\x0e"), },
     { key = "c", mods = "CMD", action = act.SendString("\x03"), },
 
+    -- neovim terminal
+    { key = "t", mods = "CMD", action = act.SendString("\x14"), },
+
     -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
     -- { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
     -- { key = "e", mods = "CTRL", action = act.SendString("\x1b\x65"), },

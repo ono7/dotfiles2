@@ -138,13 +138,13 @@ k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
 
 --- surround
-k("n", [[s"]], [[ciw"<c-r><c-p>""]])
-k("n", [[s']], [[ciw'<c-r><c-p>"']])
+-- k("n", [[s"]], [[ciw"<c-r><c-p>""]])
+-- k("n", [[s']], [[ciw'<c-r><c-p>"']])
 
-k("n", [[ci"]], [[/"<CR>ci"]], silent)
-k("n", [[ci']], [[/'<CR>ci']], silent)
-k("x", [[vi"]], [[/"<CR>vi"]], silent)
-k("x", [[vi']], [[/'<CR>vi']], silent)
+-- k("n", [[ci"]], [[/"<CR>ci"]], silent)
+-- k("n", [[ci']], [[/'<CR>ci']], silent)
+-- k("x", [[vi"]], [[/"<CR>vi"]], silent)
+-- k("x", [[vi']], [[/'<CR>vi']], silent)
 
 --- navigate between splits ---
 k("n", "<c-k>", "<C-W>k")
@@ -578,7 +578,7 @@ local packages = {
     "plugins.gitsigns",
     "plugins.theme_catppuccin", -- 2
     "plugins.null_ls",
-    "plugins.bufferline",
+    -- "plugins.bufferline",
     "plugins.colorizer",
     "my.cmds",
     "plugins.harpoon",

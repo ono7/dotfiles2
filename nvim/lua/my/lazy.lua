@@ -89,7 +89,7 @@ require("lazy").setup({
       vim.g.gitblame_enabled = 0
     end,
   },
-  { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
