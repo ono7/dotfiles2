@@ -8,11 +8,11 @@ local bo = vim.bo
 --- global options ---
 o.completeopt = "menu,menuone,noinsert"
 o.foldmethod = "indent"
-o.mouse = "nv"
-local is_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_CONNECTION")
-if is_ssh then
-  vim.opt.mouse = ""
-end
+o.mouse = "n"
+-- local is_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_CONNECTION")
+-- if is_ssh then
+--   vim.opt.mouse = ""
+-- end
 o.spellsuggest = "best,5"
 o.title = false
 o.colorcolumn = "99999" -- fixes indentline?
