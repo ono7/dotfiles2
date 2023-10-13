@@ -2,6 +2,13 @@
 # zmodload zsh/zprof
 # uset ttyctl -f to freeze terminal preventing any new changes to the tty
 # ttyctl -u unfreezes the terminal
+
+toggle() {
+  fg
+}
+zle -N toggle
+bindkey "^Z" toggle
+
 export NVM_LAZY=1
 export GOPATH=$HOME/go
 export GOPRIVATE=github.com/ono7/utils,github.com/ono7/other
@@ -47,17 +54,18 @@ else
 fi
 
 # bring back vim after c-z
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER=fg
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
-zle -N fancy-ctrl-z
-bindkey ^Z fancy-ctrl-z
+#  fancy-ctrl-z () {
+#    if [[ $#BUFFER -eq 0 ]]; then
+#      BUFFER=fg
+#      zle accept-line
+#    else
+#      zle push-input
+#      zle clear-screen
+#    fi
+#  }
+
+# zle -n fancy-ctrl-z
+# bindkey ^z fancy-ctrl-z
 
 gorun () {
   if ! command -v gls &>/dev/null; then

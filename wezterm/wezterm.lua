@@ -94,6 +94,7 @@ return {
     { key = "b", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "d", mods = "CMD", action = act.DisableDefaultAssignment, },
     { key = "u", mods = "CMD", action = act.DisableDefaultAssignment, },
+    { key = "z", mods = "CMD", action = act.DisableDefaultAssignment, },
     {
       -- turn off cmd+h to hide window from the os
       key = "h",
@@ -130,6 +131,10 @@ return {
 
     -- neovim terminal
     { key = "t", mods = "CMD", action = act.SendString("\x14"), },
+
+    -- bring back last background task with fg
+
+    { key = "z", mods = "CMD", action = act.SendString("\x1a"), },
 
     -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
     -- { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
