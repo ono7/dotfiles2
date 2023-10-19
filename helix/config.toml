@@ -1,4 +1,13 @@
 # https://docs.helix-editor.com/configuration.html
+
+# install lldb-vscode
+
+# Instructions from https://apt.llvm.org/
+# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+# cd $(dirname $(which lldb-17))
+# sudo ln -s lldb-vscode-17 lldb-vscode 
+
+
 theme = "mycatppuccin_mocha"
 
 [editor]
