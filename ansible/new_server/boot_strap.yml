@@ -12,6 +12,18 @@
       ansible.builtin.template:
         src: ./j2/{{ item }}.j2
         dest: ~/.{{ item }}
+        mode: 0644
       loop:
         - vimrc
         - bashrc
+
+    - name: Copy rc files (root)
+      ansible.builtin.template:
+        src: ./j2/{{ item }}.j2
+        dest: ~/.{{ item }}
+        mode: 0644
+      loop:
+        - vimrc
+        - bashrc
+      become: true
+      become_method: ansible.builtin.sudo
