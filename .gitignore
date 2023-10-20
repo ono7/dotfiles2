@@ -10,6 +10,8 @@ build/
 .vim
 .netrwhist
 
+.env
+env
 tags
 1.cfg
 2.cfg
