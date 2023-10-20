@@ -11,7 +11,6 @@ snippet inv "inventor.cfg" b
   ansible_password={{ lookup('env', 'ANSIBLE_SSH_PASS') }}
   ansible_become_pass={{ lookup('env', 'ANSIBLE_SSH_PASS') }}
 
-
   [${1:group_1}]
   ${2:host1} ${0:ansible_host=1.1.1.1}
 
