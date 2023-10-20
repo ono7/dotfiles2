@@ -393,6 +393,7 @@ command! Mktags !ctags -R .
 
 hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
 
+
 if !has("patch-7.4.2213")
   hi! link NonText Comment
 end
@@ -412,6 +413,8 @@ augroup END
 
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 hi! clear Error
+
+hi! Comment ctermfg=8 guibg=DarkGrey
 hi! link LineNr Comment
 
 " Lima's vimrc, use at your own risk :)

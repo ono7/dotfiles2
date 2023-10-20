@@ -100,3 +100,5 @@ take () {
         local dir="$@"
         mkdir -p "${dir// /-}"; cd "${dir// /-}"
 }
+
+set -o vi
