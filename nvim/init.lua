@@ -135,6 +135,7 @@ k("n", "<leader>w", "<cmd>w<cr>", silent)
 k("n", "<leader>r", vim.lsp.buf.format, silent)
 k("n", ",w", "<cmd>w<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)
+k("n", ",d", "<cmd>bd!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
 
 --- surround
@@ -439,6 +440,8 @@ end, { expr = true })
 -- k("n", "L", "")
 -- k("n", "H", "")
 -- k("n", "H", "")
+
+--- delete all but the current buffer
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
 
