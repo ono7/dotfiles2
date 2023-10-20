@@ -79,16 +79,17 @@ require("lazy").setup({
           width = 0.9,
         }
       }
-      vim.keymap.set("n", "<c-t>", '<CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
-      vim.keymap.set("t", "<c-t>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>t", '<CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
+      vim.keymap.set("t", "<leader>t", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
+        { noremap = true, silent = true })
     end
   },
---  {
---    "f-person/git-blame.nvim",
---    config = function()
---      vim.g.gitblame_enabled = 0
---    end,
---  },
+  --  {
+  --    "f-person/git-blame.nvim",
+  --    config = function()
+  --      vim.g.gitblame_enabled = 0
+  --    end,
+  --  },
   -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "hrsh7th/nvim-cmp",
