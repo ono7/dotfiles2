@@ -33,6 +33,7 @@
         name:
           - tmux
           - tree
+          - python3.11
         state: present
       become: true
       become_method: ansible.builtin.sudo
