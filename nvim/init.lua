@@ -585,8 +585,6 @@ local packages = {
     "plugins.core_dap",
 }
 
-vim.g.gitblame_enabled = 0
-
 for _, mod in ipairs(packages) do
     local ok, _ = pcall(require, mod)
     if not ok then
