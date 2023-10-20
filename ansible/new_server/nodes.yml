@@ -1,0 +1,26 @@
+- name: "Configure nodes"
+  hosts: nodes
+
+  tasks:
+    - name: Remove podman
+      ansible.builtin.dnf:
+        name: runc
+        state: absent
+      become: true
+      become_method: ansible.builtin.sudo
+
+    - name: Get docker runtime
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/centos/8/x86_64/stable/Packages/containerd.io-1.6.9-3.1.el8.x86_64.rpm
+        dest: /tmp/containerd.io-1.6.9-3.1.el8.x86_64.rpm
+        validate_certs: false
+      become: true
+      become_method: ansible.builtin.sudo
+
+    - name: Install docker runtime
+      ansible.builtin.dnf:
+        name: /tmp/containerd.io-1.6.9-3.1.el8.x86_64.rpm
+        state: present
+        disable_gpg_check: true
+      become: true
+      become_method: ansible.builtin.sudo
