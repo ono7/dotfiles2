@@ -151,8 +151,11 @@ nnoremap <silent><cr> :noh<cr>1<c-g>
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ,d :bd!<cr>
+nnoremap ,q :qall!<cr>
 nnoremap <leader>q :qall!<cr>
 nnoremap <leader>w :w<cr>
+nnoremap gh ^
+nnoremap gl g_
 
 " return cursor position after yank in v-mode
 vnoremap y ygv<Esc>
