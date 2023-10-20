@@ -1,0 +1,18 @@
+- hosts: "control,nodes"
+  become: yes
+  become_method: ansible.builtin.sudo
+
+  tasks:
+    - name: Create a new user and name it kube
+      ansible.builtin.user: name=kube append=true state=present createhome=true shell=/bin/bash
+
+    - name: Allow the user to run sudo without requiring a password
+      ansible.builtin.lineinfile:
+        dest: /etc/sudoers
+        line: "kube ALL=(ALL) NOPASSWD: ALL"
+        validate: "visudo -cf %s"
+
+    # - name: Add (my) authorized key for user
+    #   ansible.builtin.authorized_key: user=kube key="{{item}}"
+    #   with_file:
+    #     - ~/.ssh/id_rsa.pub
