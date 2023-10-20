@@ -11,6 +11,10 @@ build/
 .netrwhist
 
 tags
+1.cfg
+2.cfg
+3.cfg
+4.cfg
 *.log
 vtags
 *.pyc
