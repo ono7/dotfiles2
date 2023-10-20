@@ -27,3 +27,13 @@
         - bashrc
       become: true
       become_method: ansible.builtin.sudo
+
+    - name: Install base packages
+      ansible.builtin.dnf:
+        name:
+          - tmux
+          - tree
+        state: present
+      become: true
+      become_method: ansible.builtin.sudo
+      tags: package

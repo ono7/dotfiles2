@@ -2,7 +2,7 @@
 
 set nocompatible
 
-set t_Co=16
+set t_Co=256
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -412,5 +412,6 @@ augroup END
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 hi! clear Error
 
-hi! Comment ctermfg=8 guibg=DarkGrey
+hi! clear Comment
+hi! Comment ctermfg=8 guifg=#8186a1
 hi! link LineNr Comment

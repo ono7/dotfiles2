@@ -5,6 +5,7 @@ venv/
 build/
 
 .pytest_cache/
+fact_cache/
 .DS_Store
 .virtualenvs
 .vim
