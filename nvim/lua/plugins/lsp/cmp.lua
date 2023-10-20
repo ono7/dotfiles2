@@ -114,7 +114,7 @@ cmp_config.setup({
       with_text = false,
       maxwidth = 50,
       menu = {
-        -- buffer = "[buf]",
+        buffer = "[B]",
         nvim_lsp = "[L]",
         -- nvim_lua = "[api]",
         -- path = "[path]",

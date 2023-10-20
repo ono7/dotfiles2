@@ -5,6 +5,41 @@ https://github.com/devopsjourney1/learn-k8s
 
 rancher, kubernetes as a service
 
+## intalling on servers
+
+Do _not_ use your built-in default packages apt/yum install docker.io because
+those packages are old and not the Official Docker-Built packages.
+
+I prefer to use Docker's automated script to add their repository and install
+all dependencies: `curl -sSL https://get.docker.com/ | sh` but you can also
+install in a more manual method by following specific instructions that Docker
+provides for your Linux distribution. `https://docs.docker.com/engine/install/`
+
+## components
+
+- "control-plane/master"
+
+  - api server
+  - etcd kv store
+  - scheduler
+
+- node
+  - kubelet - interacts with control plane
+  - kube-proxy - network stack
+  - host pods, the minimun unit that can be deployed
+    - pods can have multiple related containers
+    - pods share an ip address, ip addresses are associated with pods not
+      containers
+    - containers in a pods share `localhost`
+    - containers in a pods are deployed to the same node
+    - we cant touch containers, we can only deploy pods
+
+## managed cloud services like amazon, google etc
+
+- provide a managed control-plane that becomes invisible to the user, they take
+  care of managing etcd etc, the user has access to the api server to control the
+  nodes and recources through the api.
+
 # use kubectl explain to get dataneeded to create apis
 
 ** discover schemas for any of the k8 apis by using kubectl explain command **

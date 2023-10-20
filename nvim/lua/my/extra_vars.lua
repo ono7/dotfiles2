@@ -226,7 +226,7 @@ nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'
 cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'
 
-set completeopt=menu,menuone,longest
+set completeopt=menuone,longest
 set pumheight=10
 set notitle
 " ~ search upwards until home dir
@@ -537,7 +537,8 @@ set novisualbell noerrorbells
 set nowrap showmode noshowcmd
 set nrformats-=octal nrformats+=alpha
 set number relativenumber numberwidth=2 ruler shiftround shiftwidth=2
-set shortmess=atcIoOsT
+" set shortmess=atcCIoOsT
+set shortmess+=C
 set smartcase smarttab
 set spelllang=en_us
 set splitbelow splitright
