@@ -7,8 +7,9 @@ snippet inv "inventor.cfg" b
   # ansible_connection=network_cli
   # ansible_become=yes
   # ansible_become_method=enable
-  # ansible_user=""
-  # ansible_ssh_pass=""
+  ansible_user={{ lookup('env', 'ANSIBLE_USER') }}
+  ansible_password={{ lookup('env', 'ANSIBLE_SSH_PASS') }}
+  ansible_become_pass={{ lookup('env', 'ANSIBLE_SSH_PASS') }}
 
 
   [${1:group_1}]
