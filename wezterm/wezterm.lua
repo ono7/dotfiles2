@@ -154,6 +154,8 @@ return {
     { key = "b", mods = "CMD", action = act.SendString("\x02"), },
     --- ctr-d = \x04, exit shell, vim move half page down
     { key = "d", mods = "CMD", action = act.SendString("\x04"), },
+    --- ctr-w (window movements, vim, tmux)
+    { key = "w", mods = "CMD", action = act.SendString("\x17"), },
     {
       -- tmux zoom pane
       key = "m",
