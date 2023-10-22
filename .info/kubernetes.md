@@ -7,7 +7,7 @@ rancher, kubernetes as a service
 
 ## intalling on servers
 
-Do _not_ use your built-in default packages apt/yum install docker.io because
+Do `*not*` use your built-in default packages apt/yum install docker.io because
 those packages are old and not the Official Docker-Built packages.
 
 I prefer to use Docker's automated script to add their repository and install
@@ -22,6 +22,7 @@ provides for your Linux distribution. `https://docs.docker.com/engine/install/`
   - api server
   - etcd kv store
   - scheduler
+  - coreDNS
 
 - node
   - kubelet - interacts with control plane
