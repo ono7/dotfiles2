@@ -1,5 +1,6 @@
-- hosts: "control,nodes"
-  become: yes
+- name: Configure users
+  hosts: "control,nodes"
+  become: true
   become_method: ansible.builtin.sudo
 
   tasks:
