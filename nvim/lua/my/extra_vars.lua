@@ -4,7 +4,7 @@ M.legacy_cfg = [===[
 
 set nocompatible
 
-set t_Co=16
+set t_Co=256
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -237,6 +237,7 @@ set path+=**
 set whichwrap+=<>[]hl
 set autoread
 set backspace=indent,eol,start
+set background=dark
 set cmdheight=1
 set complete+=kspell complete-=i
 set diffopt=filler
@@ -527,6 +528,7 @@ set tags=./tags,tags;~
 set whichwrap+=<>[]hl
 set autoread
 set backspace=indent,eol,start
+set background=dark
 set complete+=kspell complete-=i
 set diffopt=filler
 set directory=
