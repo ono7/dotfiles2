@@ -360,9 +360,6 @@ augroup END
 augroup _linters
   " Set yamllint as a makeprg for YAML files
   autocmd FileType yaml setlocal makeprg=yamllint\ --f\ parsable\ %
-  " Set QuickFix to automatically open on errors after :make
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
 augroup _write
@@ -376,20 +373,15 @@ augroup _resize
   autocmd VimResized * :wincmd =
 augroup END
 
-" augroup _quickfix
-"   autocmd!
-"   autocmd QuickFixCmdPost nnoremap <buffer> <CR> <CR>
-"   autocmd QuickFixCmdPost [^l]* copen 6
-"   autocmd QuickFixCmdPost l* lwindow 6
-" augroup END
-
-augroup _QuickFixOpen
+augroup _quickfix
 	autocmd!
 	" auto open quickfix when executing make!
-  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>
+  " autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost    l* lwindow
 augroup END
+
 
 augroup _files
   autocmd!
@@ -400,7 +392,8 @@ augroup _files
   " autocmd FileType go setlocal suffixesadd+=.go
   autocmd FileType yaml setlocal suffixesadd+=.yml
   autocmd FileType make setlocal sw=4 ts=4 noet sts=4 tw=0 nowrap autoindent nolisp
-  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  " autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  " autocmd BufReadPost qf nnoremap <buffer> <CR> <CR>
   autocmd filetype * :call <SID>mySyntax()
 augroup END
 

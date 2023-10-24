@@ -379,18 +379,13 @@ augroup _resize
 augroup END
 
 augroup _quickfix
-  autocmd!
-  autocmd QuickFixCmdPost nnoremap <buffer> <CR> <CR>
-  autocmd QuickFixCmdPost [^l]* copen 6
-  autocmd QuickFixCmdPost l* lwindow 6
-augroup END
-
-augroup _QuickFixOpen
 	autocmd!
-	" auto open quickfix when executing make!
+	" auto open quickfix
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost    l* lwindow
 augroup END
+
 
 augroup _files
   autocmd!

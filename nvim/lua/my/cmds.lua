@@ -95,16 +95,17 @@ c({ "BufNewFile", "BufRead" }, {
 })
 
 -- remap enter in quickfix
-c({ "BufReadPost" }, {
-  pattern = "quickfix",
-  command = [[map <buffer> <CR> <CR> ]],
-  group = create_augroup("set_quickfix_maps", { clear = true }),
-})
+-- c({ "BufReadPost" }, {
+--   pattern = "quickfix",
+--   command = [[nnoremap <buffer> <CR> <CR> ]],
+--   group = create_augroup("set_quickfix_maps", { clear = true }),
+-- })
 
 vim.cmd [[
 augroup _QuickFixOpen
 	autocmd!
 	" auto open quickfix when executing make!
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost    l* lwindow
 augroup END
