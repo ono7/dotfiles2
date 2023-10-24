@@ -359,6 +359,14 @@ augroup _read
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
+augroup _linters
+  " Set yamllint as a makeprg for YAML files
+  autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
+  " Set QuickFix to automatically open on errors after :make
+  autocmd FileType yaml autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd FileType yaml autocmd QuickFixCmdPost    l* lwindow
+augroup END
+
 augroup _write
   autocmd!
   autocmd BufWritePre * silent! :retab!
