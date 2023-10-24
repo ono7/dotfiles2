@@ -4,13 +4,24 @@
 
 golang: https://fulltimegodev.teachable.com/courses/1970304
 
-move with c-d (down) and c-u (up)
-use Ff Tt to move horizontally
+* save as root
+    :w !sudo tee %
+
+* convert spaces to tabs (and back)
+    to spaces            to tabs
+        :set expandtab       :set noexpandtab
+        :set tabstop=4       :retab!
+        :set shiftwidth=4
+        :retab
+
+* move with c-d (down) and c-u (up)
+* use Ff Tt to move horizontally
 * g, - jump to last change
 * zm, fold
 * zi, toggle fold
 * sliped `brew install slides`
 
+* my vanilla config
 alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
   * replace with contents of register :s/abc/\=getreg('*')/g
