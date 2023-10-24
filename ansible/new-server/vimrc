@@ -235,6 +235,7 @@ set path+=**
 set whichwrap+=<>[]hl
 set autoread
 set backspace=indent,eol,start
+set background=dark
 set cmdheight=1
 set complete+=kspell complete-=i
 set diffopt=filler
