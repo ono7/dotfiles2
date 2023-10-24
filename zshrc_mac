@@ -3,6 +3,19 @@
 # uset ttyctl -f to freeze terminal preventing any new changes to the tty
 # ttyctl -u unfreezes the terminal
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RESET='\033[0m'
+
+echo_red() {
+    echo -e "${RED}$@${RESET}"
+}
+
+echo_green() {
+    echo -e "${GREEN}$@${RESET}"
+}
+
 toggle() {
   fg
 }
