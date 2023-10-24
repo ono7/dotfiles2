@@ -363,6 +363,8 @@ augroup END
 augroup _linters
   " Set yamllint as a makeprg for YAML files
   autocmd FileType yaml setlocal makeprg=yamllint\ --f\ parsable\ %
+  autocmd FileType python setlocal makeprg=pylint\ --output-format=text\ --msg-template='%f:%l:%c:%{msg_id}:\ %s'\ %
+  autocmd FileType python setlocal errorformat=%f:%l:%c:%t:%m
   " Set QuickFix to automatically open on errors after :make
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost    l* lwindow
