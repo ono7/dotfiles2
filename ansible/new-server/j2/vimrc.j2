@@ -2,7 +2,7 @@
 
 set nocompatible
 
-set t_Co=256
+set t_Co=16
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -357,6 +357,14 @@ augroup _read
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
+augroup _linters
+  " Set yamllint as a makeprg for YAML files
+  autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
+  " Set QuickFix to automatically open on errors after :make
+  autocmd FileType yaml autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd FileType yaml autocmd QuickFixCmdPost    l* lwindow
+augroup END
+
 augroup _write
   autocmd!
   autocmd BufWritePre * silent! :retab!
@@ -412,6 +420,7 @@ augroup END
 " python indent file in ~/.dotfiles/nvim/indent/python.vim -> ~/.vim/indent/python.vim"
 hi! clear Error
 
-hi! clear Comment
-hi! Comment ctermfg=8 guifg=#8186a1
+hi! Comment ctermfg=8 guibg=DarkGrey
 hi! link LineNr Comment
+
+" Lima's vimrc, use at your own risk :)

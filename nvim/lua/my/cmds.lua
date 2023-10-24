@@ -101,6 +101,15 @@ c({ "BufReadPost" }, {
   group = create_augroup("set_quickfix_maps", { clear = true }),
 })
 
+vim.cmd [[
+augroup _QuickFixOpen
+	autocmd!
+	" auto open quickfix when executing make!
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost    l* lwindow
+augroup END
+]]
+
 -- handle large files, syntax=OFF only affects buffer, where syntax off is global
 -- syn sync clear, we can keep syntax and still work on large files! 2023-09-23, probably not needed with treesitter
 -- c({
