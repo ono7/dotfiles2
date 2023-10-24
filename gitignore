@@ -15,6 +15,12 @@ tags
 .helix/
 .ignore
 *.log
+1.sh
+2.sh
+1.yml
+2.yml
+1.cfg
+2.cfg
 vtags
 *.pyc
 *.egg-info/
