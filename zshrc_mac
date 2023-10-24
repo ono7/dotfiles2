@@ -289,7 +289,7 @@ alias h=hx
 # init new repo
 ginit () {
   git init
-  [ ! -f .gitignore ] && cp ~/.dotfiles/gitignore .gitignore || echo 'skipping .gitignore'
+  [ ! -f .gitignore ] && cp ~/.dotfiles/gitignore .gitignore || echo_green 'skipping .gitignore'
   git add .
   git commit -am 'initial commit'
 }
