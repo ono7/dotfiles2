@@ -384,8 +384,7 @@ augroup _quickfix
 	autocmd!
 	" auto open quickfix
   autocmd FileType qf nnoremap <buffer> <CR> <CR>
-  " autocmd QuickFixCmdPost [^l]* cwindow 6
-  autocmd QuickFixCmdPost [^l]* copen 6
+  autocmd QuickFixCmdPost [^l]* cwindow 6
   autocmd QuickFixCmdPost    l* lwindow 6
 augroup END
 

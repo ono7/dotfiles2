@@ -106,8 +106,7 @@ augroup _QuickFixOpen
 	autocmd!
 	" auto open quickfix when executing make!
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-  " autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost [^l]* copen 6
+  autocmd QuickFixCmdPost [^l]* cwindow 6
   autocmd QuickFixCmdPost    l* lwindow 6
 augroup END
 ]]
