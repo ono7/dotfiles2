@@ -609,7 +609,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=3000   # the number of items for the internal history list
 export SAVEHIST=2999   # maximum number of items for the history file
 # export HISTTIMEFORMAT='[%F %T] '
-export HISTIGNORE='ls:ll:pwd:sudo ssh*'
+export HISTIGNORE='ls:ll:proxychains:pwd:sudo ssh*'
 HISTDUP=erase
 
 # The meaning of these options can be found in man page of `zshoptions`.
