@@ -632,7 +632,7 @@ setopt NO_BEEP
 setopt NO_HUP
 
 # disable flow control
-setopt NO_FLOW_CONTROL
+# setopt NO_FLOW_CONTROL
 
 # change directories
 setopt autocd
