@@ -1,3 +1,7 @@
+# shellscrips
+
+`shellcheck` - checks shell scrips for errors or suggestions
+
 # python
 
 1. bamboo should clone and pip install requirements for the modules
