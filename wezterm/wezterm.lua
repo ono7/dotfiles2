@@ -124,6 +124,7 @@ return {
       action = act.SendString("\x17"),
     },
     -- make cmd more like control in macos
+    { key = "a", mods = "CMD", action = act.SendString("\x01"), },
     { key = "e", mods = "CMD", action = act.SendString("\x05"), },
     { key = "p", mods = "CMD", action = act.SendString("\x10"), },
     { key = "n", mods = "CMD", action = act.SendString("\x0e"), },
