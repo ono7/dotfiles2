@@ -152,8 +152,7 @@ nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ,d :bd!<cr>
 nnoremap ,q :qall!<cr>
-nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :w<cr>
+nnoremap ,w :w<cr>
 nnoremap gh ^
 nnoremap gl g_
 
@@ -486,7 +485,7 @@ nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ,d :bd!<cr>
 nnoremap ,q :qall!<cr>
-nnoremap <leader>w :w<cr>
+nnoremap ,w :w<cr>
 vnoremap y ygv<Esc>
 " paste matches indentation
 nnoremap p p=`]

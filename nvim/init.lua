@@ -22,9 +22,9 @@ golang: https://fulltimegodev.teachable.com/courses/1970304
 * sliped `brew install slides`
 
 * my vanilla config
-alias vim='vim "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number relativenumber magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
+alias vim='vim -c "inoremap <C-e> <C-o>$" -c "inoremap <C-a> <C-o>^" -c "nnoremap ,d :bd!<cr>" -c "nnoremap ,q :qall!<cr>" -c "nnoremap ,w :w<cr>" "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n"'
 
-  * replace with contents of register :s/abc/\=getreg('*')/g
+* replace with contents of register :s/abc/\=getreg('*')/g
 	*  ge, jump back do end of word
 	*  xxd -psd (get hex codes to use with wezterm)
 
