@@ -582,9 +582,6 @@ local packages = {
     "my.settings",
     "plugins.treesitter",
     "plugins.telescope",
-    -- "plugins.notify",
-    -- "plugins.noice",
-    -- "plugins.navigator",
     "plugins.neotree",
     "plugins.surround",
     "plugins.lsp.cmp",
@@ -595,7 +592,7 @@ local packages = {
     -- "plugins.bufferline",
     "plugins.colorizer",
     "my.cmds",
-    "plugins.harpoon",
+    -- "plugins.harpoon",
     "plugins.core_dap",
 }
 
