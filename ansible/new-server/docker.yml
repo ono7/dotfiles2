@@ -1,0 +1,69 @@
+---
+- name: Install docker
+  gather_facts: No
+  hosts: az_agents
+  become: true
+  become_method: ansible.builtin.sudo
+
+  tasks:
+    - name: Install Deps
+      ansible.builtin.yum:
+        name:
+          - device-mapper-persistent-data
+          - yum-utils
+          - lvm2
+        state: latest
+      become: true
+
+    - name: Add Docker repo
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docer-ce.repo
+      become: true
+      environment: "{{ proxy }}"
+
+    - name: Enable Docker Edge repo
+      ansible.builtin.ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: "docker-ce-edge"
+        option: enabled
+        value: 0
+      become: true
+
+    - name: Enable Docker Test repo
+      ansible.builtin.ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: "docker-ce-test"
+        option: enabled
+        value: 0
+      become: true
+
+    - name: Remove old deps
+      ansible.builtin.shell: sudo dnf -y remove runc.x86_64
+      become: true
+      environment: "{{ proxy }}"
+      tags: docker
+
+    - name: Install Docker
+      ansible.builtin.yum:
+        name: docker-ce
+        state: latest
+      become: true
+      environment: "{{ proxy }}"
+      tags: docker
+
+    - name: Start Docker service
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+      become: true
+      tags: docker
+
+    - name: Add user vagrant to docker group
+      ansible.builtin.user:
+        name: builder
+        groups: docker
+        append: true
+      become: true
+      tags: docker
