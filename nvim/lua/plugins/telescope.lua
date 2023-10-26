@@ -51,7 +51,7 @@ configs.setup({
   },
 })
 
-k("n", "<c-w>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+k("n", "<leader>o", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 
 -- vim.keymap.set("n", ":", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
 --   { silent = true })
