@@ -30,7 +30,8 @@ local ansi = {
 -- my color overrides
 scheme.ansi = ansi
 scheme.brights = ansi
-scheme.cursor_bg = "#00acc1"
+-- scheme.cursor_bg = "#00acc1"
+scheme.cursor_bg = "#ff6efd"
 local act = wezterm.action
 
 -- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
