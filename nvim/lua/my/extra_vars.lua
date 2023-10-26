@@ -144,8 +144,8 @@ cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 nnoremap <silent><cr> :noh<cr>1<c-g>
-" inoremap <C-e> <C-o>$
-" inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
 " inoremap <m-b> <C-o>B
 " inoremap <m-f> <C-o>W
 nnoremap <silent><c-n> :cnext<cr>
@@ -339,7 +339,6 @@ fun! <SID>TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-
 function! <SID>mySyntax()
   syntax match myCyanBold /[*.,:;]/
   " syntax match myBold /[*.,:;]/
@@ -388,7 +387,6 @@ augroup _quickfix
   autocmd QuickFixCmdPost    l* lwindow 6
 augroup END
 
-
 augroup _files
   autocmd!
   autocmd FileType python setlocal sw=4 ts=4 et softtabstop=4 tw=0 nowrap autoindent nolisp
@@ -405,7 +403,6 @@ augroup END
 command! Mktags !ctags -R .
 
 hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
-
 
 if !has("patch-7.4.2213")
   hi! link NonText Comment
