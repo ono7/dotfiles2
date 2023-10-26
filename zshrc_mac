@@ -167,17 +167,18 @@ if [[ -f ~/nvim/bin/nvim ]]; then
   alias nvim='~/nvim/bin/nvim'
   # legacy vim
   alias vi=vim
-  alias vil='/usr/bin/vim'
   alias vimdiff='~/nvim/bin/nvim -d'
 elif command -v nvim &>/dev/null; then
   alias vim="$(whence nvim)"
   alias nvim=vim
   alias vi=vim
   alias vil=vim
-  alias vil='/usr/bin/vim'
   alias vimdiff='nvim -d'
   alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 fi
+
+alias vil='vim -u ~/.vimrc_min'
+
 export EDITOR=vim
 
 if command -v kubectl &>/dev/null; then
