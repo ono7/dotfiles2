@@ -2,7 +2,7 @@
 
 set nocompatible
 
-set t_Co=16
+set t_Co=256
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -142,16 +142,15 @@ cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 nnoremap <silent><cr> :noh<cr>1<c-g>
-" inoremap <C-e> <C-o>$
-" inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
 " inoremap <m-b> <C-o>B
 " inoremap <m-f> <C-o>W
 nnoremap <silent><c-n> :cnext<cr>
 nnoremap <silent><c-p> :cprevious<cr>
 nnoremap ,d :bd!<cr>
 nnoremap ,q :qall!<cr>
-nnoremap <leader>q :qall!<cr>
-nnoremap <leader>w :w<cr>
+nnoremap ,w :w<cr>
 nnoremap gh ^
 nnoremap gl g_
 
@@ -235,6 +234,7 @@ set path+=**
 set whichwrap+=<>[]hl
 set autoread
 set backspace=indent,eol,start
+set background=dark
 set cmdheight=1
 set complete+=kspell complete-=i
 set diffopt=filler
@@ -250,7 +250,7 @@ set ignorecase
 set incsearch
 set nohlsearch
 set mouse=n
-set laststatus=0
+set laststatus=2
 set magic
 set nobackup nowritebackup noswapfile
 set nojoinspaces
@@ -275,7 +275,7 @@ set softtabstop=2 tabstop=2 textwidth=0 expandtab
 set timeout ttimeout
 set timeoutlen=500 ttimeoutlen=0
 set undolevels=999
-set undodir=~/vim_undo
+set undodir=/tmp
 set undofile
 set updatetime=1000
 set wildignore+=.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*,*.class
@@ -336,7 +336,6 @@ fun! <SID>TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-
 function! <SID>mySyntax()
   syntax match myCyanBold /[*.,:;]/
   " syntax match myBold /[*.,:;]/
@@ -359,10 +358,11 @@ augroup END
 
 augroup _linters
   " Set yamllint as a makeprg for YAML files
-  autocmd FileType yaml setlocal makeprg=yamllint\ -f\ parsable\ %
+  autocmd FileType yaml setlocal makeprg=yamllint\ --f\ parsable\ %
+  autocmd FileType python setlocal makeprg=pylint\ -sn\ -f\ text\ %
   " Set QuickFix to automatically open on errors after :make
-  autocmd FileType yaml autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd FileType yaml autocmd QuickFixCmdPost    l* lwindow
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
 augroup _write
@@ -377,9 +377,11 @@ augroup _resize
 augroup END
 
 augroup _quickfix
-  autocmd!
-  autocmd QuickFixCmdPost [^l]* copen 6 | nnoremap <buffer> <CR> <CR>
-  autocmd QuickFixCmdPost l* lwindow 6 | nnoremap <buffer> <CR> <CR>
+	autocmd!
+	" auto open quickfix
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>
+  autocmd QuickFixCmdPost [^l]* cwindow 6
+  autocmd QuickFixCmdPost    l* lwindow 6
 augroup END
 
 augroup _files
@@ -398,7 +400,6 @@ augroup END
 command! Mktags !ctags -R .
 
 hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
-
 
 if !has("patch-7.4.2213")
   hi! link NonText Comment

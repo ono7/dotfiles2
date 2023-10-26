@@ -16,6 +16,8 @@
       loop:
         - vimrc
         - bashrc
+      tags:
+        - rc
 
     - name: Copy rc files (root)
       ansible.builtin.template:
@@ -27,6 +29,8 @@
         - bashrc
       become: true
       become_method: ansible.builtin.sudo
+      tags:
+        - rc
 
     - name: Install base packages
       ansible.builtin.dnf:
