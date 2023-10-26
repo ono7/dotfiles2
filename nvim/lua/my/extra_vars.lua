@@ -572,5 +572,11 @@ augroup END
 inoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
 nnoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
 hi! clear Error
+
+if has('unnamedplus')
+  set clipboard+=unnamedplus
+else
+  set clipboard=unnamed
+endif
 ]===]
 return M
