@@ -457,7 +457,7 @@ augroup END
 
 augroup _quickfix
   autocmd!
-  autocmd QuickFixCmdPost [^l]* copen 6
+  autocmd QuickFixCmdPost [^l]* cwindow 6
   autocmd QuickFixCmdPost l* lwindow 6
 augroup END
 
