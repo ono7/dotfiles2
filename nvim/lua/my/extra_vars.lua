@@ -252,7 +252,7 @@ set ignorecase
 set incsearch
 set nohlsearch
 set mouse=n
-set laststatus=0
+set laststatus=2
 set magic
 set nobackup nowritebackup noswapfile
 set nojoinspaces
@@ -537,7 +537,7 @@ set hidden
 set history=1000
 set ignorecase incsearch nohlsearch
 set mouse=n
-set laststatus=0
+set laststatus=2
 set magic
 set nobackup nowritebackup noswapfile
 set nojoinspaces list
