@@ -1,9 +1,10 @@
 ---
 - name: Install docker
   gather_facts: No
-  hosts: az_agents
+  hosts: all
   become: true
   become_method: ansible.builtin.sudo
+  environment: "{{ proxy }}"
 
   tasks:
     - name: Install Deps
@@ -20,7 +21,6 @@
         url: https://download.docker.com/linux/centos/docker-ce.repo
         dest: /etc/yum.repos.d/docer-ce.repo
       become: true
-      environment: "{{ proxy }}"
 
     - name: Enable Docker Edge repo
       ansible.builtin.ini_file:
@@ -41,7 +41,6 @@
     - name: Remove old deps
       ansible.builtin.shell: sudo dnf -y remove runc.x86_64
       become: true
-      environment: "{{ proxy }}"
       tags: docker
 
     - name: Install Docker
@@ -49,7 +48,6 @@
         name: docker-ce
         state: latest
       become: true
-      environment: "{{ proxy }}"
       tags: docker
 
     - name: Start Docker service
