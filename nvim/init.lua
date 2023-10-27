@@ -24,7 +24,7 @@ golang: https://fulltimegodev.teachable.com/courses/1970304
 * my vanilla config
 
 
-alias vim='vim -c "inoremap <C-e> <C-o>$" -c "inoremap <C-a> <C-o>^" -c "nnoremap ,d :bd!<cr>" -c "nnoremap ,q :qall!<cr>" -c "nnoremap ,w :w<cr>" "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch number magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ttyfast mouse=n clipboard+=unnamedplus"'
+alias vim='vim -u NONE -c "inoremap <C-e> <C-o>$" -c "inoremap <C-a> <C-o>^" -c "nnoremap ,d :bd!<cr>" -c "nnoremap ,q :qall!<cr>" -c "nnoremap ,w :w<cr>" "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO ai ttyfast sw=2 sts=2 mouse=n clipboard+=unnamedplus background=dark"'
 
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 
