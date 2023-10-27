@@ -5,6 +5,24 @@ https://github.com/devopsjourney1/learn-k8s
 
 rancher, kubernetes as a service
 
+## NodePort
+
+default port range `30000-32768`
+
+## kube-proxy
+
+uses proxy and iptables to move packets around
+
+## kubernetes networking
+
+`ClusterIP` only availible inside the cluster
+`NotePort` is design to be accessible from outside the cluster, picks by
+default in 3000-32768 port range
+
+### load balancer (external service)
+
+cloud providers typically manage this for us
+
 ## intalling on servers
 
 Do `*not*` use your built-in default packages apt/yum install docker.io because

@@ -38,6 +38,7 @@
       ansible.builtin.dnf:
         name:
           - tmux
+          - watch
           - tree
           - python3.11
         state: present

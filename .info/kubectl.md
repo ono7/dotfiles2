@@ -23,6 +23,22 @@
 
 - `kubectl scale deploy/pingpong --replicas 3` same as above, in short hand
 
+## kubectl expose
+
+exposing services to the outside
+
+- `kubectl expose deployment httpenv --port 8888` this is using "deployment" as a
+  `selector` to expose the services of each pod on port 8888
+
+  `kubectl get service` check the status of the exposed service
+
+  ```
+  $ kubectl get service
+  NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+  kubernetes   ClusterIP   10.152.183.1    <none>        443/TCP    23h
+  httpenv      ClusterIP   10.152.183.40   <none>        8888/TCP   41s
+  ```
+
 ## view logs
 
 - `kubectl logs deploy/pingpong --tail 1 --follow` stream logs from a
