@@ -263,7 +263,7 @@ set showtabline=0
 set novisualbell noerrorbells
 set nowrap
 set nrformats-=octal nrformats+=alpha
-set number rnu numberwidth=2
+set numberwidth=2
 set ruler
 set shiftround shiftwidth=2
 set shortmess=atcIoOsT
@@ -546,7 +546,7 @@ set showtabline=0
 set novisualbell noerrorbells
 set nowrap showmode noshowcmd
 set nrformats-=octal nrformats+=alpha
-set number relativenumber numberwidth=2 ruler shiftround shiftwidth=2
+set numberwidth=2 ruler shiftround shiftwidth=2
 " set shortmess=atcCIoOsT
 set shortmess+=C
 set smartcase smarttab

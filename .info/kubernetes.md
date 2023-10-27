@@ -41,7 +41,7 @@ provides for your Linux distribution. `https://docs.docker.com/engine/install/`
   care of managing etcd etc, the user has access to the api server to control the
   nodes and recources through the api.
 
-# use kubectl explain to get dataneeded to create apis
+# use kubectl explain to get data needed to create apis
 
 ** discover schemas for any of the k8 apis by using kubectl explain command **
 

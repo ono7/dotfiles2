@@ -10,6 +10,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
                 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+PATH="$PATH:/snap/bin"
 export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -18,20 +19,20 @@ export PATH
 # User specific aliases and functions
 
 ta () {
-                                if [ ! -z $TMUX ] && [ ! -z $1 ]
-                                then
-                                                                tmux detach -E "tmux new -A -s '$1'"
-                                elif [ ! -z $TMUX ]
-                                then
-                                                                return
-                                else
-                                                                tmux new -As main
-                                fi
+  if [ ! -z $TMUX ] && [ ! -z $1 ]
+  then
+    tmux detach -E "tmux new -A -s '$1'"
+  elif [ ! -z $TMUX ]
+  then
+    return
+  else
+    tmux new -As main
+  fi
 }
 
 
 vs () {
-        vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
+   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
 
@@ -53,11 +54,11 @@ alias 9='cd -9'
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 
 function d () {
-        if [[ -n $1 ]]; then
-                dirs "$@"
-        else
-                dirs -v | head -n 10
-        fi
+  if [[ -n $1 ]]; then
+    dirs "$@"
+  else
+    dirs -v | head -n 10
+  fi
 }
 
 
@@ -67,38 +68,38 @@ alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"    &>/dev/null'
 
 
 vq () {
-        # pass all args to rg via $@ .. allows to append rg flags, muhahah
-        vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
+  # pass all args to rg via $@ .. allows to append rg flags, muhahah
+  vim -q <(rg --vimgrep --pcre2 -i -S $@) +"copen 6"
 }
 
 vc () {
-        deactivate 2>/dev/null
-        venv_dir="venv"
-        my_dir=$PWD
-        if [[ -d $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
-                cd $(git rev-parse --show-toplevel)
-        fi
-        if [ ! -z "$1" ]; then
-                venv_dir=$1
-        fi
-        python3 --version
-        python3 -m venv $venv_dir
-        source $venv_dir/bin/activate
-        pip install pip wheel -U
-        pip install jq yq pyright ansible black pytest yamllint ansible-lint -U
-        pip freeze > requirements.txt
-        echo ""
-        echo ""
-        echo ""
-        echo "*************** :) *******************"
-        which python
-        cd $my_dir
+  deactivate 2>/dev/null
+  venv_dir="venv"
+  my_dir=$PWD
+  if [[ -d $(git rev-parse --show-toplevel 2>/dev/null) ]]; then
+          cd $(git rev-parse --show-toplevel)
+  fi
+  if [ ! -z "$1" ]; then
+          venv_dir=$1
+  fi
+  python3 --version
+  python3 -m venv $venv_dir
+  source $venv_dir/bin/activate
+  pip install pip wheel -U
+  pip install jq yq pyright ansible black pytest yamllint ansible-lint -U
+  pip freeze > requirements.txt
+  echo ""
+  echo ""
+  echo ""
+  echo "*************** :) *******************"
+  which python
+  cd $my_dir
 }
 
 take () {
-        [ -z $1 ] && return
-        local dir="$@"
-        mkdir -p "${dir// /-}"; cd "${dir// /-}"
+  [ -z $1 ] && return
+  local dir="$@"
+  mkdir -p "${dir// /-}"; cd "${dir// /-}"
 }
 
 set -o vi

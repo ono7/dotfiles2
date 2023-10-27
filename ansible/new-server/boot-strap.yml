@@ -16,6 +16,7 @@
       loop:
         - vimrc
         - bashrc
+        - tmux.conf
       tags:
         - rc
 
@@ -27,6 +28,7 @@
       loop:
         - vimrc
         - bashrc
+        - tmux.conf
       become: true
       become_method: ansible.builtin.sudo
       tags:
