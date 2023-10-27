@@ -63,9 +63,9 @@ syntax on
 """ hold my beer """
 
 " inoremap ` ``<left>
-inoremap ( ()<left>
-inoremap { {}<left>
-inoremap [ []<left>
+" inoremap ( ()<left>
+" inoremap { {}<left>
+" inoremap [ []<left>
 
 " j, k   Store relative line number jumps in the jumplist. c-o, c-i
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
