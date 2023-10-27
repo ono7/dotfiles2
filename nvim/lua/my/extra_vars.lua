@@ -425,6 +425,7 @@ hi! clear Error
 
 hi! Comment ctermfg=8 guibg=DarkGrey
 hi! link LineNr Comment
+hi! link SpecialKey Comment
 
 " Lima's vimrc, use at your own risk :)
 ]===]
@@ -572,6 +573,7 @@ augroup END
 inoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
 nnoremap \ <Esc>:Lex<cr>:vertical resize 30<cr>
 hi! clear Error
+hi! Link SpecialKey Comment
 
 if has('unnamedplus')
   set clipboard+=unnamedplus
