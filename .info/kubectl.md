@@ -23,12 +23,22 @@
 
 - `kubectl scale deploy/pingpong --replicas 3` same as above, in short hand
 
+## view logs
+
 - `kubectl logs deploy/pingpong --tail 1 --follow` stream logs from a
   deployment, the pod is randomly picked
+
+- `kubectl logs -l deploy/pingpong --tail 1 --follow` stream logs from a
+  deployment, from upto 5 pods at the same time
+
+- `kubectl logs -l deploy/pingpong --tail 1 --follow --max-log-requests 8` stream logs from a
+  deployment, from more than 5 pods (8)
 
 - `kubectl logs --tail 1 -f pod/pingpong-6d6ff8754d-8kk6d` get logs from
   specific deploymment pod `kubectl get all` will show all the pods available
   in a deployment
+
+** better tool to use is `stern` **
 
 ```go
 // abstration of layers that run when the run command is called
@@ -41,6 +51,15 @@
   }
 }
 ```
+
+## creating resources
+
+- `kubectl run abc` quickway to deploythings (old way of doing things), versatile
+- `kubectl create` lacks features, cannot create cronjob in 1.14+, cant pass
+  command line arguments to deployments
+- `kubectl create -f mydeploy.yml` ( same as below, but very declerative), cant
+- `kubectl apply -f mydeploy.yml` (same as above), all features are availible
+  requires writing them in yaml
 
 ## common flags
 

@@ -102,4 +102,10 @@ take () {
   mkdir -p "${dir// /-}"; cd "${dir// /-}"
 }
 
+if command -v microk8s &> /dev/null; then
+    alias kubectl='microk8s.kubectl '
+fi
+
+alias k='kubectl'
+
 set -o vi
