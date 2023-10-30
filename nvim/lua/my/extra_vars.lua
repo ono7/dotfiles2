@@ -5,6 +5,7 @@ M.legacy_cfg = [===[
 set nocompatible
 
 set t_Co=256
+set guicursor=n:block,i:block
 
 let mapleader = " "
 let g:loaded_matchit = 1
@@ -231,7 +232,7 @@ set notitle
 " ~ search upwards until home dir
 set tags=./tags,tags;~
 set virtualedit=all
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set path+=**
 set whichwrap+=<>[]hl
 set autoread
@@ -580,5 +581,6 @@ if has('unnamedplus')
 else
   set clipboard=unnamed
 endif
+set guicursor=n:block,i:block
 ]===]
 return M

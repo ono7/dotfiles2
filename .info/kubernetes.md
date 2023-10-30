@@ -23,6 +23,24 @@ default in 3000-32768 port range
 
 cloud providers typically manage this for us
 
+### exposing services
+
+`NodePort` - maps a port in a high range
+`LoadBalancer` external loadbalancer
+`ExternalIP` maps a node's IP
+`ingress` a special mechanism for handling http services
+
+### CNI - container network interface
+
+- can use plugins to interact withthe k8s network stack
+
+### CNI - container network interface
+
+- can use plugins to interact with the k8s network stack
+- CNI can call IPAM plugin for address allocation
+- add network interface to the pod's namespace
+- configure the interface and required routes/network settings
+
 ## intalling on servers
 
 Do `*not*` use your built-in default packages apt/yum install docker.io because
