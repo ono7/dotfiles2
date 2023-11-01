@@ -597,9 +597,10 @@ if [[ $OSTYPE == "darwin"* ]]; then
  else
    echo "brew instal coreutils - we need gnu-ls"
    brew install coreutils
-   # alias ls='gls --color'
  fi
 fi
+
+alias ls='ls --color'
 
 export HISTFILE=~/.zsh_history
 # HISTSIZE should be > SAVEHIST or dups will show up

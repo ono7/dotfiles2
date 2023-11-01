@@ -5,6 +5,31 @@ https://github.com/devopsjourney1/learn-k8s
 
 rancher, kubernetes as a service
 
+## passing configs to applications
+
+- ENV vars
+- configMaps (cm)
+
+* fetch a test config map
+  `curl -O https://k8smastery.com/haproxy.cfg`
+* create a configmap
+  `kubectl create configmap haproxy --from-file=haproxy.cfg`
+* view the contents of the configmap
+  `kubectl get cm haproxy -o yaml` (cm) = configmap
+
+## creating yaml from existing resources
+
+`kubectl get deploy/rng -o yaml > myout.yml` dumps output of deployment that already exists into a yaml file
+
+## you can get the kind of each resource to use in the yaml file from the api
+
+- `kubectl api-resources | less` can also be used to figure out the api version
+  needed, a empty apigroup means that the resource is in the root group
+- `kubectl api-versions` shows the versions that can be used with the resource
+
+- `kubectl explain Pod.spec` used to explain all the options for a Pod
+  specification
+
 ## NodePort
 
 default port range `30000-32768`

@@ -1,3 +1,7 @@
+## ss (investigate sockets)
+
+`sudo ss -4 -nalp`
+
 ### find command information
 
 prod3 ❯ type -a grep
