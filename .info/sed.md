@@ -1,5 +1,19 @@
 # sed
 
+## uncomment lines
+
+`sed -E '/ swap /s/#+(.*)$/\1/g' /etc/fstab`
+
+```/etc/fstab
+/dev/mapper/rhel-home   /home                   xfs     defaults        0 0
+#/dev/mapper/rhel-swap   none                    swap    defaults        0 0
+
+to:
+
+/dev/mapper/rhel-home   /home                   xfs     defaults        0 0
+/dev/mapper/rhel-swap   none                    swap    defaults        0 0
+```
+
 substitute first line in file (requires GNU sed)
 
 `for i in $( ls * ); do sed -i '1 s/^/This is my first line\n/' $i; done`
