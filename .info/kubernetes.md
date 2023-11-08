@@ -1,5 +1,21 @@
 # k8s/kubernetes notes
 
+## troubleshooting, pods
+
+```pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-pod
+spec:
+  containers:
+    - name: container-1
+      image: busybox
+      command: ['/bin/sh', '-c', 'sleep 1d']
+    - name: container-2
+      image: nginx
+```
+
 official docs - https://kubernetes.io
 https://github.com/devopsjourney1/learn-k8s
 
