@@ -9,6 +9,7 @@ local bo = vim.bo
 o.completeopt = "menu,menuone,noinsert"
 o.foldmethod = "indent"
 o.mouse = "n"
+o.grepprg = "git grep -n"
 -- local is_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_CONNECTION")
 -- if is_ssh then
 --   vim.opt.mouse = ""
@@ -116,14 +117,14 @@ opt.clipboard:append("unnamedplus")
 
 -- o.virtualedit="all"
 
-if vim.fn.executable("rg") == 1 then
-  o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
-  -- o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git' 1>/dev/null]]
-  o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git']]
-else
-  o.grepprg = [[grep -n $* /dev/null]]
-  o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
-end
+-- if vim.fn.executable("rg") == 1 then
+--   o.grepformat = [[%f:%l:%c:%m,%f:%l:%m,%f:%l%m,%f  %l%m]]
+--   -- o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git' 1>/dev/null]]
+--   o.grepprg = [[rg --vimgrep --no-heading --smart-case --color=never -g '!.git']]
+-- else
+--   o.grepprg = [[grep -n $* /dev/null]]
+--   o.grepformat = [[%f:%l:%m,%f:%l%m,%f  %l%m]]
+-- end
 
 --- window-local options ---
 wo.number = false
