@@ -207,9 +207,9 @@ vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
 nnoremap <leader>b :ls<cr>:b<space>
 
-if executable('rg')
-    set grepprg=rg\ --no-heading\ --color=never\ --smart-case\ --vimgrep\ -g\ '!.git'
-endif
+" if executable('rg')
+"     set grepprg=rg\ --no-heading\ --color=never\ --smart-case\ --vimgrep\ -g\ '!.git'
+" endif
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -221,8 +221,10 @@ endfunction
 
 nnoremap <leader>t :!tmux send-keys -t 2 c-p Enter<cr> :redraw!<cr>
 
-cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'
-cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'
+" cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep'
+" cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep'
+
+set gp=git\ grep\ -n
 
 set completeopt=menuone,longest
 set pumheight=10
