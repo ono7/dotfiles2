@@ -1,4 +1,4 @@
-setlocal nowrap tw=79
+setlocal nowrap
 setlocal ai ts=2 sw=2 et fo-=r fo-=o fo-=c
 
 setlocal nofoldenable
