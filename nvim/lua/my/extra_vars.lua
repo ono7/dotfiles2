@@ -4,7 +4,7 @@ M.legacy_cfg = [===[
 
 set nocompatible
 
-set t_Co=256
+set t_Co=8
 set guicursor=n:block,i:block
 
 let mapleader = " "
@@ -438,7 +438,7 @@ hi! StatusLine guibg=#444d69
 
 M.legacy_min = [===[
 set nocompatible
-set t_Co=16
+set t_Co=8
 let mapleader = " "
 set synmaxcol=512
 syntax enable
