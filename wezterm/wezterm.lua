@@ -15,16 +15,29 @@ local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
 --     "#b3da99",
 -- ]
 
+--- catpuccine
+-- local ansi = {
+--   "#45475a",
+--   "#f38ba8",
+--   "#ceeac8",
+--   -- "#bce6b2",
+--   "#f9e2af",
+--   "#89b4fa",
+--   "#cba6f7",
+--   "#94e2d5",
+--   "#bac2de",
+-- }
+
 local ansi = {
-  "#45475a",
-  "#f38ba8",
+  "#161616",
+  "#ED6C6C",
   "#ceeac8",
-  -- "#bce6b2",
-  "#f9e2af",
-  "#89b4fa",
-  "#cba6f7",
+  -- "#C1FCC2",
+  "#F7CC66",
+  "#8BABFA",
+  "#B0A0FF",
   "#94e2d5",
-  "#bac2de",
+  "#ADADAD",
 }
 
 -- my color overrides

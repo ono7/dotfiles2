@@ -57,8 +57,12 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.g.t_co = 256
-vim.opt.termguicolors = true
+vim.g.t_Co = 8
+local f = require "ffi"
+f.cdef "int t_colors"
+f.C.t_colors = 16
+
+vim.opt.termguicolors = false
 vim.opt.syntax = "off"
 
 --- if syntax is on/enabled treesitter has issues
@@ -66,8 +70,8 @@ vim.opt.syntax = "off"
 --- see https://thevaluable.dev/tree-sitter-neovim-overview/
 
 P = function(x)
-    print(vim.inspect(x))
-    return x
+  print(vim.inspect(x))
+  return x
 end
 
 vim.g.markdown_fold_style = "nested"
@@ -75,7 +79,7 @@ vim.g.markdown_fold_style = "nested"
 local my_disabled_ok, _ = pcall(require, "my.disabled")
 
 if not my_disabled_ok then
-    print("Error in pcall my.disabled -> ~/.dotfiles/nvim/init.lua")
+  print("Error in pcall my.disabled -> ~/.dotfiles/nvim/init.lua")
 end
 
 --- hold my beer ---
@@ -89,27 +93,27 @@ local MYHOME = os.getenv("HOME")
 vim.o.shada = "'20,<1000,s1000,:500,/100,h,n~/.shada"
 
 local function get_git_root()
-    local dot_git_path = vim.fn.finddir(".git", ".;")
-    print(vim.fn.fnamemodify(dot_git_path, ":h"))
-    return vim.fn.fnamemodify(dot_git_path, ":h")
+  local dot_git_path = vim.fn.finddir(".git", ".;")
+  print(vim.fn.fnamemodify(dot_git_path, ":h"))
+  return vim.fn.fnamemodify(dot_git_path, ":h")
 end
 
 local function get_visual_selection()
-    local s_start = vim.fn.getpos("'<")
-    local s_end = vim.fn.getpos("'>")
-    local n_lines = math.abs(s_end[2] - s_start[2]) + 1
-    local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-    lines[1] = string.sub(lines[1], s_start[3], -1)
-    if n_lines == 1 then
-        lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
-    else
-        lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
-    end
-    return table.concat(lines, '\n')
+  local s_start = vim.fn.getpos("'<")
+  local s_end = vim.fn.getpos("'>")
+  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+  lines[1] = string.sub(lines[1], s_start[3], -1)
+  if n_lines == 1 then
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+  else
+    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+  end
+  return table.concat(lines, '\n')
 end
 
 vim.api.nvim_create_user_command("CdGitRoot", function()
-    vim.api.nvim_set_current_dir(get_git_root())
+  vim.api.nvim_set_current_dir(get_git_root())
 end, {})
 
 vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
@@ -197,230 +201,230 @@ k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
 
 local openBrackets = {
-    ["("] = true,
-    ["["] = true,
-    ["{"] = true,
+  ["("] = true,
+  ["["] = true,
+  ["{"] = true,
 }
 
 local rightBracketsAndQuotes = {
-    [")"] = true,
-    ["]"] = true,
-    ["}"] = true,
-    ['"'] = true,
-    ["'"] = true,
-    ['`'] = true,
-    ['\\'] = true,
+  [")"] = true,
+  ["]"] = true,
+  ["}"] = true,
+  ['"'] = true,
+  ["'"] = true,
+  ['`'] = true,
+  ['\\'] = true,
 }
 
 local pair_map = {
-    ["("] = ")",
-    ["["] = "]",
-    ["{"] = "}",
-    ["<"] = ">",
-    ["'"] = "'",
-    ['"'] = '"',
-    ["`"] = "`",
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
+  ["<"] = ">",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`",
 }
 
 local r_pair_map = {
-    [")"] = "(",
-    ["]"] = "[",
-    ["}"] = "{",
-    [">"] = "<",
-    ["'"] = "'",
-    ['"'] = '"',
-    ["`"] = "`",
+  [")"] = "(",
+  ["]"] = "[",
+  ["}"] = "{",
+  [">"] = "<",
+  ["'"] = "'",
+  ['"'] = '"',
+  ["`"] = "`",
 }
 
 local all_pair_map = {}
 local isAlphaNum = {}
 
 for _, v in ipairs(pair_map) do
-    table.insert(all_pair_map, v)
+  table.insert(all_pair_map, v)
 end
 
 for _, v in ipairs(r_pair_map) do
-    table.insert(all_pair_map, v)
+  table.insert(all_pair_map, v)
 end
 
 for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
-    local lowercaseKey = string.char(ascii)
-    isAlphaNum[lowercaseKey] = true
-    isAlphaNum[string.upper(lowercaseKey)] = true
+  local lowercaseKey = string.char(ascii)
+  isAlphaNum[lowercaseKey] = true
+  isAlphaNum[string.upper(lowercaseKey)] = true
 end
 
 for digit = 48, 57 do -- ASCII values for '0' to '9'
-    isAlphaNum[string.char(digit)] = true
+  isAlphaNum[string.char(digit)] = true
 end
 
 --- handles ""
 k('i', '"', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == '"' then
-        return '<Right>'
-    elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
-        return '"'
-    elseif openBrackets[n] or isAlphaNum[p] then
-        return '"'
-    end
-    return '""<Left>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == '"' then
+    return '<Right>'
+  elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
+    return '"'
+  elseif openBrackets[n] or isAlphaNum[p] then
+    return '"'
+  end
+  return '""<Left>'
 end
 , { expr = true })
 
 --- handles ``
 k('i', '`', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == '`' then
-        return '<Right>'
-    elseif rightBracketsAndQuotes[p] then
-        return "`"
-    elseif openBrackets[n] then
-        return "`"
-    end
-    return '``<Left>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == '`' then
+    return '<Right>'
+  elseif rightBracketsAndQuotes[p] then
+    return "`"
+  elseif openBrackets[n] then
+    return "`"
+  end
+  return '``<Left>'
 end
 , { expr = true })
 
 ---  handles ''
 k('i', "'", function()
-    if vim.bo[0].buftype == 'prompt' then
-        return "'"
-    end
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == "'" then
-        return '<Right>'
-    elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
-        return "'"
-    elseif openBrackets[n] or isAlphaNum[p] then
-        return "'"
-    end
-    return "''<Left>"
+  if vim.bo[0].buftype == 'prompt' then
+    return "'"
+  end
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == "'" then
+    return '<Right>'
+  elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
+    return "'"
+  elseif openBrackets[n] or isAlphaNum[p] then
+    return "'"
+  end
+  return "''<Left>"
 end
 , { expr = true })
 
 --- handle []
 k('i', '[', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == '[' then
-        return '<Right>'
-    elseif p == '\\' or isAlphaNum[n] then
-        return '['
-    end
-    return '[]<Left>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == '[' then
+    return '<Right>'
+  elseif p == '\\' or isAlphaNum[n] then
+    return '['
+  end
+  return '[]<Left>'
 end, { expr = true })
 
 k('i', ']', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local n = line:sub(col, col)
-    if n == ']' then
-        return '<Right>'
-    end
-    return ']'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == ']' then
+    return '<Right>'
+  end
+  return ']'
 end
 , { expr = true })
 
 --- handle {}
 k('i', '{', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == '{' then
-        return '<Right>'
-    elseif p == '\\' or isAlphaNum[n] then
-        return '{'
-    end
-    return '{}<Left>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == '{' then
+    return '<Right>'
+  elseif p == '\\' or isAlphaNum[n] then
+    return '{'
+  end
+  return '{}<Left>'
 end
 , { expr = true })
 
 k('i', '}', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local n = line:sub(col, col)
-    if n == '}' then
-        return '<Right>'
-    end
-    return '}'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == '}' then
+    return '<Right>'
+  end
+  return '}'
 end
 , { expr = true })
 
 --- handle ()
 k('i', '(', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local n = line:sub(col, col)
-    if n == '(' then
-        return '<Right>'
-    elseif p == '\\' or isAlphaNum[n] then
-        return '('
-    end
-    return '()<Left>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local n = line:sub(col, col)
+  if n == '(' then
+    return '<Right>'
+  elseif p == '\\' or isAlphaNum[n] then
+    return '('
+  end
+  return '()<Left>'
 end
 , { expr = true })
 
 k('i', ')', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local n = line:sub(col, col)
-    if n == ')' then
-        return '<Right>'
-    end
-    return ')'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == ')' then
+    return '<Right>'
+  end
+  return ')'
 end
 , { expr = true })
 
 k('i', '>', function()
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local n = line:sub(col, col)
-    if n == '>' then
-        return '<Right>'
-    end
-    return '>'
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == '>' then
+    return '<Right>'
+  end
+  return '>'
 end
 , { expr = true })
 
 k("i", "<BS>", function()
-    -- compare ')' == ')'
-    -- -> delete both pairs <del><c-h> or single backspace if false
-    local line = vim.fn.getline(".")
-    local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
-    return pair_map[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and "<del><c-h>" or "<bs>"
+  -- compare ')' == ')'
+  -- -> delete both pairs <del><c-h> or single backspace if false
+  local line = vim.fn.getline(".")
+  local prev_col, next_col = vim.fn.col(".") - 1, vim.fn.col(".")
+  return pair_map[line:sub(prev_col, prev_col)] == line:sub(next_col, next_col) and "<del><c-h>" or "<bs>"
 end, xpr)
 
 local pair_map_2 = {
-    ["("] = ")",
-    ["["] = "]",
-    ["{"] = "}",
-    [">"] = "<",
+  ["("] = ")",
+  ["["] = "]",
+  ["{"] = "}",
+  [">"] = "<",
 }
 
 k("i", "<enter>", function()
-    -- use this one when we are autoclosing
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.fn.col('.')
-    local p = line:sub(col - 1, col - 1)
-    local pmap = pair_map_2
-    if pmap[p] then
-        return "<CR><Esc>O"
-    else
-        return "<CR>"
-    end
+  -- use this one when we are autoclosing
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local p = line:sub(col - 1, col - 1)
+  local pmap = pair_map_2
+  if pmap[p] then
+    return "<CR><Esc>O"
+  else
+    return "<CR>"
+  end
 end, { expr = true })
 
 --- k("i", "<enter>", function()
@@ -468,24 +472,24 @@ k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
 -- converts bytes to a string, useful for debugging in delve
 _G.BytesToString = function()
-    local selected_text = vim.fn.getline("'<,'>")
-    -- Remove any whitespace or non-hex characters
-    selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
-    -- Check if the selected text is empty
-    if selected_text == '' then
-        vim.api.nvim_out_write("No valid bytes selected.\n")
-    else
-        -- Convert hex to string
-        local string_result = ''
-        local i = 1
-        while i <= #selected_text do
-            local hex_byte = string.sub(selected_text, i, i + 1)
-            string_result = string_result .. string.char(tonumber(hex_byte, 16))
-            i = i + 2
-        end
-        -- Display the result in the message area
-        vim.api.nvim_out_write(string_result .. '\n')
+  local selected_text = vim.fn.getline("'<,'>")
+  -- Remove any whitespace or non-hex characters
+  selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
+  -- Check if the selected text is empty
+  if selected_text == '' then
+    vim.api.nvim_out_write("No valid bytes selected.\n")
+  else
+    -- Convert hex to string
+    local string_result = ''
+    local i = 1
+    while i <= #selected_text do
+      local hex_byte = string.sub(selected_text, i, i + 1)
+      string_result = string_result .. string.char(tonumber(hex_byte, 16))
+      i = i + 2
     end
+    -- Display the result in the message area
+    vim.api.nvim_out_write(string_result .. '\n')
+  end
 end
 
 --- -- Lua function to send text to Tmux
@@ -553,19 +557,19 @@ k({ "n" }, "v", "<c-v>")
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
 
 function _G.legacy()
-    -- :lua legacy()
-    vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, true, -1)
+  -- :lua legacy()
+  vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, true, -1)
 end
 
 function _G.legacy_min()
-    -- :lua legacy()
-    vim.api.nvim_paste(require("my.extra_vars").legacy_min, true, -1)
+  -- :lua legacy()
+  vim.api.nvim_paste(require("my.extra_vars").legacy_min, true, -1)
 end
 
 function _G.perflog()
-    cmd([[profile start ~/profile.log]])
-    cmd([[profile func *]])
-    cmd([[profile file *]])
+  cmd([[profile start ~/profile.log]])
+  cmd([[profile func *]])
+  cmd([[profile file *]])
 end
 
 --- :grep magic ---
@@ -581,30 +585,30 @@ end
 --- )
 
 local packages = {
-    "my.lazy",
-    "my.vars",
-    "my.settings",
-    "plugins.treesitter",
-    "plugins.telescope",
-    "plugins.neotree",
-    "plugins.surround",
-    "plugins.lsp.cmp",
-    "plugins.lsp.mason",        -- mason first, or lsp breaks
-    "plugins.gitsigns",
-    "plugins.theme_catppuccin", -- 2
-    "plugins.null_ls",
-    -- "plugins.bufferline",
-    "plugins.colorizer",
-    "my.cmds",
-    -- "plugins.harpoon",
-    "plugins.core_dap",
+  "my.lazy",
+  "my.vars",
+  "my.settings",
+  "plugins.treesitter",
+  "plugins.telescope",
+  "plugins.neotree",
+  "plugins.surround",
+  "plugins.lsp.cmp",
+  "plugins.lsp.mason", -- mason first, or lsp breaks
+  "plugins.gitsigns",
+  -- "plugins.theme_catppuccin", -- 2
+  "plugins.null_ls",
+  -- "plugins.bufferline",
+  "plugins.colorizer",
+  "my.cmds",
+  -- "plugins.harpoon",
+  "plugins.core_dap",
 }
 
 for _, mod in ipairs(packages) do
-    local ok, _ = pcall(require, mod)
-    if not ok then
-        error("in init.lua, Module -> " .. mod .. " not loaded... ay..")
-    end
+  local ok, _ = pcall(require, mod)
+  if not ok then
+    error("in init.lua, Module -> " .. mod .. " not loaded... ay..")
+  end
 end
 
 vim.cmd([[cabbrev q1 q!]])
@@ -640,18 +644,24 @@ command! -register Cm call CopyMatches(<q-reg>)
 ]])
 
 if vim.opt.diff:get() then
-    vim.wo.signcolumn = "no"
-    vim.wo.foldcolumn = "0"
-    vim.wo.numberwidth = 1
-    vim.wo.number = true
-    vim.o.cmdheight = 2
-    vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
-    vim.o.laststatus = 3
-    m("n", "]", "]c", opt)
-    m("n", "[", "[c", opt)
+  vim.wo.signcolumn = "no"
+  vim.wo.foldcolumn = "0"
+  vim.wo.numberwidth = 1
+  vim.wo.number = true
+  vim.o.cmdheight = 2
+  vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
+  vim.o.laststatus = 3
+  m("n", "]", "]c", opt)
+  m("n", "[", "[c", opt)
 end
 
 vim.o.guicursor = "" -- uncomment for beam cursor
 --- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
 vim.o.mouse = "n"
 --- # vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
+
+vim.api.nvim_set_hl(0, "SignColumn", {})
+vim.api.nvim_set_hl(0, "Error", {})
+vim.api.nvim_set_hl(0, "Cursor", {})
+vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
+vim.api.nvim_set_hl(0, "MatchParen", { link = "Cursor" })
