@@ -402,7 +402,8 @@ augroup END
 
 command! Mktags !ctags -R .
 
-hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
+hi! clear MatchParen
+hi! MatchParen term=reverse cterm=reverse gui=reverse
 
 if !has("patch-7.4.2213")
   hi! link NonText Comment
