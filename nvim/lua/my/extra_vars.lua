@@ -122,8 +122,8 @@ nnoremap <c-l> <C-W><C-L>
 nnoremap <c-h> <C-W><C-H>
 
 " save some keystrokes
-nnoremap ; :
-xnoremap ; :
+" nnoremap ; :
+" xnoremap ; :
 
 " switch between current and prev file
 nnoremap <space><space> <c-^>
@@ -164,8 +164,8 @@ nnoremap p p=`]
 " leave unnamed alone when changing text
 nnoremap c "ac
 nnoremap C "aC
-nnoremap ; :
-xnoremap ; :
+" nnoremap ; :
+" xnoremap ; :
 
 " switch between current and prev file
 nnoremap <space><space> <c-^>
@@ -404,7 +404,7 @@ augroup END
 
 command! Mktags !ctags -R .
 
-hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
+" hi!  MatchParen    ctermbg=7     ctermfg=1     cterm=bold
 
 if !has("patch-7.4.2213")
   hi! link NonText Comment

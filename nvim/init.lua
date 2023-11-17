@@ -168,8 +168,8 @@ k("n", "<c-j>", "<C-W>j")
 k("n", "<c-h>", "<C-W>h")
 k("n", "<c-l>", "<C-W>l")
 
-k("n", ";", ":")
-k("n", ":", ";")
+-- k("n", ";", ":")
+-- k("n", ":", ";")
 
 --- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
