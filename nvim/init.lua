@@ -57,12 +57,12 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.g.t_Co = 8
-local f = require "ffi"
-f.cdef "int t_colors"
-f.C.t_colors = 16
+-- vim.g.t_Co = 8
+-- local f = require "ffi"
+-- f.cdef "int t_colors"
+-- f.C.t_colors = 16
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.syntax = "off"
 
 --- if syntax is on/enabled treesitter has issues
@@ -593,9 +593,9 @@ local packages = {
   "plugins.neotree",
   "plugins.surround",
   "plugins.lsp.cmp",
-  "plugins.lsp.mason", -- mason first, or lsp breaks
+  "plugins.lsp.mason",        -- mason first, or lsp breaks
   "plugins.gitsigns",
-  -- "plugins.theme_catppuccin", -- 2
+  "plugins.theme_catppuccin", -- 2
   "plugins.null_ls",
   -- "plugins.bufferline",
   "plugins.colorizer",
@@ -665,3 +665,6 @@ vim.api.nvim_set_hl(0, "Error", {})
 vim.api.nvim_set_hl(0, "Cursor", {})
 vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
 vim.api.nvim_set_hl(0, "MatchParen", { link = "Cursor" })
+
+-- local base16 = require 'my.base16'
+-- base16(base16.themes.tube, true)

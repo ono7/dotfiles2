@@ -106,6 +106,7 @@ vim.cmd.colorscheme("catppuccin")
 -- vim.api.nvim_set_hl(0, "DiffChange", {})
 -- vim.api.nvim_set_hl(0, "@field", {})
 
+-- vim.api.nvim_set_hl(0, "String", { fg = "#B0A0FF" })
 -- vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
 vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
 vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })

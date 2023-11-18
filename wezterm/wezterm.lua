@@ -16,33 +16,34 @@ local scheme = wezterm.get_builtin_color_schemes()['Catppuccin Mocha']
 -- ]
 
 --- catpuccine
--- local ansi = {
---   "#45475a",
---   "#f38ba8",
---   "#ceeac8",
---   -- "#bce6b2",
---   "#f9e2af",
---   "#89b4fa",
---   "#cba6f7",
---   "#94e2d5",
---   "#bac2de",
--- }
-
 local ansi = {
-  "#161616",
-  "#ED6C6C",
+  "#45475a",
+  "#f38ba8",
   "#ceeac8",
-  -- "#C1FCC2",
-  "#F7CC66",
-  "#8BABFA",
-  "#B0A0FF",
+  -- "#bce6b2",
+  "#f9e2af",
+  "#89b4fa",
+  "#cba6f7",
   "#94e2d5",
-  "#ADADAD",
+  "#bac2de",
 }
+
+-- local ansi = {
+--   "#161616",
+--   "#ED6C6C",
+--   "#ceeac8",
+--   -- "#C1FCC2",
+--   "#F7CC66",
+--   "#8BABFA",
+--   "#B0A0FF",
+--   "#94e2d5",
+--   "#ADADAD",
+-- }
 
 -- my color overrides
 scheme.ansi = ansi
 scheme.brights = ansi
+-- scheme.background = "#161616"
 -- scheme.cursor_bg = "#00acc1"
 scheme.cursor_bg = "#ff6efd"
 local act = wezterm.action
@@ -201,6 +202,11 @@ return {
     'Fira Code Nerd Font',
     'Apple Symbols', 'Arial Unicode MS', 'MesloLGS NF' },
   font_rules                                 = {
+    -- {
+    --   -- intensity = 'Bold',
+    --   -- italic = true,
+    --   font = wezterm.font("MonoLisa Liga", { weight = "Regular", stretch = "Normal", style = "Normal" })
+    -- },
     {
       -- intensity = 'Bold',
       italic = true,
