@@ -24,7 +24,8 @@ local ansi = {
   "#f9e2af",
   "#89b4fa",
   -- "#cba6f7",
-  "#9581ff",
+  -- "#9581ff",
+  "#b0a0ff",
   "#94e2d5",
   "#bac2de",
 }
