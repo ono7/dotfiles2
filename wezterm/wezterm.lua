@@ -243,10 +243,10 @@ return {
   front_end                                  = "WebGpu",
   webgpu_power_preference                    = "HighPerformance",
   window_padding                             = {
-    left = 3,
-    right = 3,
-    top = 3,
-    bottom = 0,
+    left = 20,
+    right = 20,
+    top = 5,
+    bottom = 5,
   },
   -- https://wezfurlong.org/wezterm/config/lua/config/term.html
   -- tempfile=$(mktemp) \
