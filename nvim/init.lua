@@ -57,6 +57,9 @@ vim.cmd([[
   augroup END
 ]])
 
+-- might need this in the future
+vim.g.skip_ts_context_commentstring_module = true
+
 -- vim.g.t_Co = 8
 -- local f = require "ffi"
 -- f.cdef "int t_colors"
