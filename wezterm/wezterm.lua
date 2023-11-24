@@ -69,26 +69,6 @@ return {
     --   mods = 'CMD',
     --   action = wezterm.action.ShowDebugOverlay
     -- },
-    ---- use this key bindings to use only wezterm as a multiplexer ----
-    -- { key = 'm',     mods = 'ALT',        action = act.TogglePaneZoomState, },
-    -- { key = 'Enter', mods = 'CMD',        action = act.ActivateCopyMode },
-    -- { key = 'f',     mods = 'CMD',        action = act.Search { Regex = "" } },
-    -- { key = 'Space', mods = 'SHIFT|CTRL', action = act.QuickSelect },
-    -- { key = 'c',     mods = 'LEADER',     action = act.SpawnTab 'CurrentPaneDomain' },
-    -- { key = ']',     mods = 'ALT',        action = act.ActivateTabRelative(1), },
-    -- { key = '[',     mods = 'ALT',        action = act.ActivateTabRelative(-1) },
-    -- { key = 'j',     mods = 'ALT',        action = act.ActivatePaneDirection 'Down', },
-    -- { key = 'k',     mods = 'ALT',        action = act.ActivatePaneDirection 'Up', },
-    -- {
-    --   key = 'u',
-    --   mods = 'ALT',
-    --   action = act.SplitPane { direction = 'Down', size = { Percent = 30 } },
-    -- },
-    -- {
-    --   key = 'i',
-    --   mods = 'ALT',
-    --   action = act.SplitPane { direction = 'Right', size = { Percent = 40 } },
-    -- },
     { key = 'C', mods = 'CMD',  action = act.CopyTo 'Clipboard' },
     { key = '0', mods = 'CTRL', action = act.ResetFontSize },
     { key = '=', mods = 'CTRL', action = act.IncreaseFontSize },
@@ -155,14 +135,6 @@ return {
     -- bring back last background task with fg
 
     { key = "z", mods = "CMD", action = act.SendString("\x1a"), },
-
-    -- VIM bindings for hapoon \x1b = alt + neio, h, mm for mark
-    -- { key = "n", mods = "CTRL", action = act.SendString("\x1b\x6e"), },
-    -- { key = "e", mods = "CTRL", action = act.SendString("\x1b\x65"), },
-    -- { key = "i", mods = "CTRL", action = act.SendString("\x1b\x69"), },
-    -- { key = "o", mods = "CTRL", action = act.SendString("\x1b\x6f"), },
-    -- { key = "h", mods = "CTRL", action = act.SendString("\x1b\x68"), },
-
     { key = "i", mods = "CMD", action = act.SendString("\x09"), },
     { key = "o", mods = "CMD", action = act.SendString("\x0f"), },
 
@@ -205,32 +177,22 @@ return {
     'Fira Code Nerd Font',
     'Apple Symbols', 'Arial Unicode MS', 'MesloLGS NF' },
   font_rules                                 = {
-    -- {
-    --   -- intensity = 'Bold',
-    --   -- italic = true,
-    --   font = wezterm.font("MonoLisa Liga", { weight = "Regular", stretch = "Normal", style = "Normal" })
-    -- },
     {
       -- intensity = 'Bold',
       italic = true,
       font = wezterm.font("MonoLisa Liga", { stretch = "Normal", style = "Italic" })
     },
-    -- {
-    --   -- intensity = 'Bold',
-    --   italic = true,
-    --   font = wezterm.font("MonoLisa Liga", { weight = "Bold", stretch = "Normal", style = "Italic" })
-    -- },
   },
   adjust_window_size_when_changing_font_size = false,
   window_close_confirmation                  = "NeverPrompt",
   cursor_blink_rate                          = 0,
   default_cursor_style                       = "BlinkingBlock",
   font_size                                  = 18,
-  line_height                                = 1.4,
+  line_height                                = 1.3,
   initial_rows                               = 40,
   initial_cols                               = 100,
-  underline_position                         = -8,
-  underline_thickness                        = 3, -- ()
+  -- underline_position                         = -8,
+  -- underline_thickness                        = 3,
   -- colors                                     = {
   -- },
   -- window_background_image = "/Users/jlima/Documents/1.jpg",

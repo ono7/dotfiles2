@@ -663,11 +663,11 @@ vim.o.guicursor = "" -- uncomment for beam cursor
 vim.o.mouse = "n"
 --- # vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
 
-vim.api.nvim_set_hl(0, "SignColumn", {})
-vim.api.nvim_set_hl(0, "Error", {})
-vim.api.nvim_set_hl(0, "Cursor", {})
-vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
-vim.api.nvim_set_hl(0, "MatchParen", { link = "Cursor" })
+-- vim.api.nvim_set_hl(0, "SignColumn", {})
+-- vim.api.nvim_set_hl(0, "Error", {})
+-- vim.api.nvim_set_hl(0, "Cursor", {})
+-- vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
+-- vim.api.nvim_set_hl(0, "MatchParen", { link = "Cursor" })
 
 -- local base16 = require 'my.base16'
 -- base16(base16.themes.tube, true)
