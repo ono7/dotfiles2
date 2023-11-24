@@ -42,16 +42,16 @@ require("lazy").setup({
     end
   },
   "kylechui/nvim-surround",
-  {
-    'monkoose/matchparen.nvim',
-    config = function()
-      require('matchparen').setup({
-        on_startup = true,       -- Should it be enabled by default
-        hl_group = 'MatchParen', -- highlight group of the matched brackets
-        debounce_time = 10,      -- debounce time in milliseconds for rehighlighting of brackets.
-      })
-    end
-  },
+  -- {
+  --   'monkoose/matchparen.nvim',
+  --   config = function()
+  --     require('matchparen').setup({
+  --       on_startup = true,       -- Should it be enabled by default
+  --       hl_group = 'MatchParen', -- highlight group of the matched brackets
+  --       debounce_time = 10,      -- debounce time in milliseconds for rehighlighting of brackets.
+  --     })
+  --   end
+  -- },
   --- dap goods ---
   "mfussenegger/nvim-dap",
   "mfussenegger/nvim-dap-python",
