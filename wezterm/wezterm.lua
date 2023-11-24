@@ -148,12 +148,8 @@ return {
     { key = "d", mods = "CMD", action = act.SendString("\x04"), },
     --- ctr-w (window movements, vim, tmux)
     { key = "w", mods = "CMD", action = act.SendString("\x17"), },
-    {
-      -- tmux zoom pane
-      key = "m",
-      mods = "CMD",
-      action = act.SendString("\x02\x7a"),
-    },
+    { key = "m", mods = "CMD", action = act.SendString("\x02\x7a") },
+    { key = "/", mods = "CMD", action = act.SendString("\x1b\x2f") },
     -- {
     --   -- tmux create horizontal pane
     --   key = "u",

@@ -561,7 +561,8 @@ set numberwidth=2 ruler shiftround shiftwidth=2
 set shortmess+=C
 set smartcase smarttab
 set spelllang=en_us
-set splitbelow splitright
+set nosplitbelow
+set splitright
 set softtabstop=2 tabstop=2 textwidth=0 expandtab
 set timeout ttimeout
 set timeoutlen=500 ttimeoutlen=0
