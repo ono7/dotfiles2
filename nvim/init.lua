@@ -219,6 +219,12 @@ local rightBracketsAndQuotes = {
   ['\\'] = true,
 }
 
+local isQuotes = {
+  ['"'] = true,
+  ["'"] = true,
+  ['`'] = true,
+}
+
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -373,7 +379,7 @@ k('i', '(', function()
   local n = line:sub(col, col)
   if n == '(' then
     return '<Right>'
-  elseif p == '\\' or isAlphaNum[n] then
+  elseif p == '\\' or isAlphaNum[n] or isQuotes[n] then
     return '('
   end
   return '()<Left>'

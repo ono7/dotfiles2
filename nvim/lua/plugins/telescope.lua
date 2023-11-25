@@ -51,7 +51,7 @@ configs.setup({
   },
 })
 
-k("n", "<space><space>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+k("n", "<space>o", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 
 -- vim.keymap.set("n", ":", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
 --   { silent = true })
@@ -66,8 +66,8 @@ k("n", "<space><space>", require("telescope.builtin").oldfiles, { desc = "[?] Fi
 -- end, { desc = "[/] Fuzzily search in current buffer" })
 
 k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", opt)
-k({ "n", "x" }, "<leader>fd", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
-k("n", "<c-x>", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
+k({ "n", "x" }, "<leader>f", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
+k("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
 -- k("n", ",d", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opt)
 k("n", "<m-g>", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", opt)
 
