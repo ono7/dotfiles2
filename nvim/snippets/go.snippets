@@ -5,7 +5,12 @@ snippet c "block comment" w
 
 snippet e "error" w
 	if err != nil {
-	    ${0|return,log.Fatal(err)|}
+	    ${0}
+	}
+
+snippet myerror "error" w
+	if err != nil {
+	    ${0|log.Fatal(err),return|}
 	}
 
 snippet hf "http handler func" w

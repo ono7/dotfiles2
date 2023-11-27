@@ -150,6 +150,7 @@ return {
     { key = "w", mods = "CMD", action = act.SendString("\x17"), },
     { key = "m", mods = "CMD", action = act.SendString("\x02\x7a") },
     { key = "/", mods = "CMD", action = act.SendString("\x1b\x2f") },
+    { key = "g", mods = "CMD", action = act.SendString("\x07") },
     -- {
     --   -- tmux create horizontal pane
     --   key = "u",

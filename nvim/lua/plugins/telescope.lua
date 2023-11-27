@@ -51,7 +51,7 @@ configs.setup({
   },
 })
 
-k("n", "<space>o", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+k("n", "<leader>fo", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 
 -- vim.keymap.set("n", ":", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
 --   { silent = true })
@@ -65,16 +65,17 @@ k("n", "<space>o", require("telescope.builtin").oldfiles, { desc = "[?] Find rec
 --   }))
 -- end, { desc = "[/] Fuzzily search in current buffer" })
 
-k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", opt)
-k({ "n", "x" }, "<leader>f", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
-k("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
+k({ "n", "x" }, "<leader>fa", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", opt)
+k({ "n", "x" }, "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
+k("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
 -- k("n", ",d", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opt)
-k("n", "<m-g>", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", opt)
+k("n", "<leader>fb", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", opt)
 
 -- k("n", "<leader>fi", "<cmd>lua require('telescope.builtin').live_grep({ cwd = '~/.dotfiles/.info'})<cr>", opt)
 
 -- k({ "n", "c", "x" }, "<c-z>", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opt)
-k({ "n", "c", "x" }, "<c-s>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>", silent)
+k({ "n", "c", "x" }, "<leader>ft", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>",
+  silent)
 -- k({ "n", "x" }, "<space><space>", "<cmd>lua require('telescope.builtin').buffers()<cr>", opt)
 -- k("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opt)
 k(

@@ -178,6 +178,9 @@ k("n", "<c-l>", "<C-W>l")
 -- k("n", ";", ":")
 -- k("n", ":", ";")
 
+k("n", "<tab>", ":bnext<CR>", silent)
+k("n", "<s-tab>", ":bprevious<CR>", silent)
+
 --- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
 
@@ -328,7 +331,7 @@ k('i', '[', function()
   local n = line:sub(col, col)
   if n == '[' then
     return '<Right>'
-  elseif p == '\\' or isAlphaNum[n] then
+  elseif p == '\\' or isAlphaNum[n] or isQuotes[n] then
     return '['
   end
   return '[]<Left>'
@@ -458,10 +461,6 @@ end, { expr = true })
 -- k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
 -- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
 -- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
--- k("n", "[q", "<cmd>cprev<cr>", opt)
--- k("n", "[q", "<cmd>cprev<cr>", opt)
--- k("n", "]q", "<cmd>cnext<cr>", opt)
--- k("n", "]q", "<cmd>cnext<cr>", opt)
 -- k("n", "M", "")
 -- k("n", "M", "")
 -- k("n", "L", "")
@@ -564,6 +563,8 @@ k({ "n" }, "v", "<c-v>")
 --- vim.cmd("vunmap v")
 
 cmd([[ packadd cfilter ]]) -- quicklist filter :cfitler[!] /expression/
+k("n", "]n", "<cmd>cprev<cr>", opt)
+k("n", "[n", "<cmd>cnext<cr>", opt)
 
 function _G.legacy()
   -- :lua legacy()
