@@ -317,6 +317,8 @@ gitl () {
     cd $my_dir
 }
 
+alias gl=gitl
+
 dotp () {
     my_dir=$PWD
     cd ~/.dotfiles

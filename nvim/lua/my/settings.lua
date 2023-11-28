@@ -25,7 +25,7 @@ o.smartcase = true
 o.showbreak = [[↪ ]]
 
 --- status line area ---
-o.laststatus = 1
+o.laststatus = 0
 o.showmode = true
 o.cmdheight = 1
 
