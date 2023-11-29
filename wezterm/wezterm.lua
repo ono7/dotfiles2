@@ -48,7 +48,7 @@ scheme.ansi = ansi
 scheme.brights = ansi
 -- scheme.background = "#161616"
 -- scheme.cursor_bg = "#00acc1"
-scheme.cursor_bg = "#ff6efd"
+scheme.cursor_bg = "#4fc2e8"
 local act = wezterm.action
 
 -- local colors, metadata = wezterm.color.load_scheme("~/.config/wezterm/theme_ayu.toml")
@@ -151,6 +151,7 @@ return {
     { key = "m", mods = "CMD", action = act.SendString("\x02\x7a") },
     { key = "/", mods = "CMD", action = act.SendString("\x1b\x2f") },
     { key = "g", mods = "CMD", action = act.SendString("\x07") },
+    { key = "f", mods = "CMD", action = act.SendString("\x06") },
     -- {
     --   -- tmux create horizontal pane
     --   key = "u",

@@ -63,21 +63,21 @@ local function status_line()
   -- local buf_nr = "[%n]"
   local modified = " %-m"
   local file_type = " %y"
-  local right_align = "%="
-  local line_no = "%10([%l/%L%)]"
-  local pct_thru_file = "%5p%%"
+  -- local right_align = "%="
+  -- local line_no = "%10([%l/%L%)]"
+  -- local pct_thru_file = "%5p%%"
 
   return string.format(
-    "%s%s%s%s%s%s",
+    "%s%s%s",
     -- "%s%s%s%s%s%s%s%s",
     -- mode,
     file_name,
     -- buf_nr,
     modified,
-    file_type,
-    right_align,
-    line_no,
-    pct_thru_file
+    file_type
+  -- right_align,
+  -- line_no,
+  -- pct_thru_file
   )
 end
 
