@@ -54,7 +54,7 @@ ln -sf ~/.dotfiles/dircolors ~/.dircolors
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 cp ~/.dotfiles/gitconfig_template ~/.gitconfig
 # ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
-ls -sf ~/nvim/bin/nvim ~/bin/vim
+ln -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ipdb ~/.ipdb
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
@@ -80,7 +80,7 @@ cd ~
 echo 'setting up terminfo (italics support!)'
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 
-tic -xo $HOME/.terminfo ~/.dotfiles/xterm-256color-italic.terminfo
+# tic -xo $HOME/.terminfo ~/.dotfiles/xterm-256color-italic.terminfo
 tic -xo $HOME/.terminfo ~/.dotfiles/tmux/wezterm.terminfo
 
 echo 'setting up directories and symlinks..done!'
