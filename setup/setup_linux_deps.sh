@@ -34,3 +34,14 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 echo 'done installing linux depenencies'
+
+echo 'setting up nvim'
+
+cd ~/
+rm -rf ~/nvim
+rm -rf ~/nvim-linux64
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+tar xzf nvim-linux64.tar.gz
+mv nvim-linux64 nvim
+rm nvim-linux64.tar.gz
+echo "Neovim setup for linux complete"
