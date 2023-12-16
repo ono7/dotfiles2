@@ -1,3 +1,13 @@
+# adjust the nat range to allow vpn
+
+```reg
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss]
+"NatGatewayIpAddress"="100.65.0.1"
+"NatNetwork"="100.65.0.0/24"
+```
+
 # Start-Process powershell -Verb runas
 
 run this as admin to set metric on vpn client to 6000, should run every time we connect
