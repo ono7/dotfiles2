@@ -87,7 +87,10 @@ require("lazy").setup({
   {
     "f-person/git-blame.nvim",
     config = function()
-      vim.g.gitblame_enabled = 0
+      require('gitblame').setup {
+        --Note how the `gitblame_` prefix is omitted in `setup`
+        enabled = false,
+      }
     end,
   },
   -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
