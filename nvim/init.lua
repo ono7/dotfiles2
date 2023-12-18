@@ -181,7 +181,7 @@ k("n", "gp", "`[v`]", silent)
 k("v", "y", [[ygv<Esc>]], silent)
 
 k("n", "<leader>w", "<cmd>w<cr>", silent)
-k("n", "<leader>r", vim.lsp.buf.format, silent)
+k("n", "<leader>lf", vim.lsp.buf.format, silent)
 k("n", ",w", "<cmd>w<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
