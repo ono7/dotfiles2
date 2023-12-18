@@ -8,6 +8,17 @@ Windows Registry Editor Version 5.00
 "NatNetwork"="100.65.0.0/24"
 ```
 
+# windows keyboard repeat rate
+
+```
+[HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+"AutoRepeatDelay"="200"
+"AutoRepeatRate"="10"
+"DelayBeforeAcceptance"="0"
+"Flags"="59"
+"BounceTime"="0"
+```
+
 # Start-Process powershell -Verb runas
 
 run this as admin to set metric on vpn client to 6000, should run every time we connect
