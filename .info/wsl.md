@@ -10,6 +10,9 @@ Windows Registry Editor Version 5.00
 
 # windows keyboard repeat rate
 
+- use the "Filter Keys" feature in the Ease of
+  Access center to speed it up.
+
 ```
 [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
 "AutoRepeatDelay"="200"

@@ -552,6 +552,9 @@ k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 -- k("n", "gtj", [[:GoTagAdd json<cr>]])
 -- k("n", "gty", [[:GoTagAdd yaml<cr>]])
 
+-- open notes for today
+k("n", "<leader>tn", ":e ~/notes/today.md<cr>", opt)
+
 --- marks/jumps ---
 --- k("n", "'", "`", opt)
 k("n", "mm", "mM", opt)
