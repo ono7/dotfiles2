@@ -555,6 +555,11 @@ vs () {
   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
+function fcd() {
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+}
+
 hs () {
   hx "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
