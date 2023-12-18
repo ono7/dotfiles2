@@ -44,4 +44,5 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
 tar xzf nvim-linux64.tar.gz
 mv nvim-linux64 nvim
 rm nvim-linux64.tar.gz
+ln -s ~/nvim/bin/nvim ~/local/bin/nvim
 echo "Neovim setup for linux complete"
