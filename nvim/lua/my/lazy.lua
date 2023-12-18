@@ -84,15 +84,15 @@ require("lazy").setup({
         { noremap = true, silent = true })
     end
   },
-  {
-    "f-person/git-blame.nvim",
-    config = function()
-      require('gitblame').setup {
-        --Note how the `gitblame_` prefix is omitted in `setup`
-        enabled = false,
-      }
-    end,
-  },
+  -- {
+  --   "f-person/git-blame.nvim",
+  --   config = function()
+  --     require('gitblame').setup {
+  --       --Note how the `gitblame_` prefix is omitted in `setup`
+  --       enabled = false,
+  --     }
+  --   end,
+  -- },
   -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "hrsh7th/nvim-cmp",
