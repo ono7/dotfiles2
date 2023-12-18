@@ -311,9 +311,10 @@ gitl () {
     else
       git commit '-m' "$1 -> ${f//$'\n'/ }"
     fi
-    if [ ! -z "$(git remote -v)" ]; then
-      git push
-    fi
+    # commenting this out, start using squash or rebase in my workflow
+    # if [ ! -z "$(git remote -v)" ]; then
+    #   git push
+    # fi
     cd $my_dir
 }
 
