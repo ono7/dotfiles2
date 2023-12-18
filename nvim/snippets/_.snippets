@@ -13,7 +13,7 @@ snippet dt "date and time" w
 snippet todo "todo" w
   `split(&commentstring, '%s')[0]`TODO(`$USER`): ${0:${VISUAL}} `split(&commentstring, '%s')[1] != '' ? split(&commentstring, '%s')[1] : ''`
 snippet fix "fix" w
-  `split(&commentstring, '%s')[0]`FIXME(`$USER`): ${0:${VISUAL}}
+  `split(&commentstring, '%s')[0]`FIXME(`$USER`): ${0:${VISUAL}} `split(&commentstring, '%s')[1] != '' ? split(&commentstring, '%s')[1] : ''`
 snippet note "note" w
   `split(&commentstring, '%s')[0]`NOTE(`$USER`): ${0:${VISUAL}} `split(&commentstring, '%s')[1] != '' ? split(&commentstring, '%s')[1] : ''`
 snippet d "done" w
