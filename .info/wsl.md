@@ -1,4 +1,4 @@
-# adjust the nat range to allow vpn
+# wsl adjust the nat range to allow vpn
 
 ```reg
 Windows Registry Editor Version 5.00
