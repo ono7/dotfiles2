@@ -71,7 +71,7 @@ k("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", op
 -- k("n", ",d", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opt)
 k("n", "<leader>fb", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files = true})<cr>", opt)
 
-k("n", "<leader>fi", "<cmd>lua require('telescope.builtin').live_grep({ cwd = '~/.dotfiles/.info'})<cr>", opt)
+k("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
 
 -- k({ "n", "c", "x" }, "<c-z>", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opt)
 -- k({ "n", "c", "x" }, "<leader>ft", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>",
