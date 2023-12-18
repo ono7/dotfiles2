@@ -159,8 +159,8 @@ c({ "BufWritePre" }, {
 
 c({ "BufWritePre" }, {
   group = create_augroup("all_files", { clear = true }),
-  -- pattern = { "*.tf", "*.tfvars" },
-  pattern = { "*.*" },
+  pattern = { "*.tf", "*.tfvars", "*.go", "*.md", "*.yml" },
+  -- pattern = { "*.*" },
   callback = function()
     vim.lsp.buf.format()
   end,
