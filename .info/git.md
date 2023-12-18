@@ -18,6 +18,9 @@ git push -f
 
 # DISCARD all local commits on this branch, keep remote
 
+reset back 7 commits
+`git reset --hard @{7}`
+
 https://sethrobertson.github.io/GitFixUm/fixup.html
 
 `git reset --hard @{u}`
