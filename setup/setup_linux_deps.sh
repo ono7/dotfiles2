@@ -18,7 +18,7 @@ if [[ $EUID -eq 0 ]]; then
     echo 'setting up linux deps as root did not work out...'
     exit 1
   fi
-  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip
+  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find
 fi
 
 if [[ $EUID -ne 0 ]]; then
@@ -30,7 +30,7 @@ if [[ $EUID -ne 0 ]]; then
     echo 'setting up linux deps as root did not work out...'
     exit 1
   fi
-  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip
+  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find
 fi
 
 echo 'done installing linux depenencies'
