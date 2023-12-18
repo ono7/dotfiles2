@@ -82,7 +82,8 @@ local function status_line()
 end
 
 -- vim.opt.statusline = status_line()
-vim.opt.winbar = status_line()
+-- vim.opt.winbar = status_line()
+vim.opt.winbar = "%=%M %-.45f %-m %y"
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
