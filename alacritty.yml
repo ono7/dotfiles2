@@ -85,13 +85,14 @@ selection:
 cursor:
   style:
     shape: Block
-    blinking: Always
+    # blinking: Always
+    blinking: Never
   blink_interval: 200
-  blink_timeout: 0 # 0 is forever
+  # blink_timeout: 0 # 0 is forever
 
   unfocused_hollow: true
 
-custom_cursor_colors: true
+custom_cursor_colors: false
 
 live_config_reload: true
 
@@ -121,27 +122,27 @@ key_bindings:
   - { key: Q, mods: Control, chars: "\x11" }
 
   # make command behave like control
-  - { key: Q, mods: Control, chars: "\x11" }
-  - { key: A, mods: Control, chars: "\x01" }
-  - { key: R, mods: Control, chars: "\x12" }
-  - { key: E, mods: Control, chars: "\x05" }
-  - { key: P, mods: Control, chars: "\x10" }
-  - { key: N, mods: Control, chars: "\x0e" }
-  - { key: C, mods: Control, chars: "\x03" }
-  - { key: T, mods: Control, chars: "\x14" }
-  - { key: Z, mods: Control, chars: "\x1a" }
-  - { key: I, mods: Control, chars: "\x09" }
-  - { key: O, mods: Control, chars: "\x0f" }
-  - { key: U, mods: Control, chars: "\x15" }
-  - { key: RBracket, mods: Control, chars: "\x1d" }
-  - { key: LBracket, mods: Control, chars: "\x1b" }
-  - { key: B, mods: Control, chars: "\x02" }
-  - { key: D, mods: Control, chars: "\x04" }
-  - { key: W, mods: Control, chars: "\x17" }
-  - { key: M, mods: Control, chars: "\x02\x7a" }
-  - { key: Slash, mods: Control, chars: "\x1b\x2f" }
-  - { key: G, mods: Control, chars: "\x07" }
-  - { key: F, mods: Control, chars: "\x06" }
+  - { key: Q, mods: Command, chars: "\x11" }
+  - { key: A, mods: Command, chars: "\x01" }
+  - { key: R, mods: Command, chars: "\x12" }
+  - { key: E, mods: Command, chars: "\x05" }
+  - { key: P, mods: Command, chars: "\x10" }
+  - { key: N, mods: Command, chars: "\x0e" }
+  - { key: C, mods: Command, chars: "\x03" }
+  - { key: T, mods: Command, chars: "\x14" }
+  - { key: Z, mods: Command, chars: "\x1a" }
+  - { key: I, mods: Command, chars: "\x09" }
+  - { key: O, mods: Command, chars: "\x0f" }
+  - { key: U, mods: Command, chars: "\x15" }
+  - { key: RBracket, mods: Command, chars: "\x1d" }
+  - { key: LBracket, mods: Command, chars: "\x1b" }
+  - { key: B, mods: Command, chars: "\x02" }
+  - { key: D, mods: Command, chars: "\x04" }
+  - { key: W, mods: Command, chars: "\x17" }
+  - { key: M, mods: Command, chars: "\x02\x7a" }
+  - { key: Slash, mods: Command, chars: "\x1b\x2f" }
+  - { key: G, mods: Command, chars: "\x07" }
+  - { key: F, mods: Command, chars: "\x06" }
 
   - { key: Back, mods: Command, chars: "\x17" }
   - { key: Back, mods: Alt, chars: "\x17" }
