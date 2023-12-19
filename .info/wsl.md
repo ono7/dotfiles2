@@ -1,3 +1,8 @@
+## copy and paste 
+
+
+put win32yank.exe in ~/loca/bin (win32yank comes with the windows portable version of neovim)
+
 # wsl adjust the nat range to allow vpn
 
 ```reg
