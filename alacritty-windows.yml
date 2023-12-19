@@ -2,9 +2,9 @@ env:
   TERM: xterm-256color
 
 shell:
-  program: /bin/zsh
-  args:
-    - --login
+  program: ubuntu
+  # args:
+  #  - --login
 
 window:
   opacity: 0.99
@@ -18,8 +18,11 @@ window:
     y: 5
 
   dynamic_padding: false
-  decorations: buttonless
+  decorations: full
   startup_mode: Windowed
+
+title: Terminal
+dynamic_title: false
 
 scrolling:
   history: 3000
@@ -42,7 +45,7 @@ font:
     family: MesloLGL Nerd Font Mono
     style: Bold
 
-  size: 18.0
+  size: 12.0
   offset:
     x: 0
     y: 8
@@ -57,6 +60,9 @@ colors:
   primary:
     background: "0x222436"
     foreground: "0xc8d3f5"
+  cursor:
+    cursor: "#fffff2"
+    text: "#000000"
 
   normal:
     black: "0x1b1d2b"
@@ -98,7 +104,7 @@ selection:
 cursor:
   style:
     shape: Block
-    blinking: Always
+    blinking: Never
   blink_interval: 200
   blink_timeout: 0  # 0 is forever
   unfocused_hollow: true
@@ -144,13 +150,13 @@ key_bindings:
   - { key: I, mods: Control, chars: "\x09" }
   - { key: O, mods: Control, chars: "\x0f" }
   - { key: U, mods: Control, chars: "\x15" }
-  - { key: "]", mods: Control, chars: "\x1d" }
-  - { key: "[", mods: Control, chars: "\x1b" }
+  - { key: RBracket, mods: Control, chars: "\x1d" }
+  - { key: LBracket, mods: Control, chars: "\x1b" }
   - { key: B, mods: Control, chars: "\x02" }
   - { key: D, mods: Control, chars: "\x04" }
   - { key: W, mods: Control, chars: "\x17" }
   - { key: M, mods: Control, chars: "\x02\x7a" }
-  - { key: "/", mods: Control, chars: "\x1b\x2f" }
+  - { key: Slash, mods: Control, chars: "\x1b\x2f" }
   - { key: G, mods: Control, chars: "\x07" }
   - { key: F, mods: Control, chars: "\x06" }
 
