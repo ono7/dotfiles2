@@ -34,6 +34,17 @@ clipboard support in ubuntu needs additional package
   * change expiration date
     - `expire`
 
+## configure default timeout
+
+create file if not exists
+```~/.gnupg/gpg-agent.conf
+default-cache-ttl 86400
+max-cache-ttl 86400
+```
+
+reload agent
+`gpg-connect-agent reloadagent /bye`
+
 # reset terminal
 
 reset terminal
