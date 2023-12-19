@@ -13,6 +13,10 @@
 - `brew install pass` macos
 - `apt install pass` ubuntu
 
+clipboard support in ubuntu needs additional package
+
+`sudo apt install wl-clipboard`
+
 # setup
 
 - `gpg --gen-key` generates new keys
