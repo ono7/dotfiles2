@@ -15,8 +15,8 @@ window:
   dynamic_title: false
 
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
   dynamic_padding: false
   decorations: buttonless
@@ -27,21 +27,25 @@ scrolling:
   multiplier: 3
 
 font:
-  normal:
-    family: MonoLisa Liga
-    style: Regular
-
-  # bold:
-  #   family: MesloLGL Nerd Font Mono
-  #   style: Bold
-
-  # italic:
-  #   family: MesloLGL Nerd Font Mono
+  # normal:
+  #   family: MonoLisa Liga
   #   style: Regular
 
-  # bold_italic:
-  #   family: MesloLGL Nerd Font Mono
-  #   style: Bold
+  normal:
+    family: MesloLGL Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: MesloLGL Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: MesloLGL Nerd Font Mono
+    style: Regular
+
+  bold_italic:
+    family: MesloLGL Nerd Font Mono
+    style: Bold
 
   size: 18.0
   offset:
