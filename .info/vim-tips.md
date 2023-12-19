@@ -1,5 +1,11 @@
 # useful things for [vim
 
+2023-12-19 00:36
+
+- execute macro on all matches in the quickfix list
+
+  `:cdo exec "norm! @q" | update`
+
 Fri Mar 16 4:09:05 PM 2018
 
 - increment letters and numbers
