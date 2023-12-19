@@ -136,7 +136,7 @@ key_bindings:
 
   #### for vim! ####
   # make option+backspace work in terminal not just vim!! \x17
-  - { key: Back, mods: Command, chars: "\x17" }
+  - { key: Back, mods: Control, chars: "\x17" }
   - { key: Back, mods: Alt, chars: "\x17" }
   - { key: Q, mods: Control, chars: "\x11" }
   - { key: A, mods: Control, chars: "\x01" }
