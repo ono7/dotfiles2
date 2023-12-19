@@ -8,7 +8,6 @@ shell:
 
 window:
   opacity: 0.99
-  # opacity: 1.0
   dimensions:
     columns: 82
     lines: 28
@@ -27,10 +26,6 @@ scrolling:
   multiplier: 3
 
 font:
-  # normal:
-  #   family: MonoLisa Liga
-  #   style: Regular
-
   normal:
     family: MesloLGL Nerd Font Mono
     style: Regular
@@ -58,16 +53,34 @@ font:
 
 draw_bold_text_with_bright_colors: false
 
-# colors
-import:
-  # - ~/.dotfiles/schemes/alacritty/tokyonight.yml
-  - ~/.dotfiles/schemes/alacritty/tokyonight_moon.yml
-  # - ~/.dotfiles/schemes/alacritty/tundra.yml
-  # - ~/.dotfiles/schemes/alacritty/nigthfox.yml
-  # - ~/.dotfiles/schemes/alacritty/tokyodark.yml
-  # - ~/.dotfiles/schemes/alacritty/nightfly.yml
-  # - ~/.dotfiles/schemes/alacritty/catppuccin/mocha.yml
-  # - ~/.dotfiles/schemes/alacritty/catppuccin/macchiato.yml
+colors:
+  primary:
+    background: "0x222436"
+    foreground: "0xc8d3f5"
+
+  normal:
+    black: "0x1b1d2b"
+    red: "0xff757f"
+    green: "0xc3e88d"
+    yellow: "0xffc777"
+    blue: "0x82aaff"
+    magenta: "0xc099ff"
+    cyan: "0x86e1fc"
+    white: "0x828bb8"
+
+  bright:
+    black: "0x444a73"
+    red: "0xff757f"
+    green: "0xc3e88d"
+    yellow: "0xffc777"
+    blue: "0x82aaff"
+    magenta: "0xc099ff"
+    cyan: "0x86e1fc"
+    white: "0xc8d3f5"
+
+  indexed_colors:
+    - { index: 16, color: "0xff966c" }
+    - { index: 17, color: "0xc53b53" }
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
@@ -87,8 +100,7 @@ cursor:
     shape: Block
     blinking: Always
   blink_interval: 200
-  blink_timeout: 0 # 0 is forever
-
+  blink_timeout: 0  # 0 is forever
   unfocused_hollow: true
 
 custom_cursor_colors: true
@@ -116,11 +128,10 @@ key_bindings:
   - { key: Paste, action: Paste }
   - { key: Copy, action: Copy }
 
+  #### for vim! ####
+  # make option+backspace work in terminal not just vim!! \x17
   - { key: Back, mods: Command, chars: "\x17" }
   - { key: Back, mods: Alt, chars: "\x17" }
-  - { key: Q, mods: Control, chars: "\x11" }
-
-  # make command behave like control
   - { key: Q, mods: Control, chars: "\x11" }
   - { key: A, mods: Control, chars: "\x01" }
   - { key: R, mods: Control, chars: "\x12" }
@@ -133,18 +144,15 @@ key_bindings:
   - { key: I, mods: Control, chars: "\x09" }
   - { key: O, mods: Control, chars: "\x0f" }
   - { key: U, mods: Control, chars: "\x15" }
-  - { key: RBracket, mods: Control, chars: "\x1d" }
-  - { key: LBracket, mods: Control, chars: "\x1b" }
+  - { key: "]", mods: Control, chars: "\x1d" }
+  - { key: "[", mods: Control, chars: "\x1b" }
   - { key: B, mods: Control, chars: "\x02" }
   - { key: D, mods: Control, chars: "\x04" }
   - { key: W, mods: Control, chars: "\x17" }
   - { key: M, mods: Control, chars: "\x02\x7a" }
-  - { key: Slash, mods: Control, chars: "\x1b\x2f" }
+  - { key: "/", mods: Control, chars: "\x1b\x2f" }
   - { key: G, mods: Control, chars: "\x07" }
   - { key: F, mods: Control, chars: "\x06" }
-
-  - { key: Back, mods: Command, chars: "\x17" }
-  - { key: Back, mods: Alt, chars: "\x17" }
 
   # alacritty
   - { key: F9, action: SpawnNewInstance }
