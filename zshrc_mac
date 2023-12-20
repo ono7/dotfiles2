@@ -380,7 +380,7 @@ vc () {
   python3 -m venv $venv_dir
   source $venv_dir/bin/activate
   pip install pip wheel -U
-  pip install jq yq pyright ansible black pytest yamllint ansible-lint -U
+  pip install jq yq pyright ansible black pytest yamllint ansible-lint pynvim rpdb pdbpp -U
   pip freeze > requirements.txt
   echo ""
   echo ""
