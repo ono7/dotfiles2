@@ -559,7 +559,7 @@ zle -N _d
 bindkey -s "^G" _d^M
 
 vs () {
-  vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
+  vim "$(fd --type f -HI --exclude "venv" --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
 function fcd() {
