@@ -291,10 +291,10 @@ ginit () {
   git commit -am 'initial commit'
 }
 
-gitg () {
+gitlog () {
   # graphical view of the commit logs, should be able to see
   # where a branch was cloned from
-  git log --oneline --graph --decorate
+  git log --oneline --graph --decorate --simplify-by-decoration --color --oneline --date=local --pretty=format:'%C(auto) %h %d %C(reset)%s (%C(cyan)%ad %ae%C(reset))'
 }
 
 gitl () {
