@@ -17,7 +17,10 @@ use text editor to perform the rebase operation
 # view graphical representation of git commits
 
 
+this can also be used to figure out where a branch originated from 
+
 `git log --oneline --graph --decorate`
+`git log --oneline --graph --decorate --all`
 
 
 # cleaup repository and destroy all history
