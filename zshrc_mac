@@ -324,7 +324,7 @@ gitl () {
     cd $my_dir
 }
 
-alias gl=gitl
+alias gl=gitlog
 
 dotp () {
     my_dir=$PWD
