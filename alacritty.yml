@@ -27,30 +27,28 @@ scrolling:
   multiplier: 3
 
 font:
-  # normal:
-  #   family: MonoLisa Liga
-  #   style: Regular
 
   normal:
-    family: MesloLGL Nerd Font Mono
+    family: MonoLisaMono Nerd Font
     style: Regular
-
-  bold:
-    family: MesloLGL Nerd Font Mono
-    style: Bold
 
   italic:
-    family: MesloLGL Nerd Font Mono
-    style: Regular
+    family: MonoLisaMono Nerd Font
+    style: Italic
 
-  bold_italic:
-    family: MesloLGL Nerd Font Mono
-    style: Bold
+  # bold:
+  #   family: MesloLGL Nerd Font Mono
+  #   style: Bold
 
-  size: 18.0
+
+  # bold_italic:
+  #   family: MesloLGL Nerd Font Mono
+  #   style: Bold
+
+  size: 20.0
   offset:
     x: 0
-    y: 8
+    y: 9
 
   glyph_offset:
     x: 0

@@ -85,3 +85,9 @@ k(
   "<cmd>lua require('telescope.builtin').find_files({ cwd = '~/.dotfiles', hidden = true, show_untracked = true, no_ignore = true })<cr>",
   opt
 )
+k(
+  "n",
+  "<leader>fw",
+  "<cmd>lua require('telescope.builtin').live_grep({ cwd = '~/notes', hidden = true, show_untracked = true, no_ignore = true })<cr>",
+  opt
+)

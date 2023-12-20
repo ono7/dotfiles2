@@ -1,4 +1,4 @@
--- NOTE: keybinds only work using kitty 2022-11-12
+-- NOTE: keybinds only work using kitty or alacritty
 
 local status_ok, configs = pcall(require, "neo-tree")
 
@@ -219,4 +219,4 @@ configs.setup({
   },
 })
 
-vim.cmd([[nnoremap \ :Neotree reveal toggle<cr>]])
+vim.cmd([[nnoremap \ :silent! Neotree reveal toggle<cr>]])
