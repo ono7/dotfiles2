@@ -1,3 +1,19 @@
+# git squash (merge commits into one)
+
+`git checkout <branch>`
+
+`git log --graph --oneline --all`
+
+`git rebase -i HEAD~7 `
+
+or go to the latest commit you want to squash
+
+`git rebase -i deadbeef`
+
+
+use text editor to perform the rebase operation
+
+
 # view graphical representation of git commits
 
 
