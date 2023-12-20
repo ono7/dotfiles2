@@ -1,3 +1,9 @@
+# view graphical representation of git commits
+
+
+`git log --oneline --graph --decorate`
+
+
 # cleaup repository and destroy all history
 
 ```sh

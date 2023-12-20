@@ -291,6 +291,12 @@ ginit () {
   git commit -am 'initial commit'
 }
 
+gitg () {
+  # graphical view of the commit logs, should be able to see
+  # where a branch was cloned from
+  git log --oneline --graph --decorate
+}
+
 gitl () {
     my_dir=$PWD
     cdr
