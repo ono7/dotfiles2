@@ -618,6 +618,9 @@ fi
 
 alias ls='ls --color'
 
+# less support colors
+alias less='less -R'
+
 export HISTFILE=~/.zsh_history
 # HISTSIZE should be > SAVEHIST or dups will show up
 export HISTSIZE=3000   # the number of items for the internal history list
