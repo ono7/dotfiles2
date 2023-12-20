@@ -1,7 +1,7 @@
 setlocal nowrap
 " setlocal ai ts=2 sw=2 et fo-=r fo-=o fo-=c
 setlocal ai ts=2 sw=2 et
-setlocal tw=200
+setlocal tw=80
 
 setlocal nofoldenable
 setlocal suffixesadd+=.md
