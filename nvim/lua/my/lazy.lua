@@ -21,7 +21,7 @@ require("lazy").setup({
   "tpope/vim-fugitive",
   "ono7/null-ls.nvim",
   "onsails/lspkind-nvim",
-  -- "Glench/Vim-Jinja2-Syntax",
+  "Glench/Vim-Jinja2-Syntax",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   -- {
   --   "folke/noice.nvim",
