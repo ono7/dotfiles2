@@ -66,7 +66,7 @@ k("n", "<leader>fo", require("telescope.builtin").oldfiles, { desc = "[?] Find r
 -- end, { desc = "[/] Fuzzily search in current buffer" })
 
 -- k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
-k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", opt)
+k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({ no_ignore=true, hidden=true })<cr>", opt)
 k({ "n", "x" }, "<c-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true })<cr>",
   silent)
 k("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opt)
