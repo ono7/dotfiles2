@@ -93,7 +93,7 @@ config.setup({
     telescope = true,
     notify = false,
     mini = false,
-    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    -- For more plugins integrations please scroll doln (https://github.com/catppuccin/nvim#integrations)
   },
 })
 
@@ -101,11 +101,12 @@ vim.cmd.colorscheme("catppuccin")
 
 -- vim.api.nvim_set_hl(0, "Search", { bg = "#3e4b6b" })
 -- vim.api.nvim_set_hl(0, "IncSearch", { fg = "#b2d6a9", reverse = true })
--- vim.api.nvim_set_hl(0, "Folded", { fg = "#3e404c" })
+vim.api.nvim_set_hl(0, "Folded", { link = "Comment" })
 -- vim.api.nvim_set_hl(0, "Visual", { link = "Search" })
 -- vim.api.nvim_set_hl(0, "DiffChange", {})
 -- vim.api.nvim_set_hl(0, "@field", {})
 
+vim.api.nvim_set_hl(0, "TreesitterContextBottom", { fg = "#B0A0FF", bold = true, italic = true })
 -- vim.api.nvim_set_hl(0, "String", { fg = "#B0A0FF" })
 -- vim.api.nvim_set_hl(0, "@text.literal", { fg = "#94a1c2", bold = true })
 vim.api.nvim_set_hl(0, "@text.todo", { link = "ErrorMsg" })
@@ -128,7 +129,7 @@ vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#000000", fg = "#8186a1" })
 vim.api.nvim_set_hl(0, "@function", {})
 vim.api.nvim_set_hl(0, "@property", {})
 -- vim.api.nvim_set_hl(0, "Type", {})
--- vim.api.nvim_set_hl(0, "@type.builtin", { fg = mycolors.yellow })
+-- vim.api.nvim_set_hl(0, "@type.builtin", { fg = mycolors.yellol })
 vim.api.nvim_set_hl(0, "@keyword.function", { fg = mycolors.mauve, italic = true })
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
 vim.api.nvim_set_hl(0, "MatchParen", { bg = "#ffffff", fg = "#000000" })
