@@ -179,6 +179,8 @@ alias vil='vim -u ~/.vimrc_min'
 
 export EDITOR=vim
 
+alias clear='clear -x '
+
 alias k='kubectl '
 # source <(kubectl completion zsh)
 
