@@ -179,6 +179,7 @@ alias vil='vim -u ~/.vimrc_min'
 
 export EDITOR=vim
 
+# do not attempt to clear the terminal's scrollback buffer with E3 see: man clear
 alias clear='clear -x '
 
 alias k='kubectl '
