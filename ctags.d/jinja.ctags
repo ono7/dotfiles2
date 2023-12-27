@@ -1,0 +1,4 @@
+--langdef=Jinja2
+--langmap=Jinja2:.html.j2.jinja
+--regex-Jinja2=/{%[^%]*%}/
+--regex-Jinja2=/{{[^}]*}}/
