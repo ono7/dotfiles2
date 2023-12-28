@@ -1,4 +1,5 @@
 --langdef=Jinja2
 --langmap=Jinja2:.html.j2.jinja
 --regex-Jinja2=/\{%\s*set\s*(\S+)[^%]*%\}/\1/
+--regex-Jinja2=/\{%\s*for\s*(\S+)[^%]*%\}/\1/
 --regex-Jinja2=/\{\{\s*(\S+)\s*\}\}/\1/
