@@ -7,6 +7,9 @@ if [ `uname` != 'Linux' ]; then
   exit 1
 fi
 
+echo "setting up locale"
+sudo locale-gen "en_US.UTF-8"
+
 echo 'setting up linux dependencies (apt/python)'
 
 if [[ $EUID -eq 0 ]]; then
@@ -18,7 +21,7 @@ if [[ $EUID -eq 0 ]]; then
     echo 'setting up linux deps as root did not work out...'
     exit 1
   fi
-  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find
+  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find unzip
 fi
 
 if [[ $EUID -ne 0 ]]; then
@@ -30,7 +33,7 @@ if [[ $EUID -ne 0 ]]; then
     echo 'setting up linux deps as root did not work out...'
     exit 1
   fi
-  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find
+  sudo apt install -y build-essential libssl-dev curl tree zsh python3 silversearcher-ag python3-pip fd-find unzip
 fi
 
 echo 'done installing linux depenencies'
@@ -46,3 +49,8 @@ mv nvim-linux64 nvim
 rm nvim-linux64.tar.gz
 ln -s ~/nvim/bin/nvim ~/local/bin/nvim
 echo "Neovim setup for linux complete"
+
+
+echo "install nvim...."
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
