@@ -1,4 +1,3 @@
-
 from os import system, getpid
 
 alias kk system('kill -9 %d' % getpid())
