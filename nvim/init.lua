@@ -186,8 +186,9 @@ k("n", "<s-tab>", ":bprevious<CR>", silent)
 m("v", ".", ":norm .<cr>", opt)
 
 --- macros
-m("v", "Q", ":'<,'>norm @q<cr>", silent)
-m("n", "Q", "@q", opt)
+-- m("v", "Q", ":'<,'>norm @q<cr>", silent)
+k("n", "Q", "@qj", opt)
+k("x", "Q", ":norm @q<CR>", opt)
 
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
