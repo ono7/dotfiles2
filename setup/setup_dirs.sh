@@ -109,6 +109,7 @@ echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
 if [[ $OSTYPE == "linux"* ]];  then
   echo '# compinit is done twice in ubuntu, skipping' > ~/.zshenv
   echo 'skip_global_compinit=1' >> ~/.zshenv
+  echo "UPDATED COMPINIT SKIP SETTINGS FOR UBUNTU!!!"
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then
