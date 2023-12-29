@@ -29,9 +29,9 @@ size = 22.0
 x = 0
 y = 0
 
-[font.italic]
-family = "MesloLGS Nerd Font Mono"
-style = "Italic"
+# [font.italic]
+# family = "MesloLGS Nerd Font Mono"
+# style = "Italic"
 
 [font.normal]
 family = "MesloLGS Nerd Font Mono"
