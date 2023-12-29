@@ -29,12 +29,20 @@ scrolling:
 font:
 
   normal:
-    family: MonoLisaMono Nerd Font
+    family: MesloLGS Nerd Font Mono
     style: Regular
 
   italic:
-    family: MonoLisaMono Nerd Font
+    family: MesloLGS Nerd Font Mono
     style: Italic
+
+  # normal:
+  #   family: MonoLisaMono Nerd Font
+  #   style: Regular
+
+  # italic:
+  #   family: MonoLisaMono Nerd Font
+  #   style: Italic
 
   # bold:
   #   family: MesloLGL Nerd Font Mono
