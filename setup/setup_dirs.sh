@@ -44,6 +44,7 @@ ln -sf ~/.dotfiles/wezterm ~/.config/wezterm
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/ssh_client_config ~/.ssh/config
 ln -sf ~/.dotfiles/alacritty.yml ~/.config/alacritty/
+ln -sf ~/.dotfiles/alacritty.toml ~/.config/alacritty/
 ln -sf ~/.dotfiles/pylintrc ~/.pylintrc
 ln -sf ~/.dotfiles/gitignore ~/.gitignore
 ln -sf ~/.dotfiles/yamllint ~/.config/
