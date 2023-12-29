@@ -184,8 +184,8 @@ nnoremap 'a `A'"
 nnoremap 'b `B'"
 nnoremap 'c `C'"
 nnoremap 'm `M'"
-nnoremap Q @q
-vnoremap Q :'<,'>norm @q<cr>
+nnoremap Q @qj
+xnoremap Q :norm @q<cr>
 " make dot work on many visual sel lines
 vnoremap . :norm.<CR>
 nnoremap Y y$
@@ -508,8 +508,8 @@ nnoremap 'a `A'"
 nnoremap 'b `B'"
 nnoremap 'c `C'"
 nnoremap 'm `M'"
-nnoremap Q @q
-vnoremap Q :'<,'>norm @q<cr>
+nnoremap Q @qj
+xnoremap Q :norm @q<cr>
 vnoremap . :norm.<CR>
 nnoremap Y y$
 nnoremap D d$
