@@ -23,7 +23,6 @@ golang: https://fulltimegodev.teachable.com/courses/1970304
 
 * my vanilla config
 
-
 alias vim='vim -c "hi! link Search IncSearch" -c "inoremap <C-e> <C-o>$" -c "inoremap <C-a> <C-o>^" -c "nnoremap ,d :bd!<cr>" -c "nnoremap ,q :qall!<cr>" -c "nnoremap ,w :w<cr>" "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO list listchars=trail:·,nbsp:· ttyfast ai sw=2 sts=2 mouse=n clipboard+=unnamedplus background=dark gp=git\ grep\ -n"'
 
 alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
@@ -472,7 +471,6 @@ end, { expr = true })
 
 --- delete all but the current buffer
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
-
 
 --- -- Lua function to send text to Tmux
 --- _G.send_to_tmux = function(text)
