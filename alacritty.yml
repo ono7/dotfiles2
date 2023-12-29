@@ -79,9 +79,6 @@ mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
 mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-
   hide_when_typing: true
 
 selection:
@@ -98,23 +95,19 @@ cursor:
 
   unfocused_hollow: true
 
-custom_cursor_colors: false
+# custom_cursor_colors: false
 
 live_config_reload: true
 
 working_directory: None
 
-enable_experimental_conpty_backend: false
+# enable_experimental_conpty_backend: false
 
 debug:
   render_timer: false
-
   persistent_logging: false
-
   log_level: Off
-
   print_events: false
-
   ref_test: false
 
 key_bindings:
@@ -125,7 +118,7 @@ key_bindings:
 
   - { key: Back, mods: Command, chars: "\x17" }
   - { key: Back, mods: Alt, chars: "\x17" }
-  - { key: Q, mods: Control, chars: "\x11" }
+  # - { key: Q, mods: Control, chars: "\x11" }
 
   # make command behave like control
   - { key: Q, mods: Command, chars: "\x11" }
