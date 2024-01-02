@@ -34,8 +34,8 @@ y = 0
 # style = "Italic"
 
 [font.normal]
-family = "MesloLGS Nerd Font Mono"
-style = "Regular"
+family = "MonoLisaMono Nerd Font"
+# style = "Regular"
 
 [font.offset]
 x = 0
