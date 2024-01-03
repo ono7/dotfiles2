@@ -8,8 +8,10 @@
 
 remove_keys - removes keys from nested dict
 
-`{{ data_dict_or_list_of_dicts | remove_keys(target=['test_key', 'test_key2']) }}`
 
+```yaml
+`{{ data_dict_or_list_of_dicts | remove_keys(target=['test_key', 'test_key2']) }}`
+```
 
 ## string interpolation supported
 
@@ -21,5 +23,20 @@ remove_keys - removes keys from nested dict
     dest: "/usr/share/static"
     backup: yes
   loop: "{{ query('fileglob', '/home/docs/delta.%s' % inventory_hostname) }}"   <<<<<<<<<<<<<<<<<<<<<<
+
+
+
+- name: "this is a test"
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    testing: 1234
+
+  tasks:
+    - name: test
+      ansible.builtin.debug:
+        msg: |
+          {{ 'test %s' % testing }}
 
 ```
