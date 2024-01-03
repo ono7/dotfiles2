@@ -21,8 +21,11 @@ configs.load_extension("fzf")
 
 function get_git_root()
   local dot_git_path = vim.fn.finddir(".git", ".;")
-  print(vim.fn.fnamemodify(dot_git_path, ":h"))
-  return vim.fn.fnamemodify(dot_git_path, ":h")
+  if dot_git_path then
+    return vim.fn.fnamemodify(dot_git_path, ":h")
+  else
+    return "."
+  end
 end
 
 configs.setup({
