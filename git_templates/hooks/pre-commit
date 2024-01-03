@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+#  Author:  Jose Lima
+#  Date:    2024-01-03 15:25
+
+if [ -d "tests/" ]; then
+  python3 -m pytest tests/
+  RET=$?
+elif [ -d "priv/" ]; then
+  python3 -m pytest priv/
+  RET=$?
+fi
+
+if [ $RET -ne 0 ]; then
+  echo "pytest failed"
+  exit 1
+fi
+
+exit 0
