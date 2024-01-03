@@ -90,7 +90,7 @@ k({ "n", "x" }, "<leader>fg",
 
 k("n", "<leader>g",
   function()
-    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = Get_git_root() }
+    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
   end,
   opt)
 
