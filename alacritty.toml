@@ -41,6 +41,8 @@ family = "MonoLisaMono Nerd Font"
 x = 0
 y = 9
 
+# https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+
 [[keyboard.bindings]]
 action = "Paste"
 key = "V"

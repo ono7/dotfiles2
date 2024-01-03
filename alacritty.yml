@@ -110,6 +110,8 @@
 #   print_events: false
 #   ref_test: false
 
+# https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+
 # key_bindings:
 #   - { key: V, mods: Command, action: Paste }
 #   - { key: C, mods: Command, action: Copy }

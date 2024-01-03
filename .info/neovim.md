@@ -1,7 +1,12 @@
+
 # change list jump
 
 g; - jump forward in change list
 g, - jump back in change list
+
+## key bindings
+
+# https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
 
 # c-o jump list
 
