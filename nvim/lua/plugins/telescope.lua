@@ -18,6 +18,13 @@ end
 
 configs.load_extension("fzf")
 
+
+function get_git_root()
+  local dot_git_path = vim.fn.finddir(".git", ".;")
+  print(vim.fn.fnamemodify(dot_git_path, ":h"))
+  return vim.fn.fnamemodify(dot_git_path, ":h")
+end
+
 configs.setup({
   defaults = {
     previewer = false,
@@ -63,9 +70,9 @@ configs.setup({
 
 -- k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
 k("n", "<c-p>", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-k({ "n", "x" }, "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ no_ignore=true, hidden=true })<cr>",
+k({ "n", "x" }, "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({ no_ignore=true, hidden=true, cwd = get_git_root() })<cr>",
   opt)
-k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') })<cr>")
+k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h'), })<cr>")
 k({ "n", "x" }, "<leader>fg",
   "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, no_ignore=false, hidden=true })<cr>",
   silent)
