@@ -19,7 +19,7 @@ end
 configs.load_extension("fzf")
 
 
-local function Get_git_root()
+local function get_git_root()
   local dot_git_path = vim.fn.finddir(".git", ".;")
   if dot_git_path then
     return vim.fn.fnamemodify(dot_git_path, ":h")
@@ -71,12 +71,11 @@ configs.setup({
 --   }))
 -- end, { desc = "[/] Fuzzily search in current buffer" })
 
--- k({ "n", "x" }, "<c-f>", "<cmd>lua require('telescope.builtin').find_files({ cwd = '.' })<cr>", opt)
 
 k("n", "<c-p>", function() require("telescope.builtin").oldfiles() end, opt)
 
 k({ "n", "x" }, "<leader>ff", function()
-  require('telescope.builtin').find_files({ no_ignore = true, hidden = true, cwd = Get_git_root() })
+  require('telescope.builtin').find_files({ no_ignore = true, hidden = true, cwd = get_git_root() })
 end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
