@@ -79,7 +79,8 @@ k({ "n", "x" }, "<leader>ff", function()
 end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
-  require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h') })
+  -- require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h') })
+  require('telescope.builtin').find_files()
 end, opt)
 
 k({ "n", "x" }, "<leader>fg",
