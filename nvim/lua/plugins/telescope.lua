@@ -90,10 +90,15 @@ k({ "n", "x" }, "<leader>fg",
 
 k("n", "<leader>g",
   function()
-    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
+    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true }
   end,
   opt)
 
+k("n", "<leader>fg",
+  function()
+    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
+  end,
+  opt)
 k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, opt)
 
 k({ "n", "x" }, "<space>fb", function() require('telescope.builtin').buffers() end, opt)
