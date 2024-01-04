@@ -1,7 +1,7 @@
 snippet h "header" b
   #!/usr/bin/env bash
   #
-  #  Author:  Jose Lima
+  #  Author:  Jose Lima (`getenv('USER')`)
   #  Date:    `strftime("%Y-%m-%d %H:%M")`
 
   trap "exit" INT TERM
@@ -10,7 +10,7 @@ snippet h "header" b
 snippet h1 "optional header for cicd script" b
   #!/usr/bin/env bash
   #
-  # Author: Jose Lima
+  # Author: Jose Lima (`getenv('USER')`)
   # Date: `strftime("%Y-%m-%d %H:%M")`
 
   set -Eeuo pipefail
