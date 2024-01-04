@@ -1,164 +1,240 @@
-env:
-  TERM: xterm-256color
+live_config_reload = true
+working_directory = "None"
 
-shell:
-  program: ubuntu
-  # args:
-  #  - --login
+[colors]
+draw_bold_text_with_bright_colors = false
 
-window:
-  opacity: 0.99
-  dimensions:
-    columns: 82
-    lines: 28
-  dynamic_title: false
+[[colors.indexed_colors]]
+color = "0xff966c"
+index = 16
 
-  padding:
-    x: 5
-    y: 5
+[[colors.indexed_colors]]
+color = "0xc53b53"
+index = 17
 
-  dynamic_padding: false
-  decorations: full
-  startup_mode: Windowed
+[colors.bright]
+black = "0x444a73"
+blue = "0x82aaff"
+cyan = "0x86e1fc"
+green = "0xc3e88d"
+magenta = "0xc099ff"
+red = "0xff757f"
+white = "0xc8d3f5"
+yellow = "0xffc777"
 
-title: Terminal
-dynamic_title: false
+[colors.cursor]
+cursor = "#fffff2"
+text = "#000000"
 
-scrolling:
-  history: 3000
-  multiplier: 3
+[colors.normal]
+black = "0x1b1d2b"
+blue = "0x82aaff"
+cyan = "0x86e1fc"
+green = "0xc3e88d"
+magenta = "0xc099ff"
+red = "0xff757f"
+white = "0x828bb8"
+yellow = "0xffc777"
 
-font:
-  normal:
-    family: MesloLGL Nerd Font Mono
-    style: Regular
+[colors.primary]
+background = "0x222436"
+foreground = "0xc8d3f5"
 
-  bold:
-    family: MesloLGL Nerd Font Mono
-    style: Bold
+[cursor]
+blink_interval = 200
+blink_timeout = 0
+unfocused_hollow = true
 
-  italic:
-    family: MesloLGL Nerd Font Mono
-    style: Regular
+[cursor.style]
+blinking = "Never"
+shape = "Block"
 
-  bold_italic:
-    family: MesloLGL Nerd Font Mono
-    style: Bold
+[debug]
+log_level = "Off"
+persistent_logging = false
+print_events = false
+render_timer = false
 
-  size: 12.0
-  offset:
-    x: 0
-    y: 8
+[env]
+TERM = "xterm-256color"
 
-  glyph_offset:
-    x: 0
-    y: 0
+[font]
+size = 15.0
 
-draw_bold_text_with_bright_colors: false
+[font.normal]
+family = "MesloLGS Nerd Font Mono"
+# family = "MonoLisaMono Nerd Font"
 
-colors:
-  primary:
-    background: "0x222436"
-    foreground: "0xc8d3f5"
-  cursor:
-    cursor: "#fffff2"
-    text: "#000000"
+[font.offset]
+x = 0
+y = 8
 
-  normal:
-    black: "0x1b1d2b"
-    red: "0xff757f"
-    green: "0xc3e88d"
-    yellow: "0xffc777"
-    blue: "0x82aaff"
-    magenta: "0xc099ff"
-    cyan: "0x86e1fc"
-    white: "0x828bb8"
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
 
-  bright:
-    black: "0x444a73"
-    red: "0xff757f"
-    green: "0xc3e88d"
-    yellow: "0xffc777"
-    blue: "0x82aaff"
-    magenta: "0xc099ff"
-    cyan: "0x86e1fc"
-    white: "0xc8d3f5"
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
 
-  indexed_colors:
-    - { index: 16, color: "0xff966c" }
-    - { index: 17, color: "0xc53b53" }
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
 
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
 
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
 
-  hide_when_typing: true
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Alt"
 
-selection:
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
-  save_to_clipboard: true
+[[keyboard.bindings]]
+chars = "\u0011"
+key = "Q"
+mods = "Control"
 
-cursor:
-  style:
-    shape: Block
-    blinking: Never
-  blink_interval: 200
-  blink_timeout: 0  # 0 is forever
-  unfocused_hollow: true
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "A"
+mods = "Control"
 
-custom_cursor_colors: true
+[[keyboard.bindings]]
+chars = "\u0012"
+key = "R"
+mods = "Control"
 
-live_config_reload: true
+[[keyboard.bindings]]
+chars = "\u0005"
+key = "E"
+mods = "Control"
 
-working_directory: None
+[[keyboard.bindings]]
+chars = "\u0010"
+key = "P"
+mods = "Control"
 
-enable_experimental_conpty_backend: false
+[[keyboard.bindings]]
+chars = "\u000E"
+key = "N"
+mods = "Control"
 
-debug:
-  render_timer: false
+[[keyboard.bindings]]
+chars = "\u0003"
+key = "C"
+mods = "Control"
 
-  persistent_logging: false
+[[keyboard.bindings]]
+chars = "\u0014"
+key = "T"
+mods = "Control"
 
-  log_level: Off
+[[keyboard.bindings]]
+chars = "\u001A"
+key = "Z"
+mods = "Control"
 
-  print_events: false
+[[keyboard.bindings]]
+chars = "\t"
+key = "I"
+mods = "Control"
 
-  ref_test: false
+[[keyboard.bindings]]
+chars = "\u000F"
+key = "O"
+mods = "Control"
 
-key_bindings:
-  - { key: V, mods: Command, action: Paste }
-  - { key: C, mods: Command, action: Copy }
-  - { key: Paste, action: Paste }
-  - { key: Copy, action: Copy }
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "U"
+mods = "Control"
 
-  #### for vim! ####
-  # make option+backspace work in terminal not just vim!! \x17
-  - { key: Back, mods: Control, chars: "\x17" }
-  - { key: Back, mods: Alt, chars: "\x17" }
-  - { key: Q, mods: Control, chars: "\x11" }
-  - { key: A, mods: Control, chars: "\x01" }
-  - { key: R, mods: Control, chars: "\x12" }
-  - { key: E, mods: Control, chars: "\x05" }
-  - { key: P, mods: Control, chars: "\x10" }
-  - { key: N, mods: Control, chars: "\x0e" }
-  - { key: C, mods: Control, chars: "\x03" }
-  - { key: T, mods: Control, chars: "\x14" }
-  - { key: Z, mods: Control, chars: "\x1a" }
-  - { key: I, mods: Control, chars: "\x09" }
-  - { key: O, mods: Control, chars: "\x0f" }
-  - { key: U, mods: Control, chars: "\x15" }
-  - { key: RBracket, mods: Control, chars: "\x1d" }
-  - { key: LBracket, mods: Control, chars: "\x1b" }
-  - { key: B, mods: Control, chars: "\x02" }
-  - { key: D, mods: Control, chars: "\x04" }
-  - { key: W, mods: Control, chars: "\x17" }
-  - { key: M, mods: Control, chars: "\x02\x7a" }
-  - { key: Slash, mods: Control, chars: "\x1b\x2f" }
-  - { key: G, mods: Control, chars: "\x07" }
-  - { key: F, mods: Control, chars: "\x06" }
+[[keyboard.bindings]]
+chars = "\u001D"
+key = "RBracket"
+mods = "Control"
 
-  # alacritty
-  - { key: F9, action: SpawnNewInstance }
+[[keyboard.bindings]]
+chars = "\u001B"
+key = "LBracket"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0002"
+key = "B"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0004"
+key = "D"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "W"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0002z"
+key = "M"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+chars = "\u001B/"
+key = "Slash"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0007"
+key = "G"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0006"
+key = "F"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "F9"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Right"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+program = "ubuntu"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = true
+# opacity = 0.99
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 82
+lines = 28
+
+[window.padding]
+x = 5
+y = 5
