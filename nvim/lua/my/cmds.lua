@@ -152,6 +152,7 @@ c({ "BufWritePre" }, {
   pattern = { "*.tf", "*.tfvars", "*.nasm", "*.js", "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua" },
   callback = function()
     local save = vim.fn.winsaveview()
+    -- fixeds ^M chars from windows copy pastas
     vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
     vim.fn.winrestview(save)
   end,

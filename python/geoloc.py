@@ -15,8 +15,6 @@ headers = {
 
 bad = ["St", "Street", "Blvd", "Avenue", "Ave", "Road", "Rd", "Lane", "Ln"]
 
-# re needs to match longest first
-
 
 def make_re_pattern(mylist):
     """Returns regex pattern to 'or' aaa|a|a longest match first"""
@@ -24,13 +22,15 @@ def make_re_pattern(mylist):
     return "|".join(map(re.escape, mylist))
 
 
-def clean_address(address, re_pattern):
+def clean_address(address, pattern_list):
     """Clean the address by removing specified chars and extra spaces"""
     address = re.sub(r"[.]", "", address)
     address = re.sub(r"\s+", " ", address)
-    address_trap_patterns = f"\\b{make_re_pattern(bad)}\\b"
+    address_trap_patterns = f"\\b{make_re_pattern(pattern_list)}\\b"
     return re.sub(address_trap_patterns, "", address, flags=re.IGNORECASE)
 
+
+filtered_address = clean_address(address, bad)
 
 print(f"this is my filtered addresses: {filtered_address}")
 
