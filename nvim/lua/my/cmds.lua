@@ -151,9 +151,9 @@ c({ "BufWritePre" }, {
   group = create_augroup("clear_trailing_spaces", { clear = true }),
   pattern = { "*.tf", "*.tfvars", "*.nasm", "*.js", "*.py", "*.yml", "*.cfg", "*.sh", "*.j2", "*.snippets", "*.lua" },
   callback = function()
-    local save_cursor = vim.fn.getcurpos()
-    vim.cmd([[silent! %s/\s\+$//e]])
-    vim.fn.setpos('.', save_cursor)
+    local save = vim.fn.winsaveview()
+    vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+    vim.fn.winrestview(save)
   end,
 })
 
