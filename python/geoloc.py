@@ -7,8 +7,6 @@
 import requests
 import urllib.parse
 
-address = "1600 Amphitheatre Parkway, Mountain View, CA"
-url_encoded_address = urllib.parse.quote(address)
 
 
 def get_lat_long(address):
@@ -17,16 +15,14 @@ def get_lat_long(address):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        if data:
+        try:
             lat = data[0]["lat"]
             lon = data[0]["lon"]
             return lat, lon
-        else:
-            return "No data found for this address."
-    else:
-        return "Failed to retrieve data."
+        except Exeption as e:
+            return f"error {e}"
 
 
-address = "1600 Amphitheatre Parkway, Mountain View, CA"
+address = "600 S. Collier Street, Marco Island, USA"
 latitude, longitude = get_lat_long(address)
 print(f"Latitude: {latitude}, Longitude: {longitude}")
