@@ -5,24 +5,25 @@
 
 """
 import requests
-import urllib.parse
+from urllib.parse import quote
 
 
+url = "https://nominatim.openstreetmap.org/search?q=17+Strada+Pictor+Alexandru+Romano%2C+Bukarest&format=jsonv2"
 
-def get_lat_long(address):
-    url_address = urllib.parse.quote(address)
-    url = f"https://nominatim.openstreetmap.org/search?format=json&q={url_address}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        try:
-            lat = data[0]["lat"]
-            lon = data[0]["lon"]
-            return lat, lon
-        except Exeption as e:
-            return f"error {e}"
+payload = {}
+headers = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+}
 
+response = requests.request("GET", url, headers=headers, data=payload)
 
-address = "600 S. Collier Street, Marco Island, USA"
-latitude, longitude = get_lat_long(address)
-print(f"Latitude: {latitude}, Longitude: {longitude}")
+print(response.text)
