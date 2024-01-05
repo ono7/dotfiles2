@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Cleans address strings and fetches geolocation data.
+""" sanitizes address strings and fetches geolocation data.
     Author:  Jose Lima (jlima)
     Date:    2024-01-04  22:48
 """
@@ -13,7 +13,7 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0",
 }
 
-bad = ["St", "Street", "Blvd", "Avenue", "Ave", "Road", "Rd", "Lane", "Ln"]
+bad_word_list = ["St", "Street", "Blvd", "Avenue", "Ave", "Road", "Rd", "Lane", "Ln"]
 
 
 def make_re_pattern(mylist):
@@ -22,26 +22,37 @@ def make_re_pattern(mylist):
     return "|".join(map(re.escape, mylist))
 
 
-def clean_address(address, pattern_list):
-    """Clean the address by removing specified chars and extra spaces"""
+def sanitize_address(address, pattern_list):
+    """sanitize the address by removing unwanted chars and extra spaces"""
     address = re.sub(r"[.]", "", address)
     address = re.sub(r"\s+", " ", address)
     address_trap_patterns = f"\\b{make_re_pattern(pattern_list)}\\b"
-    return re.sub(address_trap_patterns, "", address, flags=re.IGNORECASE)
+    address = re.sub(address_trap_patterns, "", address, flags=re.IGNORECASE)
+    return urllib.parse.quote(address)
 
 
-filtered_address = clean_address(address, bad)
+def check_api_response(resp):
+    """Get lat and lon or raise exception
+    resp(list): response from openstreetmap.org
+    caller is responsible for handling exception
+    """
+    try:
+        payload = resp.json()
+        if resp.status_code == 200 and isinstance(payload, list):
+            lat = payload[0]["lat"]
+            lon = payload[0]["lon"]
+            return True, False, {"data": [{"latitude": lat, "longitude": lon}]}
 
-print(f"this is my filtered addresses: {filtered_address}")
+    except Exception as e:
+        raise Exception(f"{e}, data: {resp}")
 
 
-# make query URL safe incase of utf-8 chars
-safe_address = urllib.parse.quote(filtered_address)
+def get_coordinates(address_str):
+    url = f"https://nominatim.openstreetmap.org/search?q={address_str}&format=jsonv2&limit=1"
+    failed, lat, lon = check_api_response(requests.get(url, headers=headers))
+    return failed, lat, lon
 
-print(address)
-url = f"https://nominatim.openstreetmap.org/search?q={safe_address}&format=jsonv2"
-response = requests.get(url, headers=headers)
-print(response.text)
 
+print(get_coordinates(sanitize_address(address, bad_word_list)))
 
 # latitude, longitude = get_lat_long(address)
