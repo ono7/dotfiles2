@@ -208,28 +208,6 @@ k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
 
-local openBrackets = {
-  ["("] = true,
-  ["["] = true,
-  ["{"] = true,
-}
-
-local rightBracketsAndQuotes = {
-  [")"] = true,
-  ["]"] = true,
-  ["}"] = true,
-  ['"'] = true,
-  ["'"] = true,
-  ['`'] = true,
-  ['\\'] = true,
-}
-
-local isQuotes = {
-  ['"'] = true,
-  ["'"] = true,
-  ['`'] = true,
-}
-
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -329,11 +307,8 @@ end
 k('i', '[', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
-  local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
-  if n == '[' then
-    return '<Right>'
-  elseif p == '\\' or isAlphaNum[n] or isQuotes[n] then
+  if n ~= '' then
     return '['
   end
   return '[]<Left>'
@@ -354,16 +329,12 @@ end
 k('i', '{', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
-  local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
-  if n == '{' then
-    return '<Right>'
-  elseif p == '\\' or isAlphaNum[n] then
+  if n ~= '' then
     return '{'
   end
   return '{}<Left>'
-end
-, { expr = true })
+end, { expr = true })
 
 k('i', '}', function()
   local line = vim.api.nvim_get_current_line()
@@ -380,16 +351,12 @@ end
 k('i', '(', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
-  local p = line:sub(col - 1, col - 1)
   local n = line:sub(col, col)
-  if n == '(' then
-    return '<Right>'
-  elseif p == '\\' or isAlphaNum[n] or isQuotes[n] then
+  if n ~= '' then
     return '('
   end
   return '()<Left>'
-end
-, { expr = true })
+end, { expr = true })
 
 k('i', ')', function()
   local line = vim.api.nvim_get_current_line()
