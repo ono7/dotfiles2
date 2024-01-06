@@ -142,9 +142,19 @@ k("n", "gp", "`[v`]", silent)
 --- keep cursor in same position when yanking in visual
 k("v", "y", [[ygv<Esc>]], silent)
 
+
+local function clean_space_save()
+  local save_cursor = vim.fn.getcurpos()
+  -- Fixes ^M chars from Windows copy-pastes and removes trailing spaces
+  vim.cmd [[%s/\v\s*\r+$|\s+$//e]]
+  vim.fn.setpos('.', save_cursor)
+end
+
+vim.api.nvim_create_user_command('SaveClean', clean_space_save, {})
+
 -- k("n", "<leader>w", "<cmd>w<cr>", silent)
 k("n", ",w", vim.lsp.buf.format, silent)
-k("n", "<leader>w", "<cmd>w<cr>", silent)
+k("n", "<leader>w", ":SaveClean<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
