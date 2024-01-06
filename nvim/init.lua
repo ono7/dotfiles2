@@ -49,22 +49,10 @@ alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 --]]
 
-vim.cmd([[
-  augroup LowerPriorityOnStartup
-    autocmd!
-    autocmd VimEnter * silent! execute "!sudo renice -n -18 -p " .. vim.loop.os_getppid()
-  augroup END
-]])
-
 vim.opt.winbar = "%=%M %-.45f %-m %y"
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
-
--- vim.g.t_Co = 8
--- local f = require "ffi"
--- f.cdef "int t_colors"
--- f.C.t_colors = 16
 
 vim.opt.termguicolors = true
 vim.opt.syntax = "off"
