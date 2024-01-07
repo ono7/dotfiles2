@@ -1,6 +1,23 @@
 local c = vim.api.nvim_create_autocmd
 local create_augroup = vim.api.nvim_create_augroup
 
+
+local function branch_name()
+  local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+  if branch ~= "" then
+    return branch
+  else
+    return ""
+  end
+end
+
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "FocusGained" }, {
+  callback = function()
+    vim.b.branch_name = branch_name()
+  end,
+  group = create_augroup("git_branch_name", { clear = true }),
+})
+
 c("TextYankPost", {
   pattern = "*",
   callback = function()
