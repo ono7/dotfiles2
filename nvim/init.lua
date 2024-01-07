@@ -159,7 +159,11 @@ end
 
 vim.api.nvim_create_user_command('SaveClean', clean_space_save, {})
 
-k("n", ",w", vim.lsp.buf.format, silent)
+k("n", ",w", function()
+  vim.lsp.buf.format()
+  vim.cmd [[:write]]
+end, silent)
+
 k("n", "<leader>w", ":SaveClean<cr>", silent)
 k("n", ",q", "<cmd>q<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
