@@ -18,13 +18,13 @@ def mock_response_success():
     mock_resp = Mock()
     # Mimic the structure of the response you expect from the real API
     mock_resp.json.return_value = resp
+    mock_resp.json.status_code = 200
     return mock_resp
 
 
-@patch("geoloc.requests.get", return_value=resp)
+@patch("geoloc.requests.get")
 def test_get_coordinates(mock_get, mock_response_success):
-    mock_get.status_code = 200
     response = get_coordinates("600 S. Collier Street, Marco Island, USA")
 
-    assert response == resp
+    assert response.json == resp
     assert response.status_code == 300
