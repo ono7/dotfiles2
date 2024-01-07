@@ -1,3 +1,24 @@
+# mock requests
+`https://www.youtube.com/watch?v=dw2eNCzwBkk&list=PLoVjrTG4NN8SHhBHakgEYfN3uVyFCLTmI&index=1&t=1573s`
+
+```python
+from unittest import mock
+from apireq import get_api
+
+# this patches requests.get from the "apireq" module
+@mock.patch("apireq.requests.get")
+def test_get_ip(mock_requests_get):
+    # ** unpacking allows us to inject the corret objects when the mock requires multiple
+    # e.g. <response>.json()["origin"]
+    mock_requests_get.return_value = mock.Mock(
+        **{"status_code": 200, "json.return_value": {"origin": "1.1.1.2"}}
+    )
+    assert get_api() == "1.1.1.2"
+    # make sure that this was called with the correct URL every time
+    # see the mock object for other things we can do here
+    mock_requests_get.assert_called_once_with("https://httpbin.org/ip")
+```
+
 # pytest, udemy notes
 
 ```python
@@ -16,22 +37,16 @@ functions should be very descriptive, and should start with the word test_:
 
 functions that do not start with test do not run in the test
 
-
 # pytest.ini
 you can create a pytest.ini  to do some things such as functions/directory/filenames to test for
 
-
 # you can create as many directories as needed for testing
-
 
 test/
 └── sportscar
     ├── body
     ├── engine
     └── entertainment
-
-
-
 
 # mark functions, functions must be registered in pytest.ini
 
@@ -124,8 +139,6 @@ pytest test_parametrize.py::test_add_3[breath-Brian-True]
 
 use quotes if there are spaces in the node name
 
-
-
 # Mock
 
 https://realpython.com/testing-third-party-apis-with-mocks/
@@ -162,7 +175,6 @@ def footer_function_scope():
   stop = time.time()
   delta = stop - start
   print('\n test duration : {:0.3} seconds' .format(delta))
-
 
 """ Rename fixtures """
 
