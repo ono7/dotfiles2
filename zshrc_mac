@@ -88,6 +88,11 @@ gorun () {
   nodemon --exec go run $1 --signal SIGTERM
 }
 
+fixgit () {
+  # github repos sometimes dont have remote setup correctly when cloned
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+}
+
 ta () {
   if [ ! -z $TMUX ] && [ ! -z $1 ]
   then
@@ -288,7 +293,7 @@ alias h=hx
 
 # init new repo
 ginit () {
-  git init
+  git init "$@"
   [ ! -f .gitignore ] && cp ~/.dotfiles/gitignore .gitignore || echo_green 'skipping .gitignore'
   git add .
   git commit -am 'initial commit'

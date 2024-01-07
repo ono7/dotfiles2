@@ -49,6 +49,7 @@ co = checkout
 br = branch
 ci = commit
 st = status
+wt = worktree
 # git unstage fileA
 unstage = reset HEAD --
 last = log -1 HEADv
