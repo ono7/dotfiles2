@@ -22,6 +22,7 @@ require("lazy").setup({
   "nvimtools/none-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
+  "ThePrimeagen/git-worktree.nvim",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   -- {
   --   "folke/noice.nvim",
