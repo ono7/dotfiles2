@@ -156,7 +156,7 @@ vim.api.nvim_create_user_command('SaveClean', clean_space_save, {})
 
 k("n", ",w", vim.lsp.buf.format, silent)
 k("n", "<leader>w", ":SaveClean<cr>", silent)
-k("n", ",q", "<cmd>q!<cr>", silent)
+k("n", ",q", "<cmd>q<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
 
@@ -207,6 +207,7 @@ k("n", "g}", "/}<cr>")
 k("n", "g[", [[?\v\w+\[\zs<cr>]])
 k("n", "g]", [[/\v\w+\[\zs<cr>]])
 
+--- used by backspace function, to remove pairs
 local pair_map = {
   ["("] = ")",
   ["["] = "]",
@@ -217,18 +218,18 @@ local pair_map = {
   ["`"] = "`",
 }
 
+--- used to insert both () if the next char is (
 local r_pair_map = {
-  [")"] = "(",
-  ["]"] = "[",
-  ["}"] = "{",
-  [">"] = "<",
-  ["'"] = "'",
-  ['"'] = '"',
-  ["`"] = "`",
+  [")"] = true,
+  ["]"] = true,
+  ["}"] = true,
+  [">"] = true,
+  ["'"] = true,
+  ['"'] = true,
+  ["`"] = true,
 }
 
 local all_pair_map = {}
-local isAlphaNum = {}
 
 for _, v in ipairs(pair_map) do
   table.insert(all_pair_map, v)
@@ -238,76 +239,14 @@ for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
 
-for ascii = 97, 122 do -- ASCII values for 'a' to 'z'
-  local lowercaseKey = string.char(ascii)
-  isAlphaNum[lowercaseKey] = true
-  isAlphaNum[string.upper(lowercaseKey)] = true
-end
-
-for digit = 48, 57 do -- ASCII values for '0' to '9'
-  isAlphaNum[string.char(digit)] = true
-end
-
---- handles ""
--- k('i', '"', function()
---   local line = vim.api.nvim_get_current_line()
---   local col = vim.fn.col('.')
---   local p = line:sub(col - 1, col - 1)
---   local n = line:sub(col, col)
---   if n == '"' then
---     return '<Right>'
---   elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
---     return '"'
---   elseif openBrackets[n] or isAlphaNum[p] then
---     return '"'
---   end
---   return '""<Left>'
--- end
--- , { expr = true })
-
---- handles ``
--- k('i', '`', function()
---   local line = vim.api.nvim_get_current_line()
---   local col = vim.fn.col('.')
---   local p = line:sub(col - 1, col - 1)
---   local n = line:sub(col, col)
---   if n == '`' then
---     return '<Right>'
---   elseif rightBracketsAndQuotes[p] then
---     return "`"
---   elseif openBrackets[n] then
---     return "`"
---   end
---   return '``<Left>'
--- end
--- , { expr = true })
-
----  handles ''
--- k('i', "'", function()
---   if vim.bo[0].buftype == 'prompt' then
---     return "'"
---   end
---   local line = vim.api.nvim_get_current_line()
---   local col = vim.fn.col('.')
---   local p = line:sub(col - 1, col - 1)
---   local n = line:sub(col, col)
---   if n == "'" then
---     return '<Right>'
---   elseif rightBracketsAndQuotes[p] or isAlphaNum[n] then
---     return "'"
---   elseif openBrackets[n] or isAlphaNum[p] then
---     return "'"
---   end
---   return "''<Left>"
--- end
--- , { expr = true })
-
 --- handle []
 k('i', '[', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
-  if n ~= '' then
+  if r_pair_map[n] then
+    return '[]<Left>'
+  elseif n ~= '' then
     return '['
   end
   return '[]<Left>'
@@ -329,7 +268,9 @@ k('i', '{', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
-  if n ~= '' then
+  if r_pair_map[n] then
+    return '{}<Left>'
+  elseif n ~= '' then
     return '{'
   end
   return '{}<Left>'
@@ -346,12 +287,14 @@ k('i', '}', function()
 end
 , { expr = true })
 
---- handle ()
+--- handle (
 k('i', '(', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
-  if n ~= '' then
+  if r_pair_map[n] then
+    return '()<Left>'
+  elseif n ~= '' then
     return '('
   end
   return '()<Left>'
@@ -416,34 +359,8 @@ end, { expr = true })
 ---       or "<Enter>"
 --- end, { expr = true })
 
----- FREE/RECLAIMED BINDINGS ---
--- k("n", "<c-s-k>", "<C-W>k")
--- k("n", "<c-s-j>", "<C-W>j")
--- k("n", "<c-s-h>", "<C-W>h")
--- k("n", "<c-s-l>", "<C-W>l")
--- k("n", "<M-j>", [[:resize -2<cr>]], silent)
--- k("n", "<M-j>", [[:resize -2<cr>]], silent)
--- k("n", "<M-k>", [[:resize +2<cr>]], silent)
--- k("n", "<M-k>", [[:resize +2<cr>]], silent)
--- k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
--- k("n", "<M-l>", [[:vertical resize -2<cr>]], silent)
--- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
--- k("n", "<M-h>", [[:vertical resize +2<cr>]], silent)
--- k("n", "M", "")
--- k("n", "M", "")
--- k("n", "L", "")
--- k("n", "L", "")
--- k("n", "H", "")
--- k("n", "H", "")
-
 --- delete all but the current buffer
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
-
---- -- Lua function to send text to Tmux
---- _G.send_to_tmux = function(text)
----     vim.fn.system('tmux load-buffer -w -', text)
----     print('n |  ')
---- end
 
 -- converts bytes to a string, useful for debugging in delve
 _G.BytesToString = function()
@@ -467,30 +384,11 @@ _G.BytesToString = function()
   end
 end
 
---- -- Lua function to send text to Tmux
---- _G.send_to_tmux_visual = function()
----     local text = get_visual_selection()
----     if text then
----         vim.fn.system('tmux load-buffer -w -', text)
----         print('v |  ')
----     end
---- end
-
---- -- Map the key binding for a range of text or selected text
---- k('v', '<leader>y', [[:lua send_to_tmux_visual()<CR>]], { noremap = true, silent = true })
-
---- -- Map the key binding for the current line (no selection)
---- k('n', '<leader>y', [[:lua send_to_tmux(vim.fn.getline('.'))<CR>]], { noremap = true, silent = true })
-
 --- tmux ---
 k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 --- visual selection search ---
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
-
---- go struct tags ---
--- k("n", "gtj", [[:GoTagAdd json<cr>]])
--- k("n", "gty", [[:GoTagAdd yaml<cr>]])
 
 -- open notes for today
 -- k("n", "<leader>gt", ":e ~/notes/today.md<cr>", opt)
@@ -551,10 +449,6 @@ function _G.perflog()
   cmd([[profile func *]])
   cmd([[profile file *]])
 end
-
---- :grep magic ---
--- cmd([[cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() =~# '^grep')  ? 'silent grep'  : 'grep']])
--- cmd([[cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() =~# '^lgrep') ? 'silent lgrep' : 'lgrep']])
 
 --- shellcode ---
 --- m(
