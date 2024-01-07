@@ -127,7 +127,7 @@ vim.opt.path:append({ "**" })
 
 --- nop ---
 k("n", "<c-f>", "") -- use this for searching files
---- k("n", "<c-b>", "") -- allow tmux prefix to be used to jump to tmux pane
+k("n", "<c-b>", "") -- allow tmux prefix to be used to jump to tmux pane
 k("n", "ZZ", "")
 k("n", "ZQ", "")
 
@@ -152,7 +152,6 @@ end
 
 vim.api.nvim_create_user_command('SaveClean', clean_space_save, {})
 
--- k("n", "<leader>w", "<cmd>w<cr>", silent)
 k("n", ",w", vim.lsp.buf.format, silent)
 k("n", "<leader>w", ":SaveClean<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)

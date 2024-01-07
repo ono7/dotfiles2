@@ -35,6 +35,7 @@ configs.setup({
     layout_strategy = "flex", -- flex (shows preview)
     file_ignore_patterns = {
       ".git/",
+      ".venv/",
       ".cache",
       "__pycache__",
       "%.o",
@@ -43,6 +44,24 @@ configs.setup({
       "%.pdf",
       "%.mkv",
       "%.zip",
+      '%.npz',
+      '%.aux',
+      '%.otf',
+      '%.ttf',
+      '%.mp3',
+      '%.sfd',
+      '%.fmt',
+      '%.jpg',
+      '%.png',
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,               -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
+      },
+      -- ["ui-select"] = {},
     },
     -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
