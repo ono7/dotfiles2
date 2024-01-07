@@ -35,7 +35,9 @@ y = 0
 
 [font.normal]
 family = "MonoLisaMono Nerd Font"
-# style = "Regular"
+
+[font.bold]
+family = "MonoLisaMono Nerd Font"
 
 [font.offset]
 x = 0

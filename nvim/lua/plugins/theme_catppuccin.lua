@@ -63,7 +63,7 @@ config.setup({
     percentage = 0.15,
   },
   no_italic = true, -- Force no italic
-  no_bold = false,   -- Force no bold
+  no_bold = false,  -- Force no bold
   styles = {
     comments = {},
     conditionals = { "italic" },
@@ -132,7 +132,7 @@ vim.api.nvim_set_hl(0, "@property", {})
 -- vim.api.nvim_set_hl(0, "@type.builtin", { fg = mycolors.yellol })
 vim.api.nvim_set_hl(0, "@keyword.function", { fg = mycolors.mauve, italic = true })
 vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
-vim.api.nvim_set_hl(0, "MatchParen", { bg = "#444d69", fg = "#000000" })
+vim.api.nvim_set_hl(0, "MatchParen", { fg = "#fab387", bold = true })
 vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#1B192C" })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })
 vim.api.nvim_set_hl(0, "cmpBorder", { fg = "#2b2c36" })
