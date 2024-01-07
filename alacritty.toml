@@ -29,15 +29,16 @@ size = 22.0
 x = 0
 y = 0
 
-# [font.italic]
-# family = "MesloLGS Nerd Font Mono"
-# style = "Italic"
-
 [font.normal]
-family = "MonoLisaMono Nerd Font"
+family = "MonoLisaNoliga Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "MonoLisaNoliga Nerd Font"
+style = "Italic"
 
 [font.bold]
-family = "MonoLisaMono Nerd Font"
+family = "MonoLisaNoliga Nerd Font"
 
 [font.offset]
 x = 0
