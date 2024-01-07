@@ -78,14 +78,17 @@ fi
 # zle -n fancy-ctrl-z
 # bindkey ^z fancy-ctrl-z
 
-gorun () {
+runner () {
   if ! command -v gls &>/dev/null; then
     npm install -g nodemon
   fi
   if [ $# -eq 0 ]; then 
-    nodemon --exec go run main.go --signal SIGTERM
+    echo_green Examples
+    echo_green runner go run main.go
+    echo_green runner python -m flask.run
+    return
   fi
-  nodemon --exec go run $1 --signal SIGTERM
+  nodemon --exec $@ --signal SIGTERM
 }
 
 fixgit () {
