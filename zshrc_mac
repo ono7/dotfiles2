@@ -256,6 +256,10 @@ rmtag () {
   git tag -d $1;git push --delete origin $1
 }
 
+alias ga='git add '
+alias gw='git worktree '
+alias gc='git commit '
+
 # copies data to tmux clipboard, echo 'test' | copy
 # c () {
 #   tmux loadb -
