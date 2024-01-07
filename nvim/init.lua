@@ -2,6 +2,11 @@
 
 --[[
 
+
+Fix github repos missing remote
+  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+
+
 golang: https://fulltimegodev.teachable.com/courses/1970304
 
 * save as root
@@ -142,7 +147,7 @@ k("n", "gp", "`[v`]", silent)
 --- keep cursor in same position when yanking in visual
 k("v", "y", [[ygv<Esc>]], silent)
 
-k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
+-- k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
 
 local function clean_space_save()
   local save_cursor = vim.fn.getcurpos()
@@ -476,6 +481,7 @@ local packages = {
   "my.cmds",
   -- "plugins.harpoon",
   "plugins.core_dap",
+  "plugins.git-worktree",
 }
 
 for _, mod in ipairs(packages) do

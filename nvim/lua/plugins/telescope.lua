@@ -16,6 +16,8 @@ if not actions_setup then
   return
 end
 
+
+configs.load_extension("git_worktree")
 configs.load_extension("fzf")
 
 
@@ -56,10 +58,10 @@ configs.setup({
     },
     extensions = {
       fzf = {
-        fuzzy = true,               -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
       -- ["ui-select"] = {},
     },
@@ -79,16 +81,6 @@ configs.setup({
     },
   },
 })
-
-
--- Telescope live_grep search_dirs={'%'}
--- k("n", "<c-/>", function()
---   -- You can pass additional configuration to telescope to change theme, layout, etc.
---   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
---     -- winblend = 10,
---     previewer = false,
---   }))
--- end, { desc = "[/] Fuzzily search in current buffer" })
 
 
 k("n", "<c-p>", function() require("telescope.builtin").oldfiles() end, opt)
@@ -120,6 +112,8 @@ k("n", "<leader>fg",
   end,
   opt)
 k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, opt)
+k("n", "<leader>sw", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
+k("n", "<leader>sW", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
 
 k({ "n", "x" }, "<space>fb", function() require('telescope.builtin').buffers() end, opt)
 k(
