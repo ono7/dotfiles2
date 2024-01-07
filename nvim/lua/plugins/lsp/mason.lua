@@ -142,6 +142,18 @@ nvim_lsp.gopls.setup({
 
 local pyright_opts = {
   root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
+  settings = {
+    pyright = {
+      autoImportCompletion = true, },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = 'off'
+      }
+    }
+  },
 }
 
 require("lspconfig").pyright.setup(handle_lsp(lsp_opts, pyright_opts))

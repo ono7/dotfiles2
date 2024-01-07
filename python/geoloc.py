@@ -38,21 +38,23 @@ def check_api_response(resp):
     """
     try:
         payload = resp.json()
-        if resp.status_code == 200 and isinstance(payload, list):
-            lat = payload[0]["lat"]
-            lon = payload[0]["lon"]
-            return True, False, {"data": [{"latitude": lat, "longitude": lon}]}
-
+        print(payload)
+        if payload["data"]["data"]["lat"]:
+            lat = payload["data"]["data"]["lat"]
+            lon = payload["data"]["data"]["lon"]
+            # return True, False, {"data": [{"latitude": lat, "longitude": lon}]}
+            return lat, lon
     except Exception as e:
         raise Exception(f"{e}, data: {resp}")
 
 
 def get_coordinates(address_str):
     url = f"https://nominatim.openstreetmap.org/search?q={address_str}&format=jsonv2&limit=1"
-    failed, lat, lon = check_api_response(requests.get(url, headers=headers))
-    return failed, lat, lon
+    response = requests.get(url, headers=headers)
+    # lat, lon = check_api_response(response)
+    return response
 
 
-print(get_coordinates(sanitize_address(address, bad_word_list)))
+# print(get_coordinates(sanitize_address(address, bad_word_list)))
 
 # latitude, longitude = get_lat_long(address)
