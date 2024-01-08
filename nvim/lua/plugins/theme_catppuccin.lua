@@ -89,7 +89,7 @@ config.setup({
     cmp = true,
     gitsigns = true,
     nvimtree = true,
-    neotree = true,
+    neotree = false,
     telescope = true,
     notify = false,
     mini = false,
@@ -131,7 +131,8 @@ vim.api.nvim_set_hl(0, "@property", {})
 -- vim.api.nvim_set_hl(0, "Type", {})
 -- vim.api.nvim_set_hl(0, "@type.builtin", { fg = mycolors.yellol })
 vim.api.nvim_set_hl(0, "@keyword.function", { fg = mycolors.mauve, italic = true })
-vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
+-- vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1B192C" })
+vim.api.nvim_set_hl(0, "NeoTreeNormal", {})
 vim.api.nvim_set_hl(0, "MatchParen", { fg = "#fab387", bold = true })
 vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#1B192C" })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })
