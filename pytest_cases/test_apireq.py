@@ -12,7 +12,7 @@ from apireq import get_api
 @mock.patch("apireq.requests.get")
 def test_get_ip(mock_requests_get):
     # ** unpacking allows us to inject the corret objects when the mock requires multiple
-    # e.g. respoins.json()["origin"]
+    # e.g. response.json()["origin"]
     mock_requests_get.return_value = mock.Mock(
         **{"status_code": 200, "json.return_value": {"origin": "1.1.1.2"}}
     )

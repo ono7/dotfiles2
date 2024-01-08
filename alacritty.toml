@@ -217,7 +217,8 @@ program = "/bin/zsh"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-opacity = 0.96
+opacity = 0.76
+blur = true
 startup_mode = "Windowed"
 
 [window.dimensions]
