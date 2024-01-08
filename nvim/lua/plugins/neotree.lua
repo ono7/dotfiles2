@@ -2,14 +2,12 @@
 
 local status_ok, configs = pcall(require, "neo-tree")
 
-local m = vim.api.nvim_set_keymap
 if not status_ok then
   print("neotree not loaded - plugins/neotree.lua")
   return
 end
 
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-local opt = { noremap = true, silent = true }
 
 configs.setup({
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
