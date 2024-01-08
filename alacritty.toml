@@ -1,4 +1,5 @@
 import = ["/Users/jlima/.dotfiles/schemes/alacritty/tokyonight_moon.toml"]
+# import = ["/Users/jlima/.dotfiles/schemes/alacritty/nightfly.yml"]
 live_config_reload = true
 working_directory = "None"
 
@@ -216,7 +217,7 @@ program = "/bin/zsh"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-opacity = 0.99
+opacity = 0.90
 startup_mode = "Windowed"
 
 [window.dimensions]

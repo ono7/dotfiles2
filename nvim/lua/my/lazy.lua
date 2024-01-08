@@ -46,6 +46,20 @@ require("lazy").setup({
   --   end
   -- },
   { "catppuccin/nvim",        name = "catppuccin" },
+  -- {
+  --   "marko-cerovac/material.nvim",
+  --   config = function()
+  --     vim.g.material_style = "deep ocean"
+  --     require('material').setup({
+  --       -- ... other settings
+  --       disable = {
+  --         -- ... other settings
+  --         background = true,
+  --       },
+  --     })
+  --     vim.cmd [[colorscheme material]]
+  --   end
+  -- },
   {
     "folke/trouble.nvim",
     config = function()
