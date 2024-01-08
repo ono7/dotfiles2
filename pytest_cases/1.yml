@@ -3,7 +3,7 @@
 # Date: 2023-07-20 16:29 CST
 
 - name: "Test"
-  hosts: all
+  hosts: localhost
   # order: shuffle
   gather_facts: false
   # serial: 10
@@ -13,4 +13,4 @@
       ansible.builtin.debug:
         msg: |
           {{ '%Y-%m-%d' | strftime }}
-          ISO8601 {{ '%Y-%m-%dT%H:%M:%S.%fZ' | strftime }}
+          ISO8601 - {{ '%Y-%m-%dT%H:%M:%S.%fZ' | strftime }}
