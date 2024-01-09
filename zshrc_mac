@@ -32,7 +32,7 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$GOPATH/bin:$HOME/.rd/bin:
 typeset -U path
 typeset -U PATH
 # 10ms for key sequences
-export KEYTIMEOUT=1
+export KEYTIMEOUT=2
 
 export PASSWORD_STORE_CHARACTER_SET='[:alnum:]!&%^@{}[]()'
 

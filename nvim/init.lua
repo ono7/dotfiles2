@@ -165,7 +165,7 @@ k("n", ",w", function()
 end, silent)
 
 k("n", "<leader>w", ":SaveClean<cr>", silent)
-k("n", ",q", "<cmd>q<cr>", silent)
+k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
 
