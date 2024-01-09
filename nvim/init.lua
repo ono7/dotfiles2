@@ -138,8 +138,13 @@ k("n", "ZQ", "")
 
 -- k({ "n", "x" }, "<c-e>", "g_")
 
-k({ "n", "x" }, "gh", "^")
-k({ "n", "x" }, "gl", "g_")
+-- move cursor to left/right
+k({ "n" }, "gh", "^")
+k({ "n" }, "gl", "g_")
+
+-- move selection to far left, far right
+k("v", "gh", ":left<cr>", silent)
+k("v", "gl", ":right<cr>", silent)
 
 --- vs last paste
 k("n", "gp", "`[v`]", silent)
