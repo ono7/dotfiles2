@@ -10,7 +10,7 @@ snippet jh "header" w
   #}
   ${0}
 
-snippet ji "block" w
+snippet b "block" w
   {% ${0} %}
 
 snippet set "set" w
@@ -43,7 +43,11 @@ snippet jelif "if statement" w
   {% else %}
   {% endif %}
 
-snippet jif "if statement" w
+snippet if "if statement" w
   {% if ${0} %}
     ${VISUAL}
   {% endif %}
+snippet for "if statement" w
+  {% for ${0} %}
+    ${VISUAL}
+  {% endfor %}
