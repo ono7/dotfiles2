@@ -154,22 +154,42 @@ k("v", "y", [[ygv<Esc>]], silent)
 
 -- k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
 
+local function check_buf(bufnr)
+  --- checks if this is a valid buffer that we can save to ---
+  local buftype = vim.api.nvim_buf_get_option(bufnr, 'buftype')
+  local bufhidden = vim.api.nvim_buf_get_option(bufnr, 'bufhidden')
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+  if buftype == 'nofile' or bufhidden == 'hide' or bufname == '' then
+    return false
+  end
+  return true
+end
+
 local function clean_space_save()
+  if not check_buf(0) then
+    print("save me first!")
+    return
+  end
   local save_cursor = vim.fn.getcurpos()
   -- Fixes ^M chars from Windows copy-pastes and removes trailing spaces
-  vim.cmd [[%s/\v\s*\r+$|\s+$//e]]
-  vim.cmd [[:write]]
+  vim.cmd([[%s/\v\s*\r+$|\s+$//e]])
+  vim.cmd([[:write]])
   vim.fn.setpos('.', save_cursor)
 end
 
-vim.api.nvim_create_user_command('SaveClean', clean_space_save, {})
+vim.api.nvim_create_user_command('CleanAndSave', clean_space_save, {})
 
 k("n", ",w", function()
+  if not check_buf(0) then
+    print("save me first!")
+    return
+  end
   vim.lsp.buf.format()
   vim.cmd [[:write]]
 end, silent)
 
-k("n", "<leader>w", ":SaveClean<cr>", silent)
+k("n", "<leader>w", ":CleanAndSave<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd!<cr>", silent)
 k("n", "<leader>q", "<cmd>qall<cr>", silent)
