@@ -256,10 +256,6 @@ rmtag () {
   git tag -d $1;git push --delete origin $1
 }
 
-alias ga='git add '
-alias gw='git worktree '
-alias gc='git commit '
-
 # copies data to tmux clipboard, echo 'test' | copy
 # c () {
 #   tmux loadb -
@@ -300,11 +296,15 @@ alias h=hx
 
 # init new repo
 ginit () {
+  # we are in a bare repo
+  [ -f ./config ] && git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && echo_green "fixed bare repo..." && return
+  # other wise lets do other things
   git init "$@"
   [ ! -f .gitignore ] && cp ~/.dotfiles/gitignore .gitignore || echo_green 'skipping .gitignore'
-  git add .
-  git commit -am 'initial commit'
 }
+
+alias gw='git worktree '
+
 
 gitlog () {
   # graphical view of the commit logs, should be able to see

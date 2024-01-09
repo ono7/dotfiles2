@@ -106,11 +106,11 @@ k("n", "<leader>g",
   end,
   opt)
 
-k("n", "<leader>fg",
-  function()
-    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
-  end,
-  opt)
+-- k("n", "<leader>fg",
+--   function()
+--     require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
+--   end,
+--   opt)
 k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, opt)
 
 k("n", "<leader>sw", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)

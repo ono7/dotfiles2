@@ -11,10 +11,10 @@ snippet time "time" w
 snippet dt "date and time" w
 	`strftime("%Y-%m-%d %H:%M")`
 snippet todo "todo" w
-  `substitute(split(&commentstring, '%s')[0], '\s', '', 'g')` TODO(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]) : '#'` TODO(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
 snippet fix "fix" w
-  `substitute(split(&commentstring, '%s')[0], '\s', '', 'g')` FIXME(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]) : '#'` FIXME(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
 snippet note "note" w
-  `substitute(split(&commentstring, '%s')[0], '\s', '', 'g')` NOTE(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]) : '#'` NOTE(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1] : ''`
 snippet d "done" w
   ${0:${VISUAL}} ✅

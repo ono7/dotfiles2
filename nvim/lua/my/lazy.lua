@@ -150,6 +150,7 @@ require("lazy").setup({
       local api = require("Comment.api")
       ft.jinja = { '{#%s#}', '{#%s#}' }
       ft.text = { '#%s', '#%s#' }
+      ft.txt = { '#%s', '#%s#' }
       require('Comment').setup({ ignore = "^$" })
       vim.keymap.set("n", "<C-c>", function() api.toggle.linewise.current() end,
         { noremap = true, silent = true })
