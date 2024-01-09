@@ -241,7 +241,6 @@ local r_pair_map = {
   ["'"] = true,
   ['"'] = true,
   ["`"] = true,
-  [""] = true,
   [" "] = true,
 }
 
