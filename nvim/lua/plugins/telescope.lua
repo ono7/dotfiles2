@@ -18,7 +18,7 @@ end
 
 
 configs.load_extension("git_worktree")
-configs.load_extension("fzf")
+-- configs.load_extension("fzf")
 
 
 local function get_git_root()
@@ -29,6 +29,19 @@ local function get_git_root()
     return "."
   end
 end
+
+local find_all_files_cmd = {
+"fd",
+"--type", "f",
+"--type", "l",
+"--follow",
+"--color=never",
+"--hidden",
+"--no-ignore",
+"-g '!.*cache/*'",
+"-g '!.git/*'",
+"-E", "*.hex",
+}
 
 configs.setup({
   defaults = {
@@ -56,15 +69,14 @@ configs.setup({
       '%.jpg',
       '%.png',
     },
-    extensions = {
-      fzf = {
-        fuzzy = true,                   -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,    -- override the file sorter
-        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-      },
-      -- ["ui-select"] = {},
-    },
+    -- extensions = {
+    --   fzf = {
+    --     fuzzy = true,                   -- false will only do exact matching
+    --     override_generic_sorter = true, -- override the generic sorter
+    --     override_file_sorter = true,    -- override the file sorter
+    --     case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+    --   },
+    -- },
     -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -86,7 +98,7 @@ configs.setup({
 k("n", "<c-p>", function() require("telescope.builtin").oldfiles() end, opt)
 
 k({ "n", "x" }, "<leader>ff", function()
-  require('telescope.builtin').find_files({ no_ignore = true, hidden = true, cwd = get_git_root() })
+  require('telescope.builtin').find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
 end, opt)
 
 -- k({ "n", "x" }, "<leader>fg", function()
@@ -106,11 +118,6 @@ k("n", "<leader>g",
   end,
   opt)
 
--- k("n", "<leader>fg",
---   function()
---     require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, cwd = get_git_root() }
---   end,
---   opt)
 k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, opt)
 
 k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
