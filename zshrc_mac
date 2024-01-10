@@ -205,8 +205,8 @@ if [[ "$(command -v nvim)" ]]; then
     export MANWIDTH=999
 fi
 
-if [[ "$(command -v rg)" ]]; then
-  echo_red rg is installed, we need to just run fd
+if [[ ! "$(command -v rg)" ]]; then
+  echo_red rg not installed...
 fi
 
 # functions
