@@ -335,7 +335,7 @@ k('i', '(', function()
   return '()<Left>'
 end, { expr = true })
 
-k('i', ')', function()
+k({'i'}, ')', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
@@ -398,7 +398,7 @@ end, { expr = true })
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
 -- converts bytes to a string, useful for debugging in delve
-_G.BytesToString = function()
+local BytesToString = function()
   local selected_text = vim.fn.getline("'<,'>")
   -- Remove any whitespace or non-hex characters
   selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
@@ -418,6 +418,9 @@ _G.BytesToString = function()
     vim.api.nvim_out_write(string_result .. '\n')
   end
 end
+
+-- TODO(jlima): make this allow ranges
+vim.api.nvim_create_user_command('BytesToString', BytesToString, {})
 
 --- tmux ---
 k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
