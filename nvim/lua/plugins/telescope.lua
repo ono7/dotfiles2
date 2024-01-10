@@ -98,7 +98,8 @@ configs.setup({
 k("n", "<c-p>", function() require("telescope.builtin").oldfiles() end, opt)
 
 k({ "n", "x" }, "<leader>ff", function()
-  require('telescope.builtin').find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
+  -- require('telescope.builtin').find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
+  require('telescope.builtin').find_files({ no_ignore = false, hidden = true })
 end, opt)
 
 -- k({ "n", "x" }, "<leader>fg", function()
