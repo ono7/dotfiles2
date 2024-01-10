@@ -426,7 +426,7 @@ k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 -- open daily todo
-k("n", "-", ":e ~/.todo.txt<cr>", opt)
+k("n", "+", ":e ~/.todo.txt<cr>", opt)
 
 --- marks/jumps ---
 --- k("n", "'", "`", opt)
@@ -451,15 +451,15 @@ k("n", "<C-u>", "<C-u>zz", opt)
 --- paste over selection without overwriting clipboard
 k("x", "p", "pgvy")
 
+--- leave unnnamed reg alone when changing text
+k("n", "c", '"ac')
+k("n", "C", '"aC')
+
 --- when using J keep cursor to the right
 k({ "n", "v" }, "J", "mzJ`z")
 
 --- terminal ---
 k("t", "<Esc>", [[<c-\><c-n>]], silent)
-
---- leave unnnamed reg alone when changing text
-k("n", "c", '"ac')
-k("n", "C", '"aC')
 
 --- visual block by default
 k({ "n" }, "v", "<c-v>")
