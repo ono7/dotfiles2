@@ -35,5 +35,6 @@ yellow = "0xffc777"
 
 [colors.primary]
 # background = "0x222436"
-background = "0x1b1d29"
+# background = "0x1b1d29"
+background = "0x17202e"
 foreground = "0xc8d3f5"
