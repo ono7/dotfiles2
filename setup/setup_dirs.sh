@@ -30,6 +30,8 @@ echo ###########################################################################
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
 mkdir -p ~/.vim/indent
+# make aliases and vars available in neovim
+ln -sf ~/.dotfiles/zshenv ~/.zshenv
 ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
 ln -sf ~/.dotfiles/shortpath ~/local/bin/shortpath
 ln -sf ~/.dotfiles/starship.toml ~/.config/
