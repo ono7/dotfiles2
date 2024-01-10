@@ -207,7 +207,7 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 vnoremap <enter> y/\V<C-r>=escape(@",'/\')<CR><CR>
 
-nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>b :set nomore <Bar> :ls <Bar> :set more <CR>:b<Space>
 
 " if executable('rg')
 "     set grepprg=rg\ --no-heading\ --color=never\ --smart-case\ --vimgrep\ -g\ '!.git'

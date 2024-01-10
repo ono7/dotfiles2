@@ -124,7 +124,7 @@ k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, 
 k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
 k("n", "<leader>O", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
 
-k({ "n", "x" }, "<space>fb", function() require('telescope.builtin').buffers() end, opt)
+k({ "n", "x" }, "<leader>b", function() require('telescope.builtin').buffers() end, opt)
 k(
   "n",
   "<leader>vc",
