@@ -5,6 +5,9 @@ vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ float = true, bor
 vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next({ float = true, border = 'rounded' })<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+vim.diagnostic.config {
+  float = { border = "rounded" },
+}
 
 
 local on_attach = function(client, bufnr)
