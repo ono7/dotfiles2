@@ -3,6 +3,8 @@
     Author:  Jose Lima (jlima)
     Date:    2024-01-10  21:01
 
+    NOTE: **Do not print in the callback plugin**
+
     This callback module interceps task events and creates a log file with each
     task's final status and errors.
 
