@@ -1,7 +1,28 @@
 #!/usr/bin/env python3
-"""log tasks for better reporting
+""" task auditing callback pluging
     Author:  Jose Lima (jlima)
     Date:    2024-01-10  21:01
+
+    This callback module creates a log file with each task's status and errors
+    tasks that are set to "ignore_errors: true" are not logged due to the nature
+    of the ignore_errors directive.
+
+    To skip logging any task output/errors that could leak sensitive data mark the task
+    via with a tag:
+
+    - name: Set the super secret password
+      ansible.builtin.shell: echo password123
+      tags:
+       - sensitive
+
+    or set a variable called sensitive on the task
+
+    - name: Set the super secret password
+      ansible.builtin.shell: echo password123
+      vars:
+        sensitive: true
+
+
 """
 
 import logging
@@ -11,7 +32,7 @@ logging.basicConfig(
     filename="ansible_tasks.log",
     level=logging.INFO,
     format="%(asctime)s: %(message)s",
-    filemode="w",  # Corrected from file_mode to filemode
+    filemode="w",
 )
 logger = logging.getLogger(__name__)
 
@@ -28,8 +49,14 @@ class CallbackModule(CallbackBase):
     CALLBACK_NAME = "task_logger"
 
     def is_sensitive_task(self, result):
-        # Check if 'sensitive_task' is defined in task vars
-        return result._task.vars.get("sensitive_task", False)
+        """
+            Check if 'sensitive' is defined in task vars
+            or if the task has a tag called sensitive
+        """
+        return (
+            result._task.vars.get("sensitive", False)
+            or "sensitive" in result._task.tags
+        )
 
     def v2_runner_on_ok(self, result):
         if result._result.get("failed", False):
