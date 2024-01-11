@@ -4,7 +4,7 @@
     Date:    2024-01-10  21:01
 
     This callback module interceps task events and creates a log file with each
-    task's final status and errors. 
+    task's final status and errors.
 
     Tasks that are set to "ignore_errors: true" are not logged due to the nature
     of the ignore_errors directive.
@@ -50,14 +50,16 @@ def process_error(message):
 
 
 def get_last_lines(message, offset):
-    """returns the last x(offset) lines of a long string(message)"""
+    """returns the last x(offset) number of lines from a long string(message)"""
     lines = message.splitlines()
     last_lines = lines[-offset:]
     return "\n".join(last_lines)
 
+
 def split_string(s, chunk_size=100):
-    """ make long log lines more presentable """
-    return '\n'.join(s[i:i+chunk_size] for i in range(0, len(s), chunk_size))
+    """make long log lines more presentable"""
+    return "\n".join(s[i : i + chunk_size] for i in range(0, len(s), chunk_size))
+
 
 class CallbackModule(CallbackBase):
     CALLBACK_VERSION = 2.0
@@ -97,7 +99,9 @@ class CallbackModule(CallbackBase):
             result._result.get("stderr", ""),
             result._result.get("msg", ""),
         ]
-        _raw = "\n".join([get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0])
+        _raw = "\n".join(
+            [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
+        )
 
         msg = process_error(_raw)
 
