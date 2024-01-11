@@ -54,7 +54,9 @@ alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 --]]
 
-vim.opt.winbar = "%=%M %-.45f %-m %y {%{get(b:, 'branch_name', '')}}"
+--- status bar
+-- vim.opt.winbar = "%=%M %-.45f %-m %y {%{get(b:, 'branch_name', '')}}"
+vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
