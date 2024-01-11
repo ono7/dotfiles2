@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """ task auditing callback pluging
+
     Author:  Jose Lima (jlima)
     Date:    2024-01-10  21:01
 
-    NOTE: **Do not print in the callback plugin**
+    NOTE: **Do not print() in the callback plugin**
+
+    # set stdout to default in ansible.cfg
+    [defaults]
+    stdout_callback = default
+
+    DESCRIPTION:
 
     This callback module interceps task events and creates a log file with each
     task's final status and errors.
