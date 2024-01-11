@@ -25,3 +25,18 @@ snippet filter "ansible filter" b
   class FilterModule:
     def filters(self):
       return {"${1}": ${1}}
+
+snippet logging "logger for python"
+  import logging
+
+  logging.basicConfig(level=logging.INFO, format='%(asctime)s: %(name)s - %(levelname)s - %(funcName)s - %(message)s')
+  logger = logging.getLogger(__name__)
+
+  # def my_function():
+  #     logger.info("This is an info message")
+  #     try:
+  #         # Some operation...
+  #         pass
+  #     except Exception as e:
+  #         logger.error("An error occurred", exc_info=True)
+  ${0}
