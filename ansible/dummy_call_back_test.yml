@@ -1,0 +1,67 @@
+---
+# dummy playbook for callback testing
+
+- name: "test"
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  vars:
+    good_var: 1
+
+  tasks:
+    - name: Deploy block
+      block:
+        - name: Configure device output
+          ansible.builtin.shell: echo $$
+          register: output
+
+        - name: Check variables
+          ansible.builtin.shell: echo $$
+          register: output
+
+        - name: Deploy config to cloud
+          ansible.builtin.shell: echo $$
+          register: output
+
+        - name: Get results back
+          ansible.builtin.shell: echo $$
+          register: output
+
+        - name: Test input variables (SNOW)
+          ansible.builtin.assert:
+            that:
+              - good_var > 0
+            fail_msg: invalid input provided {{ good_var }}
+
+        - name: Upgrade device when needed
+          ansible.builtin.shell: echo $$
+          register: output
+          failed_when: true
+          ignore_errors: true
+
+        - name: Run custom module
+          warn_module:
+            sample_argument: "warn"
+          tags:
+            - warn
+
+        - name: Test 2
+          ansible.builtin.shell: ps waux
+          register: output
+          failed_when: true
+
+        # we never reach this test
+        - name: Test 3
+          ansible.builtin.shell: echo $$
+          register: output
+
+        - name: BUILD PASS
+          ansible.builtin.debug:
+            msg: |
+              {{ output }}
+      # rescue:
+    - name: This is the last task on this list
+      ansible.builtin.debug:
+        msg: |
+          {{ output }}
