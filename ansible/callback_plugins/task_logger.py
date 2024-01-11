@@ -55,6 +55,9 @@ def get_last_lines(message, offset):
     last_lines = lines[-offset:]
     return "\n".join(last_lines)
 
+def split_string(s, chunk_size=100):
+    """ make long log lines more presentable """
+    return '\n'.join(s[i:i+chunk_size] for i in range(0, len(s), chunk_size))
 
 class CallbackModule(CallbackBase):
     CALLBACK_VERSION = 2.0
@@ -94,7 +97,7 @@ class CallbackModule(CallbackBase):
             result._result.get("stderr", ""),
             result._result.get("msg", ""),
         ]
-        _raw = "\n".join([get_last_lines(x, 10) for x in msg_queue if len(x) > 0])
+        _raw = "\n".join([get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0])
 
         msg = process_error(_raw)
 
