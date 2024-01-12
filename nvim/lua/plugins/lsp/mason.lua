@@ -150,10 +150,10 @@ local pyright_opts = {
       autoImportCompletion = true, },
     python = {
       analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = 'openFilesOnly',
+        autoSearchPaths        = true,
+        diagnosticMode         = 'openFilesOnly',
         useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
+        typeCheckingMode       = 'off',
       }
     }
   },
