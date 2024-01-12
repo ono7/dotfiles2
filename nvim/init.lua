@@ -538,6 +538,7 @@ for _, mod in ipairs(packages) do
 end
 
 vim.cmd([[cabbrev q1 q!]])
+vim.cmd([[cabbrev qa1 qa!]])
 vim.cmd([[cabbrev qall1 qall!]])
 
 vim.cmd([[
