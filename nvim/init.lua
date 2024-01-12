@@ -448,8 +448,8 @@ k("n", "Y", "y$", opt)
 k("n", "U", "<c-r>", opt)
 
 --- keep cursor in the middle when using search
-k("n", "n", "nzzzv", opt)
-k("n", "N", "Nzzzv", opt)
+-- k("n", "n", "nzzzv", opt)
+-- k("n", "N", "Nzzzv", opt)
 k("n", "<C-d>", "<C-d>zz", opt)
 k("n", "<C-u>", "<C-u>zz", opt)
 
