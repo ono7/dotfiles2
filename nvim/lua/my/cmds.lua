@@ -11,7 +11,7 @@ local function branch_name()
   end
 end
 
-vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "FocusGained" }, {
+c({ "FileType", "BufEnter", "FocusGained" }, {
   callback = function()
     vim.b.branch_name = branch_name()
   end,
@@ -192,18 +192,6 @@ c("FocusGained", {
   end,
   group = create_augroup("update_file_when_changes_detected", { clear = true }),
   desc = "Update file when there are changes",
-})
-
-c("ModeChanged", {
-  callback = function()
-    if vim.fn.getcmdtype() == "/" or vim.fn.getcmdtype() == "?" then
-      vim.opt.hlsearch = true
-    else
-      vim.opt.hlsearch = false
-    end
-  end,
-  group = create_augroup("clear_hl_highlight_on_search", { clear = true }),
-  desc = "Highlighting matched words when searching",
 })
 
 c("TermOpen", {

@@ -40,11 +40,11 @@ my_gitsigns.setup({
     end, { expr = true })
 
     -- Actions
-    map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-    map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-    map("n", "<leader>ss", gs.stage_buffer)
-    map("n", "<leader>su", gs.undo_stage_hunk)
-    map("n", "<leader>sR", gs.reset_buffer)
+    -- map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+    -- map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+    -- map("n", "<leader>ss", gs.stage_buffer)
+    -- map("n", "<leader>su", gs.undo_stage_hunk)
+    -- map("n", "<leader>sR", gs.reset_buffer)
     map("n", "<leader>sp", gs.preview_hunk)
     map("n", "<leader>sb", function()
       gs.blame_line({ full = true })

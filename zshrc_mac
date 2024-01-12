@@ -26,6 +26,7 @@ export NVM_LAZY=1
 export GOPATH=$HOME/go
 export GOPRIVATE=github.com/ono7/utils,github.com/ono7/other
 alias god='go build -gcflags="all=-N -l"'
+alias t='tail -F '
 
 
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$GOPATH/bin:$HOME/.rd/bin:$HOME/.luarocks/bin:/opt/homebrew/bin:$HOME/.npm-packages/bin:$HOME/local/bin:$HOME/local/node/bin:$HOME/local/yarn/bin:$HOME/bin:/usr/local/bin:/usr/local/share/dotnet:$HOME/.cargo/bin:$PATH:$HOME/nvim-macos/bin:$HOME/.fzf/bin"

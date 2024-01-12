@@ -225,6 +225,17 @@ m("v", ".", ":norm .<cr>", opt)
 k("n", "Q", "@qj", opt)
 k("x", "Q", ":norm @q<CR>", opt)
 
+
+local function hlsToggle()
+  if vim.o.hlsearch then
+    vim.o.hlsearch = false
+  else
+    vim.o.hlsearch = true
+  end
+end
+
+k("n", "<leader>h", hlsToggle, silent)
+
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
 
@@ -337,7 +348,7 @@ k('i', '(', function()
   return '()<Left>'
 end, { expr = true })
 
-k({'i'}, ')', function()
+k({ 'i' }, ')', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
