@@ -65,15 +65,15 @@ key = "Paste"
 action = "Copy"
 key = "Copy"
 
-[[keyboard.bindings]]
-chars = "\u0017"
-key = "Back"
-mods = "Command"
+# [[keyboard.bindings]] not needed on macos
+# chars = "\u0017"
+# key = "Back"
+# mods = "Command"
 
-[[keyboard.bindings]]
-chars = "\u0017"
-key = "Back"
-mods = "Alt"
+# [[keyboard.bindings]] not needed on macos
+# chars = "\u0017"
+# key = "Back"
+# mods = "Alt"
 
 [[keyboard.bindings]]
 chars = "\u0011"
