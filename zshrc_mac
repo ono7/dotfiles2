@@ -83,7 +83,7 @@ runner () {
   if ! command -v gls &>/dev/null; then
     npm install -g nodemon
   fi
-  if [ $# -eq 0 ]; then 
+  if [ $# -lt 2 ]; then 
     echo_green Examples
     echo_green runner go run main.go
     echo_green runner python -m flask.run
@@ -650,6 +650,8 @@ alias ls='ls --color'
 
 # less support colors
 alias less='less -R'
+alias l='less -R'
+alias m='more '
 
 export HISTFILE=~/.zsh_history
 # HISTSIZE should be > SAVEHIST or dups will show up

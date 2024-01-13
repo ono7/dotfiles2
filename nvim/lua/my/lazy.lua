@@ -45,7 +45,8 @@ require("lazy").setup({
   --     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   --   end
   -- },
-  { "catppuccin/nvim",        name = "catppuccin" },
+  { "ellisonleao/gruvbox.nvim", priority = 1000,    config = true, opts = ... },
+  { "catppuccin/nvim",          name = "catppuccin" },
   -- {
   --   "marko-cerovac/material.nvim",
   --   config = function()
