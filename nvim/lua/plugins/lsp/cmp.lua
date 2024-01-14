@@ -59,7 +59,7 @@ cmp_config.setup({
   },
   window = {
     completion = {
-      border = 'rounded',
+      border = '',
       -- scrollbar = '║',
       scrollbar = false,
       winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
