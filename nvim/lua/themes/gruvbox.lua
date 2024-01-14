@@ -72,6 +72,7 @@ require("gruvbox").setup({
     CursorLineNr = { fg = "#ffffff", bg = "none" },
     LineNr = { fg = "#4a483f", bg = "none" },
     Number = { fg = "#B586F8" },
+    Float = { fg = "#B586F8" },
     ["@field"] = { fg = "#ffffff", bg = "none" },
     ["@parameter"] = { fg = "#ef9c40", bg = "none" },
     ["@lsp.type.property"] = { fg = "#ffffff", bg = "none" },
@@ -135,3 +136,4 @@ vim.api.nvim_set_hl(0, "Error", { fg = "#e53f73", bg = "none" })
 vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "none" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#2f5293" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#2f5293", })
+vim.api.nvim_set_hl(0, "@method.call", { fg = "#ffffff" })
