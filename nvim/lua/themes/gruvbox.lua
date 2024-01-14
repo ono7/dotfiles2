@@ -1,4 +1,5 @@
--- Default options:
+-- inspired by `go doc http | bat -l go`, the bat cat replacement
+-- colors there look sweet
 require("gruvbox").setup({
   terminal_colors = false, -- add neovim terminal colors
   undercurl = true,
@@ -30,6 +31,7 @@ require("gruvbox").setup({
     Punctuation = { fg = "#ffffff" },
     Constant = { fg = "#ffffff" },
     CursorLineNr = { fg = "#ffffff", bg = "none" },
+    LineNr = { fg = "#4a483f", bg = "none" },
     ["@field"] = { fg = "#ffffff", bg = "none" },
     ["@parameter"] = { fg = "#ef9c40", bg = "none" },
     ["@lsp.type.property"] = { fg = "#ffffff", bg = "none" },
