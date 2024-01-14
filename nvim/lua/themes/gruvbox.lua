@@ -3,6 +3,7 @@
 
 local mycolors = {
   white = "#D9E0EE",
+  bright_white = "#ffffff",
   darker_black = "#191828",
   black = "#1E1D2D",  --  nvim bg
   black2 = "#252434",
@@ -118,8 +119,8 @@ vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#ceeac8" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#9eb0ce", fg = "#000000" })
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "#444d69" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#000000", fg = "#8186a1" })
-vim.api.nvim_set_hl(0, "Winbar", {})
-vim.api.nvim_set_hl(0, "WinbarNc", {})
+vim.api.nvim_set_hl(0, "Winbar", { fg = "#a89984" })
+vim.api.nvim_set_hl(0, "WinbarNc", { fg = "#a89984" })
 vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#242438" })
 -- vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#474a59" })
 vim.api.nvim_set_hl(0, "@text.uri", { fg = "#8186a1", undercurl = true })
@@ -129,5 +130,6 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#8186a1" })
 vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#8186a1" })
 vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#8186a1" })
 -- vim.api.nvim_set_hl(0, "Comment", { fg = "#8186a1" })
-vim.api.nvim_set_hl(0, "Error", { fg = "#e53f73", bg = "none" })
 vim.api.nvim_set_hl(0, "Folded", { link = "Comment" })
+vim.api.nvim_set_hl(0, "Error", { fg = "#e53f73", bg = "none" })
+vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "none" })
