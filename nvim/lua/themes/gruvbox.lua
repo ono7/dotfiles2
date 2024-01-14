@@ -27,6 +27,7 @@ require("gruvbox").setup({
   overrides = {
     String = { fg = "#E4DB82" },
     Normal = { fg = "#ffffff" },
+    ModeMsg = { fg = "#ffffff" },
     Variable = { fg = "#ffffff" },
     Punctuation = { fg = "#ffffff" },
     Constant = { fg = "#ffffff" },
