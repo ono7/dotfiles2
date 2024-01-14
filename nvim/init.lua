@@ -521,6 +521,7 @@ local packages = {
   "plugins.lsp.mason",        -- mason first, or lsp breaks
   "plugins.gitsigns",
   -- "plugins.theme_catppuccin", -- 2
+  "themes.gruvbox", -- 2
   "plugins.null_ls",
   -- "plugins.bufferline",
   "plugins.colorizer",
