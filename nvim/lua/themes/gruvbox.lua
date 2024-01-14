@@ -18,7 +18,11 @@ require("gruvbox").setup({
   invert_intend_guides = false,
   inverse = true,    -- invert background for search, diffs, statuslines and errors
   contrast = "hard", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
+  palette_overrides = {
+    bright_green = "#B3E053",
+    green = "#B3E053",
+    orange = "#ef9c40"
+  },
   overrides = {
     String = { fg = "#E4DB82" },
     Normal = { fg = "#ffffff" },
@@ -26,6 +30,9 @@ require("gruvbox").setup({
     Punctuation = { fg = "#ffffff" },
     Constant = { fg = "#ffffff" },
     CursorLineNr = { fg = "#ffffff", bg = "none" },
+    ["@field"] = { fg = "#ffffff", bg = "none" },
+    ["@parameter"] = { fg = "#ef9c40", bg = "none" },
+    ["@lsp.type.property"] = { fg = "#ffffff", bg = "none" },
     ["@punctuation.delimiter"] = { fg = "#ffffff" },
     ["@variable"] = { fg = "#ffffff" },
     ["@keyword.function"] = { fg = "#84D6EC" },
