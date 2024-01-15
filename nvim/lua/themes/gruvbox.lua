@@ -110,13 +110,15 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = true,
 })
+
 vim.cmd("colorscheme gruvbox")
 vim.api.nvim_set_hl(0, "cmpSelect", { bg = mycolors.baby_pink, fg = mycolors.darker_black })
-vim.api.nvim_set_hl(0, "WildMenu", { bg = "#151d2a"})
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "#151d2a"})
+vim.api.nvim_set_hl(0, "WildMenu", { bg = "#151d2a" })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#151d2a" })
 vim.api.nvim_set_hl(0, "WildMenuSelect", { bg = mycolors.baby_pink, fg = mycolors.darker_black })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })
 vim.api.nvim_set_hl(0, "cmpBorder", { fg = "#2b2c36" })
+vim.api.nvim_set_hl(0, "MatchParen", { bg = "#43536d", fg = "#ef9c40" })
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#2b3b55" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "#2b3b55" })
 vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#ceeac8" })
