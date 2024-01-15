@@ -62,7 +62,7 @@ cmp_config.setup({
       border = '',
       -- scrollbar = '║',
       scrollbar = false,
-      winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
+      winhighlight = "Normal:Pmenu,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
     },
     documentation = {
       border = 'rounded',
