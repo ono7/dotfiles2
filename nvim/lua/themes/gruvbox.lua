@@ -1,13 +1,17 @@
 -- inspired by `go doc http | bat -l go`, the bat cat replacement
 -- colors there look sweet
 
+-- NOTE(jlima): background = "0x1e293b" this background makes this theme standout
+-- currently the background is set in alacritty colorscheme
+
+
 local mycolors = {
   white = "#D9E0EE",
   bright_white = "#ffffff",
   darker_black = "#191828",
-  black = "#1E1D2D",  --  nvim bg
+  black = "#1E1D2D",   --  nvim bg
   black2 = "#252434",
-  one_bg = "#2d2c3c", -- real bg of onedark
+  one_bg = "0x1e293b", -- bg for this theme (jlima)
   one_bg2 = "#363545",
   one_bg3 = "#3e3d4d",
   grey = "#474656",
