@@ -18,6 +18,15 @@ c({ "FileType", "BufEnter", "FocusGained" }, {
   group = create_augroup("git_branch_name", { clear = true }),
 })
 
+-- -- TODO(jlima): fix telescope c-f keybind
+-- c("CmdWinEnter", {
+--   pattern = "*",
+--   callback = function()
+--     vim.keymap.del("n", "<c-f>", { buffer = true })
+--   end,
+--   group = create_augroup("_cmd_win", { clear = true }),
+-- })
+
 c("TextYankPost", {
   pattern = "*",
   callback = function()

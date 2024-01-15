@@ -31,16 +31,16 @@ local function get_git_root()
 end
 
 local find_all_files_cmd = {
-"fd",
-"--type", "f",
-"--type", "l",
-"--follow",
-"--color=never",
-"--hidden",
-"--no-ignore",
-"-g '!.*cache/*'",
-"-g '!.git/*'",
-"-E", "*.hex",
+  "fd",
+  "--type", "f",
+  "--type", "l",
+  "--follow",
+  "--color=never",
+  "--hidden",
+  "--no-ignore",
+  "-g '!.*cache/*'",
+  "-g '!.git/*'",
+  "-E", "*.hex",
 }
 
 configs.setup({
@@ -107,7 +107,7 @@ end, opt)
 --   require('telescope.builtin').find_files()
 -- end, opt)
 
-k({ "n", "x" }, "<c-f>",
+k("n", "<c-f>",
   function()
     require('telescope.builtin').git_files({ show_untracked = true, no_ignore = false, hidden = true })
   end,
