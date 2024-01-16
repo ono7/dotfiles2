@@ -23,7 +23,7 @@ white = "0xc8d3f5"
 yellow = "0xffc777"
 
 [colors.cursor]
-cursor = "#fffff2"
+cursor = "#4fc2e8"
 text = "#000000"
 
 [colors.normal]
@@ -37,7 +37,13 @@ white = "0x828bb8"
 yellow = "0xffc777"
 
 [colors.primary]
-background = "0x222436"
+# background = "0x222436"
+# background = "0x1b1d29"
+# background = "0x1e273b"
+# background = "0x17202e"
+# background = "0x151d2a"
+background = "0x1e293b"
+# background = "0x111721"
 foreground = "0xc8d3f5"
 
 [cursor]
@@ -62,8 +68,15 @@ TERM = "xterm-256color"
 size = 15.0
 
 [font.normal]
-family = "MesloLGS Nerd Font Mono"
-# family = "MonoLisaMono Nerd Font"
+family = "MonoLisaNoliga Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "MonoLisaNoliga Nerd Font"
+style = "Italic"
+
+[font.bold]
+family = "MonoLisaNoliga Nerd Font"
 
 [font.offset]
 x = 0
@@ -228,7 +241,8 @@ program = "ubuntu"
 decorations = "full"
 dynamic_padding = false
 dynamic_title = true
-# opacity = 0.99
+# opacity = 0.98
+blur = true
 startup_mode = "Windowed"
 
 [window.dimensions]
