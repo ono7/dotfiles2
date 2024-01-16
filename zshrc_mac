@@ -3,6 +3,14 @@
 # uset ttyctl -f to freeze terminal preventing any new changes to the tty
 # ttyctl -u unfreezes the terminal
 
+# WSL keyrate settings
+# [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+# "AutoRepeatDelay"="200" 
+# "AutoRepeatRate"="6" 
+# "DelayBeforeAcceptance"="0" 
+# "Flags"="59" 
+# "BounceTime"="0"
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
