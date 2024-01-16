@@ -61,10 +61,11 @@ require("gruvbox").setup({
   inverse = true,    -- invert background for search, diffs, statuslines and errors
   contrast = "hard", -- can be "hard", "soft" or empty string
   palette_overrides = {
-    bright_green = "#B3E053",
-    green = "#B3E053",
-    orange = "#ef9c40",
-    GruvboxOrange = "#ef9c40"
+    bright_green  = "#B3E053",
+    green         = "#B3E053",
+    orange        = "#ef9c40",
+    GruvboxOrange = "#ef9c40",
+    GruvboxRed    = "#e53f73",
   },
   overrides = {
     String = { fg = "#E4DB82" },
