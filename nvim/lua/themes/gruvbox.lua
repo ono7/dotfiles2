@@ -63,7 +63,8 @@ require("gruvbox").setup({
   palette_overrides = {
     bright_green = "#B3E053",
     green = "#B3E053",
-    orange = "#ef9c40"
+    orange = "#ef9c40",
+    GruvboxOrange = "#ef9c40"
   },
   overrides = {
     String = { fg = "#E4DB82" },
