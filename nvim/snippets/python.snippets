@@ -40,3 +40,59 @@ snippet logging "logger for python"
   #     except Exception as e:
   #         logger.error("An error occurred", exc_info=True)
   ${0}
+
+snippet apilog "logger for api"
+  import logging
+  from requests.cookies import cookielib
+
+  ${1}_logger = logging.getLogger(__name__)
+
+  ${1}_formatter = logging.Formatter(
+      "%(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s"
+  )
+  ${1}_handler = logging.StreamHandler()
+  ${1}_handler.setFormatter(${1}_formatter)
+
+  # set debug level
+  _debuglevel = 2
+
+  # get other module loggers
+  urllib3_logger = logging.getLogger("requests.packages.urllib3")
+  urllib3_retry_logger = logging.getLogger("urllib3.util.retry")
+  cookie_logger = logging.getLogger("http.cookiejar")
+
+
+  # remove existing handlers
+  ${1}_logger.handlers = []
+  urllib3_logger.handlers = []
+  urllib3_retry_logger.handlers = []
+  cookie_logger.handlers = []
+
+  if _debuglevel == 2:
+      # TODO(jlima): this can problably be removed
+      cookie_logger.addHandler(${1}_handler)
+      cookie_logger.setLevel(logging.DEBUG)
+      # cookielib.debug = False
+      ${1}_logger.addHandler(${1}_handler)
+      ${1}_logger.setLevel(logging.DEBUG)
+
+  ${1}_logger.debug("TEST MSG")
+
+  """
+  other examples
+
+  if not sensitive:
+      try:
+          api_logger.debug('RESPONSE HEADERS: %s\n', json.dumps(
+              json.loads(text_type(response.headers)), indent=4))
+      except ValueError:
+          api_logger.debug('RESPONSE HEADERS: %s\n', text_type(response.headers))
+      try:
+          api_logger.debug('RESPONSE: %s\n', json.dumps(response.json(), indent=4))
+      except ValueError:
+          api_logger.debug('RESPONSE: %s\n', text_type(response.text))
+  else:
+      api_logger.debug('RESPONSE NOT LOGGED (sensitive content)')
+
+  api_logger.debug("Error, non-200 response received: %s", response.status_code)
+  """
