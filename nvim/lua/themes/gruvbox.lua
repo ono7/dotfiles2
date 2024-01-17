@@ -8,6 +8,7 @@
 local mycolors = {
   white = "#D9E0EE",
   normal = "#e4e0da",
+  green = "#B3E053",
   -- normal = "#dcd6cd",
   bright_white = "#ffffff",
   darker_black = "#191828",
@@ -39,7 +40,6 @@ local mycolors = {
   pmenu_bg = "#ABE9B3",
   folder_bg = "#9DBBF4",
   lavender = "#c7d1ff",
-  green = "#ceeac8",
   mauve = "#caa1fd"
 }
 
@@ -63,8 +63,8 @@ require("gruvbox").setup({
   inverse = true,    -- invert background for search, diffs, statuslines and errors
   contrast = "hard", -- can be "hard", "soft" or empty string
   palette_overrides = {
-    bright_green  = "#B3E053",
-    green         = "#B3E053",
+    bright_green  = mycolors.green,
+    green         = mycolors.green,
     orange        = "#ef9c40",
     GruvboxOrange = "#ef9c40",
     GruvboxRed    = "#e53f73",
@@ -89,12 +89,12 @@ require("gruvbox").setup({
     ["@keyword.function"] = { fg = "#84D6EC" },
     ["@type"] = { fg = "#84D6EC" },
     ["@method"] = { fg = "#84D6EC" },
-    ["@method.call"] = { fg = "#B3E053" },
+    ["@method.call"] = { fg = mycolors.green },
     Type = { fg = "#84D6EC" },
     ["@punctuation.bracket"] = {},
     ["@constructor"] = {},
-    ["@type.builtin"] = { fg = "#B3E053" },
-    ["@function.call"] = { fg = "#B3E053" },
+    ["@type.builtin"] = { fg = mycolors.green },
+    ["@function.call"] = { fg = mycolors.green },
     ["@number"] = { fg = "#B586F8" },
     ["@boolean"] = { fg = "#B586F8" },
     Boolean = { fg = "#B586F8" },
