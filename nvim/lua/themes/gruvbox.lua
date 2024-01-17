@@ -86,7 +86,7 @@ require("gruvbox").setup({
     ["@lsp.type.property"] = { fg = mycolors.normal, bg = "none" },
     ["@punctuation.delimiter"] = { fg = mycolors.normal },
     ["@variable"] = { fg = mycolors.normal },
-    ["@keyword.function"] = { fg = "#84D6EC" },
+    ["@keyword.function"] = { fg = "#84D6EC", italic = true },
     ["@type"] = { fg = "#84D6EC" },
     ["@method"] = { fg = "#84D6EC" },
     ["@method.call"] = { fg = mycolors.green },
