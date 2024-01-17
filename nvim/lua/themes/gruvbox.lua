@@ -7,6 +7,7 @@
 
 local mycolors = {
   white = "#D9E0EE",
+  normal = "#e4e0da",
   bright_white = "#ffffff",
   darker_black = "#191828",
   black = "#1E1D2D",   --  nvim bg
@@ -69,21 +70,21 @@ require("gruvbox").setup({
   },
   overrides = {
     String = { fg = "#E4DB82" },
-    Normal = { fg = "#ffffff" },
-    ModeMsg = { fg = "#ffffff" },
-    GruvboxFg1 = { fg = "#ffffff" },
-    Variable = { fg = "#ffffff" },
-    Punctuation = { fg = "#ffffff" },
-    Constant = { fg = "#ffffff" },
-    CursorLineNr = { fg = "#ffffff", bg = "none" },
+    Normal = { fg = mycolors.normal },
+    ModeMsg = { fg = mycolors.normal },
+    GruvboxFg1 = { fg = mycolors.normal },
+    Variable = { fg = mycolors.normal },
+    Punctuation = { fg = mycolors.normal },
+    Constant = { fg = mycolors.normal },
+    CursorLineNr = { fg = mycolors.normal, bg = "none" },
     LineNr = { fg = "#4a483f", bg = "none" },
     Number = { fg = "#B586F8" },
     Float = { fg = "#B586F8" },
-    ["@field"] = { fg = "#ffffff", bg = "none" },
+    ["@field"] = { fg = mycolors.normal, bg = "none" },
     ["@parameter"] = { fg = "#ef9c40", bg = "none" },
-    ["@lsp.type.property"] = { fg = "#ffffff", bg = "none" },
-    ["@punctuation.delimiter"] = { fg = "#ffffff" },
-    ["@variable"] = { fg = "#ffffff" },
+    ["@lsp.type.property"] = { fg = mycolors.normal, bg = "none" },
+    ["@punctuation.delimiter"] = { fg = mycolors.normal },
+    ["@variable"] = { fg = mycolors.normal },
     ["@keyword.function"] = { fg = "#84D6EC" },
     ["@type"] = { fg = "#84D6EC" },
     ["@method"] = { fg = "#84D6EC" },
@@ -147,7 +148,7 @@ vim.api.nvim_set_hl(0, "Error", { fg = "#e53f73", bg = "none" })
 vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "none" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#2f5293" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#2f5293", })
-vim.api.nvim_set_hl(0, "@method.call", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "@method.call", { fg = mycolors.normal })
 vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#29354a" })
 vim.api.nvim_set_hl(0, "GruvboxOrange", { fg = "#ef9c40" })
 vim.api.nvim_set_hl(0, "JinjaVarBlock", { fg = "#ef9c40" })
