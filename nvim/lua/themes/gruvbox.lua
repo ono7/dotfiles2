@@ -7,7 +7,8 @@
 
 local mycolors = {
   white = "#D9E0EE",
-  normal = "#e4e0da",
+  -- normal = "#e4e0da",
+  normal = "#dcd6cd",
   bright_white = "#ffffff",
   darker_black = "#191828",
   black = "#1E1D2D",   --  nvim bg
