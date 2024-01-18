@@ -29,16 +29,19 @@ snippet filter "ansible filter" b
 snippet logging "logger for python"
   import logging
 
-  logging.basicConfig(level=logging.INFO, format='%(asctime)s: %(name)s - %(levelname)s - %(funcName)s - %(message)s')
-  logger = logging.getLogger(__name__)
+  ${1}_logger = logging.getLogger(__name__)
 
-  # def my_function():
-  #     logger.info("This is an info message")
-  #     try:
-  #         # Some operation...
-  #         pass
-  #     except Exception as e:
-  #         logger.error("An error occurred", exc_info=True)
+  ${1}_handler = logging.StreamHandler()
+  ${1}_logger.addHandler(${1}_handler)
+
+  def SetDebug(debugLevel=None):
+      ${1}_logger.setLevel(logging.DEBUG if debugLevel == 2 else logging.INFO)
+      ${1}_formatter = logging.Formatter('%(asctime)s %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s')
+
+      # Set the formatter on the handler
+      ${1}_handler.setFormatter(${1}_formatter)
+
+  SetDebug(2)
   ${0}
 
 snippet apilog "logger for api"
