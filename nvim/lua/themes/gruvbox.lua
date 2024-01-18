@@ -7,7 +7,8 @@
 
 local mycolors = {
   white = "#D9E0EE",
-  normal = "#e4e0da",
+  -- normal = "#e4e0da",
+  normal = "#d9d4cb",
   green = "#B3E053",
   -- normal = "#dcd6cd",
   bright_white = "#ffffff",
@@ -106,7 +107,7 @@ require("gruvbox").setup({
     ["@repeat"] = { fg = "#e53f73", italic = true },
     ["@include"] = { fg = "#e53f73" },
     ["@operator"] = { fg = "#e53f73" },
-    ["Comment"] = { fg = "#747160" },
+    ["Comment"] = { fg = "#e4e0da" },
     Conditional = { fg = "#e53f73" },
     ErrorMsg = { fg = "#e53f73", bg = "none" },
     ["@text.todo"] = { link = "ErrorMsg" },
