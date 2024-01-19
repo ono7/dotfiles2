@@ -12,9 +12,18 @@ snippet h "header" b
     gather_facts: false
 
     tasks:
-      - name: ${0}
+      ${0}
 
 snippet debug "debug task" b
-    ansible.builtin.debug:
-      msg: |
-            ${0}
+    - name: ${1}
+      ansible.builtin.debug:
+        msg: |
+              ${0}
+
+snippet shell "debug task" b
+    - name: ${1}
+      ansible.builtin.shell: ${0}
+
+snippet command "debug task" b
+    - name: ${1}
+      ansible.builtin.command: ${0}
