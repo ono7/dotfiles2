@@ -13,8 +13,11 @@ snippet dl "debug" b
 snippet st "debug" b
   import pdb;pdb.set_trace()
 
-snippet dr "remote debug" b
+snippet rst "remote debug" b
   import rpdb;rpdb.set_trace()
+
+snippet doc "docstring" b
+  """${0}"""
 
 snippet filter "ansible filter" b
   def ${1}(${2}):
