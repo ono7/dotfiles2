@@ -48,11 +48,16 @@ import json
 logging.basicConfig(
     filename="ansible_tasks.log",
     level=logging.INFO,
-    format="[%(levelname)s - %(asctime)s] %(message)s",
+    # format="[%(levelname)s - %(asctime)s] %(message)s",
+    format="[%(asctime)s] %(message)s",
     filemode="a",
 )
 logger = logging.getLogger(__name__)
 
+
+_status_fatal = r"[ ❌ FATAL ]"
+_status_success =  r"[ ✅ OK ]"
+_status_warning = r"[ ✅ WARNING ]"
 
 def wrap_message(message, header="", sep="-"):
     """Error message wrapper"""
@@ -60,12 +65,12 @@ def wrap_message(message, header="", sep="-"):
     total_len = 90
     header_len = len(header) + 2
     header_padding = (total_len - header_len) // 2
-    header = sep * header_padding + f" {header} " + sep * header_padding
+    header = sep * header_padding + header + sep * header_padding
 
     if len(header) < total_len:
         header += sep
 
-    sep = "" # disabled for now 2024-01-19 15:18
+    # sep = "" # disabled for now 2024-01-19 15:18
     footer_text = sep
     footer_padding = (total_len - len(footer_text)) // 2
     footer = sep * footer_padding + footer_text + sep * footer_padding
@@ -129,7 +134,7 @@ class CallbackModule(CallbackBase):
         if result._result.get("failed", False):
             return  # Skip logging failed events
         task = result._task
-        logger.info(f"[ OK! ✅ ] ({self.playbook_name}) Task: {task.name}")
+        logger.info(f"{_status_success} ({self.playbook_name}) Task: {task.name}")
 
     def v2_runner_item_on_ok(self, result):
         """not implemented, this could get noisy, only report failures"""
@@ -143,26 +148,26 @@ class CallbackModule(CallbackBase):
         else:
             result._result.setdefault("my_msg", item)
             _raw = get_errors_from_task(result)
-            msg = wrap_message(_raw, header="ITEM FATAL ERROR")
+            msg = wrap_message(_raw, header=_status_fatal)
         logger.error(
-            f"[ ITEM FAILED! ❌] ({self.playbook_name}) Task(loop): {result.task_name} \n{msg}"
+            f"{_status_fatal} ({self.playbook_name}) Task(loop): {result.task_name} \n{msg}"
         )
 
     def v2_runner_on_failed(self, result, ignore_errors=False):
         task = result._task
         _raw = get_errors_from_task(result)
-        msg = wrap_message(_raw, header="FATAL ERROR")
+        msg = wrap_message(_raw, header=_status_fatal)
 
         if self.is_sensitive_task(result):
             logger.error(
-                f"[ FAILED! ❌] ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
+                f"{_status_fatal} ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
             )
         elif result._task_fields.get("ignore_errors", False):
-            msg = wrap_message(_raw, header="WARNING")
-            logger.warn(f"[ OK! ✅ ] ({self.playbook_name}) Task: {task.name} \n{msg}")
+            msg = wrap_message(_raw, header=_status_warning)
+            logger.warn(f"{_status_success} ({self.playbook_name}) Task: {task.name} \n{msg}")
             return
 
         else:
             logger.error(
-                f"[ FAILED! ❌] ({self.playbook_name}) Task: {task.name} \n{msg}"
+                f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
             )
