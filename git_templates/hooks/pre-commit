@@ -17,3 +17,13 @@
 # fi
 
 # exit 0
+
+
+branch_name=$(git symbolic-ref --short HEAD)
+valid_branch_regex="^(feature|bugfix|patch)/[a-zA-Z0-9._-]+$"
+
+if ! [[ $branch_name =~ $valid_branch_regex ]]; then
+  echo "invalid branch name, does not meet standards"
+  echo "valid names: $valid_branch_regex"
+  exit 1
+fi 
