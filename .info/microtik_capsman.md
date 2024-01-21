@@ -1,3 +1,14 @@
+# capsman ax
+
+- on main
+  /capsman/set enabled=yes
+
+- on clients
+  cap set enabled=yes discovery-interfaces=ether1
+
+  set wifi1 configuration.manager=capsman
+  set wifi2 configuration.manager=capsman
+
 # youtube: CAPsMAN WiFi Layer 1 Optimisation
 
 https://www.youtube.com/watch?v=nCB4hL0f1VQ
