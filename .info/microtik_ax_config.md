@@ -1,11 +1,10 @@
 80Mzh wide channels (RANGES), for AX
+
 ```
-Channel 42: 5210 MHz to 5290 MHz
-Channel 58: 5290 MHz to 5370 MHz
-Channel 106: 5510 MHz to 5590 MHz
-Channel 122: 5610 MHz to 5690 MHz
-Channel 138: 5735 MHz to 5815 MHz
-Channel 155: 5775 MHz to 5855 MHz
+5Ghz AX frequency ranges for 80Mhz wide channel
+5180-5240
+5500-5560
+5260-5320
 ```
 
 
