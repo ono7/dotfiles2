@@ -70,10 +70,10 @@ key = "Copy"
 # key = "Back"
 # mods = "Command"
 
-# [[keyboard.bindings]] not needed on macos
-# chars = "\u0017"
-# key = "Back"
-# mods = "Alt"
+[[keyboard.bindings]]
+action = "none"
+key = "H"
+mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u0011"

@@ -726,14 +726,16 @@ fi
 # freeze tty
 ttyctl -f
 
+# ttyctl -u to temporarely unlock the tty
+
 # prevent terminal from getting garbled up
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
 
-function reset_broken_terminal () {
-	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
-}
+# function reset_broken_terminal () {
+# 	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
+# }
 
-add-zsh-hook -Uz precmd reset_broken_terminal
+# add-zsh-hook -Uz precmd reset_broken_terminal
 
 alias pb="ansible-playbook "
 # remember directories
@@ -758,7 +760,7 @@ function d () {
   fi
 }
 
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
 
 [ ! -d $HOME/.cache/zsh/ ] && mkdir -p $HOME/.cache/zsh/
 

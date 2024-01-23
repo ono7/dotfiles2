@@ -1,0 +1,3 @@
+# tools
+
+`binwalk <binary>`
