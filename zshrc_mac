@@ -269,6 +269,21 @@ rmtag () {
   git tag -d $1;git push --delete origin $1
 }
 
+# lf file manager, drops you back off where you are when you exit lf
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
 # copies data to tmux clipboard, echo 'test' | copy
 # c () {
 #   tmux loadb -
