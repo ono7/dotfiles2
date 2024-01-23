@@ -17,10 +17,10 @@ null_ls.setup({
   debug = false,
   sources = {
     -- diagnostics.pylint
-    diagnostics.write_good.with({
-      -- npm install -g write-good
-      filetypes = { "text" },
-    }),
+    -- diagnostics.write_good.with({
+    --   -- npm install -g write-good
+    --   filetypes = { "text" },
+    -- }),
     -- pip install black pylint
     format.black.with({
       command = MYHOME .. "/.virtualenvs/prod3/bin/python3",
