@@ -48,4 +48,3 @@ https://stackoverflow.com/questions/39798542/using-jq-to-fetch-key-value-from-js
 `cat test.json | jq -r '.repositories[] | "\(.namespace)/\(.name)"'`
 
 > rhel12/rhel6.6
-> rhel12/rhel7
