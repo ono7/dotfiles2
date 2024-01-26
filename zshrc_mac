@@ -5,10 +5,10 @@
 
 # WSL keyrate settings
 # [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
-# "AutoRepeatDelay"="200" 
-# "AutoRepeatRate"="6" 
-# "DelayBeforeAcceptance"="0" 
-# "Flags"="59" 
+# "AutoRepeatDelay"="200"
+# "AutoRepeatRate"="6"
+# "DelayBeforeAcceptance"="0"
+# "Flags"="59"
 # "BounceTime"="0"
 
 RED='\033[0;31m'
@@ -91,7 +91,7 @@ runner () {
   if ! command -v gls &>/dev/null; then
     npm install -g nodemon
   fi
-  if [ $# -lt 2 ]; then 
+  if [ $# -lt 2 ]; then
     echo_green Examples
     echo_green runner go run main.go
     echo_green runner python -m flask.run
@@ -395,7 +395,7 @@ dotc () {
 va () {
   if [[ -d $(git rev-parse --show-toplevel 2>/dev/null)/venv ]]; then
     source $(git rev-parse --show-toplevel)/venv/bin/activate
-  else 
+  else
     source $HOME/.virtualenvs/prod3/bin/activate
   fi
   echo $(which python3)
@@ -686,6 +686,7 @@ HISTDUP=erase
 
 # The meaning of these options can be found in man page of `zshoptions`.
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST # remove dups first
 setopt INC_APPEND_HISTORY # record command immediatly instead of waiting until exit
@@ -693,6 +694,8 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
 setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
 setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+
+setopt interactivecomments # allow comments in interactive mode
 
 # add space to end of output if none was provided
 setopt PROMPT_SP
@@ -702,6 +705,16 @@ setopt NO_BEEP
 
 # do not send HUP when exiting, makes exiting faster
 setopt NO_HUP
+setopt nonomatch # hide error messages if there is no match for the pattern
+setopt notify # repor the status of background tasks emmediately
+setopt numericglobsort # sort filenames numerically
+setopt promptsubst # enablne command substitution in prompt
+
+
+# hide EOL sign ('%')
+PROMPT_EOL_MARK=""
+
+bindkey ' ' magic-space # do history expansion on space
 
 # disable flow control
 # setopt NO_FLOW_CONTROL
