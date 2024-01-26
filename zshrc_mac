@@ -28,7 +28,7 @@ toggle() {
   fg
 }
 zle -N toggle
-bindkey "^Z" toggle
+bindkey '^Z' toggle
 
 export NVM_LAZY=1
 export GOPATH=$HOME/go
@@ -609,7 +609,7 @@ _d () {
 
 # _d declear as widget for zsh
 zle -N _d
-bindkey -s "^G" _d^M
+bindkey -s '^G' _d^M
 
 vs () {
   vim "$(fd --type f -HI --exclude "venv" --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
@@ -630,7 +630,7 @@ _vs () {
 
 # _vs declear as widget for zsh
 zle -N _vs
-bindkey -s "^S" _vs^M
+bindkey -s '^S' _vs^M
 
 # ci" in vi-mode
 autoload -U select-quoted
