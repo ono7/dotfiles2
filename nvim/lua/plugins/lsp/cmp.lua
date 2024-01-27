@@ -51,6 +51,38 @@ vim.opt.shortmess:append("c")
 local types = require("cmp.types")
 -- local luasnip = require("luasnip")
 
+local preferred_sources = {
+  { name = "nvim_lsp",                priority = 1,        group_index = 1,   max_item_count = 200, keyword_length = 1 },
+  { name = "nvim_lsp_signature_help", max_item_count = 20, priority = 3,      keyword_length = 1 },
+  { name = "path",                    max_item_count = 20, keyword_length = 1 },
+}
+
+local function tooBig(bufnr)
+  local max_filesize = 10 * 1024 -- 100 KB
+  local check_stats = (vim.uv or vim.loop).fs_stat
+  local ok, stats = pcall(check_stats, vim.api.nvim_buf_get_name(bufnr))
+  if ok and stats and stats.size > max_filesize then
+    return true
+  else
+    return false
+  end
+end
+
+-- if files are too big disable buffer source
+-- other wise, enable buffer source
+vim.api.nvim_create_autocmd("BufRead", {
+  group = vim.api.nvim_create_augroup("CmpBufferDisableGrp", { clear = true }),
+  callback = function(ev)
+    local sources = preferred_sources
+    if not tooBig(ev.buf) then
+      sources[#sources + 1] = { name = "buffer", keyword_length = 4 }
+    end
+    cmp_config.setup.buffer({
+      sources = cmp_config.config.sources(sources),
+    })
+  end,
+})
+
 cmp_config.setup({
   preselect = types.cmp.PreselectMode.None, -- do not randomly select item from menu
   snippet = {
@@ -97,12 +129,6 @@ cmp_config.setup({
         fallback()
       end
     end, { "i", "s" }),
-  },
-  sources = {
-    { name = "nvim_lsp",                priority = 1,        group_index = 1,   max_item_count = 200, keyword_length = 1 },
-    { name = "nvim_lsp_signature_help", max_item_count = 20, priority = 3,      keyword_length = 1 },
-    { name = "path",                    max_item_count = 20, keyword_length = 1 },
-    { name = "buffer",                  max_item_count = 20, keyword_length = 3 },
   },
   performance = {
     trigger_debounce_time = 500,

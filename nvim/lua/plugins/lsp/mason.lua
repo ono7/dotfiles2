@@ -159,9 +159,27 @@ local pyright_opts = {
   },
 }
 
-require("lspconfig").pyright.setup(handle_lsp(lsp_opts, pyright_opts))
+-- nvim_lsp.pyright.setup(handle_lsp(lsp_opts, pyright_opts))
 
-require("lspconfig").terraformls.setup({})
+
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  settings = {
+    pyright = {
+      autoImportCompletion = true
+    },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = 'off'
+      }
+    }
+  }
+}
+
+-- require("lspconfig").terraformls.setup({})
 
 nvim_lsp.lua_ls.setup({
   Lua = {
