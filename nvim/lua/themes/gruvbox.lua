@@ -109,7 +109,7 @@ require("gruvbox").setup({
     ["@operator"] = { fg = "#e53f73" },
     ["Comment"] = { fg = "#696757" },
     Conditional = { fg = "#e53f73" },
-    ErrorMsg = { fg = "#e53f73", bg = "none" },
+    ErrorMsg = { fg = "#d3869b", bg = "none" },
     ["@text.todo"] = { link = "ErrorMsg" },
     ["@text.danger.comment"] = { link = "ErrorMsg" },
     ["@text.note.comment"] = { link = "Normal" },
@@ -147,6 +147,8 @@ vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#8186a1" })
 -- vim.api.nvim_set_hl(0, "Comment", { fg = "#8186a1" })
 vim.api.nvim_set_hl(0, "Folded", { link = "Comment" })
 vim.api.nvim_set_hl(0, "Error", { fg = "#e53f73", bg = "none" })
+-- vim.api.nvim_set_hl(0, "Error", { fg = "#d3869b", bg = "none" })
+
 vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "none" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#2f5293" })
 vim.api.nvim_set_hl(0, "Search", { bg = "#2f5293", })
