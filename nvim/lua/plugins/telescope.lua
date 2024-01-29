@@ -47,6 +47,9 @@ configs.setup({
   defaults = {
     previewer = false,
     preview_cutoff = 1,
+    path_display = {
+      "smart"
+    },
     layout_strategy = "flex", -- flex (shows preview)
     file_ignore_patterns = {
       ".git/",
