@@ -95,11 +95,11 @@ configs.setup({
 })
 
 
-k("n", "<c-p>", function() require("telescope.builtin").oldfiles() end, opt)
+k("n", "<c-p>", function() require("telescope.builtin").oldfiles({ previewer = false, shorten_path = true }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
   -- require('telescope.builtin').find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
-  require('telescope.builtin').find_files({ no_ignore = false, hidden = true })
+  require('telescope.builtin').find_files({ no_ignore = false, hidden = true, previewer = false, shorten_path = true })
 end, opt)
 
 -- k({ "n", "x" }, "<c-f>", function()
@@ -109,7 +109,7 @@ end, opt)
 
 k("n", "<leader>ff",
   function()
-    require('telescope.builtin').git_files({ show_untracked = true, no_ignore = false, hidden = true })
+    require('telescope.builtin').git_files({ show_untracked = true, no_ignore = false, hidden = true, previewer = false, shorten_path = true })
   end,
   silent)
 
