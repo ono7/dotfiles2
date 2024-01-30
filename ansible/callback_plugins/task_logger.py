@@ -12,11 +12,11 @@
 
     DESCRIPTION:
 
-    This callback module interceps task events and creates a log file with each
-    task's final status and errors.
+    This callback module hooks into ansible events and creates a log entry for each task
+    in to a log file that can be used for reporting.
 
-    Tasks that are set to "ignore_errors: true" are not logged due to the nature
-    of the ignore_errors directive.
+    Tasks that are set to "ignore_errors: true" are set to warn status here since the intent
+    is to continue playbook execution when the flag is set.
 
     To skip logging any task output/errors that could leak sensitive_task data mark
     there are two ways supported to skip logging task ouput (but still report failure):
@@ -43,12 +43,13 @@
 import logging
 from pathlib import Path
 from ansible.plugins.callback import CallbackBase
-import json
+from ansible.executor.task_result import TaskResult
+
+log_file_name = "ansible_tasks.log"
 
 logging.basicConfig(
-    filename="ansible_tasks.log",
+    filename=log_file_name,
     level=logging.INFO,
-    # format="[%(levelname)s - %(asctime)s] %(message)s",
     format="[%(asctime)s] %(message)s",
     filemode="a",
 )
@@ -56,13 +57,14 @@ logger = logging.getLogger(__name__)
 
 
 _status_fatal = r"[ ❌ FATAL ]"
-_status_success =  r"[ ✅ OK ]"
-_status_warning = r"[ ✅ WARNING ]"
+_status_success = r"[ ✅ OK ]"
+_status_warning = r"[ !! WARNING !! ]"
+
 
 def wrap_message(message, header="", sep="-"):
     """Error message wrapper"""
 
-    total_len = 90
+    total_len = 100
     header_len = len(header) + 2
     header_padding = (total_len - header_len) // 2
     header = sep * header_padding + header + sep * header_padding
@@ -70,13 +72,7 @@ def wrap_message(message, header="", sep="-"):
     if len(header) < total_len:
         header += sep
 
-    # sep = "" # disabled for now 2024-01-19 15:18
-    footer_text = sep
-    footer_padding = (total_len - len(footer_text)) // 2
-    footer = sep * footer_padding + footer_text + sep * footer_padding
-
-    if len(footer) < total_len:
-        footer += sep
+    footer = sep * len(header)
     return f"\n{header}\n\n{message}\n\n{footer}\n"
 
 
@@ -86,27 +82,51 @@ def get_errors_from_task(result):
     inject custom messages via
     result.setdefault("my_msg", abc)
     """
-    msg_queue = [
-        result._result.get("my_msg", ""),
-        result._result.get("stdout", ""),
-        result._result.get("stderr", ""),
-        result._result.get("msg", ""),
-    ]
-    return "\n".join(
-        [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
-    )
+    if isinstance(result, TaskResult):
+        msg_queue = [
+            result._result.get("my_msg", ""),
+            result._result.get("stdout", ""),
+            result._result.get("stderr", ""),
+            result._result.get("msg", ""),
+        ]
+        return "\n".join(
+            [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
+        )
+    else:
+        try:
+            msg_queue = [
+                result.get("my_msg", ""),
+                result.get("stdout", ""),
+                result.get("stderr", ""),
+                result.get("msg", ""),
+            ]
+            return "\n".join(
+                [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
+            )
+        except Exception as e:
+            return f"get_errors_from_task: unable to parse errors, this might be ok... -> {e}, {dir(result)}"
 
 
 def get_last_lines(message, offset):
     """returns the last x(offset) number of lines from a long string(message)"""
-    lines = message.splitlines()
-    last_lines = lines[-offset:]
-    return "\n".join(last_lines)
+    if isinstance(message, str):
+        lines = message.splitlines()
+        last_lines = lines[-offset:]
+        return "\n".join(last_lines)
 
 
 def split_string(s, chunk_size=100):
     """make long log lines more presentable in RITM/SCTASK"""
-    return "\n".join(s[i : i + chunk_size] for i in range(0, len(s), chunk_size))
+    if isinstance(s, str):
+        if len(s) > chunk_size:
+            return "\n".join(
+                s[i : i + chunk_size] for i in range(0, len(s), chunk_size)
+            )
+        return "\n" + s
+    if isinstance(s, list):
+        s = "\n".join(x for x in s if isinstance(s, str))
+        return split_string(s)
+    return s
 
 
 class CallbackModule(CallbackBase):
@@ -142,18 +162,29 @@ class CallbackModule(CallbackBase):
 
     def v2_runner_item_on_failed(self, result):
         """report failed items in loop/with_items"""
-        item = result._result["item"]
+        # item = result._result["item"]
+        result._result.setdefault(
+            "my_msg", f"*** Task(loop): (ignore_errors=True) {result.task_name} ***\n\n"
+        )
+        _raw = get_errors_from_task(result)
         if self.is_sensitive_task(result):
             msg = "marked sensitive"
+        # if the task is set to ignore_errors: true, we want to warn.
+        elif result._task_fields.get("ignore_errors", False):
+            msg = wrap_message(_raw, header=_status_warning)
+            logger.warn(
+                f"{_status_success} ({self.playbook_name}) Task(loop): (ignore_errors=True) {result.task_name} \n{msg}"
+            )
+            return
         else:
-            result._result.setdefault("my_msg", item)
-            _raw = get_errors_from_task(result)
             msg = wrap_message(_raw, header=_status_fatal)
         logger.error(
             f"{_status_fatal} ({self.playbook_name}) Task(loop): {result.task_name} \n{msg}"
         )
 
     def v2_runner_on_failed(self, result, ignore_errors=False):
+        """report on failure, result(TaskResult)"""
+
         task = result._task
         _raw = get_errors_from_task(result)
         msg = wrap_message(_raw, header=_status_fatal)
@@ -164,10 +195,19 @@ class CallbackModule(CallbackBase):
             )
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
-            logger.warn(f"{_status_success} ({self.playbook_name}) Task: {task.name} \n{msg}")
+            logger.warn(
+                f"{_status_success} ({self.playbook_name}) Task: (ignore_errors=True) {task.name} \n{msg}"
+            )
             return
 
         else:
             logger.error(
                 f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
             )
+
+    # def v2_playbook_on_stats(self, stats):
+    #     super(CallbackModule, self).v2_playbook_on_stats(stats)
+    #     with open(log_file_name) as f:
+    #         self._display.display("******** Playbook event summary ********")
+    #         self._display.display(f.read())
+    #         stats.custom["task_result"] = f.read()
