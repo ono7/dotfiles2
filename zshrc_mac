@@ -519,9 +519,9 @@ eval "$(starship init zsh)"
 # defaults to vi-mode, and let us toggle back and forth
 
 bindkey -v
-v () {
-  bindkey -v; clear
-}
+# v () {
+#   bindkey -v; clear
+# }
 
 # e () {
 #   bindkey -e; clear
