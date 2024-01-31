@@ -40,10 +40,11 @@
 
 """
 
-import logging
 from pathlib import Path
 from ansible.plugins.callback import CallbackBase
 from ansible.executor.task_result import TaskResult
+import logging
+import os
 
 log_file_name = "ansible_tasks.log"
 
@@ -206,6 +207,25 @@ class CallbackModule(CallbackBase):
             logger.error(
                 f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
             )
+
+    def playbook_on_stats(self, stats):
+        """
+        Called at the end of playbook execution to modify or set custom stats.
+        """
+        tower_job_id = os.getenv("JOB_ID", "Not running in AAP")
+
+        with open(log_file_name) as f:
+            log_contents = f.read()
+
+        custom_stats = {
+            "task_result": "\n\n" + log_contents,
+            "task_result_lines": log_contents.splitlines(),
+            "job_id": tower_job_id,
+        }
+
+        for host in stats.processed.keys():
+            stats.summarize(host)
+            self._set_stats(custom_stats)
 
     # def v2_playbook_on_stats(self, stats):
     #     super(CallbackModule, self).v2_playbook_on_stats(stats)
