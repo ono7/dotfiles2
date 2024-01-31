@@ -58,7 +58,7 @@ logger = logging.getLogger(__name__)
 
 _status_fatal = r"[ ❌ FATAL ]"
 _status_success = r"[ ✅ OK ]"
-_status_warning = r"[ !! WARNING !! ]"
+_status_warning = r"[ ✅ WARNING ]"
 
 
 def wrap_message(message, header="", sep="-"):
@@ -80,7 +80,7 @@ def get_errors_from_task(result):
     """creates a flat string from results errors
     will appear in the order defined.
     inject custom messages via
-    result.setdefault("my_msg", abc)
+    result._result.setdefault("my_msg", abc)
     """
     if isinstance(result, TaskResult):
         msg_queue = [
@@ -157,16 +157,17 @@ class CallbackModule(CallbackBase):
         logger.info(f"{_status_success} ({self.playbook_name}) Task: {task.name}")
 
     def v2_runner_item_on_ok(self, result):
-        """not implemented, this could get noisy, only report failures"""
+        """not implemented, this could get noisy, only report failures for now"""
         pass
 
     def v2_runner_item_on_failed(self, result):
         """report failed items in loop/with_items"""
-        # item = result._result["item"]
+
         result._result.setdefault(
             "my_msg", f"*** Task(loop): (ignore_errors=True) {result.task_name} ***\n\n"
         )
         _raw = get_errors_from_task(result)
+
         if self.is_sensitive_task(result):
             msg = "marked sensitive"
         # if the task is set to ignore_errors: true, we want to warn.
@@ -193,6 +194,7 @@ class CallbackModule(CallbackBase):
             logger.error(
                 f"{_status_fatal} ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
             )
+        # handle tasks that have ignore_errors: true
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
             logger.warn(
