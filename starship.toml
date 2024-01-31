@@ -125,10 +125,10 @@ format = '[${symbol}${pyenv_prefix} (${virtualenv})]($style) '
 # symbol = "[ ](blue)"
 
 
-[custom.tmux]
-symbol = "🐇()"
-when = "[ ! -z $TMUX ]"
-format = '        [${symbol}]($style) '
+# [custom.tmux]
+# symbol = "🐇()"
+# when = "[ ! -z $TMUX ]"
+# format = '        [${symbol}]($style) '
 
 [time]
 disabled = false
