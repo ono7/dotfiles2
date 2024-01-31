@@ -193,9 +193,9 @@ k("n", ",w", function()
 end, silent)
 
 k("n", "<leader>w", ":CleanAndSave<cr>", silent)
-k("n", ",q", "<cmd>q<cr>", silent)
+k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd<cr>", silent)
-k("n", "<leader>q", "<cmd>qall<cr>", silent)
+k("n", "<leader>q", "<cmd>q!<cr>", silent)
 
 --- surround
 -- k("n", [[s"]], [[ciw"<c-r><c-p>""]])
