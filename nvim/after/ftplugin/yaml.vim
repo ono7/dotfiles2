@@ -1,4 +1,4 @@
-setlocal ai ts=2 sts=2 sw=2 et number indentkeys-=0# indentkeys-=<:>
+setlocal ai ts=2 sts=2 sw=2 et number
 " setlocal fo-=c fo-=r fo-=o
 
 setlocal suffixesadd+=.yml
