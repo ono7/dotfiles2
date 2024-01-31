@@ -48,7 +48,7 @@ configs.setup({
     previewer = false,
     preview_cutoff = 1,
     path_display = {
-      "smart"
+      "shorten"
     },
     layout_strategy = "flex", -- flex (shows preview)
     file_ignore_patterns = {

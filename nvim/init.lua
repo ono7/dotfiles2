@@ -154,7 +154,6 @@ k("n", "gp", "`[v`]", silent)
 --- keep cursor in same position when yanking in visual
 k("v", "y", [[ygv<Esc>]], silent)
 
-k("n", "<TAB>", "<C-^>", silent)
 
 -- k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
 
@@ -216,8 +215,9 @@ k("n", "<c-l>", "<C-W>l")
 -- k("n", ";", ":")
 -- k("n", ":", ";")
 
--- k("n", "<tab>", ":bnext<CR>", silent)
--- k("n", "<s-tab>", ":bprevious<CR>", silent)
+-- k("n", "<TAB>", "<C-^>", silent)
+k("n", "<tab>", ":bnext<CR>", silent)
+k("n", "<s-tab>", ":bprevious<CR>", silent)
 
 --- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
