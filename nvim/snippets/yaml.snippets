@@ -14,16 +14,13 @@ snippet h "header" b
     tasks:
       ${0}
 
-snippet debug "debug task" b
-  - name: Debug
+snippet debug "debug task"
     ansible.builtin.debug:
       msg: |
        ${0}
 
-snippet shell "debug task" b
-    - name: ${1}
+snippet shell "debug task"
       ansible.builtin.shell: ${0}
 
-snippet command "debug task" b
-    - name: ${1}
+snippet command "debug task"
       ansible.builtin.command: ${0}
