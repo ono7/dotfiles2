@@ -131,7 +131,7 @@ format = '[${symbol}${pyenv_prefix} (${virtualenv})]($style) '
 # format = '        [${symbol}]($style) '
 
 [time]
-disabled = false
+disabled = true
 style = "bold bright-black"
 format = "[$time]($style)"
 
