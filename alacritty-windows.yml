@@ -1,3 +1,4 @@
+
 live_config_reload = true
 working_directory = "None"
 
@@ -23,7 +24,8 @@ white = "0xc8d3f5"
 yellow = "0xffc777"
 
 [colors.cursor]
-cursor = "#4fc2e8"
+# cursor = "#4fc2e8"
+cursor = "#ffffff"
 text = "#000000"
 
 [colors.normal]
@@ -44,7 +46,7 @@ yellow = "0xffc777"
 # background = "0x151d2a"
 background = "0x1e293b"
 # background = "0x111721"
-foreground = "0xc8d3f5"
+foreground = "#e4e0da"
 
 [cursor]
 blink_interval = 200
@@ -63,9 +65,10 @@ render_timer = false
 
 [env]
 TERM = "xterm-256color"
+LC_CTYPE = "en_US.UTF-8"
 
 [font]
-size = 15.0
+size = 13.0
 
 [font.normal]
 family = "MonoLisaNoliga Nerd Font"
@@ -77,6 +80,7 @@ style = "Italic"
 
 [font.bold]
 family = "MonoLisaNoliga Nerd Font"
+style = "Bold"
 
 [font.offset]
 x = 0
@@ -241,13 +245,13 @@ program = "ubuntu"
 decorations = "full"
 dynamic_padding = false
 dynamic_title = true
-# opacity = 0.98
+opacity = 0.97
 blur = true
-startup_mode = "Windowed"
+startup_mode = "Maximized"
 
-[window.dimensions]
-columns = 82
-lines = 28
+# [window.dimensions]
+# columns = 82
+# lines = 28
 
 [window.padding]
 x = 5
