@@ -98,48 +98,55 @@ configs.setup({
 })
 
 
-k("n", "<c-p>", function() require("telescope.builtin").oldfiles({ previewer = false, shorten_path = true }) end, opt)
+local builtin = require("telescope.builtin")
+
+k("n", "<c-p>", function() builtin.oldfiles({ previewer = false, shorten_path = true }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
-  -- require('telescope.builtin').find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
-  require('telescope.builtin').find_files({ no_ignore = false, hidden = true, previewer = false, shorten_path = true })
+  -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
+  builtin.find_files({ no_ignore = false, hidden = true, previewer = false, shorten_path = true })
 end, opt)
-
--- k({ "n", "x" }, "<c-f>", function()
---   -- require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h') })
---   require('telescope.builtin').find_files()
--- end, opt)
 
 k("n", "<leader>ff",
   function()
-    require('telescope.builtin').git_files({ show_untracked = true, no_ignore = false, hidden = true, previewer = false, shorten_path = true })
+    builtin.git_files({ show_untracked = true, no_ignore = false, hidden = true, previewer = false, shorten_path = true })
   end,
   silent)
 
 k("n", "<leader>g",
   function()
-    require('telescope.builtin').live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true }
+    builtin.live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true }
   end,
   opt)
 
-k("n", "<leader>fd", function() require('telescope.builtin').diagnostics() end, opt)
+k("n", "<leader>fd", function() builtin.diagnostics() end, opt)
 
 k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
 k("n", "<leader>O", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
 
-k({ "n", "x" }, "<leader>b", function() require('telescope.builtin').buffers() end, opt)
+k({ "n", "x" }, "<leader>b", function() builtin.buffers() end, opt)
 k(
   "n",
   "<leader>vc",
-  function() require('telescope.builtin').find_files({ cwd = '~/.dotfiles', hidden = true, show_untracked = true, no_ignore = true }) end
+  function() builtin.find_files({ cwd = '~/.dotfiles', hidden = true, show_untracked = true, no_ignore = true }) end
   , opt
 )
 
-k(
-  "n",
-  "<leader>fw",
-  function()
-    require('telescope.builtin').live_grep({ cwd = '~/notes', hidden = true, show_untracked = true, no_ignore = true })
-  end,
-  opt
-)
+k("n", "<leader>fw", function()
+  local word = vim.fn.expand("<cword>")
+  builtin.grep_string { search = word }
+end, opt)
+
+k("n", "<leader>fW", function()
+  local word = vim.fn.expand("<cWORD>")
+  builtin.grep_string { search = word }
+end, opt)
+
+-- k(
+--   "n",
+--   "<leader>fw",
+--   function()
+--     builtin.live_grep({ cwd = '~/notes', hidden = true, show_untracked = true, no_ignore = true })
+--   end,
+--   opt
+-- )
