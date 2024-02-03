@@ -243,7 +243,7 @@ program = "ubuntu"
 
 [window]
 decorations = "full"
-dynamic_padding = false
+dynamic_padding = true
 dynamic_title = true
 opacity = 0.97
 blur = true

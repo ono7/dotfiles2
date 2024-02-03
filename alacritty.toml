@@ -240,7 +240,7 @@ program = "/bin/zsh"
 
 [window]
 decorations = "buttonless"
-dynamic_padding = false
+dynamic_padding = true
 dynamic_title = false
 opacity = 0.96
 blur = true
