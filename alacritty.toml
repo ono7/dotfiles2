@@ -180,6 +180,27 @@ chars = "\u0006"
 key = "F"
 mods = "Command"
 
+# HKJL movement keys for tmux pane navigation
+[[keyboard.bindings]]
+chars = "\u000c"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0008"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000a"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000b"
+key = "K"
+mods = "Command"
+
 [[keyboard.bindings]]
 chars = "\u0017"
 key = "Back"
@@ -220,6 +241,7 @@ dynamic_title = false
 # opacity = 0.96
 blur = true
 startup_mode = "Windowed"
+option_as_alt = "both"
 
 [window.dimensions]
 columns = 82
