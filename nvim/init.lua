@@ -438,6 +438,7 @@ end
 vim.api.nvim_create_user_command('BytesToString', BytesToString, {})
 
 --- tmux ---
+-- TODO(jlima): fix this
 k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 
 --- visual selection search ---
