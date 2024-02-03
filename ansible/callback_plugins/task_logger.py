@@ -12,34 +12,33 @@
 
     DESCRIPTION:
 
-    This callback module hooks into ansible events and creates a log entry for each task
-    in to a log file that can be used for reporting.
+        This callback module hooks into ansible events and creates a log entry for each task
+        in to a log file that can be used for reporting.
 
-    Tasks that are set to "ignore_errors: true" are set to warn status here since the intent
-    is to continue playbook execution when the flag is set.
+        Tasks that are set to "ignore_errors: true" are set to warn status here since the intent
+        is to continue playbook execution when the flag is set.
 
-    To skip logging any task output/errors that could leak sensitive_task data mark
-    there are two ways supported to skip logging task ouput (but still report failure):
+        To skip logging any task output/errors that could leak sensitive_task data mark
+        there are two ways supported to skip logging task ouput (but still report failure):
 
-    1. Set a tag named sensitive_task
+        1. Set a tag named sensitive_task
 
-    - name: Set the super secret password
-      ansible.builtin.shell: echo password123
-      tags:
-       - sensitive_task
+        - name: Set the super secret password
+          ansible.builtin.shell: echo password123
+          tags:
+           - sensitive_task
 
-    2. Or set a variable named sensitive_task directly on the task
+        2. Or set a variable named sensitive_task directly on the task
 
-    - name: Set the super secret password
-      ansible.builtin.shell: echo password123
-      vars:
-        sensitive_task: true
+        - name: Set the super secret password
+          ansible.builtin.shell: echo password123
+          vars:
+            sensitive_task: true
 
-     Setting variable named sensitive_task globaly will basically ignore all output
-     but still report a failure and the task name, probaly should be avoided.
+         Setting variable named sensitive_task globaly will basically ignore all output
+         but still report a failure and the task name, probaly should be avoided.
 
 """
-
 from pathlib import Path
 from ansible.plugins.callback import CallbackBase
 from ansible.executor.task_result import TaskResult
@@ -52,6 +51,7 @@ logging.basicConfig(
     filename=log_file_name,
     level=logging.INFO,
     format="[%(asctime)s] %(message)s",
+    datefmt="%H:%M:%S",
     filemode="a",
 )
 logger = logging.getLogger(__name__)
@@ -65,7 +65,7 @@ _status_warning = r"[ ✅ WARNING ]"
 def wrap_message(message, header="", sep="-"):
     """Error message wrapper"""
 
-    total_len = 100
+    total_len = 48
     header_len = len(header) + 2
     header_padding = (total_len - header_len) // 2
     header = sep * header_padding + header + sep * header_padding
@@ -73,7 +73,7 @@ def wrap_message(message, header="", sep="-"):
     if len(header) < total_len:
         header += sep
 
-    footer = sep * len(header)
+    footer = sep * (len(header) + 1)
     return f"\n{header}\n\n{message}\n\n{footer}\n"
 
 
@@ -91,7 +91,7 @@ def get_errors_from_task(result):
             result._result.get("msg", ""),
         ]
         return "\n".join(
-            [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
+            [get_last_lines(normalize_string(x), 25) for x in msg_queue if len(x) > 0]
         )
     else:
         try:
@@ -102,7 +102,11 @@ def get_errors_from_task(result):
                 result.get("msg", ""),
             ]
             return "\n".join(
-                [get_last_lines(split_string(x), 25) for x in msg_queue if len(x) > 0]
+                [
+                    get_last_lines(normalize_string(x), 25)
+                    for x in msg_queue
+                    if len(x) > 0
+                ]
             )
         except Exception as e:
             return f"get_errors_from_task: unable to parse errors, this might be ok... -> {e}, {dir(result)}"
@@ -116,17 +120,13 @@ def get_last_lines(message, offset):
         return "\n".join(last_lines)
 
 
-def split_string(s, chunk_size=100):
-    """make long log lines more presentable in RITM/SCTASK"""
+def normalize_string(s):
+    """normalize strings or list of strings"""
     if isinstance(s, str):
-        if len(s) > chunk_size:
-            return "\n".join(
-                s[i : i + chunk_size] for i in range(0, len(s), chunk_size)
-            )
         return "\n" + s
     if isinstance(s, list):
         s = "\n".join(x for x in s if isinstance(s, str))
-        return split_string(s)
+        return normalize_string(s)
     return s
 
 
@@ -138,6 +138,9 @@ class CallbackModule(CallbackBase):
     def __init__(self):
         super(CallbackModule, self).__init__()
         self.playbook_name = None
+        self.wrote_header = False
+        with open(log_file_name, "a") as modify:
+            modify.write(f"\n\n********* ANSIBLE JOB SUMMARY *********\n\n")
 
     def v2_playbook_on_start(self, playbook):
         file = Path(playbook._file_name)
@@ -145,7 +148,9 @@ class CallbackModule(CallbackBase):
             self.playbook_name = file.with_suffix("")
 
     def is_sensitive_task(self, result):
-        """If the task contains sensitive information <secrets>, it should be marked sensitive_task, see module doc string"""
+        """If the task contains sensitive information <secrets>
+        it should be marked sensitive_task, see module doc string above
+        """
         return (
             result._task.vars.get("sensitive_task", False)
             or "sensitive_task" in result._task.tags
@@ -165,17 +170,18 @@ class CallbackModule(CallbackBase):
         """report failed items in loop/with_items"""
 
         result._result.setdefault(
-            "my_msg", f"*** Task(loop): (ignore_errors=True) {result.task_name} ***\n\n"
+            "my_msg", f"*** Task(loop): (ignore_errors) {result.task_name} ***\n\n"
         )
         _raw = get_errors_from_task(result)
 
         if self.is_sensitive_task(result):
             msg = "marked sensitive"
+
         # if the task is set to ignore_errors: true, we want to warn.
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
             logger.warn(
-                f"{_status_success} ({self.playbook_name}) Task(loop): (ignore_errors=True) {result.task_name} \n{msg}"
+                f"{_status_success} ({self.playbook_name}) Task(loop): (ignore_errors) {result.task_name} \n{msg}"
             )
             return
         else:
@@ -192,14 +198,19 @@ class CallbackModule(CallbackBase):
         msg = wrap_message(_raw, header=_status_fatal)
 
         if self.is_sensitive_task(result):
-            logger.error(
-                f"{_status_fatal} ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
-            )
-        # handle tasks that have ignore_errors: true
+            if result._task_fields.get("ignore_errors", False):
+                logger.warn(
+                    f"{_status_warning} ({self.playbook_name}) Task: (ignore_errors) {task.name} <log_marked_sensitive>"
+                )
+            else:
+                logger.error(
+                    f"{_status_fatal} ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
+                )
+
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
             logger.warn(
-                f"{_status_success} ({self.playbook_name}) Task: (ignore_errors=True) {task.name} \n{msg}"
+                f"{_status_warning} ({self.playbook_name}) Task: (ignore_errors) {task.name} \n{msg}"
             )
             return
 
@@ -208,9 +219,9 @@ class CallbackModule(CallbackBase):
                 f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
             )
 
-    def v2_playbook_on_stats(self, stats):
-        """show better summary at the end of every playbook run"""
-        super(CallbackModule, self).v2_playbook_on_stats(stats)
-        with open(log_file_name) as f:
-            self._display.display("******** Playbook event summary ********")
-            self._display.display(f.read())
+    # def v2_playbook_on_stats(self, stats):
+    #     """Executes at the end of the playbook run"""
+    #     super(CallbackModule, self).v2_playbook_on_stats(stats)
+    #     with open(log_file_name) as f:
+    #         self._display.display("******** Playbook event summary ********")
+    #         self._display.display(f.read())
