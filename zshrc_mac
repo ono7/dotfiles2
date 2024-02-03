@@ -129,10 +129,6 @@ typeset -U path
 [ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# [ ! -d ~/.zsh/zsh-completions ] && git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
-#
-# fpath=$(~/.zsh/zsh-completions $fpath)
-
 # autoload -Uz compinit && compinit -C
 autoload -Uz compinit && compinit
 
@@ -620,10 +616,6 @@ function fcd() {
     dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-hs () {
-  hx "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
-}
-
 _vs () {
   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
@@ -650,14 +642,6 @@ for m in visual viopp; do
   done
 done
 
-# sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-
-# if [[ $TERM != "tmux-256color" ]]; then
-# 	echo 'not in tmux'
-# fi
-
-# max font smoothing = 3
-# defaults -currentHost write -g AppleFontSmoothing -int 0
 if [[ $OSTYPE == "darwin"* ]]; then
   defaults write -g AppleFontSmoothing -int 0
   defaults write -g ApplePressAndHoldEnabled -bool false
@@ -681,7 +665,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=3000   # the number of items for the internal history list
 export SAVEHIST=2999   # maximum number of items for the history file
 # export HISTTIMEFORMAT='[%F %T] '
-export HISTIGNORE='ls:ll:proxychains:pwd:sudo ssh*'
+export HISTIGNORE='ls:ll:proxychains:pwd:sudo ssh*:echo'
 HISTDUP=erase
 
 # The meaning of these options can be found in man page of `zshoptions`.
@@ -757,13 +741,13 @@ ttyctl -f
 # ttyctl -u to temporarely unlock the tty
 
 # prevent terminal from getting garbled up
-# autoload -Uz add-zsh-hook
+autoload -Uz add-zsh-hook
 
-# function reset_broken_terminal () {
-# 	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
-# }
+function reset_broken_terminal () {
+	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
+}
 
-# add-zsh-hook -Uz precmd reset_broken_terminal
+add-zsh-hook -Uz precmd reset_broken_terminal
 
 alias pb="ansible-playbook "
 # remember directories
