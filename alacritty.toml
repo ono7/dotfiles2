@@ -1,5 +1,5 @@
 import = ["/Users/jlima/.dotfiles/schemes/alacritty/tokyonight_moon.toml"]
-# import = ["/Users/jlima/.dotfiles/schemes/alacritty/nightfly.yml"]
+
 live_config_reload = true
 working_directory = "None"
 
