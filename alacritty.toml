@@ -3,6 +3,10 @@ import = ["/Users/jlima/.dotfiles/schemes/alacritty/tokyonight_moon.toml"]
 live_config_reload = true
 working_directory = "None"
 
+[terminal]
+# osc52 = "Disabled" | "OnlyCopy" | "OnlyPaste" | "CopyPaste"
+osc52 = "OnlyCopy"
+
 [colors]
 draw_bold_text_with_bright_colors = false
 
@@ -228,7 +232,7 @@ multiplier = 3
 
 [selection]
 save_to_clipboard = true
-semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+# semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [shell]
 args = ["--login"]
@@ -238,7 +242,7 @@ program = "/bin/zsh"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = false
-# opacity = 0.96
+opacity = 0.96
 blur = true
 startup_mode = "Windowed"
 option_as_alt = "both"
