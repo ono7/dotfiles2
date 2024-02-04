@@ -1,5 +1,11 @@
 # reader/writer inteface examples/notes for go
 
+## implements io.Writer interface
+
+`strings.Builder`
+
+## implements io.Reader interface
+
 ## file read
 
 ```go

@@ -241,6 +241,8 @@ k("n", "<leader>h", hlsToggle, silent)
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
 
+k({ "n", "x" }, "cw", "ciw", opt)
+
 --- ex/command mode bindings
 k("c", "<c-a>", "<Home>", opt)
 k("c", "<c-h>", "<Left>", opt)
@@ -290,17 +292,17 @@ for _, v in ipairs(r_pair_map) do
 end
 
 --- handle []
-k('i', '[', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
-  if r_pair_map[n] then
-    return '[]<Left>'
-  elseif n ~= '' then
-    return '['
-  end
-  return '[]<Left>'
-end, { expr = true })
+-- k('i', '[', function()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local n = line:sub(col, col)
+--   if r_pair_map[n] then
+--     return '[]<Left>'
+--   elseif n ~= '' then
+--     return '['
+--   end
+--   return '[]<Left>'
+-- end, { expr = true })
 
 k('i', ']', function()
   local line = vim.api.nvim_get_current_line()
@@ -314,17 +316,17 @@ end
 , { expr = true })
 
 --- handle {}
-k('i', '{', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
-  if r_pair_map[n] then
-    return '{}<Left>'
-  elseif n ~= '' then
-    return '{'
-  end
-  return '{}<Left>'
-end, { expr = true })
+-- k('i', '{', function()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local n = line:sub(col, col)
+--   if r_pair_map[n] then
+--     return '{}<Left>'
+--   elseif n ~= '' then
+--     return '{'
+--   end
+--   return '{}<Left>'
+-- end, { expr = true })
 
 k('i', '}', function()
   local line = vim.api.nvim_get_current_line()
@@ -338,17 +340,17 @@ end
 , { expr = true })
 
 --- handle (
-k('i', '(', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
-  if r_pair_map[n] then
-    return '()<Left>'
-  elseif n ~= '' then
-    return '('
-  end
-  return '()<Left>'
-end, { expr = true })
+-- k('i', '(', function()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local n = line:sub(col, col)
+--   if r_pair_map[n] then
+--     return '()<Left>'
+--   elseif n ~= '' then
+--     return '('
+--   end
+--   return '()<Left>'
+-- end, { expr = true })
 
 k({ 'i' }, ')', function()
   local line = vim.api.nvim_get_current_line()

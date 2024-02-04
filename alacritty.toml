@@ -28,7 +28,7 @@ render_timer = false
 TERM = "xterm-256color"
 
 [font]
-size = 22.0
+size = 18.0
 
 [font.glyph_offset]
 x = 0

@@ -130,6 +130,7 @@ nnoremap <space><space> <c-^>
 
 noremap v <c-v>
 vunmap v
+nnoremap cw ciw
 
 vnoremap p "0p
 vnoremap P "0P
@@ -477,6 +478,7 @@ nnoremap <c-h> <C-W><C-H>
 inoremap <C-c> <Esc>
 noremap v <c-v>
 vunmap v
+nnoremap cw ciw
 
 vnoremap p "0p
 vnoremap P "0P
