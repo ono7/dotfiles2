@@ -340,6 +340,7 @@ gitl () {
     my_dir=$PWD
     cdr
     git add .
+    jira=$(git branch --show-current | grep -Eio "ntwk\-\d{1,20}")
     f=$(git status --porcelain | cut -c4- | head -n 4)
     more_changes=$(git status --porcelain | sed -n 5p)
     [ -n "$more_changes" ] && f="$f ..."
@@ -352,9 +353,9 @@ gitl () {
       # So, in the expression ${f//$'\n'/ }, the first $ is used to get the value of
       # the f variable, and the second $ is used to specify a newline character that
       # you want to replace with a space within the value of f.
-      git commit "-m updates -> ${f//$'\n'/ }"
+      git commit "-m $jira updates to -> ${f//$'\n'/ }"
     else
-      git commit '-m' "$1 -> ${f//$'\n'/ }"
+      git commit '-m' "$jira $1 -> ${f//$'\n'/ }"
     fi
     # commenting this out, start using squash or rebase in my workflow
     # if [ ! -z "$(git remote -v)" ]; then
