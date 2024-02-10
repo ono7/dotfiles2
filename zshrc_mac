@@ -355,7 +355,8 @@ gitl () {
       # you want to replace with a space within the value of f.
       git commit "-m $jira updates to -> ${f//$'\n'/ }"
     else
-      git commit '-m' "$jira $1 -> ${f//$'\n'/ }"
+      comment="$@"
+      git commit '-m' "$jira $comment -> ${f//$'\n'/ }"
     fi
     # commenting this out, start using squash or rebase in my workflow
     # if [ ! -z "$(git remote -v)" ]; then

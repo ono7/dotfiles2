@@ -11,3 +11,16 @@
       ansible.builtin.debug:
         msg: |
           this is a test of the debug module
+
+    - name: this is a test
+      ansible.builtin.debug:
+        msg: |
+          this is a test of the debug module
+    - name: this is a test
+      ansible.builtin.debug:
+        msg: |
+          this is a test of the debug module
+    - name: this is a test
+      ansible.builtin.debug:
+        msg: |
+          this is a test of the debug module
