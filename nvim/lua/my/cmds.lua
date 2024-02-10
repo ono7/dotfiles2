@@ -47,6 +47,19 @@ c({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- -- fix commit msg, goto top of file on enter
+c({ "BufEnter" }, {
+  group = create_augroup("vim_commit_msg", { clear = true }),
+  pattern = 'COMMIT_EDITMSG',
+  callback = function()
+    vim.wo.spell = true
+    vim.api.nvim_win_set_cursor(0, { 1, 0 })
+    if vim.fn.getline(1) == '' then
+      vim.cmd 'startinsert!'
+    end
+  end,
+})
+
 -- Check if we need to reload the file when it changed
 c({ "FocusGained", "TermClose", "TermLeave" }, {
   pattern = "*",
