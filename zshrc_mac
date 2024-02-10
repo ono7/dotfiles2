@@ -366,7 +366,7 @@ gitln () {
     cd $my_dir
 }
 
-alias gl=gitlog
+alias glog=gitlog
 
 dotp () {
     my_dir=$PWD
