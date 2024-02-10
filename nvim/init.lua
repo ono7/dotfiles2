@@ -312,7 +312,7 @@ k('i', '"', function()
 end
 , { expr = true })
 
---- handles ""
+--- handles '
 k('i', "'", function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')

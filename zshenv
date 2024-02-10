@@ -3,6 +3,7 @@ alias l='less -R '
 alias m='more '
 
 alias ga='git add '
+alias gap='git add -p '
 alias gl='git log --oneline'
 alias gb='git branch '
 alias gc='git commit '
