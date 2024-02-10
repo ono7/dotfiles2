@@ -623,6 +623,10 @@ _vs () {
 zle -N _vs
 bindkey -s '^S' _vs^M
 
+gb() {
+  git checkout $(git branch -a | fzf)
+}
+
 # ci" in vi-mode
 autoload -U select-quoted
 zle -N select-quoted
