@@ -65,12 +65,12 @@ vim.opt.termguicolors = true
 vim.opt.syntax = "off"
 
 function _G.get_git_branch_ntwk()
-    local handle = io.popen("git branch --show-current | grep -Eio 'ntwk-\\d{1,20}'")
-    local result = handle:read("*a")
-    handle:close()
-    -- Trim the newline character from the result
-    result = string.gsub(result, "\n$", "")
-    vim.api.nvim_set_var('git_branch_ntwk', result)
+  local handle = io.popen("git branch --show-current | grep -Eio 'ntwk-\\d{1,20}'")
+  local result = handle:read("*a")
+  handle:close()
+  -- Trim the newline character from the result
+  result = string.gsub(result, "\n$", "")
+  vim.api.nvim_set_var('git_branch_ntwk', result)
 end
 
 --- if syntax is on/enabled treesitter has issues
@@ -222,7 +222,7 @@ k("n", "<c-h>", "<C-W>h")
 k("n", "<c-l>", "<C-W>l")
 
 k("n", ";", ":")
-k("n", ":", ";")
+-- k("n", ":", ";")
 
 -- k("n", "<TAB>", "<C-^>", silent)
 k("n", "<tab>", ":bnext<CR>", silent)
@@ -299,6 +299,30 @@ end
 for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
+
+--- handles ""
+k('i', '"', function()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == '"' then
+    return '<Right>'
+  end
+  return '"'
+end
+, { expr = true })
+
+--- handles ""
+k('i', "'", function()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col('.')
+  local n = line:sub(col, col)
+  if n == "'" then
+    return '<Right>'
+  end
+  return "'"
+end
+, { expr = true })
 
 --- handle []
 -- k('i', '[', function()
