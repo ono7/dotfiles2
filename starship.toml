@@ -96,7 +96,7 @@ style ="bold lavender"
 # symbol = "[ ](blue)"
 # symbol = "[ ](blue)"
 # 󰽜
-symbol = "[ ](rosewater)"
+symbol = "[ ](bright white)"
 format = '[$symbol$branch]($style)'
 
 [git_status]
