@@ -6,7 +6,6 @@
 Fix github repos missing remote
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
-
 golang: https://fulltimegodev.teachable.com/courses/1970304
 
 * save as root
@@ -19,8 +18,6 @@ golang: https://fulltimegodev.teachable.com/courses/1970304
         :set shiftwidth=4
         :retab
 
-* move with c-d (down) and c-u (up)
-* use Ff Tt to move horizontally
 * g, - jump to last change
 * zm, fold
 * zi, toggle fold
