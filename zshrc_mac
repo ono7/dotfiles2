@@ -335,8 +335,9 @@ gitlog () {
   # where a branch was cloned from
   git log --oneline --graph --decorate --simplify-by-decoration --color --oneline --date=local --pretty=format:'%C(auto) %h %d %C(reset)%s (%C(cyan)%ad %ae%C(reset))' $@
 }
+gitl () { echo "use vim..." }
 
-gitl () {
+gitln () {
     my_dir=$PWD
     cdr
     git add .
