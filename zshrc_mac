@@ -468,14 +468,9 @@ export XCURSOR_SIZE=60
 
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
 
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#     --color=fg:#e5e9f0,hl:#81a1c1
-#     --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
-#     --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
-#     --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
 
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
@@ -768,7 +763,7 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-alias z=zoxide
+# alias z=zoxide
 
 function d () {
   if [[ -n $1 ]]; then
@@ -808,3 +803,9 @@ setopt PUSHD_MINUS
 # load this last
 
 [ -n $VIRTUAL_ENV ] && . ~/.virtualenvs/prod3/bin/activate
+
+if command -v tmux &>/dev/null; then
+  eval "$(zoxide init zsh)"
+else
+  echo "zoxide not installed..."
+fi
