@@ -623,6 +623,10 @@ _vs () {
 zle -N _vs
 bindkey -s '^S' _vs^M
 
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
 gb() {
   git checkout $(git branch -a | fzf)
 }
