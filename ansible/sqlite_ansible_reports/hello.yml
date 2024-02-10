@@ -1,0 +1,13 @@
+---
+#  Author:  Jose Lima (jlima)
+#  Date:    2024-02-09 19:13
+
+- name: "test"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: this is a test
+      ansible.builtin.debug:
+        msg: |
+          this is a test of the debug module
