@@ -1,3 +1,27 @@
+# cherry pick
+
+sometimes commits are made in the wrong branch, with cherry pick we can bring
+those changes over to the correct branch
+
+```sh
+(main)> git commit -m 'bad commit here'
+(main)> git checkout -b new_branch
+(new_branch)> git cherry-pick <commit sha>
+(new_branch)> git checkout main
+# reset head to previos commit (do this before pushing)
+(main)> git reset --hard HEAD~1
+```
+
+# fix commit in wrong branch
+
+```sh
+(main)> git commit -m 'bad commit here'
+(main)> git checkout -b new_branch
+(new_branch)> git checkout -
+(main)> git reset abcde # previews working commit before the bad change
+(main)> git co -
+```
+
 # DISCARD all local commits on this branch, keep remote
 
 https://sethrobertson.github.io/GitFixUm/fixup.html

@@ -52,4 +52,4 @@ st = status
 wt = worktree
 # git unstage fileA
 unstage = reset HEAD --
-last = log -1 HEADv
+last = log -1 HEAD

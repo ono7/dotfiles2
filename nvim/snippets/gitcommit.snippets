@@ -1,2 +1,6 @@
-snippet co "git comment"
-  `system("git branch --show-current | grep -Eio 'ntwk-\d\{1,20\}'")` #comment $1
+# TODO(jlima): finish this
+# to trouble shoot regex we can use basic regex first to make sure our command works
+# build the command incrementally start with the basics, `git branch --show-current`
+# then add `git branch --show-current | gret -Eio 'ntwk-'` and add \d and test, etc.
+snippet co "test"
+  `toupper(trim(system("git branch --show-current | grep -Eio 'ntwk-\\d{1,20}'")))` $0
