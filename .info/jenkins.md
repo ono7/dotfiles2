@@ -1,5 +1,62 @@
 # build jenkins docker image/reuse from jenkins/jenkins:lts
 
+# install jenkins apple m1, install docker
+
+```Dockerfile
+# Set the base image for the new image
+FROM jenkins/jenkins:lts
+# sets the current user to root.
+# This is necessary bc some of the following commands need root privileges.
+USER root
+# Update the package list on the image
+RUN apt-get update && \
+    # Install the packages for adding the Docker repo and installing Docker
+    apt-get install -y apt-transport-https \
+                       ca-certificates \
+                       curl \
+                       gnupg2 \
+                       software-properties-common && \
+    # Download the Docker repository key and add it to the system
+    curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+    # Add the Docker repository to the system
+    add-apt-repository \
+      "deb [arch=arm64] https://download.docker.com/linux/debian \
+      $(lsb_release -cs) \
+      stable" && \
+    # Update the package list again to include the new repository
+    apt-get update && \
+    # Install the Docker CE package
+    apt-get install -y docker-ce && \
+    # Add the Jenkins user to the Docker group so the Jenkins user can run Docker commands
+    usermod -aG docker jenkins
+```
+
+```Dockerfile
+# docker compose file
+# requires jenkins_vol to store persistant data
+# run with docker-compose -f ThisFile up
+version: '3'
+
+services:
+  jenkins:
+    image: jenkins-arm64
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      # mkdir ~/jenkins_vol
+      - ~/jenkins_vol:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+```sh
+# this is not relevant if using docker compose
+docker run --rm --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins
+
+# example Jenkinsfiles here
+https://github.com/darinpope/jenkins-example-docker
+```
+
 ## pipelines
 
 ```
