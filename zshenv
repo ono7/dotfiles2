@@ -4,14 +4,12 @@ alias m='more '
 
 alias ga='git add '
 alias gap='git add -p '
-alias gl='git log --oneline'
-# alias gb='git branch '
 alias gd='git diff '
 alias gds='git diff --staged'
 alias gc='git commit '
 alias gco='git checkout '
 alias gf='git fetch --all'
-alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gp='git push '
 alias gpu='git pull'
 alias gr='git reflog '
