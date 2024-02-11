@@ -465,13 +465,12 @@ make()
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export XCURSOR_SIZE=60
 
-export FZF_DEFAULT_OPTS='--height 40% --no-preview'
+export FZF_DEFAULT_OPTS='
+--height 40% --no-preview
+--color=bg+:#1d2436,bg:#1d2436,spinner:#f5e0dc,hl:#f38ba8
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
 
-
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 FD_CMD='fd -I --type f --exclude ".git" --exclude "__pycache__" --follow --hidden'
 if command -v fd &>/dev/null; then
