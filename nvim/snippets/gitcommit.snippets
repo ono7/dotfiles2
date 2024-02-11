@@ -2,14 +2,15 @@
 # to trouble shoot regex we can use basic regex first to make sure our command works
 # build the command incrementally start with the basics, `git branch --show-current`
 # then add `git branch --show-current | gret -Eio 'ntwk-'` and add \d and test, etc.
-snippet jc "test"
-  `toupper(trim(system("git branch --show-current | grep -Eio 'ntwk-\\d{1,20}'")))` $0
+snippet j "test"
+  `toupper(trim(system("git branch --show-current | grep -Pio 'ntwk-\\d{1,20}'")))` $0
 
-  # jira stages
-  # backlog
-  # todo
-  # in-progress
-  # test
-  # review
-  # po-review
-  # done
+snippet jc "test"
+  `toupper(trim(system("git branch --show-current | grep -Pio 'ntwk-\\d{1,20}'")))` $1
+
+  $0
+
+  `toupper(trim(system("git branch --show-current | grep -Pio 'ntwk-\\d{1,20}'")))` #comment ${1}
+
+snippet jt "test"
+  `toupper(trim(system("git branch --show-current | grep -Pio 'ntwk-\\d{1,20}'")))` #${0|to-to-do,to-in-progress,to-review,to-done|}
