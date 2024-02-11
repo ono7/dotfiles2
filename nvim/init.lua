@@ -146,9 +146,6 @@ k("n", "ZQ", "")
 
 -- k({ "n", "x" }, "<c-e>", "g_")
 
--- move cursor to left/right
-k({ "n" }, "gh", "^")
-k({ "n" }, "gl", "g_")
 
 -- move selection to far left, far right
 k("v", "gh", ":left<cr>", silent)
@@ -160,6 +157,18 @@ k("n", "gp", "`[v`]", silent)
 --- keep cursor in same position when yanking in visual
 k("v", "y", [[ygv<Esc>]], silent)
 
+k("n", "gx", [[:sil !open <cWORD><cr>]], silent)
+
+-- move cursor to left/right
+-- k({ "n" }, "gh", "^")
+-- k({ "n" }, "gl", "g_")
+k("n", "L", "g_", silent)
+k("n", "H", "^", silent)
+
+k("x", "<<", function()
+  vim.cmd("normal! <<")
+  vim.cmd("normal! gv")
+end, silent)
 
 -- k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
 
