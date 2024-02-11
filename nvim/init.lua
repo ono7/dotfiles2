@@ -156,8 +156,6 @@ k("n", "gx", [[:sil !open <cWORD><cr>]], silent)
 k("n", "L", "g_", silent)
 k("n", "H", "^", silent)
 
-k("i", "<c-h>", "<BS>", silent)
-
 k("x", "<<", function()
   vim.cmd("normal! <<")
   vim.cmd("normal! gv")
