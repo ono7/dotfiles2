@@ -53,3 +53,6 @@ wt = worktree
 # git unstage fileA
 unstage = reset HEAD --
 last = log -1 HEAD
+
+[remote "origin"]
+fetch = +refs/heads/*:refs/remotes/origin/*
