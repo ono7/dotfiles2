@@ -142,6 +142,9 @@ inoremap <C-c> <Esc>
 " change local cd per buffer
 nnoremap <leader>cd :lcd %:h<CR>
 
+nnoremap H ^
+nnoremap L g_
+
 cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
@@ -484,6 +487,9 @@ vnoremap p "0p
 vnoremap P "0P
 " vnoremap y "0y
 vnoremap d "0d
+
+nnoremap H ^
+nnoremap L g_
 
 cnoremap <C-A> <Home>
 cnoremap <C-h> <Left>
