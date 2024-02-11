@@ -1,4 +1,3 @@
-
 live_config_reload = true
 working_directory = "None"
 
@@ -39,12 +38,10 @@ white = "0x828bb8"
 yellow = "0xffc777"
 
 [colors.primary]
-# background = "0x222436"
-# background = "0x1b1d29"
-# background = "0x1e273b"
-# background = "0x17202e"
-# background = "0x151d2a"
-background = "0x1e293b"
+# background = "0x1e293b"
+background = "#181d28"
+# background = "0x1d2436"
+
 # background = "0x111721"
 foreground = "#e4e0da"
 
@@ -243,10 +240,10 @@ program = "ubuntu"
 
 [window]
 decorations = "full"
-dynamic_padding = true
+dynamic_padding = false
 dynamic_title = true
-opacity = 0.97
-blur = true
+opacity = 1
+blur = true # does not work in windows?
 startup_mode = "Maximized"
 
 # [window.dimensions]
