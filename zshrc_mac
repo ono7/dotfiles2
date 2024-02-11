@@ -430,7 +430,6 @@ vc () {
   source $venv_dir/bin/activate
   pip install pip wheel -U
   pip install jq yq pyright black debugpy pytest yamllint pynvim rpdb pdbpp -U
-  pip freeze > requirements.txt
   echo ""
   echo ""
   echo ""
