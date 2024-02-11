@@ -9,6 +9,7 @@ alias gds='git diff --staged'
 alias gc='git commit '
 alias gco='git checkout '
 alias gf='git fetch --all'
+# view logs with changes with gl -p
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gp='git push '
 alias gpu='git pull'
