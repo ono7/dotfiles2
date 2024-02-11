@@ -61,15 +61,6 @@ vim.g.skip_ts_context_commentstring_module = true
 vim.opt.termguicolors = true
 vim.opt.syntax = "off"
 
-function _G.get_git_branch_ntwk()
-  local handle = io.popen("git branch --show-current | grep -Eio 'ntwk-\\d{1,20}'")
-  local result = handle:read("*a")
-  handle:close()
-  -- Trim the newline character from the result
-  result = string.gsub(result, "\n$", "")
-  vim.api.nvim_set_var('git_branch_ntwk', result)
-end
-
 --- if syntax is on/enabled treesitter has issues
 --- other weird things happen, like lsp not starting automatically etc
 --- see https://thevaluable.dev/tree-sitter-neovim-overview/
