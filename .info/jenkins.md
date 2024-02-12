@@ -31,10 +31,10 @@ RUN apt-get update && \
     usermod -aG docker jenkins
 ```
 
-```Dockerfile
+```docker-compose.yml
 # docker compose file
 # requires jenkins_vol to store persistant data
-# run with docker-compose -f ThisFile up
+# run with `docker-compose up`
 version: '3'
 
 services:
