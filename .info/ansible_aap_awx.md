@@ -4,16 +4,16 @@
 2. runs other tools needed for builds etc
 
 ```Dockerfile
-FROM redhat/ubi8-minimal as build
+# docker login registry.redhat.io
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
 USER root
 
-RUN microdnf update -y && microdnf install python3.11 python3.11-devel \
-  python3.11-pip libffi-devel findutils unzip gcc make which \
-  wget glibc-langpack-en glibc-locale-source jq git podman \
-  --nodocs --setopt install_weak_deps=0 -y
-RUN alternatives --set python3 /usr/bin/python3.11
-RUN alternatives --install /usr/bin/pip pip /usr/bin/pip3.11 1
-RUN pip install wheel ruff setuptools ansible ansible-lint ansible-builder pytest
-ENV PATH=/usr/bin:${PATH}
+RUN ln -s /usr/bin/microdnf /usr/bin/yum && \
+  microdnf update -y && microdnf install python3.11 python3.11-pip --nodocs --setopt install_weak_deps=0 -y && \
+  alternatives --set python3 /usr/bin/python3.11 && \
+  alternatives --install /usr/bin/pip pip /usr/bin/pip3.11 1 && \
+  pip --version 
+
+ENV PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/mi-tec/
 ```
