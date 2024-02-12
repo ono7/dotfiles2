@@ -247,7 +247,7 @@ k("n", "<leader>h", hlsToggle, silent)
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
 
-k({ "n", "x" }, "cw", "ciw", opt)
+-- k({ "n", "x" }, "cw", "ciw", opt)
 
 --- ex/command mode bindings
 k("c", "<c-a>", "<Home>", opt)
