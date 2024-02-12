@@ -1,3 +1,9 @@
+# all containers should have this
+
+```Dockerfile
+ENV LANG=C.UTF-8
+```
+
 # git shell on running container (root)
 
 ```sh
