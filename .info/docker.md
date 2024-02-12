@@ -1,3 +1,13 @@
+# git shell on running container (root)
+
+```sh
+docker ps
+# get container ID if running container, in this case 5dc47655b035
+docker exec -it -u 0 5dc47655b035 /bin/bash
+
+# -u 0 = root
+```
+
 # running jenkins/jenkins
 
 - build with `--cpu-quota xyz`
