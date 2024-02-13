@@ -66,6 +66,7 @@ alias gf='git fetch --all'
 # deletes merged branches
 # alias gdm="git branch --merged | grep -Pv '(^\*|master|main)' | xargs git branch -d"
 alias gdm="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | xargs echo"
+alias gdmr="git branch --merged | grep -Pv '(^\*|master|main)' | xargs git branch -d"
 
 # git follow a file history gfh nvim/init.lua
 alias gfh="git log --follow -p"
