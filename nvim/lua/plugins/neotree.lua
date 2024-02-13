@@ -12,7 +12,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 configs.setup({
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
-  enable_git_status = true,
+  enable_git_status = false,
   open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
   enable_diagnostics = true,
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
@@ -166,7 +166,7 @@ configs.setup({
     follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
     group_empty_dirs = false,                 -- when true, empty folders will be grouped together
-    hijack_netrw_behavior = "open_default",   -- netrw disabled, opening a directory opens neo-tree
+    -- hijack_netrw_behavior = "open_default",   -- netrw disabled, opening a directory opens neo-tree
     -- in whatever position is specified in window.position
     -- "open_current",  -- netrw disabled, opening a directory opens within the
     -- window like netrw would, regardless of window.position
@@ -202,20 +202,20 @@ configs.setup({
       },
     },
   },
-  git_status = {
-    window = {
-      position = "float",
-      mappings = {
-        ["A"] = "git_add_all",
-        ["gu"] = "git_unstage_file",
-        ["ga"] = "git_add_file",
-        ["gr"] = "git_revert_file",
-        ["gc"] = "git_commit",
-        ["gp"] = "git_push",
-        ["gg"] = "git_commit_and_push",
-      },
-    },
-  },
+  -- git_status = {
+  --   window = {
+  --     position = "float",
+  --     mappings = {
+  --       ["A"] = "git_add_all",
+  --       ["gu"] = "git_unstage_file",
+  --       ["ga"] = "git_add_file",
+  --       ["gr"] = "git_revert_file",
+  --       ["gc"] = "git_commit",
+  --       ["gp"] = "git_push",
+  --       ["gg"] = "git_commit_and_push",
+  --     },
+  --   },
+  -- },
 })
 
 vim.cmd([[nnoremap \ :silent! Neotree reveal toggle<cr>]])
