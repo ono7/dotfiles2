@@ -107,7 +107,7 @@ require("gruvbox").setup({
     ["@repeat"] = { fg = "#e53f73", italic = true },
     ["@include"] = { fg = "#e53f73" },
     ["@operator"] = { fg = "#e53f73" },
-    ["Comment"] = { fg = "#444d69" },
+    ["Comment"] = { fg = "#586488" },
     Conditional = { fg = "#e53f73" },
     ErrorMsg = { fg = "#d3869b", bg = "none" },
     ["@text.todo"] = { link = "ErrorMsg" },
