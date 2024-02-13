@@ -1,5 +1,7 @@
 --- Follow the white Rabbit...   🐇
 
+-- TODO(jlima): fix fugitive/neotree conflict
+
 --[[
 
 
