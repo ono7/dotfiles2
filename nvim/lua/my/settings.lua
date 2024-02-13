@@ -47,7 +47,7 @@ o.ruler = true
 o.scrolloff = 8
 o.sidescrolloff = 20
 opt.splitright = true
-opt.splitbelow = true
+-- opt.splitbelow = true
 -- opt.winbar = "%=%M %-.45f"
 opt.iskeyword:append("-")
 -- opt.iskeyword:append('"') -- have vim skip over ", when using w or b
