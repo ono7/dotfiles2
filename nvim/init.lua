@@ -552,7 +552,7 @@ local packages = {
   "my.settings",
   "plugins.treesitter",
   "plugins.telescope",
-  "plugins.neotree",
+  -- "plugins.neotree",
   "plugins.surround",
   "plugins.lsp.cmp",
   "plugins.lsp.mason", -- mason first, or lsp breaks
