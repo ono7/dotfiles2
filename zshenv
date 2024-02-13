@@ -2,13 +2,38 @@ alias f='fd -tf'
 alias l='less -R '
 alias m='more '
 
-ga() {
-  if [ "$#" -eq 0 ]; then
-    git add -p
-  else
-    git add "$@"
-  fi
-  git commit
+# ga() {
+#   if [ "$#" -eq 0 ]; then
+#     git add -p
+#   else
+#     git add "$@"
+#   fi
+#   git commit
+# }
+
+ga () {
+    # Check for untracked files
+    untracked_files=$(git status --porcelain | grep '^??' | cut -c4-)
+    if [ -z "$untracked_files" ]; then
+        echo "No new untracked files."
+    else
+        echo "Untracked files detected."
+        echo "$untracked_files"
+        echo "Do you want to add all untracked files? (y/n)"
+        read -r user_input
+        if [[ $user_input =~ ^[Yy]$ ]]; then
+            git add .
+            echo "Added all untracked files."
+        fi
+    fi
+
+    # Proceed with the rest of the function
+    if [ "$#" -eq 0 ]; then
+        git add -p
+    else
+        git add "$@"
+    fi
+    git commit
 }
 
 gac() {
