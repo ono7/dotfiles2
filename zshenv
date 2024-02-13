@@ -30,7 +30,9 @@ ga () {
         echo "No new untracked files."
     else
         echo "Untracked files detected."
+        echo " "
         echo "$untracked_files"
+        echo " "
         echo "Do you want to add all untracked files? (y/n)"
         read -r user_input
         if [[ $user_input =~ ^[Yy]$ ]]; then
