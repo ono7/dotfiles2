@@ -47,12 +47,19 @@ c({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+
 -- -- fix commit msg, goto top of file on enter
+
 c({ "BufEnter" }, {
   group = create_augroup("vim_commit_msg", { clear = true }),
   pattern = 'COMMIT_EDITMSG',
   callback = function()
     vim.wo.spell = true
+    local branch = vim.fn.systemlist('git rev-parse --abbrev-ref HEAD')[1]
+    if branch then
+      vim.fn.append(1, branch)
+      vim.fn.append(2, " ")
+    end
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
     -- if vim.fn.getline(1) == '' then
     --   vim.cmd 'startinsert!'

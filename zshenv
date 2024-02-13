@@ -81,3 +81,5 @@ alias gs='git status '
 alias gwa='git worktree add '
 alias gwl='git worktree list'
 alias gwr='git worktree remove '
+
+alias p='podman'

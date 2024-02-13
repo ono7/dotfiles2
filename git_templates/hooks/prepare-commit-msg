@@ -1,0 +1,4 @@
+# Automatically adds branch name to the end of every commit message.
+
+# NAME=$(git branch | grep '*' | sed 's/* //')
+# echo $(cat "$1") "$NAME" > "$1"
