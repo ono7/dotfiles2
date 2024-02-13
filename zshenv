@@ -2,15 +2,30 @@ alias f='fd -tf'
 alias l='less -R '
 alias m='more '
 
-alias ga='git add -p'
-alias gaa='git add .'
+ga() {
+  if [ "$#" -eq 0 ]; then
+    git add -p
+  else
+    git add "$@"
+  fi
+}
+
+gac() {
+  if [ "$#" -eq 0 ]; then
+    git add -p
+  else
+    git add "$@"
+  fi
+  git commit
+}
+
 alias gd='git diff '
 alias gds='git diff --staged'
 alias gc='git commit '
 alias gco='git checkout '
 alias gf='git fetch --all'
 # view logs with changes with gl -p
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --graph --abbrev=10 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gp='git push '
 alias gpu='git pull'
 alias gr='git reflog '
