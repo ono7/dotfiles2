@@ -1,8 +1,5 @@
 # custom image for aap
 
-1. runs python 3.11
-2. runs other tools needed for builds etc
-
 Using ansible-builder 3.x and podman
 
 1. podman build
