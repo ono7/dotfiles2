@@ -139,7 +139,7 @@ k("n", "ZQ", "")
 
 -- k({ "n", "x" }, "<c-e>", "g_")
 
-vim.cmd([[nnoremap \ :vertical Git<CR>]])
+k({ "n", "x" }, [[\]], [[:vertical Git<cr>]], silent)
 
 -- move selection to far left, far right
 k("v", "gh", ":left<cr>", silent)
