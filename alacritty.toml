@@ -242,8 +242,8 @@ program = "/bin/zsh"
 decorations = "buttonless"
 dynamic_padding = true
 dynamic_title = false
-opacity = 0.96
-blur = true
+# opacity = 0.96
+# blur = true
 startup_mode = "Windowed"
 option_as_alt = "both"
 
