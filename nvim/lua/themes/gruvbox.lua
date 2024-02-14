@@ -71,8 +71,8 @@ require("gruvbox").setup({
     GruvboxRed    = "#e53f73",
   },
   overrides = {
-    -- String = { fg = "#E4DB82" },
-    String = { fg = "#cdc575" },
+    String = { fg = "#E4DB82" },
+    -- String = { fg = "#cdc575" },
     Normal = { fg = mycolors.normal },
     ModeMsg = { fg = mycolors.normal },
     GruvboxFg1 = { fg = mycolors.normal },
