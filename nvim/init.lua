@@ -2,7 +2,6 @@
 
 --[[
 
-
 Fix github repos missing remote
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 

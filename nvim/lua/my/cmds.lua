@@ -55,7 +55,8 @@ c({ "BufEnter" }, {
   pattern = 'COMMIT_EDITMSG',
   callback = function()
     vim.wo.spell = true
-    local branch = vim.fn.systemlist('git rev-parse --abbrev-ref HEAD')[1]
+    -- local branch = vim.fn.systemlist('git rev-parse --abbrev-ref HEAD')[1]
+    local branch = branch_name()
     if branch then
       vim.fn.append(1, branch)
       vim.fn.append(2, " ")
