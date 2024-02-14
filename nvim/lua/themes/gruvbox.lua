@@ -71,7 +71,8 @@ require("gruvbox").setup({
     GruvboxRed    = "#e53f73",
   },
   overrides = {
-    String = { fg = "#E4DB82" },
+    -- String = { fg = "#E4DB82" },
+    String = { fg = "#cdc575" },
     Normal = { fg = mycolors.normal },
     ModeMsg = { fg = mycolors.normal },
     GruvboxFg1 = { fg = mycolors.normal },
@@ -107,7 +108,7 @@ require("gruvbox").setup({
     ["@repeat"] = { fg = "#e53f73", italic = true },
     ["@include"] = { fg = "#e53f73" },
     ["@operator"] = { fg = "#e53f73" },
-    ["Comment"] = { fg = "#586488" },
+    ["Comment"] = { fg = "#3a5478" },
     Conditional = { fg = "#e53f73" },
     ErrorMsg = { fg = "#d3869b", bg = "none" },
     ["@text.todo"] = { link = "ErrorMsg" },
@@ -126,7 +127,7 @@ vim.api.nvim_set_hl(0, "WildMenu", { bg = "#29354a" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "#29354a" })
 vim.api.nvim_set_hl(0, "WildMenuSelect", { bg = mycolors.baby_pink, fg = mycolors.darker_black })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Comment" })
-vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#213a5f" })
 vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
 vim.api.nvim_set_hl(0, "cmpBorder", { fg = "#2b2c36" })
 vim.api.nvim_set_hl(0, "MatchParen", { bg = "#43536d", fg = "#ef9c40" })
