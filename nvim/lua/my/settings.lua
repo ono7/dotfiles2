@@ -46,7 +46,7 @@ o.history = 1000
 o.ruler = true
 o.scrolloff = 8
 o.sidescrolloff = 20
-opt.splitright = true
+opt.splitright = false
 -- opt.splitbelow = true
 -- opt.winbar = "%=%M %-.45f"
 opt.iskeyword:append("-")
