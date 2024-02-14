@@ -1,7 +1,6 @@
 local c = vim.api.nvim_create_autocmd
 local create_augroup = vim.api.nvim_create_augroup
 
-
 local function branch_name()
   local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
   if branch ~= "" then
@@ -17,15 +16,6 @@ c({ "FileType", "BufEnter", "FocusGained" }, {
   end,
   group = create_augroup("git_branch_name", { clear = true }),
 })
-
--- -- TODO(jlima): fix telescope c-f keybind
--- c("CmdWinEnter", {
---   pattern = "*",
---   callback = function()
---     vim.keymap.del("n", "<c-f>", { buffer = true })
---   end,
---   group = create_augroup("_cmd_win", { clear = true }),
--- })
 
 c("TextYankPost", {
   pattern = "*",
@@ -47,7 +37,6 @@ c({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-
 -- -- fix commit msg, goto top of file on enter
 
 c({ "BufEnter" }, {
@@ -55,9 +44,8 @@ c({ "BufEnter" }, {
   pattern = 'COMMIT_EDITMSG',
   callback = function()
     vim.wo.spell = true
-    -- local branch = vim.fn.systemlist('git rev-parse --abbrev-ref HEAD')[1]
     local branch = branch_name()
-    if branch then
+    if branch ~= "" then
       vim.fn.append(1, branch)
       vim.fn.append(2, " ")
     end
@@ -158,17 +146,6 @@ augroup _QuickFixOpen
 augroup END
 ]]
 
--- handle large files, syntax=OFF only affects buffer, where syntax off is global
--- syn sync clear, we can keep syntax and still work on large files! 2023-09-23, probably not needed with treesitter
--- c({
---   "BufWinEnter",
--- }, {
---   pattern = "*",
---   command =
---   [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
---   group = create_augroup("check_if_file_size_too_big", { clear = true }),
--- })
-
 -- auto source snippets file
 c("BufWritePost", {
   pattern = "*.snippet",
@@ -194,28 +171,6 @@ c("BufWritePre", {
   end,
 })
 
--- c({ "BufWritePre" }, {
---   group = create_augroup("clear_trailing_spaces", { clear = true }),
---   pattern = { "*" }, -- Matches all files
---   callback = function()
---     local save_cursor = vim.fn.getcurpos()
---     -- Fixes ^M chars from Windows copy-pastes and removes trailing spaces
---     vim.cmd [[%s/\v\s*\r+$|\s+$//e]]
---     vim.fn.setpos('.', save_cursor)
---   end,
--- })
-
-
-
--- c({ "BufWritePre" }, {
---   group = create_augroup("all_files", { clear = true }),
---   pattern = { "*.tf", "*.tfvars", "*.go", "*.md", "*.yml" },
---   -- pattern = { "*.*" },
---   callback = function()
---     vim.lsp.buf.format()
---   end,
--- })
-
 c("FocusGained", {
   callback = function()
     vim.cmd("checktime")
@@ -233,3 +188,14 @@ c("TermOpen", {
   group = create_augroup("set_buf_number_options", { clear = true }),
   desc = "Terminal Options",
 })
+
+-- handle large files, syntax=OFF only affects buffer, where syntax off is global
+-- syn sync clear, we can keep syntax and still work on large files! 2023-09-23, probably not needed with treesitter
+-- c({
+--   "BufWinEnter",
+-- }, {
+--   pattern = "*",
+--   command =
+--   [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
+--   group = create_augroup("check_if_file_size_too_big", { clear = true }),
+-- })
