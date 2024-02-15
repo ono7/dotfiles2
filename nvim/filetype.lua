@@ -1,4 +1,11 @@
 vim.filetype.add({
+  filename = {
+    ['Jenkinsfile'] = 'groovy',
+    ['Jenkinsfile-1'] = 'groovy',
+    ['Jenkinsfile-2'] = 'groovy',
+    ['Jenkinsfile-3'] = 'groovy',
+    ['Jenkinsfile-4'] = 'groovy',
+  },
   extension = {
     -- h = function()
     --   -- Use a lazy heuristic that #including a C++ header means it's a
