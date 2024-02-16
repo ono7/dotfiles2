@@ -490,12 +490,17 @@ if command -v fd &>/dev/null; then
 else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
   if [[ $OSTYPE == "darwin"* ]]; then
-    brew install fd jq neovim alaccrity wezterm llvm && ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
+    brew install fd jq neovim alaccrity wezterm llvm netcat && ln -s $(brew --prefix)/opt/llvm/bin/lldb-vscode $(brew --prefix)/bin/
   fi
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then
   [ ! -d /opt/homebrew/opt/gnu-sed/libexec/gnubin &>/dev/null ] && brew install gnu-sed
+fi
+
+
+if command -v netcat &>/dev/null; then
+  alias nc=netcat
 fi
 
 # pretty colors

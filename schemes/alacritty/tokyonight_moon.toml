@@ -34,6 +34,6 @@ white = "#828bb8"
 yellow = "#ffc777"
 
 [colors.primary]
-background = "#0d1e33"
-# background = "#0e1d2b" # also super nice
+# background = "#0d1e33"
+background = "#0e1d2b" # also super nice
 foreground = "#c8d3f5"
