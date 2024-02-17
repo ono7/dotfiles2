@@ -116,10 +116,6 @@ vim.g.python3_host_prog = MYHOME .. "/.virtualenvs/prod3/bin/python3"
 --- map leader ---
 k({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
---- update jump list whenn we hop more than one line ---
--- vim.cmd([[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k' ]])
--- vim.cmd([[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j' ]])
-
 -- add movements bigger then 1 line to the jump list, but also navigate through wrapped lines
 vim.cmd([[nnoremap <expr> j v:count ? (v:count > 1 ? "m'" . v:count : '') . 'j' : 'gj']])
 vim.cmd([[nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' : 'gk']])
@@ -137,7 +133,8 @@ k("n", "ZQ", "")
 -- k({ "n", "x" }, "<c-e>", "g_")
 
 -- k({ "n", "x" }, [[\]], [[:vertical Git<cr>]], silent)
-vim.keymap.set({ "n", "x" }, "\\", function()
+--
+k({ "n", "x" }, "\\", function()
   local fugitive_buf_found = false
   local windows = vim.api.nvim_list_wins()
 
@@ -172,8 +169,6 @@ k("v", "y", [[ygv<Esc>]], silent)
 k("n", "gx", [[:sil !open <cWORD><cr>]], silent)
 
 -- move cursor to left/right
--- k({ "n" }, "gh", "^")
--- k({ "n" }, "gl", "g_")
 k("n", "L", "g_", silent)
 k("n", "H", "^", silent)
 
@@ -182,7 +177,8 @@ k("x", "<<", function()
   vim.cmd("normal! gv")
 end, silent)
 
--- k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
+-- toggle spell on and off
+k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
 
 local function check_buf(bufnr)
   --- checks if this is a valid buffer that we can save to ---
@@ -215,7 +211,11 @@ k("n", ",w", function()
     print("save me first!")
     return
   end
-  vim.lsp.buf.format()
+  vim.cmd([[%s/\v\s*\r+$|\s+$//e]])
+  status, result = pcall(vim.lsp.buf.format)
+  if not status then
+    print("no lsp..")
+  end
   vim.cmd [[:write]]
 end, silent)
 
@@ -223,15 +223,6 @@ k("n", "<leader>w", ":CleanAndSave<cr>", silent)
 k("n", ",q", "<cmd>q!<cr>", silent)
 k("n", ",d", "<cmd>bd<cr>", silent)
 k("n", "<leader>q", "<cmd>q!<cr>", silent)
-
---- surround
--- k("n", [[s"]], [[ciw"<c-r><c-p>""]])
--- k("n", [[s']], [[ciw'<c-r><c-p>"']])
-
--- k("n", [[ci"]], [[/"<CR>ci"]], silent)
--- k("n", [[ci']], [[/'<CR>ci']], silent)
--- k("x", [[vi"]], [[/"<CR>vi"]], silent)
--- k("x", [[vi']], [[/'<CR>vi']], silent)
 
 --- navigate between splits ---
 k("n", "<c-k>", "<C-W>k")
@@ -242,7 +233,6 @@ k("n", "<c-l>", "<C-W>l")
 k("n", ";", ":")
 -- k("n", ":", ";")
 
--- k("n", "<TAB>", "<C-^>", silent)
 k("n", "<tab>", ":bnext<CR>", silent)
 k("n", "<s-tab>", ":bprevious<CR>", silent)
 
@@ -267,8 +257,6 @@ k("n", "<leader>h", hlsToggle, silent)
 
 --- copy block
 k("n", "cp", "yap<S-}>p", opt)
-
--- k({ "n", "x" }, "cw", "ciw", opt)
 
 --- ex/command mode bindings
 k("c", "<c-a>", "<Home>", opt)
@@ -642,13 +630,3 @@ end
 vim.o.guicursor = "" -- uncomment for beam cursor
 --- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
 vim.o.mouse = "n"
---- # vim:ts=4:sw=4:ai:foldmethod=marker:foldlevel=0:
-
--- vim.api.nvim_set_hl(0, "SignColumn", {})
--- vim.api.nvim_set_hl(0, "Error", {})
--- vim.api.nvim_set_hl(0, "Cursor", {})
--- vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
--- vim.api.nvim_set_hl(0, "MatchParen", { link = "Cursor" })
-
--- local base16 = require 'my.base16'
--- base16(base16.themes.tube, true)
