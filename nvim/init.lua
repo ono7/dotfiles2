@@ -440,27 +440,27 @@ local pair_map_2 = {
   [">"] = "<",
 }
 
-k("i", "<enter>", function()
-  -- use this one when we are autoclosing
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local p = line:sub(col - 1, col - 1)
-  local pmap = pair_map_2
-  if pmap[p] then
-    return "<CR><Esc>O"
-  else
-    return "<CR>"
-  end
-end, { expr = true })
+-- k("i", "<enter>", function()
+--   -- use this one when we are autoclosing
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.fn.col('.')
+--   local p = line:sub(col - 1, col - 1)
+--   local pmap = pair_map_2
+--   if pmap[p] then
+--     return "<CR><Esc>O"
+--   else
+--     return "<CR>"
+--   end
+-- end, { expr = true })
 
---- k("i", "<enter>", function()
----   -- use this one when we are not autoclosing
----   local line = vim.fn.getline(".")
----   local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
----   return pair_map_2[line:sub(prev_col, prev_col)]
----       and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
----       or "<Enter>"
---- end, { expr = true })
+k("i", "<enter>", function()
+  -- use this one when we are not autoclosing
+  local line = vim.fn.getline(".")
+  local prev_col, _ = vim.fn.col(".") - 1, vim.fn.col(".")
+  return pair_map_2[line:sub(prev_col, prev_col)]
+      and "<enter>" .. pair_map_2[line:sub(prev_col, prev_col)] .. "<Esc>O"
+      or "<Enter>"
+end, { expr = true })
 
 --- delete all but the current buffer
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
