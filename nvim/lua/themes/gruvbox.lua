@@ -6,12 +6,12 @@
 
 
 local mycolors = {
-  white = "#D9E0EE",
-  -- normal = "#e4e0da",
-  normal = "#d9d4cb",
+  white = "#C9C8C0",
+  -- normal = "#C9C8C0",
+  normal = "#C9C8C0",
   green = "#B3E053",
   -- normal = "#dcd6cd",
-  bright_white = "#ffffff",
+  bright_white = "#C9C8C0",
   darker_black = "#191828",
   black = "#1E1D2D",   --  nvim bg
   black2 = "#252434",
@@ -71,7 +71,7 @@ require("gruvbox").setup({
     GruvboxRed    = "#e53f73",
   },
   overrides = {
-    String = { fg = "#E4DB82" },
+    String = { fg = "#cfb182" },
     -- String = { fg = "#cdc575" },
     Normal = { fg = mycolors.normal },
     ModeMsg = { fg = mycolors.normal },
@@ -108,7 +108,7 @@ require("gruvbox").setup({
     ["@repeat"] = { fg = "#e53f73", italic = true },
     ["@include"] = { fg = "#e53f73" },
     ["@operator"] = { fg = "#e53f73" },
-    ["Comment"] = { fg = "#3a5478" },
+    ["Comment"] = { fg = "#3A506C" },
     Conditional = { fg = "#e53f73" },
     ErrorMsg = { fg = "#d3869b", bg = "none" },
     ["@text.todo"] = { link = "ErrorMsg" },

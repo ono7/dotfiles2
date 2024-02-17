@@ -13,13 +13,13 @@ cyan = "#86e1fc"
 green = "#c3e88d"
 magenta = "#c099ff"
 red = "#ff757f"
-white = "#c8d3f5"
+white = "#C9C8BF"
 yellow = "#ffc777"
 
 [colors.cursor]
 
 # cursor = "#4fc2e8"
-cursor = "#cdd6f4"
+cursor = "#C9C8BF"
 
 # text = "#000000"
 
@@ -30,10 +30,14 @@ cyan = "#86e1fc"
 green = "#c3e88d"
 magenta = "#c099ff"
 red = "#ff757f"
-white = "#828bb8"
+# white = "#828bb8"
+white = "#C9C8BF"
 yellow = "#ffc777"
 
 [colors.primary]
 # background = "#0d1e33"
-background = "#0e1d2b" # also super nice
-foreground = "#c8d3f5"
+# background = "#0e1d2b" # also super nice
+# background = "#182330"
+# background = "#1A2B3E"
+background = "#152231"
+foreground = "#C9C8BF"

@@ -19,12 +19,12 @@ cyan = "0x86e1fc"
 green = "0xc3e88d"
 magenta = "0xc099ff"
 red = "0xff757f"
-white = "0xc8d3f5"
+white = "#C9C8BF"
 yellow = "0xffc777"
 
 [colors.cursor]
 # cursor = "#4fc2e8"
-cursor = "#ffffff"
+cursor = "#C9C8BF"
 text = "#000000"
 
 [colors.normal]
@@ -34,17 +34,18 @@ cyan = "0x86e1fc"
 green = "0xc3e88d"
 magenta = "0xc099ff"
 red = "0xff757f"
-white = "0x828bb8"
+white = "#C9C8BF"
 yellow = "0xffc777"
 
 [colors.primary]
 # background = "0x1e293b"
 # background = "#181d28"
-background = "#152f4b"
+# background = "#152f4b"
 # background = "0x1d2436"
 
 # background = "0x111721"
-foreground = "#e4e0da"
+foreground = "#C9C8BF"
+background = "#152231"
 
 [cursor]
 blink_interval = 200
