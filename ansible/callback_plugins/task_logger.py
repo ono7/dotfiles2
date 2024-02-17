@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ task auditing callback pluging
 
-    Author:  Jose Lima (jlima)
+    Author:  Jose Lima (jlima688)
     Date:    2024-01-10  21:01
 
     NOTE: **Do not print() in the callback plugin**
@@ -15,35 +15,36 @@
         This callback module hooks into ansible events and creates a log entry for each task
         in to a log file that can be used for reporting.
 
-        Tasks that are set to "ignore_errors: true" are set to warn status here since the intent
-        is to continue playbook execution when the flag is set.
+        Tasks that are set to "ignore_errors: true" are set to WARNING status here since the intent
+        is to continue playbook execution when the flag is set. Tasks that ignore_errors will be
+        flagged with [ ✅ WARNING ], indicating that this is not a fatal event, all tasks that ignore_errors
+        will explicietly mention this in the task name:  `Task: (ignore_errors) ABC` for visibility.
 
         To skip logging any task output/errors that could leak sensitive_task data mark
         there are two ways supported to skip logging task ouput (but still report failure):
 
         1. Set a tag named sensitive_task
 
-        - name: Set the super secret password
-          ansible.builtin.shell: echo password123
-          tags:
-           - sensitive_task
+            - name: Set the super secret password
+              ansible.builtin.shell: echo password123
+              tags:
+               - sensitive_task
 
         2. Or set a variable named sensitive_task directly on the task
 
-        - name: Set the super secret password
-          ansible.builtin.shell: echo password123
-          vars:
-            sensitive_task: true
+            - name: Set the super secret password
+              ansible.builtin.shell: echo password123
+              vars:
+                sensitive_task: true
 
          Setting variable named sensitive_task globaly will basically ignore all output
-         but still report a failure and the task name, probaly should be avoided.
+         but still report a failure and the task name, this method should be used with discretion.
 
 """
 from pathlib import Path
 from ansible.plugins.callback import CallbackBase
 from ansible.executor.task_result import TaskResult
 import logging
-import os
 
 log_file_name = "ansible_tasks.log"
 
@@ -63,7 +64,7 @@ _status_warning = r"[ ✅ WARNING ]"
 
 
 def wrap_message(message, header="", sep="-"):
-    """Error message wrapper"""
+    """General message wrapper"""
 
     total_len = 48
     header_len = len(header) + 2
@@ -73,7 +74,7 @@ def wrap_message(message, header="", sep="-"):
     if len(header) < total_len:
         header += sep
 
-    footer = sep * (len(header) + 1)
+    footer = sep * (len(header) + 5)
     return f"\n{header}\n\n{message}\n\n{footer}\n"
 
 
@@ -218,10 +219,3 @@ class CallbackModule(CallbackBase):
             logger.error(
                 f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
             )
-
-    # def v2_playbook_on_stats(self, stats):
-    #     """Executes at the end of the playbook run"""
-    #     super(CallbackModule, self).v2_playbook_on_stats(stats)
-    #     with open(log_file_name) as f:
-    #         self._display.display("******** Playbook event summary ********")
-    #         self._display.display(f.read())
