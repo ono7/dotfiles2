@@ -178,7 +178,10 @@ k("x", "<<", function()
 end, silent)
 
 -- toggle spell on and off
-k("n", "<leader>s", function() vim.o.spell = not vim.o.spell end, silent)
+k("n", "<leader>s", function()
+  vim.o.spell = not vim.o.spell
+  print(vim.opt.spell._value)
+end, silent)
 
 local function check_buf(bufnr)
   --- checks if this is a valid buffer that we can save to ---
