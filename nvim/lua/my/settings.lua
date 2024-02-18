@@ -4,16 +4,11 @@ local opt = vim.opt
 local wo = vim.wo
 local bo = vim.bo
 
-
 --- global options ---
 o.completeopt = "menu,menuone,noinsert"
 o.foldmethod = "indent"
 o.mouse = "n"
 o.grepprg = "git grep -n"
--- local is_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_CONNECTION")
--- if is_ssh then
---   vim.opt.mouse = ""
--- end
 o.spellsuggest = "best,5"
 o.title = false
 o.colorcolumn = "99999" -- fixes indentline?
@@ -44,11 +39,8 @@ o.showcmd = false
 o.writebackup = false
 o.history = 1000
 o.ruler = true
-o.scrolloff = 8
-o.sidescrolloff = 20
+o.sidescrolloff = 1
 opt.splitright = false
--- opt.splitbelow = true
--- opt.winbar = "%=%M %-.45f"
 opt.iskeyword:append("-")
 -- opt.iskeyword:append('"') -- have vim skip over ", when using w or b
 o.smartcase = true
@@ -56,24 +48,20 @@ o.smarttab = true
 
 -- whichwrap: "<>[]hl" allow hl to move past end of line when moving
 vim.opt.whichwrap:append "<>[]"
--- opt.jumpoptions = "stack"
 opt.jumpoptions:append("view")
 o.inccommand = "nosplit"
 o.foldopen = "hor,mark,percent,quickfix,search,tag,undo" -- removed 'block'
 o.winaltkeys = "no"
 o.pumheight = 10
--- o.pumblend = 3
 o.emoji = false
 -- o.redrawtime = 10000
 o.lazyredraw = false
 o.timeout = false -- remove timeout for partially typed commands
--- o.updatetime = 50
 o.updatetime = 500
 o.fillchars = [[diff:╱,vert:│,eob: ,msgsep:‾]]
 o.listchars = [[tab:  ,trail:•,nbsp:·,conceal: ]]
 o.nrformats = "bin,hex,alpha"
 o.nrformats = "bin,hex"
--- o.shortmess = "aoOTtIsc"
 o.shortmess = "aoOstTWICcF" -- F dont show file info when editing file, useful when statusline is enabled already
 o.wildignore = [[.tags,tags,vtags,*.o,*.obj,*.rbc,*.pyc,__pycache__/*,.git,.git/*,*.class]]
 o.tags = [[./tags,tags;~]]  -- search upwards until ~ (homedir)
@@ -87,14 +75,6 @@ o.maxmempattern = 20000
 o.wrapscan = true
 o.breakindent = true
 opt.isfname:append("@-@")
-
-
--- if vim.fn.has("wsl") == 1 then
---   vim.g.clipboard = ""
--- else
---   vim.g.clipboard = ""
---   opt.clipboard:append("unnamedplus")
--- end
 
 opt.clipboard:append("unnamedplus")
 
@@ -112,8 +92,6 @@ opt.clipboard:append("unnamedplus")
 --   },
 --   cache_enabled = 0,
 -- }
-
-
 
 -- o.virtualedit="all"
 
@@ -152,10 +130,8 @@ vim.o.spellsuggest = 'best,9'
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
--- bo.complete = ".,w,b,u,kspell"
 bo.complete = ".,w,b,u"
 bo.formatoptions = "qlj" -- TODO: overwritten in my_cmds.lua
--- bo.matchpairs = "(:),{:},[:]"
 
 vim.g.floating_window_border = {
   "╭",
