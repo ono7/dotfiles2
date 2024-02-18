@@ -614,7 +614,7 @@ vs () {
   vim "$(fd --type f -HI --exclude "venv" --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
-function fcd() {
+fcd() {
     local dir
     dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
 }
@@ -622,6 +622,19 @@ function fcd() {
 _vs () {
   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
+
+
+# requires brew install caarlos0/tap/timer
+alias work="timer 25 && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
+
+# requires brew install caarlos0/tap/timer
+alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -appIcon '~/Pictures/pumpkin.png'\
+        -sound Crystal"
 
 # _vs declear as widget for zsh
 zle -N _vs

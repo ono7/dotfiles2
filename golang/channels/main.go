@@ -18,7 +18,7 @@ func main() {
 			wg.Done()
 		}()
 		go func() {
-			ch <- j+1
+			ch <- j + 1
 			wg.Done()
 		}()
 		wg.Wait()
