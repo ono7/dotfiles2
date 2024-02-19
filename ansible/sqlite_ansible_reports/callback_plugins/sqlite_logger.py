@@ -1,16 +1,30 @@
+#!/usr/bin/env python3
+"""
+    Author:  Jose Lima (jlima)
+    Date:    2024-02-19  16:54
+
+    .tables;
+    select * from task_result;
+    select * from task_results where result regexp '\d';
+    select * from task_results where result regexp 'error';
+
+"""
 from ansible.plugins.callback import CallbackBase
 import sqlite3
 import json
+import logging
+
+# Configure logging
+logging.basicConfig(
+    filename="sqlite_logger.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
 
 
 def initialize_db(db_path):
-    # Connect to the SQLite database
     conn = sqlite3.connect(db_path)
-
-    # Create a cursor object
     cursor = conn.cursor()
-
-    # SQL command to create the table if it doesn't exist
     create_table_query = """
     CREATE TABLE IF NOT EXISTS task_results (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,40 +35,39 @@ def initialize_db(db_path):
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """
-
-    # Execute the SQL command
     cursor.execute(create_table_query)
-
-    # Commit the changes and close the connection
     conn.commit()
     cursor.close()
     conn.close()
 
 
 class CallbackModule(CallbackBase):
-    CALLBACK_VERSION = 2.0
-    CALLBACK_TYPE = "aggregate"
-    CALLBACK_NAME = "sqlite_logger"
-    CALLBACK_NEEDS_WHITELIST = False
-
     def __init__(self):
         super(CallbackModule, self).__init__()
-        self.db_path = "ansible_results.db"  # Path to your SQLite database
+        self.db_path = "ansible_results.db"
         initialize_db(self.db_path)
         self.conn = sqlite3.connect(self.db_path)
         self.cursor = self.conn.cursor()
 
+    def __del__(self):
+        self.conn.close()
+
     def log_task(self, task, status, result):
-        self.cursor.execute(
-            "INSERT INTO task_results (host, task_name, status, result) VALUES (?, ?, ?, ?)",
-            (
-                task._host.get_name(),
-                task._task.get_name(),
-                status,
-                json.dumps(result["msg"]),
-            ),
-        )
-        self.conn.commit()
+        try:
+            self.cursor.execute(
+                "INSERT INTO task_results (host, task_name, status, result) VALUES (?, ?, ?, ?)",
+                (
+                    task._host.get_name(),
+                    task._task.get_name(),
+                    status,
+                    json.dumps(result["msg"]),
+                ),
+            )
+            self.conn.commit()
+            logging.info(f"Task logged: {task._task.get_name()}, Status: {status}")
+        except sqlite3.Error as e:
+            self.conn.rollback()
+            logging.error(f"Error inserting task result: {e}")
 
     def v2_runner_on_ok(self, result, **kwargs):
         self.log_task(result, "OK", result._result)
