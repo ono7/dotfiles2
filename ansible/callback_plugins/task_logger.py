@@ -51,7 +51,7 @@ log_file_name = "ansible_tasks.log"
 logging.basicConfig(
     filename=log_file_name,
     level=logging.INFO,
-    format="[%(asctime)s] %(message)s",
+    format="%(asctime)s, %(message)s",
     datefmt="%H:%M:%S",
     filemode="a",
 )
@@ -59,7 +59,7 @@ logger = logging.getLogger(__name__)
 
 
 _status_fatal = r"[ ❌ FATAL ]"
-_status_success = r"[ ✅ OK ]"
+_status_success = r"✅OK"
 _status_warning = r"[ ✅ WARNING ]"
 
 
@@ -138,15 +138,19 @@ class CallbackModule(CallbackBase):
 
     def __init__(self):
         super(CallbackModule, self).__init__()
-        self.playbook_name = None
+        self.inject_my_var = None
         self.wrote_header = False
         with open(log_file_name, "a") as modify:
             modify.write(f"\n\n********* ANSIBLE JOB SUMMARY *********\n\n")
 
+    def v2_runner_on_start(self, host, task):
+        self.inject_my_var = host
+
     def v2_playbook_on_start(self, playbook):
-        file = Path(playbook._file_name)
-        if file:
-            self.playbook_name = file.with_suffix("")
+        pass
+        # file = Path(playbook._file_name)
+        # if file:
+        #     self.playbook_name = file.with_suffix("")
 
     def is_sensitive_task(self, result):
         """If the task contains sensitive information <secrets>
@@ -161,7 +165,7 @@ class CallbackModule(CallbackBase):
         if result._result.get("failed", False):
             return  # Skip logging failed events
         task = result._task
-        logger.info(f"{_status_success} ({self.playbook_name}) Task: {task.name}")
+        logger.info(f"{_status_success}, {self.inject_my_var}, Task: {task.name}")
 
     def v2_runner_item_on_ok(self, result):
         """not implemented, this could get noisy, only report failures for now"""
@@ -182,13 +186,13 @@ class CallbackModule(CallbackBase):
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
             logger.warn(
-                f"{_status_success} ({self.playbook_name}) Task(loop): (ignore_errors) {result.task_name} \n{msg}"
+                f"{_status_success}, {self.inject_my_var}, Task(loop): (ignore_errors) {result.task_name} \n{msg}"
             )
             return
         else:
             msg = wrap_message(_raw, header=_status_fatal)
         logger.error(
-            f"{_status_fatal} ({self.playbook_name}) Task(loop): {result.task_name} \n{msg}"
+            f"{_status_fatal}, {self.inject_my_var}, Task(loop): {result.task_name} \n{msg}"
         )
 
     def v2_runner_on_failed(self, result, ignore_errors=False):
@@ -201,21 +205,21 @@ class CallbackModule(CallbackBase):
         if self.is_sensitive_task(result):
             if result._task_fields.get("ignore_errors", False):
                 logger.warn(
-                    f"{_status_warning} ({self.playbook_name}) Task: (ignore_errors) {task.name} <log_marked_sensitive>"
+                    f"{_status_warning}, {self.inject_my_var}, Task: (ignore_errors) {task.name} <log_marked_sensitive>"
                 )
             else:
                 logger.error(
-                    f"{_status_fatal} ({self.playbook_name}) Task: {task.name} <log_marked_sensitive>"
+                    f"{_status_fatal}, {self.inject_my_var}, Task: {task.name} <log_marked_sensitive>"
                 )
 
         elif result._task_fields.get("ignore_errors", False):
             msg = wrap_message(_raw, header=_status_warning)
             logger.warn(
-                f"{_status_warning} ({self.playbook_name}) Task: (ignore_errors) {task.name} \n{msg}"
+                f"{_status_warning}, {self.inject_my_var}, Task: (ignore_errors) {task.name} \n{msg}"
             )
             return
 
         else:
             logger.error(
-                f"{_status_fatal} ({self.playbook_name}) Task: {task.name} \n{msg}"
+                f"{_status_fatal}, {self.inject_my_var}, Task: {task.name} \n{msg}"
             )
