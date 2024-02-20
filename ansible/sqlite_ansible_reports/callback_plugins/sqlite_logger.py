@@ -62,6 +62,9 @@ def initialize_db(db_path):
 
 
 class CallbackModule(CallbackBase):
+    CALLBACK_VERSION = 2.0
+    CALLBACK_TYPE = "notification"
+    CALLBACK_NAME = "sqlite_logger"
     def __init__(self):
         super(CallbackModule, self).__init__()
         self.db_path = "ansible_results.db"
