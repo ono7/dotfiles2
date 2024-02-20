@@ -8,6 +8,26 @@
     select * from task_results where result regexp '\d';
     select * from task_results where result regexp 'error';
 
+    sqlite> select count(*) from task_results ;
+    ┌──────────┐
+    │ count(*) │
+    ├──────────┤
+    │ 60       │
+    └──────────┘
+    sqlite> select count(*) from task_results where result REGEXP 'bad';
+    ┌──────────┐
+    │ count(*) │
+    ├──────────┤
+    │ 4        │
+    └──────────┘
+    sqlite> select count(*) from task_results where status == "OK";
+    ┌──────────┐
+    │ count(*) │
+    ├──────────┤
+    │ 56       │
+    └──────────┘
+    sqlite>
+
 """
 from ansible.plugins.callback import CallbackBase
 import sqlite3
@@ -16,7 +36,7 @@ import logging
 
 # Configure logging
 logging.basicConfig(
-    filename="sqlite_logger.log",
+    filename="ansible_transaction.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
@@ -60,11 +80,12 @@ class CallbackModule(CallbackBase):
                     task._host.get_name(),
                     task._task.get_name(),
                     status,
+                    # TODO(jlima): need to account for stderr, messages, and only log the last few lines of a long message
                     json.dumps(result["msg"]),
                 ),
             )
             self.conn.commit()
-            logging.info(f"Task logged: {task._task.get_name()}, Status: {status}")
+            # logging.info(f"Task logged: {task._task.get_name()}, Status: {status}")
         except sqlite3.Error as e:
             self.conn.rollback()
             logging.error(f"Error inserting task result: {e}")
