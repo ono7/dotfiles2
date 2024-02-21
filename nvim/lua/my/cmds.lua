@@ -44,11 +44,11 @@ c({ "BufEnter" }, {
   pattern = 'COMMIT_EDITMSG',
   callback = function()
     vim.wo.spell = true
-    local branch = branch_name()
-    if branch ~= "" then
-      vim.fn.append(1, branch)
-      vim.fn.append(2, " ")
-    end
+    -- local branch = branch_name()
+    -- if branch ~= "" then
+    --   vim.fn.append(1, branch)
+    --   vim.fn.append(2, " ")
+    -- end
     vim.api.nvim_win_set_cursor(0, { 1, 0 })
     -- if vim.fn.getline(1) == '' then
     --   vim.cmd 'startinsert!'
