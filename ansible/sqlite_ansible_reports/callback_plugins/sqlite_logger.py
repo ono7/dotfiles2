@@ -3,6 +3,10 @@
     Author:  Jose Lima (jlima)
     Date:    2024-02-19  16:54
 
+    This callback logs everything into a sqlite3 table for post playbook parsing
+    this can be called as part of a workflow where a job template parses the results from the table
+    and generates a report, html etc.
+
     .tables;
     select * from task_result;
     select * from task_results where result regexp '\d';
@@ -36,10 +40,45 @@ import logging
 
 # Configure logging
 logging.basicConfig(
-    filename="ansible_transaction.log",
+    filename="sqlite_logger_db.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
+
+
+def get_errors_from_task(result):
+    """creates a flat string from results errors
+    will appear in the order defined.
+    inject custom messages via
+    result._result.setdefault("my_msg", abc)
+    """
+    msg_queue = [
+        result._result.get("my_msg", ""),
+        result._result.get("stdout", ""),
+        result._result.get("stderr", ""),
+        result._result.get("msg", ""),
+    ]
+    return "\n".join(
+        [get_last_lines(normalize_string(x), 25) for x in msg_queue if len(x) > 0]
+    )
+
+
+def get_last_lines(message, offset):
+    """returns the last x(offset) number of lines from a long string(message)"""
+    if isinstance(message, str):
+        lines = message.splitlines()
+        last_lines = lines[-offset:]
+        return "\n".join(last_lines)
+
+
+def normalize_string(s):
+    """normalize strings or list of strings"""
+    if isinstance(s, str):
+        return "\n" + s
+    if isinstance(s, list):
+        s = "\n".join(x for x in s if isinstance(s, str))
+        return normalize_string(s)
+    return s
 
 
 def initialize_db(db_path):
@@ -65,6 +104,7 @@ class CallbackModule(CallbackBase):
     CALLBACK_VERSION = 2.0
     CALLBACK_TYPE = "notification"
     CALLBACK_NAME = "sqlite_logger"
+
     def __init__(self):
         super(CallbackModule, self).__init__()
         self.db_path = "ansible_results.db"
@@ -83,12 +123,10 @@ class CallbackModule(CallbackBase):
                     task._host.get_name(),
                     task._task.get_name(),
                     status,
-                    # TODO(jlima): need to account for stderr, messages, and only log the last few lines of a long message
-                    json.dumps(result["msg"]),
+                    json.dumps(get_errors_from_task(result)),
                 ),
             )
             self.conn.commit()
-            # logging.info(f"Task logged: {task._task.get_name()}, Status: {status}")
         except sqlite3.Error as e:
             self.conn.rollback()
             logging.error(f"Error inserting task result: {e}")
@@ -100,4 +138,9 @@ class CallbackModule(CallbackBase):
         self.log_task(result, "FAILED", result._result)
 
     def v2_playbook_on_stats(self, stats):
+        """close the sqlite connection"""
         self.conn.close()
+
+    def v2_runner_on_unreachable(self, result):
+        self.log_task(result, "FAILED", result._result)
+        """report when host is not reachable, result(TaskResult)"""
