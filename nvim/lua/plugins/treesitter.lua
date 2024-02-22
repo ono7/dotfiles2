@@ -14,7 +14,8 @@ end
 configs.setup {
   sync_install = false,
   auto_install = true,
-  indent = { enable = false, disable = { "python" } },
+  -- indent = { enable = false, disable = { "python" } },
+  indent = { enable = true },
   highlight = {
     use_languagetree = true,
     max_file_lines = 1000,
