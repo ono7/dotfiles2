@@ -131,16 +131,19 @@ class CallbackModule(CallbackBase):
             self.conn.rollback()
             logging.error(f"Error inserting task result: {e}")
 
+    def v2_runner_item_on_failed(self, result):
+        self.log_task(result, "FAILED", result)
+
     def v2_runner_on_ok(self, result, **kwargs):
-        self.log_task(result, "OK", result._result)
+        self.log_task(result, "OK", result)
 
     def v2_runner_on_failed(self, result, **kwargs):
-        self.log_task(result, "FAILED", result._result)
+        self.log_task(result, "FAILED", result)
 
     def v2_playbook_on_stats(self, stats):
         """close the sqlite connection"""
         self.conn.close()
 
     def v2_runner_on_unreachable(self, result):
-        self.log_task(result, "FAILED", result._result)
+        self.log_task(result, "FAILED", result)
         """report when host is not reachable, result(TaskResult)"""
