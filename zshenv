@@ -60,7 +60,7 @@ gac() {
 }
 
 alias gd='git diff '
-alias gsd='git diff --staged'
+alias gds='git diff --staged'
 alias gc='git commit '
 alias gco='git checkout '
 alias gf='git fetch --all'
