@@ -195,6 +195,35 @@ class CallbackModule(CallbackBase):
             f"{_status_fatal}, {self.inject_my_var}, Task(loop): {result.task_name} \n{msg}"
         )
 
+    def v2_runner_on_unreachable(self, result):
+        """report on failure, result(TaskResult)"""
+
+        task = result._task
+        _raw = get_errors_from_task(result)
+        msg = wrap_message(_raw, header=_status_fatal)
+
+        if self.is_sensitive_task(result):
+            if result._task_fields.get("ignore_errors", False):
+                logger.warn(
+                    f"{_status_warning}, {self.inject_my_var}, Task: (ignore_errors) {task.name} <log_marked_sensitive>"
+                )
+            else:
+                logger.error(
+                    f"{_status_fatal}, {self.inject_my_var}, Task: {task.name} <log_marked_sensitive>"
+                )
+
+        elif result._task_fields.get("ignore_errors", False):
+            msg = wrap_message(_raw, header=_status_warning)
+            logger.warn(
+                f"{_status_warning}, {self.inject_my_var}, Task: (ignore_errors) {task.name} \n{msg}"
+            )
+            return
+
+        else:
+            logger.error(
+                f"{_status_fatal}, {self.inject_my_var}, Task: {task.name} \n{msg}"
+            )
+
     def v2_runner_on_failed(self, result, ignore_errors=False):
         """report on failure, result(TaskResult)"""
 
