@@ -41,7 +41,7 @@
          but still report a failure and the task name, this method should be used with discretion.
 
 """
-from pathlib import Path
+# from pathlib import Path
 from ansible.plugins.callback import CallbackBase
 from ansible.executor.task_result import TaskResult
 import logging
@@ -141,7 +141,7 @@ class CallbackModule(CallbackBase):
         self.inject_my_var = None
         self.wrote_header = False
         with open(log_file_name, "a") as modify:
-            modify.write(f"\n\n********* ANSIBLE JOB SUMMARY *********\n\n")
+            modify.write("\n\n********* ANSIBLE JOB SUMMARY *********\n\n")
 
     def v2_runner_on_start(self, host, task):
         self.inject_my_var = host
