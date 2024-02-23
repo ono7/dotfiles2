@@ -226,6 +226,7 @@ nvim_lsp.ruff_lsp.setup {
     settings = {
       -- Any extra CLI arguments for `ruff` go here.
       args = {},
+      run = { "onSave" }
     }
-  }
+  },
 }
