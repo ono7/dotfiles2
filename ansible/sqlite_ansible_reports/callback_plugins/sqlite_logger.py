@@ -109,41 +109,34 @@ class CallbackModule(CallbackBase):
         super(CallbackModule, self).__init__()
         self.db_path = "ansible_results.db"
         initialize_db(self.db_path)
-        self.conn = sqlite3.connect(self.db_path)
-        self.cursor = self.conn.cursor()
 
-    def __del__(self):
-        self.conn.close()
-
-    def log_task(self, task, status, result):
+    def log_task(self, status, result):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
         try:
-            self.cursor.execute(
+            cursor.execute(
                 "INSERT INTO task_results (host, task_name, status, result) VALUES (?, ?, ?, ?)",
                 (
-                    task._host.get_name(),
-                    task._task.get_name(),
+                    result._host.get_name(),
+                    result._task.get_name(),
                     status,
                     json.dumps(get_errors_from_task(result)),
                 ),
             )
-            self.conn.commit()
+            conn.commit()
         except sqlite3.Error as e:
-            self.conn.rollback()
+            conn.rollback()
             logging.error(f"Error inserting task result: {e}")
 
     def v2_runner_item_on_failed(self, result):
-        self.log_task(result, "FAILED", result)
+        self.log_task("FAILED", result)
 
     def v2_runner_on_ok(self, result, **kwargs):
-        self.log_task(result, "OK", result)
+        self.log_task("OK", result)
 
     def v2_runner_on_failed(self, result, **kwargs):
-        self.log_task(result, "FAILED", result)
-
-    def v2_playbook_on_stats(self, stats):
-        """close the sqlite connection"""
-        self.conn.close()
+        self.log_task("FAILED", result)
 
     def v2_runner_on_unreachable(self, result):
-        self.log_task(result, "FAILED", result)
+        self.log_task("FAILED", result)
         """report when host is not reachable, result(TaskResult)"""
