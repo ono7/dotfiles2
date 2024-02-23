@@ -24,7 +24,7 @@ brew install fd cmake ack rg coreutils ssh-copy-id jq p7zip curl tmux universal-
 brew install bpytop pinentry-mac
 brew install golang delve amethyst
 # npm install lua-fmt prettier jsonlint typescript typescript-language-server eslint jsonlint -g
-npm install lua-fmt prettier jsonlint typescript eslint jsonlint -g
+npm install lua-fmt prettier jsonlint typescript eslint jsonlint doctoc -g
 
 # setup omzsh
 # . ./setup_chsh_zsh.sh
