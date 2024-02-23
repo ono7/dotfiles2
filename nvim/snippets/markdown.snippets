@@ -8,6 +8,11 @@ snippet c "code block" w
 snippet ti "tag inline" w
   <${1}>${0:${VISUAL}}</${1/\v(\w+).*/\1/g}>
 
+snippet center "center text" w
+  <div style="text-align: center;">
+  ${0:${VISUAL}}
+  </div>
+
 snippet ta "tag" w
   <${1}>
     ${0:${VISUAL}}
