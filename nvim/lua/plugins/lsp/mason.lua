@@ -82,7 +82,9 @@ local servers = {
   cssls = {},
   terraformls = {},
   lua_ls = {},
+  ruff_lsp = {},
 }
+
 
 mason_lspconfig.setup({
   ensure_installed = vim.tbl_keys(servers),
@@ -167,14 +169,16 @@ nvim_lsp.pyright.setup {
   root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
   settings = {
     pyright = {
-      autoImportCompletion = true
+      -- autoImportCompletion = true
+      disableOrganizeImports = true
     },
     python = {
       analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = 'openFilesOnly',
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
+        ignore = { '*' },
+        -- autoSearchPaths = true,
+        -- diagnosticMode = 'openFilesOnly',
+        -- useLibraryCodeForTypes = true,
+        -- typeCheckingMode = 'off'
       }
     }
   }
@@ -214,3 +218,14 @@ nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
 nvim_lsp.jsonls.setup(handle_lsp(lsp_opts))
 
 -- nvim_lsp.omnisharp.setup(handle_lsp(lsp_opts))
+
+
+nvim_lsp.ruff_lsp.setup {
+  on_attach = on_attach,
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
+    }
+  }
+}
