@@ -89,6 +89,7 @@ cmp_config.setup({
     expand = function(_)
     end,
   },
+
   window = {
     completion = {
       border = '',
@@ -103,7 +104,7 @@ cmp_config.setup({
       winhighlight = "Normal:Normal,FloatBorder:cmpBorder,CursorLine:cmpSelect,Search:None"
     }
   },
-  mapping = {
+  mapping = cmp_config.mapping.preset.insert({
     ["<C-n>"] = cmp_config.mapping.select_next_item({ behavior = cmp_config.SelectBehavior.Insert }),
     ["<C-p>"] = cmp_config.mapping.select_prev_item({ behavior = cmp_config.SelectBehavior.Insert }),
     ["<C-d>"] = cmp_config.mapping.scroll_docs(4),
@@ -129,6 +130,10 @@ cmp_config.setup({
         fallback()
       end
     end, { "i", "s" }),
+  }),
+  completion = {
+    -- disable autocomplete, must us cmp.complete binding
+    completion = false
   },
   performance = {
     trigger_debounce_time = 500,
@@ -147,4 +152,8 @@ cmp_config.setup({
       },
     }),
   },
+})
+
+cmp_config.mapping.preset.insert({
+  ['<C-Space>'] = cmp_config.mapping.complete(),
 })

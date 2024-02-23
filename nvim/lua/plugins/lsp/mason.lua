@@ -164,6 +164,7 @@ local pyright_opts = {
 
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
   settings = {
     pyright = {
       autoImportCompletion = true
