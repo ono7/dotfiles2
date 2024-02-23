@@ -131,10 +131,6 @@ cmp_config.setup({
       end
     end, { "i", "s" }),
   }),
-  completion = {
-    -- disable autocomplete, must us cmp.complete binding
-    completion = false
-  },
   performance = {
     trigger_debounce_time = 500,
     throttle = 550,
