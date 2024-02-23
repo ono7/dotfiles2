@@ -10,6 +10,14 @@
     [defaults]
     stdout_callback = default
 
+    this settings should go in your ansible.cfg
+
+        [defaults]
+        callback_plugins = ./callback_plugins
+
+        [playbook]
+        callback_whitelist = sqlite_logger, task_logger
+
     DESCRIPTION:
 
         This callback module hooks into ansible events and creates a log entry for each task

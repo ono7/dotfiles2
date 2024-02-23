@@ -7,6 +7,14 @@
     this can be called as part of a workflow where a job template parses the results from the table
     and generates a report, html etc.
 
+    this settings should go in your ansible.cfg
+
+        [defaults]
+        callback_plugins = ./callback_plugins
+
+        [playbook]
+        callback_whitelist = sqlite_logger, task_logger
+
     .tables;
     select * from task_result;
     select * from task_results where result regexp '\d';
