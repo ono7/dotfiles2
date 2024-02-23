@@ -174,11 +174,11 @@ nvim_lsp.pyright.setup {
     },
     python = {
       analysis = {
-        ignore = { '*' },
-        -- autoSearchPaths = true,
-        -- diagnosticMode = 'openFilesOnly',
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
         -- useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
+        typeCheckingMode = 'off',
+        ignore = { '*' },
       }
     }
   }
