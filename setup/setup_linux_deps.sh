@@ -47,7 +47,7 @@ if type nvm > /dev/null 2>&1; then
     echo "NVM found. Installing Node.js..."
     nvm install node
     echo "installing npm packages......."
-    npm install lua-fmt prettier jsonlint -g
+    npm install -g lua-fmt prettier jsonlint typescript eslint jsonlint doctoc
 else
     echo "NVM not found. Skipping Node.js installation."
 fi
