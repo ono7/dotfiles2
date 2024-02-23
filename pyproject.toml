@@ -1,0 +1,12 @@
+[tool.ruff]
+# extend-select = []
+output-format = "full"
+exclude = [".venv", "priv/"]
+
+[tool.ruff.lint]
+# Only ignore variables named "_".
+dummy-variable-rgx = "^_$"
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 5.
+max-complexity = 5

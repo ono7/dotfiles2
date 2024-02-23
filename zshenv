@@ -25,6 +25,7 @@ extract() {
 
 ga () {
     # Check for untracked files
+    mydir=pwd
     untracked_files=$(git status --porcelain | grep '^??' | cut -c4-)
     if [ -z "$untracked_files" ]; then
         echo "No new untracked files."
@@ -36,7 +37,9 @@ ga () {
         echo "Do you want to add all untracked files? (y/n)"
         read -r user_input
         if [[ $user_input =~ ^[Yy]$ ]]; then
-            git add .
+            cdr
+            git add -A
+            cd $mydir
             echo "Added all untracked files."
         fi
     fi
