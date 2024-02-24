@@ -84,7 +84,7 @@ def normalize_string(s):
     if isinstance(s, str):
         return "\n" + s
     if isinstance(s, list):
-        s = "\n".join(x for x in s if isinstance(s, str))
+        s = "\n".join(x for x in s if isinstance(x, str))
         return normalize_string(s)
     return s
 

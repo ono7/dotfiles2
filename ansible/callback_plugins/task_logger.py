@@ -92,33 +92,15 @@ def get_errors_from_task(result):
     inject custom messages via
     result._result.setdefault("my_msg", abc)
     """
-    if isinstance(result, TaskResult):
-        msg_queue = [
-            result._result.get("my_msg", ""),
-            result._result.get("stdout", ""),
-            result._result.get("stderr", ""),
-            result._result.get("msg", ""),
-        ]
-        return "\n".join(
-            [get_last_lines(normalize_string(x), 25) for x in msg_queue if len(x) > 0]
-        )
-    else:
-        try:
-            msg_queue = [
-                result.get("my_msg", ""),
-                result.get("stdout", ""),
-                result.get("stderr", ""),
-                result.get("msg", ""),
-            ]
-            return "\n".join(
-                [
-                    get_last_lines(normalize_string(x), 25)
-                    for x in msg_queue
-                    if len(x) > 0
-                ]
-            )
-        except Exception as e:
-            return f"get_errors_from_task: unable to parse errors, this might be ok... -> {e}, {dir(result)}"
+    msg_queue = [
+        result._result.get("my_msg", ""),
+        result._result.get("stdout", ""),
+        result._result.get("stderr", ""),
+        result._result.get("msg", ""),
+    ]
+    return "\n".join(
+        [get_last_lines(normalize_string(x), 25) for x in msg_queue if len(x) > 0]
+    )
 
 
 def get_last_lines(message, offset):
@@ -134,7 +116,7 @@ def normalize_string(s):
     if isinstance(s, str):
         return "\n" + s
     if isinstance(s, list):
-        s = "\n".join(x for x in s if isinstance(s, str))
+        s = "\n".join(x for x in s if isinstance(x, str))
         return normalize_string(s)
     return s
 
