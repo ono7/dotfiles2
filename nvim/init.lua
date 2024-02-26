@@ -310,7 +310,7 @@ for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
 
---- handles ""
+--- handles '"'
 k('i', '"', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
@@ -322,7 +322,7 @@ k('i', '"', function()
 end
 , { expr = true })
 
---- handles '
+--- handles "'"
 k('i', "'", function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
