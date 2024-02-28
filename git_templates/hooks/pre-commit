@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 #
 #  Author:  Jose Lima
 #  Date:    2024-01-03 15:25
@@ -27,3 +28,10 @@
 #   echo "valid names: $valid_branch_regex"
 #   exit 1
 # fi 
+PATH="/usr/local/bin:$PATH"
+echo "Running ctags..."
+trap 'rm -f "$$.tags"' EXIT
+git ls-files | grep -v -E "^static/pico|^static/htmx|^static/hyperscript" | \
+  ctags --tag-relative -L - -f"$$.tags"
+mv "$$.tags" "tags"
+echo "ctags generated successfully."
