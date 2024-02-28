@@ -570,7 +570,7 @@ local packages = {
   "plugins.gitsigns",
   -- "plugins.theme_catppuccin", -- 2
   "themes.gruvbox", -- 2
-  "plugins.null_ls",
+  -- "plugins.null_ls",
   -- "plugins.bufferline",
   "plugins.colorizer",
   "my.cmds",

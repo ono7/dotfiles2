@@ -99,7 +99,7 @@ configs.setup({
 
 local builtin = require("telescope.builtin")
 
-k("n", "<c-p>", function() builtin.oldfiles({ previewer = false, shorten_path = true }) end, opt)
+k("n", "<c-p>", function() builtin.oldfiles({ shorten_path = true }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })

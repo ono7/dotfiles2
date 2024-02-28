@@ -1,6 +1,7 @@
 alias f='fd -tf'
 alias l='less -R '
 alias m='more '
+alias cdr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"  &>/dev/null'
 
 extract() {
     if [ -f "$1" ]; then

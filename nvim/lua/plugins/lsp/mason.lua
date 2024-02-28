@@ -160,7 +160,7 @@ nvim_lsp.gopls.setup({
 -- nvim_lsp.tsserver.setup(handle_lsp(lsp_opts, ts_opts))
 
 local pyright_opts = {
-  root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
+  root_dir = nvim_lsp.util.root_pattern("venv", "requirements.txt", "setup.py", ".git"),
   settings = {
     pyright = {
       autoImportCompletion = true, },
@@ -180,7 +180,7 @@ local pyright_opts = {
 
 nvim_lsp.pyright.setup {
   on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern(".git", "venv", "requirements.txt", "setup.py"),
+  root_dir = nvim_lsp.util.root_pattern("venv", "requirements.txt", "setup.py", ".git"),
   settings = {
     pyright = {
       -- autoImportCompletion = true
@@ -190,13 +190,24 @@ nvim_lsp.pyright.setup {
       analysis = {
         autoSearchPaths = true,
         diagnosticMode = 'openFilesOnly',
-        -- useLibraryCodeForTypes = true,
+        useLibraryCodeForTypes = true,
         typeCheckingMode = 'off', -- 'basic'
-        ignore = { '*' },
+        -- ignore = { '*' },
       }
     }
   }
 }
+
+-- nvim_lsp.ruff_lsp.setup {
+--   root_dir = nvim_lsp.util.root_pattern("venv", "requirements.txt", "setup.py", ".git"),
+--   on_attach = on_attach,
+--   init_options = {
+--     settings = {
+--       args = {},
+--       run = { "onSave" }
+--     }
+--   },
+-- }
 
 -- require("lspconfig").terraformls.setup({})
 
@@ -232,14 +243,3 @@ nvim_lsp.ansiblels.setup(handle_lsp(lsp_opts))
 nvim_lsp.jsonls.setup(handle_lsp(lsp_opts))
 
 -- nvim_lsp.omnisharp.setup(handle_lsp(lsp_opts))
-
-
-nvim_lsp.ruff_lsp.setup {
-  on_attach = on_attach,
-  init_options = {
-    settings = {
-      args = {},
-      run = { "onSave" }
-    }
-  },
-}
