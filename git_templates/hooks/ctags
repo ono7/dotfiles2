@@ -1,7 +1,8 @@
-#!/bin/sh
-set -e
-PATH="/usr/local/bin:$PATH"
-trap 'rm -f "$$.tags"' EXIT
-git ls-files | grep -v -E "^static/pico|^static/htmx|^static/hyperscript" | \
-  ctags --tag-relative -L - -f"$$.tags"
-mv "$$.tags" "tags"
+# #!/bin/sh
+# now runs on pre-commit
+# set -e
+# PATH="/usr/local/bin:$PATH"
+# trap 'rm -f "$$.tags"' EXIT
+# git ls-files | grep -v -E "^static/pico|^static/htmx|^static/hyperscript" | \
+#   ctags --tag-relative -L - -f"$$.tags"
+# mv "$$.tags" "tags"
