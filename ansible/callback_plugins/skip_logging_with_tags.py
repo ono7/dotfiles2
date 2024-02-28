@@ -1,5 +1,8 @@
 ....
 
+class CallbackBase:
+    pass
+
 # skips logging if a tag called "sensitive" is defined
 class CallbackModule(CallbackBase):
     # ... existing methods ...
