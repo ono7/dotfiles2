@@ -25,16 +25,16 @@ local on_attach = function(client, bufnr)
   -- null-ls handles this for now
   -- client.server_capabilities.document_formatting = false
   -- client.server_capabilities.document_range_formatting = false
-  if client.resolved_capabilities.document_formatting then
-    local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function()
-        vim.lsp.buf.formatting_sync()
-      end,
-      group = au_lsp,
-    })
-  end
+  -- if client.resolved_capabilities.document_formatting then
+  --   local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     pattern = "*",
+  --     callback = function()
+  --       vim.lsp.buf.formatting_sync()
+  --     end,
+  --     group = au_lsp,
+  --   })
+  -- end
   -- Mappings.
   k("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[G]oto [D]eclaration")
   k("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
