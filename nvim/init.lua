@@ -71,6 +71,10 @@ end
 
 vim.g.markdown_fold_style = "nested"
 
+-- reuse same window
+vim.g.netrw_browse_split = 0
+vim.g.netrw_liststyle = 3
+
 local my_disabled_ok, _ = pcall(require, "my.disabled")
 
 if not my_disabled_ok then
