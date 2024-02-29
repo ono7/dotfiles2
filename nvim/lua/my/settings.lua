@@ -40,7 +40,7 @@ o.writebackup = false
 o.history = 1000
 o.ruler = true
 o.sidescrolloff = 1
-opt.splitright = false
+opt.splitright = true
 opt.iskeyword:append("-")
 -- opt.iskeyword:append('"') -- have vim skip over ", when using w or b
 o.smartcase = true
