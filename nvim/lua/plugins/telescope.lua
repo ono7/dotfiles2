@@ -18,7 +18,7 @@ end
 
 configs.load_extension("git_worktree")
 configs.load_extension("fzf")
-
+configs.load_extension("recent_files")
 
 local function get_git_root()
   local dot_git_path = vim.fn.finddir(".git", ".;")
@@ -99,7 +99,7 @@ configs.setup({
 
 local builtin = require("telescope.builtin")
 
-k("n", "<c-p>", function() builtin.oldfiles({ shorten_path = true }) end, opt)
+k("n", "<c-p>", function() require 'telescope'.extensions.recent_files.pick({ previewer = false }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })

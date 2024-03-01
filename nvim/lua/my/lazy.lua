@@ -101,7 +101,7 @@ require("lazy").setup({
   "thehamsta/nvim-dap-virtual-text",
   -- "ThePrimeagen/harpoon",
   "NvChad/nvim-colorizer.lua",
-  { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "sindrets/diffview.nvim",         dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -187,6 +187,7 @@ require("lazy").setup({
       return vim.fn.executable("make") == 1
     end,
   },
+  { "smartpde/telescope-recent-files" },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
