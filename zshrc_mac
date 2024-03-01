@@ -834,3 +834,8 @@ if command -v tmux &>/dev/null; then
 else
   echo "zoxide not installed..."
 fi
+
+if ! command -v lf &>/dev/null; then
+  echo lf not installed
+  echo https://github.com/gokcehan/lf/releases
+fi
