@@ -31,6 +31,7 @@ snippet filter "ansible filter" b
 
 snippet logging "logger for python"
   import logging
+  from os import getenv
 
   # Logger configuration
   _logger = logging.getLogger(__name__)
@@ -43,13 +44,13 @@ snippet logging "logger for python"
   _logger.propagate=True
 
   # Set log level based on DEBUG environment variable
-  debugLevel = int(os.getenv("DEBUG", "1"))
+  debugLevel = int(getenv("DEBUG", "1"))
   if debugLevel == 2:
       _logger.setLevel(logging.DEBUG)
   else:
       _logger.setLevel(logging.INFO)
 
-  _logger.info("init...")
+  ${0} _logger.info("init...")
 
 
 snippet apilog "logger for api"
