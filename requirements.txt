@@ -1,6 +1,6 @@
 argcomplete==3.2.1
 attrs==23.2.0
-black==23.12.1
+black==24.3.0
 click==8.1.7
 debugpy==1.8.0
 fancycompleter==0.9.1
