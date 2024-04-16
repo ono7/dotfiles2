@@ -1,7 +1,7 @@
-## copy and paste 
+## copy and paste neovim
 
-
-put win32yank.exe in ~/loca/bin (win32yank comes with the windows portable version of neovim)
+install wl-copy (in setup/setup_linux_deps.sh), neovim will detect and use
+accordingly, tmux just works with alacritty configuration
 
 # wsl adjust the nat range to allow vpn
 
