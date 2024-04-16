@@ -209,7 +209,9 @@ nvim_lsp.pyright.setup {
 --   },
 -- }
 
--- require("lspconfig").terraformls.setup({})
+require("lspconfig").terraformls.setup({
+  root_dir = nvim_lsp.util.root_pattern("venv", "main.tf", ".git")
+})
 
 nvim_lsp.lua_ls.setup({
   Lua = {
