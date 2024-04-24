@@ -580,7 +580,7 @@ local packages = {
   "plugins.colorizer",
   "my.cmds",
   -- "plugins.harpoon",
-  "plugins.core_dap",
+  -- "plugins.core_dap",
   "plugins.git-worktree",
 }
 
