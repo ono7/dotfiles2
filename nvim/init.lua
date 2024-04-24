@@ -220,7 +220,7 @@ k("n", ",w", function()
     return
   end
   vim.cmd([[%s/\v\s*\r+$|\s+$//e]])
-  status, result = pcall(vim.lsp.buf.format)
+  local status, _ = pcall(vim.lsp.buf.format)
   if not status then
     print("no lsp..")
   end
