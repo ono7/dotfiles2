@@ -210,7 +210,7 @@ nvim_lsp.pyright.setup {
 -- }
 
 require("lspconfig").terraformls.setup({
-  root_dir = nvim_lsp.util.root_pattern("venv", "main.tf", ".git")
+  root_dir = nvim_lsp.util.root_pattern("terraform.tfvars", "main.tf", ".git", "venv")
 })
 
 nvim_lsp.lua_ls.setup({

@@ -13,16 +13,16 @@ snippet h1 "h1 heading, centered" w
   <h1 align="center">${0:${VISUAL}}</h1>
 
 snippet h2 "h2 heading, centered" w
-  <h2 align="${1|center,left,right|}">${0:${VISUAL}}</h2>
+  <h2 align="${1|center,left,right|}">${VISUAL}${0}</h2>
 
 snippet h3 "h3 heading" w
-  <h2 align="${1|center|left|right|}">${0:${VISUAL}}</h2>
+  <h2 align="${1|center|left|right|}">${VISUAL}${0}</h2>
 
 snippet h4 "h4 heading" w
-  <h2 align="${1|center|left|right|}">${0:${VISUAL}}</h2>
+  <h2 align="${1|center|left|right|}">${VISUAL}${0}</h2>
 
 snippet h5 "h5 heading" w
-  <h2 align="${1|center|left|right|}">${0:${VISUAL}}</h2>
+  <h2 align="${1|center|left|right|}">${VISUAL}${0}</h2>
 
 snippet ta "tag" w
   <${1}>
