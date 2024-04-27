@@ -1,10 +1,15 @@
 https://slothytech.com/world-of-warcraft-best-nvidia-settings/
 
 # console settings/macros
-𝗭𝗢𝗢𝗠 𝗛𝗔𝗖𝗞  ► /console cameraDistanceMaxZoomFactor 2.6
+
+𝗭𝗢𝗢𝗠 𝗛𝗔𝗖𝗞 ► /console cameraDistanceMaxZoomFactor 2.6
 𝗭𝗢𝗢𝗠 𝗦𝗠𝗢𝗢𝗧𝗛𝗜𝗡𝗚 ► /console CameraReduceUnexpectedMovement 1
 𝗦𝗛𝗔𝗥𝗣𝗘𝗡 𝗙𝗜𝗟𝗧𝗘𝗥 𝗛𝗔𝗖𝗞 ► /console set ResampleAlwaysSharpen 1
 FSR /console set renderscale 0.999
+
+Fix overly saturated worl
+
+/console ffxglow 0
 
 # nvidia control panel options for wow
 
