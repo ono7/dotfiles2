@@ -241,10 +241,6 @@ require("lazy").setup({
     end
   },
 
-  {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,     -- or `opts = {}`
-  },
+  "ixru/nvim-markdown",
   "folke/neodev.nvim",
 }, {})
