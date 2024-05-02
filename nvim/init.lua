@@ -581,7 +581,7 @@ local packages = {
   "my.cmds",
   -- "plugins.harpoon",
   -- "plugins.core_dap",
-  "plugins.git-worktree",
+  -- "plugins.git-worktree",
 }
 
 for _, mod in ipairs(packages) do

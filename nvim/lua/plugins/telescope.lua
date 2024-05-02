@@ -6,6 +6,7 @@ local status_ok, configs = pcall(require, "telescope")
 
 if not status_ok then
   print("telescope not loaded - plugins/telescope.lua")
+  print(status_ok)
   return
 end
 
@@ -16,7 +17,7 @@ if not actions_setup then
   return
 end
 
-configs.load_extension("git_worktree")
+-- configs.load_extension("git_worktree")
 configs.load_extension("fzf")
 configs.load_extension("recent_files")
 
@@ -99,7 +100,7 @@ configs.setup({
 
 local builtin = require("telescope.builtin")
 
-k("n", "<c-p>", function() require 'telescope'.extensions.recent_files.pick({ previewer = false }) end, opt)
+-- k("n", "<c-p>", function() require 'telescope'.extensions.recent_files.pick({ previewer = false }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
@@ -120,8 +121,8 @@ k("n", "<leader>g",
 
 k("n", "<leader>fd", function() builtin.diagnostics() end, opt)
 
-k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
-k("n", "<leader>O", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
+-- k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
+-- k("n", "<leader>O", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
 
 k({ "n", "x" }, "<leader>b", function() builtin.buffers() end, opt)
 k(

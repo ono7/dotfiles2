@@ -28,7 +28,7 @@ require("lazy").setup({
   "nvimtools/none-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
-  "ThePrimeagen/git-worktree.nvim",
+  -- "ThePrimeagen/git-worktree.nvim",
   -- "BlakeWilliams/numetal.vim", -- nice colorscheme
   -- {
   --   "folke/noice.nvim",
@@ -239,6 +239,12 @@ require("lazy").setup({
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,     -- or `opts = {}`
   },
   "folke/neodev.nvim",
 }, {})
