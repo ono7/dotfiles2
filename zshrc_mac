@@ -412,7 +412,7 @@ dev_env () {
   python3 -m venv ~/.virtualenvs/prod3
   source ~/.virtualenvs/bin/active
   pip install -U pip wheel
-  pip install debugpy black mdformat rpdb ipython ipdb dns yamllint ansible ansible-lint
+  pip install debugpy black mdformat pipdeptree rpdb ipython ipdb dns yamllint ansible ansible-lint
   pip install jq yp
 }
 
@@ -430,7 +430,7 @@ vc () {
   python3 -m venv $venv_dir
   source $venv_dir/bin/activate
   pip install pip wheel -U
-  pip install jq yq pyright black debugpy pytest yamllint pynvim rpdb pdbpp -U
+  pip install jq yq pyright black pipdeptree debugpy pytest yamllint pynvim rpdb pdbpp -U
   echo ""
   echo ""
   echo ""
