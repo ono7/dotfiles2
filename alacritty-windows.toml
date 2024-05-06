@@ -70,15 +70,15 @@ LC_CTYPE = "en_US.UTF-8"
 size = 13.0
 
 [font.normal]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonoLisaLiga Nerd Font"
 style = "Regular"
 
 [font.italic]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonoLisaLiga Nerd Font"
 style = "Italic"
 
 [font.bold]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonoLisaLiga Nerd Font"
 style = "Bold"
 
 [font.offset]
