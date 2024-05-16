@@ -47,9 +47,9 @@ configs.setup({
   defaults = {
     previewer = false,
     preview_cutoff = 1,
-    path_display = {
-      "smart"
-    },
+    -- path_display = {
+    --   "smart"
+    -- },
     layout_strategy = "flex", -- flex (shows preview)
     file_ignore_patterns = {
       ".git/",
@@ -104,7 +104,7 @@ local builtin = require("telescope.builtin")
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
-  builtin.find_files({ no_ignore = false, hidden = true, previewer = false, shorten_path = true })
+  builtin.find_files({ no_ignore = false, hidden = true, previewer = false  })
 end, opt)
 
 k("n", "<leader>ff",

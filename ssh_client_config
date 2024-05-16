@@ -26,21 +26,25 @@
 # <      Now remotely open a file with Vim's Netrw and enjoy the
 # zippiness: >
 # vim scp://host.domain.com//home/user/.bashrc
+# PubkeyAcceptedAlgorithms ssh-rsa
+# HostkeyAlgorithms ssh-rsa
+# KexAlgorithms diffie-hellman-group14-sha1
 
 Host *
   SendEnv LANG -LC_* -LANG*
   # send the local contents of $TMUX to remote host
   SendEnv TMUX
   # ConnectTimeout 7
-  Compression yes
+  # Compression yes
   ServerAliveInterval 30
   ServerAliveCountMax 3
   StrictHostKeyChecking no
   # KexAlgorithms +diffie-hellman-group1-sha1,ssh-dss
-  KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+  # KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+  KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
   HostkeyAlgorithms=+ssh-rsa
   # allow older algos for cisco crap gear...
-  Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+  # Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
 
 # xclip board support, needs export DISPLAY=:0.0
   # ForwardX11 yes
