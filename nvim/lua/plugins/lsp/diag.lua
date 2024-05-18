@@ -13,7 +13,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   -- },
   virtual_text = {
     spacing = 2,
-    severity_limit = "Warning", -- disable hints...
+    -- severity_limit = "Warning", -- disable hints...
+    severity = { min = vim.diagnostic.severity.WARN },
     underline = true,
   },
   virtual_lines = { only_current_line = true },
