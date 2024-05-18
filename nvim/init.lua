@@ -320,10 +320,13 @@ k('i', '"', function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
+  local p = line:sub(col - 1, col - 1)
   if n == '"' then
     return '<Right>'
+  elseif p ~= "" then
+    return '"'
   end
-  return '"'
+  return '""<left>'
 end
 , { expr = true })
 
@@ -332,10 +335,13 @@ k('i', "'", function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.fn.col('.')
   local n = line:sub(col, col)
+  local p = line:sub(col - 1, col - 1)
   if n == "'" then
     return '<Right>'
+  elseif p ~= "" then
+    return "'"
   end
-  return "'"
+  return "''<left>"
 end
 , { expr = true })
 
