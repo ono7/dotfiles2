@@ -41,7 +41,7 @@ Host *
   StrictHostKeyChecking no
   # KexAlgorithms +diffie-hellman-group1-sha1,ssh-dss
   # KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
-  KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+  # KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
   HostkeyAlgorithms=+ssh-rsa
   #Aallow older algos for cisco crap gear...
   Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
