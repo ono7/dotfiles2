@@ -43,8 +43,8 @@ Host *
   # KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
   KexAlgorithms diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
   HostkeyAlgorithms=+ssh-rsa
-  # allow older algos for cisco crap gear...
-  # Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+  allow older algos for cisco crap gear...
+  Ciphers +aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
 
 # xclip board support, needs export DISPLAY=:0.0
   # ForwardX11 yes
