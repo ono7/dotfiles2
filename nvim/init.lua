@@ -323,12 +323,13 @@ k('i', '"', function()
   local p = line:sub(col - 1, col - 1)
   if n == '"' then
     return '<Right>'
-  elseif p ~= "" then
+  elseif p:match("%a") ~= nil or n:match("%a") then
     return '"'
   end
   return '""<left>'
 end
 , { expr = true })
+
 
 --- handles "'"
 k('i', "'", function()
@@ -338,7 +339,7 @@ k('i', "'", function()
   local p = line:sub(col - 1, col - 1)
   if n == "'" then
     return '<Right>'
-  elseif p ~= "" then
+  elseif p:match("%a") ~= nil or n:match("%a") then
     return "'"
   end
   return "''<left>"
