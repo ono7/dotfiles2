@@ -89,7 +89,7 @@ fi
 # bindkey ^z fancy-ctrl-z
 
 runner () {
-  if ! command -v gls &>/dev/null; then
+  if ! command -v nodemon &>/dev/null; then
     npm install -g nodemon
   fi
   if [ $# -lt 2 ]; then
