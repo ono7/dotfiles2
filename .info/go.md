@@ -1,3 +1,9 @@
+## install godoc server
+
+`go install -v golang.org/x/tools/cmd/godoc@latest`
+`godoc -http=:6060`
+`http://localhost:6060`
+
 ## dlv (debug)
 
 `dlv debug main.go -- build/1.json` debug main.go, pass build/1.json as an argument

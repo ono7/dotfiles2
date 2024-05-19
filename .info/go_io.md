@@ -1,5 +1,7 @@
 ## io.Reader (implement reader)
 
+- io.ReadAll, will read from anything that implements Reader
+
 read data from anything
 
 ```go
