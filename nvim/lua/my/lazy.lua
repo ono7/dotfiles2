@@ -163,24 +163,24 @@ require("lazy").setup({
       },
     },
   },
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-    config = function()
-      local ft = require("Comment.ft")
-      local api = require("Comment.api")
-      ft.jinja = { '{#%s#}', '{#%s#}' }
-      ft.text = { '#%s', '#%s#' }
-      ft.txt = { '#%s', '#%s#' }
-      require('Comment').setup({ ignore = "^$" })
-      vim.keymap.set("n", "<C-c>", function() api.toggle.linewise.current() end,
-        { noremap = true, silent = true })
-      vim.keymap.set('x', '<C-c>', function()
-        vim.api.nvim_feedkeys(esc, 'nx', false)
-        api.toggle.linewise(vim.fn.visualmode())
-      end)
-    end
-  },
+  -- {
+  --   "numToStr/Comment.nvim",
+  --   opts = {},
+  --   config = function()
+  --     local ft = require("Comment.ft")
+  --     local api = require("Comment.api")
+  --     ft.jinja = { '{#%s#}', '{#%s#}' }
+  --     ft.text = { '#%s', '#%s#' }
+  --     ft.txt = { '#%s', '#%s#' }
+  --     require('Comment').setup({ ignore = "^$" })
+  --     vim.keymap.set("n", "<C-c>", function() api.toggle.linewise.current() end,
+  --       { noremap = true, silent = true })
+  --     vim.keymap.set('x', '<C-c>', function()
+  --       vim.api.nvim_feedkeys(esc, 'nx', false)
+  --       api.toggle.linewise(vim.fn.visualmode())
+  --     end)
+  --   end
+  -- },
   {
     "nvim-telescope/telescope.nvim",
     version = "*",
