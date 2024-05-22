@@ -104,7 +104,7 @@ local builtin = require("telescope.builtin")
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
-  builtin.find_files({ no_ignore = false, hidden = true, previewer = false  })
+  builtin.find_files({ no_ignore = false, hidden = true, previewer = false })
 end, opt)
 
 k("n", "<leader>ff",
@@ -124,7 +124,7 @@ k("n", "<leader>fd", function() builtin.diagnostics() end, opt)
 -- k("n", "<leader>o", function() require('telescope').extensions.git_worktree.git_worktrees() end, opt)
 -- k("n", "<leader>O", function() require('telescope').extensions.git_worktree.create_git_worktree() end, opt)
 
-k({ "n", "x" }, "<leader>b", function() builtin.buffers() end, opt)
+k({ "n", "x" }, "<leader><leader>", function() builtin.buffers() end, opt)
 k(
   "n",
   "<leader>vc",
