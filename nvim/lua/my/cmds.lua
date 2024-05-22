@@ -22,23 +22,22 @@ c("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({
       higroup = "Visual",
-      timeout = 40,
+      timeout = 50,
     })
   end,
   group = create_augroup("highlight_yanked_text", { clear = true }),
 })
 
--- Turn off diagnostics for .env files
-c({ "BufRead", "BufNewFile" }, {
-  pattern = ".env",
-  group = create_augroup("dotenv_disabled_diagnostics", { clear = true }),
-  callback = function(context)
-    vim.diagnostic.disable(context.buf)
-  end,
-})
+-- -- Turn off diagnostics for .env files
+-- c({ "BufRead", "BufNewFile" }, {
+--   pattern = ".env",
+--   group = create_augroup("dotenv_disabled_diagnostics", { clear = true }),
+--   callback = function(context)
+--     vim.diagnostic.enable(false, ...)
+--   end,
+-- })
 
 -- -- fix commit msg, goto top of file on enter
-
 c({ "BufEnter" }, {
   group = create_augroup("vim_commit_msg", { clear = true }),
   pattern = 'COMMIT_EDITMSG',
@@ -54,13 +53,6 @@ c({ "BufEnter" }, {
     --   vim.cmd 'startinsert!'
     -- end
   end,
-})
-
--- Check if we need to reload the file when it changed
-c({ "FocusGained", "TermClose", "TermLeave" }, {
-  pattern = "*",
-  group = create_augroup("checktime", { clear = true }),
-  command = "checktime",
 })
 
 -- resize windows
@@ -92,27 +84,6 @@ vim.api.nvim_create_autocmd("BufRead", {
   group = create_augroup("restore_cursor_position_on_enter", { clear = true }),
 })
 
--- c("BufWritePre", {
---   pattern = { "*.go" },
---   callback = function()
---
---     local save_cursor = vim.fn.getcurpos()
---     local params = vim.lsp.util.make_range_params(nil, "utf-16")
---     params.context = { only = { "source.organizeImports" } }
---     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
---     for _, res in pairs(result or {}) do
---       for _, r in pairs(res.result or {}) do
---         if r.edit then
---           vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
---         else
---           vim.lsp.buf.execute_command(r.command)
---         end
---       end
---     end
---     vim.fn.setpos('.', save_cursor)
---   end,
--- })
-
 c("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
@@ -128,13 +99,6 @@ c({ "BufNewFile", "BufRead" }, {
   end,
   group = create_augroup("disable_lsp_diags_for_folders", { clear = true }),
 })
-
--- remap enter in quickfix
--- c({ "BufReadPost" }, {
---   pattern = "quickfix",
---   command = [[nnoremap <buffer> <CR> <CR> ]],
---   group = create_augroup("set_quickfix_maps", { clear = true }),
--- })
 
 vim.cmd [[
 augroup _QuickFixOpen
@@ -188,14 +152,3 @@ c("TermOpen", {
   group = create_augroup("set_buf_number_options", { clear = true }),
   desc = "Terminal Options",
 })
-
--- handle large files, syntax=OFF only affects buffer, where syntax off is global
--- syn sync clear, we can keep syntax and still work on large files! 2023-09-23, probably not needed with treesitter
--- c({
---   "BufWinEnter",
--- }, {
---   pattern = "*",
---   command =
---   [[if line2byte(line("$") + 1) > 800000 | syn sync clear | setlocal nowrap noundofile noswapfile foldmethod=manual | endif]],
---   group = create_augroup("check_if_file_size_too_big", { clear = true }),
--- })
