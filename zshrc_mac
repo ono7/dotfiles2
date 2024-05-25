@@ -190,6 +190,7 @@ elif command -v nvim &>/dev/null; then
 fi
 
 alias vil='vim -u ~/.vimrc_min'
+alias v=vim
 
 export EDITOR=vim
 

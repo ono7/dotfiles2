@@ -1,4 +1,7 @@
-import = ["/Users/jlima/.dotfiles/schemes/alacritty/tokyonight_moon.toml"]
+import = [
+	# "/Users/jlima/.dotfiles/schemes/alacritty/tokyonight_moon.toml"
+	"~/.dotfiles/alacritty-theme/themes/nightfly.toml"
+]
 
 live_config_reload = true
 working_directory = "None"
@@ -242,8 +245,9 @@ program = "/bin/zsh"
 decorations = "buttonless"
 dynamic_padding = true
 dynamic_title = false
-# opacity = 0.96
-# blur = true
+opacity = 0.90
+blur = true
+
 startup_mode = "Windowed"
 option_as_alt = "both"
 

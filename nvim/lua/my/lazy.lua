@@ -105,7 +105,7 @@ require("lazy").setup({
   "leoluz/nvim-dap-go",
   "rcarriga/nvim-dap-ui",
   "thehamsta/nvim-dap-virtual-text",
-  -- "ThePrimeagen/harpoon",
+  "ThePrimeagen/harpoon",
   "NvChad/nvim-colorizer.lua",
   { "sindrets/diffview.nvim",         dependencies = { "nvim-lua/plenary.nvim" } },
   {
