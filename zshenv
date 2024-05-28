@@ -71,8 +71,9 @@ alias gf='git fetch --all'
 
 # deletes merged branches
 # alias gdm="git branch --merged | grep -Pv '(^\*|master|main)' | xargs git branch -d"
-alias gdm="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | xargs echo"
-alias gdmr="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | xargs git branch -d"
+alias gdm="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | sed 's/\+//' | xargs echo"
+alias gdmr="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | sed 's/\+//' | xargs git branch -d"
+alias gdmrr="git branch --merged | grep -Pv '(^\*|master|main|production|development)' | sed 's/\+//' | xargs git worktree remove"
 
 # git follow a file history gfh nvim/init.lua
 alias gfh="git log --follow -p"
@@ -84,7 +85,15 @@ alias gp='git push '
 alias gpu='git pull'
 alias gr='git reflog '
 alias gs='git status '
-alias gwa='git worktree add '
+
+gwa () {
+  git worktree add "$@"
+}
+
+gwr () {
+  git worktree remove "$@"
+}
+
 alias gwl='git worktree list'
 alias gwr='git worktree remove '
 

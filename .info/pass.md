@@ -1,3 +1,28 @@
+# backup and restore
+
+backup
+
+```sh
+
+cd ~/.password-store
+pass git init
+pass git add -A .
+pass git remote add origin <url>
+pass git commit -m "initial commit"
+pass git push -u origin master
+
+
+# get master key
+
+gpg -K
+
+# backup PGP key
+
+gpg --export-secret-keys <master_key> > my-private-key.asc
+
+
+```
+
 # using pass
 
 - `pass github/testaccount -c` copy to clipboard
@@ -37,6 +62,7 @@ clipboard support in ubuntu needs additional package
 ## configure default timeout
 
 create file if not exists
+
 ```~/.gnupg/gpg-agent.conf
 default-cache-ttl 86400
 max-cache-ttl 86400

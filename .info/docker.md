@@ -11,6 +11,9 @@ docker ps
 # get container ID if running container, in this case 5dc47655b035
 docker exec -it -u 0 5dc47655b035 /bin/bash
 
+# run other platforms using apple silicon
+docker run --rm -it --platform linux/amd64 test.test.com/image-name:dev bash
+
 # -u 0 = root
 ```
 
