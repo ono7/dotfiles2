@@ -502,7 +502,7 @@ k("n", "<leader>t", [[:silent !tmux send-keys -t 2 c-p Enter<cr>]], silent)
 k("v", "<enter>", [[y/\V<C-r>=escape(@",'/\')<CR><CR>]], silent)
 
 -- open daily todo
-k("n", "+", ":e ~/todo.txt<cr>", opt)
+k("n", "+", ":e ~/todo.md<cr>", opt)
 
 --- marks/jumps ---
 --- k("n", "'", "`", opt)
