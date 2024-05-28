@@ -13,12 +13,14 @@ pass git push -u origin master
 
 
 # get master key
-
 gpg -K
 
 # backup PGP key
-
 gpg --export-secret-keys <master_key> > my-private-key.asc
+
+# import key and repo
+gpg --import my-private-key.asc
+git clone <url> ~/.password-store/
 
 
 ```
