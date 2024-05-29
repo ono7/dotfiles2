@@ -34,30 +34,30 @@ snippet logging "logger for python"
   from os import getenv
 
   # Logger configuration
-  _logger = logging.getLogger(__name__)
+  _log = logging.getLogger(__name__)
   _handler = logging.StreamHandler()
   _formatter = logging.Formatter(
-      "%(asctime)s %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s"
+    "%(asctime)s %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s"
   )
   _handler.setFormatter(_formatter)
-  _logger.addHandler(_handler)
-  _logger.propagate=True
+  _log.addHandler(_handler)
+  _log.propagate = True
 
   # Set log level based on DEBUG environment variable
   debugLevel = int(getenv("DEBUG", "1"))
   if debugLevel == 2:
-      _logger.setLevel(logging.DEBUG)
+    _log.setLevel(logging.DEBUG)
   else:
-      _logger.setLevel(logging.INFO)
+    _log.setLevel(logging.INFO)
 
-  ${0} _logger.info("init...")
+  _log.info("init...")${0}
 
 
 snippet apilog "logger for api"
   import logging
   from requests.cookies import cookielib
 
-  ${1}_logger = logging.getLogger(__name__)
+  ${1}_log = logging.getLogger(__name__)
 
   ${1}_formatter = logging.Formatter(
       "%(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s"
@@ -69,42 +69,42 @@ snippet apilog "logger for api"
   _debuglevel = 2
 
   # get other module loggers
-  urllib3_logger = logging.getLogger("requests.packages.urllib3")
-  urllib3_retry_logger = logging.getLogger("urllib3.util.retry")
-  cookie_logger = logging.getLogger("http.cookiejar")
+  urllib3_log = logging.getLogger("requests.packages.urllib3")
+  urllib3_retry_log = logging.getLogger("urllib3.util.retry")
+  cookie_log = logging.getLogger("http.cookiejar")
 
 
   # remove existing handlers
-  ${1}_logger.handlers = []
-  urllib3_logger.handlers = []
-  urllib3_retry_logger.handlers = []
-  cookie_logger.handlers = []
+  ${1}_log.handlers = []
+  urllib3_log.handlers = []
+  urllib3_retry_log.handlers = []
+  cookie_log.handlers = []
 
   if _debuglevel == 2:
       # TODO(jlima): this can problably be removed
-      cookie_logger.addHandler(${1}_handler)
-      cookie_logger.setLevel(logging.DEBUG)
+      cookie_log.addHandler(${1}_handler)
+      cookie_log.setLevel(logging.DEBUG)
       # cookielib.debug = False
-      ${1}_logger.addHandler(${1}_handler)
-      ${1}_logger.setLevel(logging.DEBUG)
+      ${1}_log.addHandler(${1}_handler)
+      ${1}_log.setLevel(logging.DEBUG)
 
-  ${1}_logger.debug("TEST MSG")
+  ${1}_log.debug("TEST MSG")
 
   """
   other examples
 
   if not sensitive:
       try:
-          api_logger.debug('RESPONSE HEADERS: %s\n', json.dumps(
+          api_log.debug('RESPONSE HEADERS: %s\n', json.dumps(
               json.loads(text_type(response.headers)), indent=4))
       except ValueError:
-          api_logger.debug('RESPONSE HEADERS: %s\n', text_type(response.headers))
+          api_log.debug('RESPONSE HEADERS: %s\n', text_type(response.headers))
       try:
-          api_logger.debug('RESPONSE: %s\n', json.dumps(response.json(), indent=4))
+          api_log.debug('RESPONSE: %s\n', json.dumps(response.json(), indent=4))
       except ValueError:
-          api_logger.debug('RESPONSE: %s\n', text_type(response.text))
+          api_log.debug('RESPONSE: %s\n', text_type(response.text))
   else:
-      api_logger.debug('RESPONSE NOT LOGGED (sensitive content)')
+      api_log.debug('RESPONSE NOT LOGGED (sensitive content)')
 
-  api_logger.debug("Error, non-200 response received: %s", response.status_code)
+  api_log.debug("Error, non-200 response received: %s", response.status_code)
   """
