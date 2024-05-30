@@ -52,6 +52,7 @@
 # from pathlib import Path
 from ansible.plugins.callback import CallbackBase
 from ansible.executor.task_result import TaskResult
+from pathlib import Path
 import logging
 
 log_file_name = "ansible_tasks.log"
@@ -130,6 +131,8 @@ class CallbackModule(CallbackBase):
         super(CallbackModule, self).__init__()
         self.inject_my_var = None
         self.wrote_header = False
+        log_file_path = Path(log_file_name).resolve()
+        print(f"Ansible task log file location: {log_file_path}")
         with open(log_file_name, "a") as modify:
             modify.write("\n\n********* ANSIBLE JOB SUMMARY *********\n\n")
 

@@ -47,7 +47,12 @@ snippet logging "logger for python"
   debugLevel = int(getenv("DEBUG", "1"))
   if debugLevel == 2:
     _log.setLevel(logging.DEBUG)
+  if debugLevel == 1:
+    _log.setLevel(logging.INFO)
   else:
+    # Remove all handlers
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
     _log.setLevel(logging.INFO)
 
   _log.info("init...")${0}
