@@ -23,7 +23,7 @@ configs.setup({
     else
       return b.type > a.type
     end
-  end,    -- this sorts files and directories descendantly
+  end, -- this sorts files and directories descendantly
   default_component_configs = {
     container = {
       enable_character_fade = true,
@@ -218,4 +218,4 @@ configs.setup({
   -- },
 })
 
-vim.cmd([[nnoremap \ :silent! Neotree reveal toggle<cr>]])
+vim.cmd([[nnoremap <space>f :silent! Neotree reveal toggle<cr>]])
