@@ -218,6 +218,12 @@ chars = "\u0017"
 key = "Back"
 mods = "Alt"
 
+# for harpoon
+# [[keyboard.bindings]]
+# chars = "\u001bh"  # Escape character (\u001b) followed by 'h'
+# key = "H"
+# mods = "Command"
+
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
 key = "F9"
