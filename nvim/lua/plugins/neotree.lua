@@ -218,4 +218,4 @@ configs.setup({
   -- },
 })
 
-vim.cmd([[nnoremap <space><space> :silent! Neotree reveal toggle<cr>]])
+-- vim.cmd([[nnoremap <space><space> :silent! Neotree reveal toggle<cr>]])
