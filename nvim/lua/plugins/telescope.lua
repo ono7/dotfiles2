@@ -111,10 +111,6 @@ end
 --
 -- -- k("n", "<c-p>", function() require 'telescope'.extensions.recent_files.pick({ previewer = false }) end, opt)
 --
--- k({ "n", "x" }, "<c-f>", function()
---   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
---   builtin.find_files({ no_ignore = false, hidden = true, previewer = false })
--- end, opt)
 --
 -- k("n", "<leader>ff",
 --   function()
@@ -198,26 +194,26 @@ pcall(require("telescope").load_extension, "ui-select")
 
 local builtin = require "telescope.builtin"
 
-vim.keymap.set("n", "<space>fd", builtin.find_files)
+-- vim.keymap.set("n", "<c-f>", builtin.find_files)
 vim.keymap.set("n", "<space>ft", builtin.git_files)
 vim.keymap.set("n", "<space>fh", builtin.help_tags)
 vim.keymap.set("n", "<space>fg", builtin.live_grep)
 vim.keymap.set("n", "<space>/", builtin.current_buffer_fuzzy_find)
 
 -- vim.keymap.set("n", "<space>gw", builtin.grep_string)
+--
+-- vim.keymap.set("n", "<space>fa", function()
+--   ---@diagnostic disable-next-line: param-type-mismatch
+--   builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
+-- end)
 
-vim.keymap.set("n", "<space>fa", function()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath "data", "lazy") }
-end)
+-- vim.keymap.set("n", "<space>en", function()
+--   builtin.find_files { cwd = vim.fn.stdpath "config" }
+-- end)
 
-vim.keymap.set("n", "<space>en", function()
-  builtin.find_files { cwd = vim.fn.stdpath "config" }
-end)
-
-vim.keymap.set("n", "<space>eo", function()
-  builtin.find_files { cwd = "~/.config/nvim-backup/" }
-end)
+-- vim.keymap.set("n", "<space>eo", function()
+--   builtin.find_files { cwd = "~/.config/nvim-backup/" }
+-- end)
 
 
 k("n", "<leader>vc", function()
@@ -241,4 +237,10 @@ k("n", "<leader>fd", function() builtin.diagnostics() end, opt)
 
 k("n", "<leader>g", function()
   builtin.live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true }
+end, opt)
+
+
+k({ "n", "x" }, "<c-f>", function()
+  -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
+  builtin.find_files({ no_ignore = false, hidden = true, previewer = false })
 end, opt)
