@@ -1,3 +1,7 @@
+## GO references
+
+https://gobyexample.com
+
 ## install godoc server
 
 `go install -v golang.org/x/tools/cmd/godoc@latest`

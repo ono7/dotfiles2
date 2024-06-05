@@ -99,12 +99,17 @@ require("lazy").setup({
   --   end
   -- },
   --- dap goods ---
-  "mfussenegger/nvim-dap",
-  "mfussenegger/nvim-dap-python",
-  "jay-babu/mason-nvim-dap.nvim",
-  "leoluz/nvim-dap-go",
-  "rcarriga/nvim-dap-ui",
-  "thehamsta/nvim-dap-virtual-text",
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+
+      "mfussenegger/nvim-dap-python",
+      "jay-babu/mason-nvim-dap.nvim",
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "thehamsta/nvim-dap-virtual-text",
+    }
+  },
   "ThePrimeagen/harpoon",
   "NvChad/nvim-colorizer.lua",
   { "sindrets/diffview.nvim",         dependencies = { "nvim-lua/plenary.nvim" } },
