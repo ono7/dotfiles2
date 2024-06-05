@@ -222,9 +222,6 @@ k("n", "<c-j>", "<C-W>j")
 k("n", "<c-h>", "<C-W>h")
 k("n", "<c-l>", "<C-W>l")
 
--- k("n", ";", ":")
--- k("n", ":", ";")
-
 k("n", "<tab>", ":bnext<CR>", silent)
 k("n", "<s-tab>", ":bprevious<CR>", silent)
 
@@ -282,9 +279,6 @@ local r_pair_map = {
   ["]"] = true,
   ["}"] = true,
   [">"] = true,
-  -- ["'"] = true,
-  -- ['"'] = true,
-  -- ["`"] = true,
   [" "] = true,
 }
 
@@ -502,8 +496,6 @@ k("n", "Y", "y$", opt)
 k("n", "U", "<c-r>", opt)
 
 --- keep cursor in the middle when using search
--- k("n", "n", "nzzzv", opt)
--- k("n", "N", "Nzzzv", opt)
 k("n", "<C-d>", "<C-d>zz", opt)
 k("n", "<C-u>", "<C-u>zz", opt)
 
