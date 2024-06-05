@@ -292,28 +292,35 @@ for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
 
+
 --- handles '"'
 k('i', '"', function()
-  local line = vim.api.nvim_get_current_line()
+  local line = vim.fn.getline('.')
   local col = vim.fn.col('.')
+
+  -- Handle cursor at the beginning of the line
+  local p = (col > 1) and line:sub(col - 1, col - 1) or nil
   local n = line:sub(col, col)
-  local p = line:sub(col - 1, col - 1)
+
   if n == '"' then
     return '<Right>'
-  elseif p:match("%a") ~= nil or n:match("%a") then
+  elseif p ~= nil and (p:match("%a") ~= nil or n:match("%a")) then
     return '"'
   end
+
   return '""<left>'
-end
-, { expr = true })
+end, { expr = true })
 
 
 --- handles "'"
 k('i', "'", function()
-  local line = vim.api.nvim_get_current_line()
+  local line = vim.fn.getline('.')
   local col = vim.fn.col('.')
+
+  -- Handle cursor at the beginning of the line
+  local p = (col > 1) and line:sub(col - 1, col - 1) or nil
   local n = line:sub(col, col)
-  local p = line:sub(col - 1, col - 1)
+
   if n == "'" then
     return '<Right>'
   elseif p:match("%a") ~= nil or n:match("%a") then
