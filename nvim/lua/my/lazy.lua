@@ -26,7 +26,6 @@ require("lazy").setup({
     end
   },
   { "nvimtools/none-ls.nvim", config = function() require "plugins.null_ls" end },
-  { "junegunn/fzf",           build = "./install --all" },
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
   {
@@ -34,7 +33,7 @@ require("lazy").setup({
     priority = 1000,
     config = function() require "themes.gruvbox" end
   },
-  { "catppuccin/nvim",           name = "catppuccin" },
+  { "catppuccin/nvim",        name = "catppuccin" },
   {
     "folke/trouble.nvim",
     config = function()
