@@ -306,12 +306,6 @@ local is_close_bracket = function(char)
 end
 
 
-local function get_next_char()
-  -- returns next char
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
-  return line:sub(col, col)
-end
 
 
 --- for reference using vim script functions
@@ -322,12 +316,36 @@ end
 --   return line:sub(col - 1, col - 1), line:sub(col, col)
 -- end
 
+-- --- gets only next char
+-- local function get_next_char()
+--   -- returns next char
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
+--   return line:sub(col, col)
+-- end
 
 --- returns previous and next characters respectively
+-- local function get_next_and_prev_chars()
+--   local line = vim.api.nvim_get_current_line()
+--   local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
+--   return line:sub(col - 1, col - 1), line:sub(col, col)
+-- end
+
+-- Returns previous and next characters using Neovim API with range fetching
+-- this gets only thes cursor's surrounding characters instead of querying the entire line
+
 local function get_next_and_prev_chars()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
-  return line:sub(col - 1, col - 1), line:sub(col, col)
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0)) -- Cursor position is 0-indexed
+  --@param 0 is always the current buffer
+  local prev_char = vim.api.nvim_buf_get_text(0, row - 1, col - 1, row - 1, col, {})[1] or ''
+  local next_char = vim.api.nvim_buf_get_text(0, row - 1, col, row - 1, col + 1, {})[1] or ''
+  return prev_char, next_char
+end
+
+local function get_next_char()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local next_char = vim.api.nvim_buf_get_text(0, row - 1, col, row - 1, col + 1, {})[1] or ''
+  return next_char
 end
 
 -- Function to handle '"'
