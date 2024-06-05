@@ -10,6 +10,7 @@ fact_cache/
 .virtualenvs
 .vim
 .netrwhist
+.db
 
 .env
 env
