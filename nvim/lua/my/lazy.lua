@@ -162,15 +162,20 @@ require("lazy").setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    -- branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    config = function() require "plugins.neotree" end
+    "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function() require "plugins.oil" end
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   -- branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons",
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   config = function() require "plugins.neotree" end
+  -- },
   {
     "olexsmir/gopher.nvim",
     ft = "go",
