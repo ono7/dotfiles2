@@ -25,11 +25,15 @@ require("lazy").setup({
       vim.cmd [[hi! diffRemoved ctermfg=88 ctermbg=NONE cterm=NONE guifg=#FA5057 guibg=NONE gui=NONE]]
     end
   },
-  "nvimtools/none-ls.nvim",
+  { "nvimtools/none-ls.nvim", config = function() require "plugins.null_ls" end },
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
-  { "ellisonleao/gruvbox.nvim", priority = 1000,    config = true, opts = ... },
-  { "catppuccin/nvim",          name = "catppuccin" },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function() require "themes.gruvbox" end
+  },
+  { "catppuccin/nvim",        name = "catppuccin" },
   {
     "folke/trouble.nvim",
     config = function()
@@ -38,9 +42,7 @@ require("lazy").setup({
   },
   {
     "kylechui/nvim-surround",
-    config = function()
-      require "plugins.surround"
-    end
+    config = function() require "plugins.surround" end
   },
   {
     "mfussenegger/nvim-dap",
@@ -59,7 +61,10 @@ require("lazy").setup({
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "williamboman/mason.nvim" },
+      {
+        "williamboman/mason.nvim",
+        config = function() require "plugins.lsp.mason" end
+      },
       { "williamboman/mason-lspconfig.nvim" },
     },
   },
@@ -78,15 +83,15 @@ require("lazy").setup({
         { noremap = true, silent = true })
     end
   },
-  -- {
-  --   "f-person/git-blame.nvim",
-  --   config = function()
-  --     require('gitblame').setup {
-  --       --Note how the `gitblame_` prefix is omitted in `setup`
-  --       enabled = false,
-  --     }
-  --   end,
-  -- },
+  {
+    "f-person/git-blame.nvim",
+    config = function()
+      require('gitblame').setup {
+        --Note how the `gitblame_` prefix is omitted in `setup`
+        enabled = false,
+      }
+    end,
+  },
   -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "hrsh7th/nvim-cmp",
@@ -97,9 +102,7 @@ require("lazy").setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
-    config = function()
-      require "plugins.lsp.cmp"
-    end
+    config = function() require "plugins.lsp.cmp" end
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -113,37 +116,18 @@ require("lazy").setup({
         changedelete = { text = "~" },
       },
     },
+    config = function() require "plugins.gitsigns" end
   },
-  -- {
-  --   "numToStr/Comment.nvim",
-  --   opts = {},
-  --   config = function()
-  --     local ft = require("Comment.ft")
-  --     local api = require("Comment.api")
-  --     ft.jinja = { '{#%s#}', '{#%s#}' }
-  --     ft.text = { '#%s', '#%s#' }
-  --     ft.txt = { '#%s', '#%s#' }
-  --     require('Comment').setup({ ignore = "^$" })
-  --     vim.keymap.set("n", "<C-c>", function() api.toggle.linewise.current() end,
-  --       { noremap = true, silent = true })
-  --     vim.keymap.set('x', '<C-c>', function()
-  --       vim.api.nvim_feedkeys(esc, 'nx', false)
-  --       api.toggle.linewise(vim.fn.visualmode())
-  --     end)
-  --   end
-  -- },
   {
     "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require "plugins.telescope"
-    end
+    config = function() require "plugins.telescope" end
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
-    cond = function()
+    config = function()
       return vim.fn.executable("make") == 1
     end,
   },
@@ -154,9 +138,7 @@ require("lazy").setup({
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
-    config = function()
-      require "plugins.treesitter"
-    end
+    config = function() require "plugins.treesitter" end
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -190,8 +172,8 @@ require("lazy").setup({
   {
     "olexsmir/gopher.nvim",
     ft = "go",
-    config = function(_, opts)
-      require("gopher").setup(opts)
+    config = function()
+      require("gopher").setup()
     end,
     build = function()
       vim.cmd [[silent! GoInstallDeps]]

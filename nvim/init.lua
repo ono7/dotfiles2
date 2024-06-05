@@ -574,10 +574,6 @@ local packages = {
   "my.vars",
   "my.settings",
   "plugins.neotree",
-  -- "plugins.lsp.cmp",
-  "plugins.lsp.mason", -- mason first, or lsp breaks
-  "plugins.gitsigns",
-  "themes.gruvbox",    -- 2
   "plugins.null_ls",
   "plugins.colorizer",
   "my.cmds",
