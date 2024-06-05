@@ -293,12 +293,16 @@ for _, v in ipairs(r_pair_map) do
 end
 
 
--- Function to handle '"'
-k('i', '"', function()
+local function get_next_and_prev_chars()
   local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
   local p = vim.fn.getline('.'):sub(prev_col, prev_col)
   local n = vim.fn.getline('.'):sub(next_col, next_col)
+  return p, n
+end
 
+-- Function to handle '"'
+k('i', '"', function()
+  local p, n = get_next_and_prev_chars()
   if n == '"' then
     return '<Right>'
   elseif (p and p:match("%w")) or (n and n:match("%w")) then
@@ -310,10 +314,7 @@ end, { expr = true })
 
 -- Function to handle "'" (similar logic)
 k('i', "'", function()
-  local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local p = vim.fn.getline('.'):sub(prev_col, prev_col)
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
-
+  local p, n = get_next_and_prev_chars()
   if n == "'" then
     return '<Right>'
   elseif (p and p:match("%w")) or (n and n:match("%w")) then
@@ -325,8 +326,7 @@ end, { expr = true })
 
 
 k('i', ']', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if n == ']' then
     return '<Right>'
   end
@@ -336,8 +336,7 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if r_pair_map[n] then
     return '{}<Left>'
   elseif n ~= '' then
@@ -347,8 +346,7 @@ k('i', '{', function()
 end, { expr = true })
 
 k('i', '}', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if n == '}' then
     return '<Right>'
   end
@@ -358,8 +356,7 @@ end
 
 -- handle (
 k('i', '(', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if r_pair_map[n] then
     return '()<Left>'
   elseif n ~= '' then
@@ -369,8 +366,7 @@ k('i', '(', function()
 end, { expr = true })
 
 k({ 'i' }, ')', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if n == ')' then
     return '<Right>'
   end
@@ -379,8 +375,7 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
+  local _, n = get_next_and_prev_chars()
   if n == '>' then
     return '<Right>'
   end
