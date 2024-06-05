@@ -95,7 +95,7 @@ c("BufEnter", {
 c({ "BufNewFile", "BufRead" }, {
   pattern = { "static/html", "static/pico", "**/node_modules/**", "node_modules", "/node_modules/*" },
   callback = function()
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
   group = create_augroup("disable_lsp_diags_for_folders", { clear = true }),
 })
@@ -118,12 +118,12 @@ c("BufWritePost", {
 })
 
 -- auto create dirs when saving files
-c("BufWritePre", {
-  group = create_augroup("auto_create_dir", { clear = true }),
-  callback = function(ctx)
-    vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ":p:h"), "p")
-  end,
-})
+-- c("BufWritePre", {
+--   group = create_augroup("auto_create_dir", { clear = true }),
+--   callback = function(ctx)
+--     vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ":p:h"), "p")
+--   end,
+-- })
 
 c("BufWritePre", {
   group = create_augroup("write_and_clean_empty_lines", { clear = true }),
