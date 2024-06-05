@@ -293,60 +293,40 @@ for _, v in ipairs(r_pair_map) do
 end
 
 
---- handles '"'
+-- Function to handle '"'
 k('i', '"', function()
-  local line = vim.fn.getline('.')
-  local col = vim.fn.col('.')
-
-  -- Handle cursor at the beginning of the line
-  local p = (col > 1) and line:sub(col - 1, col - 1) or nil
-  local n = line:sub(col, col)
+  local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local p = vim.fn.getline('.'):sub(prev_col, prev_col)
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
 
   if n == '"' then
     return '<Right>'
-  elseif p ~= nil and (p:match("%a") ~= nil or n:match("%a")) then
+  elseif (p and p:match("%w")) or (n and n:match("%w")) then
     return '"'
+  else
+    return '""<left>'
   end
-
-  return '""<left>'
 end, { expr = true })
 
-
---- handles "'"
+-- Function to handle "'" (similar logic)
 k('i', "'", function()
-  local line = vim.fn.getline('.')
-  local col = vim.fn.col('.')
-
-  -- Handle cursor at the beginning of the line
-  local p = (col > 1) and line:sub(col - 1, col - 1) or nil
-  local n = line:sub(col, col)
+  local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local p = vim.fn.getline('.'):sub(prev_col, prev_col)
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
 
   if n == "'" then
     return '<Right>'
-  elseif p:match("%a") ~= nil or n:match("%a") then
+  elseif (p and p:match("%w")) or (n and n:match("%w")) then
     return "'"
+  else
+    return "''<left>"
   end
-  return "''<left>"
-end
-, { expr = true })
-
--- handle []
-k('i', '[', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
-  if r_pair_map[n] then
-    return '[]<Left>'
-  elseif n ~= '' then
-    return '['
-  end
-  return '[]<Left>'
 end, { expr = true })
 
+
 k('i', ']', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if n == ']' then
     return '<Right>'
   end
@@ -356,9 +336,8 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if r_pair_map[n] then
     return '{}<Left>'
   elseif n ~= '' then
@@ -368,9 +347,8 @@ k('i', '{', function()
 end, { expr = true })
 
 k('i', '}', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if n == '}' then
     return '<Right>'
   end
@@ -380,9 +358,8 @@ end
 
 -- handle (
 k('i', '(', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if r_pair_map[n] then
     return '()<Left>'
   elseif n ~= '' then
@@ -392,9 +369,8 @@ k('i', '(', function()
 end, { expr = true })
 
 k({ 'i' }, ')', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if n == ')' then
     return '<Right>'
   end
@@ -403,9 +379,8 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local n = line:sub(col, col)
+  local _, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
+  local n = vim.fn.getline('.'):sub(next_col, next_col)
   if n == '>' then
     return '<Right>'
   end
@@ -430,9 +405,8 @@ local pair_map_2 = {
 
 k("i", "<enter>", function()
   -- use this one when we are autoclosing
-  local line = vim.api.nvim_get_current_line()
-  local col = vim.fn.col('.')
-  local p = line:sub(col - 1, col - 1)
+  local prev_col, _ = vim.fn.col('.') - 1, vim.fn.col('.')
+  local p = vim.fn.getline('.'):sub(prev_col, prev_col)
   local pmap = pair_map_2
   if pmap[p] then
     return "<CR><Esc>O"
