@@ -569,15 +569,13 @@ end
 --- 	silent
 --- )
 
+-- TODO(2024-06-05):  move keybindings to lua/plugins for autoloading
+
 local packages = {
   "my.lazy",
   "my.vars",
   "my.settings",
-  "plugins.neotree",
-  "plugins.null_ls",
-  "plugins.colorizer",
   "my.cmds",
-  "plugins.harpoon",
 }
 
 for _, mod in ipairs(packages) do

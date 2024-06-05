@@ -55,9 +55,9 @@ require("lazy").setup({
       "thehamsta/nvim-dap-virtual-text",
     }
   },
-  "ThePrimeagen/harpoon",
-  "NvChad/nvim-colorizer.lua",
-  { "sindrets/diffview.nvim",         dependencies = { "nvim-lua/plenary.nvim" } },
+  { "ThePrimeagen/harpoon",      config = function() require "plugins.harpoon" end },
+  { "NvChad/nvim-colorizer.lua", config = function() require "plugins.colorizer" end },
+  { "sindrets/diffview.nvim",    dependencies = { "nvim-lua/plenary.nvim" } },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -86,8 +86,9 @@ require("lazy").setup({
   {
     "f-person/git-blame.nvim",
     config = function()
+      vim.g.gitblame_date_format = [[%m/%d/%Y]]
+      vim.g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
       require('gitblame').setup {
-        --Note how the `gitblame_` prefix is omitted in `setup`
         enabled = false,
       }
     end,
@@ -168,6 +169,7 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    config = function() require "plugins.neotree" end
   },
   {
     "olexsmir/gopher.nvim",

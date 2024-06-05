@@ -48,8 +48,3 @@ g.pyindent_nested_paren = "&sw"
 
 --- miniyank ---
 g.miniyank_maxitems = 10
-
---- git-blame ---
-g.gitblame_enabled = 0
-g.gitblame_date_format = [[%m/%d/%Y]]
-g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
