@@ -155,7 +155,7 @@ k("v", "gl", ":right<cr>", silent)
 k("n", "gp", "`[v`]", silent)
 
 --- keep cursor in same position when yanking in visual
-k("v", "y", [[ygv<Esc>]], silent)
+k("x", "y", [[ygv<Esc>]], silent)
 
 k("n", "gx", [[:sil !open <cWORD><cr>]], silent)
 
