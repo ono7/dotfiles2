@@ -322,6 +322,12 @@ local function get_next_and_prev_chars()
   return line:sub(col - 1, col - 1), line:sub(col, col)
 end
 
+local function get_next_and_prev_chars()
+  local line = vim.fn.getline('.')
+  local col = vim.fn.col('.')
+  return line:sub(col - 1, col - 1), line:sub(col, col)
+end
+
 -- Function to handle '"'
 k('i', '"', function()
   local p, n = get_next_and_prev_chars()
