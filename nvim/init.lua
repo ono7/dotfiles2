@@ -573,22 +573,15 @@ local packages = {
   "my.lazy",
   "my.vars",
   "my.settings",
-  "plugins.treesitter",
-  "plugins.telescope",
   "plugins.neotree",
-  "plugins.surround",
-  "plugins.lsp.cmp",
+  -- "plugins.lsp.cmp",
   "plugins.lsp.mason", -- mason first, or lsp breaks
   "plugins.gitsigns",
-  -- "plugins.theme_catppuccin", -- 2
-  "themes.gruvbox", -- 2
+  "themes.gruvbox",    -- 2
   "plugins.null_ls",
-  -- "plugins.bufferline",
   "plugins.colorizer",
   "my.cmds",
   "plugins.harpoon",
-  -- "plugins.core_dap",
-  -- "plugins.git-worktree",
 }
 
 for _, mod in ipairs(packages) do

@@ -28,77 +28,20 @@ require("lazy").setup({
   "nvimtools/none-ls.nvim",
   "onsails/lspkind-nvim",
   "Glench/Vim-Jinja2-Syntax",
-  -- "ThePrimeagen/git-worktree.nvim",
-  -- "BlakeWilliams/numetal.vim", -- nice colorscheme
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     -- add any options here
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- },
-  -- {
-  --   "stevearc/oil.nvim",
-  --   config = function()
-  --     require("oil").setup({
-  --       default_file_explorer = false
-  --     })
-  --     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-  --   end
-  -- },
   { "ellisonleao/gruvbox.nvim", priority = 1000,    config = true, opts = ... },
   { "catppuccin/nvim",          name = "catppuccin" },
-  -- {
-  --   "marko-cerovac/material.nvim",
-  --   config = function()
-  --     vim.g.material_style = "deep ocean"
-  --     require('material').setup({
-  --       -- ... other settings
-  --       disable = {
-  --         -- ... other settings
-  --         background = true,
-  --       },
-  --     })
-  --     vim.cmd [[colorscheme material]]
-  --   end
-  -- },
   {
     "folke/trouble.nvim",
     config = function()
       vim.keymap.set("n", "<leader>xx", function() require("trouble").open() end)
     end
   },
-  -- {
-  --   "jackMort/ChatGPT.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("chatgpt").setup({
-  --       api_key_cmd = "pass show api/tokens/openai || echo"
-  --     })
-  --   end,
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim"
-  --   }
-  -- },
-  "kylechui/nvim-surround",
-  -- {
-  --   'monkoose/matchparen.nvim',
-  --   config = function()
-  --     require('matchparen').setup({
-  --       on_startup = true,       -- Should it be enabled by default
-  --       hl_group = 'MatchParen', -- highlight group of the matched brackets
-  --       debounce_time = 10,      -- debounce time in milliseconds for rehighlighting of brackets.
-  --     })
-  --   end
-  -- },
-  --- dap goods ---
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require "plugins.surround"
+    end
+  },
   {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -154,6 +97,9 @@ require("lazy").setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
+    config = function()
+      require "plugins.lsp.cmp"
+    end
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -190,6 +136,9 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "plugins.telescope"
+    end
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
@@ -205,6 +154,9 @@ require("lazy").setup({
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
+    config = function()
+      require "plugins.treesitter"
+    end
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
