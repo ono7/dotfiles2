@@ -1,4 +1,4 @@
-local c = vim.api.nvim_create_autocmd
+-- local c = vim.api.nvim_create_autocmd
 local create_augroup = vim.api.nvim_create_augroup
 
 local function branch_name()
@@ -10,14 +10,14 @@ local function branch_name()
   end
 end
 
-c({ "FileType", "BufEnter", "FocusGained" }, {
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "FocusGained" }, {
   callback = function()
     vim.b.branch_name = branch_name()
   end,
   group = create_augroup("git_branch_name", { clear = true }),
 })
 
-c("TextYankPost", {
+vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({
@@ -38,7 +38,7 @@ c("TextYankPost", {
 -- })
 
 -- -- fix commit msg, goto top of file on enter
-c({ "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
   group = create_augroup("vim_commit_msg", { clear = true }),
   pattern = 'COMMIT_EDITMSG',
   callback = function()
@@ -56,7 +56,7 @@ c({ "BufEnter" }, {
 })
 
 -- resize windows
-c({ "VimResized" }, {
+vim.api.nvim_create_autocmd({ "VimResized" }, {
   pattern = "*",
   command = [[:wincmd =]],
   group = create_augroup("vim_resize_windows_automatically", { clear = true }),
@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd("BufRead", {
   group = create_augroup("restore_cursor_position_on_enter", { clear = true }),
 })
 
-c("BufEnter", {
+vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
@@ -92,7 +92,7 @@ c("BufEnter", {
   desc = "Disable New Line Comment",
 })
 -- AUTO-COMMANDS:
-c({ "BufNewFile", "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "static/html", "static/pico", "**/node_modules/**", "node_modules", "/node_modules/*" },
   callback = function()
     vim.diagnostic.enable(false)
@@ -111,21 +111,24 @@ augroup END
 ]]
 
 -- auto source snippets file
-c("BufWritePost", {
+vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.snippet",
   command = [[:SnippyReload<CR>]],
   group = create_augroup("reload_snippets", { clear = true }),
 })
 
 -- auto create dirs when saving files
--- c("BufWritePre", {
---   group = create_augroup("auto_create_dir", { clear = true }),
---   callback = function(ctx)
---     vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ":p:h"), "p")
---   end,
--- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+  callback = function(ctx)
+    -- Check if the filetype is NOT oil
+    if vim.bo.filetype ~= "oil" then
+      vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ":p:h"), "p")
+    end
+  end,
+})
 
-c("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
   group = create_augroup("write_and_clean_empty_lines", { clear = true }),
   pattern = { "*" },
   callback = function()
@@ -135,7 +138,7 @@ c("BufWritePre", {
   end,
 })
 
-c("FocusGained", {
+vim.api.nvim_create_autocmd("FocusGained", {
   callback = function()
     vim.cmd("checktime")
   end,
@@ -143,7 +146,7 @@ c("FocusGained", {
   desc = "Update file when there are changes",
 })
 
-c("TermOpen", {
+vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
     vim.opt_local.relativenumber = false
     vim.opt_local.number = false
