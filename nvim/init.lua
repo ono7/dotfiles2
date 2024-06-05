@@ -307,24 +307,26 @@ end
 
 
 local function get_next_char()
-  -- returns p, n
-  local col = vim.fn.col('.')
-  local line = vim.fn.getline('.')
+  -- returns next char
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
   return line:sub(col, col)
 end
 
 
+--- for reference using vim script functions
+-- local function get_next_and_prev_chars()
+--   -- returns p, n
+--   local col = vim.fn.col('.')
+--   local line = vim.fn.getline('.')
+--   return line:sub(col - 1, col - 1), line:sub(col, col)
+-- end
+
+
 --- returns previous and next characters respectively
 local function get_next_and_prev_chars()
-  -- returns p, n
-  local col = vim.fn.col('.')
-  local line = vim.fn.getline('.')
-  return line:sub(col - 1, col - 1), line:sub(col, col)
-end
-
-local function get_next_and_prev_chars()
-  local line = vim.fn.getline('.')
-  local col = vim.fn.col('.')
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Column is 0-indexed, add 1 for Lua string indexing
   return line:sub(col - 1, col - 1), line:sub(col, col)
 end
 
