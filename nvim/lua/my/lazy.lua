@@ -132,7 +132,7 @@ require("lazy").setup({
       return vim.fn.executable("make") == 1
     end,
   },
-  { "smartpde/telescope-recent-files" },
+  { "nvim-telescope/telescope-smart-history.nvim" },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
