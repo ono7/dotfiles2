@@ -292,12 +292,34 @@ for _, v in ipairs(r_pair_map) do
   table.insert(all_pair_map, v)
 end
 
+local is_quote = function(char)
+  return char == "'" or char == '"' or char == '`'
+end
 
+local is_bracket = function(char)
+  return char == "(" or char == '[' or char == '{' or char == '<'
+end
+
+
+local is_close_bracket = function(char)
+  return char == ")" or char == ']' or char == '}' or char == '>'
+end
+
+
+local function get_next_char()
+  -- returns p, n
+  local col = vim.fn.col('.')
+  local line = vim.fn.getline('.')
+  return line:sub(col, col)
+end
+
+
+--- returns previous and next characters respectively
 local function get_next_and_prev_chars()
-  local prev_col, next_col = vim.fn.col('.') - 1, vim.fn.col('.')
-  local p = vim.fn.getline('.'):sub(prev_col, prev_col)
-  local n = vim.fn.getline('.'):sub(next_col, next_col)
-  return p, n
+  -- returns p, n
+  local col = vim.fn.col('.')
+  local line = vim.fn.getline('.')
+  return line:sub(col - 1, col - 1), line:sub(col, col)
 end
 
 -- Function to handle '"'
@@ -324,9 +346,18 @@ k('i', "'", function()
   end
 end, { expr = true })
 
-
+-- handle {}
+k('i', '[', function()
+  local n = get_next_char()
+  if r_pair_map[n] then
+    return '[]<Left>'
+  elseif n ~= '' then
+    return '['
+  end
+  return '[]<Left>'
+end, { expr = true })
 k('i', ']', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if n == ']' then
     return '<Right>'
   end
@@ -336,7 +367,7 @@ end
 
 -- handle {}
 k('i', '{', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if r_pair_map[n] then
     return '{}<Left>'
   elseif n ~= '' then
@@ -346,7 +377,7 @@ k('i', '{', function()
 end, { expr = true })
 
 k('i', '}', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if n == '}' then
     return '<Right>'
   end
@@ -356,7 +387,7 @@ end
 
 -- handle (
 k('i', '(', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if r_pair_map[n] then
     return '()<Left>'
   elseif n ~= '' then
@@ -366,7 +397,7 @@ k('i', '(', function()
 end, { expr = true })
 
 k({ 'i' }, ')', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if n == ')' then
     return '<Right>'
   end
@@ -375,7 +406,7 @@ end
 , { expr = true })
 
 k('i', '>', function()
-  local _, n = get_next_and_prev_chars()
+  local n = get_next_char()
   if n == '>' then
     return '<Right>'
   end
