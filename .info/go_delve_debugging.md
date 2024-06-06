@@ -1,6 +1,11 @@
 # notes
 
 - ctrl-r works to search for old commands
+- install: `go install github.com/go-delve/delve/cmd/dlv@latest`
+
+# video reference
+
+`https://www.youtube.com/watch?v=qFf2PRSfBlQ&t`
 
 # execute in debugger
 
