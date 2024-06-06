@@ -172,6 +172,10 @@ require("lazy").setup({
   {
     "olexsmir/gopher.nvim",
     ft = "go",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
     config = function()
       require("gopher").setup()
     end,
@@ -181,4 +185,5 @@ require("lazy").setup({
   },
   "ixru/nvim-markdown",
   "folke/neodev.nvim",
+  { "stevearc/profile.nvim",                      config = function() require "plugins.profile" end }
 }, {})
