@@ -3,7 +3,8 @@
 __pycache__/
 venv/
 build/
-
+main
+.dbg_history
 .pytest_cache/
 fact_cache/
 .DS_Store
