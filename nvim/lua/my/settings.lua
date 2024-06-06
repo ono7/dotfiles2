@@ -48,7 +48,10 @@ o.smarttab = true
 
 -- whichwrap: "<>[]hl" allow hl to move past end of line when moving
 vim.opt.whichwrap:append "<>[]"
+-- stack: Remember the last jump position in each window.
+-- view: try to remember the cursor position for easier navitation
 opt.jumpoptions:append("view")
+
 o.inccommand = "nosplit"
 o.foldopen = "hor,mark,percent,quickfix,search,tag,undo" -- removed 'block'
 o.winaltkeys = "no"
