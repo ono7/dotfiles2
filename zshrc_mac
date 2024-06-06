@@ -33,6 +33,8 @@ bindkey '^Z' toggle
 export NVM_LAZY=1
 export GOPATH=$HOME/go
 export GOPRIVATE=github.com/ono7/utils,github.com/ono7/other
+
+# go build with no compiled optimizations for debugging
 alias god='go build -gcflags="all=-N -l"'
 alias t='tail -F '
 
