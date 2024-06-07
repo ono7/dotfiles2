@@ -1,6 +1,6 @@
 snippet vim "modeline, see h: modeline" w
   vim: foldlevel=0
-snippet date "date" w
+snippet da "date" w
 	`strftime("%Y-%m-%d")`
 snippet ddate "date" w
 	`strftime("%B %d, %Y")`
@@ -11,11 +11,11 @@ snippet time "time" w
 snippet dt "date and time" w
 	`strftime("%Y-%m-%d %H:%M")`
 snippet todo "todo" w
-  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` TODO(`strftime("%Y-%m-%d")`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` TODO(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
 snippet fix "fix" w
-  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` FIXME(`strftime("%Y-%m-%d")`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` FIXME(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
 snippet note "note" w
-  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` NOTE(`strftime("%Y-%m-%d")`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
+  `len(split(&commentstring, '%s')) > 0 ? trim(split(&commentstring, '%s')[0]): '#'` NOTE(`$USER`): ${0:${VISUAL}}`len(split(&commentstring, '%s')) > 1 ? split(&commentstring, '%s')[1]: ''`
 snippet d "done" w
   ✅ `DONE: strftime("%Y-%m-%d %H:%M")` ${0:${VISUAL}}
 
