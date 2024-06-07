@@ -479,30 +479,38 @@ end, { expr = true })
 --- delete all but the current buffer
 k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
--- converts bytes to a string, useful for debugging in delve
-local BytesToString = function()
-  local selected_text = vim.fn.getline("'<,'>")
+-- Converts selected bytes to a string, useful for debugging
+local BytesToString = function(opts)
+  local range = opts.range
+
+  local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)
+  local selected_text = table.concat(lines, "\n")
+
   -- Remove any whitespace or non-hex characters
   selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
-  -- Check if the selected text is empty
+
   if selected_text == '' then
-    vim.api.nvim_out_write("No valid bytes selected.\n")
-  else
-    -- Convert hex to string
-    local string_result = ''
-    local i = 1
-    while i <= #selected_text do
-      local hex_byte = string.sub(selected_text, i, i + 1)
-      string_result = string_result .. string.char(tonumber(hex_byte, 16))
-      i = i + 2
-    end
-    -- Display the result in the message area
-    vim.api.nvim_out_write(string_result .. '\n')
+    vim.api.nvim_err_writeln("No valid bytes selected.")
+    return
   end
+
+  -- Convert hex to string
+  local string_result = ''
+  for i = 1, #selected_text, 2 do
+    local hex_byte = selected_text:sub(i, i + 1)
+    string_result = string_result .. string.char(tonumber(hex_byte, 16))
+  end
+
+  -- Display the result in a new buffer
+  vim.api.nvim_command('new')
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, { string_result })
+  vim.api.nvim_command('setlocal buftype=nofile bufhidden=wipe noswapfile')
+  vim.api.nvim_command('setlocal filetype=text')
+  vim.api.nvim_command('setlocal nonumber norelativenumber')
+  vim.api.nvim_win_set_cursor(0, { 1, 0 }) -- Move the cursor to the beginning of the buffer
 end
 
--- TODO(jlima): make this allow ranges
-vim.api.nvim_create_user_command('BytesToString', BytesToString, {})
+vim.api.nvim_create_user_command('BytesToString', BytesToString, { range = true, nargs = 0 })
 
 --- tmux ---
 -- TODO(jlima): fix this
