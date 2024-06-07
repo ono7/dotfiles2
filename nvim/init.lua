@@ -481,10 +481,26 @@ k("n", "'d", [[:%bd |e# |bd#<cr>|'"]], silent)
 
 -- Converts selected bytes to a string, useful for debugging
 local BytesToString = function(opts)
-  local range = opts.range
+  local start_row, start_col = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+  local end_row, end_col = unpack(vim.api.nvim_buf_get_mark(0, ">"))
 
-  local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)
-  local selected_text = table.concat(lines, "\n")
+  -- Normalize column indices (0-based)
+  start_col = start_col + 1
+  end_col = end_col + 1
+
+  -- Adjust end column for last line
+  if start_row == end_row and start_col == end_col then
+    end_col = end_col + 1 -- Include the selected character on the same line
+  end
+
+  local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+  local selected_text = ""
+
+  for i, line in ipairs(lines) do
+    local start = (i == 1 and start_col or 1)
+    local finish = (i == #lines and end_col or -1) -- -1 means end of line
+    selected_text = selected_text .. line:sub(start, finish)
+  end
 
   -- Remove any whitespace or non-hex characters
   selected_text = selected_text:gsub('[^0-9A-Fa-f]', '')
