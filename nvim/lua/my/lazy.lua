@@ -165,14 +165,6 @@ require("lazy").setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
-    "michaelrommel/nvim-silicon",
-    lazy = true,
-    cmd = "Silicon",
-    opts = {
-      disable_defaults = true
-    }
-  },
-  {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function() require "plugins.oil" end
