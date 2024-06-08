@@ -1,7 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local esc = vim.api.nvim_replace_termcodes(
-  '<ESC>', true, false, true
-)
 
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -88,6 +85,8 @@ require("lazy").setup({
   },
   {
     "f-person/git-blame.nvim",
+    load = "lazy",
+    command = "GitBlameToggle",
     config = function()
       vim.g.gitblame_date_format = [[%m/%d/%Y]]
       vim.g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
@@ -96,7 +95,6 @@ require("lazy").setup({
       }
     end,
   },
-  -- { "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
