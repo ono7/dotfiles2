@@ -29,6 +29,7 @@ echo ###########################################################################
 
 rm -rf ~/.vim
 rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
 mkdir -p ~/.vim/indent
 # make aliases and vars available in neovim
 ln -sf ~/.dotfiles/zshenv ~/.zshenv
@@ -57,7 +58,7 @@ ln -sf ~/.dotfiles/ctags ~/.ctags
 ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/.dotfiles/dircolors ~/.dircolors
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
-cp ~/.dotfiles/gitconfig_template ~/.gitconfig
+# cp ~/.dotfiles/gitconfig_template ~/.gitconfig
 # ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
 ln -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
@@ -78,15 +79,15 @@ ln -sf ~/.dotfiles/setup/keys_macos_regkb.sh ~/bin/kint
 ln -sf ~/.dotfiles/setup/keys_macos_colemak.sh ~/bin/kco
 ln -sf ~/.dotfiles/setup/keys_macos_extkb.sh ~/bin/kext
 ln -sf ~/.dotfiles/setup/keys_default.sh ~/bin/kdef
-cp ~/.dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git_templates ~/.git_templates
 
 cd ~
-echo 'setting up terminfo (italics support!)'
+# echo 'setting up terminfo (italics support!)'
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 
 # tic -xo $HOME/.terminfo ~/.dotfiles/xterm-256color-italic.terminfo
-tic -xo $HOME/.terminfo ~/.dotfiles/tmux/wezterm.terminfo
+# tic -xo $HOME/.terminfo ~/.dotfiles/tmux/wezterm.terminfo
 
 echo 'setting up directories and symlinks..done!'
 
@@ -105,7 +106,7 @@ cd ~/.dotfiles/setup
 
 # ~/.fzf/install
 
-echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
+# echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
 
 # Skip the not really helping Ubuntu global compinit
 
