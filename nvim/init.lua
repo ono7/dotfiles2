@@ -1,7 +1,7 @@
+-- TODO(jlima): fix init.lua
 --- Follow the white Rabbit...   🐇
 
 --[[
-
 
 Fix github repos missing remote
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
@@ -51,13 +51,14 @@ alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 --]]
 
---- status bar
--- vim.opt.winbar = "%=%M %-.45f %-m %y {%{get(b:, 'branch_name', '')}}"
-vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
-
+-- if nothing else, this are the bare minimum necessities
 vim.opt.path:append({ "**" })
 vim.opt.shell = "zsh"
 vim.opt.clipboard:append("unnamedplus")
+vim.opt.wrap = false
+vim.opt.syntax = "off"
+
+vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -71,23 +72,16 @@ if not vim.uv.fs_stat(lazypath) then
   }
 end
 
--- Add lazy to the `runtimepath`, this allows us to `require` it.
----@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Ensure lazy.nvim is loaded if it exists
 
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
-
-
-
-
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
 
 vim.opt.termguicolors = true
-vim.opt.syntax = "off"
 
 --- if syntax is on/enabled treesitter has issues
 --- other weird things happen, like lsp not starting automatically etc
@@ -141,7 +135,6 @@ vim.cmd([[nnoremap <expr> j v:count ? (v:count > 1 ? "m'" . v:count : '') . 'j' 
 vim.cmd([[nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' : 'gk']])
 
 g.mapleader = " "
-
 
 --- nop ---
 k("n", "<c-f>", "") -- use this for searching files
@@ -261,7 +254,6 @@ m("v", ".", ":norm .<cr>", opt)
 k("n", "Q", "@qj", opt)
 k("x", "Q", ":norm @q<CR>", opt)
 
-
 local function hlsToggle()
   if vim.o.hlsearch then
     vim.o.hlsearch = false
@@ -328,13 +320,9 @@ local is_bracket = function(char)
   return char == "(" or char == '[' or char == '{' or char == '<'
 end
 
-
 local is_close_bracket = function(char)
   return char == ")" or char == ']' or char == '}' or char == '>'
 end
-
-
-
 
 --- for reference using vim script functions
 -- local function get_next_and_prev_chars()
@@ -632,10 +620,10 @@ end
 -- TODO(2024-06-05):  move keybindings to lua/plugins for autoloading
 
 local packages = {
- "my.lazy",
+  "my.lazy",
   "my.vars",
   "my.settings",
-"my.cmds",
+  "my.cmds",
 }
 
 for _, mod in ipairs(packages) do
