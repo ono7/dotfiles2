@@ -2,6 +2,7 @@
 
 --[[
 
+
 Fix github repos missing remote
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
@@ -53,6 +54,34 @@ alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 --- status bar
 -- vim.opt.winbar = "%=%M %-.45f %-m %y {%{get(b:, 'branch_name', '')}}"
 vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
+
+vim.opt.path:append({ "**" })
+vim.opt.shell = "zsh"
+vim.opt.clipboard:append("unnamedplus")
+
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  }
+end
+
+-- Add lazy to the `runtimepath`, this allows us to `require` it.
+---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
+-- Ensure lazy.nvim is loaded if it exists
+
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+
+
+
+
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
@@ -113,7 +142,6 @@ vim.cmd([[nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' 
 
 g.mapleader = " "
 
-vim.opt.path:append({ "**" })
 
 --- nop ---
 k("n", "<c-f>", "") -- use this for searching files
@@ -604,16 +632,16 @@ end
 -- TODO(2024-06-05):  move keybindings to lua/plugins for autoloading
 
 local packages = {
-  "my.lazy",
+ "my.lazy",
   "my.vars",
   "my.settings",
-  "my.cmds",
+"my.cmds",
 }
 
 for _, mod in ipairs(packages) do
-  local ok, _ = pcall(require, mod)
+  local ok, err = pcall(require, mod)
   if not ok then
-    error("in init.lua, Module -> " .. mod .. " not loaded... ay..")
+    error("in init.lua, Module -> " .. mod .. " not loaded... ay.." .. err)
   end
 end
 

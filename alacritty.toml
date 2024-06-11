@@ -38,15 +38,15 @@ x = 0
 y = 0
 
 [font.normal]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonolisaLiga Nerd Font"
 style = "Regular"
 
 [font.italic]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonolisaLiga Nerd Font"
 style = "Italic"
 
 [font.bold]
-family = "MonoLisaNoliga Nerd Font"
+family = "MonolisaLiga Nerd Font"
 
 [font.offset]
 x = 0

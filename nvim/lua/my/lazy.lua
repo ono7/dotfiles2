@@ -1,6 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -10,8 +9,10 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-
 vim.opt.rtp:prepend(lazypath)
+
+-- require("lazy").setup({ "catppuccin/nvim", name = "catppuccin", priority = 1000})
+
 
 require("lazy").setup({
   "tpope/vim-repeat",
@@ -85,8 +86,6 @@ require("lazy").setup({
   },
   {
     "f-person/git-blame.nvim",
-    load = "lazy",
-    command = "GitBlameToggle",
     config = function()
       vim.g.gitblame_date_format = [[%m/%d/%Y]]
       vim.g.gitblame_message_template = [[<author> • <date> • <summary> • <sha>]]
