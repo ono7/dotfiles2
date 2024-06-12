@@ -104,6 +104,9 @@ end
 require("my.lazy-bootstrap")
 require("my.keymaps")
 require("my.helper-functions")
+require("my.legacy")
+require("my.abbreviations")
+require("my.diff-settings")
 
 -- TODO(2024-06-05):  move keybindings to lua/plugins for autoloading
 
@@ -114,21 +117,6 @@ local packages = {
   "my.cmds",
 }
 
-function _G.legacy()
-  -- :lua legacy()
-  vim.api.nvim_paste(require("my.extra_vars").legacy_cfg, true, -1)
-end
-
-function _G.legacy_min()
-  -- :lua legacy()
-  vim.api.nvim_paste(require("my.extra_vars").legacy_min, true, -1)
-end
-
-function _G.perflog()
-  cmd([[profile start ~/profile.log]])
-  cmd([[profile func *]])
-  cmd([[profile file *]])
-end
 
 for _, mod in ipairs(packages) do
   local ok, err = pcall(require, mod)
@@ -137,23 +125,6 @@ for _, mod in ipairs(packages) do
   end
 end
 
-vim.cmd([[cabbrev q1 q!]])
-vim.cmd([[cabbrev Q1 q!]])
-vim.cmd([[cabbrev Q q!]])
-vim.cmd([[cabbrev qa1 qa!]])
-vim.cmd([[cabbrev qall1 qall!]])
-
-if vim.opt.diff:get() then
-  vim.wo.signcolumn = "no"
-  vim.wo.foldcolumn = "0"
-  vim.wo.numberwidth = 1
-  vim.wo.number = true
-  vim.o.cmdheight = 2
-  vim.o.diffopt = "filler,context:0,internal,algorithm:histogram,indent-heuristic"
-  vim.o.laststatus = 3
-  m("n", "]", "]c", opt)
-  m("n", "[", "[c", opt)
-end
 
 vim.o.guicursor = "" -- uncomment for beam cursor
 --- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
