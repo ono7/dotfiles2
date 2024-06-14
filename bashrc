@@ -213,7 +213,7 @@ function vd () {
   source $HOME/.virtualenvs/prod3/bin/activate
 }
 
-if [[ -f ~/nvim/bin/nvim ]]; then
+if [[ -d ~/nvim/bin ]]; then
   alias vim='~/nvim/bin/nvim'
   # legacy vim
   alias vi=vim
