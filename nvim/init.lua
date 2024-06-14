@@ -52,7 +52,7 @@ alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
 	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
 --]]
 
-local cmd, m, k = vim.cmd, vim.api.nvim_set_keymap, vim.keymap.set
+local m, k = vim.api.nvim_set_keymap, vim.keymap.set
 local opt = { noremap = true }
 local silent = { noremap = true, silent = true }
 
@@ -95,35 +95,17 @@ vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_liststyle = 3
 
-local my_disabled_ok, _ = pcall(require, "my.disabled")
-
-if not my_disabled_ok then
-  print("Error in pcall my.disabled -> ~/.dotfiles/nvim/init.lua")
-end
-
+require("my.disabled")
+require("my.vars")
+require("my.settings")
 require("my.lazy-bootstrap")
+require("my.lazy-config")
 require("my.keymaps")
 require("my.helper-functions")
 require("my.legacy")
 require("my.abbreviations")
 require("my.diff-settings")
-
--- TODO(2024-06-05):  move keybindings to lua/plugins for autoloading
-
-local packages = {
-  "my.lazy",
-  "my.vars",
-  "my.settings",
-  "my.cmds",
-}
-
-
-for _, mod in ipairs(packages) do
-  local ok, err = pcall(require, mod)
-  if not ok then
-    error("in init.lua, Module -> " .. mod .. " not loaded... ay.." .. err)
-  end
-end
+require("my.cmds")
 
 
 vim.o.guicursor = "" -- uncomment for beam cursor
