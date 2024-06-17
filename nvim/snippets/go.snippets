@@ -63,4 +63,8 @@ snippet forr "for range loop" w
 snippet test "test function" b
   func Test${1:name}(t *testing.T) {
     ${0:${VISUAL}}
+
+snippet func "test function" b
+  func ${1}(${2}) (${0:error}) {
+    ${VISUAL}
   }

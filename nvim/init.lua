@@ -1,5 +1,4 @@
 --- Follow the white Rabbit...   🐇
-
 local k = vim.keymap.set
 local opt = { noremap = true }
 local silent = { noremap = true, silent = true }
@@ -10,19 +9,14 @@ vim.opt.shell = "zsh"
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.wrap = false
 
---- if syntax is on/enabled treesitter has issues
---- other weird things happen, like lsp not starting automatically etc
+--- syntax off to avoid tree-sitter issues
 --- see https://thevaluable.dev/tree-sitter-neovim-overview/
 vim.opt.syntax = "off"
+vim.g.mapleader = " "
 
-vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
-
--- open daily todo
 k("n", "+", ":e ~/todo.md<cr>", opt)
-
---- vs last paste
+--- visual select last paste
 k("n", "gp", "`[v`]", silent)
-
 --- keep cursor in same position when yanking in visual
 k("x", "y", [[ygv<Esc>]], silent)
 
@@ -30,11 +24,6 @@ vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true
-
-P = function(x)
-  print(vim.inspect(x))
-  return x
-end
 
 vim.g.markdown_fold_style = "nested"
 
@@ -57,56 +46,6 @@ require("my.cmds")
 
 
 vim.o.guicursor = "" -- uncomment for beam cursor
---- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")
 vim.o.mouse = "n"
 
-
---[[ NOTE:
-
-Fix github repos missing remote
-  git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-
-golang: https://fulltimegodev.teachable.com/courses/1970304
-
-* save as root
-    :w !sudo tee %
-
-* convert spaces to tabs (and back)
-    to spaces            to tabs
-        :set expandtab       :set noexpandtab
-        :set tabstop=4       :retab!
-        :set shiftwidth=4
-        :retab
-
-* g, - jump to last change
-* zm, fold
-* zi, toggle fold
-* sliped `brew install slides`
-
-* my vanilla config
-
-alias vim='vim -c "hi! link Search IncSearch" -c "inoremap <C-e> <C-o>$" -c "inoremap <C-a> <C-o>^" -c "nnoremap ,d :bd!<cr>" -c "nnoremap ,q :qall!<cr>" -c "nnoremap ,w :w<cr>" "+:set path+=** tags=./tags,tags;~ nohls noswapfile nowrap ruler hidden ignorecase incsearch magic nobackup nojoinspaces wildmenu shortmess=coTtaIsO list listchars=trail:·,nbsp:· ttyfast ai sw=2 sts=2 mouse=n clipboard+=unnamedplus background=dark gp=git\ grep\ -n"'
-
-alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
-
-* replace with contents of register :s/abc/\=getreg('*')/g
-	*  ge, jump back do end of word
-	*  xxd -psd (get hex codes to use with wezterm)
-
-	*  $_ (shell) - access last argument to previous command, !^ - access first argument
-	*  e.g. mkdir testdir || cd $_ (cd to testdir)
-
-	* - brew install universal-ctags
-
-	*  :so (source this file)
-	*  bro filt /this/ old
-	*  s/\%Vaaa/bbb/g -- \%V replace only inside visual selection
-	*  use ce or cE instead of cw or cW, easier to type
-	*  USE gi, jump to last insert position
-	*  use '' to go back to the cursor position before the last jump
-	*  use csqb  (changes the nearest quotes.. q is aliased to `, ', " in surround.nvim)
-	*  "0 - holds recent yanked text
-	*  "1 - holds recent deleted text
-	*  stty sane // fix bad terminal
-	*  count number of matches %s/test//gn (gn n=no op), will show the number of matches
---]]
+--- vim.cmd("set guicursor+=a:-blinkwait75-blinkoff75-blinkon75")

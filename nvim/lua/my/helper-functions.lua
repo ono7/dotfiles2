@@ -92,6 +92,13 @@ endfunction
 command! -register Cm call CopyMatches(<q-reg>)
 ]])
 
+
+P = function(x)
+  print(vim.inspect(x))
+  return x
+end
+
+
 --- shellcode ---
 --- m(
 --- 	"x",
