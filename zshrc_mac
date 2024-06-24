@@ -129,7 +129,11 @@ typeset -U path
 
 
 # zsh completion
-[ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ ! -d ~/.zsh/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+if [ -d ~/.zsh/zsh-autosuggestions ]; then
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # autoload -Uz compinit && compinit -C
 autoload -Uz compinit && compinit
