@@ -107,6 +107,8 @@ k("n", ",q", "<cmd>q<cr>", silent)
 k("n", ",x", "<cmd>x!<cr>", silent)
 k("n", ",d", "<cmd>bd<cr>", silent)
 k("n", "<leader>q", "<cmd>q<cr>", silent)
+k("n", "<leader>Q", "<cmd>q!<cr>", silent)
+k("n", ",Q", "<cmd>q!<cr>", silent)
 
 --- navigate between splits ---
 k("n", "<c-k>", "<C-W>k")
