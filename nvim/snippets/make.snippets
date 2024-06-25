@@ -1,6 +1,7 @@
 snippet h "header" w
   # Author:  Jose Lima (`getenv('USER')`)
   # Date:    `strftime("%Y-%m-%d %H:%M")`
+
 snippet make "Makefile" w
   BINARY_NAME := ${1}
   OUTPUT_DIR := ${2}
@@ -40,3 +41,28 @@ snippet make "Makefile" w
     @cd $(BUILD_DIR);./$(BINARY_NAME)
 
   .PHONY: all build install clean testing
+
+snippet basic "basic makefile" w
+  BUILD_DIR := build
+  .PHONY: run test
+
+  build:
+    @mkdir -p $(BUILD_DIR)
+
+  test:
+    @python -m pytest test/
+
+snippet go "build basic go app" w
+  BUILD_DIR := build
+
+  .PHONY: run test build
+
+  build:
+    # @mkdir -p $(BUILD_DIR)
+    @env GOOS=linux GOARCH=arm64 go build
+
+  run:
+    @docker run --rm -p 8080:8080 -v .:/app -v ./http-files:/http-files ubuntu:latest ./app/main
+
+  test:
+    @go test

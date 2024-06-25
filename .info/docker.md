@@ -7,7 +7,18 @@ ENV LANG=C.UTF-8
 # git shell on running container (root)
 
 ```sh
+# run and map a folder
+docker run -it --name testservice -v .:/app ubuntu:latest
+
+# run image and create new image tag called testservice from ubuntu:latest
+docker run -it --name testservice ubuntu:latest
+
+# list all "running containers"
 docker ps
+
+# list all running and shutdown containers
+docker ps -a
+
 # get container ID if running container, in this case 5dc47655b035
 docker exec -it -u 0 5dc47655b035 /bin/bash
 

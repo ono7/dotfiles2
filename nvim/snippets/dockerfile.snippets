@@ -1,0 +1,9 @@
+snippet run "main run file"
+
+  FROM ubuntu:latest
+
+  WORKDIR /app
+
+  COPY main /app
+
+  cmd ["./main"]
