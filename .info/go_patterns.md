@@ -1,3 +1,34 @@
+# go os signal kill (graceful shutdown)
+
+```go
+var wg sync.WaitGroup
+
+	// Channel to catch OS signals
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+
+	go func() {
+		for {
+			conn, err := listener.Accept()
+			if err != nil {
+				log.Printf("failed to accept incoming connection: %s", err)
+				return
+			}
+
+			wg.Add(1)
+			go handleConnection(conn, config, &wg)
+		}
+	}()
+
+	// Wait for termination signal
+	<-sigChan
+	log.Println("Shutting down server...")
+	listener.Close()
+
+	wg.Wait()
+	log.Println("Server gracefully stopped")
+```
+
 ```go
 // open file
 	file, err := os.Open("all-virtual-server.json")
