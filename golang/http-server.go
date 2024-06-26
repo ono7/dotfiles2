@@ -45,7 +45,7 @@ func logTransferTime(next http.Handler) http.Handler {
 		start := time.Now()
 		next.ServeHTTP(w, r)
 		duration := time.Since(start)
-		log.Printf("Transferred %s in %v\n", r.URL.Path, duration)
+		log.Printf("%s Transferred %s in %v\n", r.RemoteAddr, r.URL.Path, duration)
 	})
 }
 
