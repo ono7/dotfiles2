@@ -137,9 +137,14 @@ end
 local data = assert(vim.fn.stdpath "data") --[[@as string]]
 
 
-actions = require "telescope.actions"
+local actions = require "telescope.actions"
 
 require("telescope").setup {
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+    }
+  },
   extensions = {
     wrap_results = true,
 
@@ -153,6 +158,9 @@ require("telescope").setup {
     },
   },
   defaults = {
+    layout_config = {
+      vertical = { width = 0.5 },
+    },
     file_ignore_patterns = {
       ".git/",
       ".venv/",

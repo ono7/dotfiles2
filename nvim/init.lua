@@ -20,7 +20,14 @@ k("n", "gp", "`[v`]", silent)
 --- keep cursor in same position when yanking in visual
 k("x", "y", [[ygv<Esc>]], silent)
 
+-- right alinged
 vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
+
+-- vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'gitsigns_status', '')}}"
+
+
+
+-- vim.opt.winbar = "%=%M %f %m %-14.(%{luaeval('require(\"nvim-web-devicons\").get_icon(vim.fn.expand(\"%:p\"), vim.fn.expand(\"%:e\"), { default = true })')}) %y {%{get(b:, 'gitsigns_status', '')}} %l:%c"
 
 -- might need this in the future
 vim.g.skip_ts_context_commentstring_module = true

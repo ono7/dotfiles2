@@ -97,4 +97,9 @@ gwr () {
 alias gwl='git worktree list'
 alias gwr='git worktree remove '
 
+
+tmux_log() {
+    tmux capture-pane -S - \; save-buffer ~/tmux_log.txt
+}
+
 alias p='podman'
