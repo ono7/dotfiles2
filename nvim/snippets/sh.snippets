@@ -4,7 +4,9 @@ snippet h "header" b
   #  Author:  Jose Lima (`getenv('USER')`)
   #  Date:    `strftime("%Y-%m-%d %H:%M")`
 
-  trap "exit" INT TERM
+  set -Eeuo pipefail
+
+  ${0}trap "exit" INT TERM
   trap "kill 0" EXIT
 
 snippet h1 "optional header for cicd script" b
@@ -31,6 +33,9 @@ snippet h1 "optional header for cicd script" b
     echo >&2 -e "[Error] ${1-}"
   }
   ${0}
+
+snippet set "set basic script options for pipelines" b
+  set -Eeuo pipefail
 
 snippet if "if statement" b
   if [[ $1 ]]; then
