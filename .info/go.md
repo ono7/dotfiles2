@@ -2,6 +2,37 @@
 
 https://gobyexample.com
 
+```
+# how to use the go standard library documentation to build anything
+
+1. Package Documentation Entry Point
+
+Head to the net/http package documentation on pkg.go.dev:
+
+URL: https://pkg.go.dev/net/http
+2. Identify Key Concepts
+
+Overview: Read the package overview. It highlights that this package provides HTTP client and server implementations. Focus on the server aspect.
+Index: Scroll down to the "Index" section. Notice there are types (Server, Request, ResponseWriter, etc.) and functions (ListenAndServe, HandleFunc, etc.). These are your building blocks.
+3. Understand http.Server
+
+Click on http.Server: This type represents an HTTP server. The documentation tells you about its fields:
+Addr: The TCP address to listen on (e.g., ":8080").
+Handler: The handler to invoke for incoming HTTP requests.
+Note the Constructor: There's a http.NewServeMux() function. This will come in handy later.
+4. Decipher http.HandleFunc and http.ListenAndServe
+
+Click on http.HandleFunc: This function registers a handler function for a specific pattern (e.g., "/").
+Notice the Signature: It expects a function with the signature func(ResponseWriter, *Request). This is the shape of your handler functions.
+Click on http.ListenAndServe: This function starts an HTTP server.
+It takes the address (Addr) from your http.Server and the handler you registered.
+If you pass nil for the handler, it uses http.DefaultServeMux.
+5. Build the "Hello, World!" Server
+
+Based on your newfound knowledge, you can construct a basic server:
+
+```
+
 ## install godoc server
 
 `go install -v golang.org/x/tools/cmd/godoc@latest`
