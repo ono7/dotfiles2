@@ -1,7 +1,8 @@
 package main
 
 import (
-	"golang.org/x/sys/unix"
+	"flag"
+	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -9,18 +10,22 @@ import (
 	"strings"
 	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 )
 
 const (
 	DIRECTORY = "images/"
-	PORT      = "8000"
 )
 
 func main() {
+	port := flag.String("port", "8000", "set tcp listening port for this service")
+	flag.Parse()
+
 	fs := http.FileServer(http.Dir(DIRECTORY))
 	http.Handle("/", logTransferTime(restrictDirectory(fs, DIRECTORY)))
 
-	listener, err := net.Listen("tcp", ":"+PORT) // Create listener directly
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port)) // Create listener directly
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
@@ -28,7 +33,7 @@ func main() {
 	// Apply TCP options on the listener
 	applyTCPSettings(listener)
 
-	log.Printf("Starting server on port %s...\n", PORT)
+	log.Printf("Starting server on port %s...\n", *port)
 	if err := http.Serve(listener, nil); err != nil {
 		log.Fatalf("Failed to start server: %s", err)
 	}
@@ -69,7 +74,7 @@ func applyTCPSettings(listener net.Listener) {
 	}
 	defer file.Close()
 
-	// Enable SACK (Selective Acknowledgments)
+	// Enable SACK (Selective Acknowledgments), this is linux specific
 	if err := syscall.SetsockoptInt(int(file.Fd()), syscall.IPPROTO_TCP, unix.TCPOPT_SACK, 1); err != nil {
 		log.Fatalf("Failed to enable SACK: %v", err)
 	}
