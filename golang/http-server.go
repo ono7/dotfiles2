@@ -23,7 +23,7 @@ func main() {
 	flag.Parse()
 
 	fs := http.FileServer(http.Dir(DIRECTORY))
-	http.Handle("/", logTransferTime(restrictDirectory(fs, DIRECTORY)))
+	http.Handle("/", imageTransfer(restrictDirectory(fs, DIRECTORY)))
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port)) // Create listener directly
 	if err != nil {
@@ -39,8 +39,8 @@ func main() {
 	}
 }
 
-// logTransferTime logs the time taken to transfer the file
-func logTransferTime(next http.Handler) http.Handler {
+// imageTransfer logs the time taken to transfer the file
+func imageTransfer(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 		next.ServeHTTP(w, r)
@@ -52,6 +52,10 @@ func logTransferTime(next http.Handler) http.Handler {
 // restrictDirectory ensures the path is within the DIRECTORY
 func restrictDirectory(next http.Handler, dir string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "GET" {
+			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+			return
+		}
 		path := r.URL.Path
 		cleanPath := filepath.Clean(path)
 		if !strings.HasPrefix(cleanPath, "/") {
