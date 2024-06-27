@@ -12,8 +12,6 @@
         fd
         ripgrep
         fzf
-        lazygit
-	npm
 	python3
 	ruff
       ];
