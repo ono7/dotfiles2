@@ -32,6 +32,7 @@ echo #                              creating symlinks                           
 echo ################################################################################
 
 # make aliases and vars available in neovim
+ln -sf ~/.dotfiles/inputrc ~/.inputrc
 ln -sf ~/.dotfiles/zshenv ~/.zshenv
 ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
 ln -sf ~/.dotfiles/shortpath ~/local/bin/shortpath
