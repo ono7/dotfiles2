@@ -9,6 +9,7 @@ mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 
 ln -sf "$PWD/bashrc" "$HOME"/.bashrc
+ln -sf "$PWD/zshrc_mac" "$HOME"/.zshrc
 ln -sf "$PWD/zshenv" "$HOME"/.zshenv
 ln -sf "$PWD/inputrc" "$HOME"/.inputrc
 ln -sf "$PWD/tmux/tmux.conf" "$HOME"/.tmux.conf
