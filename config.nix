@@ -6,18 +6,16 @@
       paths = [
         bash-completion
         neovim
-        go
-        nodejs_22
+        # go
+        # nodejs_22
         starship
         fd
         ripgrep
         fzf
-	python3
-	ruff
-	# for building docker images
-	docker-client
-	gnumake
-	git
+        python3
+        ruff
+        # for building docker images
+        gnumake
       ];
     };
   };
