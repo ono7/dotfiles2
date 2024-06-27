@@ -535,6 +535,8 @@ bindkey -v
 # alias v='bindkey -v'
 # alias e='bindkey -e'
 
+source <(fzf --zsh)
+
 bindkey "^E" end-of-line
 bindkey "^A" beginning-of-line
 bindkey "^N" down-line-or-history
