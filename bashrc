@@ -215,13 +215,7 @@ function vd () {
   source $HOME/.virtualenvs/prod3/bin/activate
 }
 
-if [[ -d ~/nvim/bin ]]; then
-  alias vim='~/nvim/bin/nvim'
-  # legacy vim
-  alias vi=vim
-  alias vil='/usr/bin/vim'
-  alias vimdiff='~/nvim/bin/nvim -d'
-elif command -v nvim &>/dev/null; then
+if command -v nvim &>/dev/null; then
   alias vim=$(which nvim)
   alias vi=vim
   # legacy vim
@@ -230,7 +224,15 @@ elif command -v nvim &>/dev/null; then
   alias vimdiff='nvim -d'
   # alias vll="vim  +\"'\"0"
   alias vl="vim -c \"normal '0\" -c \"bn\" -c \"bd\""
+elif [[ -d ~/nvim/bin ]]; then
+  alias vim='~/nvim/bin/nvim'
+  # legacy vim
+  alias vi=vim
+  alias vil='/usr/bin/vim'
+  alias vimdiff='~/nvim/bin/nvim -d'
 fi
+
+alias v=vim
 
 export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --no-preview'
