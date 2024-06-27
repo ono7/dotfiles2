@@ -18,7 +18,7 @@ ln -sf "$PWD/tmux/tmux.conf" "$HOME"/.tmux.conf
 ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
 
 # install Nix packages from config.nix
- nix-env -iA nixpkgs.myPackages
+nix-env -iA nixpkgs.myPackages
 
 sudo locale-gen en_US.UTF-8
 sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
