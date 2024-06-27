@@ -23,30 +23,26 @@ mkdir -p ~/go
 mkdir -p ~/.npm-packages
 mkdir -p ~/local/bin
 
+rm -rf ~/.vim
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+
 echo ################################################################################
 echo #                              creating symlinks                               #
 echo ################################################################################
 
-rm -rf ~/.vim
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-mkdir -p ~/.vim/indent
 # make aliases and vars available in neovim
 ln -sf ~/.dotfiles/zshenv ~/.zshenv
 ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
 ln -sf ~/.dotfiles/shortpath ~/local/bin/shortpath
 ln -sf ~/.dotfiles/starship.toml ~/.config/
 ln -sf ~/.dotfiles/ipython ~/.ipython
-# ln -sf ~/.dotfiles/ctagsrc ~/.ctags.d/default.ctags
 ln -sf ~/.dotfiles/mongorc.js ~/.mongorc.js
 ln -sf ~/.dotfiles/mongorc.js ~/.mongoshrc.js
-ln -sf ~/.dotfiles/ctagsrc ~/.ctags
 ln -sf ~/.dotfiles/nvim/indent/python.vim ~/.vim/indent/python.vim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
-ln -sf ~/.dotfiles/wezterm ~/.config/wezterm
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/ssh_client_config ~/.ssh/config
-ln -sf ~/.dotfiles/alacritty.yml ~/.config/alacritty/
 ln -sf ~/.dotfiles/alacritty.toml ~/.config/alacritty/
 ln -sf ~/.dotfiles/pylintrc ~/.pylintrc
 ln -sf ~/.dotfiles/gitignore ~/.gitignore
@@ -58,29 +54,20 @@ ln -sf ~/.dotfiles/ctags ~/.ctags
 ln -sf ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/.dotfiles/dircolors ~/.dircolors
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
-# cp ~/.dotfiles/gitconfig_template ~/.gitconfig
-# ln -sf ~/.dotfiles/pdbrc.py ~/.pdbrc.py
 ln -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ipdb ~/.ipdb
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
-ln -sf ~/.dotfiles/tmux/tmux_yank.sh ~/bin/yank
-ln -sf ~/.dotfiles/gdb/nasm_compile.sh ~/bin/comp
 ln -sf ~/.dotfiles/setup/keys_macos_hhbk.sh ~/bin/kh
-ln -sf ~/.dotfiles/gdb/nasm_compile32.sh ~/bin/comp32
-ln -sf ~/.dotfiles/gdb/nasm_compile_win32.sh ~/bin/compw
-ln -sf ~/.dotfiles/vim/py_vim_filters/network.py ~/bin/network
-ln -sf ~/.dotfiles/vim/py_vim_filters/bytearray.py ~/bin/bytearray
-ln -sf ~/.dotfiles/vim/py_vim_filters/pc.py ~/bin/pc
-ln -sf ~/.dotfiles/vim/py_vim_filters/po.py ~/bin/po
-ln -sf ~/.dotfiles/vim/py_vim_filters/fromassembly.py ~/bin/fromassembly
-ln -sf ~/.dotfiles/vim/py_vim_filters/fromopcodes.py ~/bin/fromopcodes
-ln -sf ~/.dotfiles/setup/keys_macos_regkb.sh ~/bin/kint
-ln -sf ~/.dotfiles/setup/keys_macos_colemak.sh ~/bin/kco
-ln -sf ~/.dotfiles/setup/keys_macos_extkb.sh ~/bin/kext
-ln -sf ~/.dotfiles/setup/keys_default.sh ~/bin/kdef
 ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git_templates ~/.git_templates
+
+
+# ln -sf ~/.dotfiles/ctagsrc ~/.ctags
+# ln -sf ~/.dotfiles/wezterm ~/.config/wezterm
+# ln -sf ~/.dotfiles/gdb/nasm_compile.sh ~/bin/comp
+# ln -sf ~/.dotfiles/gdb/nasm_compile32.sh ~/bin/comp32
+# ln -sf ~/.dotfiles/gdb/nasm_compile_win32.sh ~/bin/compw
 
 cd ~
 # echo 'setting up terminfo (italics support!)'
@@ -98,28 +85,9 @@ echo 'setting up directories and symlinks..done!'
 
 cd ~/.dotfiles/setup
 
-# . ./setup_omzsh.sh
-
-# setup starship
-
-# sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-
-# ~/.fzf/install
-
-# echo "https://github.com/pyrho/hack-font-ligature-nerd-font"
-
 # Skip the not really helping Ubuntu global compinit
-
 if [[ $OSTYPE == "linux"* ]];  then
   echo '# compinit is done twice in ubuntu, skipping' > ~/.zshenv
   echo 'skip_global_compinit=1' >> ~/.zshenv
   echo "UPDATED COMPINIT SKIP SETTINGS FOR UBUNTU!!!"
-fi
-
-if [[ $OSTYPE == "darwin"* ]]; then
-  if ! command -v pinentry-mac &> /dev/null then
-    echo 'installing pinentry-mac'
-    brew install pinentry-mac
-  fi
-  echo "pinentry-program $(whence pinentry-mac)" > ~/.gnupg/gpg-agent.conf
 fi

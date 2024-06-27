@@ -22,6 +22,8 @@ echo 'done installing linux depenencies'
 
 echo 'setting up nvim'
 
+source ./setup_dirs.sh
+
 cd ~/
 rm -rf ~/nvim
 rm -rf ~/nvim-linux64
@@ -33,7 +35,7 @@ ln -s ~/nvim/bin/nvim ~/local/bin/nvim
 echo "Neovim setup for linux complete"
 
 
-echo "install nvim...."
+echo "install nvm...."
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
