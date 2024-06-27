@@ -14,8 +14,6 @@
         fzf
 	python3
 	ruff
-	nixpkgs-fmt
-	rnix-lsp
 	# for building docker images
 	docker-client
 	gnumake
