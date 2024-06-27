@@ -13,7 +13,7 @@ vim.cmd([[nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' 
 vim.g.mapleader = " "
 
 --- nop ---
-k("n", "<c-f>", "") -- use this for searching files
+-- k("n", "<c-f>", "") -- use this for searching files
 k("n", "<c-b>", "") -- allow tmux prefix to be used to jump to tmux pane
 k("n", "ZZ", "")
 k("n", "ZQ", "")

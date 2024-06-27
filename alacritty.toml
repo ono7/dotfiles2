@@ -184,7 +184,7 @@ mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u0006"
-key = "F"
+key = "f"
 mods = "Command"
 
 # HKJL movement keys for tmux pane navigation
