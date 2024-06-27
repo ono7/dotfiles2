@@ -1,13 +1,13 @@
-# DevPod Start test.devpod
-Host test.devpod
+# DevPod Start test3.devpod
+Host test3.devpod
   ForwardAgent yes
   LogLevel error
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
   HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
-  ProxyCommand "/opt/homebrew/bin/devpod" ssh --stdio --context default --user vscode test
+  ProxyCommand "/opt/homebrew/bin/devpod" ssh --stdio --context default --user vscode test3
   User vscode
-# DevPod End test.devpod
+# DevPod End test3.devpod
 
 # this might help tmux over ssh sessions....
 # ~/.ssh/config
