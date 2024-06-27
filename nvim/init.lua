@@ -39,17 +39,17 @@ vim.g.netrw_banner = 0
 vim.g.netrw_browse_split = 0
 vim.g.netrw_liststyle = 3
 
-require("my.disabled")
-require("my.legacy")
-require("my.abbreviations")
-require("my.diff-settings")
-require("my.vars")
-require("my.settings")
-require("my.helper-functions")
-require("my.lazy-bootstrap")
-require("my.lazy-config")
-require("my.keymaps")
-require("my.cmds")
+require("config.disabled")
+require("config.legacy")
+require("config.abbreviations")
+require("config.diff-settings")
+require("config.vars")
+require("config.settings")
+require("config.helper-functions")
+require("config.lazy-bootstrap")
+require("config.lazy-config")
+require("config.keymaps")
+require("config.cmds")
 
 
 vim.o.guicursor = "" -- uncomment for beam cursor
