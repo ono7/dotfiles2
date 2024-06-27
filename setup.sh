@@ -8,6 +8,8 @@ mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
 
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 
+# TODO(jlima): add other dependencies here
+
 ln -sf "$PWD/bashrc" "$HOME"/.bashrc
 ln -sf "$PWD/zshrc_mac" "$HOME"/.zshrc
 ln -sf "$PWD/zshenv" "$HOME"/.zshenv
