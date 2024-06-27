@@ -6,7 +6,12 @@ ENV LANG=C.UTF-8
 
 # git shell on running container (root)
 
+
 ```sh
+
+# takes care of issues with locales
+docker run -e LANG=C.UTF-8 -e LC_ALL=C.UTF-8 -it --rm <yourimage> <yourcommand>
+
 # run and map a folder
 docker run -it --name testservice -v .:/app ubuntu:latest
 
