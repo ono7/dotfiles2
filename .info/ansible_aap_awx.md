@@ -27,6 +27,7 @@ dependencies:
     python_path: "/usr/bin/python3.11"
   system:
     - git [platform:rpm]
+    - make [platform:rpm]
     - vim-minimal [platform:rpm]
   galaxy: requirements.yml
   python: requirements.txt
@@ -51,10 +52,12 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal
 USER root
 
 RUN ln -s /usr/bin/microdnf /usr/bin/yum && \
-  microdnf update -y && microdnf install python3.11 python3.11-pip --nodocs --setopt install_weak_deps=0 -y && \
+  microdnf update -y && microdnf install make python3.11 python3.11-pip --nodocs --setopt install_weak_deps=0 -y && \
   alternatives --set python3 /usr/bin/python3.11 && \
   alternatives --install /usr/bin/pip pip /usr/bin/pip3.11 1 && \
   pip --version
 
 ENV PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/mi-tec/
 ```
+
+## reset podman
