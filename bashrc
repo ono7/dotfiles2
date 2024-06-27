@@ -253,7 +253,10 @@ else
   echo 'download fd from: https://github.com/sharkdp/fd/releases'
 fi
 
+
 source ~/.zshenv
+
+eval "$(fzf --bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
