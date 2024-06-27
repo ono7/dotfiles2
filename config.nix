@@ -13,6 +13,10 @@
         ripgrep
         fzf
         lazygit
+	locales
+	npm
+	python3
+	ruff
       ];
     };
   };
