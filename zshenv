@@ -26,7 +26,7 @@ extract() {
 
 ga () {
     # Check for untracked files
-    mydir=pwd
+    mydir=$(pwd)
     untracked_files=$(git status --porcelain | grep '^??' | cut -c4-)
     if [ -z "$untracked_files" ]; then
         echo "No new untracked files."
