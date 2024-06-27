@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# added to support containers
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
