@@ -1,3 +1,4 @@
+# configuration for nix on devcontainers
 {
   packageOverrides = pkgs: with pkgs; {
     myPackages = pkgs.buildEnv {
