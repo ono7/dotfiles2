@@ -16,6 +16,7 @@ cd ~
 mkdir -p ~/.tmp
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/kitty
+mkdir -p ~/.config/nixpkgs
 mkdir -p ~/.tmux/plugins
 mkdir -p ~/.ssh
 mkdir -p ~/bin
@@ -32,6 +33,10 @@ echo #                              creating symlinks                           
 echo ################################################################################
 
 # make aliases and vars available in neovim
+
+# this is for dev containers and wsl possibly
+ln -sf ~/.dotfiles/config.nix ~/.config/nixpkgs/config.nix
+
 ln -sf ~/.dotfiles/inputrc ~/.inputrc
 ln -sf ~/.dotfiles/zshenv ~/.zshenv
 ln -sf ~/.dotfiles/ctags.d ~/.ctags.d
