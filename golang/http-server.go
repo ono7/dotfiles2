@@ -6,6 +6,8 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"syscall"
@@ -19,6 +21,10 @@ const (
 )
 
 func main() {
+	err := checkSslCert("server.key")
+	if err != nil {
+		log.Fatal(err)
+	}
 	port := flag.String("port", "8000", "set tcp listening port for this service")
 	flag.Parse()
 
@@ -37,6 +43,35 @@ func main() {
 	if err := http.Serve(listener, nil); err != nil {
 		log.Fatalf("Failed to start server: %s", err)
 	}
+}
+
+// NOTE(jlima773):
+// checks for certificate and ssl certificate key to use for tls, if it does not exists, it
+// attemps to create a pair using openssl. you can always ship the cert and key
+// with this package to avoid issues, openssl must be installed on the server
+// hosting this service for this bootstrap process to work...
+func checkSslCert(f string) error {
+	_, err := os.Open(f)
+	if err != nil {
+		if strings.Contains(err.Error(), "no such file or directory") {
+			genkey := exec.Command("openssl", "genpkey", "-algorithm", "RSA", "-out", "server.key")
+			if err := genkey.Run(); err != nil {
+				return fmt.Errorf("error generating key: %w", err)
+			}
+			log.Println("ssk key generated")
+
+			createCert := exec.Command("openssl", "req", "-new", "-x509", "-key", "server.key", "-out", "server.crt", "-days", "5000", "-subj", "/C=US/ST=TX/L=Northlake/O=marriott.com/OU=NetworkDevOps/CN=localhost")
+			if err := createCert.Run(); err != nil {
+				return fmt.Errorf("error generating cert: %w", err)
+			}
+			log.Println("ssl cert created")
+			return nil // No error after generating the certificate
+		}
+
+		return fmt.Errorf("opening file %s: %w", f, err) // Wrap the error
+	}
+
+	return nil // No errors
 }
 
 // imageTransfer logs the time taken to transfer the file
