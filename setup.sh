@@ -2,7 +2,7 @@
 # this is used by devcontainers to execute and install nix packages
 # devup . --provider docker --dotfiles https://github.com/ono7/dotfiles2.git
 
-# export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CONFIG_HOME="$HOME"/.config
 mkdir -p "$XDG_CONFIG_HOME"
 mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
 
