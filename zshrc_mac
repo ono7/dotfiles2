@@ -108,16 +108,23 @@ fixgit () {
   git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 }
 
-ta () {
-  if [ ! -z $TMUX ] && [ ! -z $1 ]
-  then
-    tmux detach -E "tmux new -A -s '$1'"
-  elif [ ! -z $TMUX ]
-  then
-    return
-  else
-    tmux new -As main
-  fi
+ta() {
+    if ! command -v tmux &> /dev/null; then
+        echo "Error: tmux is not installed."
+        return 1
+    fi
+
+    local SESSION_NAME="${1:-main}" # Default to "main" if no argument
+
+    if [ -n "$TMUX" ]; then
+        if [ -n "$1" ]; then
+            tmux detach-client -E "tmux new-session -A -s '$SESSION_NAME'"
+        else
+            return 0
+        fi
+    else
+        tmux new-session -A -s "$SESSION_NAME"
+    fi
 }
 
 # lets go right to businees
