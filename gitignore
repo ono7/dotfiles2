@@ -18,6 +18,7 @@ tags
 .ignore
 *.log
 1.sh
+.env
 2.sh
 1.yml
 2.yml
