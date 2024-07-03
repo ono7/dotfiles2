@@ -10,6 +10,8 @@ snippet jc "test" b
 
   $0
 
+  `system("git config --get remote.origin.url")`/commit/`system("git symbolic-ref --short HEAD")`/`system("git rev-parse HEAD")`
+
   `toupper(trim(system("git branch --show-current | grep -Pio 'ntwk-\\d{1,20}'")))` #comment ${1}
 
 snippet jt "test" b
