@@ -5,6 +5,7 @@ local wo = vim.wo
 local bo = vim.bo
 
 --- global options ---
+opt.autochdir = true
 o.completeopt = "menu,menuone,noinsert"
 o.foldmethod = "indent"
 o.mouse = "n"
