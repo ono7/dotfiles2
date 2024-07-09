@@ -21,10 +21,11 @@ const (
 )
 
 func main() {
-	err := checkSslCert("server.key")
-	if err != nil {
-		log.Fatal(err)
-	}
+	// TODO(jlima773): move this to init() if its needed
+	// err := checkSslCert("server.key")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 	port := flag.String("port", "8000", "set tcp listening port for this service")
 	flag.Parse()
 
@@ -84,7 +85,7 @@ func imageTransfer(next http.Handler) http.Handler {
 	})
 }
 
-// restrictDirectory ensures the path is within the DIRECTORY
+// restrictDirectory ensures the path is confined to the DIRECTORY constant
 func restrictDirectory(next http.Handler, dir string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" {
