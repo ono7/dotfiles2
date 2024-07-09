@@ -16,6 +16,7 @@ import (
 	"golang.org/x/sys/unix"
 )
 
+// files should be placed in this directory to be served
 const (
 	DIRECTORY = "images/"
 )
@@ -30,7 +31,7 @@ func main() {
 	flag.Parse()
 
 	fs := http.FileServer(http.Dir(DIRECTORY))
-	http.Handle("/", imageTransfer(restrictDirectory(fs, DIRECTORY)))
+	http.Handle("/", imageTransfer(handleRequests(fs, DIRECTORY)))
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port)) // Create listener directly
 	if err != nil {
@@ -85,8 +86,8 @@ func imageTransfer(next http.Handler) http.Handler {
 	})
 }
 
-// restrictDirectory ensures the path is confined to the DIRECTORY constant
-func restrictDirectory(next http.Handler, dir string) http.Handler {
+// handleRequests ensures the path is confined to the DIRECTORY constant
+func handleRequests(next http.Handler, dir string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
