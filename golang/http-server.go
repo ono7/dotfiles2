@@ -3,11 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"net/http"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"syscall"
@@ -22,23 +22,28 @@ const (
 )
 
 func main() {
-	// TODO(jlima773): move this to init() if its needed
-	// err := checkSslCert("server.key")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	port := flag.String("port", "8000", "set tcp listening port for this service")
+
+	logFile, err := os.OpenFile("server.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
+	if err != nil {
+		log.Fatalf("Error opening log file: %v", err)
+	}
+	defer logFile.Close()
+
+	mw := io.MultiWriter(os.Stdout, logFile) // Write to both stdout and the file
+	log.SetOutput(mw)
+
+	port := flag.String("port", "8000", "Set TCP port to listen on")
 	flag.Parse()
 
 	fs := http.FileServer(http.Dir(DIRECTORY))
 	http.Handle("/", imageTransfer(handleRequests(fs, DIRECTORY)))
 
-	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port)) // Create listener directly
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port))
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 
-	// Apply TCP options on the listener
+	// Apply TCP connection parameters before starting the server
 	applyTCPSettings(listener)
 
 	log.Printf("Starting server on port %s...\n", *port)
@@ -47,42 +52,13 @@ func main() {
 	}
 }
 
-// NOTE(jlima773):
-// checks for certificate and ssl certificate key to use for tls, if it does not exists, it
-// attemps to create a pair using openssl. you can always ship the cert and key
-// with this package to avoid issues, openssl must be installed on the server
-// hosting this service for this bootstrap process to work...
-func checkSslCert(f string) error {
-	_, err := os.Open(f)
-	if err != nil {
-		if strings.Contains(err.Error(), "no such file or directory") {
-			genkey := exec.Command("openssl", "genpkey", "-algorithm", "RSA", "-out", "server.key")
-			if err := genkey.Run(); err != nil {
-				return fmt.Errorf("error generating key: %w", err)
-			}
-			log.Println("ssk key generated")
-
-			createCert := exec.Command("openssl", "req", "-new", "-x509", "-key", "server.key", "-out", "server.crt", "-days", "5000", "-subj", "/C=US/ST=TX/L=Northlake/O=marriott.com/OU=NetworkDevOps/CN=localhost")
-			if err := createCert.Run(); err != nil {
-				return fmt.Errorf("error generating cert: %w", err)
-			}
-			log.Println("ssl cert created")
-			return nil // No error after generating the certificate
-		}
-
-		return fmt.Errorf("opening file %s: %w", f, err) // Wrap the error
-	}
-
-	return nil // No errors
-}
-
-// imageTransfer logs the time taken to transfer the file
+// Serve files and log transfer times
 func imageTransfer(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 		next.ServeHTTP(w, r)
 		duration := time.Since(start)
-		log.Printf("%s Transferred %s in %v\n", r.RemoteAddr, r.URL.Path, duration)
+		log.Printf("%s %s %s in %v\n", r.RemoteAddr, r.Method, r.URL.Path, duration)
 	})
 }
 
@@ -107,7 +83,12 @@ func handleRequests(next http.Handler, dir string) http.Handler {
 	})
 }
 
+// Optimize for slow wan links with high latency, settings/syscalls are OS specific and
+// *** THIS IS SPECIFIC TO THE OS API/SYSCALLS - Linux, MacOS and Windows ***
 func applyTCPSettings(listener net.Listener) {
+	border := strings.Repeat("*", 40)
+	log.Println(border)
+	defer log.Println(border)
 	tcpClampSize := 65535
 	file, err := listener.(*net.TCPListener).File()
 	if err != nil {
@@ -115,19 +96,20 @@ func applyTCPSettings(listener net.Listener) {
 	}
 	defer file.Close()
 
-	// Enable SACK (Selective Acknowledgments), this is linux specific
+	// Enable SaCK (Selective Acknowledgments)
 	if err := syscall.SetsockoptInt(int(file.Fd()), syscall.IPPROTO_TCP, unix.TCPOPT_SACK, 1); err != nil {
-		log.Fatalf("Failed to enable SACK: %v", err)
+		log.Fatalf("Failed to enable SaCK: %v", err)
 	}
-	log.Println("TCP SACK enabled")
+	log.Println("TCP SaCK enabled")
 
 	// Set and clamp the receive buffer size (indirectly controls window size)
 	if err := syscall.SetsockoptInt(int(file.Fd()), syscall.SOL_SOCKET, syscall.SO_RCVBUF, tcpClampSize); err != nil {
 		log.Fatalf("Failed to set SO_RCVBUF: %v", err)
 	}
 
+	// negotiate better clamp size for highlatency links
 	if err := syscall.SetsockoptInt(int(file.Fd()), syscall.IPPROTO_TCP, syscall.TCP_WINDOW_CLAMP, tcpClampSize); err != nil {
 		log.Fatalf("Failed to set TCP_WINDOW_CLAMP: %v", err)
 	}
-	log.Println("TCP Window Clamp set to 65535")
+	log.Println("TCP Window Clamp set to", tcpClampSize)
 }
