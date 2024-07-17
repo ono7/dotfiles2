@@ -20,6 +20,9 @@ require("telescope").setup {
   pickers = {
     find_files = {
       theme = "dropdown",
+    },
+    git_files = {
+      theme = "dropdown",
     }
   },
   extensions = {
@@ -80,7 +83,6 @@ pcall(require("telescope").load_extension, "ui-select")
 local builtin = require "telescope.builtin"
 
 -- vim.keymap.set("n", "<c-f>", builtin.find_files)
-vim.keymap.set("n", "<space>ft", builtin.git_files)
 vim.keymap.set("n", "<space>fh", builtin.help_tags)
 vim.keymap.set("n", "<space>fg", builtin.live_grep)
 vim.keymap.set("n", "<space>/", builtin.current_buffer_fuzzy_find)
@@ -128,8 +130,16 @@ k({ "n", "x" }, "<c-\\>", function() builtin.buffers({ previewer = false }) end,
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
-  builtin.find_files({ no_ignore = false, hidden = true, previewer = false })
+  builtin.find_files({ no_ignore = true, hidden = true, previewer = false })
 end, opt)
+
+k({ "n", "x" }, "<c-p>", function()
+  -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
+  builtin.git_files({ no_ignore = false, hidden = true, previewer = false })
+end, opt)
+
+
+
 
 k("n", "<leader>ff", function()
   vim.ui.input({ prompt = "Enter directory path: " }, function(input)
