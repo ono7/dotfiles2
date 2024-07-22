@@ -76,6 +76,11 @@ snippet ansible.cfg "ansible config file" b
   # command_timeout=30
   # connect_retry_timout=15
 
+
+  [paramiko_connection]
+  # do not look for keys in ~/.ssh
+  look_for_keys=False
+
   [ssh_connection]
   pipelining=True
 
