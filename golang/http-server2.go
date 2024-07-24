@@ -1,3 +1,23 @@
+/*
+Author: jose.lima3@marriott.com
+Date: 2024-07-18 16:46 CST
+
+  - HTTP service for transfering Network OS images:
+    accomoadtes poor file transfer client
+    implementations (notably Cisco IOS) Sets linux system TCP parameters for the
+    server to allow more throughput with less TCP Acks and Selective Acks to lessen
+    the amount of data that needs to be retransmitted over poor quality highlatency
+    links
+
+  - Features:
+    1. Prevents access outside of DIRECTORY (images/)
+    2. logs all requests
+    3. logs total time it takes for a request to complete
+    4. applies TCP settings (applyTCPSettings) to accomodate highlatency, low bandwith wan links
+    5. Only allows GET http requests
+    6. Logs file transwer in chunks, calculates the total file size and displays percentage every 10% until completion (100%)
+    7. Creates a server.log file and displays to stdout
+*/
 package main
 
 import (
@@ -37,18 +57,33 @@ func main() {
 
 	fs := http.FileServer(http.Dir(DIRECTORY))
 	http.Handle("/", imageTransfer(handleRequests(fs, DIRECTORY)))
+	http.HandleFunc("/health", healthCheckHandler)
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", *port))
 	if err != nil {
-		log.Fatalf("Failed to listen: %v", err)
+		log.Fatalf("Failed to open service port: %v", err)
+	}
+	defer listener.Close()
+
+	server := &http.Server{
+		ReadHeaderTimeout: 5 * time.Second,
+		WriteTimeout:      10 * time.Second,
+		IdleTimeout:       120 * time.Second,
 	}
 
 	// Apply TCP connection parameters before starting the server
 	applyTCPSettings(listener)
 
-	log.Printf("Starting server on port %s...\n", *port)
-	if err := http.Serve(listener, nil); err != nil {
+	log.Printf("Starting server on port %s...\n\n", *port)
+	if err := server.Serve(listener); err != nil {
 		log.Fatalf("Failed to start server: %s", err)
+	}
+}
+
+func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		w.Write([]byte("ok"))
+		log.Printf("%s %s %s", r.RemoteAddr, r.Method, r.URL.Path)
 	}
 }
 
@@ -75,8 +110,6 @@ func (pw *progressWriter) reportProgress() {
 			log.Printf("%s Progress: %.2f%% (%d/%d bytes)\n", pw.clientIP, progress, pw.written, pw.total)
 			pw.nextLogPoint += int64(pw.total * LOG_INTERVAL / 100)
 		}
-	} else {
-		log.Printf("Written %d bytes (total size unknown) from %s\n", pw.written, pw.clientIP)
 	}
 }
 
@@ -88,6 +121,8 @@ func imageTransfer(next http.Handler) http.Handler {
 		var total int64
 		if err == nil {
 			total = fileInfo.Size()
+		} else {
+			log.Println(err.Error())
 		}
 
 		pw := &progressWriter{
@@ -109,16 +144,21 @@ func handleRequests(next http.Handler, dir string) http.Handler {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 			return
 		}
+
+		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL.Path)
+
 		path := r.URL.Path
 		cleanPath := filepath.Clean(path)
 		if !strings.HasPrefix(cleanPath, "/") {
 			cleanPath = "/" + cleanPath
 		}
+
 		fullPath := filepath.Join(dir, cleanPath)
 		if !strings.HasPrefix(fullPath, dir) {
 			http.Error(w, "Forbidden", http.StatusForbidden)
 			return
 		}
+
 		next.ServeHTTP(w, r)
 	})
 }
@@ -127,9 +167,12 @@ func handleRequests(next http.Handler, dir string) http.Handler {
 // *** THIS IS SPECIFIC TO THE OS API/SYSCALLS - Linux, MacOS, and Windows ***
 func applyTCPSettings(listener net.Listener) {
 	border := strings.Repeat("*", 40)
+
 	log.Println(border)
 	defer log.Println(border)
+
 	tcpClampSize := 65535
+
 	file, err := listener.(*net.TCPListener).File()
 	if err != nil {
 		log.Fatalf("Failed to get listener file: %v", err)
