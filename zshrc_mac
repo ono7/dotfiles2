@@ -638,6 +638,16 @@ _vs () {
   vim "$(fd --type f -HI --exclude ".git" --exclude "__pycache__" . | fzf --height 30% --reverse --border)" || return
 }
 
+setup_nvim_linux() {
+  bak=$PWD
+  cd
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+  rm -rf nvim
+  tar xzvf nvim-linux64.tar.gz
+  mv nvim-linux64 nvim
+  cd $bak
+}
+
 
 # requires brew install caarlos0/tap/timer
 alias work="timer 25 && terminal-notifier -message 'Pomodoro'\
