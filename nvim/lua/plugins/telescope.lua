@@ -23,7 +23,12 @@ require("telescope").setup {
     },
     git_files = {
       theme = "dropdown",
-    }
+    },
+    live_grep = {
+      mappings = {
+        i = { ["<c-f>"] = actions.to_fuzzy_refine },
+      },
+    },
   },
   extensions = {
     wrap_results = true,
@@ -123,7 +128,7 @@ k("n", "<leader>fd", function() builtin.diagnostics({ previewer = false }) end, 
 
 
 k("n", "<leader>g", function()
-  builtin.live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true }
+  builtin.live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, show_untracked = true, no_ignore = false }
 end, opt)
 
 k({ "n", "x" }, "<c-\\>", function() builtin.buffers({ previewer = false }) end, opt)
