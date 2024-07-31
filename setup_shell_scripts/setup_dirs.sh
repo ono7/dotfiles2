@@ -4,7 +4,7 @@
 # 2019-02-07 10:22
 # basic settings, just enough to get started
 
-cd ~/.dotfiles/setup
+cd ~/.dotfiles/setup_shell_scripts
 
 echo "$0"
 
@@ -64,7 +64,6 @@ ln -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ipdb ~/.ipdb
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
-ln -sf ~/.dotfiles/setup/keys_macos_hhbk.sh ~/bin/kh
 ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git_templates ~/.git_templates
 
