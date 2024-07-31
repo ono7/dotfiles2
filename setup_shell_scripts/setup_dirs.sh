@@ -64,7 +64,7 @@ ln -sf ~/nvim/bin/nvim ~/bin/vim
 ln -sf ~/.dotfiles/pdbrc ~/.pdbrc
 ln -sf ~/.dotfiles/ipdb ~/.ipdb
 ln -sf ~/.dotfiles/gdb/gdbinit ~/.gdbinit
-ln -sf ~/.dotfiles/gitconfig ~/.gitconfig
+cp ~/.dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/git_templates ~/.git_templates
 
 
