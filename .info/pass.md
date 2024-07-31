@@ -94,3 +94,11 @@ mkdir -m 0700 -p ~/.gnupg
 echo "pinentry-program $(brew --prefix)/bin/pinentry-mac" | tee ~/.gnupg/gpg-agent.conf
 pkill -TERM gpg-agent
 ```
+
+# restore
+
+```
+git clone github.com:ono7/abc.git ~/.password-store
+gpg --import ~/.password-store/key.asc # or whereever the backup key is
+
+```
