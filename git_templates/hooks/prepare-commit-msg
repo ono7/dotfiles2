@@ -1,22 +1,22 @@
 #!/bin/sh
 # Automatically adds branch name to the end of every commit message.
 
-COMMIT_MSG_FILE=$1
+# COMMIT_MSG_FILE=$1
 
-# Get next commit log
-NEXT_COMMIT_LOG=$(git log -1 --pretty=format:'%s')
-
-# Append log to the commit message
-echo "\nNext Commit Log:\n$NEXT_COMMIT_LOG" >> "$COMMIT_MSG_FILE"
-
-# NAME=$(git branch | grep '*' | sed 's/* //')
-# echo $(cat "$1") "$NAME" > "$1"
-
-# commit_hash=$(git rev-parse HEAD)
-repo_url=$(git remote get-url origin)
-
-# # Format the commit hash as a link
-commit_link="[${commit_hash:0:7}](${repo_url}/commit/${commit_hash})"
-
-# Append the commit hash link to the commit message
-echo -e "\n${commit_link}\n" >> "$COMMIT_MSG_FILE"
+# # Get next commit log
+# NEXT_COMMIT_LOG=$(git log -1 --pretty=format:'%s')
+#
+# # Append log to the commit message
+# echo "\nNext Commit Log:\n$NEXT_COMMIT_LOG" >> "$COMMIT_MSG_FILE"
+#
+# # NAME=$(git branch | grep '*' | sed 's/* //')
+# # echo $(cat "$1") "$NAME" > "$1"
+#
+# # commit_hash=$(git rev-parse HEAD)
+# repo_url=$(git remote get-url origin)
+#
+# # # Format the commit hash as a link
+# commit_link="[${commit_hash:0:7}](${repo_url}/commit/${commit_hash})"
+#
+# # Append the commit hash link to the commit message
+# echo -e "\n${commit_link}\n" >> "$COMMIT_MSG_FILE"
