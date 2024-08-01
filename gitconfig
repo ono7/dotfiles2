@@ -1,11 +1,11 @@
 [includeIf "gitdir:~/github.com/"]
-    path = .gitconfig-personal
+    path = ~/.gitconfig-personal
 
 [includeIf "gitdir:~/.dotfiles/"]
-    path = .gitconfig-personal
+    path = ~/.gitconfig-personal
 
 [includeIf "gitdir:~/work/"]
-    path = .gitconfig-work
+    path = ~/.gitconfig-work
 
 [core]
 editor = nvim
