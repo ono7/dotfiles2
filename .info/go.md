@@ -2,9 +2,12 @@
 
 ## build
 
-build in apple silicon amd64/linux binaries
+build for amd64 and run inside a container
 
-`GOOS=linux GOARCH=amd64 go build -o out 1.go`
+```sh
+GOOS=linux GOARCH=amd64 go build -o out 1.go
+podman run -v $(pwd):/app --rm ubuntu /app/out
+```
 
 https://gobyexample.com
 
