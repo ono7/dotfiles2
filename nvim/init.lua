@@ -25,8 +25,6 @@ vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
 
 -- vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'gitsigns_status', '')}}"
 
-
-
 -- vim.opt.winbar = "%=%M %f %m %-14.(%{luaeval('require(\"nvim-web-devicons\").get_icon(vim.fn.expand(\"%:p\"), vim.fn.expand(\"%:e\"), { default = true })')}) %y {%{get(b:, 'gitsigns_status', '')}} %l:%c"
 
 -- might need this in the future
@@ -50,7 +48,6 @@ require("config.lazy-bootstrap")
 require("config.lazy-config")
 require("config.keymaps")
 require("config.cmds")
-
 
 vim.o.guicursor = "" -- uncomment for beam cursor
 vim.o.mouse = "n"
