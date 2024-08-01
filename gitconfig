@@ -1,6 +1,11 @@
-[user]
-name = lima
-email = lima@mbp
+[includeIf "gitdir:~/github.com/"]
+    path = .gitconfig-personal
+
+[includeIf "gitdir:~/.dotfiles/"]
+    path = .gitconfig-personal
+
+[includeIf "gitdir:~/work/"]
+    path = .gitconfig-work
 
 [core]
 editor = nvim
