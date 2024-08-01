@@ -1,5 +1,11 @@
 ## GO references
 
+## build
+
+build in apple silicon amd64/linux binaries
+
+`GOOS=linux GOARCH=amd64 go build -o out 1.go`
+
 https://gobyexample.com
 
 ```
