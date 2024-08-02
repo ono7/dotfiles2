@@ -59,6 +59,13 @@ action = "Paste"
 key = "V"
 mods = "Command"
 
+
+# this is c-v in vim
+[[keyboard.bindings]]
+chars = "\u0016"
+key = "V"
+mods = "Alt"
+
 [[keyboard.bindings]]
 action = "Copy"
 key = "C"
