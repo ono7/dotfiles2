@@ -116,8 +116,9 @@ k("n", "<c-j>", "<C-W>j")
 k("n", "<c-h>", "<C-W>h")
 k("n", "<c-l>", "<C-W>l")
 
-k("n", "<tab>", ":bnext<CR>", silent)
-k("n", "<s-tab>", ":bprevious<CR>", silent)
+--- mapping tab also overrides c-i which is used to move through jump list
+-- k("n", "<tab>", ":bnext<CR>", silent)
+-- k("n", "<s-tab>", ":bprevious<CR>", silent)
 
 --- make dot work in visual mode
 m("v", ".", ":norm .<cr>", opt)
