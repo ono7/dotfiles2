@@ -118,7 +118,7 @@ k("n", "<c-l>", "<C-W>l")
 
 --- mapping tab also overrides c-i which is used to move through jump list
 -- k("n", "<tab>", ":bnext<CR>", silent)
-k("n", "<s-tab>", ":bprevious<CR>", silent)
+-- k("n", "<s-tab>", ":bprevious<CR>", silent)
 -- vim.cmd [[nnoremap <c-i> <c-i>]]
 
 --- make dot work in visual mode

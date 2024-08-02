@@ -131,7 +131,7 @@ k("n", "<leader>g", function()
   builtin.live_grep { vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u' }, use_regex = true, show_untracked = true, no_ignore = false }
 end, opt)
 
-k({ "n", "x" }, "<c-\\>", function() builtin.buffers({ previewer = false }) end, opt)
+k({ "n", "x" }, "<s-tab>", function() builtin.buffers({ previewer = false }) end, opt)
 
 k({ "n", "x" }, "<c-f>", function()
   -- builtin.find_files({ no_ignore = false, hidden = true, cwd = get_git_root() })
