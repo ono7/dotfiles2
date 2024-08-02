@@ -21,7 +21,8 @@ k("n", "gp", "`[v`]", silent)
 k("x", "y", [[ygv<Esc>]], silent)
 
 -- right alinged
-vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
+-- vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'branch_name', '')}}"
+vim.opt.winbar = "%=%-.75F %-m {%{get(b:, 'branch_name', '')}}"
 
 -- vim.opt.winbar = "%=%M %-.45f %-m {%{get(b:, 'gitsigns_status', '')}}"
 
