@@ -13,6 +13,7 @@ fact_cache/
 .netrwhist
 .db
 
+
 .env
 env
 tags
@@ -30,3 +31,7 @@ vault.key
 my_creds.py
 profile.log
 lazy-lock.json
+
+ipython/*
+!ipython/profile_default/ipython_config.py
+!ipython/profile_default/startup/custom.py
