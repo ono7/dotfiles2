@@ -12,7 +12,6 @@ fact_cache/
 .vim
 .netrwhist
 .db
-ipython/
 
 .env
 env
